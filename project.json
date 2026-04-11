@@ -1,0 +1,26 @@
+{
+  "overview": "A CFA Level I learning portal inspired by the CFA Institute's Learning Ecosystem. Features 10 study topics, per-topic practice questions with explanations, 10 full mock exams with timed mode, and personal score tracking — all behind a secure login.",
+  "features": [
+    "User login with Internet Identity",
+    "10 CFA Level I study topics with descriptions",
+    "Per-topic practice questions with explanations",
+    "10 full mock exams (30 questions each)",
+    "Timed exam mode (135 min)",
+    "Topic-wise score breakdown after exams",
+    "Score history and progress tracking",
+    "Dashboard with streak and accuracy stats",
+    "Professional navy/white/gold branding"
+  ],
+  "category": "education",
+  "tags": [
+    "cfa",
+    "finance",
+    "exam-prep",
+    "learning",
+    "quizzes",
+    "mock-exams",
+    "education",
+    "score-tracking"
+  ],
+  "last_updated": "2026-04-10T23:04:45.654Z"
+}

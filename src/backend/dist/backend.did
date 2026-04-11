@@ -1,0 +1,101 @@
+type UserStats = 
+ record {
+   lastActiveDate: text;
+   studyStreak: nat;
+   topicStats: vec record {
+                     nat;
+                     nat;
+                     nat;
+                   };
+   totalPracticeAttempts: nat;
+   totalPracticeCorrect: nat;
+   userId: principal;
+ };
+type UserAnswer = 
+ record {
+   isCorrect: bool;
+   questionId: nat;
+   selectedIndex: nat;
+   timestamp: int;
+ };
+type Topic = 
+ record {
+   description: text;
+   id: nat;
+   learningObjectives: vec text;
+   title: text;
+   weightMax: nat;
+   weightMin: nat;
+ };
+type Question = 
+ record {
+   correctIndex: nat;
+   difficulty: text;
+   explanation: text;
+   id: nat;
+   options: vec text;
+   stem: text;
+   topicId: nat;
+ };
+type PracticeResult = 
+ record {
+   attempt: PracticeAttempt;
+   correctIndex: nat;
+   explanation: text;
+   isCorrect: bool;
+ };
+type PracticeAttempt = 
+ record {
+   id: nat;
+   isCorrect: bool;
+   questionId: nat;
+   selectedIndex: nat;
+   timestamp: int;
+   topicId: nat;
+   userId: principal;
+ };
+type MockExam = 
+ record {
+   id: nat;
+   questionIds: vec nat;
+   title: text;
+ };
+type ExamAttempt = 
+ record {
+   answers: vec UserAnswer;
+   completedAt: int;
+   examId: nat;
+   id: nat;
+   score: nat;
+   startedAt: int;
+   topicBreakdown: vec record {
+                         nat;
+                         nat;
+                         nat;
+                       };
+   totalQuestions: nat;
+   userId: principal;
+ };
+type ExamAnswer = 
+ record {
+   questionId: nat;
+   selectedIndex: nat;
+ };
+service : {
+  getMockExam: (id: nat) -> (opt MockExam) query;
+  getMockExamQuestions: (examId: nat) -> (vec Question) query;
+  getMockExams: () -> (vec MockExam) query;
+  getMyExamHistory: () -> (vec ExamAttempt) query;
+  getMyStats: () -> (UserStats) query;
+  getMyTopicStats: () -> (vec record {
+                                nat;
+                                nat;
+                                nat;
+                              }) query;
+  getQuestions: (topicId: nat) -> (vec Question) query;
+  getTopic: (id: nat) -> (opt Topic) query;
+  getTopics: () -> (vec Topic) query;
+  submitExamAttempt: (examId: nat, answers: vec ExamAnswer) -> (ExamAttempt);
+  submitPracticeAnswer: (topicId: nat, questionId: nat, selectedIndex:
+   nat) -> (PracticeResult);
+}

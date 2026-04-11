@@ -1,0 +1,103 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type ExamAttempt__691794555 =
+  {
+    answers : [UserAnswer__1034811668];
+    completedAt : Int;
+    examId : Nat;
+    id : Nat;
+    score : Nat;
+    startedAt : Int;
+    topicBreakdown : [(Nat, Nat, Nat)];
+    totalQuestions : Nat;
+    userId : Principal
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type MockExam__710629266 = {id : Nat; questionIds : [Nat]; title : Text};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type PracticeAttempt__772473585 =
+  {
+    id : Nat;
+    isCorrect : Bool;
+    questionId : Nat;
+    selectedIndex : Nat;
+    timestamp : Int;
+    topicId : Nat;
+    userId : Principal
+  };
+type Question__460859601 =
+  {
+    correctIndex : Nat;
+    difficulty : Text;
+    explanation : Text;
+    id : Nat;
+    options : [Text];
+    stem : Text;
+    topicId : Nat
+  };
+type Topic__507726873 =
+  {
+    description : Text;
+    id : Nat;
+    learningObjectives : [Text];
+    title : Text;
+    weightMax : Nat;
+    weightMin : Nat
+  };
+type UserAnswer__1034811668 =
+  {isCorrect : Bool; questionId : Nat; selectedIndex : Nat; timestamp : Int};
+type UserId__241822671 = Principal;
+type UserStats__750779363 =
+  {
+    lastActiveDate : Text;
+    studyStreak : Nat;
+    topicStats : [(Nat, Nat, Nat)];
+    totalPracticeAttempts : Nat;
+    totalPracticeCorrect : Nat;
+    userId : Principal
+  };
+actor {
+  stable counters : {var nextExamAttemptId : Nat; var nextPracticeId : Nat};
+  stable examAttempts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ExamAttempt__691794555]];
+      var elementIndex : Nat__490723111
+    };
+  stable mockExams :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?MockExam__710629266]];
+      var elementIndex : Nat__490723111
+    };
+  stable practiceAttempts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PracticeAttempt__772473585]];
+      var elementIndex : Nat__490723111
+    };
+  stable questions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Question__460859601]];
+      var elementIndex : Nat__490723111
+    };
+  stable var seeded : Bool;
+  stable topics :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Topic__507726873]];
+      var elementIndex : Nat__490723111
+    };
+  stable userStats :
+    {
+      var root : Node__46230540<UserId__241822671, UserStats__750779363>;
+      var size : Nat__490723111
+    }
+};
