@@ -1,8 +1,5 @@
 import type { MockExam, Question, Topic } from "../types/cfa";
 
-// ============================================================
-// TOPICS
-// ============================================================
 export const MOCK_TOPICS: Topic[] = [
   {
     id: "ethics",
@@ -96,10 +93,6 @@ export const MOCK_TOPICS: Topic[] = [
   },
 ];
 
-// ============================================================
-// QUESTIONS — 540 real exam questions from CFA Mock Portal
-// (Mock 1: SS1+SS2, Mock 2: M2S1+M2S2, Mock 3: M3S1+M3S2)
-// ============================================================
 export const MOCK_QUESTIONS: Question[] = [
   {
     id: "q1",
@@ -424,11 +417,7 @@ export const MOCK_QUESTIONS: Question[] = [
     id: "q30",
     topicId: "ethics",
     stem: "Based only on this information, average total liabilities are:",
-    vignette: "An analyst gathers the following information about a company:
-
-ROE: 6%
-ROA: 4%
-Average total assets: €600,000",
+    vignette: "An analyst gathers the following information about a company:\n\nROE: 6%\nROA: 4%\nAverage total assets: €600,000",
     optionA: "€200,000.",
     optionB: "€300,000.",
     optionC: "€400,000.",
@@ -473,11 +462,7 @@ Average total assets: €600,000",
     id: "q34",
     topicId: "quant",
     stem: "All else being equal, the firm will most likely:",
-    vignette: "An analyst gathers the following information (in € millions) about a firm:
-
-Total revenue: 100
-Total variable costs: 75
-Total fixed costs: 40",
+    vignette: "An analyst gathers the following information (in € millions) about a firm:\n\nTotal revenue: 100\nTotal variable costs: 75\nTotal fixed costs: 40",
     optionA: "operate in the long-run.",
     optionB: "exit the market in the short-run.",
     optionC: "operate in the short-run and exit the market in the long-run.",
@@ -522,13 +507,7 @@ Total fixed costs: 40",
     id: "q38",
     topicId: "quant",
     stem: "At a 99% confidence level, the analyst should reject the null hypothesis that:",
-    vignette: "An analyst runs a simple linear regression using 35 months of data:
-
-Intercept: Coefficient = −0.5778, SE = 0.3479
-Inflation rate: Coefficient = 1.1300, SE = 0.1806
-
-Critical t-values (1% significance):
-One-sided left: −2.445 | Right: +2.445 | Two-sided: ±2.733",
+    vignette: "An analyst runs a simple linear regression using 35 months of data:\n\nIntercept: Coefficient = −0.5778, SE = 0.3479\nInflation rate: Coefficient = 1.1300, SE = 0.1806\n\nCritical t-values (1% significance):\nOne-sided left: −2.445 | Right: +2.445 | Two-sided: ±2.733",
     optionA: "the intercept is zero.",
     optionB: "the slope is less than or equal to 0.75.",
     optionC: "there is no linear relationship between the country's inflation rate and short-term interest rate.",
@@ -540,9 +519,7 @@ One-sided left: −2.445 | Right: +2.445 | Two-sided: ±2.733",
     id: "q39",
     topicId: "quant",
     stem: "If monetary policy is expansionary, the central bank's inflation target is:",
-    vignette: "An analyst gathers the following data about an economy:
-Real trend growth rate: 0.5%
-Central bank's policy rate: 1.5%",
+    vignette: "An analyst gathers the following data about an economy:\nReal trend growth rate: 0.5%\nCentral bank's policy rate: 1.5%",
     optionA: "less than 1.0%.",
     optionB: "equal to 1.0%.",
     optionC: "greater than 1.0%.",
@@ -631,13 +608,7 @@ Central bank's policy rate: 1.5%",
     id: "q47",
     topicId: "econ",
     stem: "Basic earnings per share for the fiscal year is closest to:",
-    vignette: "Company data for the fiscal year ended 31 December:
-
-Net income: \$3,100,000
-Cash dividends on common stock: \$775,000
-Cash dividends on preferred stock: \$500,000
-Common shares outstanding on 1 January: 1,000,000
-A 2-for-1 stock split occurred on 1 July.",
+    vignette: "Company data for the fiscal year ended 31 December:\n\nNet income: \$3,100,000\nCash dividends on common stock: \$775,000\nCash dividends on preferred stock: \$500,000\nCommon shares outstanding on 1 January: 1,000,000\nA 2-for-1 stock split occurred on 1 July.",
     optionA: "\$0.91.",
     optionB: "\$1.30.",
     optionC: "\$1.73.",
@@ -671,13 +642,7 @@ A 2-for-1 stock split occurred on 1 July.",
     id: "q50",
     topicId: "econ",
     stem: "The 180-day EUR/USD forward exchange rate is closest to:",
-    vignette: "Financial market information:
-
-EUR/USD spot exchange rate: 0.9876
-180-day USD risk-free rate: 1.00%
-180-day EUR risk-free rate: 1.20%
-
-EUR/USD is the amount of EUR per 1 USD.",
+    vignette: "Financial market information:\n\nEUR/USD spot exchange rate: 0.9876\n180-day USD risk-free rate: 1.00%\n180-day EUR risk-free rate: 1.20%\n\nEUR/USD is the amount of EUR per 1 USD.",
     optionA: "0.98662.",
     optionB: "0.98858.",
     optionC: "0.98956.",
@@ -689,12 +654,7 @@ EUR/USD is the amount of EUR per 1 USD.",
     id: "q51",
     topicId: "econ",
     stem: "Assuming it is highly probable that revenue will not be subsequently reversed, revenue (in millions) recognized in Year 1 is most likely:",
-    vignette: "Company's 3-year construction contract (in millions):
-
-Contract price: 108
-Expected total costs: 70
-Actual costs incurred in Year 1: 28
-Bonus for on-time completion: 6",
+    vignette: "Company's 3-year construction contract (in millions):\n\nContract price: 108\nExpected total costs: 70\nActual costs incurred in Year 1: 28\nBonus for on-time completion: 6",
     optionA: "0.",
     optionB: "43.2.",
     optionC: "45.6.",
@@ -838,9 +798,7 @@ Bonus for on-time completion: 6",
     id: "q64",
     topicId: "fsa",
     stem: "If the annual target return is 4%, the sample target semideviation of returns is closest to:",
-    vignette: "Annual returns on a stock:
-Year 1: 5%, Year 2: −2%, Year 3: 3%, Year 4: 8%
-Annual target return: 4%",
+    vignette: "Annual returns on a stock:\nYear 1: 5%, Year 2: −2%, Year 3: 3%, Year 4: 8%\nAnnual target return: 4%",
     optionA: "3.0%.",
     optionB: "3.5%.",
     optionC: "4.2%.",
@@ -874,13 +832,7 @@ Annual target return: 4%",
     id: "q67",
     topicId: "fsa",
     stem: "The quick ratio is:",
-    vignette: "Company current assets (in £ millions):
-
-Cash: 800
-Short-term marketable securities: 400
-Receivables: 200
-Inventories: 700
-Current liabilities: £500 million",
+    vignette: "Company current assets (in £ millions):\n\nCash: 800\nShort-term marketable securities: 400\nReceivables: 200\nInventories: 700\nCurrent liabilities: £500 million",
     optionA: "2.4.",
     optionB: "2.8.",
     optionC: "4.2.",
@@ -903,9 +855,7 @@ Current liabilities: £500 million",
     id: "q69",
     topicId: "fsa",
     stem: "Which of the following returns is the largest?",
-    vignette: "Year-end prices for a non-dividend-paying stock:
-Year 1: €6, Year 2: €10, Year 3: €12
-(Purchased at end of Year 1, sold at end of Year 3)",
+    vignette: "Year-end prices for a non-dividend-paying stock:\nYear 1: €6, Year 2: €10, Year 3: €12\n(Purchased at end of Year 1, sold at end of Year 3)",
     optionA: "The geometric mean annual return.",
     optionB: "The arithmetic mean annual return.",
     optionC: "The two-year holding period return.",
@@ -961,11 +911,7 @@ Year 1: €6, Year 2: €10, Year 3: €12
     id: "q74",
     topicId: "fsa",
     stem: "Which market is most likely monopolistically competitive?",
-    vignette: "Information about three markets:
-
-Market 1: Many sellers, Non-price competition = None
-Market 2: Few sellers, Non-price competition = Strong
-Market 3: Many sellers, Non-price competition = Strong",
+    vignette: "Information about three markets:\n\nMarket 1: Many sellers, Non-price competition = None\nMarket 2: Few sellers, Non-price competition = Strong\nMarket 3: Many sellers, Non-price competition = Strong",
     optionA: "Market 1.",
     optionB: "Market 2.",
     optionC: "Market 3.",
@@ -1010,14 +956,7 @@ Market 3: Many sellers, Non-price competition = Strong",
     id: "q78",
     topicId: "corp",
     stem: "The company's forecasted free cash flow to the firm is closest to:",
-    vignette: "Forecasted results for a company:
-
-Net profit margin: 18%
-Depreciation: \$6 million
-Decrease in working capital: \$1.5 million
-Increase in fixed capital: \$6 million
-Market share: 9%
-Total industry sales: \$3.3 billion (no interest expense)",
+    vignette: "Forecasted results for a company:\n\nNet profit margin: 18%\nDepreciation: \$6 million\nDecrease in working capital: \$1.5 million\nIncrease in fixed capital: \$6 million\nMarket share: 9%\nTotal industry sales: \$3.3 billion (no interest expense)",
     optionA: "\$43 million.",
     optionB: "\$52 million.",
     optionC: "\$55 million.",
@@ -1062,10 +1001,7 @@ Total industry sales: \$3.3 billion (no interest expense)",
     id: "q82",
     topicId: "corp",
     stem: "The account balance at the end of the second year is closest to:",
-    vignette: "Cash flows and returns for a new account:
-
-Year 1: Beginning-of-year cash inflow = €10,000; Outflow = €0; Return = −22%
-Year 2: Beginning-of-year cash inflow = €0; Outflow = €1,000; Return = 24%",
+    vignette: "Cash flows and returns for a new account:\n\nYear 1: Beginning-of-year cash inflow = €10,000; Outflow = €0; Return = −22%\nYear 2: Beginning-of-year cash inflow = €0; Outflow = €1,000; Return = 24%",
     optionA: "€8,432.",
     optionB: "€9,672.",
     optionC: "€10,912.",
@@ -1077,12 +1013,7 @@ Year 2: Beginning-of-year cash inflow = €0; Outflow = €1,000; Return = 24%",
     id: "q83",
     topicId: "corp",
     stem: "The company's WACC is equal to:",
-    vignette: "Company information:
-
-Before-tax cost of debt: 5%
-Marginal tax rate: 30%
-Cost of equity: 8%
-Target debt-to-equity ratio: 50%",
+    vignette: "Company information:\n\nBefore-tax cost of debt: 5%\nMarginal tax rate: 30%\nCost of equity: 8%\nTarget debt-to-equity ratio: 50%",
     optionA: "5.75%.",
     optionB: "6.50%.",
     optionC: "7.00%.",
@@ -1094,11 +1025,7 @@ Target debt-to-equity ratio: 50%",
     id: "q84",
     topicId: "corp",
     stem: "The company in the growth phase of its lifecycle is most likely:",
-    vignette: "Three companies in the same industry at different lifecycle stages:
-
-Company 1: Revenue \$10M→\$11M→\$9M, Debt/Capital 0%
-Company 2: Revenue \$30M→\$36M→\$44M, Debt/Capital 8%
-Company 3: Revenue \$100M→\$95M→\$97M, Debt/Capital 25%",
+    vignette: "Three companies in the same industry at different lifecycle stages:\n\nCompany 1: Revenue \$10M→\$11M→\$9M, Debt/Capital 0%\nCompany 2: Revenue \$30M→\$36M→\$44M, Debt/Capital 8%\nCompany 3: Revenue \$100M→\$95M→\$97M, Debt/Capital 25%",
     optionA: "Company 1.",
     optionB: "Company 2.",
     optionC: "Company 3.",
@@ -1110,12 +1037,7 @@ Company 3: Revenue \$100M→\$95M→\$97M, Debt/Capital 25%",
     id: "q85",
     topicId: "equity",
     stem: "The inventory turnover (based on average inventory) for Year 2 is closest to:",
-    vignette: "Electronics manufacturing company data (in € thousands):
-
-Year 2 / Year 1
-Cost of sales: 1,250 / 1,000
-Cost of inventory: 225 / 375
-Net realizable value of inventory: 300 / 325",
+    vignette: "Electronics manufacturing company data (in € thousands):\n\nYear 2 / Year 1\nCost of sales: 1,250 / 1,000\nCost of inventory: 225 / 375\nNet realizable value of inventory: 300 / 325",
     optionA: "4.0.",
     optionB: "4.2.",
     optionC: "4.5.",
@@ -1138,11 +1060,7 @@ Net realizable value of inventory: 300 / 325",
     id: "q87",
     topicId: "equity",
     stem: "The expected return on the portfolio is closest to:",
-    vignette: "Portfolio information:
-
-Equities: Weight=45%, Expected Return=16%
-Mortgages: Weight=25%, Expected Return=12%
-Cash and equivalents: Weight=30%, Expected Return=2%",
+    vignette: "Portfolio information:\n\nEquities: Weight=45%, Expected Return=16%\nMortgages: Weight=25%, Expected Return=12%\nCash and equivalents: Weight=30%, Expected Return=2%",
     optionA: "8.2%.",
     optionB: "10.0%.",
     optionC: "10.8%.",
@@ -1253,14 +1171,7 @@ Cash and equivalents: Weight=30%, Expected Return=2%",
     id: "q97",
     topicId: "equity",
     stem: "Using the Gordon growth model, the stock's intrinsic value is closest to:",
-    vignette: "Company's common stock and market information:
-
-Dividend per share (D₀): \$3.00
-Dividend payout ratio: 25%
-Equity beta: 1.6
-Expected risk-free rate: 3.5%
-Expected market rate of return: 9.0%
-ROE: 7.0%",
+    vignette: "Company's common stock and market information:\n\nDividend per share (D₀): \$3.00\nDividend payout ratio: 25%\nEquity beta: 1.6\nExpected risk-free rate: 3.5%\nExpected market rate of return: 9.0%\nROE: 7.0%",
     optionA: "\$24.96.",
     optionB: "\$42.55.",
     optionC: "\$44.79.",
@@ -1294,12 +1205,7 @@ ROE: 7.0%",
     id: "q100",
     topicId: "equity",
     stem: "If the required rate of return is 7% and the marginal tax rate is 30%, the preferred shares are most likely:",
-    vignette: "Preferred shares information:
-
-Par value: \$100.00
-Annual dividend per share: \$6.00
-Current market price: \$85.71
-Maturity: 10 years",
+    vignette: "Preferred shares information:\n\nPar value: \$100.00\nAnnual dividend per share: \$6.00\nCurrent market price: \$85.71\nMaturity: 10 years",
     optionA: "undervalued.",
     optionB: "fairly valued.",
     optionC: "overvalued.",
@@ -1388,10 +1294,7 @@ Maturity: 10 years",
     id: "q108",
     topicId: "fi",
     stem: "If the risk-free rate is 3%, Jensen's alpha for the portfolio is:",
-    vignette: "Portfolio and market information:
-
-Portfolio: Return=11%, Std Dev=4%, Beta=1.2
-Market: Return=10%, Std Dev=3%, Beta=1.0",
+    vignette: "Portfolio and market information:\n\nPortfolio: Return=11%, Std Dev=4%, Beta=1.2\nMarket: Return=10%, Std Dev=3%, Beta=1.0",
     optionA: "-4.0%.",
     optionB: "-0.4%.",
     optionC: "0.4%.",
@@ -1425,11 +1328,7 @@ Market: Return=10%, Std Dev=3%, Beta=1.0",
     id: "q111",
     topicId: "fi",
     stem: "If the dividend payout ratio is 45%, the sustainable growth rate is closest to:",
-    vignette: "Company fiscal year data (in £ millions):
-
-Net income: 1,500
-Average total assets: 11,500
-Average shareholders' equity: 7,500",
+    vignette: "Company fiscal year data (in £ millions):\n\nNet income: 1,500\nAverage total assets: 11,500\nAverage shareholders' equity: 7,500",
     optionA: "7%.",
     optionB: "9%.",
     optionC: "11%.",
@@ -1452,11 +1351,7 @@ Average shareholders' equity: 7,500",
     id: "q113",
     topicId: "fi",
     stem: "According to put-call-forward parity, the price of a 9-month fiduciary call is closest to:",
-    vignette: "Investor information:
-
-Risk-free rate per annum: 1.50%
-Exercise price: \$9.75
-9-month call option price: \$3.25",
+    vignette: "Investor information:\n\nRisk-free rate per annum: 1.50%\nExercise price: \$9.75\n9-month call option price: \$3.25",
     optionA: "\$12.89.",
     optionB: "\$13.00.",
     optionC: "\$13.11.",
@@ -1611,11 +1506,7 @@ Exercise price: \$9.75
     id: "q127",
     topicId: "deriv",
     stem: "The correlation between the securities is closest to:",
-    vignette: "Portfolio information:
-
-Security A: Standard Deviation = 16%, Portfolio Weight = 60%
-Security B: Standard Deviation = 27%, Portfolio Weight = 40%
-Portfolio's standard deviation of returns: 20.4%",
+    vignette: "Portfolio information:\n\nSecurity A: Standard Deviation = 16%, Portfolio Weight = 60%\nSecurity B: Standard Deviation = 27%, Portfolio Weight = 40%\nPortfolio's standard deviation of returns: 20.4%",
     optionA: "-1.",
     optionB: "0.",
     optionC: "1.",
@@ -1682,12 +1573,7 @@ Portfolio's standard deviation of returns: 20.4%",
     id: "q133",
     topicId: "alts",
     stem: "The price of a three-year, 5% annual-pay bond is closest to:",
-    vignette: "Forward curve for one-year rates:
-
-0y1y: 1.20%
-1y1y: 1.88%
-2y1y: 2.46%
-3y1y: 2.93%",
+    vignette: "Forward curve for one-year rates:\n\n0y1y: 1.20%\n1y1y: 1.88%\n2y1y: 2.46%\n3y1y: 2.93%",
     optionA: "107.42.",
     optionB: "109.18.",
     optionC: "111.73.",
@@ -1765,11 +1651,7 @@ Portfolio's standard deviation of returns: 20.4%",
     id: "q140",
     topicId: "alts",
     stem: "If the number of constituent shares is constant, the weighting method that results in the highest return is:",
-    vignette: "Index composed of three securities:
-
-Security 1: Beginning price=\$50, End price=\$60, Shares=300
-Security 2: Beginning price=\$75, End price=\$95, Shares=350
-Security 3: Beginning price=\$60, End price=\$65, Shares=400",
+    vignette: "Index composed of three securities:\n\nSecurity 1: Beginning price=\$50, End price=\$60, Shares=300\nSecurity 2: Beginning price=\$75, End price=\$95, Shares=350\nSecurity 3: Beginning price=\$60, End price=\$65, Shares=400",
     optionA: "price weighting.",
     optionB: "equal weighting.",
     optionC: "value weighting.",
@@ -1814,11 +1696,7 @@ Security 3: Beginning price=\$60, End price=\$65, Shares=400",
     id: "q144",
     topicId: "pm",
     stem: "All else being equal, the bond with the greatest reinvestment risk is most likely:",
-    vignette: "Information about three bonds:
-
-Bond 1: Payment Frequency=Monthly, Principal Amortization=Yes
-Bond 2: Payment Frequency=Quarterly, Principal Amortization=Yes
-Bond 3: Payment Frequency=Monthly, Principal Amortization=No",
+    vignette: "Information about three bonds:\n\nBond 1: Payment Frequency=Monthly, Principal Amortization=Yes\nBond 2: Payment Frequency=Quarterly, Principal Amortization=Yes\nBond 3: Payment Frequency=Monthly, Principal Amortization=No",
     optionA: "Bond 1.",
     optionB: "Bond 2.",
     optionC: "Bond 3.",
@@ -1829,9 +1707,7 @@ Bond 3: Payment Frequency=Monthly, Principal Amortization=No",
   {
     id: "q145",
     topicId: "pm",
-    stem: "Which of the following statements regarding alternative asset co-investing is correct?
-Statement 1: The investor invests in assets indirectly through a fund.
-Statement 2: The investor possesses rights to invest directly in the same assets.",
+    stem: "Which of the following statements regarding alternative asset co-investing is correct?\nStatement 1: The investor invests in assets indirectly through a fund.\nStatement 2: The investor possesses rights to invest directly in the same assets.",
     optionA: "Statement 1 only.",
     optionB: "Statement 2 only.",
     optionC: "Both Statement 1 and Statement 2.",
@@ -1953,14 +1829,7 @@ Statement 2: The investor possesses rights to invest directly in the same assets
     id: "q156",
     topicId: "pm",
     stem: "If incentive fees are based on returns in excess of the hurdle rate and are calculated independent of management fees, the investor's net return for the year is:",
-    vignette: "Hedge fund information:
-
-Beginning-of-year AUM: \$100 million
-High-water mark: \$110 million
-Annual return before fees: 20%
-Management fee (end-of-year AUM before fees): 1%
-Incentive fee: 10%
-Hurdle rate: 5%",
+    vignette: "Hedge fund information:\n\nBeginning-of-year AUM: \$100 million\nHigh-water mark: \$110 million\nAnnual return before fees: 20%\nManagement fee (end-of-year AUM before fees): 1%\nIncentive fee: 10%\nHurdle rate: 5%",
     optionA: "17.30%.",
     optionB: "17.80%.",
     optionC: "18.35%.",
@@ -1994,13 +1863,7 @@ Hurdle rate: 5%",
     id: "q159",
     topicId: "pm",
     stem: "The cumulative fee (in \$ millions) earned by the hedge fund manager for the two years is closest to:",
-    vignette: "Hedge fund established at beginning of Year 1:
-
-AUM beginning Year 1: \$100 million
-AUM end Year 1: \$125 million
-AUM end Year 2: \$110 million
-Management fee (end-of-year AUM): 2%
-Performance fee above high-water mark (net of fees): 20%",
+    vignette: "Hedge fund established at beginning of Year 1:\n\nAUM beginning Year 1: \$100 million\nAUM end Year 1: \$125 million\nAUM end Year 2: \$110 million\nManagement fee (end-of-year AUM): 2%\nPerformance fee above high-water mark (net of fees): 20%",
     optionA: "5.2.",
     optionB: "7.2.",
     optionC: "9.2.",
@@ -2210,19 +2073,7 @@ Performance fee above high-water mark (net of fees): 20%",
     id: "q178",
     topicId: "quant",
     stem: "She receives an order to sell 9,000 shares with a limit price of CHF 42.52. The average price (in CHF) at which the trades will be executed is closest to:",
-    vignette: "Trader's order book for a stock:
-
-Ask side (sell orders):
-42.76 → 6,800 shares
-42.68 → 9,100 shares
-42.64 → 6,600 shares
-42.60 → 2,400 shares
-
-Bid side (buy orders):
-42.56 → 2,000 shares
-42.52 → 4,000 shares
-42.44 → 7,100 shares
-42.42 → 5,000 shares",
+    vignette: "Trader's order book for a stock:\n\nAsk side (sell orders):\n42.76 → 6,800 shares\n42.68 → 9,100 shares\n42.64 → 6,600 shares\n42.60 → 2,400 shares\n\nBid side (buy orders):\n42.56 → 2,000 shares\n42.52 → 4,000 shares\n42.44 → 7,100 shares\n42.42 → 5,000 shares",
     optionA: "42.52.",
     optionB: "42.50.",
     optionC: "42.53.",
@@ -2365,9 +2216,7 @@ Bid side (buy orders):
   {
     id: "q191",
     topicId: "equity",
-    stem: "The recommended procedures for compliance with the Standard relating to misconduct include which of the following?
-Procedure 1: Check references of potential employees to ensure that they are of good character.
-Procedure 2: Disseminate to all employees a list of potential violations by investment personnel and the associated disciplinary sanctions imposed by the firm.",
+    stem: "The recommended procedures for compliance with the Standard relating to misconduct include which of the following?\nProcedure 1: Check references of potential employees to ensure that they are of good character.\nProcedure 2: Disseminate to all employees a list of potential violations by investment personnel and the associated disciplinary sanctions imposed by the firm.",
     optionA: "Only Procedure 1",
     optionB: "Only Procedure 2",
     optionC: "Both Procedure 1 and Procedure 2",
@@ -2389,10 +2238,7 @@ Procedure 2: Disseminate to all employees a list of potential violations by inve
   {
     id: "q193",
     topicId: "equity",
-    stem: "Which of the following member actions is a violation of the Standard relating to market manipulation?
-Action 1: Selling large holdings of a small-cap stock with the intent to make a profit despite being aware that the transaction could significantly impact the stock price.
-Action 2: Securing a significant position in a futures contract with the intent to drive the price of the underlying asset downward.
-Action 3: Acquiring a large position in an asset in one market and shorting the same asset in another market with the intent to generate arbitrage profits.",
+    stem: "Which of the following member actions is a violation of the Standard relating to market manipulation?\nAction 1: Selling large holdings of a small-cap stock with the intent to make a profit despite being aware that the transaction could significantly impact the stock price.\nAction 2: Securing a significant position in a futures contract with the intent to drive the price of the underlying asset downward.\nAction 3: Acquiring a large position in an asset in one market and shorting the same asset in another market with the intent to generate arbitrage profits.",
     optionA: "Action 1.",
     optionB: "Action 2.",
     optionC: "Action 3.",
@@ -2403,9 +2249,7 @@ Action 3: Acquiring a large position in an asset in one market and shorting the 
   {
     id: "q194",
     topicId: "equity",
-    stem: "Are both of the following statements consistent with the Standard relating to preservation of confidentiality?
-Statement 1: If permissible under applicable law, members should provide client information when requested by the CFA Institute Professional Conduct Program during an investigation into the member's conduct.
-Statement 2: Members must continue to maintain the confidentiality of client records even after the client relationship has ended.",
+    stem: "Are both of the following statements consistent with the Standard relating to preservation of confidentiality?\nStatement 1: If permissible under applicable law, members should provide client information when requested by the CFA Institute Professional Conduct Program during an investigation into the member's conduct.\nStatement 2: Members must continue to maintain the confidentiality of client records even after the client relationship has ended.",
     optionA: "Yes.",
     optionB: "No, Statement 1 is not consistent with the Standard.",
     optionC: "No, Statement 2 is not consistent with the Standard.",
@@ -2438,10 +2282,7 @@ Statement 2: Members must continue to maintain the confidentiality of client rec
   {
     id: "q197",
     topicId: "fi",
-    stem: "John Pedersen, CFA, writes in his firm's promotional material:
-Statement 1: 'I passed all three CFA Program examinations in three consecutive years.'
-Statement 2: 'Being a CFA charterholder, I am among the elite of investment professionals.'
-Has Pedersen most likely violated the Standard(s)?",
+    stem: "John Pedersen, CFA, writes in his firm's promotional material:\nStatement 1: 'I passed all three CFA Program examinations in three consecutive years.'\nStatement 2: 'Being a CFA charterholder, I am among the elite of investment professionals.'\nHas Pedersen most likely violated the Standard(s)?",
     optionA: "No",
     optionB: "Yes, by making Statement 1 only",
     optionC: "Yes, by making Statement 2 only",
@@ -2518,9 +2359,7 @@ Has Pedersen most likely violated the Standard(s)?",
   {
     id: "q204",
     topicId: "fi",
-    stem: "Members should encourage their firms to establish which of the following procedures to avoid violations of Standard relating to independence and objectivity?
-Procedure 1: Place a covered company on a restricted list if the firm is unwilling to disseminate adverse opinion on the company.
-Procedure 2: Prohibit employees from receiving reimbursement from corporate issuers for air transportation when attending meetings at the issuers' headquarters.",
+    stem: "Members should encourage their firms to establish which of the following procedures to avoid violations of Standard relating to independence and objectivity?\nProcedure 1: Place a covered company on a restricted list if the firm is unwilling to disseminate adverse opinion on the company.\nProcedure 2: Prohibit employees from receiving reimbursement from corporate issuers for air transportation when attending meetings at the issuers' headquarters.",
     optionA: "Procedure 1 only",
     optionB: "Procedure 2 only",
     optionC: "Both Procedure 1 and Procedure 2",
@@ -2565,13 +2404,7 @@ Procedure 2: Prohibit employees from receiving reimbursement from corporate issu
     id: "q208",
     topicId: "fi",
     stem: "ROE is:",
-    vignette: "An analyst gathers the following information about a company:
-
-Tax burden: 0.4
-Interest burden: 0.75
-Pretax margin: 10.0%
-Total asset turnover: 1.5
-Financial leverage: 1.2",
+    vignette: "An analyst gathers the following information about a company:\n\nTax burden: 0.4\nInterest burden: 0.75\nPretax margin: 10.0%\nTotal asset turnover: 1.5\nFinancial leverage: 1.2",
     optionA: "5.4%.",
     optionB: "6.0%.",
     optionC: "7.2%.",
@@ -2583,11 +2416,7 @@ Financial leverage: 1.2",
     id: "q209",
     topicId: "fi",
     stem: "The fixed charge coverage ratio is closest to:",
-    vignette: "An analyst gathers the following information (in € thousands) about a manufacturing company:
-
-EBIT: 10,000
-Interest payments: 4,000
-Lease payments: 2,000",
+    vignette: "An analyst gathers the following information (in € thousands) about a manufacturing company:\n\nEBIT: 10,000\nInterest payments: 4,000\nLease payments: 2,000",
     optionA: "1.7.",
     optionB: "2.0.",
     optionC: "2.5.",
@@ -2599,11 +2428,7 @@ Lease payments: 2,000",
     id: "q210",
     topicId: "fi",
     stem: "Cash paid to suppliers (in € millions) is:",
-    vignette: "An analyst gathers the following information (in € millions) about a company:
-
-Cost of sales: 800
-Decrease in inventory: 250
-Increase in accounts payable: 100",
+    vignette: "An analyst gathers the following information (in € millions) about a company:\n\nCost of sales: 800\nDecrease in inventory: 250\nIncrease in accounts payable: 100",
     optionA: "450.",
     optionB: "950.",
     optionC: "1,150.",
@@ -2615,18 +2440,7 @@ Increase in accounts payable: 100",
     id: "q211",
     topicId: "deriv",
     stem: "The least likely explanation for the improvement in the cash conversion cycle is that the firm improved on its:",
-    vignette: "The following data are available on a company (HK\$ millions):
-
-Revenue: Current Year 18,980 / Prior Year 18,250
-Cost of sales: Current Year 14,600 / Prior Year 14,040
-Ending inventory: Current Year 2,150 / Prior Year 1,850
-Ending accounts receivable: Current Year 2,900 / Prior Year 3,300
-Ending accounts payable: Current Year 2,700 / Prior Year 2,900
-
-Ratios (Prior Year):
-Number of days of payables: 60
-Days of sales outstanding (DSO): 70
-Days of inventory on hand (DOH): 40",
+    vignette: "The following data are available on a company (HK\$ millions):\n\nRevenue: Current Year 18,980 / Prior Year 18,250\nCost of sales: Current Year 14,600 / Prior Year 14,040\nEnding inventory: Current Year 2,150 / Prior Year 1,850\nEnding accounts receivable: Current Year 2,900 / Prior Year 3,300\nEnding accounts payable: Current Year 2,700 / Prior Year 2,900\n\nRatios (Prior Year):\nNumber of days of payables: 60\nDays of sales outstanding (DSO): 70\nDays of inventory on hand (DOH): 40",
     optionA: "payments to suppliers.",
     optionB: "inventory management.",
     optionC: "ability to collect from customers.",
@@ -2693,11 +2507,7 @@ Days of inventory on hand (DOH): 40",
     id: "q217",
     topicId: "deriv",
     stem: "Using vertical common-size balance sheet analysis, the company's total liabilities in Year 2 are closest to:",
-    vignette: "An analyst gathers the following information (in £ millions) about a company:
-
-Total assets Year 2: 90, Year 1: 100
-Total liabilities Year 2: 36, Year 1: 40
-Total net assets Year 2: 54, Year 1: 60",
+    vignette: "An analyst gathers the following information (in £ millions) about a company:\n\nTotal assets Year 2: 90, Year 1: 100\nTotal liabilities Year 2: 36, Year 1: 40\nTotal net assets Year 2: 54, Year 1: 60",
     optionA: "40%.",
     optionB: "67%.",
     optionC: "90%.",
@@ -2786,11 +2596,7 @@ Total net assets Year 2: 54, Year 1: 60",
     id: "q225",
     topicId: "alts",
     stem: "If there are no other items affecting shareholders' equity, net income (in € thousands) is:",
-    vignette: "An analyst gathers the following information (in € thousands) about a company:
-
-Beginning retained earnings: 1,500
-Ending retained earnings: 2,000
-Dividends declared and paid: 400",
+    vignette: "An analyst gathers the following information (in € thousands) about a company:\n\nBeginning retained earnings: 1,500\nEnding retained earnings: 2,000\nDividends declared and paid: 400",
     optionA: "100.",
     optionB: "500.",
     optionC: "900.",
@@ -2824,11 +2630,7 @@ Dividends declared and paid: 400",
     id: "q228",
     topicId: "alts",
     stem: "If the shortfall level is 5%, which portfolio has the largest safety-first ratio?",
-    vignette: "An analyst gathers the following information about three portfolios:
-
-Portfolio X: Expected annual return=10%, Standard deviation of returns=12%
-Portfolio Y: Expected annual return=12%, Standard deviation of returns=16%
-Portfolio Z: Expected annual return=14%, Standard deviation of returns=20%",
+    vignette: "An analyst gathers the following information about three portfolios:\n\nPortfolio X: Expected annual return=10%, Standard deviation of returns=12%\nPortfolio Y: Expected annual return=12%, Standard deviation of returns=16%\nPortfolio Z: Expected annual return=14%, Standard deviation of returns=20%",
     optionA: "Portfolio X",
     optionB: "Portfolio Y",
     optionC: "Portfolio Z",
@@ -2862,13 +2664,7 @@ Portfolio Z: Expected annual return=14%, Standard deviation of returns=20%",
     id: "q231",
     topicId: "alts",
     stem: "The fair value of the machine (in € millions) is:",
-    vignette: "An analyst gathers the following information (in € millions) about a company's machine:
-
-Carrying amount prior to impairment: 8.0
-Present value of expected future cash flows: 7.4
-Undiscounted expected future cash flows: 7.8
-Costs to sell: 0.2
-Impairment loss: 0.5",
+    vignette: "An analyst gathers the following information (in € millions) about a company's machine:\n\nCarrying amount prior to impairment: 8.0\nPresent value of expected future cash flows: 7.4\nUndiscounted expected future cash flows: 7.8\nCosts to sell: 0.2\nImpairment loss: 0.5",
     optionA: "7.5.",
     optionB: "7.7.",
     optionC: "7.8.",
@@ -3078,11 +2874,7 @@ Impairment loss: 0.5",
     id: "q250",
     topicId: "pm",
     stem: "Based on Modigliani and Miller's Proposition I with taxes, if the company issues common stock to repay outstanding debt, the value of the unlevered company will be closest to:",
-    vignette: "An analyst gathers the following information about a company:
-
-Company value (\$ billions): 1.5
-Value of debt (\$ billions): 0.6
-Marginal tax rate: 30%",
+    vignette: "An analyst gathers the following information about a company:\n\nCompany value (\$ billions): 1.5\nValue of debt (\$ billions): 0.6\nMarginal tax rate: 30%",
     optionA: "\$0.9 billion.",
     optionB: "\$1.3 billion.",
     optionC: "\$1.5 billion.",
@@ -3105,11 +2897,7 @@ Marginal tax rate: 30%",
     id: "q252",
     topicId: "econ",
     stem: "Using Bayes' formula, the updated probability of X given the new information is closest to:",
-    vignette: "An analyst gathers the following probabilities concerning Event X and some new information:
-
-Prior probability of X: 0.70
-Probability of the new information given X: 0.50
-Unconditional probability of the new information: 0.60",
+    vignette: "An analyst gathers the following probabilities concerning Event X and some new information:\n\nPrior probability of X: 0.70\nProbability of the new information given X: 0.50\nUnconditional probability of the new information: 0.60",
     optionA: "0.43.",
     optionB: "0.58.",
     optionC: "0.84.",
@@ -3121,11 +2909,7 @@ Unconditional probability of the new information: 0.60",
     id: "q253",
     topicId: "econ",
     stem: "The USD/EUR 6-month forward rate is closest to:",
-    vignette: "An analyst gathers the following exchange rate information:
-
-USD/EUR spot rate: 1.0993
-USD/EUR 6-month forward points: 11.7
-(USD/EUR is the amount of USD per 1 EUR)",
+    vignette: "An analyst gathers the following exchange rate information:\n\nUSD/EUR spot rate: 1.0993\nUSD/EUR 6-month forward points: 11.7\n(USD/EUR is the amount of USD per 1 EUR)",
     optionA: "1.0981.",
     optionB: "1.1005.",
     optionC: "1.2279.",
@@ -3137,11 +2921,7 @@ USD/EUR 6-month forward points: 11.7
     id: "q254",
     topicId: "econ",
     stem: "If a \$1,000 deposit is made today, the future value in one year will be greatest for:",
-    vignette: "An investor gathers the following information:
-
-Account 1: Stated annual interest rate=6.1%, Compounding frequency=Daily
-Account 2: Stated annual interest rate=6.3%, Compounding frequency=Annual
-Account 3: Stated annual interest rate=6.2%, Compounding frequency=Quarterly",
+    vignette: "An investor gathers the following information:\n\nAccount 1: Stated annual interest rate=6.1%, Compounding frequency=Daily\nAccount 2: Stated annual interest rate=6.3%, Compounding frequency=Annual\nAccount 3: Stated annual interest rate=6.2%, Compounding frequency=Quarterly",
     optionA: "Account 1.",
     optionB: "Account 2.",
     optionC: "Account 3",
@@ -3153,11 +2933,7 @@ Account 3: Stated annual interest rate=6.2%, Compounding frequency=Quarterly",
     id: "q255",
     topicId: "econ",
     stem: "If the value of the independent variable is 2.0, the value of the dependent variable predicted by the regression is closest to:",
-    vignette: "An analyst gathers the following information about a simple linear regression:
-
-Intercept: 1.0
-Slope coefficient: 1.5
-Standard error of the regression: 0.5",
+    vignette: "An analyst gathers the following information about a simple linear regression:\n\nIntercept: 1.0\nSlope coefficient: 1.5\nStandard error of the regression: 0.5",
     optionA: "3.5.",
     optionB: "4.0.",
     optionC: "4.5.",
@@ -3169,13 +2945,7 @@ Standard error of the regression: 0.5",
     id: "q256",
     topicId: "econ",
     stem: "The internal rate of return (IRR) for the project is closest to:",
-    vignette: "A project has the following cash flows:
-
-Year 0: -\$1,000
-Year 1: \$100
-Year 2: \$100
-Year 3: \$100
-Year 4: \$1,100",
+    vignette: "A project has the following cash flows:\n\nYear 0: -\$1,000\nYear 1: \$100\nYear 2: \$100\nYear 3: \$100\nYear 4: \$1,100",
     optionA: "8.8%.",
     optionB: "9.1%.",
     optionC: "10.0%.",
@@ -3198,14 +2968,7 @@ Year 4: \$1,100",
     id: "q258",
     topicId: "econ",
     stem: "If the income tax rate is 30%, FCFF is:",
-    vignette: "An analyst gathers the following information (in € millions) about a company:
-
-Net income: 108
-Depreciation expense: 20
-Interest expense: 20
-Increase in working capital: 35
-Capital expenditures: 50
-Net borrowing: 14",
+    vignette: "An analyst gathers the following information (in € millions) about a company:\n\nNet income: 108\nDepreciation expense: 20\nInterest expense: 20\nIncrease in working capital: 35\nCapital expenditures: 50\nNet borrowing: 14",
     optionA: "less than FCFE.",
     optionB: "the same as FCFE.",
     optionC: "greater than FCFE.",
@@ -3216,9 +2979,7 @@ Net borrowing: 14",
   {
     id: "q259",
     topicId: "econ",
-    stem: "Non-cooperative financial tools used to further a country's national interests include which of the following?
-Tool 1: Limiting access to local currency markets and restricting foreign investment
-Tool 2: Nationalization of sectors perceived as vital to economic security",
+    stem: "Non-cooperative financial tools used to further a country's national interests include which of the following?\nTool 1: Limiting access to local currency markets and restricting foreign investment\nTool 2: Nationalization of sectors perceived as vital to economic security",
     optionA: "Tool 1 only",
     optionB: "Tool 2 only",
     optionC: "Both Tool 1 and Tool 2",
@@ -3274,11 +3035,7 @@ Tool 2: Nationalization of sectors perceived as vital to economic security",
     id: "q264",
     topicId: "corp",
     stem: "If interest is tax-deductible, a 35% marginal tax rate results in a WACC closest to:",
-    vignette: "An analyst gathers the following information about a company's sources of capital:
-
-Equity: Amount Raised=\$15 million, Before-tax Cost of Capital=8%
-Debt: Amount Raised=\$10 million, Before-tax Cost of Capital=4%
-Preferred stock: Amount Raised=\$1 million, Before-tax Cost of Capital=5%",
+    vignette: "An analyst gathers the following information about a company's sources of capital:\n\nEquity: Amount Raised=\$15 million, Before-tax Cost of Capital=8%\nDebt: Amount Raised=\$10 million, Before-tax Cost of Capital=4%\nPreferred stock: Amount Raised=\$1 million, Before-tax Cost of Capital=5%",
     optionA: "5.74%.",
     optionB: "5.81%.",
     optionC: "6.35%.",
@@ -3312,11 +3069,7 @@ Preferred stock: Amount Raised=\$1 million, Before-tax Cost of Capital=5%",
     id: "q267",
     topicId: "corp",
     stem: "The percentage appreciation of the EUR/CAD is closest to:",
-    vignette: "An analyst gathers the following information about foreign exchange spot prices:
-
-1 January Year 1: USD/EUR=1.4025, CAD/USD=1.0800
-1 January Year 2: USD/EUR=1.3600, CAD/USD=1.0450
-(USD/EUR exchange rate quote convention is USD per EUR)",
+    vignette: "An analyst gathers the following information about foreign exchange spot prices:\n\n1 January Year 1: USD/EUR=1.4025, CAD/USD=1.0800\n1 January Year 2: USD/EUR=1.3600, CAD/USD=1.0450\n(USD/EUR exchange rate quote convention is USD per EUR)",
     optionA: "6.17%.",
     optionB: "6.47%.",
     optionC: "6.58%.",
@@ -3328,11 +3081,7 @@ Preferred stock: Amount Raised=\$1 million, Before-tax Cost of Capital=5%",
     id: "q268",
     topicId: "corp",
     stem: "If the company's cost of sales is 60% for the current year, the company's projected gross profit margin for next year is closest to:",
-    vignette: "An analyst estimates the following data about a company for the next year:
-
-Inflation rate on the cost of sales: 10%
-Increase in average selling price per unit: 7%
-Decrease in volumes sold: 3%",
+    vignette: "An analyst estimates the following data about a company for the next year:\n\nInflation rate on the cost of sales: 10%\nIncrease in average selling price per unit: 7%\nDecrease in volumes sold: 3%",
     optionA: "36.4%.",
     optionB: "38.3%.",
     optionC: "39.8%.",
@@ -3355,10 +3104,7 @@ Decrease in volumes sold: 3%",
     id: "q270",
     topicId: "corp",
     stem: "The F-statistic for the test of fit is closest to:",
-    vignette: "An analyst gathers the following information from a simple linear regression model with 30 observation pairs:
-
-Sum of squares regression (SSR): 50
-Sum of squares error (SSE): 16",
+    vignette: "An analyst gathers the following information from a simple linear regression model with 30 observation pairs:\n\nSum of squares regression (SSR): 50\nSum of squares error (SSE): 16",
     optionA: "3.1.",
     optionB: "87.5.",
     optionC: "90.6.",
@@ -3370,11 +3116,7 @@ Sum of squares error (SSE): 16",
     id: "q271",
     topicId: "quant",
     stem: "Based on the Gordon growth model, if the required rate of return increases from 8% to 14%, the value of the stock decreases by:",
-    vignette: "An analyst gathers the following information about a company and its common stock:
-
-Expected dividend per share (D1): \$2
-Estimated dividend growth rate: 4%
-Return on equity: 9%",
+    vignette: "An analyst gathers the following information about a company and its common stock:\n\nExpected dividend per share (D1): \$2\nEstimated dividend growth rate: 4%\nReturn on equity: 9%",
     optionA: "50%.",
     optionB: "60%.",
     optionC: "75%.",
@@ -3397,10 +3139,7 @@ Return on equity: 9%",
     id: "q273",
     topicId: "quant",
     stem: "Based on an assessment of leverage, Company X has:",
-    vignette: "An analyst gathers the following information (in \$ millions) about two companies for the year just ended:
-
-Company X: Operating income=10, Depreciation and amortization=2, Interest expense=1, Debt=50
-Company Y: Operating income=12, Depreciation and amortization=1, Interest expense=3, Debt=60",
+    vignette: "An analyst gathers the following information (in \$ millions) about two companies for the year just ended:\n\nCompany X: Operating income=10, Depreciation and amortization=2, Interest expense=1, Debt=50\nCompany Y: Operating income=12, Depreciation and amortization=1, Interest expense=3, Debt=60",
     optionA: "lower creditworthiness than Company Y.",
     optionB: "the same creditworthiness as Company Y.",
     optionC: "higher creditworthiness than Company Y.",
@@ -3621,12 +3360,7 @@ Company Y: Operating income=12, Depreciation and amortization=1, Interest expens
     id: "q293",
     topicId: "fsa",
     stem: "The three-year implied spot rate is closest to:",
-    vignette: "An analyst gathers the following information about a forward curve for one-year rates:
-
-0y1y: 0.60%
-1y1y: 1.05%
-2y1y: 2.90%
-3y1y: 2.69%",
+    vignette: "An analyst gathers the following information about a forward curve for one-year rates:\n\n0y1y: 0.60%\n1y1y: 1.05%\n2y1y: 2.90%\n3y1y: 2.69%",
     optionA: "1.51%.",
     optionB: "1.81%.",
     optionC: "2.21%.",
@@ -3671,12 +3405,7 @@ Company Y: Operating income=12, Depreciation and amortization=1, Interest expens
     id: "q297",
     topicId: "fsa",
     stem: "According to put-call parity, the current price of a put option with the same maturity and strike price is closest to:",
-    vignette: "An investor gathers the following information about a European call option with 9 months until expiration:
-
-Current stock price: \$112
-Strike price of option: \$115
-Current call option price: \$4
-1-year risk free rate: 2.5%",
+    vignette: "An investor gathers the following information about a European call option with 9 months until expiration:\n\nCurrent stock price: \$112\nStrike price of option: \$115\nCurrent call option price: \$4\n1-year risk free rate: 2.5%",
     optionA: "3.11",
     optionB: "4.2",
     optionC: "4.89",
@@ -3765,11 +3494,7 @@ Current call option price: \$4
     id: "q305",
     topicId: "fsa",
     stem: "Stock 1's weighting in the index is closest to:",
-    vignette: "An analyst gathers the following information about a float-adjusted market-capitalization-weighted index composed of three stocks:
-
-Stock 1: Shares Outstanding=8,500, % of Shares in Market Float=100, Price=\$42
-Stock 2: Shares Outstanding=10,000, % of Shares in Market Float=75, Price=\$69
-Stock 3: Shares Outstanding=4,000, % of Shares in Market Float=100, Price=\$95",
+    vignette: "An analyst gathers the following information about a float-adjusted market-capitalization-weighted index composed of three stocks:\n\nStock 1: Shares Outstanding=8,500, % of Shares in Market Float=100, Price=\$42\nStock 2: Shares Outstanding=10,000, % of Shares in Market Float=75, Price=\$69\nStock 3: Shares Outstanding=4,000, % of Shares in Market Float=100, Price=\$95",
     optionA: "20.4%.",
     optionB: "25.0%.",
     optionC: "28.5%.",
@@ -3803,10 +3528,7 @@ Stock 3: Shares Outstanding=4,000, % of Shares in Market Float=100, Price=\$95",
     id: "q308",
     topicId: "fsa",
     stem: "A sell order is behind the market at a price of:",
-    vignette: "A limit order book (in € per share) has the following order prices:
-
-Bids: 47.85 / 47.70
-Asks: 48.20 / 48.00",
+    vignette: "A limit order book (in € per share) has the following order prices:\n\nBids: 47.85 / 47.70\nAsks: 48.20 / 48.00",
     optionA: "€47.70.",
     optionB: "€48.00.",
     optionC: "€48.20.",
@@ -3840,11 +3562,7 @@ Asks: 48.20 / 48.00",
     id: "q311",
     topicId: "econ",
     stem: "Which company has the lowest price-to-book value per share?",
-    vignette: "An analyst gathers the following information about three companies and their common shares:
-
-Company 1: Market price per share=\$34, Book value of shareholders' equity (millions)=\$452, Number of shares outstanding (millions)=45
-Company 2: Market price per share=\$12, Book value of shareholders' equity (millions)=\$302, Number of shares outstanding (millions)=105
-Company 3: Market price per share=\$56, Book value of shareholders' equity (millions)=\$98, Number of shares outstanding (millions)=12",
+    vignette: "An analyst gathers the following information about three companies and their common shares:\n\nCompany 1: Market price per share=\$34, Book value of shareholders' equity (millions)=\$452, Number of shares outstanding (millions)=45\nCompany 2: Market price per share=\$12, Book value of shareholders' equity (millions)=\$302, Number of shares outstanding (millions)=105\nCompany 3: Market price per share=\$56, Book value of shareholders' equity (millions)=\$98, Number of shares outstanding (millions)=12",
     optionA: "Company 1",
     optionB: "Company 2",
     optionC: "Company 3",
@@ -3911,12 +3629,7 @@ Company 3: Market price per share=\$56, Book value of shareholders' equity (mill
     id: "q317",
     topicId: "econ",
     stem: "The portfolio's Sharpe ratio is closest to:",
-    vignette: "An investor gathers the following information about a portfolio and the risk-free asset:
-
-Average portfolio return: 8.50%
-Portfolio standard deviation of returns: 16.00%
-Portfolio beta: 1.10
-Risk-free asset return: 1.75%",
+    vignette: "An investor gathers the following information about a portfolio and the risk-free asset:\n\nAverage portfolio return: 8.50%\nPortfolio standard deviation of returns: 16.00%\nPortfolio beta: 1.10\nRisk-free asset return: 1.75%",
     optionA: "0.06.",
     optionB: "0.42.",
     optionC: "0.53.",
@@ -3928,10 +3641,7 @@ Risk-free asset return: 1.75%",
     id: "q318",
     topicId: "econ",
     stem: "If the duration gap is zero, the investment horizon is closest to:",
-    vignette: "An investor holds a bond with the following characteristics:
-
-Yield to maturity: 10%
-Modified duration: 5.7",
+    vignette: "An investor holds a bond with the following characteristics:\n\nYield to maturity: 10%\nModified duration: 5.7",
     optionA: "5.2 years.",
     optionB: "5.7 years.",
     optionC: "6.3 years.",
@@ -3998,13 +3708,7 @@ Modified duration: 5.7",
     id: "q324",
     topicId: "econ",
     stem: "Using the two-stage dividend discount model, the value per share of this common stock is closest to:",
-    vignette: "An investor has gathered the following data for a common stock:
-
-Earnings per share, most recent year: \$2.50
-Dividend payout ratio, most recent year: 60%
-Dividend growth rate expected during years 1 & 2: 25%
-Dividend growth rate expected after year 2: 5%
-Investors' required rate of return: 12%",
+    vignette: "An investor has gathered the following data for a common stock:\n\nEarnings per share, most recent year: \$2.50\nDividend payout ratio, most recent year: 60%\nDividend growth rate expected during years 1 & 2: 25%\nDividend growth rate expected after year 2: 5%\nInvestors' required rate of return: 12%",
     optionA: "\$28.57.",
     optionB: "\$31.57.",
     optionC: "\$38.70.",
@@ -4016,11 +3720,7 @@ Investors' required rate of return: 12%",
     id: "q325",
     topicId: "econ",
     stem: "The preferred stock's intrinsic value is closest to:",
-    vignette: "An analyst gathers the following information about a company and its perpetual preferred stock:
-
-Growth rate in earnings: 2%
-Annual preferred dividend: €4.70
-Required rate of return on preferred shares: 8%",
+    vignette: "An analyst gathers the following information about a company and its perpetual preferred stock:\n\nGrowth rate in earnings: 2%\nAnnual preferred dividend: €4.70\nRequired rate of return on preferred shares: 8%",
     optionA: "€58.75.",
     optionB: "€78.33.",
     optionC: "€79.90.",
@@ -4076,10 +3776,7 @@ Required rate of return on preferred shares: 8%",
     id: "q330",
     topicId: "fi",
     stem: "If the bond currently trades at a price of 96.63 with a yield-to-maturity of 5.0%, the approximate convexity is closest to:",
-    vignette: "An analyst gathers the following information about a bond:
-
-Price at YTM 5.8%: 96.44
-Price at YTM 4.2%: 96.79",
+    vignette: "An analyst gathers the following information about a bond:\n\nPrice at YTM 5.8%: 96.44\nPrice at YTM 4.2%: 96.79",
     optionA: "-4.851.",
     optionB: "-0.039.",
     optionC: "-0.019.",
@@ -4102,11 +3799,7 @@ Price at YTM 4.2%: 96.79",
     id: "q332",
     topicId: "fi",
     stem: "The annual management fee is based on the year-end valuation, and the incentive fee is calculated net of the management fee. If the fund return before fees is 10% at year end, the total annual fee earned by the fund manager is closest to:",
-    vignette: "An analyst observes the fee structure and performance of a hedge fund with \$100 million assets under management at the beginning of the year:
-
-Annual management fee: 2%
-Incentive fee: 20%
-Hard hurdle rate: 3%",
+    vignette: "An analyst observes the fee structure and performance of a hedge fund with \$100 million assets under management at the beginning of the year:\n\nAnnual management fee: 2%\nIncentive fee: 20%\nHard hurdle rate: 3%",
     optionA: "\$3.2 million.",
     optionB: "\$3.6 million.",
     optionC: "\$3.8 million.",
@@ -4217,11 +3910,7 @@ Hard hurdle rate: 3%",
     id: "q342",
     topicId: "corp",
     stem: "At expiration, if the price of the stock is \$100, the investor's profit from selling the put is:",
-    vignette: "An investor collects the following information about a put option:
-
-Stock price at initiation: \$110
-Strike price: \$105
-Option premium: \$4.50",
+    vignette: "An investor collects the following information about a put option:\n\nStock price at initiation: \$110\nStrike price: \$105\nOption premium: \$4.50",
     optionA: "-\$0.50.",
     optionB: "\$4.50.",
     optionC: "\$9.50.",
@@ -4343,11 +4032,7 @@ Option premium: \$4.50",
     id: "q353",
     topicId: "equity",
     stem: "The management and incentive fees are calculated independently. If the hedge fund generates a gross return of 25%, the assets under management after fees at the end of the period are closest to:",
-    vignette: "An analyst gathers the following information about a hedge fund's fee structure:
-
-Assets under management (AUM), beginning of period: \$80 million
-Management fee, based on year-end AUM: 2%
-Incentive fee: 20%",
+    vignette: "An analyst gathers the following information about a hedge fund's fee structure:\n\nAssets under management (AUM), beginning of period: \$80 million\nManagement fee, based on year-end AUM: 2%\nIncentive fee: 20%",
     optionA: "\$94.0 million.",
     optionB: "\$94.4 million.",
     optionC: "\$97.6 million.",
@@ -4435,10 +4120,7 @@ Incentive fee: 20%",
   {
     id: "q361",
     topicId: "ethics",
-    stem: "According to the Standards, which of the following information requires disclosure?
-Information 1: A member's brother inherits a significant ownership of a stock that is part of the member's research coverage universe. The member has no beneficial ownership in her brother's investments.
-Information 2: A member, a portfolio manager at an investment firm, does unpaid volunteer work during holiday weekends at a charity.
-Information 3: Firm enters into an agreement with a mutual fund to receive commissions for recommending the fund to the firm's clients.",
+    stem: "According to the Standards, which of the following information requires disclosure?\nInformation 1: A member's brother inherits a significant ownership of a stock that is part of the member's research coverage universe. The member has no beneficial ownership in her brother's investments.\nInformation 2: A member, a portfolio manager at an investment firm, does unpaid volunteer work during holiday weekends at a charity.\nInformation 3: Firm enters into an agreement with a mutual fund to receive commissions for recommending the fund to the firm's clients.",
     optionA: "Information 1",
     optionB: "Information 2",
     optionC: "Information 3",
@@ -4471,9 +4153,7 @@ Information 3: Firm enters into an agreement with a mutual fund to receive commi
   {
     id: "q364",
     topicId: "ethics",
-    stem: "Which of the following is consistent with the recommended procedures for compliance with the Standard relating to referral fees?
-Statement 1: 'Investment professionals should provide to their clients notification of approved referral fee programs.'
-Statement 2: 'Members should provide their employer at least annual updates on the amount and nature of compensation received.'",
+    stem: "Which of the following is consistent with the recommended procedures for compliance with the Standard relating to referral fees?\nStatement 1: 'Investment professionals should provide to their clients notification of approved referral fee programs.'\nStatement 2: 'Members should provide their employer at least annual updates on the amount and nature of compensation received.'",
     optionA: "Statement 1 only",
     optionB: "Statement 2 only",
     optionC: "Both Statement 1 and Statement 2",
@@ -4739,12 +4419,7 @@ Statement 2: 'Members should provide their employer at least annual updates on t
     id: "q388",
     topicId: "ethics",
     stem: "The combination of projects that provides the best choice is:",
-    vignette: "A company has a fixed \$1,100 capital budget and has the opportunity to invest in the four independent projects listed in the table:
-
-Project 1: Investment Outlay=\$600, NPV=\$100
-Project 2: Investment Outlay=\$500, NPV=\$100
-Project 3: Investment Outlay=\$300, NPV=\$50
-Project 4: Investment Outlay=\$200, NPV=\$50",
+    vignette: "A company has a fixed \$1,100 capital budget and has the opportunity to invest in the four independent projects listed in the table:\n\nProject 1: Investment Outlay=\$600, NPV=\$100\nProject 2: Investment Outlay=\$500, NPV=\$100\nProject 3: Investment Outlay=\$300, NPV=\$50\nProject 4: Investment Outlay=\$200, NPV=\$50",
     optionA: "1 and 2.",
     optionB: "1, 3, and 4.",
     optionC: "2, 3, and 4.",
@@ -4756,12 +4431,7 @@ Project 4: Investment Outlay=\$200, NPV=\$50",
     id: "q389",
     topicId: "ethics",
     stem: "The interest coverage ratio is:",
-    vignette: "An analyst gathers the following information (in \$ millions) about a company's current fiscal year:
-
-Net income: 20
-Interest expensed and paid: 2
-Depreciation expense: 4
-Taxes paid: 6",
+    vignette: "An analyst gathers the following information (in \$ millions) about a company's current fiscal year:\n\nNet income: 20\nInterest expensed and paid: 2\nDepreciation expense: 4\nTaxes paid: 6",
     optionA: "14.",
     optionB: "15.",
     optionC: "16.",
@@ -4806,13 +4476,7 @@ Taxes paid: 6",
     id: "q393",
     topicId: "quant",
     stem: "The days of inventory on hand (based on average inventory and 365-day year) for Year 2 is closest to:",
-    vignette: "An analyst gathers the following information (in € thousands) about an electronics manufacturing company:
-
-Cost of sales Year 2: 1000, Year 1: 800
-Cost of ending inventory Year 2: 150, Year 1: 120
-Net realizable value of inventory Year 2: 125, Year 1: 160
-
-Changes to the allowance for inventory obsolescence have already been reflected in cost of sales.",
+    vignette: "An analyst gathers the following information (in € thousands) about an electronics manufacturing company:\n\nCost of sales Year 2: 1000, Year 1: 800\nCost of ending inventory Year 2: 150, Year 1: 120\nNet realizable value of inventory Year 2: 125, Year 1: 160\n\nChanges to the allowance for inventory obsolescence have already been reflected in cost of sales.",
     optionA: "45.",
     optionB: "49.",
     optionC: "52.",
@@ -4824,11 +4488,7 @@ Changes to the allowance for inventory obsolescence have already been reflected 
     id: "q394",
     topicId: "quant",
     stem: "The standard deviation of the company's earnings is closest to:",
-    vignette: "An analyst gathers the following probability distribution of a company's earnings:
-
-Probability 0.25, Earnings \$100 million
-Probability 0.70, Earnings \$300 million
-Probability 0.05, Earnings \$600 million",
+    vignette: "An analyst gathers the following probability distribution of a company's earnings:\n\nProbability 0.25, Earnings \$100 million\nProbability 0.70, Earnings \$300 million\nProbability 0.05, Earnings \$600 million",
     optionA: "\$115 million.",
     optionB: "\$134 million.",
     optionC: "\$375 million.",
@@ -4917,8 +4577,7 @@ Probability 0.05, Earnings \$600 million",
     id: "q402",
     topicId: "quant",
     stem: "The median value of the items is closest to:",
-    vignette: "Consider the following 20 items listed in ascending order:
-−41 −18 −17 −9 −8 −6 −5 3 3 3 5 5 7 7 11 12 20 21 21 61",
+    vignette: "Consider the following 20 items listed in ascending order:\n−41 −18 −17 −9 −8 −6 −5 3 3 3 5 5 7 7 11 12 20 21 21 61",
     optionA: "3.",
     optionB: "4.",
     optionC: "5.",
@@ -4996,14 +4655,7 @@ Probability 0.05, Earnings \$600 million",
     id: "q409",
     topicId: "econ",
     stem: "The percentage of intangible assets pledged as security against borrowings in Year 2 is closest to:",
-    vignette: "The following is an excerpt from the note to the financial statements on intangible assets for a company (€ millions):
-
-Licenses Cost: 23,984 | Other Cost: 1,475 | Total Cost: 25,459
-Accumulated amortization Licenses: 7,390 | Other: 1,195 | Total: 8,585
-Net book value Year 2 Licenses: 16,594 | Other: 280 | Total: 16,874
-Net book value Year 1 Licenses: 15,200 | Other: 480 | Total: 15,680
-
-As of end of Year 2, licenses with a net book value of €2,530 million have been pledged as security against borrowings.",
+    vignette: "The following is an excerpt from the note to the financial statements on intangible assets for a company (€ millions):\n\nLicenses Cost: 23,984 | Other Cost: 1,475 | Total Cost: 25,459\nAccumulated amortization Licenses: 7,390 | Other: 1,195 | Total: 8,585\nNet book value Year 2 Licenses: 16,594 | Other: 280 | Total: 16,874\nNet book value Year 1 Licenses: 15,200 | Other: 480 | Total: 15,680\n\nAs of end of Year 2, licenses with a net book value of €2,530 million have been pledged as security against borrowings.",
     optionA: "9.9%.",
     optionB: "15.0%.",
     optionC: "15.3%.",
@@ -5037,11 +4689,7 @@ As of end of Year 2, licenses with a net book value of €2,530 million have bee
     id: "q412",
     topicId: "econ",
     stem: "The predicted change in the nominal US spot exchange rate is closest to:",
-    vignette: "Assume the percentage increases in each of the following listed items:
-
-Real domestic exchange rate (USD/EUR): 5
-Eurozone price level: 2
-US price level: 1.5",
+    vignette: "Assume the percentage increases in each of the following listed items:\n\nReal domestic exchange rate (USD/EUR): 5\nEurozone price level: 2\nUS price level: 1.5",
     optionA: "-0.5%.",
     optionB: "4.5%.",
     optionC: "5.5%.",
@@ -5053,11 +4701,7 @@ US price level: 1.5",
     id: "q413",
     topicId: "econ",
     stem: "Based on each company's debt-to-capital and financial leverage ratios, which company is the most solvent?",
-    vignette: "Data for three companies:
-
-Company A: EBIT=\$4,761, Avg Total Assets=\$42,979, Total Debt=\$12,796, Avg Shareholders' Equity=\$30,295, Total Shareholders' Equity=\$32,000, Interest Payments=\$882
-Company B: EBIT=\$24,636, Avg Total Assets=\$201,536, Total Debt=\$44,030, Avg Shareholders' Equity=\$80,970, Total Shareholders' Equity=\$82,000, Interest Payments=\$3,423
-Company C: EBIT=\$1,553, Avg Total Assets=\$13,970, Total Debt=\$8,115, Avg Shareholders' Equity=\$5,741, Total Shareholders' Equity=\$6,000, Interest Payments=\$327",
+    vignette: "Data for three companies:\n\nCompany A: EBIT=\$4,761, Avg Total Assets=\$42,979, Total Debt=\$12,796, Avg Shareholders' Equity=\$30,295, Total Shareholders' Equity=\$32,000, Interest Payments=\$882\nCompany B: EBIT=\$24,636, Avg Total Assets=\$201,536, Total Debt=\$44,030, Avg Shareholders' Equity=\$80,970, Total Shareholders' Equity=\$82,000, Interest Payments=\$3,423\nCompany C: EBIT=\$1,553, Avg Total Assets=\$13,970, Total Debt=\$8,115, Avg Shareholders' Equity=\$5,741, Total Shareholders' Equity=\$6,000, Interest Payments=\$327",
     optionA: "Company A",
     optionB: "Company B",
     optionC: "Company C",
@@ -5068,11 +4712,7 @@ Company C: EBIT=\$1,553, Avg Total Assets=\$13,970, Total Debt=\$8,115, Avg Shar
   {
     id: "q414",
     topicId: "econ",
-    stem: "An investor is considering three investments:
-● Investment 1 makes 20 annual payments of \$50,000, starting one year from today.
-● Investment 2 makes 25 annual payments of \$45,000, starting today.
-● Investment 3 makes annual payments of \$40,000 indefinitely, starting one year from today.
-If the investor's discount rate is 10% per year, which investment has the highest present value?",
+    stem: "An investor is considering three investments:\n● Investment 1 makes 20 annual payments of \$50,000, starting one year from today.\n● Investment 2 makes 25 annual payments of \$45,000, starting today.\n● Investment 3 makes annual payments of \$40,000 indefinitely, starting one year from today.\nIf the investor's discount rate is 10% per year, which investment has the highest present value?",
     optionA: "Investment 1",
     optionB: "Investment 2",
     optionC: "Investment 3",
@@ -5106,8 +4746,7 @@ If the investor's discount rate is 10% per year, which investment has the highes
     id: "q417",
     topicId: "econ",
     stem: "If the target return is 5% per quarter, the target downside deviation is closest to:",
-    vignette: "An analyst examines the following quarterly returns for a client's portfolio:
-Q1: 8%, Q2: 3%, Q3: -2%, Q4: 10%, Q5: 8%, Q6: 0%, Q7: -3%, Q8: 12%",
+    vignette: "An analyst examines the following quarterly returns for a client's portfolio:\nQ1: 8%, Q2: 3%, Q3: -2%, Q4: 10%, Q5: 8%, Q6: 0%, Q7: -3%, Q8: 12%",
     optionA: "4.50%.",
     optionB: "11.92%.",
     optionC: "20.29%.",
@@ -5163,11 +4802,7 @@ Q1: 8%, Q2: 3%, Q3: -2%, Q4: 10%, Q5: 8%, Q6: 0%, Q7: -3%, Q8: 12%",
     id: "q422",
     topicId: "fsa",
     stem: "As a result of the second revaluation, the company recognizes in Year 2:",
-    vignette: "An analyst gathers the following information (in € millions) about a company's land reported under the revaluation model:
-
-Original cost: 12
-Fair market value at initial revaluation on 31 December Year 1: 17
-Fair market value at second revaluation on 31 December Year 2: 12",
+    vignette: "An analyst gathers the following information (in € millions) about a company's land reported under the revaluation model:\n\nOriginal cost: 12\nFair market value at initial revaluation on 31 December Year 1: 17\nFair market value at second revaluation on 31 December Year 2: 12",
     optionA: "a €5 million loss on the income statement.",
     optionB: "a €5 million loss in other comprehensive income.",
     optionC: "neither a loss on the income statement nor a loss in other comprehensive income.",
@@ -5201,11 +4836,7 @@ Fair market value at second revaluation on 31 December Year 2: 12",
     id: "q425",
     topicId: "fsa",
     stem: "Based on the sample, the slope coefficient of the simple linear regression of Y to X is closest to:",
-    vignette: "An analyst calculates the following metrics about a sample of paired observations of a dependent variable Y and an independent variable X:
-
-Variance of X: 9
-Variance of Y: 15
-Covariance of Y and X: 12",
+    vignette: "An analyst calculates the following metrics about a sample of paired observations of a dependent variable Y and an independent variable X:\n\nVariance of X: 9\nVariance of Y: 15\nCovariance of Y and X: 12",
     optionA: "0.80.",
     optionB: "1.03.",
     optionC: "1.33.",
@@ -5305,13 +4936,7 @@ Covariance of Y and X: 12",
     id: "q434",
     topicId: "fsa",
     stem: "The equipment is considered impaired under:",
-    vignette: "An analyst gathers the following information (in £ thousands) about equipment owned by a company:
-
-Carrying amount prior to impairment: 36
-Fair value: 34
-Selling costs: 4
-Undiscounted expected future cash flows: 38
-Discounted expected future cash flows: 32",
+    vignette: "An analyst gathers the following information (in £ thousands) about equipment owned by a company:\n\nCarrying amount prior to impairment: 36\nFair value: 34\nSelling costs: 4\nUndiscounted expected future cash flows: 38\nDiscounted expected future cash flows: 32",
     optionA: "IFRS only.",
     optionB: "US GAAP only.",
     optionC: "both IFRS and US GAAP.",
@@ -5367,12 +4992,7 @@ Discounted expected future cash flows: 32",
     id: "q439",
     topicId: "corp",
     stem: "If the marginal tax rate is 20% and interest expense is tax deductible, the company's WACC is:",
-    vignette: "An analyst gathers the following information about a company's capital sources:
-
-Target weight of debt: 25%
-Target weight of equity: 75%
-Before-tax marginal cost of debt: 4%
-Marginal cost of equity: 12%",
+    vignette: "An analyst gathers the following information about a company's capital sources:\n\nTarget weight of debt: 25%\nTarget weight of equity: 75%\nBefore-tax marginal cost of debt: 4%\nMarginal cost of equity: 12%",
     optionA: "9.80%.",
     optionB: "10.00%.",
     optionC: "10.25%.",
@@ -5483,13 +5103,7 @@ Marginal cost of equity: 12%",
     id: "q449",
     topicId: "equity",
     stem: "If the equity weighting is 70%, the fixed-income weighting is 30% and the portfolio is rebalanced annually, the portfolio's annual geometric mean return is closest to:",
-    vignette: "An analyst gathers the following information about a portfolio:
-
-Year 1: Equity 7.20%, Fixed Income 2.10%
-Year 2: Equity 9.60%, Fixed Income -4.60%
-Year 3: Equity -14.20%, Fixed Income 4.70%
-
-Equity weighting: 70%, Fixed-income weighting: 30%, rebalanced annually.",
+    vignette: "An analyst gathers the following information about a portfolio:\n\nYear 1: Equity 7.20%, Fixed Income 2.10%\nYear 2: Equity 9.60%, Fixed Income -4.60%\nYear 3: Equity -14.20%, Fixed Income 4.70%\n\nEquity weighting: 70%, Fixed-income weighting: 30%, rebalanced annually.",
     optionA: "0.60%.",
     optionB: "0.83%.",
     optionC: "1.82%.",
@@ -5611,10 +5225,7 @@ Equity weighting: 70%, Fixed-income weighting: 30%, rebalanced annually.",
     id: "q460",
     topicId: "equity",
     stem: "If the covariance between the two assets is 0.04, the portfolio variance is closest to:",
-    vignette: "A portfolio consists of the following two assets:
-
-Asset 1: Asset Weight=35%, Asset Standard Deviation=50%
-Asset 2: Asset Weight=65%, Asset Standard Deviation=15%",
+    vignette: "A portfolio consists of the following two assets:\n\nAsset 1: Asset Weight=35%, Asset Standard Deviation=50%\nAsset 2: Asset Weight=65%, Asset Standard Deviation=15%",
     optionA: "0.04.",
     optionB: "0.06.",
     optionC: "0.12.",
@@ -5648,12 +5259,7 @@ Asset 2: Asset Weight=65%, Asset Standard Deviation=15%",
     id: "q463",
     topicId: "equity",
     stem: "Based solely on the P/E and P/CF ratios, which company appears overvalued?",
-    vignette: "Consider the following set of valuation multiples for three firms among seven in a particular industry sector:
-
-Company A: P/E=17.0, P/CF=8.2, P/S=3.1, P/BV=1.2
-Company B: P/E=12.7, P/CF=5.4, P/S=2.4, P/BV=0.8
-Company C: P/E=14.4, P/CF=6.5, P/S=3.4, P/BV=1.4
-Industry average: P/E=15.8, P/CF=7.4, P/S=2.6, P/BV=1.1",
+    vignette: "Consider the following set of valuation multiples for three firms among seven in a particular industry sector:\n\nCompany A: P/E=17.0, P/CF=8.2, P/S=3.1, P/BV=1.2\nCompany B: P/E=12.7, P/CF=5.4, P/S=2.4, P/BV=0.8\nCompany C: P/E=14.4, P/CF=6.5, P/S=3.4, P/BV=1.4\nIndustry average: P/E=15.8, P/CF=7.4, P/S=2.6, P/BV=1.1",
     optionA: "Company A",
     optionB: "Company B",
     optionC: "Company C",
@@ -5709,10 +5315,7 @@ Industry average: P/E=15.8, P/CF=7.4, P/S=2.6, P/BV=1.1",
     id: "q468",
     topicId: "fi",
     stem: "If return on assets is the same for each scenario, the sustainable growth rate is:",
-    vignette: "An analyst gathers the following information to evaluate the effect of dividends and leverage on future growth:
-
-Scenario 1: Dividend payout ratio=60%, Financial leverage=3.0
-Scenario 2: Dividend payout ratio=40%, Financial leverage=2.5",
+    vignette: "An analyst gathers the following information to evaluate the effect of dividends and leverage on future growth:\n\nScenario 1: Dividend payout ratio=60%, Financial leverage=3.0\nScenario 2: Dividend payout ratio=40%, Financial leverage=2.5",
     optionA: "higher under Scenario 1.",
     optionB: "higher under Scenario 2.",
     optionC: "the same under both Scenario 1 and Scenario 2.",
@@ -5779,15 +5382,7 @@ Scenario 2: Dividend payout ratio=40%, Financial leverage=2.5",
     id: "q474",
     topicId: "fi",
     stem: "The return on investment is closest to:",
-    vignette: "The following information relates to a leveraged investment:
-
-Purchase price: \$100/share
-Sales price: \$110/share
-Shares purchased and subsequently sold: 10,000
-Leverage ratio: 2.5
-Call money rate per annum: 5%
-Dividends received: \$5/share
-Holding period: 1 year",
+    vignette: "The following information relates to a leveraged investment:\n\nPurchase price: \$100/share\nSales price: \$110/share\nShares purchased and subsequently sold: 10,000\nLeverage ratio: 2.5\nCall money rate per annum: 5%\nDividends received: \$5/share\nHolding period: 1 year",
     optionA: "18%.",
     optionB: "25%.",
     optionC: "30%.",
@@ -5898,12 +5493,7 @@ Holding period: 1 year",
     id: "q484",
     topicId: "deriv",
     stem: "If the bond's yield to maturity increases to 7.25%, the bond's estimated market value will be closest to:",
-    vignette: "Consider the following information for a fixed-rate bond:
-
-Yield to maturity: 6.57%
-Annual coupon rate (paid semiannually): 9.00%
-Market value: \$11,189,092
-Annualized modified duration: 4.687985",
+    vignette: "Consider the following information for a fixed-rate bond:\n\nYield to maturity: 6.57%\nAnnual coupon rate (paid semiannually): 9.00%\nMarket value: \$11,189,092\nAnnualized modified duration: 4.687985",
     optionA: "\$9,746,599.",
     optionB: "\$10,271,142.",
     optionC: "\$10,832,403.",
@@ -5915,10 +5505,7 @@ Annualized modified duration: 4.687985",
     id: "q485",
     topicId: "deriv",
     stem: "Assume management fees are calculated using end-of-period valuation. The investor's net return given this fee structure is closest to:",
-    vignette: "Initial investment capital: \$100 million
-Return at the end of one year: 12%
-Management fee based on assets under management: 1%
-Incentive fee based on the return net of the management fee: 10%",
+    vignette: "Initial investment capital: \$100 million\nReturn at the end of one year: 12%\nManagement fee based on assets under management: 1%\nIncentive fee based on the return net of the management fee: 10%",
     optionA: "9.68%.",
     optionB: "9.79%.",
     optionC: "10.88%.",
@@ -6007,12 +5594,7 @@ Incentive fee based on the return net of the management fee: 10%",
     id: "q493",
     topicId: "alts",
     stem: "By the end of Quarter 3, which of the following statements is most accurate?",
-    vignette: "A market index has the following information:
-
-At beginning of year: Value of Index=1,000.00 (Base)
-Quarter 1: Quarterly Price Returns=3.0%, Dividend Income=1.5%
-Quarter 2: Quarterly Price Returns=2.0%, Dividend Income=---
-Quarter 3: Quarterly Price Returns=-5.0%, Dividend Income=---",
+    vignette: "A market index has the following information:\n\nAt beginning of year: Value of Index=1,000.00 (Base)\nQuarter 1: Quarterly Price Returns=3.0%, Dividend Income=1.5%\nQuarter 2: Quarterly Price Returns=2.0%, Dividend Income=---\nQuarter 3: Quarterly Price Returns=-5.0%, Dividend Income=---",
     optionA: "The price return is 1.26%.",
     optionB: "The value of the price return index is 998.1.",
     optionC: "The value of the total return index is below 1,000.",
@@ -6101,13 +5683,7 @@ Quarter 3: Quarterly Price Returns=-5.0%, Dividend Income=---",
     id: "q501",
     topicId: "alts",
     stem: "The total fees (in \$ millions) earned by the hedge fund in Year 1 are:",
-    vignette: "An analyst gathers the following information about a hedge fund's first year of operations:
-
-Beginning-of-year assets under management: \$100,000,000
-Management fee based on end-of-year assets under management: 2%
-Incentive fee, calculated net of the management fee: 20%
-Annual gross return: 15%
-Soft hurdle rate: 5%",
+    vignette: "An analyst gathers the following information about a hedge fund's first year of operations:\n\nBeginning-of-year assets under management: \$100,000,000\nManagement fee based on end-of-year assets under management: 2%\nIncentive fee, calculated net of the management fee: 20%\nAnnual gross return: 15%\nSoft hurdle rate: 5%",
     optionA: "3.84.",
     optionB: "4.30.",
     optionC: "4.84.",
@@ -6141,12 +5717,7 @@ Soft hurdle rate: 5%",
     id: "q504",
     topicId: "pm",
     stem: "If the investors' required rate of return is 15%, the current estimate of the intrinsic value per share is closest to:",
-    vignette: "An investor gathers the following information about a company:
-
-Current dividend per share: \$3
-Historical annual dividend growth rate: 4%
-Expected annual dividend growth rate for the next three years: 8%
-Expected stock value per share at the end of Year 3: \$33",
+    vignette: "An investor gathers the following information about a company:\n\nCurrent dividend per share: \$3\nHistorical annual dividend growth rate: 4%\nExpected annual dividend growth rate for the next three years: 8%\nExpected stock value per share at the end of Year 3: \$33",
     optionA: "\$28.36.",
     optionB: "\$29.08.",
     optionC: "\$29.65.",
@@ -6169,10 +5740,7 @@ Expected stock value per share at the end of Year 3: \$33",
     id: "q506",
     topicId: "pm",
     stem: "If the price of the underlying at expiration is 260, the profit for the seller is:",
-    vignette: "An investor sells a European put option with the following characteristics:
-
-Put price: 15
-Exercise price: 250",
+    vignette: "An investor sells a European put option with the following characteristics:\n\nPut price: 15\nExercise price: 250",
     optionA: "5",
     optionB: "10",
     optionC: "15",
@@ -6217,11 +5785,7 @@ Exercise price: 250",
     id: "q510",
     topicId: "pm",
     stem: "Using these ratios, credit quality is strongest for:",
-    vignette: "An analyst gathers the following credit measures for two companies and their industry:
-
-Operating profit margin: Company 1=13.7%, Company 2=12.1%, Industry=11.8%
-Debt/EBITDA: Company 1=1.21x, Company 2=2.89x, Industry=3.00x
-EBITDA/interest expense: Company 1=15.6x, Company 2=6.9x, Industry=6.9x",
+    vignette: "An analyst gathers the following credit measures for two companies and their industry:\n\nOperating profit margin: Company 1=13.7%, Company 2=12.1%, Industry=11.8%\nDebt/EBITDA: Company 1=1.21x, Company 2=2.89x, Industry=3.00x\nEBITDA/interest expense: Company 1=15.6x, Company 2=6.9x, Industry=6.9x",
     optionA: "Company 1.",
     optionB: "Company 2.",
     optionC: "the industry.",
@@ -6508,11 +6072,7 @@ EBITDA/interest expense: Company 1=15.6x, Company 2=6.9x, Industry=6.9x",
     id: "q536",
     topicId: "quant",
     stem: "According to capital market theory, which asset should have the highest expected return?",
-    vignette: "An analyst gathers the following information about three assets:
-
-Asset 1: Systematic risk=0.10, Nonsystematic risk=0.25, Total risk=0.35
-Asset 2: Systematic risk=0.30, Nonsystematic risk=0.10, Total risk=0.40
-Asset 3: Systematic risk=0.25, Nonsystematic risk=0.20, Total risk=0.45",
+    vignette: "An analyst gathers the following information about three assets:\n\nAsset 1: Systematic risk=0.10, Nonsystematic risk=0.25, Total risk=0.35\nAsset 2: Systematic risk=0.30, Nonsystematic risk=0.10, Total risk=0.40\nAsset 3: Systematic risk=0.25, Nonsystematic risk=0.20, Total risk=0.45",
     optionA: "Asset 1",
     optionB: "Asset 2",
     optionC: "Asset 3",
@@ -6566,108 +6126,11 @@ Asset 3: Systematic risk=0.25, Nonsystematic risk=0.20, Total risk=0.45",
   }
 ];
 
-// ============================================================
-// MOCK EXAMS
-// ============================================================
 export const MOCK_EXAMS: MockExam[] = [
-  {
-    id: "mock-1",
-    title: "CFA Level I Mock Exam 1 — Full Length (SS1 + SS2)",
-    description: "180 official exam questions. AM + PM Session — full CFA format.",
-    questionCount: 180,
-    durationMinutes: 270,
-    level: "I",
-    createdAt: "2024-01-01T00:00:00Z",
-    questionIds: ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20", "q21", "q22", "q23", "q24", "q25", "q26", "q27", "q28", "q29", "q30", "q31", "q32", "q33", "q34", "q35", "q36", "q37", "q38", "q39", "q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53", "q54", "q55", "q56", "q57", "q58", "q59", "q60", "q61", "q62", "q63", "q64", "q65", "q66", "q67", "q68", "q69", "q70", "q71", "q72", "q73", "q74", "q75", "q76", "q77", "q78", "q79", "q80", "q81", "q82", "q83", "q84", "q85", "q86", "q87", "q88", "q89", "q90", "q91", "q92", "q93", "q94", "q95", "q96", "q97", "q98", "q99", "q100", "q101", "q102", "q103", "q104", "q105", "q106", "q107", "q108", "q109", "q110", "q111", "q112", "q113", "q114", "q115", "q116", "q117", "q118", "q119", "q120", "q121", "q122", "q123", "q124", "q125", "q126", "q127", "q128", "q129", "q130", "q131", "q132", "q133", "q134", "q135", "q136", "q137", "q138", "q139", "q140", "q141", "q142", "q143", "q144", "q145", "q146", "q147", "q148", "q149", "q150", "q151", "q152", "q153", "q154", "q155", "q156", "q157", "q158", "q159", "q160", "q161", "q162", "q163", "q164", "q165", "q166", "q167", "q168", "q169", "q170", "q171", "q172", "q173", "q174", "q175", "q176", "q177", "q178", "q179", "q180"],
-  },
-  {
-    id: "mock-2",
-    title: "CFA Level I Mock Exam 2 — Full Length (M2S1 + M2S2)",
-    description: "Emphasis on Equity, Fixed Income, Derivatives, and Portfolio Management.",
-    questionCount: 180,
-    durationMinutes: 270,
-    level: "I",
-    createdAt: "2024-01-15T00:00:00Z",
-    questionIds: ["q181", "q182", "q183", "q184", "q185", "q186", "q187", "q188", "q189", "q190", "q191", "q192", "q193", "q194", "q195", "q196", "q197", "q198", "q199", "q200", "q201", "q202", "q203", "q204", "q205", "q206", "q207", "q208", "q209", "q210", "q211", "q212", "q213", "q214", "q215", "q216", "q217", "q218", "q219", "q220", "q221", "q222", "q223", "q224", "q225", "q226", "q227", "q228", "q229", "q230", "q231", "q232", "q233", "q234", "q235", "q236", "q237", "q238", "q239", "q240", "q241", "q242", "q243", "q244", "q245", "q246", "q247", "q248", "q249", "q250", "q251", "q252", "q253", "q254", "q255", "q256", "q257", "q258", "q259", "q260", "q261", "q262", "q263", "q264", "q265", "q266", "q267", "q268", "q269", "q270", "q271", "q272", "q273", "q274", "q275", "q276", "q277", "q278", "q279", "q280", "q281", "q282", "q283", "q284", "q285", "q286", "q287", "q288", "q289", "q290", "q291", "q292", "q293", "q294", "q295", "q296", "q297", "q298", "q299", "q300", "q301", "q302", "q303", "q304", "q305", "q306", "q307", "q308", "q309", "q310", "q311", "q312", "q313", "q314", "q315", "q316", "q317", "q318", "q319", "q320", "q321", "q322", "q323", "q324", "q325", "q326", "q327", "q328", "q329", "q330", "q331", "q332", "q333", "q334", "q335", "q336", "q337", "q338", "q339", "q340", "q341", "q342", "q343", "q344", "q345", "q346", "q347", "q348", "q349", "q350", "q351", "q352", "q353", "q354", "q355", "q356", "q357", "q358", "q359", "q360"],
-  },
-  {
-    id: "mock-3",
-    title: "CFA Level I Mock Exam 3 — Full Length (M3S1 + M3S2)",
-    description: "Focus on Ethics, Quantitative Methods, Economics, and FSA.",
-    questionCount: 180,
-    durationMinutes: 270,
-    level: "I",
-    createdAt: "2024-02-01T00:00:00Z",
-    questionIds: ["q361", "q362", "q363", "q364", "q365", "q366", "q367", "q368", "q369", "q370", "q371", "q372", "q373", "q374", "q375", "q376", "q377", "q378", "q379", "q380", "q381", "q382", "q383", "q384", "q385", "q386", "q387", "q388", "q389", "q390", "q391", "q392", "q393", "q394", "q395", "q396", "q397", "q398", "q399", "q400", "q401", "q402", "q403", "q404", "q405", "q406", "q407", "q408", "q409", "q410", "q411", "q412", "q413", "q414", "q415", "q416", "q417", "q418", "q419", "q420", "q421", "q422", "q423", "q424", "q425", "q426", "q427", "q428", "q429", "q430", "q431", "q432", "q433", "q434", "q435", "q436", "q437", "q438", "q439", "q440", "q441", "q442", "q443", "q444", "q445", "q446", "q447", "q448", "q449", "q450", "q451", "q452", "q453", "q454", "q455", "q456", "q457", "q458", "q459", "q460", "q461", "q462", "q463", "q464", "q465", "q466", "q467", "q468", "q469", "q470", "q471", "q472", "q473", "q474", "q475", "q476", "q477", "q478", "q479", "q480", "q481", "q482", "q483", "q484", "q485", "q486", "q487", "q488", "q489", "q490", "q491", "q492", "q493", "q494", "q495", "q496", "q497", "q498", "q499", "q500", "q501", "q502", "q503", "q504", "q505", "q506", "q507", "q508", "q509", "q510", "q511", "q512", "q513", "q514", "q515", "q516", "q517", "q518", "q519", "q520", "q521", "q522", "q523", "q524", "q525", "q526", "q527", "q528", "q529", "q530", "q531", "q532", "q533", "q534", "q535", "q536", "q537", "q538", "q539", "q540"],
-  },
-  {
-    id: "mock-4",
-    title: "CFA Level I Mock Exam 4 — Ethics Focus",
-    description: "Comprehensive ethics-heavy session. High difficulty.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-02-15T00:00:00Z",
-    questionIds: ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20"],
-  },
-  {
-    id: "mock-5",
-    title: "CFA Level I Mock Exam 5 — Quant & FSA Sprint",
-    description: "Quantitative Methods and Financial Statement Analysis.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-03-01T00:00:00Z",
-    questionIds: ["q31", "q32", "q33", "q34", "q35", "q36", "q37", "q38", "q39", "q40", "q41", "q42", "q43", "q44", "q45", "q171", "q172", "q173", "q174", "q175"],
-  },
-  {
-    id: "mock-6",
-    title: "CFA Level I Mock Exam 6 — Economics & Fixed Income",
-    description: "Economics and Fixed Income deep dive.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-03-15T00:00:00Z",
-    questionIds: ["q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53", "q54", "q55", "q56", "q57", "q251", "q252", "q253", "q254", "q255", "q256", "q257", "q258"],
-  },
-  {
-    id: "mock-7",
-    title: "CFA Level I Mock Exam 7 — Speed Session",
-    description: "20 questions in 45 minutes. Builds exam stamina.",
-    questionCount: 20,
-    durationMinutes: 45,
-    level: "I",
-    createdAt: "2024-04-01T00:00:00Z",
-    questionIds: ["q85", "q86", "q87", "q88", "q89", "q90", "q91", "q92", "q93", "q94", "q95", "q96", "q97", "q98", "q99", "q100", "q101", "q102", "q103", "q104"],
-  },
-  {
-    id: "mock-8",
-    title: "CFA Level I Mock Exam 8 — Derivatives & Alts",
-    description: "Derivatives, Alternative Investments, and Portfolio Management.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-04-15T00:00:00Z",
-    questionIds: ["q121", "q122", "q123", "q124", "q125", "q126", "q127", "q128", "q129", "q130", "q131", "q132", "q211", "q212", "q213", "q214", "q215", "q216", "q217", "q218"],
-  },
-  {
-    id: "mock-9",
-    title: "CFA Level I Mock Exam 9 — GIPS & Ethics Cases",
-    description: "GIPS, Standards of Practice, and Ethics case studies.",
-    questionCount: 20,
-    durationMinutes: 60,
-    level: "I",
-    createdAt: "2024-05-01T00:00:00Z",
-    questionIds: ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20"],
-  },
-  {
-    id: "mock-10",
-    title: "CFA Level I Mock Exam 10 — Final Prep",
-    description: "Final preparation exam. Mirrors exam difficulty and time pressure.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-05-15T00:00:00Z",
-    questionIds: ["q143", "q144", "q145", "q146", "q147", "q148", "q149", "q150", "q151", "q152", "q153", "q154", "q155", "q156", "q157", "q158", "q159", "q160", "q233", "q234"],
-  }
+  { id: "mock-1-s1", title: "Mock Exam 1 — Session 1", description: "90 Qs · Ethics, FSA, Econ, Quant", questionCount: 90, durationMinutes: 135, level: "I", createdAt: "2024-01-01T00:00:00Z", questionIds: ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20", "q21", "q22", "q23", "q24", "q25", "q26", "q27", "q28", "q29", "q30", "q31", "q32", "q33", "q34", "q35", "q36", "q37", "q38", "q39", "q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53", "q54", "q55", "q56", "q57", "q58", "q59", "q60", "q61", "q62", "q63", "q64", "q65", "q66", "q67", "q68", "q69", "q70", "q71", "q72", "q73", "q74", "q75", "q76", "q77", "q78", "q79", "q80", "q81", "q82", "q83", "q84", "q85", "q86", "q87", "q88", "q89", "q90"] },
+  { id: "mock-1-s2", title: "Mock Exam 1 — Session 2", description: "90 Qs · FI, Equity, Derivatives, PM, AI", questionCount: 90, durationMinutes: 135, level: "I", createdAt: "2024-01-01T00:00:00Z", questionIds: ["q91", "q92", "q93", "q94", "q95", "q96", "q97", "q98", "q99", "q100", "q101", "q102", "q103", "q104", "q105", "q106", "q107", "q108", "q109", "q110", "q111", "q112", "q113", "q114", "q115", "q116", "q117", "q118", "q119", "q120", "q121", "q122", "q123", "q124", "q125", "q126", "q127", "q128", "q129", "q130", "q131", "q132", "q133", "q134", "q135", "q136", "q137", "q138", "q139", "q140", "q141", "q142", "q143", "q144", "q145", "q146", "q147", "q148", "q149", "q150", "q151", "q152", "q153", "q154", "q155", "q156", "q157", "q158", "q159", "q160", "q161", "q162", "q163", "q164", "q165", "q166", "q167", "q168", "q169", "q170", "q171", "q172", "q173", "q174", "q175", "q176", "q177", "q178", "q179", "q180"] },
+  { id: "mock-2-s1", title: "Mock Exam 2 — Session 1", description: "90 Qs · Equity, FI, Derivatives, AI, PM", questionCount: 90, durationMinutes: 135, level: "I", createdAt: "2024-01-15T00:00:00Z", questionIds: ["q181", "q182", "q183", "q184", "q185", "q186", "q187", "q188", "q189", "q190", "q191", "q192", "q193", "q194", "q195", "q196", "q197", "q198", "q199", "q200", "q201", "q202", "q203", "q204", "q205", "q206", "q207", "q208", "q209", "q210", "q211", "q212", "q213", "q214", "q215", "q216", "q217", "q218", "q219", "q220", "q221", "q222", "q223", "q224", "q225", "q226", "q227", "q228", "q229", "q230", "q231", "q232", "q233", "q234", "q235", "q236", "q237", "q238", "q239", "q240", "q241", "q242", "q243", "q244", "q245", "q246", "q247", "q248", "q249", "q250", "q251", "q252", "q253", "q254", "q255", "q256", "q257", "q258", "q259", "q260", "q261", "q262", "q263", "q264", "q265", "q266", "q267", "q268", "q269", "q270"] },
+  { id: "mock-2-s2", title: "Mock Exam 2 — Session 2", description: "90 Qs · Quant, FSA, Econ, FI, Corp", questionCount: 90, durationMinutes: 135, level: "I", createdAt: "2024-01-15T00:00:00Z", questionIds: ["q271", "q272", "q273", "q274", "q275", "q276", "q277", "q278", "q279", "q280", "q281", "q282", "q283", "q284", "q285", "q286", "q287", "q288", "q289", "q290", "q291", "q292", "q293", "q294", "q295", "q296", "q297", "q298", "q299", "q300", "q301", "q302", "q303", "q304", "q305", "q306", "q307", "q308", "q309", "q310", "q311", "q312", "q313", "q314", "q315", "q316", "q317", "q318", "q319", "q320", "q321", "q322", "q323", "q324", "q325", "q326", "q327", "q328", "q329", "q330", "q331", "q332", "q333", "q334", "q335", "q336", "q337", "q338", "q339", "q340", "q341", "q342", "q343", "q344", "q345", "q346", "q347", "q348", "q349", "q350", "q351", "q352", "q353", "q354", "q355", "q356", "q357", "q358", "q359", "q360"] },
+  { id: "mock-3-s1", title: "Mock Exam 3 — Session 1", description: "90 Qs · Ethics, Quant, Econ, FSA, CF", questionCount: 90, durationMinutes: 135, level: "I", createdAt: "2024-02-01T00:00:00Z", questionIds: ["q361", "q362", "q363", "q364", "q365", "q366", "q367", "q368", "q369", "q370", "q371", "q372", "q373", "q374", "q375", "q376", "q377", "q378", "q379", "q380", "q381", "q382", "q383", "q384", "q385", "q386", "q387", "q388", "q389", "q390", "q391", "q392", "q393", "q394", "q395", "q396", "q397", "q398", "q399", "q400", "q401", "q402", "q403", "q404", "q405", "q406", "q407", "q408", "q409", "q410", "q411", "q412", "q413", "q414", "q415", "q416", "q417", "q418", "q419", "q420", "q421", "q422", "q423", "q424", "q425", "q426", "q427", "q428", "q429", "q430", "q431", "q432", "q433", "q434", "q435", "q436", "q437", "q438", "q439", "q440", "q441", "q442", "q443", "q444", "q445", "q446", "q447", "q448", "q449", "q450"] },
+  { id: "mock-3-s2", title: "Mock Exam 3 — Session 2", description: "90 Qs · Equity, FI, Derivatives, AI, PM", questionCount: 90, durationMinutes: 135, level: "I", createdAt: "2024-02-01T00:00:00Z", questionIds: ["q451", "q452", "q453", "q454", "q455", "q456", "q457", "q458", "q459", "q460", "q461", "q462", "q463", "q464", "q465", "q466", "q467", "q468", "q469", "q470", "q471", "q472", "q473", "q474", "q475", "q476", "q477", "q478", "q479", "q480", "q481", "q482", "q483", "q484", "q485", "q486", "q487", "q488", "q489", "q490", "q491", "q492", "q493", "q494", "q495", "q496", "q497", "q498", "q499", "q500", "q501", "q502", "q503", "q504", "q505", "q506", "q507", "q508", "q509", "q510", "q511", "q512", "q513", "q514", "q515", "q516", "q517", "q518", "q519", "q520", "q521", "q522", "q523", "q524", "q525", "q526", "q527", "q528", "q529", "q530", "q531", "q532", "q533", "q534", "q535", "q536", "q537", "q538", "q539", "q540"] },
 ];
