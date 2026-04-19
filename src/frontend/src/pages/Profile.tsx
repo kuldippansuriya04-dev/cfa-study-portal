@@ -114,7 +114,7 @@ export default function Profile() {
   const isLoading = statsLoading || topicStatsLoading || topicsLoading;
 
   const principalStr = principal
-    ? principal.toText()
+    ? principal
     : isAuthenticated
       ? "authenticated"
       : "anonymous";
