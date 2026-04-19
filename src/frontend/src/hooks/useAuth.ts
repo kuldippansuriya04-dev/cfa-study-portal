@@ -1,29 +1,42 @@
-import { useInternetIdentity } from "@caffeineai/core-infrastructure";
-import type { Principal } from "@icp-sdk/core/principal";
+import { useState, useEffect } from "react";
 
 export interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
-  principal: Principal | undefined;
-  login: () => void;
+  principal: string | undefined;
+  login: (email: string, password: string) => boolean;
   logout: () => void;
 }
 
 export function useAuth(): AuthState {
-  const { identity, login, clear, loginStatus } = useInternetIdentity();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [principal, setPrincipal] = useState<string | undefined>(undefined);
 
-  const principal = identity?.getPrincipal();
-  const isAuthenticated =
-    loginStatus === "success" &&
-    principal !== undefined &&
-    !principal.isAnonymous();
-  const isLoading = loginStatus === "logging-in";
+  useEffect(() => {
+    const user = localStorage.getItem("cfa_user");
+    if (user) {
+      setIsAuthenticated(true);
+      setPrincipal(user);
+    }
+    setIsLoading(false);
+  }, []);
 
-  return {
-    isAuthenticated,
-    isLoading,
-    principal,
-    login,
-    logout: clear,
+  const login = (email: string, password: string): boolean => {
+    if (email && password.length >= 6) {
+      localStorage.setItem("cfa_user", email);
+      setIsAuthenticated(true);
+      setPrincipal(email);
+      return true;
+    }
+    return false;
   };
+
+  const logout = () => {
+    localStorage.removeItem("cfa_user");
+    setIsAuthenticated(false);
+    setPrincipal(undefined);
+  };
+
+  return { isAuthenticated, isLoading, principal, login, logout };
 }
