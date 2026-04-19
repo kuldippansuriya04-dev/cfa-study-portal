@@ -294,7 +294,7 @@ export default function ExamSession() {
     setShowFinishModal(false);
     const examAnswers: ExamAnswer[] = questions.map((q) => ({
       questionId: q.id,
-      selectedAnswer: answers[q.id] ?? "A",
+      selectedAnswer: answers[q.id] ?? "",
     }));
     const timeTaken = Math.round((Date.now() - startTimeRef.current) / 1000);
     try {

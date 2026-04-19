@@ -200,9 +200,11 @@ export function useSubmitExamAttempt() {
         const q = questions.find((q) => q.id === a.questionId);
         if (q?.correctAnswer === a.selectedAnswer) correctCount++;
       }
+      const examQuestions = MOCK_EXAMS.find(e => e.id === payload.examId);
+      const totalQCount = examQuestions?.questionCount ?? payload.answers.length;
       const score =
-        payload.answers.length > 0
-          ? Math.round((correctCount / payload.answers.length) * 100)
+        totalQCount > 0
+          ? Math.round((correctCount / totalQCount) * 100)
           : 0;
 
       const attempt: ExamAttempt = {
@@ -212,7 +214,7 @@ export function useSubmitExamAttempt() {
         answers: payload.answers,
         score,
         correctCount,
-        totalCount: payload.answers.length,
+        totalCount: totalQCount,
         completedAt: new Date().toISOString(),
         timeTakenSeconds: payload.timeTakenSeconds,
       };
