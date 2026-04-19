@@ -198,7 +198,7 @@ export function useSubmitExamAttempt() {
       let correctCount = 0;
       for (const a of payload.answers) {
         const q = questions.find((q) => q.id === a.questionId);
-        if (q?.correctAnswer === a.selectedAnswer) correctCount++;
+        if (a.selectedAnswer && q?.correctAnswer === a.selectedAnswer) correctCount++;
       }
       const examQuestions = MOCK_EXAMS.find(e => e.id === payload.examId);
       const totalQCount = examQuestions?.questionCount ?? payload.answers.length;
