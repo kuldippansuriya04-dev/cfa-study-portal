@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Login() {
@@ -7,12 +8,12 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useAuth();
-  const navigate = useNavigate();
+  
 
   const handleLogin = () => {
     const ok = login(email, password);
     if (ok) {
-      navigate("/");
+      window.location.href = "/";
     } else {
       setError("Email and password (min 6 chars) required.");
     }
