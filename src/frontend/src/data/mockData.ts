@@ -102,7 +102,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "applicable law of Country 1.",
     optionC: "applicable law of Country 2.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because applicable law states that the law of the locality where the business is conducted govems and local law is less strict than the Code and Standards, member must adhere to the Code and Standards. | B. Incorrect because if applicable law is stricter than the requirements of the Code and Standards, members and candidates must adhere to applicable law; otherwise, they must adhere to the Code and Standards. | C. Incorrect because applicable law states that the law of the locality where the business is conducted governs and local law is less strict than the Code and Standards, member must adhere to the Code and Standards.",
     difficulty: "medium",
   },
   {
@@ -113,7 +113,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Asset managers were including the performance of all portfolios, including those no longer managed in their performance history.",
     optionC: "Consistency among fund managers were needed when making investment performance presentations.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the GIPS standards were created to help prevent misleading practices, such as representative accounts, whereby firms select top-performing portfolios to represent the firms overall investment results for a specific mandate. | B. Incorrect because including all portfolios a manager no longer manages, any survivorship bias is eliminated. Survivorship bias is a misleading practice that the GIPS standards aim to eliminate. . Incorrect because having consistent reporting styles for performance measurement between asset managers, valid comparisons are easier for the standards. nt and potential client to obtain. This was one of the objectives of the GIPS",
     difficulty: "medium",
   },
   {
@@ -124,7 +124,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Yes, by providing confidential program information.",
     optionC: "Yes, by compromising the reputation of CFA Institute.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because Standard Vil (A), Conduct as Members and Candidates in the CFA Program does not cover expressing opinions regarding CFA institute, the CFA Program, or other CFA institute programs. Morgan has not violated the Standard by expressing his opinion in an Internet forum. BB, Incorrect because according to Standard VII (A), candidates may express opinions, as described in the justification. for the correct answer. Morgan has not provided any confidential program information in his post and is not in violation of this Standard. . Incorrect because according to Standard VII (A), candidates may express opinions, as described in the justification. for the correct answer.",
     difficulty: "medium",
   },
   {
@@ -135,7 +135,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "A copy of the GIPS standards.",
     optionC: "A compliant presentation every six months.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because GIPS-compliant firms must provide a complete list of composite descriptions to any prospective lient that makes such a request. The list must include terminated composites for a minimum of five years after the composite termination date. . Incorrect because a firm is not required to give a copy of the GIPS standards to prospective clients. . Incorrect because firms must make every reasonable effort to provide a compliant presentation to all prospective clients. A firm meets this requirement if the firm gives the prospective client a compliant presentation every 12 months, not every 6 months.",
     difficulty: "medium",
   },
   {
@@ -146,7 +146,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "disseminates information to give the impression of increased liquidity of an asset.",
     optionC: "secures a dominant position in an underlying asset to control the price of its derivative.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because Standard II(B) is not intended to preclude transactions undertaken on legitimate trading strategies based on perceived market inefficiencies. The intent of the action is critical to determining whether itis @ Violation of this standard, Therefore, a member is permitted to exploit market inefficiencies for personal trades. | B. Incorrect because information-based market manipulation includes transactions that artificially affect prices or volume to give the impression of activity or price movement in a financial instrument, which represent a diversion from the expectations of a fair and efficient market. Therefore, a member is not permitted to disseminate information to give the impression of increased liquidity of an asset. . Incorrect because information-based market manipulation includes securing a controlling, dominant position in a financial instrument to exploit and manipulate the price of a related derivative and/or the underlying asset. Therefore, a member is not permitted to secure a dominant position in an underlying asset to control the price of its derivative,",
     difficulty: "medium",
   },
   {
@@ -168,7 +168,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Priority of Transactions.",
     optionC: "Avoid or Disclose Conflicts.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because by not detailing the commission structure to her clients, Yip does not disclose the potential reason for her favoring front-end load funds over back-end load as the commission is higher and is paid immediately, rather than at the end of the year. | B. Correct because Yips investments do not adversely affect the interest ofthe clients and therefore do not violate the Priority of Transactions requirement. A candidate having the same investment positions does not always create a conflict of interest, and in some instances having an aligned investment portfolio can be beneficial to the client. By not detailing the commission structure to her clients, Yip does not disclose the potential reason for her favoring front-end load funds over back-end load as the commission is higher and is paid immediately rather than at the end of the year and is in violation of Standard VI(A), Avoid or Disclose Conflicts. Yip also does not disclose the commission structure in detall, which could impair her independence when recommending front-load mutual funds rather than back-end load mutual funds to her clients, a violation of Standard VI(C), Referral Fees. . Incorrect because Yip does not disclose the commission structure in detail, which could impair her independence when recommending front-ioad mutual funds rather than back-end load mutual funds to her clients.",
     difficulty: "medium",
   },
   {
@@ -179,7 +179,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "10 years of GIPS-compliant performance.",
     optionC: "15 years of GIPS-compliant performance.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because after a firm presents a minimum of five years of GIPS-compliant performance, the firm must present an additional year of performance each year, building up to a minimum of 10 years of GIPS-compliant performance. Incorrect because an additional year of performance each year is added bullding up to a mi GIPS-compliant performance. 1um of 10 years of",
     difficulty: "medium",
   },
   {
@@ -190,7 +190,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Members convey to clients that not all firm-sponsored resources may be appropriate for communicating confidential information.",
     optionC: "When allowed under the law, members share confidential client information to defend themselves in a CFA Institute PCP investigation.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because Standard III(E), Preservation of Confidentiality, requires that members and candidates preserve the confidentiality of information communicated to them by their clients, prospective clients, and former clients. Details of former clients cannot be shared with third party service providers and this is a violation of the Standard. | B. Incorrect because according to Standard IlI(E), Preservation of Confidentiality, itis important to convey to clients that not all firm-sponsored resources may be appropriate for communicating confidential information. . Incorrect because according to Standard IlI(E), Preservation of Confidentiality, when permissible under applicable law, members and candidates shall consider the PCP an extension of themselves when requested to provide information about a client in support of a PCP investigation into their own conduct. This is not a violation of the Standards when permitted by law.",
     difficulty: "medium",
   },
   {
@@ -201,7 +201,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Place appropriate limitations on the wrongdoer pending the outcome of the investigation.",
     optionC: "Rely on an employee's written assurance that the wrongdoing will not reoccur.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because according to Standard IV (C), Responsibilities of Supervisors, once a violation is discovered, a supervisor should increase supervision or place appropriate limitations on the wrongdoer pending the outcome of the investigation, | B. Correct because according to Standard IV (C), Respor of Supervisors, once a supervisor learns that an employee has violated or may have violated the law or the Code and Standards, the supervisor must promptly initiate an assessment to determine the extent of the wrongdoing. Relying on an employees statements about the extent of the violation or assurances that the wrongdoing will not reoccur is not enough. Reporting the misconduct up the chain of command and warming the employee to cease the activity are also not enough. Pending the outcome of the investigation, a supervisor should take steps to ensure that the violation will not be repeated, such as placing limits on the employees activities or increasing the monitoring of the employees activities. Incorrect because according to Standard IV (C), Responsibilities of Supervisors, Relying on an employees statements about the extent of the violation or assurances that the wrongdoi 19 will not reocour is not enough.",
     difficulty: "medium",
   },
   {
@@ -212,7 +212,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "only the Matric proxy.",
     optionC: "only the Barnikoff proxy.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because Standard III(A)-Loyalty, Prudence, and Care states that itis a member or candidates duty to vote proxies on behalf of clients in an informed and responsible manner. A manager must not blindly vote with management without first considering the impact of the issue at hand and its benefit to the client. Correct because Standard IlI(A)-Loyalty, Prudence, and Care states that itis a member or candidates duty to vote proxies on behalf of clients in an informed and responsible manner. However, if a cost-benefit analysis shows voting all proxies may not benefit the client, voting all proxies may not be necessary. The member or candidate is responsible for informing all cients if this is the policy of the fund manager. The member or candidate must take steps to disclose this proxy voting policy to clients. Voting the Barnikoff proxy does not appear to offer a benefit because the issue is not of a critical nature, but voting the proxy for Matric involves a material issue and is a benefit that should be voted on. | C. Incorrect because while Standard Ili(A}-Loyalty, Prudence, and Care states that it is a member or candidates duty to vote proxies on behalf of clients in an informed and responsible manner, if a cost-benefit analysis shows voting all proxies may not benefit the client, voting all proxies may not be necassary.",
     difficulty: "medium",
   },
   {
@@ -223,7 +223,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Avoid or disclose conflicts.",
     optionC: "Additional compensation arrangements.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the hedge fund will ade in international securities while Atlantic trades in domestic securities so itis unlikely their investments will conflict with each other. Additionally, policies and procedures needed to address. Standard Vi(B), Priority of Transactions, will be required in the future, but are not needed at the present time, as the fund is not trading, | B. Correct because according to Standard VI(A), Avoid or Disclose Conflicts, Grabbo must disclose to her employer her hedge fund development as this activity could possibly interfere with her responsibilities at Atlantic. In setting up a hedge fund, Grabbo was not acting for the benefit of her employer. She should have informed Atlantic that she wanted to organize the hedge fund and come to some mutual agreement on how this would occur. | C. Incorrect because Grabbo is not receiving ad nal compensation as the fund is still n development, and thus there is no violation of Standard 1V(B), Additional Compensation Arrangements. However, there could be compensation in the future, so this will need to be addressed at some point.",
     difficulty: "medium",
   },
   {
@@ -234,7 +234,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Action 2 only.",
     optionC: "Both Action 1 and Action 2.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because accor jing to Standard {(D), Misconduct, the Code and Standards are primarily aimed at conduct and actions related to a members or candidates professional life. Also, personal bankruptcy may not reflect on the integrity or trustworthiness of the person deciaring bankruptcy, but if the circumstances of the bankruptcy involve fraudulent or deceitful business conduct, the bankruptcy may be a violation of this standard. Therefore, a member does not violate Standard I(D), Misconduct, by declaring personal bankruptcy because of a large loss from investing in a startup company. | B. Correct because Standard I(D), Misconduct, addresses all conduct that reflects poorly on the professional integrity, {good reputation, or competence of members and candidates. Any act that involves lying, cheating, stealing, or other dishonest conduct is a violation of this standard if the offense reflects adversely on a members or candidates professional activities. Accepting allocation of shares from an issuer in an oversubscribed IPO for her personal account reflects poorly on the members professional integrity. Therefore, the member violates Standard (0). The members conduct also violates Standard I(B), Independence and Objectivity. One type of benefit is the allocation of shares in oversubscribed IPOs to investment managers for their personal accounts. This practice affords managers the opportunity to make quick profits that may not be available to their clients. Such a practice is prohibited under Standard 1(B).",
     difficulty: "medium",
   },
   {
@@ -245,7 +245,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "only required to determine the suitability of the fund for those who invest in the fund.",
     optionC: "both required to invest in a manner consistent with the fund's stated mandate and to determine the suitability of the fund for those who invest in the fund.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because according to Standard III(C), Suitability, some members are responsible for managing a fund to an index or an expected mandate. The responsibility of these members and candidates is to invest ina manner consistent with the stated mandate. Members and candidates who manage pooled assets to a specific mandate are not responsible for determining the suitability of the fund as an investment for investors who may be purchasing shares in the fund. | B. Incorrect because according to Standard III(C), Suitability, members and candidates who manage pooled assets to a specific mandate are not responsible for determining the suitability of the fund as an investment for investors who may be purchasing shares in the fund. | C. Incorrect because according to Standard IlI(C), Suitability, members and candidates who manage pooled assets to a specific mandate are not responsible for determining the suitability of the fund as an investment for investors who may be purchasing shares in the fund.",
     difficulty: "medium",
   },
   {
@@ -256,7 +256,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Presenting performance of the weighted composite of similar portfolios.",
     optionC: "Considering the sophistication of the audience to whom a performance presentation is addressed.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because according to the recommended procedures for compliance with Standard Ill (D), Performance Presentation, members and candidates can also meet their obligations under Standard III (D) by including terminated accounts as part of performance history with a clear indication of when the accounts were terminated Therefore, including (not excluding) terminated accounts is recommended. | B. Incorrect because according to the recommended procedures for compliance with Standard Ill (O), Performance Presentation, members and candidates can also mest their obligations under Standard Ill (D) by presenting the performance of the weighted composite of similar portfolios rather than using a single representative account. | C. Incorrect because according to the recommended procedures for compliance with Standard Ill (O), Performance Presentation, members and candidates can also meet their obligations under Standard III (D) by considering the knowledge and sophistication of the audience to whom a performance presentation is addressed.",
     difficulty: "medium",
   },
   {
@@ -267,7 +267,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "revocation of membership.",
     optionC: "banishment from the industry.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because CFA Institute Bylaws do not include fines as a sanction. | B. Correct because CFA Institute may revoke membership for violations of the Institute Code of Ethics. . Incorrect because CFA Institute does not have the authority to ban an individual from the business and does not always apply sanctions to every violation of its Code. Code of Ethics and Standards of Professional Conduct = describe the structure of the CFA Institute Professional Conduct Program and the process for the enforcement of the Code and Standards Discuss @ Fitter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -278,7 +278,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Yes, with respect to misrepresentation.",
     optionC: "Yes, with respect to diligence and reasonable basis.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because members are in compliance with Standard V (A)}-Diligence and Reasonable Basis if they rely on the research of another party who exercised diligence and thoroughness. Because Bishops opinion did not agree with the final report, disassociating her from the report is one way to handle this difference between the analysts. | B. Incorrect because Hall did not make any misrepresentation. | C. Incorrect because Hall is allowed to rely on a third party who exercised diligence and thoroughness.",
     difficulty: "medium",
   },
   {
@@ -289,7 +289,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "quarterly.",
     optionC: "annually.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because according to the recommended procedures for compliance with Standard VI(C), Referral Fees, employers should have investment professionals provide the employer regular (at least quarterly) updates on the amount and nature of compensation received. Therefore, updates should not be disclosed at least monthly. | B. Correct because according to the recommended procedures for compliance with Standard VI(C), Referral Fees, employers should have investment professionals provide the employer regular (at least quarterly) updates on the amount and nature of compensation received. . Incorrect because according to the recommended procedures for compliance with Standard VI(C), Referral Fees, employers should have investment professionals provide the employer regular (at least quarterly) updates on the amount and nature of compensation received.\ Therefore, updates should not be disclosed at least annually",
     difficulty: "medium",
   },
   {
@@ -300,7 +300,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "5 years.",
     optionC: "7 years.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because according to Standard V (C), as described in the Response Rationale for the answer key, CFA Institute recommends that members maintain their work records for at least 7 years in absence of any regulatory guidance, not 3 or 5 years, | B. Incorrect because according to Standard V (C), as described in the Response Rationale for the answer key, CFA Institute recommends that members maintain their work records for at least 7 years in absence of any regulatory guidance, not 3 or 5 years. . Correct because according to Standard V (C), Record Retention, In the absence of regulatory guidance or firm policies, CFA Institute recommends maintaining records for at least seven years.",
     difficulty: "medium",
   },
   {
@@ -311,7 +311,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "communication with clients and prospective clients only.",
     optionC: "misrepresentation as well as communication with clients and prospective clients.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because Standard I(C), Misrepresentation, prohibits members and candidates from guaranteeing clients, any specific return on volatile investments. Most investments contain some element of risk that makes their return inherently unpredictable. For such investments, guaranteeing either a particular rate of retum or a guaranteed preservation of investment capital (e.g.,"I can guarantee that you will eam 8% on equities this year" or "I can guarantee that you will not lose money on this investment") is misleading to investors. Chung states ATC is, scheduled to announce a substantial stock repurchase program and its stock price will increase significantly. and does not clarify that itis based on his opinion. Therefore, Chung has also violated to Standard I(C). €. Correct because according to Standard I(C), Misrepresentation, prohibits members and candidates from guaranteeing clients any specific retum on volatile investments. Most investments contain some element of risk that makes their return inherently unpredictable. For such investments. auaranteeina either a oarticular rate of",
     difficulty: "medium",
   },
   {
@@ -322,7 +322,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Selectively offering different service levels to prospective clients.",
     optionC: "Using different communication methods to recommend investments to clients.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because according to Standard Ill (B), members and candidates may provide more personal, specialized, or in-depth service to clients who are willing to pay for premium services through higher management fees or higher levels of brokerage. | B. Correct because according to Standard Ill (B), Fair Dealing, different service levels should be disclosed to clients and prospective clients and should be available to everyone (i.., different service levels should not be offered selectively). It is therefore a violation of the Standard to selectively offer the firms different service levels to prospective clients. | C. Incorrect because Standard III (B) requires investment recommendations to be communicated fairy, but the Standard does not state equally because members and candidates could not possibly reach all clients at exactly the same time—whether by printed mail, telephone (Including text messaging), computer (including internet updates and e-mail distribution), facsimile (fax), or wire. Therefore, using different communication methods to recommend investments to clients is permitted.",
     difficulty: "medium",
   },
   {
@@ -333,7 +333,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "do nothing until other analysts support her analysis.",
     optionC: "recommend that her clients sell their Green Run shares immediately.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because members and candidates should make reasonable efforts to achieve public dissemination of information that is material and nonpublic. This effort usually entails encouraging the issuer company to make the information public. In this case the original source is not a reliable one, and the analyst would not be expected to request disclosure based upon the rumor, which is not considered material. However, her thorough research indicates that the company falsified its financial results, and she should request the company address this issue publicly. | B. Correct because the analyst has conducted thorough research that indicates the company falsified ts financial results, and she should request the company address this issue publicly as recommended by Standard II(A)- Material Nonpublic Information. If a member or candidate determines that information is material, the member or candidate should make reasonable efforts to achieve public dissemination of the information. This effort usually entails encouraging the issuer company to make the information public. If public dissemination is not possible, the member or candidate must communicate the information only to the designated supervisory and compliance personnel within the members or candidates firm and must not take investment action on the basis of the information. | C. Incorrect because analysts are in the business of formulating opinions and insights that are not obvious to the general investing public about the attractiveness of particular securities. In particular, under the mosaic theory, as outlined in the Guidance to Standard 1I(A}-Material Nonpublic Information, an analyst is free to trade based upon information developed in the course of her own research even if this information would have been material inside information had it been communicated directly to the analyst by the company. However, members and candidates should make reasonable efforts to achieve public dissemination of information that is material and nonpublic. This effort usually entails encouraging the issuer company to make the information public, which has not been done in this case, so the analyst would be premature in making a sell recommendation to clients.",
     difficulty: "medium",
   },
   {
@@ -344,7 +344,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "a firm has complied with all firm-wide composite construction requirements.",
     optionC: "processes and procedures are designed to calculate and present performance results in compliance with the GIPS standards.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct. According to the GIPS standards, verification does not ensure the accuracy of any specific composite presentations. Verification provides assurance as to whether the firms policies and procedures related to composite and pooled fund maintenance, as welll as the calculation, presentation, and distribution of performance, have been designed in compliance with the GIPS standards and have been implemented on a firm-wide basis. | B. Incorrect. GIPS verification confirms that a firm has complied with all firm-wide composite construction requirements. | C. Incorrect. GIPS verification confirms that a firms processes and procedures are designed to calculate and present compliant performance results in compliance with the GIPS standards,",
     difficulty: "medium",
   },
   {
@@ -355,7 +355,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "only to communication with clients and prospective clients.",
     optionC: "both to loyalty and to communication with clients and prospective clients.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because Standard IV(A): Duties to Employers, Loyalty states that CFA Institute members and candidates must act for the benefit of their employer and not otherwise cause harm to their employer. Kurup violates her duty of loyalty to her employer by making disparaging and harmful statements about the firm to its clients. Kurup can call her clients to inform of her decision but cannot make disparaging statements about her employer. Also according to Standard V(B) relating to communication with clients and prospective clients, members and candidates should communicate in a recommendation the factors that were instrumental in making the investment recommendation. There is no investment recommendation being discussed here and hence the Standard is not Violated. Only the Standard relating to loyalty has been violated. | B. Incorrect because according to Standard V(B) relating to communication with clients and prospective clients, members and candidates should communicate in a recommendation the factors that were instrumental in making the investment recommendation. There scussed here and hence the Standard is not violated. . Incorrect because according to Standard V(B) relating to communication with clients and prospective clients, no investment recommendation being members and candidates should communicate in a recommendation the factors that were instrumental in making the investment recommendation. There is no investment recommendation being discussed here and hence the Standard is not violated. Ethics Application = explain how the practices, policies, and conduct do or do not violate the CFA Institute Code of Ethics and Standards of Professional Conduct",
     difficulty: "medium",
   },
   {
@@ -366,7 +366,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Yes, because she failed to notify her supervisor of her acceptance of the tickets.",
     optionC: "Yes, because she failed to get prior approval for accepting the monetary compensation.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because Standard |(B), Independence and Objectivity requires that, when possible, prior to accepting bonuses or gifts from clients, members and candidates should disclose to their employers such benefits offered by clients. So, Khan is in violation of the Standard as she failed to notify her supervisor about the tickets to the football match received from one of her clients. | C. Incorrect because Standard I(B), Independence and Objectivity requires that, when possible, prior to accepting bonuses or gifts from clients, members and candidates should disclose to their employers such benefits offered by dlients. So, Khan is in compliance with the Standard as she has informed her supervisor about the monetary compensation as soon as reasonably possible.",
     difficulty: "medium",
   },
   {
@@ -377,7 +377,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "her firm's compliance officer only.",
     optionC: "both to her supervisor and to her firm's compliance officer.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because according to the recommended procedures for compliance with Standard IV(B), Additional Compensation Arrangements, members should make an immediate written report to their supervisor and. compliance officer specifying any compensation they propose to receive for services. Incorrect because according to the recommended procedures for compliance with Standard IV(B), Additional Compensation Arrangements, members should make an immediate written report to their supervisor and. compliance officer specifying any compensation they propose to receive for services. Correct because according to the recommended procedures for compliance with Standard IV(B), Additional Compensation Arrangements, members and candidates should make an immediate written report to their supervisor and compliance officer specifying any compensation they propose to receive for services.",
     difficulty: "medium",
   },
   {
@@ -399,7 +399,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Inflation premium.",
     optionC: "Maturity premium.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the liquidity premium compensates investors for the risk of loss relative to an investments fair value if the investment needs to be converted to cash quickly. | B. Incorrect because the inflation premium compensates investors for expected inflation and reflects the average inflation rate expected over the maturity of the debt. . Incorrect because the maturity premium compensates investors for the increased sensitivity of the market value of debt to a change in market interest rates as maturity is extended, in general (holding all else equal) Rates and Return = interpret interest rates as required rates of return, discount rates, or opportunity costs and explain an interest rate as the sum of a real risk-free rate and premiums that compensate investors for bearing distinct types of risk Discuss @ Filter » Discussion",
     difficulty: "medium",
   },
   {
@@ -410,7 +410,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Operating margins out of line with other diversified companies.",
     optionC: "Changes in accounting policies to reflect new accounting standards.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because a history of unusual expense items may indicate a pattern of management manipulating the way investors perceive operating income performance. Repeated use of the "unusual" or "non-recurring" category decreases the value of this classification and suggests that management may be trying to manipulate users perceptions of sustainable profitability levels. BB, Incorrect because diversified companies include a mix of businesses and, depending on that mix, may or may not be expected to have similar operating margins. . Incorrect because accounting policies must be changed to comply with new accounting standards. Changes for this purpose are not suspect. Financial Reporting Quality = describe accounting waming signs and methods for detecting manipulation of information in financial reports Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -478,7 +478,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Uncollected receivables.",
     optionC: "Early payment to suppliers.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because a drag on liquidity is when receipts lag, creating pressure from the decreased available funds. Major drags on receipts involve pressures from credit management and deterioration in other assets and include the following: Uncollected receivables, Obsolete inventory and tight credit | C. Incorrect because reduced credit lines represents a pull on liquidity. A pull on liquidity is when disbursements are paid too quickly or trade credit availabilty is limited, requiring companies to expend funds before they receive funds from sales that could cover the liability. Major pulls on payments include the following: Making payments early, Reduced oredit limits, Limits on short-term lines of credit or Low liquidity positions. Working Capital and Liquidity = explain liquidity and compare issuers liquidity levels Discuss @ Filter >",
     difficulty: "medium",
   },
   {
@@ -489,7 +489,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "relies on an analytical formula to estimate the distribution of the estimators.",
     optionC: "mimics the random sampling process by treating the randomly drawn sample as if it were the population.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because in bootstrap, we repeatedly draw samples from the original sample, and each resample is of the same size as the original sample. Note that although some items may appear several times in the resamples, other items may not appear at all. Thus, bootstrap does not guarantee that all items will appear in the resamples. | B. Incorrect because compared with conventional statistical methods, bootstrap does not rely on an analytical formula to estimate the distribution of the estimators, €. Correct because the bootstrap mimics the (simple random sampling) process by treating the randomly drawn sample as if it were the population. Simulation Methods = describe the use of bootstrap resampling in conducting a simulation based on observed data in investment applications cuss @ Filter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -500,7 +500,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "operating in multiple markets and geographies.",
     optionC: "with higher levels of institutional ownership and free float.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because while all companies have some degree of asymmetric information, it is more pronounced for companies competing in many markets and geographies, those that sell complex products, and companies with lower levels of institutional ownership and free float. Correct because while all companies have some degree of asymmetric information, itis more pronounced for companies competing in many markets and geographies, those that sell complex products, and companies with lower levels of institutional ownership and free float G. Incorrect because while all companies have some degree of asymmetric information, it is more pronounced for companies competing in many markets and geographies, those that sell complex products, and companies with lower levels of institutional ownership and free float. Corporate Governance: Conflicts, Mechanisms, Risks, and Benefits = describe the principal-agent relationship and conflicts that may arise between stakeholder groups Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -512,7 +512,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "the slope is less than or equal to 0.75.",
     optionC: "there is no linear relationship between the country's inflation rate and short-term interest rate.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the calculated t-statistic for testing whether the intercept is zero is t= 5778 ~ 0.0000) /0.3479 = 1.6608 which is within the bounds of #2.733 (being a two-sided hypothesis tes!), so the analyst fails to reject the null hypothesis that the intercept is zero. | B. Incorrect because the calculated t-statistic for testing the slope against 0.765 is t = (1.1300 — 0.7500) 0.180% 2.1041, which is less than the critical value of +2.445 (being a one-sided hypothesis test). Thus, the analyst fails to reject the null hypothesis that the slope is less than or equal to 0.75. | C. Correct because we reject the null hypothesis that there is no linear relationship between the two variables, that is that the slope of the linear regression is zero, ifthe calculated t-statistic is less than -2.733 or greater than +2.733 (being a two-sided hypothesis test). Indeed, t-statistic = (1.1300 — 0,0000)/ 0.1806 = 6.2569, which is greater than 42.733 Simple Linear Regression * calculate and interpret measures of fit and formulate and evaluate tests of ft and of regression coefficients in a simple linear regression",
     difficulty: "medium",
   },
   {
@@ -524,7 +524,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "equal to 1.0%.",
     optionC: "greater than 1.0%.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because as explained in the Rationale for the correct answer, the inflation target must be greater than 1.0%, BB. Incorrect because as explained in the Rationale for the correct answer, the inflation target must be greater than 1.0%. C. Correct because when policy rates are above the neutral rate, monetary policy is contractionary; when they are below the neutral rate, monetary policy is expansionary. The calculation of the neutral rate is as follows: Neutral rate = Trend growth + Inflation target. Therefore if monetary policy is expansionary, then the policy rate (1.5%) must be less than the neutral rate; stated another way, the neutral rate must be greater than 1.5%. So (knowing that neutral rate = trend growth + inflation target), the trend growth plus inflation target must be greater than 1.5%. Given that the trend growth rate is 0.5%, then the inflation target must be greater than 1.0%. Monetary Policy + describe qualities of effective central banks; contrast their use of inflation, interest rate, and exchange rate targeting in expansionary or contractionary monetary policy; and describe the limitations of monetary policy",
     difficulty: "medium",
   },
   {
@@ -535,7 +535,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Liquidity.",
     optionC: "Solvency.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because activity ratios measure how efficiently a company performs day-to-day tasks, such as the collection of receivables and management of inventory. | B. Incorrect because liquidity ratios measure the companys abilty to meet its short-term obligations. €. Incorrect because solvency ratios measure a companys ability to meet long-term obligations. Subsets of these ratios are also known as "leverage" and "long-term debt" ratios. Financial Analysis Techniques = calculate and interpret activity, liquidity, solvency, and profitability ratios Discuss @ Filter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -557,7 +557,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "a mode that is less than its mean.",
     optionC: "frequent small gains and a few extreme losses.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the continuous positively skewed distribution has a long tail on its right side, not on the left side. | B. Correct because for a continuous positively skewed unimodal distribution, the mode is less than the median, which is less than the mean, ie. mode < median < mean, so the mode is less than the mean. . Incorrect because a retum distribution with positive skew has frequent small losses and a few extreme gains, not frequent small gains and a few extreme losses. Statistical Measures of Asset Returns * interpret and evaluate measures of skewness and kurtosis to address an investment problem Discuss @ Fitter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -568,7 +568,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "quantity it is intended to estimate.",
     optionC: "observed value of the random variable.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because ampling error is the difference between the observed value of a statistic and the quantity intended to estimate as a result of using subsets of the population. . Incorrect because sampling error is the difference between the observed value of a statistic and the quantity itis intended to estimate as a result of using subsets of the population, and not the observed value of the random variable. Estimation and Inference = compare and contrast simple random, stratified random, cluster, convenience, and judgmental sampling and their implications for sampling error in an investment problem Discuss @ Fitter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -579,7 +579,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "increase in the budget deficit.",
     optionC: "reduction in reserve requirements for banks.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because an inorease in indirect taxes would be contractionary not expansionary. An expansionary policy could take one or more of the following forms cuts in sales (indirect) taxes to lower prices which raises real incomes with the objective of raising consumer demand. | B. Correct because an increase in a budget surplus would be associated with contractionary fiscal policy, while a rise ina deficit is an expansionary fiscal policy. . Incorrect because reserve requirements are an instrument of monetary policy not fiscal policy. The third primary way in which central banks can limit or increase the supply of money in an economy is via their reserve requirements. Fiscal Policy = explain the implementation of fiscal policy and difficulties of implementation as well as whether a fiscal policy is, expansionary or contractionary Discuss @ filter » Discussion What do vaws want fo diseuss (reauiired)",
     difficulty: "medium",
   },
   {
@@ -590,7 +590,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "monetary policy only.",
     optionC: "both fiscal policy and monetary policy.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because in addition, fiscal policy can be used to redistribute income and wealth. | B. Incorrect because the redistribution of income and wealth is associated with fiscal policy and not monetary policy. Instead, monetary policy refers to government or central bank activities that are directed toward influencing the quantity of money and credit in an economy. €. Incorrect because the redistribution of income and wealth is associated with fiscal policy and not monetary policy. Instead, monetary policy refers to government or central bank activities that are directed toward influencing the quantity of money and credit in an economy. Fiscal Policy = compare monetary and fiscal policy Question 45 of 90 @ Filter + Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -601,7 +601,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "lower financial leverage ratio.",
     optionC: "higher total asset turnover ratio.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because an increase in the carrying amount of depreciable long-lived assets increases total assets and shareholders equity, so asset revaluations that increase the carying amount of an asset can be used to reduce reported leverage. Defining leverage as average total assets divided by average shareholders equity, increasing both the numerator (assets) and denominator (equity) by the same amount leads to a decline in the ratio. (Mathematically, when a ratio is greater than one, as in this case, an increase in both the numerator and the denominator by the same amount leads to a decline in the ratio). . Incorrect because an increase in the asset carying value results in a lower total asset turnover ratio. Total asset turnover ratio = Revenue / Average total assets. While revenue would remain unchanged, average total assets would increase therefore the total asset tumover ratio would decrease. Asset revaluations that increase the carrying amount of an asset initially increase depreciation expense, total assets, and shareholders equity. Analysis of Long-Term Assets = explain and evaluate how impairment and derecognition of property, plant, and equipment and intangible assets affect the financial statements and ratios",
     difficulty: "medium",
   },
   {
@@ -613,7 +613,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$1.30.",
     optionC: "\$1.73.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because basic EPS = (net income - preferred dividends)/weighted average number of shares outstanding, I the number of shares of common stock increases as a result of a stock dividend or stock split, the EPS calculation reflects the change retroactively to the beginning of the period. Therefore, the number of shares outstanding would be 2,000,000 = (1,000,000 x 2). In this case, the calculation would be ($3,100,000 - $500,000) / 2,000,000 = $1.30. | C. Incorrect because it weights the common shares outstanding (instead of reflecting the change retroactively to the beginning of the period). It calculates the weighted average number of shares outstanding as 1,500,000 [(1,000,000 x 6/12) + (2,000,000 * 6/12)]. The calculation becomes ($3,100,000 - $500,000) 1,500,000 = $1.73. Analyzing Income Statements = describe how eamings per share is calculated and calculate and interpret a companys basic and diluted earnings",
     difficulty: "medium",
   },
   {
@@ -624,7 +624,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "stability.",
     optionC: "growth.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because average weekly hours worked in manufacturing is a leading indicator and moves up and down before the general economy. Thus a decrease in the indicator suggests a decline (recession) in the economy. A change in unit labor costs is a lagging indicator and absence of change is neither positive nor negative for where the economy is going. Together, these two indicators most likely suggest a decline, or weakening, in economic activity | B. Incorrect because average weekly hours worked in manufacturing is a leading indicator and a decrease suggests a decline in economic activity. A change in unit labor costs is a lagging indicator and absence of change suggest no movement for the economy. Together, these two indicators suggest a decline in economic activity, not stability. . Incorrect because average weekly hours worked in manufacturing is a leading indicator and a decrease suggests a decline in economic activity. A change in unit labor costs is a lagging indicator and absence of change suggest no movement for the economy. Together, these two indicators suggest a decline in economic activity, not growth. Understanding Business Cycles = describe how resource use, consumer and business activity, housing sector activity, and external trade sector activity vary over the business cycle and describe their measurement using economic indicators.",
     difficulty: "medium",
   },
   {
@@ -635,7 +635,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "central bank.",
     optionC: "banking system.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because most central banks act as the banker to the government and to other banks. They also act as a lender of last resort to banks. Because the central bank effectively has the capacity to print money, its in the position to be able to supply the funds to banks that are facing a damaging shortage. . Incorrect because generally central banks are "the supervisor of the banking system" and act as the banker to the government and to other banks. They also act as a lender of last resort to banks. Because the central bank effectively has the capacity to print money, its in the position to be able to supply the funds to banks that are facing a damaging shortage. Monetary Policy = describe the roles and objectives of central banks Discuss @ Filter >",
     difficulty: "medium",
   },
   {
@@ -647,7 +647,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "0.98858.",
     optionC: "0.98956.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because another way of looking at is, given the spot exchange rate and the domestic and foreign risk- free interest rates, the forward rate is whatever value completes this equation and eliminates any arbitrage opportunity, Thus F euruso= S curso * (14/ eur) / (1+ / uso) = 0.9876 * (1 + 0.012 180/360) / (1 + 0.01 180/360) = 0.9876 x (1 + 0.006) /(1 + 0.005) = 0.99352 / 1.005 = 0.98858. . Incorrect because 180-day time frame was not taken into account. Feupuso = Seunuso * (147 un) / (1+ uso) = 0.9876 x (1 + 0.012)/ (1 + 0.01) = 0.99352 / 1.01 =0.98956. Exchange Rate Calculations = explain the arbitrage relationship between spot and forward exchange rates and interest rates, calculate a forward rate using points or in percentage terms, and interpret a forward discount or premium",
     difficulty: "medium",
   },
   {
@@ -659,7 +659,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "43.2.",
     optionC: "45.6.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because it excludes the bonus for on-time completion. A company is only allowed to recognize variable consideration if it can conclude that it wll not have to reverse the cumulative revenue in the future. in this case, Builder Co. does not recognize any of the bonus in year one because it cannot reach the non-reversible conclusion given its limited experience with similar contracts and potential delays from factors outside its control. Calculated as 28/70 * 108 = 40% x 108 = 43.2. . Incorrect because it includes the bonus for on-time completion. A company is only allowed to recognize variable consideration if it can conclude that it will not have to reverse the cumulative revenue in the future. In this case, Builder Co. does not recognize any of the bonus in year one because it cannot reach the non-reversible conclusion given its limited experience with similar contracts and potential delays from factors outside its control. Caloulated as 40% (being 28/70) x (108 + 6) = 40% * 114 = 45.6. Analyzing Income Statements = describe general principles of revenue recognition, specific revenue recognition applications, and implications of revenue recognition choices for financial analysis",
     difficulty: "medium",
   },
   {
@@ -670,7 +670,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Purchase of treasury stock.",
     optionC: "Purchase of trading securities.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because financing activities include cash payments to repurchase stock (e.g., treasury stock), | C. Correct because additionally, operating acti jes include cash receipts and payments related to dealing securities or trading securities (as opposed to buying or selling securities as investments, as discussed below). In addition, the purchase and sale of securities held for dealing or trading purposes are considered operating activities even for companies where this is not a primary business activity. Analyzing Statements of Cash Flows | = contrast cash flow statements prepared under International Financial Reporting Standards (IFRS) and US generally accepted accounting principles (US GAAP) cuss @ Filter > jscussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -681,7 +681,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Ignoring information about the firm's competitors.",
     optionC: "Reading the research from analysts with a negative opinion of the firm.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because the confirmation bias is the tendency to look for and notice what confirms prior beliefs and to ignore or undervalue whatever contradicts them. For example, an analyst might research a particular company but conduct only cursory research on its competitors and companies that offer substitute products. . Correct because two approaches to mitigating confirmation bias in the forecasting process are to speak to or read research from analysts with a negative opinion on the security under scrutiny and to seek perspectives from colleagues who are not economically or psychologically invested in the subject security.",
     difficulty: "medium",
   },
   {
@@ -692,7 +692,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "50th percentile.",
     optionC: "60th percentile.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the third quintile corresponds the 60" percentile. Statisticians use the word quantile (or fractile) as the most general term for a value at or below which a stated fraction of the data lies. While the 40 percentile is the beginning of the range that contains the values in the third quintie, itis not the value at which 60% of observations lie at or below it. | B. Incorrect because the third quintile corresponds the 60" percentile. Statisticians use the word quantile (or fractile) as the most general term for a value at or below which a stated fraction of the data lies. While the 50 percentile is the midpoint of the range that contains the values in the third quintile, itis not the value at which 60% of observations lie at or below it. | C. Correct because quartiles divide the distribution into quarters, quintiles into fifths, deciles into tenths, and percentiles into hundredths. Given a set of observations, the yth percentile is the value at or below which y% of observations lie. Quintiles divide the distribution based on the 20", 40", 60", and 80" percentile. As such, the third quintile corresponds to the 60" percentile. Statistical Measures of Asset Returns = calculate, interpret, and evaluate measures of central tendency and location to address an investment problem",
     difficulty: "medium",
   },
   {
@@ -703,7 +703,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "above zero to avoid the risk of deflation but low enough to ensure price stability.",
     optionC: "above zero to avoid the risk of inflation and high enough to ensure price stability.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because an inflation-targeting framework normally has a clear, symmetric and forward-looking medium- term inflation target, sufficiently above 0 percent to avoid the risk of deflation but low enough to ensure a significant degree of price stability | B. Correct because an inflation-targeting framework normally has s clear, symmetric and forward-looking medium- term inflation target, sufficiently above 0 percent to avoid the risk of deflation but low enough to ensure a significant degree of price stability Incorrect because an inflation-targeting framework normally has a clear, symmetric and forward-looking medium- term inflation target, sufficiently above 0 percent to av degree of price stability. the risk of deflation but low enough to ensure a significant Monetary Policy = describe tools used to implement monetary policy tools and the monetary transmission mechanism, and explain the relationships between monetary policy and economic growth, inflation, interest, and exchange rates Discuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -714,7 +714,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "increase the imbalance by lending to foreign countries.",
     optionC: "have an excess of domestic saving relative to investment spending.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because a country with a trade surplus will decrease the imbalance by lending to foreign countries. . Correct because trade surplus arises when exports exceed imports—that is, X M. A fiscal balance arises when government spending equals taxation—that is, G = T. Since X— M = (S—/) + (T-G), if can arise only when there is an excess of domestic saving over investment spending. G, then a trade surplus Capital Flows and the FX Market = describe exchange rate regimes and explain the effects of exchange rates on countries international trade and capital flows Discuss @ Filter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -725,7 +725,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "rules standardization and reciprocation.",
     optionC: "harmonization of tariffs and arbitrary rules.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because retaliation is a characteristic of non-cooperation. A non-cooperative country is one with inconsistent and even arbitrary rules; restricted movement of goods, services, people, and capital across borders; retaliation; and limited technology exchange. . Correct because a cooperative country is one who engages and reciprocates in rules standardization; harmonization of tariffs; international agreements on trade, immigration, or regulation; and allows for the free flow of information, ineluding technology transfer, . Incorrect because arbitrary rules are a characteristic of non-cooperation. A non-cooperative country is one with inconsistent and even arbitrary rules; restricted movement of goods, services, people, and capital across borders; retaliation; and limited technology exchange.",
     difficulty: "medium",
   },
   {
@@ -736,7 +736,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "monetary union.",
     optionC: "economic union.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because a customs union extends the FTA [free trade areal by not only allowing free movement of goods and services among members but also creating a common trade policy against non-members. The common market is the next level of economic integration that incorporates all aspects of the customs union and extends it by allowing free movement of factors of production among members. | B. Incorrect because if the members of an economic union decide to adopt a common currency, then itis also a monetary union. The monetary union has the highest degree of economic integration among all of the examples mentioned. Therefore, a common market does not have a higher degree of economic integration than a monetary union, | C. Incorrect because an economic ur Nn incorporates all aspects of a common market and in addition requires common economic institutions and coordination of economic policies among members. Therefore, a common market does not have a higher degree of economic integration than an economic union. International Trade = explain motivations for and advantages of trading blocs, common markets, and economic unions Discuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -747,7 +747,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Restrictions on title.",
     optionC: "Amortization methods used.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because this applies to the revaluation model. Similar to property, plant, and equipment, disclosures of restrictions on ttle and pledges as security of intangible assets and contractual agreements to acquire intangible assets are required. If the revaluation model is used, the date of revaluation, details of how the fair value was obtained, the carrying amount under the cost model, and the revaluation surplus must be disclosed. | B. Correct because similar to property, plant, and equipment, disclosures of restrictions on title and pledges as security of intangible assets and contractual agreements to acquire intangible assets are required. | C. Incorrect because intangible assets with indefinite lives reported under the cost model are not amortized. I fnite, {for each class of intangible asset, a company must disclose the useful lives (or, equivalently, the amortisation rate) Used, the amortisation methods used. Also, intangible assets with indefinite lives are not amortised. Analysis of Long-Term Assets analyze and interpret financial statement disclosures regarding property, plant, and equipment and intangible assets Discuss C",
     difficulty: "medium",
   },
   {
@@ -758,7 +758,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Inventory turnover.",
     optionC: "Receivables turnover.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the cash conversion cycle = days of inventory on hand (DOH) + days of sales outstanding (DSO) — number of days of payables. Since DOH = (Number of days in period) / (Inventory tumover), DSO = (Number of days in period) / (Receivables tumover), and number of days of payables = (Number of days in period) / (Payables tumover), the cash conversion cycle = (Number of days in period) / (Inventory turnover) + (Number of days in period) / (Receivables turnover) - (Number of days in period) / (Payables turnover) If payables tumover decreases (j.e., the denominator of the number of days of payables formula), the number of days of payables wil ice the numerator (number of days in period) stays the same. Because the umber of days of payables is the only subtraction item in the cash conversion cycle formula, an increase in in this number will shorten the cash conversion cycle. \crease | B. Incorrect because a decrease in inventory tumover would increase DOH (an addition in the cash conversion cycle formula), which would increase the cash conversion cycle, | C. Incorrect because a decrease in receivables turnover would increase DSO (an addition in the cash conversion cycle formula), which would increase the cash conversion cycle.",
     difficulty: "medium",
   },
   {
@@ -769,7 +769,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "cost of goods sold.",
     optionC: "days of inventory on hand.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because in periods of rising inventory unit costs and constant or increasing inventory quantities, LIFO (in comparison with FIFO) will result in a lower ending inventory balance because higher-priced inventory is sold first. Due to lower inventory on the balance sheet, total assets would be smaller rather than larger. | B. Correct because in periods of rising inventory unit costs and constant or increasing inventory quantities, LIFO (in comparison with FIFO) will allocate a higher amount of the total cost of goods available for sale to cost of sales on the income statement. . Incorrect because in periods of rising inventory unit costs and constant or increasing inventory quantities, LIFO (in comparison with FIFO) will result in a lower ending inventory balance and a higher cost of goods sold. As average inventory decreases and cost of goods sold increases, inventory turnover (cost of goods sold / average inventory) increases. As inventory turnover increases, days of inventory on hand (365 / inventory turnover) decreases rather than increases. Analysis of Inventories = calculate and explain how inflation and deflation of inventory costs affect the financial statements and ratios of companies that use different inventory valuation methods",
     difficulty: "medium",
   },
   {
@@ -780,7 +780,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "must be capitalized.",
     optionC: "can be capitalized if certain criteria are met.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because costs incurred in the development stage can be capitalized as intangible assets if certain criteria are met, including technological feasibility, the ability to use or sell the resulting asset, and the abilty to complete the project. | B. Incorrect because because costs incurred in the development stage can be capitalized as intangible assets if certain criteria are met, including technological feasibility, the ability to use or sell the resulting asset, and the ability to complete the project. | C. Correct because because costs incurred in the development stage can be capitalized as intangible assets if certain criteria are met, including technologi to complete the project. feasibility, the ability to use or sell the resulting asset, and the ability Analyzing Balance Sheets the financial reporting and disclosures related to intangible assets cuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -791,7 +791,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Investors can borrow and lend at a zero interest rate.",
     optionC: "Financing decisions depend on investment decisions.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because one of the Modigliani-Miller assumptions is about the homogeneous expectations of investors in that they agree on a given invest ments expected cash flows. BB. Incorrect because one of the Modigliani-Miller assumptions is that investors can borrow and lend at the risk-free (not at zero) rate. . Incorrect because one of the Modigliani-Miller assumptions is that financing and investment decisions are independent of each other. Capital Structure = explain the Modigliani—Miller propositions regarding capital structure Discuss @ Fitter > cussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -803,7 +803,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "3.5%.",
     optionC: "4.2%.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it wrongly uses n, not n - 1, as denominator in calculating the target semideviation. Hence, target semideviation = sqrt(0.0037/4) = 0.0304 = 3.0%. | B. Correct because the target downside deviation, also referred to as the target semideviation, is a measure of dispersion of the observations (here, returns) below the target. The target semideviation, Stage Srarget = SOMtlZ or an XicB" OX - BY? /(n~ 1)]. Calculation as below: Deviation fromthe | Deviations below the | Squared Deviations below Ye Observation 4% Target Target the Target 1 5% 1% - _ 3 2% 6% 6% 0.0036 3 3% 1% 1% 0.0001 4 8% 4% = = Sum 0.0037 Henee, target semideviation = sqrt(0.0037/3) = 0.0351 = 3.5%. . Incorrect because it is the standard deviation, not the target semideviation. The mean is (5% + (-2%) + 3% + 8%)/4 = 3.5%. The standard deviation is sqrt{{(5% ~ 3.5%)° + (-2% ~ 3.5%)? + (3% ~ 3.5%)? + (8% — 3.5%)°V/3} = ssqrt(0.0053/3) = 0.0420 = 4.2%. Statistical Measures of Asset Returns = calculate, interpret, and evaluate measures of dispersion to address an investment problem",
     difficulty: "medium",
   },
   {
@@ -814,7 +814,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "can be earned in the short run only.",
     optionC: "can be earned in the short run and in the long run.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because in the short run a monopolistically competitive firm is able to eam a positive economic profit. In the short run, the profit:maximizing choice is the level of output at which Marginal Revenue larginal Cost | B. Correct because in the short run a monopolistically competitive firm is able to eam a positive economic profit. In the short run, the profit-maximizing choice is the level of output at which Marginal Revenue = Marginal Cost. However, in the long run for the monopolistically competitive firm, economic profit will fall to zero. | C. Incorrect because in the long run for the monopolistically competitive firm, economic profit will fall to zero. The Firm and Market Structures = explain supply and demand relationships under monopolistic competition, including the optimal price and output for firms as well as pricing strategy Discuss @ filter »",
     difficulty: "medium",
   },
   {
@@ -825,7 +825,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "multi-tool approach.",
     optionC: "national security tool.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because just as geopolitics is multi-faceted and includes many types of actors and features, so too are the tools of geopolitics. Systems of political, economic, and financial cooperation can be, and often are, intertwined. One interesting example is cabotage, or the right to transport passengers or goods within a country by a foreign firm. | C. Incorrect because national security tools are those used to influence or coerce a state actor through direct or indirect impact on the countrys resources, people, or borders, while cabotage is a multi-tool approach as political, economic, and financial aspects are involved, so itis not only a national security tool.",
     difficulty: "medium",
   },
   {
@@ -837,7 +837,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "2.8.",
     optionC: "4.2.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "C. Incorrect because it calculates Current ratio = (Cash + (Short-term) marketable securities + Receivables + Inventories) / Current liabilities = (800 + 400 + 200 + 700) / 500; or 2,100 / 500 = 4.2. Financial Analysis Techniques = calculate and interpret activity, liquidity, solvency, and profitability ratios",
     difficulty: "medium",
   },
   {
@@ -848,7 +848,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Modification of production processes to comply with new regulation.",
     optionC: "Funding research on the creation of new products based on an innovative technology.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because going concern projects often known as maintenance capital expenditures, are investments to continue the companys current operations and maintain the 1g size of the business. Common going concern projects include replacing assets nearing the end of their useful life, maintaining IT hardware and software, continuous improvements of existing faoilities. Upgrade of older production facilities to reduce costs falls under going concer projects. | B. Incorrect because this project falls under category of regulatory/compliance projects. | C. Incorrect because projects to explore a new technology or innovation opportunity and are considered new lines of business. Capital Investments and Capital Allocation = describe types of capital investments Discuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -860,7 +860,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "The arithmetic mean annual return.",
     optionC: "The two-year holding period return.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because the arithmetic mean retum is 43.34%, less than the two-year holding period retum of 100%. . Correct because the two-year holding period retum is the largest of the three returns. The annual HPRs over the first and second years are, respectively: R, = P\/P.— 1 = €10/66 — 1 = 66.67% and R, = PIP, — 1 = €12/€10 — 1 = 20%. Two-year HPR = P,/P, ~ 1 = €12/66 — 1 = 100%. Geometric mean return Rg = VI(1 + Ry) x (1 + Ry) 1 = vI(1 + 0.6667) x (1 + 0.2) - 1 = 41.42%. Arithmetic mean return R, = (Ry + R,\/2 = (66.67% + 20%)/2 = 43.34%. Rates and Return * calculate and interpret major return measures and describe their appropriate uses",
     difficulty: "medium",
   },
   {
@@ -871,7 +871,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$107,207.",
     optionC: "\$107,218.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it does not take into account quarterly compounding, and calculates FV, = $100,000(1 + 0.035)? = $107,122.50 = $107,123. Itis also closest to $107,000 = $100,000(1 + 2(0.035)). | B. Incorrect because it wrongly accounts for quarterly compounding by assuming m = 3 instead of m= 4, and calculates FV = $100,000(1 + 0.035/3)° = $107,207.37 = $107,207. C. Correct because FVy = PV(1 + rm), where m = number of compounding periods per year = 4, r, = quoted annual interest rate = 3.5%, N= number of years = 2. Thus, FV, = $100,000(1 + 0.035/4)"®) = $107,218.17 = $107,218. Rates and Return * calculate and interpret annualized return measures and continuously compounded returns, and desoribe their appropriate uses Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -882,7 +882,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "information asymmetry.",
     optionC: "the tax shield provided by debt.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "",
     difficulty: "medium",
   },
   {
@@ -893,7 +893,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "held for use under US GAAP.",
     optionC: "held for sale under US GAAP.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "",
     difficulty: "medium",
   },
   {
@@ -904,7 +904,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "probability of rejecting a true null hypothesis.",
     optionC: "probability of correctly rejecting the null hypothesis.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because this is the definition of Type I error. | B. Incorrect because this isin fact a Type | error. | C. Correct because the power of a test is the probability of correctly rejecting the null hypothesis—that is, the probability of rejecting the null when itis false. Hypothesis Testing = explain hypothesis testing and its components, including statistical significance, Type ! and Type Il errors, and the power of a test. Question 73 of 90 @ Filter > jscussion What do vou want to discuss... (reauired)",
     difficulty: "medium",
   },
   {
@@ -916,7 +916,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Market 2.",
     optionC: "Market 3.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because in a monopolistically competitive market there are a large [not small] number of potential buyers and sellers and suppliers differentiate their products through advertising and other non-price strategies. Market 2 €. Correct because in a monopolistically competitive market there are a large number of potential buyers and sellers and suppliers differentiate their products through advertising and other non-price strategies. The Firm and Market Structures ( Zale + identify the type of market structure within which a firm and describe the use and limitations of",
     difficulty: "medium",
   },
   {
@@ -927,7 +927,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "US GAAP only.",
     optionC: "both IFRS and US GAAP.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because under IFRS, if inventory that was written down in a previous period subsequently increases in value, the amount of the original write-down is reversed. Subsequent reversal of an inventory write-down is not permitted under US GAAP. Incorrect because under IFRS, inventory that was written down in a previous period subsequently increases in value, the amount of the original write-down is reversed. Subsequent reversal of an inventory write-down is not permitted under US GAAP. , Incorrect because under IFRS, if inventory that was written down in a previous period subsequently increases in value, the amount of the original write-down is reversed. Subsequent reversal of an inventory write-down is not permitted under US GAAP. Analysis of Inventories = describe the measurement of inventory at the lower of cost and net realisable value and its implications for financial statements and ratios",
     difficulty: "medium",
   },
   {
@@ -938,7 +938,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "regression coefficients.",
     optionC: "standard error of the estimate.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the coefficient of determination is a goodness of fit measure, not the coefficient of variation. The Coefficient of variation is a measure of relative dispersion. The coefficient of variation, CV, is the ratio of the standard deviation of a set of observations to their mean value. The s,, (the standard error of the estimate), along with the coefficient of determination and the F-statistic, is a measure of the goodness of the fit of the estimated regression line, | B. Incorrect because the regression coefficients, the intercept and slope coefficient, are derived from the initial ordinary least squares regression, not the analysis of variance. €. Correct because we often represent the sums of squares from a regression model in an analysis of variance (ANOVA) table, which presents the sums of squares, the degrees of freedom, the mean squares, and the F statistic. The s,, (the standard error of the estimate), along with the coefficient of determination and the F-statistic, is a measure of the goodness of the fit of the estimated regression line. Simple Linear Regression = describe the use of analysis of variance (ANOVA) in regression analysis, interpret ANOVA results, and calculate and interpret the standard error of estimate in a simple linear regression",
     difficulty: "medium",
   },
   {
@@ -949,7 +949,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "unqualified opinion.",
     optionC: "disclaimer of opinion.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because a qualified audit opinion is one in which there is some scope limitation or exception to accounting standards, | B. Incorrect because an unqualified audit opinion states that the financial statements give a true and fair view (international) or are fairly presented (intermational and US) in accordance with applicable accounting standards, Incorrect because a disclaimer of opinion occurs when, for some reason, such as a scope limitation, the auditors are unable to issue an opinion.",
     difficulty: "medium",
   },
   {
@@ -961,7 +961,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$52 million.",
     optionC: "\$55 million.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because the decrease in working capital is subtracted from, rather than added to, net income: 53.5 + 6 — 6 ~ 1.5 = $52 milion. | C. Correct because company-level market share projections may be based on historical market share and a forward- looking assessment of the companys competitive position. The companys sales are then estimated as its projected market share multiplied by projected total industry sales. After developing a sales forecast for a company, an analyst can choose among various methods for forecasting income and cash flow. Whatever the margin used, the forecasted amount of profit for a given period is the product of the forecasted amount of sales and the forecast of the selected profit margin. Accordingly, net income is calculated as market share * total industry sales x Net profit margin = 0.09 x 3.3 billion x 0.18 = 53.5 million. FCFF = Net income + Depreciation + Int(1 ~ Tax rate) ~ Capital expenditures — Working Capital expenditures; or = 53.5 + 6 — 6 + 1.5 = $55 milion. Analyzing Statements of Cash Flows II = calculate and interpret free cash flow to the firm, free cash flow to equity, and performance and coverage cash flow ratios",
     difficulty: "medium",
   },
   {
@@ -972,7 +972,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "non-internet-based businesses only.",
     optionC: "both internet-based businesses and non-internet-based businesses.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because network effects refer to the increase in value of a network to its users as more users join. Many internet-based businesses are built on network effects. Network effects are also at work in many older, non- internet businesses, such as telephone service, credit cards, real estate agencies, and stock exchanges. | B. Incorrect because network effects refer to the inorease in value of a network to its users as more users join. Many internet-based businesses are built on network effects. Network effects are also at work in many older, non- internet businesses, such as telephone service, credit cards, real estate agencies, and stock exchanges. €. Correct because network effects refer to the increase in value of a network to its users as more users join. Many internet-based businesses are built on network effects. Network effects are also at work in many older, non- internet businesses, such as telephone service, credit cards, real estate agencies, and stock exchanges. Business Models = describe key features of business models Discuss @ Filter > Discussion",
     difficulty: "medium",
   },
   {
@@ -983,7 +983,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "can sell their shares more easily.",
     optionC: "have less control over management.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because corporate issuers may issue additional equity shares in the capital markets from time to time. For a public issuer, these shares can be traded in the secondary market once theyre issued. In contrast, private companies finance smaller amounts in the primary market (private debt or equity) from fewer investors who typically have longer holding periods. | B. Incorrect because a public (listed) company has some or all of its shares listed and traded on an exchange. These shares may be widely held or involve a majority or controlling owner. In contrast, the shares of a private company are not listed (do not trade on an exchange), so no visible company valuation or share price transparency exists. This makes ownership transfer between investors far more difficult than for a public company. Thus, private company shares cannot be sold more easily when compared to public company shares. | C. Incorrect because private companies typically have fewer shareholders, meaning that controlling owners and management are accountable to fewer stakeholders. Further, going private puts these investors in control and takes the company out of public view, which may be beneficial. These actions undertaken with greater private control might include management changes, selling assets, restructuring, or realizing cost savings that are expected to exceed the premium paid and financing costs. Thus, private company shareholders have more, not less control, over management. Organizational Forms, Corporate Issuer Features, and Ownership = compare publicly and privately owned corporate issuers",
     difficulty: "medium",
   },
   {
@@ -994,7 +994,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "accounts payable only.",
     optionC: "both inventory and accounts payable.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because this is the adjustment to arrive at purchases from suppliers. To determine purchases from suppliers, cost of goods sold is adjusted for the change in inventory. | B. Incorrect because this is the adjustment of purchases from suppliers to paid to suppliers. Therefore, once purchases have been determined, cash paid to suppliers can be calculated by adjusting purchases for the change in accounts payable. €. Correct because there are two pieces to this calculation: the amount of inventory purchased and the amount paid for it. To determine purchases from suppliers, cost of goods sold is [cost of sales] adjusted for the change in inventory. Therefore, once purchases have been determined, cash paid to suppliers can be calculated by adjusting purchases for the change in accounts payable. Analyzing Statements of Cash Flows | = describe the steps in the preparation of direct and indirect cash flow statements, including how cash flows can be computed using income statement and balance sheet data Discuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -1006,7 +1006,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "€9,672.",
     optionC: "€10,912.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the initial deposit declines to €7,800 = €10,000 * (1 ~ 0.22) before the €1,000 withdrawal is made at the beginning of the second year, then the remaining balance in the account increases to €8,432, as the account earns 24% during the second year; [(€7,800 — €1,000) x (1 + 0.24) = €8,432. | B. Incorrect because it fails to deduct the €1,000 withdrawal from the calculation; €10,000 x (1 ~ 0.22) * (1 + 0.24) = €9,672. | C. Incorrect because it adds (rather than deducts) the €1,000 withdrawal in the calculation; [€10,000 x (1 ~0.22) + €1,000] * (1 + 0.24) = €10,912. Time Value of Money in Finance * calculate and interpret the implied return of fixed-income instruments and required return and implied growth of equity instruments given the present value (PV) and cash flows",
     difficulty: "medium",
   },
   {
@@ -1030,7 +1030,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Company 2.",
     optionC: "Company 3.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because since the companys revenue is growing steadily (20% in the first year and 22% subsequently) and there is already a small amount of debt in the capital structure, this company is most likely in its growth phase. C. Incorrect because with negligible revenue growth and DebUCapital already greater than 25%, this company is most likely @ mature company. Capital Structure = explain factors affecting capital structure and the weighted-average cost of capital",
     difficulty: "medium",
   },
   {
@@ -1042,7 +1042,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "4.2.",
     optionC: "4.5.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because inventories in both years were measured at net realizable value. Hence, Inventory tumover ratio ,250 / [(300 + 325) /2] = 1,250 / 312.5 = 4.0. | B. Incorrect because inventories in both years were measured at cost. Hence, Inventory turnover ratio = +375) / 2] = 1,250 / 300 = 4.167 = 4.2, €. Correct because IFRS state that inventories shall be measured (and carried on the balance sheet) at the lower of cost and net realizable value and Inventory tumover ratio = Cost of sales + Average inventory. Accordingly, Inventory turnover ratio = 1,250 / (225 + 326)] / 2 = 1,250 /275 = 4.545~4.5. 250 / (225 Analysis of Inventories = describe the measurement of inventory at the lower of cost and net realisable value and its implications for financial statements and ratios",
     difficulty: "medium",
   },
   {
@@ -1053,7 +1053,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "remain the same.",
     optionC: "increase.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because if the ROIC measure is higher than the COC, the company is generating a higher return for investors compared with the required return, thereby increasing the firms value for shareholders. The inverse is true if the COC is higher than the ROIC. | B. Incorrect because if the ROIC measure is higher than the COC, the company is generating a higher return for investors compared with the required return, thereby increasing the firms value for shareholders. The inverse is rue if the COC is higher than the ROIC. €. Incorrect because if the ROIC measure is higher than the COC, the company is generating a higher return for investors compared with the required return, thereby increasing the firms value for shareholders. The inverse is rue if the COC is higher than the ROIC. Capital Investments and Capital Allocation = describe the capital allocation process, calculate net present value (NPV), internal rate of return (IRR), and return on invested capital (ROIC), and contrast their use in capital allocation Question 86 of 90 @ Filter »",
     difficulty: "medium",
   },
   {
@@ -1065,7 +1065,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "10.0%.",
     optionC: "10.8%.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it weights each component by the correlation with equities: (0.45 x 16 x 1.00) + (0.25 x 12 x 0.20) + (0.30 x 2 x 0.10) = 8.16. | B. Incorrect because iti the arithmetic average of the three returns without weights: (16 + 12 + 2)/3 = 10. . Correct because the portfolio expected return is the weighted mean return and is calculated as: (0.45 x 16) + (0.25 * 12) + (0.30 * 2) = 10.80. Portfolio Mathematics = calculate and interpret the expected value, variance, standard deviation, covariances, and correlations of portfolio returns",
     difficulty: "medium",
   },
   {
@@ -1076,7 +1076,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Common stock.",
     optionC: "Preferred stock.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct. Bonds are a form of debt that must be adjusted for taxes when calculating the weighted average cost of capital. | B. Incorrect because adjust ment for taxes is applicable for the cost of debt and not in the cost of equity | C. Incorrect because adjustment for taxes is applicable for the cost of debt and not in the cost of equity. Capital Structure * calculate and interpret the weighted-average cost of capital for a company Discuss @ Fitter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1087,7 +1087,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "regulation.",
     optionC: "board representation.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because both customers and suppliers enter into contractual agreements with a company that specify the products and services underlying the relationship, the prices or fees and the payment terms, the rights and responsibilities of each party, the after-sale relationship, and any guarantees. Contracts also specify actions to be taken and recourse available if either party breaches the terms of the contract. | B. Incorrect because supplier relations are typically managed through contracts. By contrast, employee rights are primarily protected through jurisdiction-specific labor laws. . Incorrect because supplier relationships are typically managed through contacts, not board representation. Corporate Governance: Conflicts, Mechanisms, Risks, and Benefits + describe corporate governance and mechanisms to manage stakeholder relationships and mitigate associated risks Discuss @ Fitter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1098,7 +1098,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "retrospective application.",
     optionC: "modified retrospective application.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because prospective application involves changes to future financial statements, which would not improve historical comparability. At times, standard setters issue new standards that require compat accounting policies. Depending on the standard, companies may be permitted to adopt the standards prospectively (in the future) or retrospectively (restate financial statements as though the standard existed in the past). to change | B. Correct because retrospective application means that the financial statements for all fiscal years shown in a companys financial report are presented as if the newly adopted accounting principle had been used throughout the entire period. Notes to the financial statements describe the change and explain the justification for the change. Because changes in accounting principles are retrospectively applied, the financial statements that appear within a financial report are comparable. | C. Incorrect because under the modified retrospective approach, companies were not required to revise previously reported financial statements. Instead, they adjusted opening balances of retained earnings (and other applicable accounts) for the cumulative impact of the new standard. Analyzing Income Statements = describe the financial reporting treatment and analysis of non-recurring items (including discontinued operations, Unusual or infrequent items) and changes in accounting policies",
     difficulty: "medium",
   },
   {
@@ -1109,7 +1109,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "have no limits on the total amount of currency that may be issued.",
     optionC: "allow transactions between parties without the need for an intermediary.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it is important to note that many cryptocurrencies have experienced high levels of price volatility. lack of clear fundamentals underlying these currencies has contributed to their volatlity. | B. Incorrect because many cryptocurrencies have a self imposed limit on the total amount of currency they may issue. C. Correct because a cryptocurrency, also known as a digital currency, operates as electronic currency and allows near-real-time transactions between parties without the need for an intermediary, such as a bank,",
     difficulty: "medium",
   },
   {
@@ -1120,7 +1120,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "in publicly traded companies only.",
     optionC: "both in privately held and in publicly traded companies.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because private equity funds invest in both publioly traded and privately held companies, not only privately held companies. Private equity refers to investment in privately owned companies or in public companies with the intent to take them private. . Correct because private equity funds invest in both publicly traded and privately held companies, not only privately held companies. Private equity refers to investment in privately owned companies or in public companies. with the intent to take them private. Investments in Private Capital: Equity and Debt = explain features of private equity and its investment characteristics",
     difficulty: "medium",
   },
   {
@@ -1131,7 +1131,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "-3.49%.",
     optionC: "-1.65%.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the %APV"™" = (-AnnModDur x AYield) + (1/2 AnnConvexity x (AYield)). This incorrect answer subtracts the convexity. Using the data provided, (-7.1 x 0.005) ~ (1/2 x 49.2 x (0.005)? = 0.0355 -0.00062 = 0.03612 = -0.0361 or -3.61%. | B. Correct because the %APV" = (-AnnModDur x AYield) + (1/2 AnnConvexity x (AYield)?). Using the data provided, (- 7.1 * 0.005) + (1/2 x 49.2 x (0.005)? = -0.0355 + 0.00062 = -0.03488 = -0.0349 or 3.49%. . Incorrect because the %APV"™" = (-AnnModDur * AYield) + (1/2 AnnConvexity x (AYield)*). This incorrect answer multiplies the wrong side of the equation by 1/2 to be (—7.1 x 0.005 x 1/2) + 49.2 x (0.005)?= 0.01775 + 0.00123 = -0.01652 or -1.65%. Yield-Based Bond Convexity and Portfolio Properties * calculate the percentage price change of a bond for a specified change in yield, given the bonds duration and convexity",
     difficulty: "medium",
   },
   {
@@ -1142,7 +1142,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Equity hedge.",
     optionC: "Event-driven.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct, Macro hedge funds emphasize a "top down" approach to identify economic trends and trade on expected movements in economic variables. | B. Incorrect. Equity hedge funds use a "bottom up" approach and employ strategies, such as market neutral, which uses quantitative (technical) and/or fundamental analysis to identify under- and overvalued equity securities at the company level . Incorrect. event-driven strategies typically seek to profit from potential changes in the corporate structure of individual companies. This strategy is considered "bottom up" where the analysis starts at the company level, as opposed to a "top down" approach which starts with macroeconomic analysis. Hedge Funds = explain investment features of hedge funds and contrast them with other asset classes cuss @ Filter >",
     difficulty: "medium",
   },
   {
@@ -1153,7 +1153,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "A putable bond.",
     optionC: "An option-free bond.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because a callable bond exhibits negative convexity at low yield levels and positive convexity at high yield levels. | B. Incorrect because a putable bond always exhibits positive convexity, higher than an option-free bond. . Incorrect because an option-free bond always exhibits positive convexity. Curve-Based and Empirical Fixed-Income Risk Measures = explain why effective duration and effective convexity are the most appropriate measures of interest rate risk for bonds with embedded options Question 5 of 90 Filter »",
     difficulty: "medium",
   },
   {
@@ -1164,7 +1164,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "15.5%.",
     optionC: "17.0%.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because in this case the formula misuses the MRP so the expected return is computed as 0.05 + (0.08 — 0.05)(1.5) = 9.5%. Incorrect because the formula swaps the RFR and the MRP so expected return is computed as 0.08 + (0.05)(1.5) = 15.5%. Correct because using the CAPM relationship of E(R,) = R, + [E(R,,) — RB, we can estimate the expected return as: E(R) = 0.05 + (0.08)(1.5) = 17.0%. Portfolio Risk and Return: Part II + calculate and interpret the expected return of an asset using the CAPM Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1176,7 +1176,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$42.55.",
     optionC: "\$44.79.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "",
     difficulty: "medium",
   },
   {
@@ -1187,7 +1187,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "active investment is profitable.",
     optionC: "the security's cash flows are complex.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because if investors believe a market is highly efficient, they will usually accept market prices as accurately reflecting intrinsic value | B. Incorrect because if active investment is profitable, this suggests the market is inefficient, in which case, market value and intrinsic value are most likely different. If investors believe an asset market is relatively inefficient, they may try to develop an independent estimate of intrinsic value. | C. Incorrect because the more complex an assets future cash flows, the more difficult itis to estimate its intrinsic value. Market Efficiency = contrast market value and intrinsic value Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1198,7 +1198,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Equal-weighted index.",
     optionC: "Market-capitalization-weighted index.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because price-weighted indices are not rebalanced because the weight of each constituent security is determined by its price. | B. Correct because under the equal-weighted method, after the index is constructed and the prices of constituent securities change, the index is no longer equally weighted. Therefore, maintaining equal weights requires frequent adjustments (rebalancing) to the index. | C. Incorrect because for market-capitalization-weighted indices, rebalancing is less of a concern because the indices largely rebalance themselves. Market-capitalization weights are only adjusted to reflect mergers, acquisitions, liquidations, and other corporate actions between rebalancing dates. Security Market Indexes = describe rebalancing and reconstitution of an index",
     difficulty: "medium",
   },
   {
@@ -1210,7 +1210,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "fairly valued.",
     optionC: "overvalued.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because",
     difficulty: "medium",
   },
   {
@@ -1221,7 +1221,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "equally advantageous to the general partner.",
     optionC: "more advantageous to the general partner.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because deal-by-deal (or American) waterfalls are more advantageous to the general partner because performance fees are collected on a per-deal basis, allowing the general partner to get pald before limited partners receive their initial investment and their preferred rate of return (ie., the hurdle rate) on the entire fund, | B. Incorrect because deal-by-deal (or American) waterfalls are more advantageous to the general partner because Performance fees are collected on a per-deal basis, allowing the general partner to get paid before limited partners receive their initial investment and their preferred rate of return (i, the hurdle rate) on the entire fund, . Correct because there are two types of waterfalis: deaF-by-deal (or American) waterfalls and whole-of fund (or European) waterfalls. Deal-by-deal waterfalls are more advantageous to the general partner because performance fees are collected on a per-deal basis, allowing the general partner to get paid before limited partners receive their initia! investment and their preferred rate of return (ie., the hurdle rate) on the entire fund. In whole-of-fund waterfalls, all tributions go to the limited partners as deals are exited and the general partner does not Participate in any profits until the limited partners receive their initial investment and the hurdle rate has been met. In contrast to deal-by-deal waterfalls, whole-of-fund waterfalls occur at the aggregate fund level (.e., after all investments have been exited) and are more advantageous to the limited partners. Alternative Investment Features, Methods, and Structures = describe investment ownership and compensation structures commonly used in alternative investments",
     difficulty: "medium",
   },
   {
@@ -1232,7 +1232,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Structural subordination.",
     optionC: "Cross-default provisions.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because for the rating agencies, likelihood of default—default risk—is the primary factor in assigning their ratings. However, there are secondary factors as well. These factors include the priority of payment in the event of a default (e.g., secured versus senior unsecured versus subordinated) as well as potential loss severity in the event of default. Another factor considered by rating agencies is structural subordination. Recognizing these different payment priorities, and thus the potential for higher (or lower) loss severity in the event of default, the rating agencies have adopted a notching process whereby their credit ratings on issues can be moved up or down from the issuer rating, which is usually the rating applied to its senior unsecured debt. Therefore, differences between the Issues durations are most likely not a determining factor in the notching process followed by rating agencies. | B. Correct because structural subordination can arise when a corporation with a holding company structure has debt at both its parent holding company and operating subsidiaries. Debt at the operating subsidiaries will get serviced by the cash flow and assets of the subsidiaries before funds can be passed (upstreamed) to the holding company to service debt at that level. Recognizing these different payment priorities, and thus the potential for higher (or lower) loss severity in the event of default, the rating agencies have adopted a notching process whereby their credit ratings on issues can be moved up or down from the issuer rating, which is usually the rating applied to its senior unsecured debt. Therefore, if the companys subsidiary is the operational entity that produces the cash flow and holds the assets within the holding company structure, the parent (holding) company itself will be structurally subordinated and will most likely have a lower credit rating than the subsidiary,",
     difficulty: "medium",
   },
   {
@@ -1243,7 +1243,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Life insurance companies.",
     optionC: "Defined benefit pension plans.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "",
     difficulty: "medium",
   },
   {
@@ -1254,7 +1254,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Private information only.",
     optionC: "Both past market data and private information.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because in a semi-strong-form efficient market, prices reflect all publicly known and available information. Publicly available information includes financial statement data (such as earnings, dividends, corporate investments, changes in management, etc.) and financial market data (such as closing prices, shares traded, etc.). Therefore, the semi-strong form of market efficiency encompasses the weak form. In the weak-form, efficient market hypothesis, security prices fully reflect all past market data. | B. Incorrect because if markets are semi-strong efficient, no single investor has access to information that is not already available to other market participants, therefore private information is not reflected in market prices in a semi-strong-form market. | C. Incorrect because if markets are semi-strong efficient, no single investor has access to information that is not already available to other market participants, therefore private information is not reflected in market prices in a semi-strong-form market. Market Efficiency + contrast weak-form, semi-strong-form, and strong-form market efficiency cuss @ Filter >",
     difficulty: "medium",
   },
   {
@@ -1265,7 +1265,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "inflation risk.",
     optionC: "prepayment risk.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "",
     difficulty: "medium",
   },
   {
@@ -1276,7 +1276,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "mental accounting.",
     optionC: "cognitive dissonance.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because regret-aversion bias is an emotional bias in which people tend to avoid making decisions out of fear that the decision will tum out poorly. While regret may be described as a mental discomfort, regret-aversion does not best describe this discomfort, but rather a bias in how individuals respond to actual or anticipated regret. Incorrect because mental accounting bias refers to mentally dividing money into accounts that influence decisions, even though money is fungible. | C. Correct because belief perseverance biases result from the mental discomfort that occurs when new information conflicts with previously held beliefs or cognitions, known as cognitive dissonance. The Behavioral Biases of Individuals = discuss commonly recognized behavioral biases and their implications for financial decision making Discuss @ Fitter > Discussion What do you want to dis (required)",
     difficulty: "medium",
   },
   {
@@ -1287,7 +1287,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "disposition effect.",
     optionC: "gambler's fallacy.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because according to loss aversion-related arguments in behavioral theories, investors dislike losses more than they like comparable gains. Thus, such a behavioral bias can explain observed overreaction in markets. | B. Incorrect because the disposition effect is a behavioral bias in which investors tend to avoid realizing losses but rather seek to realize gains. | C. Incorrect because gamblers fallacy is a behavioral bias in which recent outcomes affect investors estimates of future probabilities. Market Efficiency = describe behavioral finance and its potential relevance to understanding market anomalies Discuss @ Fitter > Discussion What do you want to dis (required)",
     difficulty: "medium",
   },
   {
@@ -1310,7 +1310,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Credit risk.",
     optionC: "Expected inflation rate.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because taxation is part of the yield spread providing the investor with compensation for the tax impact of holding a specific bond. | B. Incorrect because credit risk is part of the yield spread providing the investor with compensation for the credit risks of holding a specific bond. C. Correct. Building blocks of the yield curve are spread (risk premium) and a benchmark (risk-free rate of return). Expected inflation rate and expected real rate are components of the risk-free rate of return (ie., the benchmark). Yield and Yield Spread Measures for Fixed-Rate Bonds = compare, calculate, and interpret yield and yield spread measures for fixed-rate bonds Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1321,7 +1321,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "harder to price.",
     optionC: "drawn from a larger universe.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the constituents of equity indexes are more liquid than those of fixed-income indexes. The number of fixed-income securities is many times larger than the number of equity securities. Fixed-Income markets are predominantly dealer markets, which means that dealers are assigned to specific securities and are responsible for creating liquid markets for those securities by purchasing and selling them from their inventory. In addition, many fixed-income securities do not trade frequently and are therefore relatively illiquid. As a result, index providers must contact dealers to obtain current prices on constituent securities to update the index, or they must estimate the prices of constituent securities using the prices of traded fixed-income securities with similar characteristics. | B. Incorrect because fixed income markets are predominantly dealer markets. This means that dealers are assigned to specific securities and are responsible for creating liquid markets for those securities by purchasing and selling them from their inventory. In addition, many fixed-income securities do not trade frequently and, as a result, are relatively iliquid. As a result, index providers must contact dealers to obtain current prices on constituent securities to update the index or they must estimate the prices of constituent securities using the prices of traded fixed- income securities with similar characteristics. | C. Incorrect because the number of fixed-income securities is many times larger than the number of equity securities. Security Market Indexes = compare types of security market indexes Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1333,7 +1333,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "9%.",
     optionC: "11%.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it assumed the sustainable growth rate = (1 — payout ratio) x ROA, where ROA = Net income / Average total assets = 1,500/11,500 = 0.1304. Thus the sustainable growth rate = (1 ~ 0.45) x 0.1304 = 0.55 x 0.1304 = 0.0717 = 7%. | B. Incorrect because it assumed the sustainable growth rate = Payout ratio x ROE, where ROE = Net income / Average shareholders equity = 1,500 / 7,500 = 0.2. Thus sustainable growth rate is calculated as = 0.45 * 0.2 = 0.09 = 9%. Correct because the sustainable growth rate = Retention rate x ROE, where the retention rate = (1— payout ratio) and ROE = Net income / Average shareholders equity. Thus sustainable growth rate = (1 — 0.45) x 1,500/7,500 = 0.55 x 0.2 = 0.11 = 11%. Equity Valuation: Concepts and Basic Tools * calculate and interpret the intrinsic value of an equity security based on the Gordon (constant) growth dividend, discount model or a two-stage dividend discount model, as appropriate",
     difficulty: "medium",
   },
   {
@@ -1344,7 +1344,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "derives its value from an underlying.",
     optionC: "derives its value based on the principle that arbitrage opportunities exist in the market.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because a derivative is a financial instrument that derives its performance from the performance of an underlying asset. . Incorrect because one and only one price can exist for the derivative. Otherwise, there will be an arbitrage opportunity. We typically take the underlying price as given and infer the unique derivative price that prohibits any arbitrage opportunities. Most derivatives pricing models are established on this foundation. We simply assume that no arbitrage opportunities can exist and infer the derivative price that guarantees there are no arbitrage opportunities. Therefore, a derivative does not derive its performance from the presence of arbitrage but the price of a derivative is determined with no arbitrage present. Derivative Instrument and Derivative Market Features = define a derivative and describe basic features of a derivative instrument Discuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -1356,7 +1356,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$13.00.",
     optionC: "\$13.11.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the cost of the fiduciary call must equal the cost of the synthetic protective put, giving us what is referred to as put-call-forward parity: Fy(T)(1 +) + po = Gy + XI(1 + 1)" where cp is the price of the European call, Pos the price of the European Put, Fis the forward price of the underlying, Xs the exercise price, ris the risk- {ree rate and Tis time. Therefore the price of a 9-month fiduciary call is equal to the price of a 9-month synthetic protective put and can be calculated by c+ XI(1 + 1)" = $3.25 + $9.75/(1 + 0.015)""? = $3.25 + $9.64 = $12.89. | B. Incorrect because the cost of the fiduciary call must equal the cost of the synthetic protective put, giving us what is referred to as put-call-forward parity: F,(T)/(1 + 4" + py = 6) + XI(1 +1)" where cy is the price of the European call, Po is the price of the European Put, F; is the forward price of the underlying, Xs the exercise price, ris the risk- {ree rate and Tis time. Therefore the price of a 9-month fiduciary call is not equal to ¢) + X or $3.25 + $9.75 = $13.00. Incorrect because the cost of the fiduciary call must equal the cost of the synthetic protective put, giving us what is. referred to as put-call-forward parity: Fy(T)(1 + 1)" + py = cy + XI(1 + 1) where cy is the price of the European call, Pos the price of the European Put, F, is the forward price of the underlying, X is the exercise price, ris the risk- free rate and Tis time, Therefore the price of a 9-month fiduciary call is not equal to cy + X * (1 + )! or $3.25 + $9.75 x (1 + 0.015)" = $3.25 + $9.86 = $13.11 Option Replication Using Put-Call Parity + explain put-call forward parity for European options",
     difficulty: "medium",
   },
   {
@@ -1367,7 +1367,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "a lower degree of leverage.",
     optionC: "a smaller amount of required capital.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because derivatives have lower transaction costs than the underlying, The transaction costs of derivatives can be high relative to the value of the derivatives, but these costs are typically low relative to the value of the underlying. | B. Incorrect because derivatives are widely used an: be seen in a crash. wolve a high degree of leverage, a given that they would C. Correct because derivative markets also typically have greater liquidity than the underlying spot markets, a result of the smaller amount of capital required to trade derivatives than to get the equivalent exposure directly in the underlying, Therefore, derivatives most likely have lower capital requirements relative to trading the value of the underlying. Derivative Benefits, Risks, and Issuer and Investor Uses = describe benefits and risks of derivative instruments Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1378,7 +1378,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "forward, discounted over the original term of the contract.",
     optionC: "forward, discounted over the remaining term of the contract.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect. This is only true at initiation, . Correct. The value of a forward contract is the spot price of the undertying minus the present value of the forward contract. Calculating the present value requires adjusting the time period to account for the remaining term of the contract. Pricing and valuation of forward contracts and for an underlying with varying maturities = explain how the value and price of a forward contract are determined at initiation, during the life of the contract, and at expiration Discuss @ Filter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1389,7 +1389,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "lower debt/EBITDA and a higher EBITDA/interest expense.",
     optionC: "higher debt/EBITDA and a lower EBITDA/interest expense.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because lower debV/EBITDA shows that the company has lower leverage in comparison to earnings and thus has a lower probability of default and higher creditworthiness (all else being equal). | B. Incorrect because lower debt/EBITDA shows a lower level of debt compared to adjusted earnings and due to higher EBITDA interest coverage there is less risk that the company will not be able to pay its interest (coupon), leading to a lower probability of default and higher evaluation of creditworthiness (all else being equal). C. Correct because higher deb¥/EBITDA shows that there is higher leverage in comparison to earnings and a lower EBITDA interest coverage ratio shows that the company is more likely not to have earings that are enough to pay the interest (coupon) and thus has a higher probability of default and lower creditworthiness (all else being equal). Debt/EBITDA: this ratio is a common leverage measure. A higher ratio indicates more leverage and thus higher credit risk. Note that this ratio can be very volatile for companies with high cash flow variability, such as those in cyclical industries and with high operating leverage (fixed costs). Coverage ratios measure an issuers ability to meet—to cover—its interest payments. The two most common are the EBITDA/interest expense and EBIT/interest expense ratios. EBITDA/Iinterest expense: this measurement of interest coverage is a bit more liberal than the one that uses EBIT because it does not subtract out the impact of (non-cash) depreciation and amortization expense. A higher ratio indicates higher credit quality Credit Analysis for Corporate Issuers * calculate and interpret financial ratios used in credit analysis",
     difficulty: "medium",
   },
   {
@@ -1400,7 +1400,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Risk tolerance.",
     optionC: "Return requirement.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because five major types of constraints on portfolio selection are liquidity, time horizon, tax concems, legal and regulatory factors, and unique circumstances. | B. Incorrect because clients objectives are specified in terms of risk tolerance and return requirements. and return objectives are, therefore, likely to be part of the investment objectives section of the investment policy statement and not part of the constraints section focusing on liquidity, time horizon, tax concems, legal and regulatory factors, and unique circumstances. . Incorrect because clients objectives are specified in terms of risk tolerance and return requirements, Risk and return objectives are, therefore, likely to be part of the investment objectives section of the investment policy statement and not part of the constraints section focusing on liquidity, time horizon, tax concems, legal and regulatory factors, and unique circumstances. Basics of Portfolio Planning and Construction = desoribe the major components of an IPS Discuss @ Fier >",
     difficulty: "medium",
   },
   {
@@ -1411,7 +1411,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "use tactical asset allocation to capture market opportunities.",
     optionC: "change the asset allocation as the fund nears its target date.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the asset allocation would change as described in the response rationale for the answer key. | B. Incorrect because the asset allocation will change as described in the response rationale for the answer key, but will change due to target date, not due to market opportunities. Tactical asset allocation is a short-term change in allocation to capture market opportunities. . Correct because lifecycle or Target Date funds manage the asset mix based on a desired retirement date. For example, a Target Date fund 40 years into the future might be 90 percent invested in equities and 10 percent in fixed income. As time passes, however, the fund would gradually change the mix of shares from equity to fixed income. Portfolio Management: An Overview = describe mutual funds and compare them with other pooled investment products Discuss @ Filter > Discussion",
     difficulty: "medium",
   },
   {
@@ -1422,7 +1422,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "assumes the yield curve shifts in a parallel manner.",
     optionC: "assumes the yield curve shifts in a non-parallel manner.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the weighted average of the individual bond durations that comprise the portfolio is easily used as a measure of interest rate risk. | B. Correct because the weighted average of the individual bond durations that comprise the portfolio implicitly assumes a parallel shift in the yield curve. A parallel yield curve shift implies that all rates change by the same amount in the same direction. in reality interest rate changes frequently result in a steeper or flatter yield curve. . Incorrect because the weighted average of the individual bond durations that comprise the portfolio implicitly assumes a parallel shift in the yield curve. A parallel yield curve shift implies that all rates change by the same amount in the same direction. in reality interest rate changes frequently result in a steeper or flatter yield curve, Yield-Based Bond Convexity and Portfolio Properties * calculate portfolio duration and convexity and explain the limitations of these measures Discuss @ Filter > Discussion",
     difficulty: "medium",
   },
   {
@@ -1433,7 +1433,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "is lower than empirical duration for high-yield bonds under market stress scenarios.",
     optionC: "uses statistical methods and historical bond prices to derive the price-yield relationship for bond portfolios.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the approach to estimate duration and convexity statistics using mathematical formulas is often referred to as analytical duration. These estimates of the impact of benchmark yield changes on bond prices implicitly assume that government bond yields and spreads are independent variables that are uncorrelated with one another. BB. Incorrect because the same macroeconomic factors driving government bond yields lower in a market stress scenario will cause high-yield bond credit spreads to widen because of an increase in expected default risk. Since credit spreads and benchmark yields are negatively correlated under this scenario, wider credit spreads will Partially or fully offset the deciine in government benchmark yields, resulting in lower empirical duration estimates than analytical duration estimates. Analytical duration is higher, not lower, in this case. | C. Incorrect because empirical duration uses statistical methods and historical bond prices to derive the price-yield relationship for specific bonds or bond portfolios. Curve-Based and Empirical Fixed-Income Risk Measures = describe the difference between empirical duration and analytical duration Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1444,7 +1444,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Risk transfer.",
     optionC: "Risk avoidance.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because risk shifting refers to actions that change the distribution of risk outcomes. Risk transfer is often associated with insurance, whereas risk shifting generally involves derivatives as the risk modification vehicle Risk shifting diverts some portion of the risk distribution to another market participant who either bears the risk or intermediates that risk by moving it to yet another party. BB, Incorrect because risk transfer is the process of passing on a risk to another party, often, but not always, in the form of an insurance policy. Whereas tisk transfer refers to actions taken that pass the risk on to other parties, risk shifting refers to actions that change the distribution of risk outcomes. Risk transfer is often associated with insurance, whereas risk shifting generally involves derivatives as the risk modification vehicle. | C. Incorrect because one method of managing risk is taking steps to avoid it altogeth ; however, avoiding risk may not be as simple as it appears. It is difficult to completely avoid risk, but more importantly it is unclear that every risk should be completely avoided particularly if there are high costs associated with eliminating the risk. On the other hand, risk shifting refers to actions that change the distribution of risk outcomes.",
     difficulty: "medium",
   },
   {
@@ -1455,7 +1455,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "with a short time-to-maturity than for a bond with a long time-to-maturity.",
     optionC: "when the market discount rate goes down than when the market discount rate goes up.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the coupon effect states that for the same time-to-maturity, a lower-coupon bond has a greater percentage price change than a higher-coupon bond when their market discount rates change by the same amount. | B. Incorrect because the maturity effect states that generally, for the same coupon rate, a longer-term bond has a greater percentage price change than a shorter-term bond when their market discount rates change by the same amount. €. Correct because the convexity effect states that for the same coupon rate and time-to-maturity, the percentage price change is greater (in absolute value, meaning without regard to the sign of the change) when the market discount rate goes down than when it goes up. Fixed-Income Bond Valuation: Prices and Yields identify the relationships among a bonds price, coupon rate, maturity, and yield-to-maturity Discuss @ Fier >",
     difficulty: "medium",
   },
   {
@@ -1466,7 +1466,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "net cash flows on the swap at each payment date.",
     optionC: "fixed price of the swap with payments made at the same dates as the series of forward contracts.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because, as described in the rationale for the correct answer, each forward contract is created at the fixed price that corresponds to the fixed price of a swap of the same maturity with payments made at the same dates as the series of forward contracts €. Correct because each forward contract is created at the fixed price that corresponds to the fixed price of a swap of the same maturity with payments made at the same dates as the series of forward contracts. Pricing and Valuation of Interest Rates and Other Swaps = describe how swap contracts are similar to but different from a series of forward contracts Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1477,7 +1477,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "neutral.",
     optionC: "seeking.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the capital asset pricing model is based on the assumption that investors are risk-averse, utilty- maximizing, rational individuals. | B. Incorrect because the capital asset pricing model is based on the assumption that investors are risk-averse, util maximizing, rational individuals. | C. Incorrect because the capital asset pricing model is based on the assumption that investors are risk-averse, utlity- maximizing, rational individuals. Portfolio Risk and Return: Part Il = explain the capital asset pricing model (CAPM), including its assumptions, and the security market line (SML) Discuss @ Filter » jiscussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1488,7 +1488,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "selling a put and buying a call.",
     optionC: "selling a call and buying a put.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because selling a put and buying a call creates a synthetic long position, not a synthetic short position. Here, a synthetic short position needs to be created in conjunction with the existing long position to create a synthetic risk-free position. In effect, selling @ put and buying a call while already holding a long position in the underlying creates a synthetic leveraged long position. €. Correct because the put-call parity relationship can be written as pp ~ Cy = X/ (1+ 1)" — S,, where S, represents the price of the underlying asset, X represents the strike price, p represents the price of a put with strike price X, and ¢p represents the price of a call with strike price X. Thus, to convert an underlying position into a risk free position, one needs to buy a put and sella call, i.e. Sp Pp ~ G=X/ (1+ 1)". Option Replication Using Put-Call Parity += explain put-call parity for European options Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1499,7 +1499,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Callable bond.",
     optionC: "Option-free bond.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because callable bonds are advantageous to the issuer of the security. Put another way, the call option has value to the issuer. For this reason, callable bonds have to offer a higher yield and sell at a lower price than otherwise similar non-callable bonds. | C. Incorrect callable bonds have to offer a higher yield and sell at a lower price than otherwise similar non-callable bonds, Fixed-Income Cash Flows and Types = describe common cash flow structures of fixed-income instruments and contrast cash flow contingency provisions that benefit issuers and investors Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1511,7 +1511,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "0.",
     optionC: "1.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because using a correlation of -1 to calculate standard deviation results in a standard deviation of 10.3% (0.607 ¥ 0.167 + 0.407 ¥ 0.27" +20. 60¥ 0.40 * =1 *0.16 ¥0.27 = 10.3% | B. Incorrect because using a correlation of 0 to calculate standard deviation results in a standard deviation of 14.45% (0. 60° * 0.16 + 0.407 * 0.27? +2* 0.60 * 0.40 *0*0, 16 * 0.27 = 14.45% C. Correct because using a correlation of 1 to calculate standard deviation results in a standard deviation of 20.4% (0.607 * 0.16" + 0.407 * 0.27? +2*0.60* 0.401 *0.16 *0.27 = 20.4% Portfolio Risk and Return: Part | = calculate and interpret the mean, variance, and covariance (or correlation) of asset returns based on historical data",
     difficulty: "medium",
   },
   {
@@ -1522,7 +1522,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "governmental agencies only.",
     optionC: "both commercial entities and government agencies.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because classification systems are developed and used by both commercial entities and various governmental agencies. | B. Incorrect because classification systems are developed and used by both commercial entities and various governmental agencies. | C. Correct because classification systems are developed and used by both commercial entities and various governmental agencies. Industry and Competitive Analysis = describe industry classification methods and compare methods by which companies can be grouped Discuss @ Filter » jiscussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1533,7 +1533,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "a measure of investor risk aversion.",
     optionC: "the probabilities of up and down moves in the underlying.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the value of an option is determined by its risk-neutral expectation discounted at the risk-free rate. In a one-period binomial model, the risk-neutral probabilities are determined by the risk-free rate over the life of the option and the underlying assets volatility (as measured by the up and down gross retums, R® and R°). Therefore, using the one-period binomial option pricing model, the value of an option will be affected by the volatility of the underlying, | B. Incorrect because an options price is independent of investors risk aversion and the probability of the underlying price moving up (or down). . Incorrect because an options price is independent of investors risk aversion and the probability of the underlying price moving up (or down). Valuing a derivative using a one-period binomial model = explain how to value a derivative using a one-period binomial model Discuss @ filter »",
     difficulty: "medium",
   },
   {
@@ -1544,7 +1544,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "3.09.",
     optionC: "6.17.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because the approximate modified duration of a bond is ApproxModDur = ((PV.) - (PV.))/2*(AYield)*(PV) where PV, PVo, and PV, are the values of the bond when the yield falls, under the current yield, and when the yield rises, respectively, and AYield is the size of the yield change. Therefore, ApproxModDur = (94.474 - 91.041)/(2*0.0060*92. 733) = | C. Incorrect because it ignores the 2 in the denominator. .08 Yield-Based Bond Duration Measures and Properties = define, calculate, and interpret modified duration, money duration, and the price value of a basis point (PVBP) Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1555,7 +1555,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "measures interest rate risk for both parallel and non-parallel benchmark yield curve shifts.",
     optionC: "is an estimate of the percentage change in bond price given a change in the bond's yield to maturity.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the effective duration and modified duration of an option-free bond are identical only in the rare circumstance of an absolutely flat yield curve. Typically, the two duration measures will differ, but the difference narrows when the yield curve is flatter, the bonds time to maturity is shorter, and the bond is priced closer to its. par value. | B. Incorrect because effective duration is a curve duration statistic that measures interest rate risk in terms of a parallel shift in the benchmark yield curve, assuming all yields change by the same amount, Interest rate sensitivity, associated with non-parallel yield curve shifts is measured by key rate duration rather than effective duration. | C. Incorrect because effective duration is a curve duration statistic that measures interest rate risk in terms of a Parallel shift in the benchmark yield curve (not a change in the bonds own yield to maturity). Yield duration statistics, such as Macaulay duration and modified duration, measure interest rate risk in terms of a change in the bonds own yield to maturity. Curve-Based and Empirical Fixed-Income Risk Measures = explain why effective duration and effective convexity are the most appropriate measures of interest rate risk for bonds with embedded options",
     difficulty: "medium",
   },
   {
@@ -1566,7 +1566,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "provide liquidity.",
     optionC: "securitize assets.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because the service that dealers provide is liquidity. Dealers are proprietary traders who buy and sell securities from and to their clients, thereby providing liquidity. . Incorrect because securiizers, not dealers, securiize assets. Banks and investment companies create new financial products when they buy and repackage securities or other assets. The process of buying assets, placing them in a pool, and then selling securities that represent ownership of the pool is called securitization. Market Organization and Structure = describe types of financial intermediaries and services that they provide cuss @ —Fitor > Discussion",
     difficulty: "medium",
   },
   {
@@ -1578,7 +1578,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "109.18.",
     optionC: "111.73.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because the bond also can be valued using the forward curve. 5 / 1.012 +5 /(1.012 1.0188) + 105/ (1.012 x 1.0188 x 1.0246) = 4.94 + 4.85 + 99.39 = 109.18 = 109. . Incorrect because the bond also can be valued using the forward curve. This answer adds the total payments over the three years and divides by 3yty. 115 / 1.02932.93 = 111.73. The Term Structure of Interest Rates: Spot, Par, and Forward Curves = define par and forward rates, and calculate par rates, forward rates from spot rates, spot rates from forward rates, and the price of a bond using forward rates",
     difficulty: "medium",
   },
   {
@@ -1589,7 +1589,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "company's accounting return on equity.",
     optionC: "minimum required rate of return of investors in the company's equity.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because accounting retum on equity (ROE) measures the total amount of net income available to common shareholders generated by the total equity capital invested in the company. €. Correct because companies try to raise capital at the lowest possible cost, and the companys cost of equity is often used as a proxy for the investors minimum required rate of return, Overview of Equity Securities = compare a companys cost of equity, its (accounting) return on equity, and investors required rates of return Discuss @ Filter » jiscussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1600,7 +1600,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "equal to the value of the forward contract.",
     optionC: "greater than the value of the forward contract.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because, as described in the response rationale for the correct answer, the price of a forward contract at initiation is not less than the value of the forward contract. | B. Incorrect because, as described in the response rationale for the correct answer, the price of a forward contract at initiation is not equal to the value of the forward contract. €. Correct because neither the long nor the short pays anything to the other at the initiation date of a forward contract, the value of a forward contract when initiated is zero. On the other hand, The forward price that the parties agree to at the initiation date of the contract is a special price that results in the contract having zero value and prohibiting arbitrage. As this price agreed by the parties is a positive number, the price of a forward contract at initiation is greater than the value of the contract, which is zero. Pricing and Valuation of Futures Contracts = compare the value and price of forward and futures contracts Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1611,7 +1611,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "subordinated to senior secured debt but senior to equity in the borrower's capital structure.",
     optionC: "a hybrid loan structure that combines different tranches of secured and unsecured debt into a single loan.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect as this describes venture debt rather than mezzanine debt, Venture debt is private debt funding that provides venture capital backing to start-up or early-stage companies that may be generating little or negative cash flow. | B. Correct because mezzanine debt refers to private credit subordinated to senior secured debt but senior to equity in the borrowers capital structure. . Incorrect as this describes unitranche debt rather than mezzanine debt. Unitranche debt consists of a hybrid or blended loan structure combining different tranches of secured and unsecured debt into a single loan with a single, blended interest rate. Investments in Private Capital: Equity and Debt = explain features of private debt and its investment characteristics cuss @ —Fitor > Discussion",
     difficulty: "medium",
   },
   {
@@ -1622,7 +1622,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "no market quotations for the company's debt are available.",
     optionC: "comparing companies with significant differences in capital structure.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it describes a FCFE valuation model not enterprise value. FCFE is a measure of dividend- paying capacity | B. Incorrect because in practice, analysts may have difficulty accurately assessing enterprise value if they do not have access to market quotations for the companys debt. Although company debt prices could be estimated, EV would not be most useful in this circumstance. C. Correct because enterprise value is most useful when comparing companies with significant differences in capital structure. Since enterprise value is the sum of net debt and the market value of equity, it provides a more accurate comparison of companies that are similar in terms of equity value but have significant differences in debt versus cash. Equity Valuation: Concepts and Basic Tools = describe enterprise value multiples and their use in estimating equity value Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1633,7 +1633,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Residential.",
     optionC: "Commercial.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because residential real estate is by far the largest market sector by value and size. Savills World Research estimated in July 2018 that residential real estate accounted for more than 75% of global real estate values. | B. Correct because reside Ci real estate is by far the largest market sector by value and size. Incorrect because residential real estate is by far the largest market sector by value and size. Real Estate Infrastructure = explain features and characteristics of real estate Discuss @ Filter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1644,7 +1644,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "committed capital.",
     optionC: "assets under management.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because private equity funds raise committed capital and draw down on those commitments, generally over three to five years, when they have a specific investment to make. Note that the management fee is typically based on committed capital, not invested capital; the committed-capital basis for management fees is an important distinction from hedge funds, whose management fees are based on assets under management (AUM). | B. Correct because private equity funds raise committed capital and draw down on those commitments, generally over three to five years, when they have a specific investment to make, Note that the management fee is typically based on committed capital, not invested capital; the committed-capital basis for management fees is an important distinction from hedge funds, whose management fees are based on assets under management (AUM).. Incorrect because private equity funds raise committed capital and draw down on those commitments, generally over three to five years, when they have a specific investment to make. Note that the management fee is typically based on committed capital, not invested capital; the committed-capital basis for management fees is an important distinction from hedge funds, whose management fees are based on assets under management (AUM).. Alternative Investment Features, Methods, and Structures = describe investment ownership and compensation structures commonly used in alternative investments",
     difficulty: "medium",
   },
   {
@@ -1656,7 +1656,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "equal weighting.",
     optionC: "value weighting.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the price-return under a price-weighting method is ~18.9%, That is: Step 1: Calculate the beginning of period price = 50 + 75 +60 = 185 Step 2: Calculate the end of period price = 60 + 95 + 65 = 220 Step 3: Calculate the price retum = (220/185) — 1 ~ 18.9% | B. Incorrect because the price return under an equal-weighting metho« is ~18.3%. That is: Step 1: Calculate the one period return for each security: Security 1 = (60/50) - 1 = 20% Security 2 = (95/75) - 1~ 26.7% Security 3 = (65/60) -1 ~ 8.3% Step 2: Calculate the total retum = (20% + 26.7% + 8.3%)/3 ~ 18.3% . Incorrect because the price return under a value-weighting method is ~ 18.4%. That is: Step 1: Calculate the beginning of period market value = 24,000 = 65,250 (50 * 300) + (75 350) + (60 x 400) = 15,000 + 26,250 + Step 2: Calculate the end of period market value = (60 x 300) + (95 * 350) + (85 = 400) = 18,000 + 33,250 + 26,000 = 7,250 Step 3: Calculate the price retum = end of period market value / beginning of period market minus (77,250165,250) ~ 1 ~ 18.4%. Security Market Indexes",
     difficulty: "medium",
   },
   {
@@ -1667,7 +1667,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "already been constructed.",
     optionC: "reached the end of its useful life.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because greenfield investments entail developing new assets and new infrastructure. BB, Incorrect because greenfield investments entail developing new assets and new infrastructure. An investments on an asset that has already been constructed is most likely considered a brownfield investment as those investments expand existing facilities and may involve privatization of public assets or a sale leaseback of completed greenfield projects. 9 Incorrect because greenfield investments entail developing new assets and new infrastructure. An investments on an asset that has already been constructed is most likely considered a brownfield investment as those investments expand existing facilities and may involve privatization of public assets or a sale leaseback of completed greenfield projects. Real Estate Infrastructure features and characteristi Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1678,7 +1678,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Commodity prices.",
     optionC: "Harvesting flexibility.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the value of the land may change over time for both farmland and timberland, and these land price changes also contribute to the return on farmland and timberland investments. | B. Incorrect because as part of the retums generated by selling the output from the land, both farmland and timberland generate returns from price changes in their output. The market prices for agricultural products and timber both of which are commodities may fluctuate considerably over time, and these prices combined with harvest quantities dictate the revenue generated by the sale of the lands output. Correct because farm products must be harvested when ripe, with little flexibility in production, By contrast, timberland serves as both a factory and a warehouse. Timber (trees) can be grown ( . timberlands factory characteristic) and easily stored by simply not harvesting the trees (j.., timberlands warehouse characteristic), Natural Resources features of raw land, timberland, and farmland and their investment characterist Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1689,7 +1689,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$81.00.",
     optionC: "\$86.40.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because the price below which a margin call will take place is calculated with the following equation: (Equity/share) / (Price/share) = ($43.20 + P — $108)/P = 20%, which can be solved for P = $81.00. | C. Incorrect because this is the price 20% below the initial stack price ($108 x (1 - 20%) = $86.40) and not the level that triggers the margin call Market Organization and Structure = calculate and interpret the leverage ratio, the rate of return on a margin transaction, and the security price at which the investor would receive a margin call Discuss @ Fitter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1701,7 +1701,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Bond 2.",
     optionC: "Bond 3.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the most common bond cash flow structure is that of a standard fixed-coupon bond, often referred to as a bullet bond. The bond issuer receives the principal at settlement, makes periodic, fixed coupon payments, and repays the principal at maturity. Reinvestment risk and price risk are types of interest rate risk and. have an inverse relationship. Reinvestment risk is the risk of decreasing reinvestment returns on cash flows, which occurs when interest rates fall, Bond 1 amortizes principal on a monthly basis, which increases the reinvestment risk relative to Bond 2 (which pays less frequently) or Bond 3 (which does not amortize at all). | B. Incorrect because as Bond 2 has less reinvestment risk than Bond 1 because Bond 2 pays principal quarterly, rather than monthly. . Incorrect because Bond 3 has less reinvestment risk than Bond 1 or Bond 2 since Bond 3 does not amortize principal. Interest Rate Risk and Return",
     difficulty: "medium",
   },
   {
@@ -1712,7 +1712,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Statement 2 only.",
     optionC: "Both Statement 1 and Statement 2.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because both statements are correct. In co-investing, an investor invests in assets indirectly through the fund and has rights to invest in the same assets directly without an intermediary. Many investors gain direct investing experience via co-investing, where the investor invests in assets indirectly through the fund but also possesses rights (known as co-investment rights) to invest directly in the same assets. Direct investing occurs when an investor makes a direct investment in an asset without the use of an fermediary. Incorrect because both statements are correct. In co-investing, an investor invests in assets indirectly through the fund and has rights to invest in the same assets directly without an intermediary. Many investors gain direct investing experience via co-investing, where the investor invests in assets indirectly through the fund but also possesses rights (known as co-investment rights) to invest directly in the same assets, Direct it when an investor makes a direct investment in an asset without the use of an intermediary. C. Correct because both statements are correct. In co-investing, an investor invests in assets indirectly through the fund and has rights to invest in the same assets directly without an intermediary. Many investors gain direct ing occurs investing experience via co-investing, where the investor invests in assets indirectly through the fund but also possesses rights (known as co-investment rights) to invest directly in the same assets. Direct investing occurs When an investor makes a direct investment in an asset without the use of an intermediary. Altamative Inveactmant Faahimae Mathade and Gtrintiras",
     difficulty: "medium",
   },
   {
@@ -1723,7 +1723,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "5.",
     optionC: "7.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the value of the option at expiration is the greater of either zero or the underlying price at expiration minus the exercise price, which is typically written as | B. Incorrect because this would be the intrin value if it were a put option. The value of a European put at expiration is the exercise value, which is the greater of zero or the exercise price minus the value of the underlying. intrinsic value of the hypothetical put option = Max(0,$80 — $75) = $5. | C. Incorrect because this is the time value if it were a put option and not the intrinsic value of a call option. The time value of an option is the difference between the market price of the option and its intrinsic value. Time value of the put option = Market price —Intrinsic value = $12 — Max(0,$80 — $75) = $7. Pricing and Valuation of Options = explain the exercise value, moneyness, and time value of an option Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -1734,7 +1734,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "can be used to value non-dividend paying stocks.",
     optionC: "requires an estimate of future dividend payments.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because net amounts borrowed (borrowings minus repayments) are considered to be available for distribution to common shareholders. | B. Correct because analysts may also use FCFE valuation models for a non-dividend-paying stock. . Incorrect because in practice, many analysts prefer to use a free-cash-flow-to-equity (FCFE) valuation model. These analysts assume that dividend-paying capacity should be reflected in the cash flow estimates rather than expected dividends. FCFE is a mea- sure of dividend-paying capacity. Equity Valuation: Concepts and Basic Tools = explain the rationale for using present value models to value equity and describe the dividend discount and free- cash-flow-to-equity models Discuss @ Fitter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1745,7 +1745,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "8.32%.",
     optionC: "9.00%.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because the yield-to-maturity is the discount rate, r, that equates the price of the bond to the present value of the coupon payments and par value. This answer computes the current yield instead of the yield to maturity. The current yield is the sum of the coupon payments received over the year divided by the flat price. 8196.11 = 8.32%. . Correct because the yield-to-maturity is the discount rate, r, that equates the price of the bond to the present value of the coupon payments and par value: 8/(1+r) + 8/(1+r)2+ 8/(1+r)° + 8/(14r)! + 108/(141)> = 96.11, N=6, P\ 96.11 PM" FV=100, I/Y = 9.00%. = 9.00%. Interest Rate Risk and Return * calculate and interpret the sources of return from investing in a fixed-rate bon Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1756,7 +1756,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Unique circumstances.",
     optionC: "Legal and regulatory factors.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the section about time horizon states the time horizon over which the investor is investing. | B. Correct because the section on unique circumstances of the IPS should cover any other aspect of the clients circumstances that is not covered by other sections and that is likely to have a material impact on the composition of the portfolio. ESG considerations - such as a preference for environmentally sustainable investments - fall into this category. Incorrect because this section of the IPS should state any legal and regulatory restrictions that constrain how the Portfolio is invested. The decision to pursue socially responsible investing does not need to be driven by legal and regulatory factors, Basics of Portfolio Planning and Construction = describe the investment constraints of liquidity, time horizon, tax concems, legal and regulatory factors, and unique circumstances and their implications for the choice of portfolio assets Discuss @ Filter »",
     difficulty: "medium",
   },
   {
@@ -1767,7 +1767,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "market order.",
     optionC: "stop-buy order.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because a limit order conveys almost the same instruction as market order: Obiain the best price immediately available, but in no event accept a price higher than a specified limit price when buying or accept a price lower than a specified limit price when selling. | B. Incorrect because a market order instructs the broker or exchange to obtain the best price immediately available when filing the order. The trader might purchase it at more than $58 by using market order. | C. Incorrect because a stop-buy order is to buy at a price specified above the market price. Because stop-sell orders become valid when prices are falling and stop-buy orders become valid when prices are rising Market Organization and Structure = compare market orders with limit orders Discuss @ Fitter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1778,7 +1778,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "the same level of reporting requirements as unsponsored ones.",
     optionC: "greater reporting requirements than unsponsored ones.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because sponsored DRs are generally subject to greater reporting requirements than unsponsored DRs. | B. Incorrect because sponsored DRs are generally subject to greater reporting requirements than unsponsored DR. C. Correct because sponsored DRs are generally subject to greater reporting requirements than unsponsored DRs. Overview of Equity Securities = describe methods for investing in non-domestic equity securities Discuss @ Fitter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1789,7 +1789,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Widespread natural disasters.",
     optionC: "Bankruptcy of a major automobile producer.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because systematic risk is risk that cannot be avoided and is inherent in the overall market. It is non- diversifiable because it includes risk factors that are innate within the market and affect the market as a whole. Examples of factors that constitute systematic risk include interest rates, inflation, economic cycles, political uncertainty, and widespread natural disasters. | B. Incorrect because systematic risk is risk that cannot be avoided and is inherent in the overall market. It is non- diversifiable because it includes risk factors that are innate within the market and affect the market as a whole. Examples of factors that constitute systematic risk include interest rates, inflation, economic cycles, political uncertainty, and widespread natural disasters. €. Correct because nonsystematic risk is risk that is local or limited to a particular asset or industry that need not affect assets outside of that asset class. Examples of nonsystematic risk could include the failure of a drug trial, major oil discoveries, or an airliner crash. All these events will directly affect their respective companies and Possibly industries, but have no effect on assets that are far removed from these industries. Investors are capable of avoiding nonsystematic risk through diversification by forming a portfolio of assets that are not highly correlated with one another. A major auto producer failure will impact the auto industry but the impact can be mitigated through portfolio diversification. Portfolio Risk and Return: Part II = explain systematic and nonsystematic risk, including why an investor should not expect to receive additional return far haarina nanevetamati Hele",
     difficulty: "medium",
   },
   {
@@ -1800,7 +1800,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "90.47.",
     optionC: "93.23.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because semi-annual coupons are used instead of annual coupons. Changing calculator inputs to N= 12, PMT = 2.5, 1= 3.5, the price is 90.3367 = 90.34, | B. Correct because the price four years after issuance is 90.47: Po=PMTy/(14r) + = + PMT,/(14r)" + FVI(1 #1)? where: PV,= the current market price or present valuie of the bond; PMT, = the coupon payment in period t; r= the yield to maturity per period; n = the number of periods remaiping jo waturily; FV= the maturity value of the bond. So: P, = 5/(1.07) + 5/(1.07)? +~+ 108/(1.07)° = 90.4069 ) Using HP12C financial calculator for six years to maturity. FY = 100, 90.4669 ~ 90.47. ——— 1=7, PMT= , the PV or price = | C. Incorrect because the price is calculated for issuance six years ago (not four years), using annual coupons. Calculator inputs are changed to NV = 4 for the remaining years to maturity, PMT = 5, | = 7. The price is 93.2256 = 93,23. Also, if semi-annual coupons are used for 4 years to maturity, then N= 8, PMT = 2.5, |= 3.5. The price is, 93.1260 = 93.13 and is closest to the incorrect answer C. Fixed-Income Bond Valuation: Prices and Yields",
     difficulty: "medium",
   },
   {
@@ -1822,7 +1822,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "3.23%.",
     optionC: "3.80%.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because Discount rate (DR) = (Year/Days) x ((FV ~ PVFV) DR = (360/65) x (25,000,000 — 24,855,000)/25,000,000) = 0.032123 3.21%. | B. Incorrect because (FV — PV) is divided by PV, not FV. Discount rate (DR) = (Year/Days) x ((FV — PVYFV). DR # (360/68) x ((25,000,000 — 24,855,000)/24,855,000) = 0.03231~ 3.23%. Incorrect because it uses the 55 days since the commercial paper was issued instead of the 65 days remaining. Discount rate (DR) = (Year/Days) x ((FV — PVFV). DR # (360/58) x ((25,000,000 — 24,855,000)/25,000,000) = 0.037964~ 3.80%. Yield and Yield Spread Measures for Floating-Rate Instruments = calculate and interpret yield measures for money market instruments Discuss @ Filter >",
     difficulty: "medium",
   },
   {
@@ -1834,7 +1834,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "17.80%.",
     optionC: "18.35%.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it left out the high-water mark in the calculation. Consequently, the management fee for the year is [8120 * 1% = $1.2 million}... The incentive fee calculation becomes [{$120 ~ [$100 (1 + 5%6)]} x 10% = $1.5 million. The net retum to the investor for the year is S190 $4.9- $4 8\/ 840M = 4 = 17 20%",
     difficulty: "medium",
   },
   {
@@ -1845,7 +1845,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "market portfolio.",
     optionC: "minimum variance portfolio.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because a capital allocation line includes all possible combinations of the risk-free asset and an investors optimal risky portfolio. | B. Incorrect because, by definition, a capital allocation line includes all possible combinations of the risk-free asset and an investors optimal risky portfolio, not combinations of a risky asset and the market portfolio (which is the optimal risky portfolio). | C. Incorrect because, by definition, a capital allocation line includes all possible combinations of the risk-free asset and an investors optimal risky portfolio, not combinations of a risky asset and the minimum-variance portfolio. Portfolio Risk and Return: Part II = explain the capital allocation line (CAL) and the capital market line (CML) Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1856,7 +1856,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Private equity funds.",
     optionC: "Funds of hedge funds.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because private equity investments generally involve an intial capital commitment, but actual capital flows often lag that commitment because capital "calls" are staggered over substantive periods of time. Private equity returns are frequently described in terms of the J-curve effect: a substantive initial capital commitment promise, followed by high initial fee drag, followed by the identification of longer-term growth or turnaround opportunities, and an eventual positive return (the investor hopes) when the staggered returns of the fund are realized. The component investments mature and are sold at various times, and the partnership finally closes—but usually only after six to eight years (often with two-year extensions allowed at the discretion of the general partner or after a vote of approval by a majority of limited partners). Therefore, a private equity fund does not offer the greatest redemption flexibility to an investor. . Correct because funds of hedge funds may offer more redemption flexibility than is afforded to direct investors in hedge funds because of special redemption arrangements with the underlying hedge fund managers, the maintenance of added cash reserves, access to temporary bridge-loan financing, or the simple avoidance of less liquid hedge fund strategies. iA eaeeribttie WAtioten ane Darinrevicininev are Dakine",
     difficulty: "medium",
   },
   {
@@ -1868,7 +1868,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "7.2.",
     optionC: "9.2.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it assumes the management fee and performance fee accrued for the two-year cumulative return rather than on year-by-year basis: Management fees for two years = 100 x 2% x 2= 0 Performance fee for the two years = (110 - 4 - 100) x 20% = 1.2 Total fees to the hedge fund manager = 4.0+1.2 = 5.2. | B. Incorrect because it includes a clawback of performance fee in Year 2: Management fee for Year = 125x2% =2.5",
     difficulty: "medium",
   },
   {
@@ -1879,7 +1879,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "ex-dividend date.",
     optionC: "holder-of-record date.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the declaration date is the day that the company issues a statement declaring a specific dividend. Next comes the ex-dividend date (or exdate), the first date that a share trades without (i.e, "ex) the dividend | B. Correct because because buyers of a companys shares on the ex-dividend date are no longer el the upcoming dividend, all else being equal, on that day the companys share price immediately decreases by the amount of the foregone dividend. | C. Incorrect because buyers of a companys shares on the ex-dividend date are no longer eligible to receive the upcoming dividend, all else being equal, on that day the companys share price immediately decreases by the amount of the foregone dividend. This is followed by the holder-of-record date (also called the owner-of-record date, shareholder-of-record date, record date, date of record, or date of book closure), the date that a shareholder listed on the companys books will be deemed to have ownership of the shares for purposes of receiving the upcoming dividend. Equity Valuation: Concepts and Basic Tools = describe dividend payment chronology",
     difficulty: "medium",
   },
   {
@@ -1890,7 +1890,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$6.",
     optionC: "\$9.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because the correct formula ¢; = Max(0,S;—X) (payoff to the call buyer) is changed to deduct 38 = X the exercise price from the current price of the underlying S, = $42 (instead of the price at expiration $47) to yield $4. Incorrect because this is the profit to the call buyer calculated 7 = Max(0,S;— X) — cp (profit to the call buyer) and, inputting the values S;= $47 as the price of the underlying at expiration less $38 = X as the exercise price, and then subtracting the call premium of $3 yields $6 C. Correct because c; = Max(0,S;—X) (payoff to the call buyer) and inputting the values S;= $47 as the price of the underlying at expiration less $38 = X as the exercise price yields $9. Forward Commitment and Contingent Claim Features and Instruments = determine the value at expiration and profit from a long or a short position in a call or put option Discuss @ Filter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1901,7 +1901,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "risk-free returns with large amounts of investment capital.",
     optionC: "abnormal returns applying an absolute valuation methodology.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because arbitrage is risk free and requires no capital because selling the overpriced asset produces the funds to buy the underpriced asset. | B. Incorrect because an opportunity to profit at no risk could merely describe the purchase of a risk-free asset. Arbitrage is risk free and requires no capital because sel 19 the overpriced asset produces the funds to buy the underpriced asset. Therefore, itis incorrect to state that arbitrage describes an opportunity to eam risk-free returns with large amounts of investment capital. . Incorrect because an opportunity to earn a retumn in excess of the return appropriate for the risk assumed is a concept studied in portfolio management and is often referred to as an abnormal return. itis certainly desirable but is hardly an arbitrage because it requires the assumption of risk and the investment of capital. Also, arbitrage does Not tell us the true fundamental value. It is not an absolute valuation methodology, such as the discounted cash flow equity valuation model. Itis a relative valuation methodology. Therefore, itis incorrect to state that arbitrage describes an opportunity to earn abnormal retums applying absolute valuation methodology. Arbitrage, Replication, and the Cost of Carry in Pricing Derivatives = explain how the concepts of arbitrage and replication are used in pricing derivatives Discuss @ Filter >",
     difficulty: "medium",
   },
   {
@@ -1912,7 +1912,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "Fully amortizing, recourse loan.",
     optionC: "Balloon payment, non-recourse loan.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because in a recourse loan, the lender has a claim against the borrower for the shortfall between the amount of the outstanding mortgage balance and the proceeds received from the sale of the property. In a non- recourse loan, the lender does not have such a claim and thus can look only to the property to recover the outstanding mortgage balance. Therefore, an interest-only, recourse loan exposes the lender to less risk than a balloon payment, non-recourse loan. | B. Incorrect because in a recourse loan, the lender has a claim against the borrower for the shortfall between the amount of the outstanding mortgage balance and the proceeds received from the sale of the properly. Moreover, in a fully amortizing loan, the sum of all the scheduled principal repayments during the mortgage life is such that when the last mortgage payment is made, the loan is fully repaid. Therefore, a fully-amortizing, recourse loan exposes a lender to less risk than a balloon payment, non-recourse loan. | C. Correct because in a recourse loan, the lender has a claim against the borrower for the shortfall between the amount of the outstanding mortgage balance and the proceeds received from the sale of the property. In a non- recourse loan, the lender does not have such a claim and thus can look only to the property to recover the outstanding mortgage balance. Moreover, in a fully amortizing loan, the sum of all the scheduled principal repayments during the mortgages life is such that when the last mortgage payment is made, the loan is fully repaid. Whereas in a partially amortizing loan i.e. a loan with a balloon payment], the sum of all the scheduled principal repayments is less than the amount borrowed. Therefore, a balloon payment, non-recourse loan exposes a lender to more risk than a fully-amortizing, recourse loan. Mortaaae-Backed Security (MBS) Instrument and Market Features",
     difficulty: "medium",
   },
   {
@@ -1923,7 +1923,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "contingent claims.",
     optionC: "forward commitments.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because an option contract (which is also referred to as a contingent claim), is a derivative in which the outcome or payoff is dependent upon the outcome or payoff of an underlying asset. Although this characteristic is also associated with forward commitments, a contingent claim has come to be associated with a right, but not an obligation, to make a final payment contingent on the underlying. Given that the holder of the contingent claim has: a choice, the term contingent claim has become synonymous with the term option. | B. Incorrect because a contingent claim is a derivative in which the outcome or payoff is dependent upon the outcome or payoff of an underlying asset. Although this characteristic is also associated with forward commitments, a contingent claim has come to be associated with a right, but not an obligation, to make a final payment contingent on the underlying. | C. Correct because forward commitments are contracts entered into at one point in time that require both parties to engage in a transaction at a later point in time (the expiration) on terms agreed upon at the start. Forward Commitment and Contingent Claim Features and Instruments * define forward contracts, futures contracts, swaps, options (calls and puts), and credit derivatives and compare their basic characteristios",
     difficulty: "medium",
   },
   {
@@ -1934,7 +1934,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "long exposure to the underlying instrument.",
     optionC: "short exposure to the underlying instrument.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because it is the writer of a call option or put option who has a short exposure in the option contract, and not the holder. | B. Incorrect because it is the holder of a call option who has a long exposure in the underlying instrument, . Correct because the put contract holder has the right to sell the underlying to the writer. The holder is long the put contract and has an rect short position in the underlying instrument. The put contract holders have long exposure to their option contract and short exposure to the underlying instrument. Market Organization and Structure = compare positions an investor can take in an asset Discuss @ Filter » Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1945,7 +1945,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "return irrespective of risk.",
     optionC: "return for a given level of risk.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because a risk-seeking investor would maximize both risk and return. A risk-neutral investor maximizes retum irrespective of risk. That is, a risk-neutral investor deliberately seeks to maximize only return, not risk. It is possible that a risk-neutral investor could end up maximizing risk by maximizing return, but he only seeks to maxi return and risk is not a consideration | B. Correct because a risk-neutral investor would maximize retum irrespective of risk. TI is because such an investor cares only about retum and not about risk, so higher return investments are more desirable even if they come with higher risk. | C. Incorrect because only risk-averse investors want to minimize their risk for the same amount of retum, and maximize their retum for the same amount of risk. A risk-neutral investor seeks to maximize retum imespective of risk, not for a given level of risk. Portfolio Risk and Return: Part | = explain risk aversion and its implications for portfolio selection Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -1956,7 +1956,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "high barriers to firm entry.",
     optionC: "low switching costs for customers.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Incorrect because other attributes of highly competitive markets include litle to no product differentiation, low (not high) barriers to firm entry, available substitutes, a lack of customer loyalty, and low switching costs for customers. C. Correct because other attributes of highly competitive markets include little to no product differentiation, low barriers to fim entry, available substitutes, a lack of customer loyalty, and low switching costs for customers. Company Analysis: Past and Present = evaluate a companys revenue and revenue drivers, including pricing power Discuss @ Filter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1967,7 +1967,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "only to the dividends paid by the underlying stock.",
     optionC: "both to the risk-free interest rate and to the dividends paid by the underlying stock.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because a European call option is worth less the more benefits that are paid by the underlying and worth more the more costs that are incurred in holding the underlying. Dividends are benefits paid by the underlying. So, a European call must be worth less when the underlying pays dividend than when it does not. Therefore, dividends paid by the underlying is inversely related to the value of a European call option. . Incorrect because as described in the response rationale for the correct answer, the value of a European call option is inversely related to only the dividends paid by the underlying stock. Pricing and Valuation of Options = identify the factors that determine the value of an option and describe how each factor affects the value of an option Discuss @ Fitter > Discussion What do you want to discuss... (required)",
     difficulty: "medium",
   },
   {
@@ -1978,7 +1978,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "making the risk tolerance decision.",
     optionC: "allocating capital to risky activities.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because risk tolerance, a key element of good risk governance, delineates which risks are acceptable, which are unacceptable, and how much risk the overall organization can be exposed to. Risk tolerance identifies the extent to which the entity is wiling to experience losses or opportunity costs and to fail in meeting its objectives. The enterprise risk management perspective is the right lens through which to view the risk appetite question. The risk tolerance decision begins with two different analyses that must be integratedan inside view and an outside view. First, what shortfalls within an organization would cause it to fail, or at least fal to achieve some critical goals? The governance body, often called a board, defines the goals of the organization and, in turn, decides on its, risk tolerance.",
     difficulty: "medium",
   },
   {
@@ -1989,7 +1989,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "special purpose vehicle.",
     optionC: "investors in the asset-backed securities.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "B. Correct because in the process of securitization the transfer of assets to the SPV involves a sale of the assets to the SPV. The SPV is then the legal owner of the assets. If the assets were receivables initially owned by a company called Mediquip, and a SPV called MET was established then after the sale is completed, it is MET, not Mediquip, that legally owns the receivables. | C. Incorrect because after the sale of assets to the SPV, the SPV legally owns the assets, The assets are no longer owned by the company (originator) nor are they directly owned by the investors who purchased the ABS. Fixed-Income Securitization = describe securitization, including the parties and the roles they play Discuss @ Filter » Discussion",
     difficulty: "medium",
   },
   {
@@ -2000,7 +2000,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "expected dividend payout ratio.",
     optionC: "estimated required rate of return on equity.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because a decrease in the dividend growth rate will decrease the eamings multiplier because the denominator in the model is larger. | B. Incorrect because a decrease in the dividend payout ratio will decrease the earnings multiplier because the numerator is smaller. | C. Correct because a decrease in the required rate of return means the denominator has decreased, which increases the earings multiplier (P/E) based on the earnings multiplier model: P/E, = D,/E, / (r-9). Equity Valuation: Concepts and Basic Tools + explain the rationale for using price multiples to value equity, how the price to earings multiple relates to fundamentals, and the use of multiples based on comparables Discuss @ Fitter > Discussion",
     difficulty: "medium",
   },
   {
@@ -2011,7 +2011,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "tactical asset allocation.",
     optionC: "strategic asset allocation.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because security selection is an attempt to generate higher returns than the asset class benchmark by selecting securities with a higher expected retum. Risk budgeting implies that the portfolio manager has to choose, for every asset class, whether to deploy security selection as a return generator. This choice is generally referred to as the choice between active or passive management. Contrary to strategic asset allocation, where exposures to sources of systematic risk are selected and sized, security selection is not rewarded with a long-run payoff to risk. Security selection is a zero-sum game: All investors in an asset class are competing with each to identify a typically limited number of assets that are misvalued. Combining the objectives and constraints from the IPS with the long- term capital market expectations determines the strategic asset allocation, | B. Incorrect because apart from the exposures to systematic risk factors specified in the strategic asset allocation, the returns of an investment strategy depend on two other sources: tactical asset allocation and security selection, Tactical asset allocation is the decision to deliberately deviate from the policy exposures to systematic risk factors (i. , the policy weights of asset classes) with the intent to add value based on forecasts of the near-term returns of those asset classes. Tactical asset allocation depends on near-term capital market expectations, not long-term ones. | C. Correct because a strategic asset allocation results from combi ing the constraints and objectives articulated in the IPS and long-term capital market expectations regarding the asset classes. Capital market expectations are the investors expectations conceming the risk and retum prospects of asset classes, however broadly or narrowly the investor defines those asset classes. When associated with the clients investment objectives, the result is the strategic asset allocation that is expected to allow the client to achieve his or her investment objectives. Basics of Portfolio Planning and Construction + describe the principles of portfolio construction and the role of asset allocation in relation to the IPS",
     difficulty: "medium",
   },
   {
@@ -2022,7 +2022,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "lenders of last resort to transfer funds between each other.",
     optionC: "banks to manage the imbalances in their required reserves.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because when a bank cannot obtain short-term funding, most countries allow that bank to borrow from the central bank. Some banks have an excess over the minimum required funds to be held in reserve. At the same. time, other banks run short of required reserves. This imbalance is solved through the central bank funds market, which allows banks that have a surplus of funds to loan money to banks that need funds for maturities of up to one year. This market is specifically designed for banks, not for central banks. | B. Incorrect because central bank funds market allows banks that have a surplus of funds to loan money to banks that need funds for maturities of up to one year. This market is specifically for banks, not central banks, which can act as lender of last resort. Correct because some banks have an excess over the minimum required funds to be held in reserve. At the same time, other banks run short of required reserves and central bank funds market allows banks that have a surplus of funds to loan money to banks that need funds for maturities of up to one year. Fixed-Income Markets for Corporate Issuers = compare short-term funding alternatives available to corporations and financial institutions Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -2033,7 +2033,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "\$1.",
     optionC: "\$3.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the puts value at expiration = py = Max(0.X — S,), where pr is the value of the put at expiration, Xiis the exercise price, and S; is the price of the underlying at expiration. In this case, Max(0,58 ~ 57) = $1. The put buyers profit = 1 = p;— py (where pa is the price of the put at time 0) = 1-4 = -$3. | B. Incorrect because this is the puts value at expiration. The puts value at expiration = p, = Max(S,—0,X), where py is the value of the put at expiration, X is the exercise price, and S; is the price of the underlying at expiration. In this case, Max(0,58 — 57) = $1. | C. Incorrect because this is the put sellers profit. The puts value at expiratior Pp; =—Max(0,X — S;), where p; is the value of the put at expiration, X is the exercise price, and S, is the price of the underlying at expiration. In this case, -Max(0,58 ~ 57) = -$1. The put sellers profit= 11 = -p, + pp (where pp is the price of the put at time 0) +4293, A Forward Commitment and Contingent Claim Features and Instruments: = determine the value at expiration and profit from a long or a short position in a call or put option Discuss @ Fitter »",
     difficulty: "medium",
   },
   {
@@ -2044,7 +2044,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "expected return.",
     optionC: "diversification benefit.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "C. Correct because sometimes a subset of assets will go up in value at the same time that another will go down in value. The fact that these may offset each other creates the potential diversification benefit we attribute to portfolios. However, an important issue is that the co-movernent or correlation pattem of the securities retums in the portfolio can change in a manner unfavorable to the investor. An increase in the correlation or co-movement of securities retums adversely affects investors and reduces the diversification benefit. Portfolio Management: An Overview = describe the portfolio approach to investing",
     difficulty: "medium",
   },
   {
@@ -2055,7 +2055,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "A limit on the level of share buybacks.",
     optionC: "What the issuer will do with the proceeds of a bond issue.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "",
     difficulty: "medium",
   },
   {
@@ -2066,7 +2066,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "80%.",
     optionC: "180%.",
     correctAnswer: "B",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect because this ignores the leverage. The share price increased from €50 to €70 per share, (70 ~ 50)/50 = 40%. The leverage ratio is the ratio of the value of the position to the value of the equity investment init | B. Correct because the share price increased from €50 to €70 per share, (70 — 50)/50 = 40%. The leverage ratio of 2.0 resuits in a return on the equity investment of 2.0 x 40% = 80%. The leverage ratio is the ratio of the value of the position to the value of the equity investment in it. | C. Incorrect because this is the return ifthe sale price was multiplied by the leverage ratio of 2.0, instead of muttiplying the % price gain by the leverage ratio. The share price increased from €50 to €70 per share, (70 - 50)/50 = 40%, Calculating €70 x 2.0 = €140, thus (140 ~ 50)/50 = (90/50) = 180%. The leverage ratio is the ratio of the value of the position to the value of the equity investment in it. Market Organization and Structure = calculate and interpret the leverage ratio, the rate of return on a margin transaction, and the security price at which the investor would receive a margin call Discuss @ Fitter >",
     difficulty: "medium",
   },
   {
@@ -2078,7 +2078,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "42.50.",
     optionC: "42.53.",
     correctAnswer: "C",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Incorrect. This is the limit price but is not the price at which the order is executed. | B. Incorrect. This is the average price that would be generated if the order was a market order: (2,000 shares * CHF42.56) + (4,000 shares * CHF42.52) + (3,000 shares*CHF42.44)/(2,000 + 4,000 + 3,000) = CHF42.50 C Crerect Only B.0NN charae can he enid haratiea the trarlar rannat avarita helnw/ the 49 59 limit nrica The",
     difficulty: "medium",
   },
   {
@@ -2089,7 +2089,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "risk-free asset and the global minimum-variance portfolio.",
     optionC: "optimal risky portfolio and the global minimum-variance portfolio.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because the two-fund separation theorem states that all investors regardless of taste, risk preferences, and initial wealth will hold a combination of two portfolios or funds: a risk-free asset and an optimal portfolio of risky assets. | B. Incorrect because the two-fund separation theorem states that all investors regardless of taste, risk preferences, and initial wealth will hold a combination of two portfolios or funds: a risk-free asset and an optimal portfolio of risky ris the portfolio with the minimum variance among all Portfolios of risky assets, and is referred to as the global minimum-variance portfolio. While the investor will hold the risk-free asset in their portfolio, their risk-return trade-off can be improved by holding the optimal risky portfolio rather than the global minimum-variance portfolio. assets. The left-most point on the minimum-variance fron! . Incorrect because the two-fund separation theorem states that all investors regardless of taste, risk preferences, and initial wealth will hold a combination of two portfolios or funds: a risk-free asset and an optimal portfolio of risky assets. The left-most point on the minimum-variance frontier is the portfolio with the minimum variance among all Portfolios of risky assets, and is referred to as the global minimum-variance portfolio. While the investor will hold the optimal risky portfolio, their risk return trade-off can be improved by holding the risk-free asset rather than the global minimum-variance portfolio. Portfolio Risk and Return: Part | = explain the selection of an optimal portfolio, given an investors utility (or risk aversion) and the capital allocation line",
     difficulty: "medium",
   },
   {
@@ -2100,7 +2100,7 @@ export const MOCK_QUESTIONS: Question[] = [
     optionB: "absolute risk objective.",
     optionC: "systematic risk objective.",
     correctAnswer: "A",
-    explanation: "Refer to CFA Level I curriculum for detailed explanation.",
+    explanation: "A. Correct because clients may choose to express relative risk objectives, which relate risk relative to one or more benchmarks perceived to represent appropriate risk standards. For risk relative to a benchmark, the relevant measure is tracking risk, or tracking error. Tracking risk is the standard deviation of the differences between a Portfolios returns and its benchmark returns. | B. Incorrect because absolute risk objectives are not related to investment market performance, good or bad, and are absolute in the sense of being self-standing. Since tracking risk is defined relative to some benchmark (such as the market), a maximum acceptable level of tracking risk is a relative, not absolute, risk objective. . Incorrect because an investors risk objectives in an investment policy statement are either defined as absolute or relative, not systematic. Therefore, while systematic risk is a measure of risk relative to the market, a maximum, acceptable level of tracking risk is a relative, not systematic, risk objective, Differences between portfolio and index returns are likely unsystematic. Basics of Portfolio Planning and Construction = describe risk and return objectives and how they may be developed for a client Discuss @ Filter »",
     difficulty: "medium",
   },
   {
