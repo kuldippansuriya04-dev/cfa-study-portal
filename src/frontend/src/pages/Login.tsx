@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 
 import { useAuth } from "@/hooks/useAuth";
@@ -8,12 +9,13 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useAuth();
+  const navigate = useNavigate();
   
 
   const handleLogin = () => {
     const ok = login(email, password);
     if (ok) {
-      window.location.href = "/";
+      navigate({ to: "/" });
     } else {
       setError("Email and password (min 6 chars) required.");
     }
@@ -23,7 +25,7 @@ export default function Login() {
     <div style={{ maxWidth: 400, margin: "100px auto", padding: 24 }}>
       <h2 style={{ marginBottom: 24 }}>CFA Study Portal — Sign In</h2>
       <input
-        type="email"
+        type="text"
         placeholder="Email"
         value={email}
         onChange={e => setEmail(e.target.value)}

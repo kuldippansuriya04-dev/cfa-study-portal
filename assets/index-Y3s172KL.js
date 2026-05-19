@@ -22843,29 +22843,29 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$y = [
+const __iconNode$A = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$y);
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$A);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$x = [
+const __iconNode$z = [
   ["path", { d: "M5 12h14", key: "1ays0h" }],
   ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
 ];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$x);
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$z);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$w = [
+const __iconNode$y = [
   [
     "path",
     {
@@ -22875,14 +22875,14 @@ const __iconNode$w = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$w);
+const Award = createLucideIcon("award", __iconNode$y);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$v = [
+const __iconNode$x = [
   ["path", { d: "M10 2v8l3-3 3 3V2", key: "sqw3rj" }],
   [
     "path",
@@ -22892,14 +22892,14 @@ const __iconNode$v = [
     }
   ]
 ];
-const BookMarked = createLucideIcon("book-marked", __iconNode$v);
+const BookMarked = createLucideIcon("book-marked", __iconNode$x);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$u = [
+const __iconNode$w = [
   ["path", { d: "M12 7v14", key: "1akyts" }],
   [
     "path",
@@ -22909,7 +22909,33 @@ const __iconNode$u = [
     }
   ]
 ];
-const BookOpen = createLucideIcon("book-open", __iconNode$u);
+const BookOpen = createLucideIcon("book-open", __iconNode$w);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$v = [
+  ["path", { d: "M8 2v4", key: "1cmpym" }],
+  ["path", { d: "M16 2v4", key: "4m81vk" }],
+  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
+  ["path", { d: "M3 10h18", key: "8toen8" }]
+];
+const Calendar = createLucideIcon("calendar", __iconNode$v);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$u = [
+  ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
+  ["path", { d: "M18 17V9", key: "2bz60n" }],
+  ["path", { d: "M13 17V5", key: "1frdt8" }],
+  ["path", { d: "M8 17v-3", key: "17ska0" }]
+];
+const ChartColumn = createLucideIcon("chart-column", __iconNode$u);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -22917,69 +22943,65 @@ const BookOpen = createLucideIcon("book-open", __iconNode$u);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$t = [
-  ["path", { d: "M8 2v4", key: "1cmpym" }],
-  ["path", { d: "M16 2v4", key: "4m81vk" }],
-  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
-  ["path", { d: "M3 10h18", key: "8toen8" }]
-];
-const Calendar = createLucideIcon("calendar", __iconNode$t);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$s = [
-  ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
-  ["path", { d: "M18 17V9", key: "2bz60n" }],
-  ["path", { d: "M13 17V5", key: "1frdt8" }],
-  ["path", { d: "M8 17v-3", key: "17ska0" }]
-];
-const ChartColumn = createLucideIcon("chart-column", __iconNode$s);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$r = [
   ["line", { x1: "18", x2: "18", y1: "20", y2: "10", key: "1xfpm4" }],
   ["line", { x1: "12", x2: "12", y1: "20", y2: "4", key: "be30l9" }],
   ["line", { x1: "6", x2: "6", y1: "20", y2: "14", key: "1r4le6" }]
 ];
-const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$r);
+const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$t);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$q = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$q);
+const __iconNode$s = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$s);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$p = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
-const ChevronLeft = createLucideIcon("chevron-left", __iconNode$p);
+const __iconNode$r = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = createLucideIcon("chevron-left", __iconNode$r);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$o = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$o);
+const __iconNode$q = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$q);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$n = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$n);
+const __iconNode$p = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$p);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$o = [
+  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
+  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
+];
+const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$o);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$n = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const CircleCheck = createLucideIcon("circle-check", __iconNode$n);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -22988,10 +23010,10 @@ const ChevronUp = createLucideIcon("chevron-up", __iconNode$n);
  */
 const __iconNode$m = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
-  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+  ["path", { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3", key: "1u773s" }],
+  ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-const CircleAlert = createLucideIcon("circle-alert", __iconNode$m);
+const CircleHelp = createLucideIcon("circle-help", __iconNode$m);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -22999,10 +23021,11 @@ const CircleAlert = createLucideIcon("circle-alert", __iconNode$m);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$l = [
-  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
-  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
+  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
 ];
-const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$l);
+const CircleX = createLucideIcon("circle-x", __iconNode$l);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23010,29 +23033,6 @@ const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$l);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$k = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
-];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$k);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$j = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
-  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
-];
-const CircleX = createLucideIcon("circle-x", __iconNode$j);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$i = [
   ["rect", { width: "8", height: "4", x: "8", y: "2", rx: "1", ry: "1", key: "tgr4d6" }],
   [
     "path",
@@ -23046,7 +23046,32 @@ const __iconNode$i = [
   ["path", { d: "M8 11h.01", key: "1dfujw" }],
   ["path", { d: "M8 16h.01", key: "18s6g9" }]
 ];
-const ClipboardList = createLucideIcon("clipboard-list", __iconNode$i);
+const ClipboardList = createLucideIcon("clipboard-list", __iconNode$k);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$j = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+];
+const Clock = createLucideIcon("clock", __iconNode$j);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$i = [
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+];
+const FileText = createLucideIcon("file-text", __iconNode$i);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23054,10 +23079,10 @@ const ClipboardList = createLucideIcon("clipboard-list", __iconNode$i);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$h = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+  ["path", { d: "M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z", key: "i9b6wo" }],
+  ["line", { x1: "4", x2: "4", y1: "22", y2: "15", key: "1cm3nv" }]
 ];
-const Clock = createLucideIcon("clock", __iconNode$h);
+const Flag = createLucideIcon("flag", __iconNode$h);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23065,20 +23090,6 @@ const Clock = createLucideIcon("clock", __iconNode$h);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$g = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
-];
-const FileText = createLucideIcon("file-text", __iconNode$g);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$f = [
   [
     "path",
     {
@@ -23087,7 +23098,21 @@ const __iconNode$f = [
     }
   ]
 ];
-const Flame = createLucideIcon("flame", __iconNode$f);
+const Flame = createLucideIcon("flame", __iconNode$g);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$f = [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
+  ["path", { d: "M3 9h18", key: "1pudct" }],
+  ["path", { d: "M3 15h18", key: "5xshup" }],
+  ["path", { d: "M9 3v18", key: "fh3hqa" }],
+  ["path", { d: "M15 3v18", key: "14nvp0" }]
+];
+const Grid3x3 = createLucideIcon("grid-3x3", __iconNode$f);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23130,14 +23155,11 @@ const Lightbulb = createLucideIcon("lightbulb", __iconNode$d);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$c = [
-  ["path", { d: "M3 12h.01", key: "nlz23k" }],
-  ["path", { d: "M3 18h.01", key: "1tta3j" }],
-  ["path", { d: "M3 6h.01", key: "1rqtza" }],
-  ["path", { d: "M8 12h13", key: "1za7za" }],
-  ["path", { d: "M8 18h13", key: "1lx6n3" }],
-  ["path", { d: "M8 6h13", key: "ik3vkj" }]
+  ["path", { d: "m10 17 5-5-5-5", key: "1bsop3" }],
+  ["path", { d: "M15 12H3", key: "6jk70r" }],
+  ["path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", key: "u53s6r" }]
 ];
-const List = createLucideIcon("list", __iconNode$c);
+const LogIn = createLucideIcon("log-in", __iconNode$c);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23145,11 +23167,11 @@ const List = createLucideIcon("list", __iconNode$c);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$b = [
-  ["path", { d: "m10 17 5-5-5-5", key: "1bsop3" }],
-  ["path", { d: "M15 12H3", key: "6jk70r" }],
-  ["path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", key: "u53s6r" }]
+  ["path", { d: "m16 17 5-5-5-5", key: "1bji2h" }],
+  ["path", { d: "M21 12H9", key: "dn1m92" }],
+  ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }]
 ];
-const LogIn = createLucideIcon("log-in", __iconNode$b);
+const LogOut = createLucideIcon("log-out", __iconNode$b);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23157,11 +23179,11 @@ const LogIn = createLucideIcon("log-in", __iconNode$b);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$a = [
-  ["path", { d: "m16 17 5-5-5-5", key: "1bji2h" }],
-  ["path", { d: "M21 12H9", key: "dn1m92" }],
-  ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }]
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 18h16", key: "19g7jn" }],
+  ["path", { d: "M4 6h16", key: "1o0s65" }]
 ];
-const LogOut = createLucideIcon("log-out", __iconNode$a);
+const Menu = createLucideIcon("menu", __iconNode$a);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23169,11 +23191,12 @@ const LogOut = createLucideIcon("log-out", __iconNode$a);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$9 = [
-  ["path", { d: "M4 12h16", key: "1lakjw" }],
-  ["path", { d: "M4 18h16", key: "19g7jn" }],
-  ["path", { d: "M4 6h16", key: "1o0s65" }]
+  ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
+  ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
+  ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
+  ["path", { d: "M8 16H3v5", key: "1cv678" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$9);
+const RefreshCw = createLucideIcon("refresh-cw", __iconNode$9);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23181,12 +23204,10 @@ const Menu = createLucideIcon("menu", __iconNode$9);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$8 = [
-  ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
-  ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
-  ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
-  ["path", { d: "M8 16H3v5", key: "1cv678" }]
+  ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
+  ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
 ];
-const RefreshCw = createLucideIcon("refresh-cw", __iconNode$8);
+const RotateCcw = createLucideIcon("rotate-ccw", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23194,10 +23215,10 @@ const RefreshCw = createLucideIcon("refresh-cw", __iconNode$8);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$7 = [
-  ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
-  ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
+  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
+  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
 ];
-const RotateCcw = createLucideIcon("rotate-ccw", __iconNode$7);
+const Search = createLucideIcon("search", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -23205,10 +23226,16 @@ const RotateCcw = createLucideIcon("rotate-ccw", __iconNode$7);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$6 = [
-  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
-  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
+  [
+    "path",
+    {
+      d: "M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z",
+      key: "1qme2f"
+    }
+  ],
+  ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
 ];
-const Search = createLucideIcon("search", __iconNode$6);
+const Settings = createLucideIcon("settings", __iconNode$6);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -32748,159 +32775,11 @@ const OPTION_TEXT = {
 function getStorageKey(examId) {
   return `cfa_exam_progress_${examId}`;
 }
-function PreStartScreen({
-  title,
-  questionCount,
-  durationMinutes,
-  onBegin,
-  onBack
-}) {
-  const [timerOn, setTimerOn] = reactExports.useState(true);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "min-h-[calc(100vh-4rem)] bg-background flex items-center justify-center px-4 py-12", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "shadow-card border border-border bg-card max-w-lg w-full p-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-7 h-7 text-primary" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-2xl font-bold text-foreground mb-1", children: title }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground text-sm", children: [
-        questionCount,
-        " questions · ",
-        durationMinutes,
-        " minutes"
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-muted/40 rounded-lg p-4 mb-6 space-y-2 text-xs text-muted-foreground", children: [
-      "You may navigate freely between questions before submitting.",
-      "Once submitted, answers cannot be changed — review carefully.",
-      "No pausing: the timer runs from the moment you begin.",
-      "Answer all questions for the most accurate score breakdown.",
-      "You will see full explanations after submission."
-    ].map((rule) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-2", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: rule })
-    ] }, rule)) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between p-3.5 rounded-lg border border-border mb-6 bg-card", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "Enable Countdown Timer" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
-          durationMinutes,
-          " min · simulates real exam pressure"
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "button",
-        {
-          type: "button",
-          onClick: () => setTimerOn((v) => !v),
-          className: cn(
-            "relative w-12 h-6 rounded-full transition-smooth focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-            timerOn ? "bg-primary" : "bg-muted"
-          ),
-          "aria-checked": timerOn,
-          role: "switch",
-          "aria-label": "Toggle timer",
-          "data-ocid": "timer-toggle",
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "span",
-            {
-              className: cn(
-                "absolute top-0.5 w-5 h-5 rounded-full bg-card shadow-sm transition-all duration-200",
-                timerOn ? "left-[26px]" : "left-0.5"
-              )
-            }
-          )
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        Button,
-        {
-          variant: "outline",
-          className: "flex-1",
-          onClick: onBack,
-          "data-ocid": "back-to-exams-btn",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { className: "w-4 h-4 mr-1" }),
-            "Back"
-          ]
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        Button,
-        {
-          className: "flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold",
-          onClick: () => onBegin(timerOn),
-          "data-ocid": "begin-exam-btn",
-          children: [
-            "Begin Exam",
-            /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 ml-1" })
-          ]
-        }
-      )
-    ] })
-  ] }) });
-}
-function FinishModal({
-  answeredCount,
-  totalCount,
-  onConfirm,
-  onCancel,
-  submitting
-}) {
-  const unanswered = totalCount - answeredCount;
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-50 flex items-center justify-center bg-foreground/20 backdrop-blur-sm px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "shadow-card border border-border bg-card max-w-sm w-full p-6", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between mb-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display text-lg font-bold text-foreground", children: "Submit Exam?" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "button",
-        {
-          type: "button",
-          onClick: onCancel,
-          className: "text-muted-foreground hover:text-foreground transition-colors",
-          "aria-label": "Close",
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "w-5 h-5" })
-        }
-      )
-    ] }),
-    unanswered > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-2.5 bg-accent/10 border border-accent/20 rounded-lg p-3.5 mb-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "w-4 h-4 text-accent flex-shrink-0 mt-0.5" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-foreground", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-semibold", children: [
-          unanswered,
-          " question"
-        ] }),
-        unanswered > 1 ? "s are" : " is",
-        " unanswered. Unanswered questions will be marked incorrect."
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground mb-5", children: [
-      answeredCount,
-      "/",
-      totalCount,
-      " questions answered. Once submitted, you cannot change your answers."
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Button,
-        {
-          variant: "outline",
-          className: "flex-1",
-          onClick: onCancel,
-          "data-ocid": "cancel-submit-btn",
-          children: "Keep Working"
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Button,
-        {
-          className: "flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold",
-          onClick: onConfirm,
-          disabled: submitting,
-          "data-ocid": "confirm-submit-btn",
-          children: submitting ? "Submitting…" : "Submit Exam"
-        }
-      )
-    ] })
-  ] }) });
+function formatTime$1(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor(totalSeconds % 3600 / 60);
+  const seconds = totalSeconds % 60;
+  return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 function ExamSession() {
   const { examId } = useParams({ from: "/exams/$examId/take" });
@@ -32908,67 +32787,45 @@ function ExamSession() {
   const { data: exam } = useMockExam(examId);
   const { data: questions, isLoading } = useMockExamQuestions(examId);
   const submitExam = useSubmitExamAttempt();
-  const [phase, setPhase] = reactExports.useState("pre");
   const [currentIndex, setCurrentIndex] = reactExports.useState(0);
   const [answers, setAnswers] = reactExports.useState({});
-  const [timerEnabled, setTimerEnabled] = reactExports.useState(true);
-  const [timeLeft, setTimeLeft] = reactExports.useState(0);
+  const [flagged, setFlagged] = reactExports.useState({});
+  const [timeLeft, setTimeLeft] = reactExports.useState(2 * 60 * 60);
   const [submitting, setSubmitting] = reactExports.useState(false);
-  const [showFinishModal, setShowFinishModal] = reactExports.useState(false);
-  const [navOpen, setNavOpen] = reactExports.useState(false);
   const startTimeRef = reactExports.useRef(Date.now());
   reactExports.useEffect(() => {
+    if (!exam) return;
     const raw = localStorage.getItem(getStorageKey(examId));
-    if (!raw) return;
-    try {
-      const saved = JSON.parse(raw);
-      setAnswers(saved.answers);
-      setCurrentIndex(saved.currentIndex);
-      setTimerEnabled(saved.timerEnabled);
-      startTimeRef.current = saved.startedAt;
-      if (saved.timerEnabled && exam) {
-        const elapsed = Math.floor((Date.now() - saved.startedAt) / 1e3);
-        const remaining = exam.durationMinutes * 60 - elapsed;
-        setTimeLeft(Math.max(0, remaining));
+    if (raw) {
+      try {
+        const saved = JSON.parse(raw);
+        setAnswers(saved.answers ?? {});
+        setFlagged(saved.flagged ?? {});
+        setCurrentIndex(saved.currentIndex ?? 0);
+        startTimeRef.current = saved.startedAt ?? Date.now();
+        const elapsed = Math.floor((Date.now() - startTimeRef.current) / 1e3);
+        setTimeLeft(Math.max(0, exam.durationMinutes * 60 - elapsed));
+        return;
+      } catch {
+        localStorage.removeItem(getStorageKey(examId));
       }
-      setPhase("active");
-    } catch {
     }
-  }, [examId, exam]);
-  reactExports.useEffect(() => {
-    if (phase !== "active") return;
-    const progress2 = {
-      answers,
-      currentIndex,
-      startedAt: startTimeRef.current,
-      timerEnabled
-    };
-    localStorage.setItem(getStorageKey(examId), JSON.stringify(progress2));
-  }, [answers, currentIndex, phase, timerEnabled, examId]);
-  reactExports.useEffect(() => {
-    if (phase !== "active" || !timerEnabled) return;
-    const timer = setInterval(() => {
-      setTimeLeft((t) => {
-        if (t <= 1) {
-          clearInterval(timer);
-          handleSubmitFinal();
-          return 0;
-        }
-        return t - 1;
-      });
-    }, 1e3);
-    return () => clearInterval(timer);
-  }, [phase, timerEnabled]);
-  const handleBegin = (withTimer) => {
     startTimeRef.current = Date.now();
-    setTimerEnabled(withTimer);
-    if (withTimer && exam) setTimeLeft(exam.durationMinutes * 60);
-    setPhase("active");
-  };
+    setTimeLeft(exam.durationMinutes * 60);
+  }, [exam, examId]);
+  reactExports.useEffect(() => {
+    if (!(questions == null ? void 0 : questions.length)) return;
+    const progress22 = {
+      answers,
+      flagged,
+      currentIndex,
+      startedAt: startTimeRef.current
+    };
+    localStorage.setItem(getStorageKey(examId), JSON.stringify(progress22));
+  }, [answers, currentIndex, examId, flagged, questions == null ? void 0 : questions.length]);
   const handleSubmitFinal = reactExports.useCallback(async () => {
     if (submitting || !questions) return;
     setSubmitting(true);
-    setShowFinishModal(false);
     const examAnswers = questions.map((q) => ({
       questionId: q.id,
       selectedAnswer: answers[q.id] ?? ""
@@ -32988,499 +32845,302 @@ function ExamSession() {
     } catch {
       setSubmitting(false);
     }
-  }, [submitting, questions, answers, examId, submitExam, navigate]);
-  const formatTime2 = (s) => {
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    return `${m}:${sec.toString().padStart(2, "0")}`;
-  };
+  }, [answers, examId, navigate, questions, submitExam, submitting]);
+  reactExports.useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTimeLeft((seconds) => {
+        if (seconds <= 1) {
+          window.clearInterval(timer);
+          void handleSubmitFinal();
+          return 0;
+        }
+        return seconds - 1;
+      });
+    }, 1e3);
+    return () => window.clearInterval(timer);
+  }, [handleSubmitFinal]);
   if (isLoading || !exam) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto px-4 py-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-8 w-64 mb-6" }),
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-4xl px-4 py-8", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "mb-6 h-8 w-64" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-72 rounded-lg" })
     ] });
   }
   if (!questions || questions.length === 0) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto px-4 py-16 text-center", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground mb-4", children: "No questions available." }),
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-4xl px-4 py-16 text-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-4 text-muted-foreground", children: "No questions available." }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: () => navigate({ to: "/exams" }), variant: "outline", children: "Back to Exams" })
     ] });
   }
-  if (phase === "pre") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      PreStartScreen,
-      {
-        title: exam.title,
-        questionCount: questions.length,
-        durationMinutes: exam.durationMinutes,
-        onBegin: handleBegin,
-        onBack: () => navigate({ to: "/exams" })
-      }
-    );
-  }
   const currentQ = questions[currentIndex];
   const answeredCount = Object.keys(answers).length;
-  const isTimeWarning = timerEnabled && timeLeft < 300;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-[calc(100vh-4rem)] bg-background", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "div",
-      {
-        className: "bg-card border-b border-border sticky top-16 z-40 shadow-xs",
-        "data-ocid": "exam-header",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display font-bold text-sm text-foreground truncate", children: exam.title }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
-                "Question ",
-                currentIndex + 1,
-                "/",
-                questions.length,
-                " · ",
-                answeredCount,
-                " ",
-                "answered"
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 flex-shrink-0", children: [
-              timerEnabled && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                "div",
-                {
-                  className: cn(
-                    "flex items-center gap-1.5 text-sm font-bold px-3 py-1.5 rounded-md",
-                    isTimeWarning ? "bg-destructive/10 text-destructive animate-pulse" : "bg-muted text-foreground"
-                  ),
-                  "data-ocid": "exam-timer",
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-3.5 h-3.5" }),
-                    formatTime2(timeLeft)
-                  ]
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  variant: "outline",
-                  size: "sm",
-                  className: "lg:hidden",
-                  onClick: () => setNavOpen((v) => !v),
-                  "aria-label": "Toggle question navigator",
-                  "data-ocid": "toggle-navigator-btn",
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(List, { className: "w-4 h-4" })
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  size: "sm",
-                  className: "bg-accent text-primary font-bold hover:bg-accent/80 text-xs px-3",
-                  onClick: () => setShowFinishModal(true),
-                  disabled: submitting,
-                  "data-ocid": "finish-exam-btn",
-                  children: "Finish Exam"
-                }
-              )
-            ] })
+  const progress2 = Math.round(answeredCount / questions.length * 100);
+  const submitWithConfirm = () => {
+    const unanswered = questions.length - answeredCount;
+    const message = unanswered > 0 ? `${unanswered} questions are unanswered. Finish test now?` : "Finish test now?";
+    if (window.confirm(message)) void handleSubmitFinal();
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-[calc(100vh-4rem)] bg-[#1f1f1f] font-sans text-[#2d2d2d]", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "bg-[#1b1b1b] text-white", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-[110px_1fr_125px] items-center gap-2 px-0 py-2 sm:grid-cols-[220px_1fr_150px] sm:px-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "font-mono text-[13px] font-bold leading-7", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            "Question: ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg", children: currentIndex + 1 })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-1 bg-muted", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "div",
-            {
-              className: "h-full bg-primary transition-all duration-300",
-              style: { width: `${answeredCount / questions.length * 100}%` }
-            }
-          ) })
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto px-4 py-6 flex gap-6", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 min-w-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "shadow-card border border-border bg-card p-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs font-bold text-muted-foreground uppercase tracking-wider", children: [
-            "Question ",
-            currentIndex + 1,
-            " of ",
-            questions.length
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "span",
-            {
-              className: cn(
-                "text-[10px] px-2 py-0.5 rounded-full font-medium",
-                currentQ.difficulty === "easy" ? "bg-[oklch(0.55_0.18_150)]/10 text-[oklch(0.45_0.18_150)]" : currentQ.difficulty === "medium" ? "bg-accent/10 text-accent" : "bg-destructive/10 text-destructive"
-              ),
-              children: currentQ.difficulty
-            }
-          )
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            "Section: ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg", children: exam.id.endsWith("-s2") ? "2" : "1" })
+          ] })
         ] }),
-        currentQ.vignette && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-foreground text-sm leading-relaxed mb-5 whitespace-pre-line rounded-md border border-border bg-muted/30 p-4", children: currentQ.vignette }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-foreground text-sm leading-relaxed mb-6 whitespace-pre-line", children: currentQ.stem }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "space-y-3 mb-6", "aria-label": "Answer choices", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("legend", { className: "sr-only", children: "Select an answer" }),
-          OPTION_LABELS.map((opt) => {
-            const isSelected = answers[currentQ.id] === opt;
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-md border border-[#3d3d3d] bg-[#2a2a2a] px-5 py-2 text-center shadow-inner", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2 text-[13px] text-gray-300", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "h-4 w-4 text-white" }),
+              "Section Time Remaining:"
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-mono text-[21px] font-extrabold tracking-[0.18em]", children: formatTime$1(timeLeft) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-44 text-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-1 h-2 rounded-full bg-[#5b5b5b]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "div",
+              {
+                className: "h-full rounded-full bg-[#78c640]",
+                style: { width: `${progress2}%` }
+              }
+            ) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "font-mono text-[12px]", children: [
+              "Progress ",
+              progress2,
+              "%"
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            className: "justify-self-end rounded-md bg-[#666] px-4 font-bold text-white hover:bg-[#555]",
+            disabled: submitting,
+            onClick: submitWithConfirm,
+            "data-ocid": "finish-exam-btn",
+            children: "Finish Test"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between bg-[#73c33d] px-2 py-2 text-sm font-bold text-white sm:px-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+          "Test: ",
+          exam.title.replace(" - ", " -- ")
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Candidate: USER DEMO" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "grid min-h-[calc(100vh-13rem)] grid-cols-[72px_1fr] bg-[#d8d8d8]", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("aside", { className: "overflow-y-auto border-r border-[#bdbdbd] bg-[#d8d8d8] py-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2", children: questions.map((q, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          type: "button",
+          onClick: () => setCurrentIndex(index2),
+          className: cn(
+            "relative flex h-[17px] w-[68px] items-center rounded-r-sm bg-[#73c33d] pl-1 text-left text-[14px] font-bold leading-none text-white",
+            index2 === currentIndex && "after:absolute after:right-[-9px] after:top-0 after:h-0 after:w-0 after:border-y-[8.5px] after:border-l-[9px] after:border-y-transparent after:border-l-[#73c33d]",
+            answers[q.id] && "bg-[#59a52f]",
+            flagged[q.id] && "ring-2 ring-yellow-400"
+          ),
+          "aria-label": `Question ${index2 + 1}`,
+          "data-ocid": `nav-q-${index2 + 1}`,
+          children: index2 + 1
+        },
+        q.id
+      )) }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "p-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-full rounded border border-[#cfcfcf] bg-white px-5 py-6 sm:px-8", children: [
+        currentQ.vignette && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-6 whitespace-pre-line rounded border border-[#d9d9d9] bg-[#f7f7f7] p-4 text-[16px] leading-7", children: currentQ.vignette }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-7 whitespace-pre-line text-[18px] leading-8", children: currentQ.stem }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "space-y-3", "aria-label": "Answer choices", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("legend", { className: "sr-only", children: "Select answer" }),
+          OPTION_LABELS.map((option) => {
+            const isSelected = answers[currentQ.id] === option;
             return /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "label",
               {
                 className: cn(
-                  "flex items-start gap-3 rounded-md border p-4 cursor-pointer transition-smooth select-none",
-                  isSelected ? "border-primary bg-primary/5 ring-1 ring-primary/30" : "border-border hover:border-primary/40 hover:bg-muted/30"
+                  "grid cursor-pointer grid-cols-[42px_1fr] overflow-hidden rounded border border-[#d6d6d6] bg-white transition hover:border-[#73c33d]",
+                  isSelected && "border-[#73c33d] ring-2 ring-[#73c33d]/30"
                 ),
-                "data-ocid": `exam-option-${opt.toLowerCase()}`,
+                "data-ocid": `exam-option-${option.toLowerCase()}`,
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "input",
                     {
                       type: "radio",
-                      name: `exam-q-${currentQ.id}`,
-                      value: opt,
+                      name: `q-${currentQ.id}`,
+                      value: option,
                       checked: isSelected,
-                      onChange: () => setAnswers((prev) => ({ ...prev, [currentQ.id]: opt })),
+                      onChange: () => setAnswers((prev) => ({ ...prev, [currentQ.id]: option })),
                       className: "sr-only"
                     }
                   ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    "span",
-                    {
-                      className: cn(
-                        "w-7 h-7 rounded-full border flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 transition-smooth",
-                        isSelected ? "border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground"
-                      ),
-                      children: opt
-                    }
-                  ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-foreground leading-relaxed", children: OPTION_TEXT[opt](currentQ) })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex min-h-[52px] items-center justify-center border-r border-[#d6d6d6] bg-[#f1f1f1] text-[15px] font-bold", children: option }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex min-h-[52px] items-center px-5 text-[16px] leading-7", children: OPTION_TEXT[option](currentQ) })
                 ]
               },
-              opt
+              option
             );
           })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between pt-4 border-t border-border", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Button,
-            {
-              variant: "outline",
-              size: "sm",
-              disabled: currentIndex === 0,
-              onClick: () => setCurrentIndex((i) => i - 1),
-              "data-ocid": "prev-question-btn",
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { className: "w-4 h-4 mr-1" }),
-                "Previous"
-              ]
-            }
-          ),
-          currentIndex < questions.length - 1 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Button,
-            {
-              size: "sm",
-              className: "bg-primary text-primary-foreground hover:bg-primary/90",
-              onClick: () => setCurrentIndex((i) => i + 1),
-              "data-ocid": "next-question-btn",
-              children: [
-                "Next",
-                /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 ml-1" })
-              ]
-            }
-          ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              size: "sm",
-              className: "bg-accent text-primary font-bold hover:bg-accent/80",
-              onClick: () => setShowFinishModal(true),
-              disabled: submitting,
-              "data-ocid": "submit-exam-btn",
-              children: "Finish Exam"
-            }
-          )
         ] })
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "hidden lg:block w-52 flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        QuestionNavigator,
-        {
-          questions,
-          answers,
-          currentIndex,
-          onSelect: setCurrentIndex,
-          onFinish: () => setShowFinishModal(true),
-          submitting
-        }
-      ) })
+      ] }) })
     ] }),
-    navOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-50 lg:hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "div",
-        {
-          className: "absolute inset-0 bg-foreground/20 backdrop-blur-sm",
-          role: "button",
-          tabIndex: 0,
-          "aria-label": "Close navigator",
-          onClick: () => setNavOpen(false),
-          onKeyDown: (e) => e.key === "Escape" && setNavOpen(false)
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute right-0 top-0 h-full w-64 bg-card border-l border-border shadow-lg p-4 overflow-y-auto", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-sm font-semibold text-foreground", children: "Questions" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              type: "button",
-              onClick: () => setNavOpen(false),
-              className: "text-muted-foreground hover:text-foreground",
-              "aria-label": "Close navigator",
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "w-5 h-5" })
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          QuestionNavigator,
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("footer", { className: "flex items-center justify-between bg-[#1f1f1f] px-1 py-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "secondary", size: "icon", className: "bg-[#3f3f3f] text-white hover:bg-[#555]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "h-4 w-4" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "secondary", size: "icon", className: "bg-[#3f3f3f] text-white hover:bg-[#555]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid3x3, { className: "h-4 w-4" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "secondary", size: "icon", className: "bg-[#3f3f3f] text-white hover:bg-[#555]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleHelp, { className: "h-4 w-4" }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Button,
           {
-            questions,
-            answers,
-            currentIndex,
-            onSelect: (i) => {
-              setCurrentIndex(i);
-              setNavOpen(false);
-            },
-            onFinish: () => {
-              setNavOpen(false);
-              setShowFinishModal(true);
-            },
-            submitting
+            className: cn(
+              "bg-[#73c33d] font-bold text-white hover:bg-[#65b535]",
+              flagged[currentQ.id] && "bg-yellow-500 hover:bg-yellow-600"
+            ),
+            onClick: () => setFlagged((prev) => ({
+              ...prev,
+              [currentQ.id]: !prev[currentQ.id]
+            })),
+            "data-ocid": "flag-question-btn",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Flag, { className: "mr-1 h-4 w-4 text-red-600" }),
+              "Flag"
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Button,
+          {
+            className: "bg-[#666] font-bold text-white hover:bg-[#555]",
+            disabled: currentIndex === 0,
+            onClick: () => setCurrentIndex((i) => Math.max(0, i - 1)),
+            "data-ocid": "prev-question-btn",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { className: "mr-1 h-4 w-4" }),
+              "Back"
+            ]
+          }
+        ),
+        currentIndex < questions.length - 1 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Button,
+          {
+            className: "bg-[#73c33d] font-bold text-white hover:bg-[#65b535]",
+            onClick: () => setCurrentIndex((i) => Math.min(questions.length - 1, i + 1)),
+            "data-ocid": "next-question-btn",
+            children: [
+              "Next",
+              /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "ml-1 h-4 w-4" })
+            ]
+          }
+        ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Button,
+          {
+            className: "bg-[#73c33d] font-bold text-white hover:bg-[#65b535]",
+            disabled: submitting,
+            onClick: submitWithConfirm,
+            "data-ocid": "submit-exam-btn",
+            children: [
+              "Finish",
+              /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "ml-1 h-4 w-4" })
+            ]
           }
         )
       ] })
-    ] }),
-    showFinishModal && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      FinishModal,
-      {
-        answeredCount,
-        totalCount: questions.length,
-        onConfirm: handleSubmitFinal,
-        onCancel: () => setShowFinishModal(false),
-        submitting
-      }
-    )
+    ] })
   ] });
 }
-function QuestionNavigator({
-  questions,
-  answers,
-  currentIndex,
-  onSelect,
-  onFinish,
-  submitting
-}) {
-  const answeredCount = Object.keys(answers).length;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "shadow-card border border-border bg-card p-4 sticky top-36", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3", children: "Questions" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-5 gap-1.5 mb-4", children: questions.map((q, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "button",
-      {
-        type: "button",
-        onClick: () => onSelect(i),
-        className: cn(
-          "w-8 h-8 rounded text-xs font-semibold transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-          i === currentIndex ? "bg-primary text-primary-foreground" : answers[q.id] ? "bg-[oklch(0.55_0.18_150)]/15 text-[oklch(0.45_0.18_150)] border border-[oklch(0.55_0.18_150)]/20" : "bg-muted text-muted-foreground hover:bg-muted/80"
-        ),
-        "aria-label": `Question ${i + 1}${answers[q.id] ? " (answered)" : ""}`,
-        "data-ocid": `nav-q-${i + 1}`,
-        children: i + 1
-      },
-      q.id
-    )) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-xs text-muted-foreground space-y-1.5 border-t border-border pt-3 mb-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-3 h-3 rounded-sm bg-[oklch(0.55_0.18_150)]/15 border border-[oklch(0.55_0.18_150)]/20" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-          "Answered (",
-          answeredCount,
-          ")"
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-3 h-3 rounded-sm bg-muted" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-          "Unanswered (",
-          questions.length - answeredCount,
-          ")"
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Button,
-      {
-        size: "sm",
-        className: "w-full bg-accent text-primary font-bold hover:bg-accent/80 text-xs",
-        onClick: onFinish,
-        disabled: submitting,
-        "data-ocid": "nav-finish-btn",
-        children: "Finish Exam"
-      }
-    )
-  ] });
+const MOCK_LABELS = {
+  "mock-1": "MOCK EXAM 1",
+  "mock-2": "MOCK EXAM 2",
+  "mock-3": "MOCK EXAM 3",
+  "mock-4": "MOCK EXAM 4",
+  "mock-5": "MOCK EXAM 5",
+  "kaplan-mock-1": "KAPLAN MOCK 1"
+};
+const SESSION_DETAILS = {
+  "mock-1-s1": "90 Qs - Ethics, FSA, Econ, Quant",
+  "mock-1-s2": "90 Qs - FI, Equity, Derivatives, PM, AI",
+  "mock-2-s1": "90 Qs - Ethics, FSA, Econ, Quant, CF",
+  "mock-2-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "mock-3-s1": "90 Qs - Ethics, Quant, Econ, FSA, CF",
+  "mock-3-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "mock-4-s1": "90 Qs - Ethics, Quant, Econ, FSA, CF",
+  "mock-4-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "mock-5-s1": "90 Qs - Ethics, Quant, Econ, FSA, CF",
+  "mock-5-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "kaplan-mock-1-s1": "90 Qs - Kaplan Q1-90",
+  "kaplan-mock-1-s2": "90 Qs - Kaplan Q91-180"
+};
+function groupKey(examId) {
+  return examId.replace(/-s[12]$/, "");
 }
-const EXAM_RULES = [
-  "Each exam consists of multiple-choice questions with 3 options (A, B, C).",
-  "Exams cannot be paused once started — complete in one sitting.",
-  "A timer is available (optional) to simulate real CFA exam conditions.",
-  "You may navigate freely between questions before submitting.",
-  "Results and answer explanations are shown immediately after submission.",
-  "A score of 70% or above is considered a passing threshold."
-];
+function sessionNumber(examId) {
+  return examId.endsWith("-s2") ? "2" : "1";
+}
+function groupExams(exams) {
+  const grouped = /* @__PURE__ */ new Map();
+  for (const exam of exams) {
+    const key = groupKey(exam.id);
+    grouped.set(key, [...grouped.get(key) ?? [], exam]);
+  }
+  return Array.from(grouped.entries()).map(([key, items]) => ({
+    key,
+    label: MOCK_LABELS[key] ?? key.toUpperCase(),
+    sessions: items.sort((a, b) => a.id.localeCompare(b.id))
+  }));
+}
 function Exams() {
   const { data: exams, isLoading } = useMockExams();
-  const { data: examHistory } = useMyExamHistory();
-  const completedIds = new Set((examHistory ?? []).map((a) => a.examId));
-  const getBestScore = (examId) => {
-    const attempts = (examHistory ?? []).filter((a) => a.examId === examId);
-    if (attempts.length === 0) return null;
-    return Math.max(...attempts.map((a) => a.score));
-  };
   if (isLoading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-10 w-64 mb-2" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-5 w-80 mb-8" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-4", children: Array.from({ length: 6 }, (_, i) => `sk-${i}`).map((k) => /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-48 rounded-lg" }, k)) })
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-4xl px-4 py-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "mx-auto mb-6 h-10 w-64" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 gap-4 sm:grid-cols-2", children: Array.from({ length: 8 }, (_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-24 rounded-lg" }, i)) })
     ] });
   }
-  const totalCompleted = completedIds.size;
-  const totalExams = (exams == null ? void 0 : exams.length) ?? 0;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(FileText, { className: "w-5 h-5 text-primary" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-2xl sm:text-3xl font-bold text-foreground leading-tight", children: "Mock Examinations" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground text-sm mt-0.5", children: [
-            totalExams,
-            " full-length practice exams · CFA Level I format ·",
-            " ",
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-primary font-medium", children: [
-              totalCompleted,
-              "/",
-              totalExams,
-              " completed"
-            ] })
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4 h-2 bg-muted rounded-full overflow-hidden max-w-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "div",
+  const grouped = groupExams(exams ?? []);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "min-h-[calc(100vh-4rem)] bg-[#183811] px-3 py-0 sm:px-5", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-[750px] rounded-b-xl bg-white px-4 pb-14 pt-4 shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:px-12", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-7", children: grouped.map((group) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { "aria-labelledby": `${group.key}-title`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "h1",
         {
-          className: "h-full bg-primary rounded-full transition-all duration-500",
-          style: {
-            width: `${totalExams > 0 ? totalCompleted / totalExams * 100 : 0}%`
-          }
+          id: `${group.key}-title`,
+          className: "mb-3 text-center font-mono text-[14px] font-bold uppercase tracking-[0.5em] text-[#1f2933]",
+          children: group.label
         }
-      ) })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "shadow-card border border-border bg-card p-5 mb-7", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { className: "w-4 h-4 text-accent flex-shrink-0" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-semibold text-sm text-foreground", children: "Exam Instructions" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5", children: EXAM_RULES.map((rule) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "li",
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 gap-4 sm:grid-cols-2", children: group.sessions.map((exam) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Link,
         {
-          className: "flex items-start gap-2 text-xs text-muted-foreground leading-relaxed",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" }),
-            rule
-          ]
+          to: "/exams/$examId/take",
+          params: { examId: exam.id },
+          className: "block",
+          "data-ocid": `start-exam-${exam.id}`,
+          children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "flex h-[98px] flex-col items-center justify-center rounded-lg border-0 bg-[#73c33d] px-4 text-center text-white shadow-none transition hover:bg-[#65b535] hover:shadow-md", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-[18px] font-extrabold", children: [
+              "Session ",
+              sessionNumber(exam.id)
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-2 text-[14px] font-semibold leading-snug", children: SESSION_DETAILS[exam.id] ?? exam.description })
+          ] })
         },
-        rule
+        exam.id
       )) })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "grid grid-cols-1 sm:grid-cols-2 gap-4",
-        "data-ocid": "exams-grid",
-        children: (exams ?? []).map((exam) => {
-          const isCompleted = completedIds.has(exam.id);
-          const bestScore = getBestScore(exam.id);
-          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Card,
-            {
-              className: cn(
-                "shadow-card border border-border bg-card p-5 transition-smooth group relative overflow-hidden",
-                "hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5"
-              ),
-              "data-ocid": `exam-card-${exam.id}`,
-              children: [
-                isCompleted && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 left-0 w-1 h-full bg-[oklch(0.55_0.18_150)] rounded-l-lg" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-3 mb-3 pl-1", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-1 flex-wrap", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-bold text-sm text-foreground leading-snug", children: exam.title }),
-                      isCompleted && /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "text-[9px] py-0 px-1.5 border-0 bg-[oklch(0.55_0.18_150)]/12 text-[oklch(0.45_0.18_150)] flex items-center gap-0.5", children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-2.5 h-2.5" }),
-                        "Completed"
-                      ] })
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground leading-relaxed line-clamp-2", children: exam.description })
-                  ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ScoreRing, { score: bestScore ?? 0, size: "sm" }) })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 text-xs text-muted-foreground mb-4 pl-1", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(FileText, { className: "w-3 h-3" }),
-                    exam.questionCount,
-                    " questions"
-                  ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-3 h-3" }),
-                    exam.durationMinutes,
-                    " min"
-                  ] }),
-                  bestScore !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                    "span",
-                    {
-                      className: cn(
-                        "font-semibold",
-                        bestScore >= 70 ? "text-[oklch(0.45_0.18_150)]" : "text-accent"
-                      ),
-                      children: [
-                        "Best: ",
-                        bestScore,
-                        "%"
-                      ]
-                    }
-                  )
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Link,
-                  {
-                    to: "/exams/$examId/take",
-                    params: { examId: exam.id },
-                    className: "block pl-1",
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                      Button,
-                      {
-                        size: "sm",
-                        className: cn(
-                          "w-full font-semibold transition-smooth",
-                          isCompleted ? "bg-muted text-foreground border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary" : "bg-primary text-primary-foreground hover:bg-primary/90"
-                        ),
-                        "data-ocid": `start-exam-${exam.id}`,
-                        children: [
-                          isCompleted ? "Retake Exam" : "Start Exam",
-                          /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 ml-1" })
-                        ]
-                      }
-                    )
-                  }
-                )
-              ]
-            },
-            exam.id
-          );
-        })
-      }
-    )
-  ] });
+    ] }, group.key)) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/history", className: "mt-8 block", "data-ocid": "exam-history", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "h-[76px] w-full rounded-lg bg-[#18345a] text-white hover:bg-[#122947]", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-center gap-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2 text-base font-extrabold", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ChartColumn, { className: "h-5 w-5" }),
+        "My Exam History"
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-semibold text-white/80", children: "View past attempts, mistakes & progress" })
+    ] }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-center font-mono text-[13px] tracking-[0.18em] text-gray-400", children: "Candidate: USER DEMO   -   Feb 2025   -   Prometric Style" })
+  ] }) });
 }
 function formatTime(seconds) {
   const h = Math.floor(seconds / 3600);
@@ -33876,10 +33536,11 @@ function Login() {
   const [password, setPassword] = reactExports.useState("");
   const [error, setError] = reactExports.useState("");
   const { login } = useAuth();
+  const navigate = useNavigate();
   const handleLogin = () => {
     const ok = login(email, password);
     if (ok) {
-      window.location.href = "/";
+      navigate({ to: "/" });
     } else {
       setError("Email and password (min 6 chars) required.");
     }
@@ -33889,7 +33550,7 @@ function Login() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       "input",
       {
-        type: "email",
+        type: "text",
         placeholder: "Email",
         value: email,
         onChange: (e) => setEmail(e.target.value),

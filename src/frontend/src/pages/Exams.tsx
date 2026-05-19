@@ -1,200 +1,128 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
-import {
-  AlertTriangle,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  FileText,
-} from "lucide-react";
-import { ScoreRing } from "../components/ScoreRing";
-import { useMockExams, useMyExamHistory } from "../hooks/useBackend";
+import { BarChart3 } from "lucide-react";
+import { useMockExams } from "../hooks/useBackend";
+import type { MockExam } from "../types/cfa";
 
-const EXAM_RULES = [
-  "Each exam consists of multiple-choice questions with 3 options (A, B, C).",
-  "Exams cannot be paused once started — complete in one sitting.",
-  "A timer is available (optional) to simulate real CFA exam conditions.",
-  "You may navigate freely between questions before submitting.",
-  "Results and answer explanations are shown immediately after submission.",
-  "A score of 70% or above is considered a passing threshold.",
-];
+const MOCK_LABELS: Record<string, string> = {
+  "mock-1": "MOCK EXAM 1",
+  "mock-2": "MOCK EXAM 2",
+  "mock-3": "MOCK EXAM 3",
+  "mock-4": "MOCK EXAM 4",
+  "mock-5": "MOCK EXAM 5",
+  "kaplan-mock-1": "KAPLAN MOCK 1",
+};
+
+const SESSION_DETAILS: Record<string, string> = {
+  "mock-1-s1": "90 Qs - Ethics, FSA, Econ, Quant",
+  "mock-1-s2": "90 Qs - FI, Equity, Derivatives, PM, AI",
+  "mock-2-s1": "90 Qs - Ethics, FSA, Econ, Quant, CF",
+  "mock-2-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "mock-3-s1": "90 Qs - Ethics, Quant, Econ, FSA, CF",
+  "mock-3-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "mock-4-s1": "90 Qs - Ethics, Quant, Econ, FSA, CF",
+  "mock-4-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "mock-5-s1": "90 Qs - Ethics, Quant, Econ, FSA, CF",
+  "mock-5-s2": "90 Qs - Equity, FI, Derivatives, AI, PM",
+  "kaplan-mock-1-s1": "90 Qs - Kaplan Q1-90",
+  "kaplan-mock-1-s2": "90 Qs - Kaplan Q91-180",
+};
+
+function groupKey(examId: string) {
+  return examId.replace(/-s[12]$/, "");
+}
+
+function sessionNumber(examId: string) {
+  return examId.endsWith("-s2") ? "2" : "1";
+}
+
+function groupExams(exams: MockExam[]) {
+  const grouped = new Map<string, MockExam[]>();
+  for (const exam of exams) {
+    const key = groupKey(exam.id);
+    grouped.set(key, [...(grouped.get(key) ?? []), exam]);
+  }
+  return Array.from(grouped.entries()).map(([key, items]) => ({
+    key,
+    label: MOCK_LABELS[key] ?? key.toUpperCase(),
+    sessions: items.sort((a, b) => a.id.localeCompare(b.id)),
+  }));
+}
 
 export default function Exams() {
   const { data: exams, isLoading } = useMockExams();
-  const { data: examHistory } = useMyExamHistory();
-
-  const completedIds = new Set((examHistory ?? []).map((a) => a.examId));
-
-  const getBestScore = (examId: string) => {
-    const attempts = (examHistory ?? []).filter((a) => a.examId === examId);
-    if (attempts.length === 0) return null;
-    return Math.max(...attempts.map((a) => a.score));
-  };
 
   if (isLoading) {
     return (
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Skeleton className="h-10 w-64 mb-2" />
-        <Skeleton className="h-5 w-80 mb-8" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {Array.from({ length: 6 }, (_, i) => `sk-${i}`).map((k) => (
-            <Skeleton key={k} className="h-48 rounded-lg" />
+      <div className="mx-auto max-w-4xl px-4 py-10">
+        <Skeleton className="mx-auto mb-6 h-10 w-64" />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {Array.from({ length: 8 }, (_, i) => (
+            <Skeleton key={i} className="h-24 rounded-lg" />
           ))}
         </div>
       </div>
     );
   }
 
-  const totalCompleted = completedIds.size;
-  const totalExams = exams?.length ?? 0;
+  const grouped = groupExams(exams ?? []);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Page Header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <FileText className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-foreground leading-tight">
-              Mock Examinations
-            </h1>
-            <p className="text-muted-foreground text-sm mt-0.5">
-              {totalExams} full-length practice exams · CFA Level I format ·{" "}
-              <span className="text-primary font-medium">
-                {totalCompleted}/{totalExams} completed
-              </span>
-            </p>
-          </div>
-        </div>
-
-        {/* Progress bar */}
-        <div className="mt-4 h-2 bg-muted rounded-full overflow-hidden max-w-sm">
-          <div
-            className="h-full bg-primary rounded-full transition-all duration-500"
-            style={{
-              width: `${totalExams > 0 ? (totalCompleted / totalExams) * 100 : 0}%`,
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Exam Rules Card */}
-      <Card className="shadow-card border border-border bg-card p-5 mb-7">
-        <div className="flex items-center gap-2 mb-3">
-          <AlertTriangle className="w-4 h-4 text-accent flex-shrink-0" />
-          <h2 className="font-semibold text-sm text-foreground">
-            Exam Instructions
-          </h2>
-        </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
-          {EXAM_RULES.map((rule) => (
-            <li
-              key={rule}
-              className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" />
-              {rule}
-            </li>
-          ))}
-        </ul>
-      </Card>
-
-      {/* Exam Grid */}
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-        data-ocid="exams-grid"
-      >
-        {(exams ?? []).map((exam) => {
-          const isCompleted = completedIds.has(exam.id);
-          const bestScore = getBestScore(exam.id);
-
-          return (
-            <Card
-              key={exam.id}
-              className={cn(
-                "shadow-card border border-border bg-card p-5 transition-smooth group relative overflow-hidden",
-                "hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5",
-              )}
-              data-ocid={`exam-card-${exam.id}`}
-            >
-              {/* Completed accent stripe */}
-              {isCompleted && (
-                <div className="absolute top-0 left-0 w-1 h-full bg-[oklch(0.55_0.18_150)] rounded-l-lg" />
-              )}
-
-              <div className="flex items-start justify-between gap-3 mb-3 pl-1">
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="font-display font-bold text-sm text-foreground leading-snug">
-                      {exam.title}
-                    </h3>
-                    {isCompleted && (
-                      <Badge className="text-[9px] py-0 px-1.5 border-0 bg-[oklch(0.55_0.18_150)]/12 text-[oklch(0.45_0.18_150)] flex items-center gap-0.5">
-                        <CheckCircle2 className="w-2.5 h-2.5" />
-                        Completed
-                      </Badge>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                    {exam.description}
-                  </p>
-                </div>
-                <div className="flex-shrink-0">
-                  <ScoreRing score={bestScore ?? 0} size="sm" />
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4 pl-1">
-                <span className="flex items-center gap-1">
-                  <FileText className="w-3 h-3" />
-                  {exam.questionCount} questions
-                </span>
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  {exam.durationMinutes} min
-                </span>
-                {bestScore !== null && (
-                  <span
-                    className={cn(
-                      "font-semibold",
-                      bestScore >= 70
-                        ? "text-[oklch(0.45_0.18_150)]"
-                        : "text-accent",
-                    )}
-                  >
-                    Best: {bestScore}%
-                  </span>
-                )}
-              </div>
-
-              <Link
-                to="/exams/$examId/take"
-                params={{ examId: exam.id }}
-                className="block pl-1"
+    <div className="min-h-[calc(100vh-4rem)] bg-[#183811] px-3 py-0 sm:px-5">
+      <div className="mx-auto max-w-[750px] rounded-b-xl bg-white px-4 pb-14 pt-4 shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:px-12">
+        <div className="space-y-7">
+          {grouped.map((group) => (
+            <section key={group.key} aria-labelledby={`${group.key}-title`}>
+              <h1
+                id={`${group.key}-title`}
+                className="mb-3 text-center font-mono text-[14px] font-bold uppercase tracking-[0.5em] text-[#1f2933]"
               >
-                <Button
-                  size="sm"
-                  className={cn(
-                    "w-full font-semibold transition-smooth",
-                    isCompleted
-                      ? "bg-muted text-foreground border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                      : "bg-primary text-primary-foreground hover:bg-primary/90",
-                  )}
-                  data-ocid={`start-exam-${exam.id}`}
-                >
-                  {isCompleted ? "Retake Exam" : "Start Exam"}
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </Button>
-              </Link>
-            </Card>
-          );
-        })}
+                {group.label}
+              </h1>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {group.sessions.map((exam) => (
+                  <Link
+                    key={exam.id}
+                    to="/exams/$examId/take"
+                    params={{ examId: exam.id }}
+                    className="block"
+                    data-ocid={`start-exam-${exam.id}`}
+                  >
+                    <Card className="flex h-[98px] flex-col items-center justify-center rounded-lg border-0 bg-[#73c33d] px-4 text-center text-white shadow-none transition hover:bg-[#65b535] hover:shadow-md">
+                      <div className="text-[18px] font-extrabold">
+                        Session {sessionNumber(exam.id)}
+                      </div>
+                      <div className="mt-2 text-[14px] font-semibold leading-snug">
+                        {SESSION_DETAILS[exam.id] ?? exam.description}
+                      </div>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <Link to="/history" className="mt-8 block" data-ocid="exam-history">
+          <Button className="h-[76px] w-full rounded-lg bg-[#18345a] text-white hover:bg-[#122947]">
+            <div className="flex flex-col items-center justify-center gap-1">
+              <span className="flex items-center gap-2 text-base font-extrabold">
+                <BarChart3 className="h-5 w-5" />
+                My Exam History
+              </span>
+              <span className="text-xs font-semibold text-white/80">
+                View past attempts, mistakes & progress
+              </span>
+            </div>
+          </Button>
+        </Link>
+
+        <p className="mt-2 text-center font-mono text-[13px] tracking-[0.18em] text-gray-400">
+          Candidate: USER DEMO &nbsp; - &nbsp; Feb 2025 &nbsp; - &nbsp;
+          Prometric Style
+        </p>
       </div>
     </div>
   );
