@@ -161,8 +161,8 @@ export default function ExamSession() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-[#1f1f1f] font-sans text-[#2d2d2d]">
-      <header className="bg-[#1b1b1b] text-white">
+    <div className="flex h-screen flex-col overflow-hidden bg-[#1f1f1f] font-sans text-[#2d2d2d]">
+      <header className="shrink-0 bg-[#1b1b1b] text-white">
         <div className="grid grid-cols-[110px_1fr_125px] items-center gap-2 px-0 py-2 sm:grid-cols-[220px_1fr_150px] sm:px-4">
           <div className="font-mono text-[13px] font-bold leading-7">
             <div>
@@ -210,7 +210,7 @@ export default function ExamSession() {
         </div>
       </header>
 
-      <main className="grid min-h-[calc(100vh-13rem)] grid-cols-[72px_1fr] bg-[#d8d8d8]">
+      <main className="grid min-h-0 flex-1 grid-cols-[90px_1fr] bg-[#d8d8d8]">
         <aside className="overflow-y-auto border-r border-[#bdbdbd] bg-[#d8d8d8] py-2">
           <div className="space-y-2">
             {questions.map((q, index) => (
@@ -219,7 +219,7 @@ export default function ExamSession() {
                 type="button"
                 onClick={() => setCurrentIndex(index)}
                 className={cn(
-                  "relative flex h-[17px] w-[68px] items-center rounded-r-sm bg-[#73c33d] pl-1 text-left text-[14px] font-bold leading-none text-white",
+                  "relative flex h-[19px] w-[84px] items-center rounded-r-sm bg-[#73c33d] pl-1 text-left text-[14px] font-bold leading-none text-white",
                   index === currentIndex &&
                     "after:absolute after:right-[-9px] after:top-0 after:h-0 after:w-0 after:border-y-[8.5px] after:border-l-[9px] after:border-y-transparent after:border-l-[#73c33d]",
                   answers[q.id] && "bg-[#59a52f]",
@@ -234,7 +234,7 @@ export default function ExamSession() {
           </div>
         </aside>
 
-        <section className="p-2">
+        <section className="min-w-0 overflow-y-auto p-2">
           <div className="min-h-full rounded border border-[#cfcfcf] bg-white px-5 py-6 sm:px-8">
             {currentQ.vignette && (
               <div className="mb-6 whitespace-pre-line rounded border border-[#d9d9d9] bg-[#f7f7f7] p-4 text-[16px] leading-7">
@@ -282,7 +282,7 @@ export default function ExamSession() {
         </section>
       </main>
 
-      <footer className="flex items-center justify-between bg-[#1f1f1f] px-1 py-2">
+      <footer className="flex shrink-0 items-center justify-between bg-[#1f1f1f] px-1 py-2">
         <div className="flex items-center gap-2">
           <Button variant="secondary" size="icon" className="bg-[#3f3f3f] text-white hover:bg-[#555]">
             <Settings className="h-4 w-4" />

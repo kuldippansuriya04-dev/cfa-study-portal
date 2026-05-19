@@ -32,6 +32,13 @@ export default function Layout() {
   const isActive = (to: string) =>
     to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
 
+  const isExamTakingPage =
+    location.pathname.includes("/exams/") && location.pathname.endsWith("/take");
+
+  if (isExamTakingPage) {
+    return <Outlet />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}

@@ -23354,6 +23354,10 @@ function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
   const isActive = (to) => to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+  const isExamTakingPage = location.pathname.includes("/exams/") && location.pathname.endsWith("/take");
+  if (isExamTakingPage) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {});
+  }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen flex flex-col bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "header",
@@ -32879,8 +32883,8 @@ function ExamSession() {
     const message = unanswered > 0 ? `${unanswered} questions are unanswered. Finish test now?` : "Finish test now?";
     if (window.confirm(message)) void handleSubmitFinal();
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-[calc(100vh-4rem)] bg-[#1f1f1f] font-sans text-[#2d2d2d]", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "bg-[#1b1b1b] text-white", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-screen flex-col overflow-hidden bg-[#1f1f1f] font-sans text-[#2d2d2d]", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "shrink-0 bg-[#1b1b1b] text-white", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-[110px_1fr_125px] items-center gap-2 px-0 py-2 sm:grid-cols-[220px_1fr_150px] sm:px-4", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "font-mono text-[13px] font-bold leading-7", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -32934,14 +32938,14 @@ function ExamSession() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Candidate: USER DEMO" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "grid min-h-[calc(100vh-13rem)] grid-cols-[72px_1fr] bg-[#d8d8d8]", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "grid min-h-0 flex-1 grid-cols-[90px_1fr] bg-[#d8d8d8]", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("aside", { className: "overflow-y-auto border-r border-[#bdbdbd] bg-[#d8d8d8] py-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2", children: questions.map((q, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         "button",
         {
           type: "button",
           onClick: () => setCurrentIndex(index2),
           className: cn(
-            "relative flex h-[17px] w-[68px] items-center rounded-r-sm bg-[#73c33d] pl-1 text-left text-[14px] font-bold leading-none text-white",
+            "relative flex h-[19px] w-[84px] items-center rounded-r-sm bg-[#73c33d] pl-1 text-left text-[14px] font-bold leading-none text-white",
             index2 === currentIndex && "after:absolute after:right-[-9px] after:top-0 after:h-0 after:w-0 after:border-y-[8.5px] after:border-l-[9px] after:border-y-transparent after:border-l-[#73c33d]",
             answers[q.id] && "bg-[#59a52f]",
             flagged[q.id] && "ring-2 ring-yellow-400"
@@ -32952,7 +32956,7 @@ function ExamSession() {
         },
         q.id
       )) }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "p-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-full rounded border border-[#cfcfcf] bg-white px-5 py-6 sm:px-8", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "min-w-0 overflow-y-auto p-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-full rounded border border-[#cfcfcf] bg-white px-5 py-6 sm:px-8", children: [
         currentQ.vignette && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-6 whitespace-pre-line rounded border border-[#d9d9d9] bg-[#f7f7f7] p-4 text-[16px] leading-7", children: currentQ.vignette }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-7 whitespace-pre-line text-[18px] leading-8", children: currentQ.stem }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "space-y-3", "aria-label": "Answer choices", children: [
@@ -32989,7 +32993,7 @@ function ExamSession() {
         ] })
       ] }) })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("footer", { className: "flex items-center justify-between bg-[#1f1f1f] px-1 py-2", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("footer", { className: "flex shrink-0 items-center justify-between bg-[#1f1f1f] px-1 py-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "secondary", size: "icon", className: "bg-[#3f3f3f] text-white hover:bg-[#555]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "h-4 w-4" }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "secondary", size: "icon", className: "bg-[#3f3f3f] text-white hover:bg-[#555]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid3x3, { className: "h-4 w-4" }) }),
