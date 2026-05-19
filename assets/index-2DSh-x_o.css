@@ -770,6 +770,10 @@ video {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .-ml-4 {
   margin-left: -1rem;
 }
@@ -2822,6 +2826,10 @@ video {
 
 .first\:border-l:first-child {
   border-left-width: 1px;
+}
+
+.last\:mb-0:last-child {
+  margin-bottom: 0px;
 }
 
 .last\:rounded-r-md:last-child {

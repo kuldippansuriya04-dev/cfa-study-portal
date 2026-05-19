@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { CheckCircle, ChevronRight, XCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { AnswerOption, Question } from "../types/cfa";
 
 interface QuestionCardProps {
@@ -32,6 +32,78 @@ const DIFFICULTY_COLORS = {
   medium: "bg-accent/10 text-accent",
   hard: "bg-destructive/10 text-destructive",
 };
+
+function renderSolutionText(text: string) {
+  const lines = text.split("\n");
+  const content: ReactNode[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      content.push(<div key={`space-${i}`} className="h-2" />);
+      continue;
+    }
+
+    if (line.startsWith("|") && line.endsWith("|")) {
+      const tableLines: string[] = [];
+      let j = i;
+      while (j < lines.length) {
+        const tableLine = lines[j].trim();
+        if (!tableLine.startsWith("|") || !tableLine.endsWith("|")) break;
+        tableLines.push(tableLine);
+        j++;
+      }
+      const rows = tableLines
+        .filter((tableLine) => !/^\|[\s:-|]+\|$/.test(tableLine))
+        .map((tableLine) =>
+          tableLine
+            .slice(1, -1)
+            .split("|")
+            .map((cell) => cell.trim()),
+        );
+
+      content.push(
+        <div key={`table-${i}`} className="my-4 overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <tbody>
+              {rows.map((row, rowIndex) => (
+                <tr key={`${i}-${row.join("-")}`}>
+                  {row.map((cell, cellIndex) =>
+                    rowIndex === 0 ? (
+                      <th
+                        key={`${cell}-${cellIndex}`}
+                        className="border border-border px-3 py-2 text-center align-middle font-semibold"
+                      >
+                        {cell}
+                      </th>
+                    ) : (
+                      <td
+                        key={`${cell}-${cellIndex}`}
+                        className="border border-border px-3 py-2 text-center align-middle"
+                      >
+                        {cell}
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>,
+      );
+      i = j - 1;
+      continue;
+    }
+
+    content.push(
+      <p key={`line-${i}`} className="mb-2 last:mb-0">
+        {line}
+      </p>,
+    );
+  }
+
+  return content;
+}
 
 export function QuestionCard({
   question,
@@ -176,9 +248,9 @@ export function QuestionCard({
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
             Solution
           </p>
-          <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
-            {question.explanation}
-          </p>
+          <div className="text-sm text-foreground leading-relaxed">
+            {renderSolutionText(question.explanation)}
+          </div>
         </div>
       )}
 
