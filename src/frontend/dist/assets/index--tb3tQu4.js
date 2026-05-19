@@ -1,9 +1,6 @@
-var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
 };
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
 var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
 var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
@@ -17,7 +14,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     return __privateGet(obj, member, getter);
   }
 });
-var _focused, _cleanup, _setup, _a, _provider, _providerCalled, _b, _online, _cleanup2, _setup2, _c, _gcTimeout, _d, _initialState, _revertState, _cache, _client, _retryer, _defaultOptions, _abortSignalConsumed, _Query_instances, isInitialPausedFetch_fn, dispatch_fn, _e, _client2, _currentQuery, _currentQueryInitialState, _currentResult, _currentResultState, _currentResultOptions, _currentThenable, _selectError, _selectFn, _selectResult, _lastQueryWithDefinedData, _staleTimeoutId, _refetchIntervalId, _currentRefetchInterval, _trackedProps, _QueryObserver_instances, executeFetch_fn, updateStaleTimeout_fn, computeRefetchInterval_fn, updateRefetchInterval_fn, updateTimers_fn, clearStaleTimeout_fn, clearRefetchInterval_fn, updateQuery_fn, notify_fn, _f, _client3, _observers, _mutationCache, _retryer2, _Mutation_instances, dispatch_fn2, _g, _mutations, _scopes, _mutationId, _h, _client4, _currentResult2, _currentMutation, _mutateOptions, _MutationObserver_instances, updateResult_fn, notify_fn2, _i, _queries, _j, _queryCache, _mutationCache2, _defaultOptions2, _queryDefaults, _mutationDefaults, _mountCount, _unsubscribeFocus, _unsubscribeOnline, _k, _rawKey, _derKey, _publicKey, _privateKey, _inner, _delegation, _options;
+var _focused, _cleanup, _setup, _a, _provider, _providerCalled, _b, _online, _cleanup2, _setup2, _c, _gcTimeout, _d, _initialState, _revertState, _cache, _client, _retryer, _defaultOptions, _abortSignalConsumed, _Query_instances, isInitialPausedFetch_fn, dispatch_fn, _e, _client2, _currentQuery, _currentQueryInitialState, _currentResult, _currentResultState, _currentResultOptions, _currentThenable, _selectError, _selectFn, _selectResult, _lastQueryWithDefinedData, _staleTimeoutId, _refetchIntervalId, _currentRefetchInterval, _trackedProps, _QueryObserver_instances, executeFetch_fn, updateStaleTimeout_fn, computeRefetchInterval_fn, updateRefetchInterval_fn, updateTimers_fn, clearStaleTimeout_fn, clearRefetchInterval_fn, updateQuery_fn, notify_fn, _f, _client3, _observers, _mutationCache, _retryer2, _Mutation_instances, dispatch_fn2, _g, _mutations, _scopes, _mutationId, _h, _client4, _currentResult2, _currentMutation, _mutateOptions, _MutationObserver_instances, updateResult_fn, notify_fn2, _i, _queries, _j, _queryCache, _mutationCache2, _defaultOptions2, _queryDefaults, _mutationDefaults, _mountCount, _unsubscribeFocus, _unsubscribeOnline, _k;
 function _mergeNamespaces(n, m) {
   for (var i = 0; i < m.length; i++) {
     const e = m[i];
@@ -114,2933 +111,6 @@ reactJsxRuntime_production.jsxs = jsxProd;
   jsxRuntime.exports = reactJsxRuntime_production;
 }
 var jsxRuntimeExports = jsxRuntime.exports;
-const alphabet = "abcdefghijklmnopqrstuvwxyz234567";
-const lookupTable = /* @__PURE__ */ Object.create(null);
-for (let i = 0; i < alphabet.length; i++) {
-  lookupTable[alphabet[i]] = i;
-}
-lookupTable["0"] = lookupTable.o;
-lookupTable["1"] = lookupTable.i;
-function base32Encode(input) {
-  let skip = 0;
-  let bits = 0;
-  let output = "";
-  function encodeByte(byte) {
-    if (skip < 0) {
-      bits |= byte >> -skip;
-    } else {
-      bits = byte << skip & 248;
-    }
-    if (skip > 3) {
-      skip -= 8;
-      return 1;
-    }
-    if (skip < 4) {
-      output += alphabet[bits >> 3];
-      skip += 5;
-    }
-    return 0;
-  }
-  for (let i = 0; i < input.length; ) {
-    i += encodeByte(input[i]);
-  }
-  return output + (skip < 0 ? alphabet[bits >> 3] : "");
-}
-function base32Decode(input) {
-  let skip = 0;
-  let byte = 0;
-  const output = new Uint8Array(input.length * 4 / 3 | 0);
-  let o = 0;
-  function decodeChar(char) {
-    let val = lookupTable[char.toLowerCase()];
-    if (val === void 0) {
-      throw new Error(`Invalid character: ${JSON.stringify(char)}`);
-    }
-    val <<= 3;
-    byte |= val >>> skip;
-    skip += 5;
-    if (skip >= 8) {
-      output[o++] = byte;
-      skip -= 8;
-      if (skip > 0) {
-        byte = val << 5 - skip & 255;
-      } else {
-        byte = 0;
-      }
-    }
-  }
-  for (const c of input) {
-    decodeChar(c);
-  }
-  return output.slice(0, o);
-}
-const lookUpTable = new Uint32Array([
-  0,
-  1996959894,
-  3993919788,
-  2567524794,
-  124634137,
-  1886057615,
-  3915621685,
-  2657392035,
-  249268274,
-  2044508324,
-  3772115230,
-  2547177864,
-  162941995,
-  2125561021,
-  3887607047,
-  2428444049,
-  498536548,
-  1789927666,
-  4089016648,
-  2227061214,
-  450548861,
-  1843258603,
-  4107580753,
-  2211677639,
-  325883990,
-  1684777152,
-  4251122042,
-  2321926636,
-  335633487,
-  1661365465,
-  4195302755,
-  2366115317,
-  997073096,
-  1281953886,
-  3579855332,
-  2724688242,
-  1006888145,
-  1258607687,
-  3524101629,
-  2768942443,
-  901097722,
-  1119000684,
-  3686517206,
-  2898065728,
-  853044451,
-  1172266101,
-  3705015759,
-  2882616665,
-  651767980,
-  1373503546,
-  3369554304,
-  3218104598,
-  565507253,
-  1454621731,
-  3485111705,
-  3099436303,
-  671266974,
-  1594198024,
-  3322730930,
-  2970347812,
-  795835527,
-  1483230225,
-  3244367275,
-  3060149565,
-  1994146192,
-  31158534,
-  2563907772,
-  4023717930,
-  1907459465,
-  112637215,
-  2680153253,
-  3904427059,
-  2013776290,
-  251722036,
-  2517215374,
-  3775830040,
-  2137656763,
-  141376813,
-  2439277719,
-  3865271297,
-  1802195444,
-  476864866,
-  2238001368,
-  4066508878,
-  1812370925,
-  453092731,
-  2181625025,
-  4111451223,
-  1706088902,
-  314042704,
-  2344532202,
-  4240017532,
-  1658658271,
-  366619977,
-  2362670323,
-  4224994405,
-  1303535960,
-  984961486,
-  2747007092,
-  3569037538,
-  1256170817,
-  1037604311,
-  2765210733,
-  3554079995,
-  1131014506,
-  879679996,
-  2909243462,
-  3663771856,
-  1141124467,
-  855842277,
-  2852801631,
-  3708648649,
-  1342533948,
-  654459306,
-  3188396048,
-  3373015174,
-  1466479909,
-  544179635,
-  3110523913,
-  3462522015,
-  1591671054,
-  702138776,
-  2966460450,
-  3352799412,
-  1504918807,
-  783551873,
-  3082640443,
-  3233442989,
-  3988292384,
-  2596254646,
-  62317068,
-  1957810842,
-  3939845945,
-  2647816111,
-  81470997,
-  1943803523,
-  3814918930,
-  2489596804,
-  225274430,
-  2053790376,
-  3826175755,
-  2466906013,
-  167816743,
-  2097651377,
-  4027552580,
-  2265490386,
-  503444072,
-  1762050814,
-  4150417245,
-  2154129355,
-  426522225,
-  1852507879,
-  4275313526,
-  2312317920,
-  282753626,
-  1742555852,
-  4189708143,
-  2394877945,
-  397917763,
-  1622183637,
-  3604390888,
-  2714866558,
-  953729732,
-  1340076626,
-  3518719985,
-  2797360999,
-  1068828381,
-  1219638859,
-  3624741850,
-  2936675148,
-  906185462,
-  1090812512,
-  3747672003,
-  2825379669,
-  829329135,
-  1181335161,
-  3412177804,
-  3160834842,
-  628085408,
-  1382605366,
-  3423369109,
-  3138078467,
-  570562233,
-  1426400815,
-  3317316542,
-  2998733608,
-  733239954,
-  1555261956,
-  3268935591,
-  3050360625,
-  752459403,
-  1541320221,
-  2607071920,
-  3965973030,
-  1969922972,
-  40735498,
-  2617837225,
-  3943577151,
-  1913087877,
-  83908371,
-  2512341634,
-  3803740692,
-  2075208622,
-  213261112,
-  2463272603,
-  3855990285,
-  2094854071,
-  198958881,
-  2262029012,
-  4057260610,
-  1759359992,
-  534414190,
-  2176718541,
-  4139329115,
-  1873836001,
-  414664567,
-  2282248934,
-  4279200368,
-  1711684554,
-  285281116,
-  2405801727,
-  4167216745,
-  1634467795,
-  376229701,
-  2685067896,
-  3608007406,
-  1308918612,
-  956543938,
-  2808555105,
-  3495958263,
-  1231636301,
-  1047427035,
-  2932959818,
-  3654703836,
-  1088359270,
-  936918e3,
-  2847714899,
-  3736837829,
-  1202900863,
-  817233897,
-  3183342108,
-  3401237130,
-  1404277552,
-  615818150,
-  3134207493,
-  3453421203,
-  1423857449,
-  601450431,
-  3009837614,
-  3294710456,
-  1567103746,
-  711928724,
-  3020668471,
-  3272380065,
-  1510334235,
-  755167117
-]);
-function getCrc32(buf) {
-  let crc = -1;
-  for (let i = 0; i < buf.length; i++) {
-    const byte = buf[i];
-    const t = (byte ^ crc) & 255;
-    crc = lookUpTable[t] ^ crc >>> 8;
-  }
-  return (crc ^ -1) >>> 0;
-}
-const crypto$1 = typeof globalThis === "object" && "crypto" in globalThis ? globalThis.crypto : void 0;
-/*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-function isBytes(a) {
-  return a instanceof Uint8Array || ArrayBuffer.isView(a) && a.constructor.name === "Uint8Array";
-}
-function anumber(n) {
-  if (!Number.isSafeInteger(n) || n < 0)
-    throw new Error("positive integer expected, got " + n);
-}
-function abytes(b, ...lengths) {
-  if (!isBytes(b))
-    throw new Error("Uint8Array expected");
-  if (lengths.length > 0 && !lengths.includes(b.length))
-    throw new Error("Uint8Array expected of length " + lengths + ", got length=" + b.length);
-}
-function aexists(instance, checkFinished = true) {
-  if (instance.destroyed)
-    throw new Error("Hash instance has been destroyed");
-  if (checkFinished && instance.finished)
-    throw new Error("Hash#digest() has already been called");
-}
-function aoutput(out, instance) {
-  abytes(out);
-  const min = instance.outputLen;
-  if (out.length < min) {
-    throw new Error("digestInto() expects output buffer of length at least " + min);
-  }
-}
-function clean(...arrays) {
-  for (let i = 0; i < arrays.length; i++) {
-    arrays[i].fill(0);
-  }
-}
-function createView(arr) {
-  return new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
-}
-function rotr(word, shift) {
-  return word << 32 - shift | word >>> shift;
-}
-const hasHexBuiltin = /* @__PURE__ */ (() => (
-  // @ts-ignore
-  typeof Uint8Array.from([]).toHex === "function" && typeof Uint8Array.fromHex === "function"
-))();
-const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_, i) => i.toString(16).padStart(2, "0"));
-function bytesToHex(bytes) {
-  abytes(bytes);
-  if (hasHexBuiltin)
-    return bytes.toHex();
-  let hex2 = "";
-  for (let i = 0; i < bytes.length; i++) {
-    hex2 += hexes[bytes[i]];
-  }
-  return hex2;
-}
-const asciis = { _0: 48, _9: 57, A: 65, F: 70, a: 97, f: 102 };
-function asciiToBase16(ch) {
-  if (ch >= asciis._0 && ch <= asciis._9)
-    return ch - asciis._0;
-  if (ch >= asciis.A && ch <= asciis.F)
-    return ch - (asciis.A - 10);
-  if (ch >= asciis.a && ch <= asciis.f)
-    return ch - (asciis.a - 10);
-  return;
-}
-function hexToBytes(hex2) {
-  if (typeof hex2 !== "string")
-    throw new Error("hex string expected, got " + typeof hex2);
-  if (hasHexBuiltin)
-    return Uint8Array.fromHex(hex2);
-  const hl = hex2.length;
-  const al = hl / 2;
-  if (hl % 2)
-    throw new Error("hex string expected, got unpadded hex of length " + hl);
-  const array = new Uint8Array(al);
-  for (let ai = 0, hi = 0; ai < al; ai++, hi += 2) {
-    const n1 = asciiToBase16(hex2.charCodeAt(hi));
-    const n2 = asciiToBase16(hex2.charCodeAt(hi + 1));
-    if (n1 === void 0 || n2 === void 0) {
-      const char = hex2[hi] + hex2[hi + 1];
-      throw new Error('hex string expected, got non-hex character "' + char + '" at index ' + hi);
-    }
-    array[ai] = n1 * 16 + n2;
-  }
-  return array;
-}
-function utf8ToBytes(str) {
-  if (typeof str !== "string")
-    throw new Error("string expected");
-  return new Uint8Array(new TextEncoder().encode(str));
-}
-function toBytes(data) {
-  if (typeof data === "string")
-    data = utf8ToBytes(data);
-  abytes(data);
-  return data;
-}
-function concatBytes(...arrays) {
-  let sum = 0;
-  for (let i = 0; i < arrays.length; i++) {
-    const a = arrays[i];
-    abytes(a);
-    sum += a.length;
-  }
-  const res = new Uint8Array(sum);
-  for (let i = 0, pad = 0; i < arrays.length; i++) {
-    const a = arrays[i];
-    res.set(a, pad);
-    pad += a.length;
-  }
-  return res;
-}
-class Hash {
-}
-function createHasher(hashCons) {
-  const hashC = (msg) => hashCons().update(toBytes(msg)).digest();
-  const tmp = hashCons();
-  hashC.outputLen = tmp.outputLen;
-  hashC.blockLen = tmp.blockLen;
-  hashC.create = () => hashCons();
-  return hashC;
-}
-function randomBytes(bytesLength = 32) {
-  if (crypto$1 && typeof crypto$1.getRandomValues === "function") {
-    return crypto$1.getRandomValues(new Uint8Array(bytesLength));
-  }
-  if (crypto$1 && typeof crypto$1.randomBytes === "function") {
-    return Uint8Array.from(crypto$1.randomBytes(bytesLength));
-  }
-  throw new Error("crypto.getRandomValues must be defined");
-}
-function setBigUint64(view, byteOffset, value, isLE) {
-  if (typeof view.setBigUint64 === "function")
-    return view.setBigUint64(byteOffset, value, isLE);
-  const _32n2 = BigInt(32);
-  const _u32_max = BigInt(4294967295);
-  const wh = Number(value >> _32n2 & _u32_max);
-  const wl = Number(value & _u32_max);
-  const h = isLE ? 4 : 0;
-  const l = isLE ? 0 : 4;
-  view.setUint32(byteOffset + h, wh, isLE);
-  view.setUint32(byteOffset + l, wl, isLE);
-}
-function Chi(a, b, c) {
-  return a & b ^ ~a & c;
-}
-function Maj(a, b, c) {
-  return a & b ^ a & c ^ b & c;
-}
-class HashMD extends Hash {
-  constructor(blockLen, outputLen, padOffset, isLE) {
-    super();
-    this.finished = false;
-    this.length = 0;
-    this.pos = 0;
-    this.destroyed = false;
-    this.blockLen = blockLen;
-    this.outputLen = outputLen;
-    this.padOffset = padOffset;
-    this.isLE = isLE;
-    this.buffer = new Uint8Array(blockLen);
-    this.view = createView(this.buffer);
-  }
-  update(data) {
-    aexists(this);
-    data = toBytes(data);
-    abytes(data);
-    const { view, buffer, blockLen } = this;
-    const len = data.length;
-    for (let pos = 0; pos < len; ) {
-      const take = Math.min(blockLen - this.pos, len - pos);
-      if (take === blockLen) {
-        const dataView = createView(data);
-        for (; blockLen <= len - pos; pos += blockLen)
-          this.process(dataView, pos);
-        continue;
-      }
-      buffer.set(data.subarray(pos, pos + take), this.pos);
-      this.pos += take;
-      pos += take;
-      if (this.pos === blockLen) {
-        this.process(view, 0);
-        this.pos = 0;
-      }
-    }
-    this.length += data.length;
-    this.roundClean();
-    return this;
-  }
-  digestInto(out) {
-    aexists(this);
-    aoutput(out, this);
-    this.finished = true;
-    const { buffer, view, blockLen, isLE } = this;
-    let { pos } = this;
-    buffer[pos++] = 128;
-    clean(this.buffer.subarray(pos));
-    if (this.padOffset > blockLen - pos) {
-      this.process(view, 0);
-      pos = 0;
-    }
-    for (let i = pos; i < blockLen; i++)
-      buffer[i] = 0;
-    setBigUint64(view, blockLen - 8, BigInt(this.length * 8), isLE);
-    this.process(view, 0);
-    const oview = createView(out);
-    const len = this.outputLen;
-    if (len % 4)
-      throw new Error("_sha2: outputLen should be aligned to 32bit");
-    const outLen = len / 4;
-    const state = this.get();
-    if (outLen > state.length)
-      throw new Error("_sha2: outputLen bigger than state");
-    for (let i = 0; i < outLen; i++)
-      oview.setUint32(4 * i, state[i], isLE);
-  }
-  digest() {
-    const { buffer, outputLen } = this;
-    this.digestInto(buffer);
-    const res = buffer.slice(0, outputLen);
-    this.destroy();
-    return res;
-  }
-  _cloneInto(to) {
-    to || (to = new this.constructor());
-    to.set(...this.get());
-    const { blockLen, buffer, length, finished, destroyed, pos } = this;
-    to.destroyed = destroyed;
-    to.finished = finished;
-    to.length = length;
-    to.pos = pos;
-    if (length % blockLen)
-      to.buffer.set(buffer);
-    return to;
-  }
-  clone() {
-    return this._cloneInto();
-  }
-}
-const SHA256_IV = /* @__PURE__ */ Uint32Array.from([
-  1779033703,
-  3144134277,
-  1013904242,
-  2773480762,
-  1359893119,
-  2600822924,
-  528734635,
-  1541459225
-]);
-const SHA224_IV = /* @__PURE__ */ Uint32Array.from([
-  3238371032,
-  914150663,
-  812702999,
-  4144912697,
-  4290775857,
-  1750603025,
-  1694076839,
-  3204075428
-]);
-const SHA512_IV = /* @__PURE__ */ Uint32Array.from([
-  1779033703,
-  4089235720,
-  3144134277,
-  2227873595,
-  1013904242,
-  4271175723,
-  2773480762,
-  1595750129,
-  1359893119,
-  2917565137,
-  2600822924,
-  725511199,
-  528734635,
-  4215389547,
-  1541459225,
-  327033209
-]);
-const U32_MASK64 = /* @__PURE__ */ BigInt(2 ** 32 - 1);
-const _32n = /* @__PURE__ */ BigInt(32);
-function fromBig(n, le = false) {
-  if (le)
-    return { h: Number(n & U32_MASK64), l: Number(n >> _32n & U32_MASK64) };
-  return { h: Number(n >> _32n & U32_MASK64) | 0, l: Number(n & U32_MASK64) | 0 };
-}
-function split(lst, le = false) {
-  const len = lst.length;
-  let Ah = new Uint32Array(len);
-  let Al = new Uint32Array(len);
-  for (let i = 0; i < len; i++) {
-    const { h, l } = fromBig(lst[i], le);
-    [Ah[i], Al[i]] = [h, l];
-  }
-  return [Ah, Al];
-}
-const shrSH = (h, _l, s) => h >>> s;
-const shrSL = (h, l, s) => h << 32 - s | l >>> s;
-const rotrSH = (h, l, s) => h >>> s | l << 32 - s;
-const rotrSL = (h, l, s) => h << 32 - s | l >>> s;
-const rotrBH = (h, l, s) => h << 64 - s | l >>> s - 32;
-const rotrBL = (h, l, s) => h >>> s - 32 | l << 64 - s;
-function add(Ah, Al, Bh, Bl) {
-  const l = (Al >>> 0) + (Bl >>> 0);
-  return { h: Ah + Bh + (l / 2 ** 32 | 0) | 0, l: l | 0 };
-}
-const add3L = (Al, Bl, Cl) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0);
-const add3H = (low, Ah, Bh, Ch) => Ah + Bh + Ch + (low / 2 ** 32 | 0) | 0;
-const add4L = (Al, Bl, Cl, Dl) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0) + (Dl >>> 0);
-const add4H = (low, Ah, Bh, Ch, Dh) => Ah + Bh + Ch + Dh + (low / 2 ** 32 | 0) | 0;
-const add5L = (Al, Bl, Cl, Dl, El) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0) + (Dl >>> 0) + (El >>> 0);
-const add5H = (low, Ah, Bh, Ch, Dh, Eh) => Ah + Bh + Ch + Dh + Eh + (low / 2 ** 32 | 0) | 0;
-const SHA256_K = /* @__PURE__ */ Uint32Array.from([
-  1116352408,
-  1899447441,
-  3049323471,
-  3921009573,
-  961987163,
-  1508970993,
-  2453635748,
-  2870763221,
-  3624381080,
-  310598401,
-  607225278,
-  1426881987,
-  1925078388,
-  2162078206,
-  2614888103,
-  3248222580,
-  3835390401,
-  4022224774,
-  264347078,
-  604807628,
-  770255983,
-  1249150122,
-  1555081692,
-  1996064986,
-  2554220882,
-  2821834349,
-  2952996808,
-  3210313671,
-  3336571891,
-  3584528711,
-  113926993,
-  338241895,
-  666307205,
-  773529912,
-  1294757372,
-  1396182291,
-  1695183700,
-  1986661051,
-  2177026350,
-  2456956037,
-  2730485921,
-  2820302411,
-  3259730800,
-  3345764771,
-  3516065817,
-  3600352804,
-  4094571909,
-  275423344,
-  430227734,
-  506948616,
-  659060556,
-  883997877,
-  958139571,
-  1322822218,
-  1537002063,
-  1747873779,
-  1955562222,
-  2024104815,
-  2227730452,
-  2361852424,
-  2428436474,
-  2756734187,
-  3204031479,
-  3329325298
-]);
-const SHA256_W = /* @__PURE__ */ new Uint32Array(64);
-class SHA256 extends HashMD {
-  constructor(outputLen = 32) {
-    super(64, outputLen, 8, false);
-    this.A = SHA256_IV[0] | 0;
-    this.B = SHA256_IV[1] | 0;
-    this.C = SHA256_IV[2] | 0;
-    this.D = SHA256_IV[3] | 0;
-    this.E = SHA256_IV[4] | 0;
-    this.F = SHA256_IV[5] | 0;
-    this.G = SHA256_IV[6] | 0;
-    this.H = SHA256_IV[7] | 0;
-  }
-  get() {
-    const { A, B, C, D, E, F, G, H } = this;
-    return [A, B, C, D, E, F, G, H];
-  }
-  // prettier-ignore
-  set(A, B, C, D, E, F, G, H) {
-    this.A = A | 0;
-    this.B = B | 0;
-    this.C = C | 0;
-    this.D = D | 0;
-    this.E = E | 0;
-    this.F = F | 0;
-    this.G = G | 0;
-    this.H = H | 0;
-  }
-  process(view, offset) {
-    for (let i = 0; i < 16; i++, offset += 4)
-      SHA256_W[i] = view.getUint32(offset, false);
-    for (let i = 16; i < 64; i++) {
-      const W15 = SHA256_W[i - 15];
-      const W2 = SHA256_W[i - 2];
-      const s0 = rotr(W15, 7) ^ rotr(W15, 18) ^ W15 >>> 3;
-      const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
-      SHA256_W[i] = s1 + SHA256_W[i - 7] + s0 + SHA256_W[i - 16] | 0;
-    }
-    let { A, B, C, D, E, F, G, H } = this;
-    for (let i = 0; i < 64; i++) {
-      const sigma1 = rotr(E, 6) ^ rotr(E, 11) ^ rotr(E, 25);
-      const T1 = H + sigma1 + Chi(E, F, G) + SHA256_K[i] + SHA256_W[i] | 0;
-      const sigma0 = rotr(A, 2) ^ rotr(A, 13) ^ rotr(A, 22);
-      const T2 = sigma0 + Maj(A, B, C) | 0;
-      H = G;
-      G = F;
-      F = E;
-      E = D + T1 | 0;
-      D = C;
-      C = B;
-      B = A;
-      A = T1 + T2 | 0;
-    }
-    A = A + this.A | 0;
-    B = B + this.B | 0;
-    C = C + this.C | 0;
-    D = D + this.D | 0;
-    E = E + this.E | 0;
-    F = F + this.F | 0;
-    G = G + this.G | 0;
-    H = H + this.H | 0;
-    this.set(A, B, C, D, E, F, G, H);
-  }
-  roundClean() {
-    clean(SHA256_W);
-  }
-  destroy() {
-    this.set(0, 0, 0, 0, 0, 0, 0, 0);
-    clean(this.buffer);
-  }
-}
-class SHA224 extends SHA256 {
-  constructor() {
-    super(28);
-    this.A = SHA224_IV[0] | 0;
-    this.B = SHA224_IV[1] | 0;
-    this.C = SHA224_IV[2] | 0;
-    this.D = SHA224_IV[3] | 0;
-    this.E = SHA224_IV[4] | 0;
-    this.F = SHA224_IV[5] | 0;
-    this.G = SHA224_IV[6] | 0;
-    this.H = SHA224_IV[7] | 0;
-  }
-}
-const K512 = /* @__PURE__ */ (() => split([
-  "0x428a2f98d728ae22",
-  "0x7137449123ef65cd",
-  "0xb5c0fbcfec4d3b2f",
-  "0xe9b5dba58189dbbc",
-  "0x3956c25bf348b538",
-  "0x59f111f1b605d019",
-  "0x923f82a4af194f9b",
-  "0xab1c5ed5da6d8118",
-  "0xd807aa98a3030242",
-  "0x12835b0145706fbe",
-  "0x243185be4ee4b28c",
-  "0x550c7dc3d5ffb4e2",
-  "0x72be5d74f27b896f",
-  "0x80deb1fe3b1696b1",
-  "0x9bdc06a725c71235",
-  "0xc19bf174cf692694",
-  "0xe49b69c19ef14ad2",
-  "0xefbe4786384f25e3",
-  "0x0fc19dc68b8cd5b5",
-  "0x240ca1cc77ac9c65",
-  "0x2de92c6f592b0275",
-  "0x4a7484aa6ea6e483",
-  "0x5cb0a9dcbd41fbd4",
-  "0x76f988da831153b5",
-  "0x983e5152ee66dfab",
-  "0xa831c66d2db43210",
-  "0xb00327c898fb213f",
-  "0xbf597fc7beef0ee4",
-  "0xc6e00bf33da88fc2",
-  "0xd5a79147930aa725",
-  "0x06ca6351e003826f",
-  "0x142929670a0e6e70",
-  "0x27b70a8546d22ffc",
-  "0x2e1b21385c26c926",
-  "0x4d2c6dfc5ac42aed",
-  "0x53380d139d95b3df",
-  "0x650a73548baf63de",
-  "0x766a0abb3c77b2a8",
-  "0x81c2c92e47edaee6",
-  "0x92722c851482353b",
-  "0xa2bfe8a14cf10364",
-  "0xa81a664bbc423001",
-  "0xc24b8b70d0f89791",
-  "0xc76c51a30654be30",
-  "0xd192e819d6ef5218",
-  "0xd69906245565a910",
-  "0xf40e35855771202a",
-  "0x106aa07032bbd1b8",
-  "0x19a4c116b8d2d0c8",
-  "0x1e376c085141ab53",
-  "0x2748774cdf8eeb99",
-  "0x34b0bcb5e19b48a8",
-  "0x391c0cb3c5c95a63",
-  "0x4ed8aa4ae3418acb",
-  "0x5b9cca4f7763e373",
-  "0x682e6ff3d6b2b8a3",
-  "0x748f82ee5defb2fc",
-  "0x78a5636f43172f60",
-  "0x84c87814a1f0ab72",
-  "0x8cc702081a6439ec",
-  "0x90befffa23631e28",
-  "0xa4506cebde82bde9",
-  "0xbef9a3f7b2c67915",
-  "0xc67178f2e372532b",
-  "0xca273eceea26619c",
-  "0xd186b8c721c0c207",
-  "0xeada7dd6cde0eb1e",
-  "0xf57d4f7fee6ed178",
-  "0x06f067aa72176fba",
-  "0x0a637dc5a2c898a6",
-  "0x113f9804bef90dae",
-  "0x1b710b35131c471b",
-  "0x28db77f523047d84",
-  "0x32caab7b40c72493",
-  "0x3c9ebe0a15c9bebc",
-  "0x431d67c49c100d4c",
-  "0x4cc5d4becb3e42b6",
-  "0x597f299cfc657e2a",
-  "0x5fcb6fab3ad6faec",
-  "0x6c44198c4a475817"
-].map((n) => BigInt(n))))();
-const SHA512_Kh = /* @__PURE__ */ (() => K512[0])();
-const SHA512_Kl = /* @__PURE__ */ (() => K512[1])();
-const SHA512_W_H = /* @__PURE__ */ new Uint32Array(80);
-const SHA512_W_L = /* @__PURE__ */ new Uint32Array(80);
-class SHA512 extends HashMD {
-  constructor(outputLen = 64) {
-    super(128, outputLen, 16, false);
-    this.Ah = SHA512_IV[0] | 0;
-    this.Al = SHA512_IV[1] | 0;
-    this.Bh = SHA512_IV[2] | 0;
-    this.Bl = SHA512_IV[3] | 0;
-    this.Ch = SHA512_IV[4] | 0;
-    this.Cl = SHA512_IV[5] | 0;
-    this.Dh = SHA512_IV[6] | 0;
-    this.Dl = SHA512_IV[7] | 0;
-    this.Eh = SHA512_IV[8] | 0;
-    this.El = SHA512_IV[9] | 0;
-    this.Fh = SHA512_IV[10] | 0;
-    this.Fl = SHA512_IV[11] | 0;
-    this.Gh = SHA512_IV[12] | 0;
-    this.Gl = SHA512_IV[13] | 0;
-    this.Hh = SHA512_IV[14] | 0;
-    this.Hl = SHA512_IV[15] | 0;
-  }
-  // prettier-ignore
-  get() {
-    const { Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl } = this;
-    return [Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl];
-  }
-  // prettier-ignore
-  set(Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl) {
-    this.Ah = Ah | 0;
-    this.Al = Al | 0;
-    this.Bh = Bh | 0;
-    this.Bl = Bl | 0;
-    this.Ch = Ch | 0;
-    this.Cl = Cl | 0;
-    this.Dh = Dh | 0;
-    this.Dl = Dl | 0;
-    this.Eh = Eh | 0;
-    this.El = El | 0;
-    this.Fh = Fh | 0;
-    this.Fl = Fl | 0;
-    this.Gh = Gh | 0;
-    this.Gl = Gl | 0;
-    this.Hh = Hh | 0;
-    this.Hl = Hl | 0;
-  }
-  process(view, offset) {
-    for (let i = 0; i < 16; i++, offset += 4) {
-      SHA512_W_H[i] = view.getUint32(offset);
-      SHA512_W_L[i] = view.getUint32(offset += 4);
-    }
-    for (let i = 16; i < 80; i++) {
-      const W15h = SHA512_W_H[i - 15] | 0;
-      const W15l = SHA512_W_L[i - 15] | 0;
-      const s0h = rotrSH(W15h, W15l, 1) ^ rotrSH(W15h, W15l, 8) ^ shrSH(W15h, W15l, 7);
-      const s0l = rotrSL(W15h, W15l, 1) ^ rotrSL(W15h, W15l, 8) ^ shrSL(W15h, W15l, 7);
-      const W2h = SHA512_W_H[i - 2] | 0;
-      const W2l = SHA512_W_L[i - 2] | 0;
-      const s1h = rotrSH(W2h, W2l, 19) ^ rotrBH(W2h, W2l, 61) ^ shrSH(W2h, W2l, 6);
-      const s1l = rotrSL(W2h, W2l, 19) ^ rotrBL(W2h, W2l, 61) ^ shrSL(W2h, W2l, 6);
-      const SUMl = add4L(s0l, s1l, SHA512_W_L[i - 7], SHA512_W_L[i - 16]);
-      const SUMh = add4H(SUMl, s0h, s1h, SHA512_W_H[i - 7], SHA512_W_H[i - 16]);
-      SHA512_W_H[i] = SUMh | 0;
-      SHA512_W_L[i] = SUMl | 0;
-    }
-    let { Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl } = this;
-    for (let i = 0; i < 80; i++) {
-      const sigma1h = rotrSH(Eh, El, 14) ^ rotrSH(Eh, El, 18) ^ rotrBH(Eh, El, 41);
-      const sigma1l = rotrSL(Eh, El, 14) ^ rotrSL(Eh, El, 18) ^ rotrBL(Eh, El, 41);
-      const CHIh = Eh & Fh ^ ~Eh & Gh;
-      const CHIl = El & Fl ^ ~El & Gl;
-      const T1ll = add5L(Hl, sigma1l, CHIl, SHA512_Kl[i], SHA512_W_L[i]);
-      const T1h = add5H(T1ll, Hh, sigma1h, CHIh, SHA512_Kh[i], SHA512_W_H[i]);
-      const T1l = T1ll | 0;
-      const sigma0h = rotrSH(Ah, Al, 28) ^ rotrBH(Ah, Al, 34) ^ rotrBH(Ah, Al, 39);
-      const sigma0l = rotrSL(Ah, Al, 28) ^ rotrBL(Ah, Al, 34) ^ rotrBL(Ah, Al, 39);
-      const MAJh = Ah & Bh ^ Ah & Ch ^ Bh & Ch;
-      const MAJl = Al & Bl ^ Al & Cl ^ Bl & Cl;
-      Hh = Gh | 0;
-      Hl = Gl | 0;
-      Gh = Fh | 0;
-      Gl = Fl | 0;
-      Fh = Eh | 0;
-      Fl = El | 0;
-      ({ h: Eh, l: El } = add(Dh | 0, Dl | 0, T1h | 0, T1l | 0));
-      Dh = Ch | 0;
-      Dl = Cl | 0;
-      Ch = Bh | 0;
-      Cl = Bl | 0;
-      Bh = Ah | 0;
-      Bl = Al | 0;
-      const All = add3L(T1l, sigma0l, MAJl);
-      Ah = add3H(All, T1h, sigma0h, MAJh);
-      Al = All | 0;
-    }
-    ({ h: Ah, l: Al } = add(this.Ah | 0, this.Al | 0, Ah | 0, Al | 0));
-    ({ h: Bh, l: Bl } = add(this.Bh | 0, this.Bl | 0, Bh | 0, Bl | 0));
-    ({ h: Ch, l: Cl } = add(this.Ch | 0, this.Cl | 0, Ch | 0, Cl | 0));
-    ({ h: Dh, l: Dl } = add(this.Dh | 0, this.Dl | 0, Dh | 0, Dl | 0));
-    ({ h: Eh, l: El } = add(this.Eh | 0, this.El | 0, Eh | 0, El | 0));
-    ({ h: Fh, l: Fl } = add(this.Fh | 0, this.Fl | 0, Fh | 0, Fl | 0));
-    ({ h: Gh, l: Gl } = add(this.Gh | 0, this.Gl | 0, Gh | 0, Gl | 0));
-    ({ h: Hh, l: Hl } = add(this.Hh | 0, this.Hl | 0, Hh | 0, Hl | 0));
-    this.set(Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl);
-  }
-  roundClean() {
-    clean(SHA512_W_H, SHA512_W_L);
-  }
-  destroy() {
-    clean(this.buffer);
-    this.set(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  }
-}
-const sha256 = /* @__PURE__ */ createHasher(() => new SHA256());
-const sha224 = /* @__PURE__ */ createHasher(() => new SHA224());
-const sha512 = /* @__PURE__ */ createHasher(() => new SHA512());
-const JSON_KEY_PRINCIPAL = "__principal__";
-const SELF_AUTHENTICATING_SUFFIX = 2;
-const ANONYMOUS_SUFFIX = 4;
-const MANAGEMENT_CANISTER_PRINCIPAL_TEXT_STR = "aaaaa-aa";
-class Principal {
-  static anonymous() {
-    return new this(new Uint8Array([ANONYMOUS_SUFFIX]));
-  }
-  /**
-   * Utility method, returning the principal representing the management canister, decoded from the hex string `'aaaaa-aa'`
-   * @returns {Principal} principal of the management canister
-   */
-  static managementCanister() {
-    return this.fromText(MANAGEMENT_CANISTER_PRINCIPAL_TEXT_STR);
-  }
-  static selfAuthenticating(publicKey) {
-    const sha = sha224(publicKey);
-    return new this(new Uint8Array([...sha, SELF_AUTHENTICATING_SUFFIX]));
-  }
-  static from(other) {
-    if (typeof other === "string") {
-      return Principal.fromText(other);
-    } else if (Object.getPrototypeOf(other) === Uint8Array.prototype) {
-      return new Principal(other);
-    } else if (Principal.isPrincipal(other)) {
-      return new Principal(other._arr);
-    }
-    throw new Error(`Impossible to convert ${JSON.stringify(other)} to Principal.`);
-  }
-  static fromHex(hex2) {
-    return new this(hexToBytes(hex2));
-  }
-  static fromText(text) {
-    let maybePrincipal = text;
-    if (text.includes(JSON_KEY_PRINCIPAL)) {
-      const obj = JSON.parse(text);
-      if (JSON_KEY_PRINCIPAL in obj) {
-        maybePrincipal = obj[JSON_KEY_PRINCIPAL];
-      }
-    }
-    const canisterIdNoDash = maybePrincipal.toLowerCase().replace(/-/g, "");
-    let arr = base32Decode(canisterIdNoDash);
-    arr = arr.slice(4, arr.length);
-    const principal = new this(arr);
-    if (principal.toText() !== maybePrincipal) {
-      throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${maybePrincipal}" may not be a valid Principal ID).`);
-    }
-    return principal;
-  }
-  static fromUint8Array(arr) {
-    return new this(arr);
-  }
-  static isPrincipal(other) {
-    return other instanceof Principal || typeof other === "object" && other !== null && "_isPrincipal" in other && other["_isPrincipal"] === true && "_arr" in other && other["_arr"] instanceof Uint8Array;
-  }
-  constructor(_arr) {
-    this._arr = _arr;
-    this._isPrincipal = true;
-  }
-  isAnonymous() {
-    return this._arr.byteLength === 1 && this._arr[0] === ANONYMOUS_SUFFIX;
-  }
-  toUint8Array() {
-    return this._arr;
-  }
-  toHex() {
-    return bytesToHex(this._arr).toUpperCase();
-  }
-  toText() {
-    const checksumArrayBuf = new ArrayBuffer(4);
-    const view = new DataView(checksumArrayBuf);
-    view.setUint32(0, getCrc32(this._arr));
-    const checksum = new Uint8Array(checksumArrayBuf);
-    const array = new Uint8Array([...checksum, ...this._arr]);
-    const result = base32Encode(array);
-    const matches = result.match(/.{1,5}/g);
-    if (!matches) {
-      throw new Error();
-    }
-    return matches.join("-");
-  }
-  toString() {
-    return this.toText();
-  }
-  /**
-   * Serializes to JSON
-   * @returns {JsonnablePrincipal} a JSON object with a single key, {@link JSON_KEY_PRINCIPAL}, whose value is the principal as a string
-   */
-  toJSON() {
-    return { [JSON_KEY_PRINCIPAL]: this.toText() };
-  }
-  /**
-   * Utility method taking a Principal to compare against. Used for determining canister ranges in certificate verification
-   * @param {Principal} other - a {@link Principal} to compare
-   * @returns {'lt' | 'eq' | 'gt'} `'lt' | 'eq' | 'gt'` a string, representing less than, equal to, or greater than
-   */
-  compareTo(other) {
-    for (let i = 0; i < Math.min(this._arr.length, other._arr.length); i++) {
-      if (this._arr[i] < other._arr[i])
-        return "lt";
-      else if (this._arr[i] > other._arr[i])
-        return "gt";
-    }
-    if (this._arr.length < other._arr.length)
-      return "lt";
-    if (this._arr.length > other._arr.length)
-      return "gt";
-    return "eq";
-  }
-  /**
-   * Utility method checking whether a provided Principal is less than or equal to the current one using the {@link Principal.compareTo} method
-   * @param other a {@link Principal} to compare
-   * @returns {boolean} boolean
-   */
-  ltEq(other) {
-    const cmp = this.compareTo(other);
-    return cmp == "lt" || cmp == "eq";
-  }
-  /**
-   * Utility method checking whether a provided Principal is greater than or equal to the current one using the {@link Principal.compareTo} method
-   * @param other a {@link Principal} to compare
-   * @returns {boolean} boolean
-   */
-  gtEq(other) {
-    const cmp = this.compareTo(other);
-    return cmp == "gt" || cmp == "eq";
-  }
-}
-var ErrorKindEnum;
-(function(ErrorKindEnum2) {
-  ErrorKindEnum2["Trust"] = "Trust";
-  ErrorKindEnum2["Protocol"] = "Protocol";
-  ErrorKindEnum2["Reject"] = "Reject";
-  ErrorKindEnum2["Transport"] = "Transport";
-  ErrorKindEnum2["External"] = "External";
-  ErrorKindEnum2["Limit"] = "Limit";
-  ErrorKindEnum2["Input"] = "Input";
-  ErrorKindEnum2["Unknown"] = "Unknown";
-})(ErrorKindEnum || (ErrorKindEnum = {}));
-class ErrorCode {
-  constructor(isCertified = false) {
-    this.isCertified = isCertified;
-  }
-  toString() {
-    let errorMessage = this.toErrorMessage();
-    if (this.requestContext) {
-      errorMessage += `
-Request context:
-  Request ID (hex): ${this.requestContext.requestId ? bytesToHex(this.requestContext.requestId) : "undefined"}
-  Sender pubkey (hex): ${bytesToHex(this.requestContext.senderPubKey)}
-  Sender signature (hex): ${bytesToHex(this.requestContext.senderSignature)}
-  Ingress expiry: ${this.requestContext.ingressExpiry.toString()}`;
-    }
-    if (this.callContext) {
-      errorMessage += `
-Call context:
-  Canister ID: ${this.callContext.canisterId.toText()}
-  Method name: ${this.callContext.methodName}
-  HTTP details: ${JSON.stringify(this.callContext.httpDetails, null, 2)}`;
-    }
-    return errorMessage;
-  }
-}
-class AgentError extends Error {
-  get code() {
-    return this.cause.code;
-  }
-  set code(code) {
-    this.cause.code = code;
-  }
-  get kind() {
-    return this.cause.kind;
-  }
-  set kind(kind) {
-    this.cause.kind = kind;
-  }
-  /**
-   * Reads the `isCertified` property of the underlying error code.
-   * @returns `true` if the error is certified, `false` otherwise.
-   */
-  get isCertified() {
-    return this.code.isCertified;
-  }
-  constructor(code, kind) {
-    super(code.toString());
-    this.name = "AgentError";
-    this.cause = { code, kind };
-    Object.setPrototypeOf(this, AgentError.prototype);
-  }
-  hasCode(code) {
-    return this.code instanceof code;
-  }
-  toString() {
-    return `${this.name} (${this.kind}): ${this.message}`;
-  }
-}
-class ErrorKind extends AgentError {
-  static fromCode(code) {
-    return new this(code);
-  }
-}
-class InputError extends ErrorKind {
-  constructor(code) {
-    super(code, ErrorKindEnum.Input);
-    this.name = "InputError";
-    Object.setPrototypeOf(this, InputError.prototype);
-  }
-}
-class DerDecodeLengthMismatchErrorCode extends ErrorCode {
-  constructor(expectedLength, actualLength) {
-    super();
-    this.expectedLength = expectedLength;
-    this.actualLength = actualLength;
-    this.name = "DerDecodeLengthMismatchErrorCode";
-    Object.setPrototypeOf(this, DerDecodeLengthMismatchErrorCode.prototype);
-  }
-  toErrorMessage() {
-    return `DER payload mismatch: Expected length ${this.expectedLength}, actual length: ${this.actualLength}`;
-  }
-}
-class DerDecodeErrorCode extends ErrorCode {
-  constructor(error) {
-    super();
-    this.error = error;
-    this.name = "DerDecodeErrorCode";
-    Object.setPrototypeOf(this, DerDecodeErrorCode.prototype);
-  }
-  toErrorMessage() {
-    return `Failed to decode DER: ${this.error}`;
-  }
-}
-class DerEncodeErrorCode extends ErrorCode {
-  constructor(error) {
-    super();
-    this.error = error;
-    this.name = "DerEncodeErrorCode";
-    Object.setPrototypeOf(this, DerEncodeErrorCode.prototype);
-  }
-  toErrorMessage() {
-    return `Failed to encode DER: ${this.error}`;
-  }
-}
-class HashValueErrorCode extends ErrorCode {
-  constructor(value) {
-    super();
-    this.value = value;
-    this.name = "HashValueErrorCode";
-    Object.setPrototypeOf(this, HashValueErrorCode.prototype);
-  }
-  toErrorMessage() {
-    return `Attempt to hash a value of unsupported type: ${this.value}`;
-  }
-}
-class PipeArrayBuffer {
-  /**
-   * Save a checkpoint of the reading view (for backtracking)
-   */
-  save() {
-    return this._view;
-  }
-  /**
-   * Restore a checkpoint of the reading view (for backtracking)
-   * @param checkPoint a previously saved checkpoint
-   */
-  restore(checkPoint) {
-    if (!(checkPoint instanceof Uint8Array)) {
-      throw new Error("Checkpoint must be a Uint8Array");
-    }
-    this._view = checkPoint;
-  }
-  /**
-   * Creates a new instance of a pipe
-   * @param buffer an optional buffer to start with
-   * @param length an optional amount of bytes to use for the length.
-   */
-  constructor(buffer, length = (buffer == null ? void 0 : buffer.byteLength) || 0) {
-    if (buffer && !(buffer instanceof Uint8Array)) {
-      try {
-        buffer = uint8FromBufLike$1(buffer);
-      } catch {
-        throw new Error("Buffer must be a Uint8Array");
-      }
-    }
-    if (length < 0 || !Number.isInteger(length)) {
-      throw new Error("Length must be a non-negative integer");
-    }
-    if (buffer && length > buffer.byteLength) {
-      throw new Error("Length cannot exceed buffer length");
-    }
-    this._buffer = buffer || new Uint8Array(0);
-    this._view = new Uint8Array(this._buffer.buffer, 0, length);
-  }
-  get buffer() {
-    return this._view.slice();
-  }
-  get byteLength() {
-    return this._view.byteLength;
-  }
-  /**
-   * Read `num` number of bytes from the front of the pipe.
-   * @param num The number of bytes to read.
-   */
-  read(num) {
-    const result = this._view.subarray(0, num);
-    this._view = this._view.subarray(num);
-    return result.slice();
-  }
-  readUint8() {
-    if (this._view.byteLength === 0) {
-      return void 0;
-    }
-    const result = this._view[0];
-    this._view = this._view.subarray(1);
-    return result;
-  }
-  /**
-   * Write a buffer to the end of the pipe.
-   * @param buf The bytes to write.
-   */
-  write(buf) {
-    if (!(buf instanceof Uint8Array)) {
-      throw new Error("Buffer must be a Uint8Array");
-    }
-    const offset = this._view.byteLength;
-    if (this._view.byteOffset + this._view.byteLength + buf.byteLength >= this._buffer.byteLength) {
-      this.alloc(buf.byteLength);
-    } else {
-      this._view = new Uint8Array(this._buffer.buffer, this._view.byteOffset, this._view.byteLength + buf.byteLength);
-    }
-    this._view.set(buf, offset);
-  }
-  /**
-   * Whether or not there is more data to read from the buffer
-   */
-  get end() {
-    return this._view.byteLength === 0;
-  }
-  /**
-   * Allocate a fixed amount of memory in the buffer. This does not affect the view.
-   * @param amount A number of bytes to add to the buffer.
-   */
-  alloc(amount) {
-    if (amount <= 0 || !Number.isInteger(amount)) {
-      throw new Error("Amount must be a positive integer");
-    }
-    const b = new Uint8Array((this._buffer.byteLength + amount) * 1.2 | 0);
-    const v = new Uint8Array(b.buffer, 0, this._view.byteLength + amount);
-    v.set(this._view);
-    this._buffer = b;
-    this._view = v;
-  }
-}
-function uint8FromBufLike$1(bufLike) {
-  if (!bufLike) {
-    throw new Error("Input cannot be null or undefined");
-  }
-  if (bufLike instanceof Uint8Array) {
-    return bufLike;
-  }
-  if (bufLike instanceof ArrayBuffer) {
-    return new Uint8Array(bufLike);
-  }
-  if (Array.isArray(bufLike)) {
-    return new Uint8Array(bufLike);
-  }
-  if ("buffer" in bufLike) {
-    return uint8FromBufLike$1(bufLike.buffer);
-  }
-  return new Uint8Array(bufLike);
-}
-function compare(u1, u2) {
-  if (u1.byteLength !== u2.byteLength) {
-    return u1.byteLength - u2.byteLength;
-  }
-  for (let i = 0; i < u1.length; i++) {
-    if (u1[i] !== u2[i]) {
-      return u1[i] - u2[i];
-    }
-  }
-  return 0;
-}
-function uint8Equals$1(u1, u2) {
-  return compare(u1, u2) === 0;
-}
-function ilog2(n) {
-  const nBig = BigInt(n);
-  if (n <= 0) {
-    throw new RangeError("Input must be positive");
-  }
-  return nBig.toString(2).length - 1;
-}
-function lebEncode(value) {
-  if (typeof value === "number") {
-    value = BigInt(value);
-  }
-  if (value < BigInt(0)) {
-    throw new Error("Cannot leb encode negative values.");
-  }
-  const byteLength = (value === BigInt(0) ? 0 : ilog2(value)) + 1;
-  const pipe2 = new PipeArrayBuffer(new Uint8Array(byteLength), 0);
-  while (true) {
-    const i = Number(value & BigInt(127));
-    value /= BigInt(128);
-    if (value === BigInt(0)) {
-      pipe2.write(new Uint8Array([i]));
-      break;
-    } else {
-      pipe2.write(new Uint8Array([i | 128]));
-    }
-  }
-  return pipe2.buffer;
-}
-function uint8FromBufLike(bufLike) {
-  if (!bufLike) {
-    throw new Error("Input cannot be null or undefined");
-  }
-  if (bufLike instanceof Uint8Array) {
-    return bufLike;
-  }
-  if (bufLike instanceof ArrayBuffer) {
-    return new Uint8Array(bufLike);
-  }
-  if (Array.isArray(bufLike)) {
-    return new Uint8Array(bufLike);
-  }
-  if ("buffer" in bufLike) {
-    return uint8FromBufLike(bufLike.buffer);
-  }
-  return new Uint8Array(bufLike);
-}
-function uint8Equals(a, b) {
-  if (a.length !== b.length)
-    return false;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i])
-      return false;
-  }
-  return true;
-}
-function hashValue(value) {
-  if (typeof value === "string") {
-    return hashString(value);
-  } else if (typeof value === "number") {
-    return sha256(lebEncode(value));
-  } else if (value instanceof Uint8Array || ArrayBuffer.isView(value)) {
-    return sha256(uint8FromBufLike(value));
-  } else if (Array.isArray(value)) {
-    const vals = value.map(hashValue);
-    return sha256(concatBytes(...vals));
-  } else if (value && typeof value === "object" && value._isPrincipal) {
-    return sha256(value.toUint8Array());
-  } else if (typeof value === "object" && value !== null && typeof value.toHash === "function") {
-    return hashValue(value.toHash());
-  } else if (typeof value === "object") {
-    return hashOfMap(value);
-  } else if (typeof value === "bigint") {
-    return sha256(lebEncode(value));
-  }
-  throw InputError.fromCode(new HashValueErrorCode(value));
-}
-const hashString = (value) => {
-  const encoded = new TextEncoder().encode(value);
-  return sha256(encoded);
-};
-function requestIdOf(request) {
-  return hashOfMap(request);
-}
-function hashOfMap(map) {
-  const hashed = Object.entries(map).filter(([, value]) => value !== void 0).map(([key, value]) => {
-    const hashedKey = hashString(key);
-    const hashedValue = hashValue(value);
-    return [hashedKey, hashedValue];
-  });
-  const traversed = hashed;
-  const sorted = traversed.sort(([k1], [k2]) => {
-    return compare(k1, k2);
-  });
-  const concatenated = concatBytes(...sorted.map((x) => concatBytes(...x)));
-  const result = sha256(concatenated);
-  return result;
-}
-const IC_REQUEST_DOMAIN_SEPARATOR = new TextEncoder().encode("\nic-request");
-new TextEncoder().encode("\vic-response");
-const IC_REQUEST_AUTH_DELEGATION_DOMAIN_SEPARATOR = new TextEncoder().encode("ic-request-auth-delegation");
-class SignIdentity {
-  /**
-   * Get the principal represented by this identity. Normally should be a
-   * `Principal.selfAuthenticating()`.
-   */
-  getPrincipal() {
-    if (!this._principal) {
-      this._principal = Principal.selfAuthenticating(new Uint8Array(this.getPublicKey().toDer()));
-    }
-    return this._principal;
-  }
-  /**
-   * Transform a request into a signed version of the request. This is done last
-   * after the transforms on the body of a request. The returned object can be
-   * anything, but must be serializable to CBOR.
-   * @param request - internet computer request to transform
-   */
-  async transformRequest(request) {
-    const { body, ...fields } = request;
-    const requestId = requestIdOf(body);
-    return {
-      ...fields,
-      body: {
-        content: body,
-        sender_pubkey: this.getPublicKey().toDer(),
-        sender_sig: await this.sign(concatBytes(IC_REQUEST_DOMAIN_SEPARATOR, requestId))
-      }
-    };
-  }
-}
-class AnonymousIdentity {
-  getPrincipal() {
-    return Principal.anonymous();
-  }
-  async transformRequest(request) {
-    return {
-      ...request,
-      body: { content: request.body }
-    };
-  }
-}
-/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const _0n$3 = /* @__PURE__ */ BigInt(0);
-const _1n$4 = /* @__PURE__ */ BigInt(1);
-function _abool2(value, title = "") {
-  if (typeof value !== "boolean") {
-    const prefix2 = title && `"${title}"`;
-    throw new Error(prefix2 + "expected boolean, got type=" + typeof value);
-  }
-  return value;
-}
-function _abytes2(value, length, title = "") {
-  const bytes = isBytes(value);
-  const len = value == null ? void 0 : value.length;
-  const needsLen = length !== void 0;
-  if (!bytes || needsLen && len !== length) {
-    const prefix2 = title && `"${title}" `;
-    const ofLen = needsLen ? ` of length ${length}` : "";
-    const got = bytes ? `length=${len}` : `type=${typeof value}`;
-    throw new Error(prefix2 + "expected Uint8Array" + ofLen + ", got " + got);
-  }
-  return value;
-}
-function hexToNumber(hex2) {
-  if (typeof hex2 !== "string")
-    throw new Error("hex string expected, got " + typeof hex2);
-  return hex2 === "" ? _0n$3 : BigInt("0x" + hex2);
-}
-function bytesToNumberBE(bytes) {
-  return hexToNumber(bytesToHex(bytes));
-}
-function bytesToNumberLE(bytes) {
-  abytes(bytes);
-  return hexToNumber(bytesToHex(Uint8Array.from(bytes).reverse()));
-}
-function numberToBytesBE(n, len) {
-  return hexToBytes(n.toString(16).padStart(len * 2, "0"));
-}
-function numberToBytesLE(n, len) {
-  return numberToBytesBE(n, len).reverse();
-}
-function ensureBytes(title, hex2, expectedLength) {
-  let res;
-  if (typeof hex2 === "string") {
-    try {
-      res = hexToBytes(hex2);
-    } catch (e) {
-      throw new Error(title + " must be hex string or Uint8Array, cause: " + e);
-    }
-  } else if (isBytes(hex2)) {
-    res = Uint8Array.from(hex2);
-  } else {
-    throw new Error(title + " must be hex string or Uint8Array");
-  }
-  const len = res.length;
-  if (typeof expectedLength === "number" && len !== expectedLength)
-    throw new Error(title + " of length " + expectedLength + " expected, got " + len);
-  return res;
-}
-function copyBytes(bytes) {
-  return Uint8Array.from(bytes);
-}
-const isPosBig = (n) => typeof n === "bigint" && _0n$3 <= n;
-function inRange(n, min, max) {
-  return isPosBig(n) && isPosBig(min) && isPosBig(max) && min <= n && n < max;
-}
-function aInRange(title, n, min, max) {
-  if (!inRange(n, min, max))
-    throw new Error("expected valid " + title + ": " + min + " <= n < " + max + ", got " + n);
-}
-function bitLen(n) {
-  let len;
-  for (len = 0; n > _0n$3; n >>= _1n$4, len += 1)
-    ;
-  return len;
-}
-const bitMask = (n) => (_1n$4 << BigInt(n)) - _1n$4;
-function _validateObject(object, fields, optFields = {}) {
-  if (!object || typeof object !== "object")
-    throw new Error("expected valid options object");
-  function checkField(fieldName, expectedType, isOpt) {
-    const val = object[fieldName];
-    if (isOpt && val === void 0)
-      return;
-    const current = typeof val;
-    if (current !== expectedType || val === null)
-      throw new Error(`param "${fieldName}" is invalid: expected ${expectedType}, got ${current}`);
-  }
-  Object.entries(fields).forEach(([k, v]) => checkField(k, v, false));
-  Object.entries(optFields).forEach(([k, v]) => checkField(k, v, true));
-}
-function memoized(fn) {
-  const map = /* @__PURE__ */ new WeakMap();
-  return (arg, ...args) => {
-    const val = map.get(arg);
-    if (val !== void 0)
-      return val;
-    const computed = fn(arg, ...args);
-    map.set(arg, computed);
-    return computed;
-  };
-}
-/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const _0n$2 = BigInt(0), _1n$3 = BigInt(1), _2n$2 = /* @__PURE__ */ BigInt(2), _3n = /* @__PURE__ */ BigInt(3);
-const _4n = /* @__PURE__ */ BigInt(4), _5n$1 = /* @__PURE__ */ BigInt(5), _7n = /* @__PURE__ */ BigInt(7);
-const _8n$2 = /* @__PURE__ */ BigInt(8), _9n = /* @__PURE__ */ BigInt(9), _16n = /* @__PURE__ */ BigInt(16);
-function mod(a, b) {
-  const result = a % b;
-  return result >= _0n$2 ? result : b + result;
-}
-function pow2(x, power, modulo) {
-  let res = x;
-  while (power-- > _0n$2) {
-    res *= res;
-    res %= modulo;
-  }
-  return res;
-}
-function invert(number2, modulo) {
-  if (number2 === _0n$2)
-    throw new Error("invert: expected non-zero number");
-  if (modulo <= _0n$2)
-    throw new Error("invert: expected positive modulus, got " + modulo);
-  let a = mod(number2, modulo);
-  let b = modulo;
-  let x = _0n$2, u = _1n$3;
-  while (a !== _0n$2) {
-    const q = b / a;
-    const r2 = b % a;
-    const m = x - u * q;
-    b = a, a = r2, x = u, u = m;
-  }
-  const gcd = b;
-  if (gcd !== _1n$3)
-    throw new Error("invert: does not exist");
-  return mod(x, modulo);
-}
-function assertIsSquare(Fp2, root2, n) {
-  if (!Fp2.eql(Fp2.sqr(root2), n))
-    throw new Error("Cannot find square root");
-}
-function sqrt3mod4(Fp2, n) {
-  const p1div4 = (Fp2.ORDER + _1n$3) / _4n;
-  const root2 = Fp2.pow(n, p1div4);
-  assertIsSquare(Fp2, root2, n);
-  return root2;
-}
-function sqrt5mod8(Fp2, n) {
-  const p5div8 = (Fp2.ORDER - _5n$1) / _8n$2;
-  const n2 = Fp2.mul(n, _2n$2);
-  const v = Fp2.pow(n2, p5div8);
-  const nv = Fp2.mul(n, v);
-  const i = Fp2.mul(Fp2.mul(nv, _2n$2), v);
-  const root2 = Fp2.mul(nv, Fp2.sub(i, Fp2.ONE));
-  assertIsSquare(Fp2, root2, n);
-  return root2;
-}
-function sqrt9mod16(P) {
-  const Fp_ = Field(P);
-  const tn = tonelliShanks(P);
-  const c1 = tn(Fp_, Fp_.neg(Fp_.ONE));
-  const c2 = tn(Fp_, c1);
-  const c3 = tn(Fp_, Fp_.neg(c1));
-  const c4 = (P + _7n) / _16n;
-  return (Fp2, n) => {
-    let tv1 = Fp2.pow(n, c4);
-    let tv2 = Fp2.mul(tv1, c1);
-    const tv3 = Fp2.mul(tv1, c2);
-    const tv4 = Fp2.mul(tv1, c3);
-    const e1 = Fp2.eql(Fp2.sqr(tv2), n);
-    const e2 = Fp2.eql(Fp2.sqr(tv3), n);
-    tv1 = Fp2.cmov(tv1, tv2, e1);
-    tv2 = Fp2.cmov(tv4, tv3, e2);
-    const e3 = Fp2.eql(Fp2.sqr(tv2), n);
-    const root2 = Fp2.cmov(tv1, tv2, e3);
-    assertIsSquare(Fp2, root2, n);
-    return root2;
-  };
-}
-function tonelliShanks(P) {
-  if (P < _3n)
-    throw new Error("sqrt is not defined for small field");
-  let Q = P - _1n$3;
-  let S = 0;
-  while (Q % _2n$2 === _0n$2) {
-    Q /= _2n$2;
-    S++;
-  }
-  let Z = _2n$2;
-  const _Fp = Field(P);
-  while (FpLegendre(_Fp, Z) === 1) {
-    if (Z++ > 1e3)
-      throw new Error("Cannot find square root: probably non-prime P");
-  }
-  if (S === 1)
-    return sqrt3mod4;
-  let cc = _Fp.pow(Z, Q);
-  const Q1div2 = (Q + _1n$3) / _2n$2;
-  return function tonelliSlow(Fp2, n) {
-    if (Fp2.is0(n))
-      return n;
-    if (FpLegendre(Fp2, n) !== 1)
-      throw new Error("Cannot find square root");
-    let M = S;
-    let c = Fp2.mul(Fp2.ONE, cc);
-    let t = Fp2.pow(n, Q);
-    let R = Fp2.pow(n, Q1div2);
-    while (!Fp2.eql(t, Fp2.ONE)) {
-      if (Fp2.is0(t))
-        return Fp2.ZERO;
-      let i = 1;
-      let t_tmp = Fp2.sqr(t);
-      while (!Fp2.eql(t_tmp, Fp2.ONE)) {
-        i++;
-        t_tmp = Fp2.sqr(t_tmp);
-        if (i === M)
-          throw new Error("Cannot find square root");
-      }
-      const exponent = _1n$3 << BigInt(M - i - 1);
-      const b = Fp2.pow(c, exponent);
-      M = i;
-      c = Fp2.sqr(b);
-      t = Fp2.mul(t, c);
-      R = Fp2.mul(R, b);
-    }
-    return R;
-  };
-}
-function FpSqrt(P) {
-  if (P % _4n === _3n)
-    return sqrt3mod4;
-  if (P % _8n$2 === _5n$1)
-    return sqrt5mod8;
-  if (P % _16n === _9n)
-    return sqrt9mod16(P);
-  return tonelliShanks(P);
-}
-const isNegativeLE = (num, modulo) => (mod(num, modulo) & _1n$3) === _1n$3;
-const FIELD_FIELDS = [
-  "create",
-  "isValid",
-  "is0",
-  "neg",
-  "inv",
-  "sqrt",
-  "sqr",
-  "eql",
-  "add",
-  "sub",
-  "mul",
-  "pow",
-  "div",
-  "addN",
-  "subN",
-  "mulN",
-  "sqrN"
-];
-function validateField(field) {
-  const initial = {
-    ORDER: "bigint",
-    MASK: "bigint",
-    BYTES: "number",
-    BITS: "number"
-  };
-  const opts = FIELD_FIELDS.reduce((map, val) => {
-    map[val] = "function";
-    return map;
-  }, initial);
-  _validateObject(field, opts);
-  return field;
-}
-function FpPow(Fp2, num, power) {
-  if (power < _0n$2)
-    throw new Error("invalid exponent, negatives unsupported");
-  if (power === _0n$2)
-    return Fp2.ONE;
-  if (power === _1n$3)
-    return num;
-  let p = Fp2.ONE;
-  let d = num;
-  while (power > _0n$2) {
-    if (power & _1n$3)
-      p = Fp2.mul(p, d);
-    d = Fp2.sqr(d);
-    power >>= _1n$3;
-  }
-  return p;
-}
-function FpInvertBatch(Fp2, nums, passZero = false) {
-  const inverted = new Array(nums.length).fill(passZero ? Fp2.ZERO : void 0);
-  const multipliedAcc = nums.reduce((acc, num, i) => {
-    if (Fp2.is0(num))
-      return acc;
-    inverted[i] = acc;
-    return Fp2.mul(acc, num);
-  }, Fp2.ONE);
-  const invertedAcc = Fp2.inv(multipliedAcc);
-  nums.reduceRight((acc, num, i) => {
-    if (Fp2.is0(num))
-      return acc;
-    inverted[i] = Fp2.mul(acc, inverted[i]);
-    return Fp2.mul(acc, num);
-  }, invertedAcc);
-  return inverted;
-}
-function FpLegendre(Fp2, n) {
-  const p1mod2 = (Fp2.ORDER - _1n$3) / _2n$2;
-  const powered = Fp2.pow(n, p1mod2);
-  const yes = Fp2.eql(powered, Fp2.ONE);
-  const zero = Fp2.eql(powered, Fp2.ZERO);
-  const no = Fp2.eql(powered, Fp2.neg(Fp2.ONE));
-  if (!yes && !zero && !no)
-    throw new Error("invalid Legendre symbol result");
-  return yes ? 1 : zero ? 0 : -1;
-}
-function nLength(n, nBitLength) {
-  if (nBitLength !== void 0)
-    anumber(nBitLength);
-  const _nBitLength = nBitLength !== void 0 ? nBitLength : n.toString(2).length;
-  const nByteLength = Math.ceil(_nBitLength / 8);
-  return { nBitLength: _nBitLength, nByteLength };
-}
-function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
-  if (ORDER <= _0n$2)
-    throw new Error("invalid field: expected ORDER > 0, got " + ORDER);
-  let _nbitLength = void 0;
-  let _sqrt = void 0;
-  let modFromBytes = false;
-  let allowedLengths = void 0;
-  if (typeof bitLenOrOpts === "object" && bitLenOrOpts != null) {
-    if (opts.sqrt || isLE)
-      throw new Error("cannot specify opts in two arguments");
-    const _opts = bitLenOrOpts;
-    if (_opts.BITS)
-      _nbitLength = _opts.BITS;
-    if (_opts.sqrt)
-      _sqrt = _opts.sqrt;
-    if (typeof _opts.isLE === "boolean")
-      isLE = _opts.isLE;
-    if (typeof _opts.modFromBytes === "boolean")
-      modFromBytes = _opts.modFromBytes;
-    allowedLengths = _opts.allowedLengths;
-  } else {
-    if (typeof bitLenOrOpts === "number")
-      _nbitLength = bitLenOrOpts;
-    if (opts.sqrt)
-      _sqrt = opts.sqrt;
-  }
-  const { nBitLength: BITS, nByteLength: BYTES } = nLength(ORDER, _nbitLength);
-  if (BYTES > 2048)
-    throw new Error("invalid field: expected ORDER of <= 2048 bytes");
-  let sqrtP;
-  const f = Object.freeze({
-    ORDER,
-    isLE,
-    BITS,
-    BYTES,
-    MASK: bitMask(BITS),
-    ZERO: _0n$2,
-    ONE: _1n$3,
-    allowedLengths,
-    create: (num) => mod(num, ORDER),
-    isValid: (num) => {
-      if (typeof num !== "bigint")
-        throw new Error("invalid field element: expected bigint, got " + typeof num);
-      return _0n$2 <= num && num < ORDER;
-    },
-    is0: (num) => num === _0n$2,
-    // is valid and invertible
-    isValidNot0: (num) => !f.is0(num) && f.isValid(num),
-    isOdd: (num) => (num & _1n$3) === _1n$3,
-    neg: (num) => mod(-num, ORDER),
-    eql: (lhs, rhs) => lhs === rhs,
-    sqr: (num) => mod(num * num, ORDER),
-    add: (lhs, rhs) => mod(lhs + rhs, ORDER),
-    sub: (lhs, rhs) => mod(lhs - rhs, ORDER),
-    mul: (lhs, rhs) => mod(lhs * rhs, ORDER),
-    pow: (num, power) => FpPow(f, num, power),
-    div: (lhs, rhs) => mod(lhs * invert(rhs, ORDER), ORDER),
-    // Same as above, but doesn't normalize
-    sqrN: (num) => num * num,
-    addN: (lhs, rhs) => lhs + rhs,
-    subN: (lhs, rhs) => lhs - rhs,
-    mulN: (lhs, rhs) => lhs * rhs,
-    inv: (num) => invert(num, ORDER),
-    sqrt: _sqrt || ((n) => {
-      if (!sqrtP)
-        sqrtP = FpSqrt(ORDER);
-      return sqrtP(f, n);
-    }),
-    toBytes: (num) => isLE ? numberToBytesLE(num, BYTES) : numberToBytesBE(num, BYTES),
-    fromBytes: (bytes, skipValidation = true) => {
-      if (allowedLengths) {
-        if (!allowedLengths.includes(bytes.length) || bytes.length > BYTES) {
-          throw new Error("Field.fromBytes: expected " + allowedLengths + " bytes, got " + bytes.length);
-        }
-        const padded = new Uint8Array(BYTES);
-        padded.set(bytes, isLE ? 0 : padded.length - bytes.length);
-        bytes = padded;
-      }
-      if (bytes.length !== BYTES)
-        throw new Error("Field.fromBytes: expected " + BYTES + " bytes, got " + bytes.length);
-      let scalar = isLE ? bytesToNumberLE(bytes) : bytesToNumberBE(bytes);
-      if (modFromBytes)
-        scalar = mod(scalar, ORDER);
-      if (!skipValidation) {
-        if (!f.isValid(scalar))
-          throw new Error("invalid field element: outside of range 0..ORDER");
-      }
-      return scalar;
-    },
-    // TODO: we don't need it here, move out to separate fn
-    invertBatch: (lst) => FpInvertBatch(f, lst),
-    // We can't move this out because Fp6, Fp12 implement it
-    // and it's unclear what to return in there.
-    cmov: (a, b, c) => c ? b : a
-  });
-  return Object.freeze(f);
-}
-/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const _0n$1 = BigInt(0);
-const _1n$2 = BigInt(1);
-function negateCt(condition, item) {
-  const neg = item.negate();
-  return condition ? neg : item;
-}
-function normalizeZ(c, points) {
-  const invertedZs = FpInvertBatch(c.Fp, points.map((p) => p.Z));
-  return points.map((p, i) => c.fromAffine(p.toAffine(invertedZs[i])));
-}
-function validateW(W, bits) {
-  if (!Number.isSafeInteger(W) || W <= 0 || W > bits)
-    throw new Error("invalid window size, expected [1.." + bits + "], got W=" + W);
-}
-function calcWOpts(W, scalarBits) {
-  validateW(W, scalarBits);
-  const windows = Math.ceil(scalarBits / W) + 1;
-  const windowSize = 2 ** (W - 1);
-  const maxNumber = 2 ** W;
-  const mask2 = bitMask(W);
-  const shiftBy = BigInt(W);
-  return { windows, windowSize, mask: mask2, maxNumber, shiftBy };
-}
-function calcOffsets(n, window2, wOpts) {
-  const { windowSize, mask: mask2, maxNumber, shiftBy } = wOpts;
-  let wbits = Number(n & mask2);
-  let nextN = n >> shiftBy;
-  if (wbits > windowSize) {
-    wbits -= maxNumber;
-    nextN += _1n$2;
-  }
-  const offsetStart = window2 * windowSize;
-  const offset = offsetStart + Math.abs(wbits) - 1;
-  const isZero = wbits === 0;
-  const isNeg = wbits < 0;
-  const isNegF = window2 % 2 !== 0;
-  const offsetF = offsetStart;
-  return { nextN, offset, isZero, isNeg, isNegF, offsetF };
-}
-function validateMSMPoints(points, c) {
-  if (!Array.isArray(points))
-    throw new Error("array expected");
-  points.forEach((p, i) => {
-    if (!(p instanceof c))
-      throw new Error("invalid point at index " + i);
-  });
-}
-function validateMSMScalars(scalars, field) {
-  if (!Array.isArray(scalars))
-    throw new Error("array of scalars expected");
-  scalars.forEach((s, i) => {
-    if (!field.isValid(s))
-      throw new Error("invalid scalar at index " + i);
-  });
-}
-const pointPrecomputes = /* @__PURE__ */ new WeakMap();
-const pointWindowSizes = /* @__PURE__ */ new WeakMap();
-function getW(P) {
-  return pointWindowSizes.get(P) || 1;
-}
-function assert0(n) {
-  if (n !== _0n$1)
-    throw new Error("invalid wNAF");
-}
-class wNAF {
-  // Parametrized with a given Point class (not individual point)
-  constructor(Point, bits) {
-    this.BASE = Point.BASE;
-    this.ZERO = Point.ZERO;
-    this.Fn = Point.Fn;
-    this.bits = bits;
-  }
-  // non-const time multiplication ladder
-  _unsafeLadder(elm, n, p = this.ZERO) {
-    let d = elm;
-    while (n > _0n$1) {
-      if (n & _1n$2)
-        p = p.add(d);
-      d = d.double();
-      n >>= _1n$2;
-    }
-    return p;
-  }
-  /**
-   * Creates a wNAF precomputation window. Used for caching.
-   * Default window size is set by `utils.precompute()` and is equal to 8.
-   * Number of precomputed points depends on the curve size:
-   * 2^(𝑊−1) * (Math.ceil(𝑛 / 𝑊) + 1), where:
-   * - 𝑊 is the window size
-   * - 𝑛 is the bitlength of the curve order.
-   * For a 256-bit curve and window size 8, the number of precomputed points is 128 * 33 = 4224.
-   * @param point Point instance
-   * @param W window size
-   * @returns precomputed point tables flattened to a single array
-   */
-  precomputeWindow(point, W) {
-    const { windows, windowSize } = calcWOpts(W, this.bits);
-    const points = [];
-    let p = point;
-    let base = p;
-    for (let window2 = 0; window2 < windows; window2++) {
-      base = p;
-      points.push(base);
-      for (let i = 1; i < windowSize; i++) {
-        base = base.add(p);
-        points.push(base);
-      }
-      p = base.double();
-    }
-    return points;
-  }
-  /**
-   * Implements ec multiplication using precomputed tables and w-ary non-adjacent form.
-   * More compact implementation:
-   * https://github.com/paulmillr/noble-secp256k1/blob/47cb1669b6e506ad66b35fe7d76132ae97465da2/index.ts#L502-L541
-   * @returns real and fake (for const-time) points
-   */
-  wNAF(W, precomputes, n) {
-    if (!this.Fn.isValid(n))
-      throw new Error("invalid scalar");
-    let p = this.ZERO;
-    let f = this.BASE;
-    const wo = calcWOpts(W, this.bits);
-    for (let window2 = 0; window2 < wo.windows; window2++) {
-      const { nextN, offset, isZero, isNeg, isNegF, offsetF } = calcOffsets(n, window2, wo);
-      n = nextN;
-      if (isZero) {
-        f = f.add(negateCt(isNegF, precomputes[offsetF]));
-      } else {
-        p = p.add(negateCt(isNeg, precomputes[offset]));
-      }
-    }
-    assert0(n);
-    return { p, f };
-  }
-  /**
-   * Implements ec unsafe (non const-time) multiplication using precomputed tables and w-ary non-adjacent form.
-   * @param acc accumulator point to add result of multiplication
-   * @returns point
-   */
-  wNAFUnsafe(W, precomputes, n, acc = this.ZERO) {
-    const wo = calcWOpts(W, this.bits);
-    for (let window2 = 0; window2 < wo.windows; window2++) {
-      if (n === _0n$1)
-        break;
-      const { nextN, offset, isZero, isNeg } = calcOffsets(n, window2, wo);
-      n = nextN;
-      if (isZero) {
-        continue;
-      } else {
-        const item = precomputes[offset];
-        acc = acc.add(isNeg ? item.negate() : item);
-      }
-    }
-    assert0(n);
-    return acc;
-  }
-  getPrecomputes(W, point, transform) {
-    let comp = pointPrecomputes.get(point);
-    if (!comp) {
-      comp = this.precomputeWindow(point, W);
-      if (W !== 1) {
-        if (typeof transform === "function")
-          comp = transform(comp);
-        pointPrecomputes.set(point, comp);
-      }
-    }
-    return comp;
-  }
-  cached(point, scalar, transform) {
-    const W = getW(point);
-    return this.wNAF(W, this.getPrecomputes(W, point, transform), scalar);
-  }
-  unsafe(point, scalar, transform, prev) {
-    const W = getW(point);
-    if (W === 1)
-      return this._unsafeLadder(point, scalar, prev);
-    return this.wNAFUnsafe(W, this.getPrecomputes(W, point, transform), scalar, prev);
-  }
-  // We calculate precomputes for elliptic curve point multiplication
-  // using windowed method. This specifies window size and
-  // stores precomputed values. Usually only base point would be precomputed.
-  createCache(P, W) {
-    validateW(W, this.bits);
-    pointWindowSizes.set(P, W);
-    pointPrecomputes.delete(P);
-  }
-  hasCache(elm) {
-    return getW(elm) !== 1;
-  }
-}
-function pippenger(c, fieldN, points, scalars) {
-  validateMSMPoints(points, c);
-  validateMSMScalars(scalars, fieldN);
-  const plength = points.length;
-  const slength = scalars.length;
-  if (plength !== slength)
-    throw new Error("arrays of points and scalars must have equal length");
-  const zero = c.ZERO;
-  const wbits = bitLen(BigInt(plength));
-  let windowSize = 1;
-  if (wbits > 12)
-    windowSize = wbits - 3;
-  else if (wbits > 4)
-    windowSize = wbits - 2;
-  else if (wbits > 0)
-    windowSize = 2;
-  const MASK = bitMask(windowSize);
-  const buckets = new Array(Number(MASK) + 1).fill(zero);
-  const lastBits = Math.floor((fieldN.BITS - 1) / windowSize) * windowSize;
-  let sum = zero;
-  for (let i = lastBits; i >= 0; i -= windowSize) {
-    buckets.fill(zero);
-    for (let j = 0; j < slength; j++) {
-      const scalar = scalars[j];
-      const wbits2 = Number(scalar >> BigInt(i) & MASK);
-      buckets[wbits2] = buckets[wbits2].add(points[j]);
-    }
-    let resI = zero;
-    for (let j = buckets.length - 1, sumI = zero; j > 0; j--) {
-      sumI = sumI.add(buckets[j]);
-      resI = resI.add(sumI);
-    }
-    sum = sum.add(resI);
-    if (i !== 0)
-      for (let j = 0; j < windowSize; j++)
-        sum = sum.double();
-  }
-  return sum;
-}
-function createField(order, field, isLE) {
-  if (field) {
-    if (field.ORDER !== order)
-      throw new Error("Field.ORDER must match order: Fp == p, Fn == n");
-    validateField(field);
-    return field;
-  } else {
-    return Field(order, { isLE });
-  }
-}
-function _createCurveFields(type, CURVE, curveOpts = {}, FpFnLE) {
-  if (FpFnLE === void 0)
-    FpFnLE = type === "edwards";
-  if (!CURVE || typeof CURVE !== "object")
-    throw new Error(`expected valid ${type} CURVE object`);
-  for (const p of ["p", "n", "h"]) {
-    const val = CURVE[p];
-    if (!(typeof val === "bigint" && val > _0n$1))
-      throw new Error(`CURVE.${p} must be positive bigint`);
-  }
-  const Fp2 = createField(CURVE.p, curveOpts.Fp, FpFnLE);
-  const Fn = createField(CURVE.n, curveOpts.Fn, FpFnLE);
-  const _b2 = "d";
-  const params = ["Gx", "Gy", "a", _b2];
-  for (const p of params) {
-    if (!Fp2.isValid(CURVE[p]))
-      throw new Error(`CURVE.${p} must be valid field element of CURVE.Fp`);
-  }
-  CURVE = Object.freeze(Object.assign({}, CURVE));
-  return { CURVE, Fp: Fp2, Fn };
-}
-/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const _0n = BigInt(0), _1n$1 = BigInt(1), _2n$1 = BigInt(2), _8n$1 = BigInt(8);
-function isEdValidXY(Fp2, CURVE, x, y) {
-  const x2 = Fp2.sqr(x);
-  const y2 = Fp2.sqr(y);
-  const left = Fp2.add(Fp2.mul(CURVE.a, x2), y2);
-  const right = Fp2.add(Fp2.ONE, Fp2.mul(CURVE.d, Fp2.mul(x2, y2)));
-  return Fp2.eql(left, right);
-}
-function edwards(params, extraOpts = {}) {
-  const validated = _createCurveFields("edwards", params, extraOpts, extraOpts.FpFnLE);
-  const { Fp: Fp2, Fn } = validated;
-  let CURVE = validated.CURVE;
-  const { h: cofactor } = CURVE;
-  _validateObject(extraOpts, {}, { uvRatio: "function" });
-  const MASK = _2n$1 << BigInt(Fn.BYTES * 8) - _1n$1;
-  const modP = (n) => Fp2.create(n);
-  const uvRatio2 = extraOpts.uvRatio || ((u, v) => {
-    try {
-      return { isValid: true, value: Fp2.sqrt(Fp2.div(u, v)) };
-    } catch (e) {
-      return { isValid: false, value: _0n };
-    }
-  });
-  if (!isEdValidXY(Fp2, CURVE, CURVE.Gx, CURVE.Gy))
-    throw new Error("bad curve params: generator point");
-  function acoord(title, n, banZero = false) {
-    const min = banZero ? _1n$1 : _0n;
-    aInRange("coordinate " + title, n, min, MASK);
-    return n;
-  }
-  function aextpoint(other) {
-    if (!(other instanceof Point))
-      throw new Error("ExtendedPoint expected");
-  }
-  const toAffineMemo = memoized((p, iz) => {
-    const { X: X2, Y, Z } = p;
-    const is0 = p.is0();
-    if (iz == null)
-      iz = is0 ? _8n$1 : Fp2.inv(Z);
-    const x = modP(X2 * iz);
-    const y = modP(Y * iz);
-    const zz = Fp2.mul(Z, iz);
-    if (is0)
-      return { x: _0n, y: _1n$1 };
-    if (zz !== _1n$1)
-      throw new Error("invZ was invalid");
-    return { x, y };
-  });
-  const assertValidMemo = memoized((p) => {
-    const { a, d } = CURVE;
-    if (p.is0())
-      throw new Error("bad point: ZERO");
-    const { X: X2, Y, Z, T } = p;
-    const X22 = modP(X2 * X2);
-    const Y2 = modP(Y * Y);
-    const Z2 = modP(Z * Z);
-    const Z4 = modP(Z2 * Z2);
-    const aX2 = modP(X22 * a);
-    const left = modP(Z2 * modP(aX2 + Y2));
-    const right = modP(Z4 + modP(d * modP(X22 * Y2)));
-    if (left !== right)
-      throw new Error("bad point: equation left != right (1)");
-    const XY = modP(X2 * Y);
-    const ZT = modP(Z * T);
-    if (XY !== ZT)
-      throw new Error("bad point: equation left != right (2)");
-    return true;
-  });
-  class Point {
-    constructor(X2, Y, Z, T) {
-      this.X = acoord("x", X2);
-      this.Y = acoord("y", Y);
-      this.Z = acoord("z", Z, true);
-      this.T = acoord("t", T);
-      Object.freeze(this);
-    }
-    static CURVE() {
-      return CURVE;
-    }
-    static fromAffine(p) {
-      if (p instanceof Point)
-        throw new Error("extended point not allowed");
-      const { x, y } = p || {};
-      acoord("x", x);
-      acoord("y", y);
-      return new Point(x, y, _1n$1, modP(x * y));
-    }
-    // Uses algo from RFC8032 5.1.3.
-    static fromBytes(bytes, zip215 = false) {
-      const len = Fp2.BYTES;
-      const { a, d } = CURVE;
-      bytes = copyBytes(_abytes2(bytes, len, "point"));
-      _abool2(zip215, "zip215");
-      const normed = copyBytes(bytes);
-      const lastByte = bytes[len - 1];
-      normed[len - 1] = lastByte & -129;
-      const y = bytesToNumberLE(normed);
-      const max = zip215 ? MASK : Fp2.ORDER;
-      aInRange("point.y", y, _0n, max);
-      const y2 = modP(y * y);
-      const u = modP(y2 - _1n$1);
-      const v = modP(d * y2 - a);
-      let { isValid, value: x } = uvRatio2(u, v);
-      if (!isValid)
-        throw new Error("bad point: invalid y coordinate");
-      const isXOdd = (x & _1n$1) === _1n$1;
-      const isLastByteOdd = (lastByte & 128) !== 0;
-      if (!zip215 && x === _0n && isLastByteOdd)
-        throw new Error("bad point: x=0 and x_0=1");
-      if (isLastByteOdd !== isXOdd)
-        x = modP(-x);
-      return Point.fromAffine({ x, y });
-    }
-    static fromHex(bytes, zip215 = false) {
-      return Point.fromBytes(ensureBytes("point", bytes), zip215);
-    }
-    get x() {
-      return this.toAffine().x;
-    }
-    get y() {
-      return this.toAffine().y;
-    }
-    precompute(windowSize = 8, isLazy = true) {
-      wnaf.createCache(this, windowSize);
-      if (!isLazy)
-        this.multiply(_2n$1);
-      return this;
-    }
-    // Useful in fromAffine() - not for fromBytes(), which always created valid points.
-    assertValidity() {
-      assertValidMemo(this);
-    }
-    // Compare one point to another.
-    equals(other) {
-      aextpoint(other);
-      const { X: X1, Y: Y1, Z: Z1 } = this;
-      const { X: X2, Y: Y2, Z: Z2 } = other;
-      const X1Z2 = modP(X1 * Z2);
-      const X2Z1 = modP(X2 * Z1);
-      const Y1Z2 = modP(Y1 * Z2);
-      const Y2Z1 = modP(Y2 * Z1);
-      return X1Z2 === X2Z1 && Y1Z2 === Y2Z1;
-    }
-    is0() {
-      return this.equals(Point.ZERO);
-    }
-    negate() {
-      return new Point(modP(-this.X), this.Y, this.Z, modP(-this.T));
-    }
-    // Fast algo for doubling Extended Point.
-    // https://hyperelliptic.org/EFD/g1p/auto-twisted-extended.html#doubling-dbl-2008-hwcd
-    // Cost: 4M + 4S + 1*a + 6add + 1*2.
-    double() {
-      const { a } = CURVE;
-      const { X: X1, Y: Y1, Z: Z1 } = this;
-      const A = modP(X1 * X1);
-      const B = modP(Y1 * Y1);
-      const C = modP(_2n$1 * modP(Z1 * Z1));
-      const D = modP(a * A);
-      const x1y1 = X1 + Y1;
-      const E = modP(modP(x1y1 * x1y1) - A - B);
-      const G = D + B;
-      const F = G - C;
-      const H = D - B;
-      const X3 = modP(E * F);
-      const Y3 = modP(G * H);
-      const T3 = modP(E * H);
-      const Z3 = modP(F * G);
-      return new Point(X3, Y3, Z3, T3);
-    }
-    // Fast algo for adding 2 Extended Points.
-    // https://hyperelliptic.org/EFD/g1p/auto-twisted-extended.html#addition-add-2008-hwcd
-    // Cost: 9M + 1*a + 1*d + 7add.
-    add(other) {
-      aextpoint(other);
-      const { a, d } = CURVE;
-      const { X: X1, Y: Y1, Z: Z1, T: T1 } = this;
-      const { X: X2, Y: Y2, Z: Z2, T: T2 } = other;
-      const A = modP(X1 * X2);
-      const B = modP(Y1 * Y2);
-      const C = modP(T1 * d * T2);
-      const D = modP(Z1 * Z2);
-      const E = modP((X1 + Y1) * (X2 + Y2) - A - B);
-      const F = D - C;
-      const G = D + C;
-      const H = modP(B - a * A);
-      const X3 = modP(E * F);
-      const Y3 = modP(G * H);
-      const T3 = modP(E * H);
-      const Z3 = modP(F * G);
-      return new Point(X3, Y3, Z3, T3);
-    }
-    subtract(other) {
-      return this.add(other.negate());
-    }
-    // Constant-time multiplication.
-    multiply(scalar) {
-      if (!Fn.isValidNot0(scalar))
-        throw new Error("invalid scalar: expected 1 <= sc < curve.n");
-      const { p, f } = wnaf.cached(this, scalar, (p2) => normalizeZ(Point, p2));
-      return normalizeZ(Point, [p, f])[0];
-    }
-    // Non-constant-time multiplication. Uses double-and-add algorithm.
-    // It's faster, but should only be used when you don't care about
-    // an exposed private key e.g. sig verification.
-    // Does NOT allow scalars higher than CURVE.n.
-    // Accepts optional accumulator to merge with multiply (important for sparse scalars)
-    multiplyUnsafe(scalar, acc = Point.ZERO) {
-      if (!Fn.isValid(scalar))
-        throw new Error("invalid scalar: expected 0 <= sc < curve.n");
-      if (scalar === _0n)
-        return Point.ZERO;
-      if (this.is0() || scalar === _1n$1)
-        return this;
-      return wnaf.unsafe(this, scalar, (p) => normalizeZ(Point, p), acc);
-    }
-    // Checks if point is of small order.
-    // If you add something to small order point, you will have "dirty"
-    // point with torsion component.
-    // Multiplies point by cofactor and checks if the result is 0.
-    isSmallOrder() {
-      return this.multiplyUnsafe(cofactor).is0();
-    }
-    // Multiplies point by curve order and checks if the result is 0.
-    // Returns `false` is the point is dirty.
-    isTorsionFree() {
-      return wnaf.unsafe(this, CURVE.n).is0();
-    }
-    // Converts Extended point to default (x, y) coordinates.
-    // Can accept precomputed Z^-1 - for example, from invertBatch.
-    toAffine(invertedZ) {
-      return toAffineMemo(this, invertedZ);
-    }
-    clearCofactor() {
-      if (cofactor === _1n$1)
-        return this;
-      return this.multiplyUnsafe(cofactor);
-    }
-    toBytes() {
-      const { x, y } = this.toAffine();
-      const bytes = Fp2.toBytes(y);
-      bytes[bytes.length - 1] |= x & _1n$1 ? 128 : 0;
-      return bytes;
-    }
-    toHex() {
-      return bytesToHex(this.toBytes());
-    }
-    toString() {
-      return `<Point ${this.is0() ? "ZERO" : this.toHex()}>`;
-    }
-    // TODO: remove
-    get ex() {
-      return this.X;
-    }
-    get ey() {
-      return this.Y;
-    }
-    get ez() {
-      return this.Z;
-    }
-    get et() {
-      return this.T;
-    }
-    static normalizeZ(points) {
-      return normalizeZ(Point, points);
-    }
-    static msm(points, scalars) {
-      return pippenger(Point, Fn, points, scalars);
-    }
-    _setWindowSize(windowSize) {
-      this.precompute(windowSize);
-    }
-    toRawBytes() {
-      return this.toBytes();
-    }
-  }
-  Point.BASE = new Point(CURVE.Gx, CURVE.Gy, _1n$1, modP(CURVE.Gx * CURVE.Gy));
-  Point.ZERO = new Point(_0n, _1n$1, _1n$1, _0n);
-  Point.Fp = Fp2;
-  Point.Fn = Fn;
-  const wnaf = new wNAF(Point, Fn.BITS);
-  Point.BASE.precompute(8);
-  return Point;
-}
-function eddsa(Point, cHash, eddsaOpts = {}) {
-  if (typeof cHash !== "function")
-    throw new Error('"hash" function param is required');
-  _validateObject(eddsaOpts, {}, {
-    adjustScalarBytes: "function",
-    randomBytes: "function",
-    domain: "function",
-    prehash: "function",
-    mapToCurve: "function"
-  });
-  const { prehash } = eddsaOpts;
-  const { BASE, Fp: Fp2, Fn } = Point;
-  const randomBytes$1 = eddsaOpts.randomBytes || randomBytes;
-  const adjustScalarBytes2 = eddsaOpts.adjustScalarBytes || ((bytes) => bytes);
-  const domain = eddsaOpts.domain || ((data, ctx, phflag) => {
-    _abool2(phflag, "phflag");
-    if (ctx.length || phflag)
-      throw new Error("Contexts/pre-hash are not supported");
-    return data;
-  });
-  function modN_LE(hash) {
-    return Fn.create(bytesToNumberLE(hash));
-  }
-  function getPrivateScalar(key) {
-    const len = lengths.secretKey;
-    key = ensureBytes("private key", key, len);
-    const hashed = ensureBytes("hashed private key", cHash(key), 2 * len);
-    const head = adjustScalarBytes2(hashed.slice(0, len));
-    const prefix2 = hashed.slice(len, 2 * len);
-    const scalar = modN_LE(head);
-    return { head, prefix: prefix2, scalar };
-  }
-  function getExtendedPublicKey(secretKey) {
-    const { head, prefix: prefix2, scalar } = getPrivateScalar(secretKey);
-    const point = BASE.multiply(scalar);
-    const pointBytes = point.toBytes();
-    return { head, prefix: prefix2, scalar, point, pointBytes };
-  }
-  function getPublicKey(secretKey) {
-    return getExtendedPublicKey(secretKey).pointBytes;
-  }
-  function hashDomainToScalar(context = Uint8Array.of(), ...msgs) {
-    const msg = concatBytes(...msgs);
-    return modN_LE(cHash(domain(msg, ensureBytes("context", context), !!prehash)));
-  }
-  function sign(msg, secretKey, options = {}) {
-    msg = ensureBytes("message", msg);
-    if (prehash)
-      msg = prehash(msg);
-    const { prefix: prefix2, scalar, pointBytes } = getExtendedPublicKey(secretKey);
-    const r2 = hashDomainToScalar(options.context, prefix2, msg);
-    const R = BASE.multiply(r2).toBytes();
-    const k = hashDomainToScalar(options.context, R, pointBytes, msg);
-    const s = Fn.create(r2 + k * scalar);
-    if (!Fn.isValid(s))
-      throw new Error("sign failed: invalid s");
-    const rs = concatBytes(R, Fn.toBytes(s));
-    return _abytes2(rs, lengths.signature, "result");
-  }
-  const verifyOpts = { zip215: true };
-  function verify(sig, msg, publicKey, options = verifyOpts) {
-    const { context, zip215 } = options;
-    const len = lengths.signature;
-    sig = ensureBytes("signature", sig, len);
-    msg = ensureBytes("message", msg);
-    publicKey = ensureBytes("publicKey", publicKey, lengths.publicKey);
-    if (zip215 !== void 0)
-      _abool2(zip215, "zip215");
-    if (prehash)
-      msg = prehash(msg);
-    const mid = len / 2;
-    const r2 = sig.subarray(0, mid);
-    const s = bytesToNumberLE(sig.subarray(mid, len));
-    let A, R, SB;
-    try {
-      A = Point.fromBytes(publicKey, zip215);
-      R = Point.fromBytes(r2, zip215);
-      SB = BASE.multiplyUnsafe(s);
-    } catch (error) {
-      return false;
-    }
-    if (!zip215 && A.isSmallOrder())
-      return false;
-    const k = hashDomainToScalar(context, R.toBytes(), A.toBytes(), msg);
-    const RkA = R.add(A.multiplyUnsafe(k));
-    return RkA.subtract(SB).clearCofactor().is0();
-  }
-  const _size = Fp2.BYTES;
-  const lengths = {
-    secretKey: _size,
-    publicKey: _size,
-    signature: 2 * _size,
-    seed: _size
-  };
-  function randomSecretKey(seed = randomBytes$1(lengths.seed)) {
-    return _abytes2(seed, lengths.seed, "seed");
-  }
-  function keygen(seed) {
-    const secretKey = utils.randomSecretKey(seed);
-    return { secretKey, publicKey: getPublicKey(secretKey) };
-  }
-  function isValidSecretKey(key) {
-    return isBytes(key) && key.length === Fn.BYTES;
-  }
-  function isValidPublicKey(key, zip215) {
-    try {
-      return !!Point.fromBytes(key, zip215);
-    } catch (error) {
-      return false;
-    }
-  }
-  const utils = {
-    getExtendedPublicKey,
-    randomSecretKey,
-    isValidSecretKey,
-    isValidPublicKey,
-    /**
-     * Converts ed public key to x public key. Uses formula:
-     * - ed25519:
-     *   - `(u, v) = ((1+y)/(1-y), sqrt(-486664)*u/x)`
-     *   - `(x, y) = (sqrt(-486664)*u/v, (u-1)/(u+1))`
-     * - ed448:
-     *   - `(u, v) = ((y-1)/(y+1), sqrt(156324)*u/x)`
-     *   - `(x, y) = (sqrt(156324)*u/v, (1+u)/(1-u))`
-     */
-    toMontgomery(publicKey) {
-      const { y } = Point.fromBytes(publicKey);
-      const size = lengths.publicKey;
-      const is25519 = size === 32;
-      if (!is25519 && size !== 57)
-        throw new Error("only defined for 25519 and 448");
-      const u = is25519 ? Fp2.div(_1n$1 + y, _1n$1 - y) : Fp2.div(y - _1n$1, y + _1n$1);
-      return Fp2.toBytes(u);
-    },
-    toMontgomerySecret(secretKey) {
-      const size = lengths.secretKey;
-      _abytes2(secretKey, size);
-      const hashed = cHash(secretKey.subarray(0, size));
-      return adjustScalarBytes2(hashed).subarray(0, size);
-    },
-    /** @deprecated */
-    randomPrivateKey: randomSecretKey,
-    /** @deprecated */
-    precompute(windowSize = 8, point = Point.BASE) {
-      return point.precompute(windowSize, false);
-    }
-  };
-  return Object.freeze({
-    keygen,
-    getPublicKey,
-    sign,
-    verify,
-    utils,
-    Point,
-    lengths
-  });
-}
-function _eddsa_legacy_opts_to_new(c) {
-  const CURVE = {
-    a: c.a,
-    d: c.d,
-    p: c.Fp.ORDER,
-    n: c.n,
-    h: c.h,
-    Gx: c.Gx,
-    Gy: c.Gy
-  };
-  const Fp2 = c.Fp;
-  const Fn = Field(CURVE.n, c.nBitLength, true);
-  const curveOpts = { Fp: Fp2, Fn, uvRatio: c.uvRatio };
-  const eddsaOpts = {
-    randomBytes: c.randomBytes,
-    adjustScalarBytes: c.adjustScalarBytes,
-    domain: c.domain,
-    prehash: c.prehash,
-    mapToCurve: c.mapToCurve
-  };
-  return { CURVE, curveOpts, hash: c.hash, eddsaOpts };
-}
-function _eddsa_new_output_to_legacy(c, eddsa2) {
-  const Point = eddsa2.Point;
-  const legacy = Object.assign({}, eddsa2, {
-    ExtendedPoint: Point,
-    CURVE: c,
-    nBitLength: Point.Fn.BITS,
-    nByteLength: Point.Fn.BYTES
-  });
-  return legacy;
-}
-function twistedEdwards(c) {
-  const { CURVE, curveOpts, hash, eddsaOpts } = _eddsa_legacy_opts_to_new(c);
-  const Point = edwards(CURVE, curveOpts);
-  const EDDSA = eddsa(Point, hash, eddsaOpts);
-  return _eddsa_new_output_to_legacy(c, EDDSA);
-}
-/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const _1n = BigInt(1), _2n = BigInt(2);
-BigInt(3);
-const _5n = BigInt(5), _8n = BigInt(8);
-const ed25519_CURVE_p = BigInt("0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffed");
-const ed25519_CURVE = /* @__PURE__ */ (() => ({
-  p: ed25519_CURVE_p,
-  n: BigInt("0x1000000000000000000000000000000014def9dea2f79cd65812631a5cf5d3ed"),
-  h: _8n,
-  a: BigInt("0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffec"),
-  d: BigInt("0x52036cee2b6ffe738cc740797779e89800700a4d4141d8ab75eb4dca135978a3"),
-  Gx: BigInt("0x216936d3cd6e53fec0a4e231fdd6dc5c692cc7609525a7b2c9562d608f25d51a"),
-  Gy: BigInt("0x6666666666666666666666666666666666666666666666666666666666666658")
-}))();
-function ed25519_pow_2_252_3(x) {
-  const _10n = BigInt(10), _20n = BigInt(20), _40n = BigInt(40), _80n = BigInt(80);
-  const P = ed25519_CURVE_p;
-  const x2 = x * x % P;
-  const b2 = x2 * x % P;
-  const b4 = pow2(b2, _2n, P) * b2 % P;
-  const b5 = pow2(b4, _1n, P) * x % P;
-  const b10 = pow2(b5, _5n, P) * b5 % P;
-  const b20 = pow2(b10, _10n, P) * b10 % P;
-  const b40 = pow2(b20, _20n, P) * b20 % P;
-  const b80 = pow2(b40, _40n, P) * b40 % P;
-  const b160 = pow2(b80, _80n, P) * b80 % P;
-  const b240 = pow2(b160, _80n, P) * b80 % P;
-  const b250 = pow2(b240, _10n, P) * b10 % P;
-  const pow_p_5_8 = pow2(b250, _2n, P) * x % P;
-  return { pow_p_5_8, b2 };
-}
-function adjustScalarBytes(bytes) {
-  bytes[0] &= 248;
-  bytes[31] &= 127;
-  bytes[31] |= 64;
-  return bytes;
-}
-const ED25519_SQRT_M1 = /* @__PURE__ */ BigInt("19681161376707505956807079304988542015446066515923890162744021073123829784752");
-function uvRatio(u, v) {
-  const P = ed25519_CURVE_p;
-  const v3 = mod(v * v * v, P);
-  const v7 = mod(v3 * v3 * v, P);
-  const pow = ed25519_pow_2_252_3(u * v7).pow_p_5_8;
-  let x = mod(u * v3 * pow, P);
-  const vx2 = mod(v * x * x, P);
-  const root1 = x;
-  const root2 = mod(x * ED25519_SQRT_M1, P);
-  const useRoot1 = vx2 === u;
-  const useRoot2 = vx2 === mod(-u, P);
-  const noRoot = vx2 === mod(-u * ED25519_SQRT_M1, P);
-  if (useRoot1)
-    x = root1;
-  if (useRoot2 || noRoot)
-    x = root2;
-  if (isNegativeLE(x, P))
-    x = mod(-x, P);
-  return { isValid: useRoot1 || useRoot2, value: x };
-}
-const Fp = /* @__PURE__ */ (() => Field(ed25519_CURVE.p, { isLE: true }))();
-const ed25519Defaults = /* @__PURE__ */ (() => ({
-  ...ed25519_CURVE,
-  Fp,
-  hash: sha512,
-  adjustScalarBytes,
-  // dom2
-  // Ratio of u to v. Allows us to combine inversion and square root. Uses algo from RFC8032 5.1.3.
-  // Constant-time, u/√v
-  uvRatio
-}))();
-const ed25519 = /* @__PURE__ */ (() => twistedEdwards(ed25519Defaults))();
-const encodeLenBytes = (len) => {
-  if (len <= 127) {
-    return 1;
-  } else if (len <= 255) {
-    return 2;
-  } else if (len <= 65535) {
-    return 3;
-  } else if (len <= 16777215) {
-    return 4;
-  } else {
-    throw InputError.fromCode(new DerEncodeErrorCode("Length too long (> 4 bytes)"));
-  }
-};
-const encodeLen = (buf, offset, len) => {
-  if (len <= 127) {
-    buf[offset] = len;
-    return 1;
-  } else if (len <= 255) {
-    buf[offset] = 129;
-    buf[offset + 1] = len;
-    return 2;
-  } else if (len <= 65535) {
-    buf[offset] = 130;
-    buf[offset + 1] = len >> 8;
-    buf[offset + 2] = len;
-    return 3;
-  } else if (len <= 16777215) {
-    buf[offset] = 131;
-    buf[offset + 1] = len >> 16;
-    buf[offset + 2] = len >> 8;
-    buf[offset + 3] = len;
-    return 4;
-  } else {
-    throw InputError.fromCode(new DerEncodeErrorCode("Length too long (> 4 bytes)"));
-  }
-};
-const decodeLenBytes = (buf, offset) => {
-  if (buf[offset] < 128)
-    return 1;
-  if (buf[offset] === 128)
-    throw InputError.fromCode(new DerDecodeErrorCode("Invalid length 0"));
-  if (buf[offset] === 129)
-    return 2;
-  if (buf[offset] === 130)
-    return 3;
-  if (buf[offset] === 131)
-    return 4;
-  throw InputError.fromCode(new DerDecodeErrorCode("Length too long (> 4 bytes)"));
-};
-const decodeLen = (buf, offset) => {
-  const lenBytes = decodeLenBytes(buf, offset);
-  if (lenBytes === 1)
-    return buf[offset];
-  else if (lenBytes === 2)
-    return buf[offset + 1];
-  else if (lenBytes === 3)
-    return (buf[offset + 1] << 8) + buf[offset + 2];
-  else if (lenBytes === 4)
-    return (buf[offset + 1] << 16) + (buf[offset + 2] << 8) + buf[offset + 3];
-  throw InputError.fromCode(new DerDecodeErrorCode("Length too long (> 4 bytes)"));
-};
-Uint8Array.from([
-  ...[48, 12],
-  // SEQUENCE
-  ...[6, 10],
-  // OID with 10 bytes
-  ...[43, 6, 1, 4, 1, 131, 184, 67, 1, 1]
-  // DER encoded COSE
-]);
-const ED25519_OID = Uint8Array.from([
-  ...[48, 5],
-  // SEQUENCE
-  ...[6, 3],
-  // OID with 3 bytes
-  ...[43, 101, 112]
-  // id-Ed25519 OID
-]);
-Uint8Array.from([
-  ...[48, 16],
-  // SEQUENCE
-  ...[6, 7],
-  // OID with 7 bytes
-  ...[42, 134, 72, 206, 61, 2, 1],
-  // OID ECDSA
-  ...[6, 5],
-  // OID with 5 bytes
-  ...[43, 129, 4, 0, 10]
-  // OID secp256k1
-]);
-Uint8Array.from([
-  ...[48, 29],
-  // SEQUENCE, length 29 bytes
-  // Algorithm OID
-  ...[6, 13],
-  ...[43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1],
-  // Curve OID
-  ...[6, 12],
-  ...[43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1]
-]);
-function wrapDER(payload, oid) {
-  const bitStringHeaderLength = 2 + encodeLenBytes(payload.byteLength + 1);
-  const len = oid.byteLength + bitStringHeaderLength + payload.byteLength;
-  let offset = 0;
-  const buf = new Uint8Array(1 + encodeLenBytes(len) + len);
-  buf[offset++] = 48;
-  offset += encodeLen(buf, offset, len);
-  buf.set(oid, offset);
-  offset += oid.byteLength;
-  buf[offset++] = 3;
-  offset += encodeLen(buf, offset, payload.byteLength + 1);
-  buf[offset++] = 0;
-  buf.set(new Uint8Array(payload), offset);
-  return buf;
-}
-const unwrapDER = (derEncoded, oid) => {
-  let offset = 0;
-  const expect = (n, msg) => {
-    if (buf[offset++] !== n) {
-      throw InputError.fromCode(new DerDecodeErrorCode(`Expected ${msg} at offset ${offset}`));
-    }
-  };
-  const buf = new Uint8Array(derEncoded);
-  expect(48, "sequence");
-  offset += decodeLenBytes(buf, offset);
-  if (!uint8Equals(buf.slice(offset, offset + oid.byteLength), oid)) {
-    throw InputError.fromCode(new DerDecodeErrorCode("Not the expected OID."));
-  }
-  offset += oid.byteLength;
-  expect(3, "bit string");
-  const payloadLen = decodeLen(buf, offset) - 1;
-  offset += decodeLenBytes(buf, offset);
-  expect(0, "0 padding");
-  const result = buf.slice(offset);
-  if (payloadLen !== result.length) {
-    throw InputError.fromCode(new DerDecodeLengthMismatchErrorCode(payloadLen, result.length));
-  }
-  return result;
-};
-new TextEncoder().encode("icfs-chunk/");
-new TextEncoder().encode("icfs-metadata/");
-new TextEncoder().encode("ynode/");
-var define_process_env_default = {};
-const DEFAULT_STORAGE_GATEWAY_URL = "https://blob.caffeine.ai";
-const DEFAULT_BUCKET_NAME = "default-bucket";
-const DEFAULT_PROJECT_ID = "0000000-0000-0000-0000-00000000000";
-let configCache = null;
-async function loadConfig() {
-  if (configCache) {
-    return configCache;
-  }
-  const backendCanisterId = define_process_env_default.CANISTER_ID_BACKEND;
-  const envBaseUrl = define_process_env_default.BASE_URL || "/";
-  const baseUrl = envBaseUrl.endsWith("/") ? envBaseUrl : `${envBaseUrl}/`;
-  try {
-    const response = await fetch(`${baseUrl}env.json`);
-    const config = await response.json();
-    if (!backendCanisterId && config.backend_canister_id === "undefined") {
-      console.error("CANISTER_ID_BACKEND is not set");
-      throw new Error("CANISTER_ID_BACKEND is not set");
-    }
-    const fullConfig = {
-      backend_host: config.backend_host === "undefined" ? void 0 : config.backend_host,
-      backend_canister_id: config.backend_canister_id === "undefined" ? backendCanisterId : config.backend_canister_id,
-      storage_gateway_url: "https://blob.caffeine.ai",
-      bucket_name: DEFAULT_BUCKET_NAME,
-      project_id: config.project_id !== "undefined" ? config.project_id : DEFAULT_PROJECT_ID,
-      ii_derivation_origin: config.ii_derivation_origin === "undefined" ? void 0 : config.ii_derivation_origin
-    };
-    configCache = fullConfig;
-    return fullConfig;
-  } catch {
-    if (!backendCanisterId) {
-      console.error("CANISTER_ID_BACKEND is not set");
-      throw new Error("CANISTER_ID_BACKEND is not set");
-    }
-    const fallbackConfig = {
-      backend_host: void 0,
-      backend_canister_id: backendCanisterId,
-      storage_gateway_url: DEFAULT_STORAGE_GATEWAY_URL,
-      bucket_name: DEFAULT_BUCKET_NAME,
-      project_id: DEFAULT_PROJECT_ID,
-      ii_derivation_origin: void 0
-    };
-    return fallbackConfig;
-  }
-}
 var Subscribable = class {
   constructor() {
     this.listeners = /* @__PURE__ */ new Set();
@@ -5965,11 +3035,11 @@ react_production.lazy = function(ctor) {
     _init: lazyInitializer
   };
 };
-react_production.memo = function(type, compare2) {
+react_production.memo = function(type, compare) {
   return {
     $$typeof: REACT_MEMO_TYPE$1,
     type,
-    compare: void 0 === compare2 ? null : compare2
+    compare: void 0 === compare ? null : compare
   };
 };
 react_production.startTransition = function(scope) {
@@ -6245,1453 +3315,6 @@ function useMutation(options, queryClient2) {
   }
   return { ...result, mutate, mutateAsync: result.mutate };
 }
-function isObject$1(value) {
-  return value !== null && typeof value === "object";
-}
-const _Ed25519PublicKey = class _Ed25519PublicKey {
-  // `fromRaw` and `fromDer` should be used for instantiation, not this constructor.
-  constructor(key) {
-    __privateAdd(this, _rawKey);
-    __privateAdd(this, _derKey);
-    if (key.byteLength !== _Ed25519PublicKey.RAW_KEY_LENGTH) {
-      throw new Error("An Ed25519 public key must be exactly 32bytes long");
-    }
-    __privateSet(this, _rawKey, key);
-    __privateSet(this, _derKey, _Ed25519PublicKey.derEncode(key));
-  }
-  /**
-   * Construct Ed25519PublicKey from an existing PublicKey
-   * @param {unknown} maybeKey - existing PublicKey, ArrayBuffer, DerEncodedPublicKey, or hex string
-   * @returns {Ed25519PublicKey} Instance of Ed25519PublicKey
-   */
-  static from(maybeKey) {
-    if (typeof maybeKey === "string") {
-      const key = hexToBytes(maybeKey);
-      return this.fromRaw(key);
-    } else if (isObject$1(maybeKey)) {
-      const key = maybeKey;
-      if (isObject$1(key) && Object.hasOwnProperty.call(key, "__derEncodedPublicKey__")) {
-        return this.fromDer(key);
-      } else if (ArrayBuffer.isView(key)) {
-        const view = key;
-        return this.fromRaw(uint8FromBufLike$1(view.buffer));
-      } else if (key instanceof ArrayBuffer) {
-        return this.fromRaw(uint8FromBufLike$1(key));
-      } else if ("rawKey" in key && key.rawKey instanceof Uint8Array) {
-        return this.fromRaw(key.rawKey);
-      } else if ("derKey" in key) {
-        return this.fromDer(key.derKey);
-      } else if ("toDer" in key) {
-        return this.fromDer(key.toDer());
-      }
-    }
-    throw new Error("Cannot construct Ed25519PublicKey from the provided key.");
-  }
-  static fromRaw(rawKey) {
-    return new _Ed25519PublicKey(rawKey);
-  }
-  static fromDer(derKey) {
-    return new _Ed25519PublicKey(this.derDecode(derKey));
-  }
-  static derEncode(publicKey) {
-    const key = wrapDER(publicKey, ED25519_OID);
-    key.__derEncodedPublicKey__ = void 0;
-    return key;
-  }
-  static derDecode(key) {
-    const unwrapped = unwrapDER(key, ED25519_OID);
-    if (unwrapped.length !== this.RAW_KEY_LENGTH) {
-      throw new Error("An Ed25519 public key must be exactly 32bytes long");
-    }
-    return unwrapped;
-  }
-  get rawKey() {
-    return __privateGet(this, _rawKey);
-  }
-  get derKey() {
-    return __privateGet(this, _derKey);
-  }
-  toDer() {
-    return this.derKey;
-  }
-  toRaw() {
-    return this.rawKey;
-  }
-};
-_rawKey = new WeakMap();
-_derKey = new WeakMap();
-_Ed25519PublicKey.RAW_KEY_LENGTH = 32;
-let Ed25519PublicKey = _Ed25519PublicKey;
-const _Ed25519KeyIdentity = class _Ed25519KeyIdentity extends SignIdentity {
-  // `fromRaw` and `fromDer` should be used for instantiation, not this constructor.
-  constructor(publicKey, privateKey) {
-    super();
-    __privateAdd(this, _publicKey);
-    __privateAdd(this, _privateKey);
-    __privateSet(this, _publicKey, Ed25519PublicKey.from(publicKey));
-    __privateSet(this, _privateKey, privateKey);
-  }
-  /**
-   * Generate a new Ed25519KeyIdentity.
-   * @param seed a 32-byte seed for the private key. If not provided, a random seed will be generated.
-   * @returns Ed25519KeyIdentity
-   */
-  static generate(seed) {
-    if (seed && seed.length !== 32) {
-      throw new Error("Ed25519 Seed needs to be 32 bytes long.");
-    }
-    if (!seed)
-      seed = ed25519.utils.randomPrivateKey();
-    if (uint8Equals$1(seed, new Uint8Array(new Array(32).fill(0)))) {
-      console.warn("Seed is all zeros. This is not a secure seed. Please provide a seed with sufficient entropy if this is a production environment.");
-    }
-    const sk = new Uint8Array(32);
-    for (let i = 0; i < 32; i++) {
-      sk[i] = seed[i];
-    }
-    const pk = ed25519.getPublicKey(sk);
-    return _Ed25519KeyIdentity.fromKeyPair(pk, sk);
-  }
-  static fromParsedJson(obj) {
-    const [publicKeyDer, privateKeyRaw] = obj;
-    return new _Ed25519KeyIdentity(Ed25519PublicKey.fromDer(hexToBytes(publicKeyDer)), hexToBytes(privateKeyRaw));
-  }
-  static fromJSON(json) {
-    const parsed = JSON.parse(json);
-    if (Array.isArray(parsed)) {
-      if (typeof parsed[0] === "string" && typeof parsed[1] === "string") {
-        return this.fromParsedJson([parsed[0], parsed[1]]);
-      } else {
-        throw new Error("Deserialization error: JSON must have at least 2 items.");
-      }
-    }
-    throw new Error(`Deserialization error: Invalid JSON type for string: ${JSON.stringify(json)}`);
-  }
-  static fromKeyPair(publicKey, privateKey) {
-    return new _Ed25519KeyIdentity(Ed25519PublicKey.fromRaw(publicKey), privateKey);
-  }
-  static fromSecretKey(secretKey) {
-    const publicKey = ed25519.getPublicKey(secretKey);
-    return _Ed25519KeyIdentity.fromKeyPair(publicKey, secretKey);
-  }
-  /**
-   * Serialize this key to JSON.
-   */
-  toJSON() {
-    return [bytesToHex(__privateGet(this, _publicKey).toDer()), bytesToHex(__privateGet(this, _privateKey))];
-  }
-  /**
-   * Return a copy of the key pair.
-   */
-  getKeyPair() {
-    return {
-      secretKey: __privateGet(this, _privateKey),
-      publicKey: __privateGet(this, _publicKey)
-    };
-  }
-  /**
-   * Return the public key.
-   */
-  getPublicKey() {
-    return __privateGet(this, _publicKey);
-  }
-  /**
-   * Signs a blob of data, with this identity's private key.
-   * @param challenge - challenge to sign with this identity's secretKey, producing a signature
-   */
-  async sign(challenge) {
-    const signature = ed25519.sign(challenge, __privateGet(this, _privateKey).slice(0, 32));
-    Object.defineProperty(signature, "__signature__", {
-      enumerable: false,
-      value: void 0
-    });
-    return signature;
-  }
-  /**
-   * Verify
-   * @param sig - signature to verify
-   * @param msg - message to verify
-   * @param pk - public key
-   * @returns - true if the signature is valid, false otherwise
-   */
-  static verify(sig, msg, pk) {
-    const [signature, message, publicKey] = [sig, msg, pk].map((x) => {
-      if (typeof x === "string") {
-        x = hexToBytes(x);
-      }
-      return uint8FromBufLike$1(x);
-    });
-    return ed25519.verify(signature, message, publicKey);
-  }
-};
-_publicKey = new WeakMap();
-_privateKey = new WeakMap();
-let Ed25519KeyIdentity = _Ed25519KeyIdentity;
-class CryptoError extends Error {
-  constructor(message) {
-    super(message);
-    this.message = message;
-    Object.setPrototypeOf(this, CryptoError.prototype);
-  }
-}
-function _getEffectiveCrypto(subtleCrypto) {
-  if (typeof global !== "undefined" && global["crypto"] && global["crypto"]["subtle"]) {
-    return global["crypto"]["subtle"];
-  }
-  if (subtleCrypto) {
-    return subtleCrypto;
-  } else if (typeof crypto !== "undefined" && crypto["subtle"]) {
-    return crypto.subtle;
-  } else {
-    throw new CryptoError("Global crypto was not available and none was provided. Please inlcude a SubtleCrypto implementation. See https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto");
-  }
-}
-class ECDSAKeyIdentity extends SignIdentity {
-  /**
-   * Generates a randomly generated identity for use in calls to the Internet Computer.
-   * @param {CryptoKeyOptions} options optional settings
-   * @param {CryptoKeyOptions['extractable']} options.extractable - whether the key should allow itself to be used. Set to false for maximum security.
-   * @param {CryptoKeyOptions['keyUsages']} options.keyUsages - a list of key usages that the key can be used for
-   * @param {CryptoKeyOptions['subtleCrypto']} options.subtleCrypto interface
-   * @returns a {@link ECDSAKeyIdentity}
-   */
-  static async generate(options) {
-    const { extractable = false, keyUsages = ["sign", "verify"], subtleCrypto } = options ?? {};
-    const effectiveCrypto = _getEffectiveCrypto(subtleCrypto);
-    const keyPair = await effectiveCrypto.generateKey({
-      name: "ECDSA",
-      namedCurve: "P-256"
-    }, extractable, keyUsages);
-    const derKey = uint8FromBufLike$1(await effectiveCrypto.exportKey("spki", keyPair.publicKey));
-    Object.assign(derKey, {
-      __derEncodedPublicKey__: void 0
-    });
-    return new this(keyPair, derKey, effectiveCrypto);
-  }
-  /**
-   * generates an identity from a public and private key. Please ensure that you are generating these keys securely and protect the user's private key
-   * @param keyPair a CryptoKeyPair
-   * @param subtleCrypto - a SubtleCrypto interface in case one is not available globally
-   * @returns an {@link ECDSAKeyIdentity}
-   */
-  static async fromKeyPair(keyPair, subtleCrypto) {
-    const effectiveCrypto = _getEffectiveCrypto(subtleCrypto);
-    const derKey = uint8FromBufLike$1(await effectiveCrypto.exportKey("spki", keyPair.publicKey));
-    Object.assign(derKey, {
-      __derEncodedPublicKey__: void 0
-    });
-    return new ECDSAKeyIdentity(keyPair, derKey, effectiveCrypto);
-  }
-  // `fromKeyPair` and `generate` should be used for instantiation, not this constructor.
-  constructor(keyPair, derKey, subtleCrypto) {
-    super();
-    this._keyPair = keyPair;
-    this._derKey = derKey;
-    this._subtleCrypto = subtleCrypto;
-  }
-  /**
-   * Return the internally-used key pair.
-   * @returns a CryptoKeyPair
-   */
-  getKeyPair() {
-    return this._keyPair;
-  }
-  /**
-   * Return the public key.
-   * @returns an {@link PublicKey & DerCryptoKey}
-   */
-  getPublicKey() {
-    const derKey = this._derKey;
-    const key = Object.create(this._keyPair.publicKey);
-    key.toDer = function() {
-      return derKey;
-    };
-    return key;
-  }
-  /**
-   * Signs a blob of data, with this identity's private key.
-   * @param {Uint8Array} challenge - challenge to sign with this identity's secretKey, producing a signature
-   * @returns {Promise<Signature>} signature
-   */
-  async sign(challenge) {
-    const params = {
-      name: "ECDSA",
-      hash: { name: "SHA-256" }
-    };
-    const signature = uint8FromBufLike$1(await this._subtleCrypto.sign(params, this._keyPair.privateKey, challenge));
-    Object.assign(signature, {
-      __signature__: void 0
-    });
-    return signature;
-  }
-}
-class PartialIdentity {
-  constructor(inner) {
-    __privateAdd(this, _inner);
-    __privateSet(this, _inner, inner);
-  }
-  /**
-   * The raw public key of this identity.
-   */
-  get rawKey() {
-    return __privateGet(this, _inner).rawKey;
-  }
-  /**
-   * The DER-encoded public key of this identity.
-   */
-  get derKey() {
-    return __privateGet(this, _inner).derKey;
-  }
-  /**
-   * The DER-encoded public key of this identity.
-   */
-  toDer() {
-    return __privateGet(this, _inner).toDer();
-  }
-  /**
-   * The inner {@link PublicKey} used by this identity.
-   */
-  getPublicKey() {
-    return __privateGet(this, _inner);
-  }
-  /**
-   * The {@link Principal} of this identity.
-   */
-  getPrincipal() {
-    if (!__privateGet(this, _inner).rawKey) {
-      throw new Error("Cannot get principal from a public key without a raw key.");
-    }
-    return Principal.fromUint8Array(new Uint8Array(__privateGet(this, _inner).rawKey));
-  }
-  /**
-   * Required for the Identity interface, but cannot implemented for just a public key.
-   */
-  transformRequest() {
-    return Promise.reject("Not implemented. You are attempting to use a partial identity to sign calls, but this identity only has access to the public key.To sign calls, use a DelegationIdentity instead.");
-  }
-}
-_inner = new WeakMap();
-function safeBytesToHex(data) {
-  if (data instanceof Uint8Array) {
-    return bytesToHex(data);
-  }
-  return bytesToHex(new Uint8Array(data));
-}
-function _parseBlob(value) {
-  if (typeof value !== "string" || value.length < 64) {
-    throw new Error("Invalid public key.");
-  }
-  return hexToBytes(value);
-}
-class Delegation {
-  constructor(pubkey, expiration, targets) {
-    this.pubkey = pubkey;
-    this.expiration = expiration;
-    this.targets = targets;
-  }
-  toCborValue() {
-    return {
-      pubkey: this.pubkey,
-      expiration: this.expiration,
-      ...this.targets && {
-        targets: this.targets
-      }
-    };
-  }
-  toJSON() {
-    return {
-      expiration: this.expiration.toString(16),
-      pubkey: safeBytesToHex(this.pubkey),
-      ...this.targets && { targets: this.targets.map((p) => p.toHex()) }
-    };
-  }
-}
-async function _createSingleDelegation(from, to, expiration, targets) {
-  const delegation = new Delegation(
-    to.toDer(),
-    BigInt(+expiration) * BigInt(1e6),
-    // In nanoseconds.
-    targets
-  );
-  const challenge = new Uint8Array([
-    ...IC_REQUEST_AUTH_DELEGATION_DOMAIN_SEPARATOR,
-    ...new Uint8Array(requestIdOf({ ...delegation }))
-  ]);
-  const signature = await from.sign(challenge);
-  return {
-    delegation,
-    signature
-  };
-}
-class DelegationChain {
-  /**
-   * Create a delegation chain between two (or more) keys. By default, the expiration time
-   * will be very short (15 minutes).
-   *
-   * To build a chain of more than 2 identities, this function needs to be called multiple times,
-   * passing the previous delegation chain into the options argument. For example:
-   * @example
-   * const rootKey = createKey();
-   * const middleKey = createKey();
-   * const bottomeKey = createKey();
-   *
-   * const rootToMiddle = await DelegationChain.create(
-   *   root, middle.getPublicKey(), Date.parse('2100-01-01'),
-   * );
-   * const middleToBottom = await DelegationChain.create(
-   *   middle, bottom.getPublicKey(), Date.parse('2100-01-01'), { previous: rootToMiddle },
-   * );
-   *
-   * // We can now use a delegation identity that uses the delegation above:
-   * const identity = DelegationIdentity.fromDelegation(bottomKey, middleToBottom);
-   * @param from The identity that will delegate.
-   * @param to The identity that gets delegated. It can now sign messages as if it was the
-   *           identity above.
-   * @param expiration The length the delegation is valid. By default, 15 minutes from calling
-   *                   this function.
-   * @param options A set of options for this delegation. expiration and previous
-   * @param options.previous - Another DelegationChain that this chain should start with.
-   * @param options.targets - targets that scope the delegation (e.g. Canister Principals)
-   */
-  static async create(from, to, expiration = new Date(Date.now() + 15 * 60 * 1e3), options = {}) {
-    var _a2, _b2;
-    const delegation = await _createSingleDelegation(from, to, expiration, options.targets);
-    return new DelegationChain([...((_a2 = options.previous) == null ? void 0 : _a2.delegations) || [], delegation], ((_b2 = options.previous) == null ? void 0 : _b2.publicKey) || from.getPublicKey().toDer());
-  }
-  /**
-   * Creates a DelegationChain object from a JSON string.
-   * @param json The JSON string to parse.
-   */
-  static fromJSON(json) {
-    const { publicKey, delegations } = typeof json === "string" ? JSON.parse(json) : json;
-    if (!Array.isArray(delegations)) {
-      throw new Error("Invalid delegations.");
-    }
-    const parsedDelegations = delegations.map((signedDelegation) => {
-      const { delegation, signature } = signedDelegation;
-      const { pubkey, expiration, targets } = delegation;
-      if (targets !== void 0 && !Array.isArray(targets)) {
-        throw new Error("Invalid targets.");
-      }
-      return {
-        delegation: new Delegation(
-          _parseBlob(pubkey),
-          BigInt("0x" + expiration),
-          // expiration in JSON is an hexa string (See toJSON() below).
-          targets && targets.map((t) => {
-            if (typeof t !== "string") {
-              throw new Error("Invalid target.");
-            }
-            return Principal.fromHex(t);
-          })
-        ),
-        signature: _parseBlob(signature)
-      };
-    });
-    return new this(parsedDelegations, _parseBlob(publicKey));
-  }
-  /**
-   * Creates a DelegationChain object from a list of delegations and a DER-encoded public key.
-   * @param delegations The list of delegations.
-   * @param publicKey The DER-encoded public key of the key-pair signing the first delegation.
-   */
-  static fromDelegations(delegations, publicKey) {
-    return new this(delegations, publicKey);
-  }
-  constructor(delegations, publicKey) {
-    this.delegations = delegations;
-    this.publicKey = publicKey;
-  }
-  toJSON() {
-    return {
-      delegations: this.delegations.map((signedDelegation) => {
-        const { delegation, signature } = signedDelegation;
-        const { targets } = delegation;
-        return {
-          delegation: {
-            expiration: delegation.expiration.toString(16),
-            pubkey: safeBytesToHex(delegation.pubkey),
-            ...targets && {
-              targets: targets.map((t) => t.toHex())
-            }
-          },
-          signature: safeBytesToHex(signature)
-        };
-      }),
-      publicKey: safeBytesToHex(this.publicKey)
-    };
-  }
-}
-class DelegationIdentity extends SignIdentity {
-  /**
-   * Create a delegation without having access to delegateKey.
-   * @param key The key used to sign the requests.
-   * @param delegation A delegation object created using `createDelegation`.
-   */
-  static fromDelegation(key, delegation) {
-    return new this(key, delegation);
-  }
-  constructor(_inner2, _delegation2) {
-    super();
-    this._inner = _inner2;
-    this._delegation = _delegation2;
-  }
-  getDelegation() {
-    return this._delegation;
-  }
-  getPublicKey() {
-    return {
-      derKey: this._delegation.publicKey,
-      toDer: () => this._delegation.publicKey
-    };
-  }
-  sign(blob) {
-    return this._inner.sign(blob);
-  }
-  async transformRequest(request) {
-    const { body, ...fields } = request;
-    const requestId = await requestIdOf(body);
-    return {
-      ...fields,
-      body: {
-        content: body,
-        sender_sig: await this.sign(new Uint8Array([...IC_REQUEST_DOMAIN_SEPARATOR, ...new Uint8Array(requestId)])),
-        sender_delegation: this._delegation.delegations,
-        sender_pubkey: this._delegation.publicKey
-      }
-    };
-  }
-}
-const _PartialDelegationIdentity = class _PartialDelegationIdentity extends PartialIdentity {
-  constructor(inner, delegation) {
-    super(inner);
-    __privateAdd(this, _delegation);
-    __privateSet(this, _delegation, delegation);
-  }
-  /**
-   * The Delegation Chain of this identity.
-   */
-  get delegation() {
-    return __privateGet(this, _delegation);
-  }
-  /**
-   * Create a {@link PartialDelegationIdentity} from a {@link PublicKey} and a {@link DelegationChain}.
-   * @param key The {@link PublicKey} to delegate to.
-   * @param delegation a {@link DelegationChain} targeting the inner key.
-   */
-  static fromDelegation(key, delegation) {
-    return new _PartialDelegationIdentity(key, delegation);
-  }
-};
-_delegation = new WeakMap();
-let PartialDelegationIdentity = _PartialDelegationIdentity;
-function isDelegationValid(chain, checks) {
-  for (const { delegation } of chain.delegations) {
-    if (+new Date(Number(delegation.expiration / BigInt(1e6))) <= +Date.now()) {
-      return false;
-    }
-  }
-  const scopes = [];
-  for (const s of scopes) {
-    const scope = s.toText();
-    for (const { delegation } of chain.delegations) {
-      if (delegation.targets === void 0) {
-        continue;
-      }
-      let none = true;
-      for (const target of delegation.targets) {
-        if (target.toText() === scope) {
-          none = false;
-          break;
-        }
-      }
-      if (none) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-const events = ["mousedown", "mousemove", "keydown", "touchstart", "wheel"];
-class IdleManager {
-  /**
-   * @protected
-   * @param options {@link IdleManagerOptions}
-   */
-  constructor(options = {}) {
-    __publicField(this, "callbacks", []);
-    __publicField(this, "idleTimeout", 10 * 60 * 1e3);
-    __publicField(this, "timeoutID");
-    const { onIdle, idleTimeout = 10 * 60 * 1e3 } = options || {};
-    this.callbacks = onIdle ? [onIdle] : [];
-    this.idleTimeout = idleTimeout;
-    const _resetTimer = this._resetTimer.bind(this);
-    window.addEventListener("load", _resetTimer, true);
-    events.forEach(function(name) {
-      document.addEventListener(name, _resetTimer, true);
-    });
-    const debounce = (func, wait) => {
-      let timeout;
-      return (...args) => {
-        const context = this;
-        const later = function() {
-          timeout = void 0;
-          func.apply(context, args);
-        };
-        clearTimeout(timeout);
-        timeout = window.setTimeout(later, wait);
-      };
-    };
-    if (options == null ? void 0 : options.captureScroll) {
-      const scroll = debounce(_resetTimer, (options == null ? void 0 : options.scrollDebounce) ?? 100);
-      window.addEventListener("scroll", scroll, true);
-    }
-    _resetTimer();
-  }
-  /**
-   * Creates an {@link IdleManager}
-   * @param {IdleManagerOptions} options Optional configuration
-   * @see {@link IdleManagerOptions}
-   * @param options.onIdle Callback once user has been idle. Use to prompt for fresh login, and use `Actor.agentOf(your_actor).invalidateIdentity()` to protect the user
-   * @param options.idleTimeout timeout in ms
-   * @param options.captureScroll capture scroll events
-   * @param options.scrollDebounce scroll debounce time in ms
-   */
-  static create(options = {}) {
-    return new this(options);
-  }
-  /**
-   * @param {IdleCB} callback function to be called when user goes idle
-   */
-  registerCallback(callback) {
-    this.callbacks.push(callback);
-  }
-  /**
-   * Cleans up the idle manager and its listeners
-   */
-  exit() {
-    clearTimeout(this.timeoutID);
-    window.removeEventListener("load", this._resetTimer, true);
-    const _resetTimer = this._resetTimer.bind(this);
-    events.forEach(function(name) {
-      document.removeEventListener(name, _resetTimer, true);
-    });
-    this.callbacks.forEach((cb) => cb());
-  }
-  /**
-   * Resets the timeouts during cleanup
-   */
-  _resetTimer() {
-    const exit = this.exit.bind(this);
-    window.clearTimeout(this.timeoutID);
-    this.timeoutID = window.setTimeout(exit, this.idleTimeout);
-  }
-}
-const instanceOfAny = (object, constructors) => constructors.some((c) => object instanceof c);
-let idbProxyableTypes;
-let cursorAdvanceMethods;
-function getIdbProxyableTypes() {
-  return idbProxyableTypes || (idbProxyableTypes = [
-    IDBDatabase,
-    IDBObjectStore,
-    IDBIndex,
-    IDBCursor,
-    IDBTransaction
-  ]);
-}
-function getCursorAdvanceMethods() {
-  return cursorAdvanceMethods || (cursorAdvanceMethods = [
-    IDBCursor.prototype.advance,
-    IDBCursor.prototype.continue,
-    IDBCursor.prototype.continuePrimaryKey
-  ]);
-}
-const cursorRequestMap = /* @__PURE__ */ new WeakMap();
-const transactionDoneMap = /* @__PURE__ */ new WeakMap();
-const transactionStoreNamesMap = /* @__PURE__ */ new WeakMap();
-const transformCache = /* @__PURE__ */ new WeakMap();
-const reverseTransformCache = /* @__PURE__ */ new WeakMap();
-function promisifyRequest(request) {
-  const promise = new Promise((resolve, reject) => {
-    const unlisten = () => {
-      request.removeEventListener("success", success);
-      request.removeEventListener("error", error);
-    };
-    const success = () => {
-      resolve(wrap(request.result));
-      unlisten();
-    };
-    const error = () => {
-      reject(request.error);
-      unlisten();
-    };
-    request.addEventListener("success", success);
-    request.addEventListener("error", error);
-  });
-  promise.then((value) => {
-    if (value instanceof IDBCursor) {
-      cursorRequestMap.set(value, request);
-    }
-  }).catch(() => {
-  });
-  reverseTransformCache.set(promise, request);
-  return promise;
-}
-function cacheDonePromiseForTransaction(tx) {
-  if (transactionDoneMap.has(tx))
-    return;
-  const done = new Promise((resolve, reject) => {
-    const unlisten = () => {
-      tx.removeEventListener("complete", complete);
-      tx.removeEventListener("error", error);
-      tx.removeEventListener("abort", error);
-    };
-    const complete = () => {
-      resolve();
-      unlisten();
-    };
-    const error = () => {
-      reject(tx.error || new DOMException("AbortError", "AbortError"));
-      unlisten();
-    };
-    tx.addEventListener("complete", complete);
-    tx.addEventListener("error", error);
-    tx.addEventListener("abort", error);
-  });
-  transactionDoneMap.set(tx, done);
-}
-let idbProxyTraps = {
-  get(target, prop, receiver) {
-    if (target instanceof IDBTransaction) {
-      if (prop === "done")
-        return transactionDoneMap.get(target);
-      if (prop === "objectStoreNames") {
-        return target.objectStoreNames || transactionStoreNamesMap.get(target);
-      }
-      if (prop === "store") {
-        return receiver.objectStoreNames[1] ? void 0 : receiver.objectStore(receiver.objectStoreNames[0]);
-      }
-    }
-    return wrap(target[prop]);
-  },
-  set(target, prop, value) {
-    target[prop] = value;
-    return true;
-  },
-  has(target, prop) {
-    if (target instanceof IDBTransaction && (prop === "done" || prop === "store")) {
-      return true;
-    }
-    return prop in target;
-  }
-};
-function replaceTraps(callback) {
-  idbProxyTraps = callback(idbProxyTraps);
-}
-function wrapFunction(func) {
-  if (func === IDBDatabase.prototype.transaction && !("objectStoreNames" in IDBTransaction.prototype)) {
-    return function(storeNames, ...args) {
-      const tx = func.call(unwrap(this), storeNames, ...args);
-      transactionStoreNamesMap.set(tx, storeNames.sort ? storeNames.sort() : [storeNames]);
-      return wrap(tx);
-    };
-  }
-  if (getCursorAdvanceMethods().includes(func)) {
-    return function(...args) {
-      func.apply(unwrap(this), args);
-      return wrap(cursorRequestMap.get(this));
-    };
-  }
-  return function(...args) {
-    return wrap(func.apply(unwrap(this), args));
-  };
-}
-function transformCachableValue(value) {
-  if (typeof value === "function")
-    return wrapFunction(value);
-  if (value instanceof IDBTransaction)
-    cacheDonePromiseForTransaction(value);
-  if (instanceOfAny(value, getIdbProxyableTypes()))
-    return new Proxy(value, idbProxyTraps);
-  return value;
-}
-function wrap(value) {
-  if (value instanceof IDBRequest)
-    return promisifyRequest(value);
-  if (transformCache.has(value))
-    return transformCache.get(value);
-  const newValue = transformCachableValue(value);
-  if (newValue !== value) {
-    transformCache.set(value, newValue);
-    reverseTransformCache.set(newValue, value);
-  }
-  return newValue;
-}
-const unwrap = (value) => reverseTransformCache.get(value);
-function openDB(name, version, { blocked, upgrade, blocking, terminated } = {}) {
-  const request = indexedDB.open(name, version);
-  const openPromise = wrap(request);
-  if (upgrade) {
-    request.addEventListener("upgradeneeded", (event) => {
-      upgrade(wrap(request.result), event.oldVersion, event.newVersion, wrap(request.transaction), event);
-    });
-  }
-  if (blocked) {
-    request.addEventListener("blocked", (event) => blocked(
-      // Casting due to https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1405
-      event.oldVersion,
-      event.newVersion,
-      event
-    ));
-  }
-  openPromise.then((db) => {
-    if (terminated)
-      db.addEventListener("close", () => terminated());
-    if (blocking) {
-      db.addEventListener("versionchange", (event) => blocking(event.oldVersion, event.newVersion, event));
-    }
-  }).catch(() => {
-  });
-  return openPromise;
-}
-const readMethods = ["get", "getKey", "getAll", "getAllKeys", "count"];
-const writeMethods = ["put", "add", "delete", "clear"];
-const cachedMethods = /* @__PURE__ */ new Map();
-function getMethod(target, prop) {
-  if (!(target instanceof IDBDatabase && !(prop in target) && typeof prop === "string")) {
-    return;
-  }
-  if (cachedMethods.get(prop))
-    return cachedMethods.get(prop);
-  const targetFuncName = prop.replace(/FromIndex$/, "");
-  const useIndex = prop !== targetFuncName;
-  const isWrite = writeMethods.includes(targetFuncName);
-  if (
-    // Bail if the target doesn't exist on the target. Eg, getAll isn't in Edge.
-    !(targetFuncName in (useIndex ? IDBIndex : IDBObjectStore).prototype) || !(isWrite || readMethods.includes(targetFuncName))
-  ) {
-    return;
-  }
-  const method = async function(storeName, ...args) {
-    const tx = this.transaction(storeName, isWrite ? "readwrite" : "readonly");
-    let target2 = tx.store;
-    if (useIndex)
-      target2 = target2.index(args.shift());
-    return (await Promise.all([
-      target2[targetFuncName](...args),
-      isWrite && tx.done
-    ]))[0];
-  };
-  cachedMethods.set(prop, method);
-  return method;
-}
-replaceTraps((oldTraps) => ({
-  ...oldTraps,
-  get: (target, prop, receiver) => getMethod(target, prop) || oldTraps.get(target, prop, receiver),
-  has: (target, prop) => !!getMethod(target, prop) || oldTraps.has(target, prop)
-}));
-const AUTH_DB_NAME = "auth-client-db";
-const OBJECT_STORE_NAME = "ic-keyval";
-const _openDbStore = async (dbName = AUTH_DB_NAME, storeName = OBJECT_STORE_NAME, version) => {
-  if (isBrowser$2 && (localStorage == null ? void 0 : localStorage.getItem(KEY_STORAGE_DELEGATION))) {
-    localStorage.removeItem(KEY_STORAGE_DELEGATION);
-    localStorage.removeItem(KEY_STORAGE_KEY);
-  }
-  return await openDB(dbName, version, {
-    upgrade: (database) => {
-      if (database.objectStoreNames.contains(storeName)) {
-        database.clear(storeName);
-      }
-      database.createObjectStore(storeName);
-    }
-  });
-};
-async function _getValue(db, storeName, key) {
-  return await db.get(storeName, key);
-}
-async function _setValue(db, storeName, key, value) {
-  return await db.put(storeName, value, key);
-}
-async function _removeValue(db, storeName, key) {
-  return await db.delete(storeName, key);
-}
-class IdbKeyVal {
-  // Do not use - instead prefer create
-  constructor(_db, _storeName) {
-    __publicField(this, "_db");
-    __publicField(this, "_storeName");
-    this._db = _db;
-    this._storeName = _storeName;
-  }
-  /**
-   * @param {DBCreateOptions} options - DBCreateOptions
-   * @param {DBCreateOptions['dbName']} options.dbName name for the indexeddb database
-   * @default
-   * @param {DBCreateOptions['storeName']} options.storeName name for the indexeddb Data Store
-   * @default
-   * @param {DBCreateOptions['version']} options.version version of the database. Increment to safely upgrade
-   */
-  static async create(options) {
-    const { dbName = AUTH_DB_NAME, storeName = OBJECT_STORE_NAME, version = DB_VERSION } = options ?? {};
-    const db = await _openDbStore(dbName, storeName, version);
-    return new IdbKeyVal(db, storeName);
-  }
-  /**
-   * Basic setter
-   * @param {IDBValidKey} key string | number | Date | BufferSource | IDBValidKey[]
-   * @param value value to set
-   * @returns void
-   */
-  async set(key, value) {
-    return await _setValue(this._db, this._storeName, key, value);
-  }
-  /**
-   * Basic getter
-   * Pass in a type T for type safety if you know the type the value will have if it is found
-   * @param {IDBValidKey} key string | number | Date | BufferSource | IDBValidKey[]
-   * @returns `Promise<T | null>`
-   * @example
-   * await get<string>('exampleKey') -> 'exampleValue'
-   */
-  async get(key) {
-    return await _getValue(this._db, this._storeName, key) ?? null;
-  }
-  /**
-   * Remove a key
-   * @param key {@link IDBValidKey}
-   * @returns void
-   */
-  async remove(key) {
-    return await _removeValue(this._db, this._storeName, key);
-  }
-}
-const KEY_STORAGE_KEY = "identity";
-const KEY_STORAGE_DELEGATION = "delegation";
-const KEY_VECTOR = "iv";
-const DB_VERSION = 1;
-const isBrowser$2 = typeof window !== "undefined";
-class LocalStorage {
-  constructor(prefix2 = "ic-", _localStorage) {
-    __publicField(this, "prefix");
-    __publicField(this, "_localStorage");
-    this.prefix = prefix2;
-    this._localStorage = _localStorage;
-  }
-  get(key) {
-    return Promise.resolve(this._getLocalStorage().getItem(this.prefix + key));
-  }
-  set(key, value) {
-    this._getLocalStorage().setItem(this.prefix + key, value);
-    return Promise.resolve();
-  }
-  remove(key) {
-    this._getLocalStorage().removeItem(this.prefix + key);
-    return Promise.resolve();
-  }
-  _getLocalStorage() {
-    if (this._localStorage) {
-      return this._localStorage;
-    }
-    const ls = typeof window === "undefined" ? typeof global === "undefined" ? typeof self === "undefined" ? void 0 : self.localStorage : global.localStorage : window.localStorage;
-    if (!ls) {
-      throw new Error("Could not find local storage.");
-    }
-    return ls;
-  }
-}
-class IdbStorage {
-  /**
-   * @param options - DBCreateOptions
-   * @param options.dbName - name for the indexeddb database
-   * @param options.storeName - name for the indexeddb Data Store
-   * @param options.version - version of the database. Increment to safely upgrade
-   * @example
-   * ```ts
-   * const storage = new IdbStorage({ dbName: 'my-db', storeName: 'my-store', version: 2 });
-   * ```
-   */
-  constructor(options) {
-    __privateAdd(this, _options);
-    // Initializes a KeyVal on first request
-    __publicField(this, "initializedDb");
-    __privateSet(this, _options, options ?? {});
-  }
-  get _db() {
-    return new Promise((resolve, reject) => {
-      if (this.initializedDb) {
-        resolve(this.initializedDb);
-        return;
-      }
-      IdbKeyVal.create(__privateGet(this, _options)).then((db) => {
-        this.initializedDb = db;
-        resolve(db);
-      }).catch(reject);
-    });
-  }
-  async get(key) {
-    const db = await this._db;
-    return await db.get(key);
-  }
-  async set(key, value) {
-    const db = await this._db;
-    await db.set(key, value);
-  }
-  async remove(key) {
-    const db = await this._db;
-    await db.remove(key);
-  }
-}
-_options = new WeakMap();
-const NANOSECONDS_PER_SECOND = BigInt(1e9);
-const SECONDS_PER_HOUR = BigInt(3600);
-const NANOSECONDS_PER_HOUR = NANOSECONDS_PER_SECOND * SECONDS_PER_HOUR;
-const IDENTITY_PROVIDER_DEFAULT = "https://identity.internetcomputer.org";
-const IDENTITY_PROVIDER_ENDPOINT = "#authorize";
-const DEFAULT_MAX_TIME_TO_LIVE = BigInt(8) * NANOSECONDS_PER_HOUR;
-const ECDSA_KEY_LABEL = "ECDSA";
-const ED25519_KEY_LABEL = "Ed25519";
-const INTERRUPT_CHECK_INTERVAL = 500;
-const ERROR_USER_INTERRUPT = "UserInterrupt";
-class AuthClient {
-  constructor(_identity, _key, _chain, _storage, idleManager, _createOptions, _idpWindow, _eventHandler) {
-    __publicField(this, "_identity");
-    __publicField(this, "_key");
-    __publicField(this, "_chain");
-    __publicField(this, "_storage");
-    __publicField(this, "idleManager");
-    __publicField(this, "_createOptions");
-    __publicField(this, "_idpWindow");
-    __publicField(this, "_eventHandler");
-    this._identity = _identity;
-    this._key = _key;
-    this._chain = _chain;
-    this._storage = _storage;
-    this.idleManager = idleManager;
-    this._createOptions = _createOptions;
-    this._idpWindow = _idpWindow;
-    this._eventHandler = _eventHandler;
-    this._registerDefaultIdleCallback();
-  }
-  /**
-   * Create an AuthClient to manage authentication and identity
-   * @param {AuthClientCreateOptions} options - Options for creating an {@link AuthClient}
-   * @see {@link AuthClientCreateOptions}
-   * @param options.identity Optional Identity to use as the base
-   * @see {@link SignIdentity}
-   * @param options.storage Storage mechanism for delegation credentials
-   * @see {@link AuthClientStorage}
-   * @param options.keyType Type of key to use for the base key
-   * @param {IdleOptions} options.idleOptions Configures an {@link IdleManager}
-   * @see {@link IdleOptions}
-   * Default behavior is to clear stored identity and reload the page when a user goes idle, unless you set the disableDefaultIdleCallback flag or pass in a custom idle callback.
-   * @example
-   * const authClient = await AuthClient.create({
-   *   idleOptions: {
-   *     disableIdle: true
-   *   }
-   * })
-   */
-  static async create(options = {}) {
-    var _a2;
-    const storage = options.storage ?? new IdbStorage();
-    const keyType = options.keyType ?? ECDSA_KEY_LABEL;
-    let key = null;
-    if (options.identity) {
-      key = options.identity;
-    } else {
-      let maybeIdentityStorage = await storage.get(KEY_STORAGE_KEY);
-      if (!maybeIdentityStorage && isBrowser$2) {
-        try {
-          const fallbackLocalStorage = new LocalStorage();
-          const localChain = await fallbackLocalStorage.get(KEY_STORAGE_DELEGATION);
-          const localKey = await fallbackLocalStorage.get(KEY_STORAGE_KEY);
-          if (localChain && localKey && keyType === ECDSA_KEY_LABEL) {
-            console.log("Discovered an identity stored in localstorage. Migrating to IndexedDB");
-            await storage.set(KEY_STORAGE_DELEGATION, localChain);
-            await storage.set(KEY_STORAGE_KEY, localKey);
-            maybeIdentityStorage = localChain;
-            await fallbackLocalStorage.remove(KEY_STORAGE_DELEGATION);
-            await fallbackLocalStorage.remove(KEY_STORAGE_KEY);
-          }
-        } catch (error) {
-          console.error("error while attempting to recover localstorage: " + error);
-        }
-      }
-      if (maybeIdentityStorage) {
-        try {
-          if (typeof maybeIdentityStorage === "object") {
-            if (keyType === ED25519_KEY_LABEL && typeof maybeIdentityStorage === "string") {
-              key = Ed25519KeyIdentity.fromJSON(maybeIdentityStorage);
-            } else {
-              key = await ECDSAKeyIdentity.fromKeyPair(maybeIdentityStorage);
-            }
-          } else if (typeof maybeIdentityStorage === "string") {
-            key = Ed25519KeyIdentity.fromJSON(maybeIdentityStorage);
-          }
-        } catch {
-        }
-      }
-    }
-    let identity = new AnonymousIdentity();
-    let chain = null;
-    if (key) {
-      try {
-        const chainStorage = await storage.get(KEY_STORAGE_DELEGATION);
-        if (typeof chainStorage === "object" && chainStorage !== null) {
-          throw new Error("Delegation chain is incorrectly stored. A delegation chain should be stored as a string.");
-        }
-        if (options.identity) {
-          identity = options.identity;
-        } else if (chainStorage) {
-          chain = DelegationChain.fromJSON(chainStorage);
-          if (!isDelegationValid(chain)) {
-            await _deleteStorage(storage);
-            key = null;
-          } else {
-            if ("toDer" in key) {
-              identity = PartialDelegationIdentity.fromDelegation(key, chain);
-            } else {
-              identity = DelegationIdentity.fromDelegation(key, chain);
-            }
-          }
-        }
-      } catch (e) {
-        console.error(e);
-        await _deleteStorage(storage);
-        key = null;
-      }
-    }
-    let idleManager;
-    if ((_a2 = options.idleOptions) == null ? void 0 : _a2.disableIdle) {
-      idleManager = void 0;
-    } else if (chain || options.identity) {
-      idleManager = IdleManager.create(options.idleOptions);
-    }
-    if (!key) {
-      if (keyType === ED25519_KEY_LABEL) {
-        key = Ed25519KeyIdentity.generate();
-        await storage.set(KEY_STORAGE_KEY, JSON.stringify(key.toJSON()));
-      } else {
-        if (options.storage && keyType === ECDSA_KEY_LABEL) {
-          console.warn(`You are using a custom storage provider that may not support CryptoKey storage. If you are using a custom storage provider that does not support CryptoKey storage, you should use '${ED25519_KEY_LABEL}' as the key type, as it can serialize to a string`);
-        }
-        key = await ECDSAKeyIdentity.generate();
-        await storage.set(KEY_STORAGE_KEY, key.getKeyPair());
-      }
-    }
-    return new this(identity, key, chain, storage, idleManager, options);
-  }
-  _registerDefaultIdleCallback() {
-    var _a2, _b2;
-    const idleOptions = (_a2 = this._createOptions) == null ? void 0 : _a2.idleOptions;
-    if (!(idleOptions == null ? void 0 : idleOptions.onIdle) && !(idleOptions == null ? void 0 : idleOptions.disableDefaultIdleCallback)) {
-      (_b2 = this.idleManager) == null ? void 0 : _b2.registerCallback(() => {
-        this.logout();
-        location.reload();
-      });
-    }
-  }
-  async _handleSuccess(message, onSuccess) {
-    var _a2, _b2;
-    const delegations = message.delegations.map((signedDelegation) => {
-      return {
-        delegation: new Delegation(signedDelegation.delegation.pubkey, signedDelegation.delegation.expiration, signedDelegation.delegation.targets),
-        signature: signedDelegation.signature
-      };
-    });
-    const delegationChain = DelegationChain.fromDelegations(delegations, message.userPublicKey);
-    const key = this._key;
-    if (!key) {
-      return;
-    }
-    this._chain = delegationChain;
-    if ("toDer" in key) {
-      this._identity = PartialDelegationIdentity.fromDelegation(key, this._chain);
-    } else {
-      this._identity = DelegationIdentity.fromDelegation(key, this._chain);
-    }
-    (_a2 = this._idpWindow) == null ? void 0 : _a2.close();
-    const idleOptions = (_b2 = this._createOptions) == null ? void 0 : _b2.idleOptions;
-    if (!this.idleManager && !(idleOptions == null ? void 0 : idleOptions.disableIdle)) {
-      this.idleManager = IdleManager.create(idleOptions);
-      this._registerDefaultIdleCallback();
-    }
-    this._removeEventListener();
-    delete this._idpWindow;
-    if (this._chain) {
-      await this._storage.set(KEY_STORAGE_DELEGATION, JSON.stringify(this._chain.toJSON()));
-    }
-    onSuccess == null ? void 0 : onSuccess(message);
-  }
-  getIdentity() {
-    return this._identity;
-  }
-  async isAuthenticated() {
-    return !this.getIdentity().getPrincipal().isAnonymous() && this._chain !== null && isDelegationValid(this._chain);
-  }
-  /**
-   * AuthClient Login - Opens up a new window to authenticate with Internet Identity
-   * @param {AuthClientLoginOptions} options - Options for logging in, merged with the options set during creation if any. Note: we only perform a shallow merge for the `customValues` property.
-   * @param options.identityProvider Identity provider
-   * @param options.maxTimeToLive Expiration of the authentication in nanoseconds
-   * @param options.allowPinAuthentication If present, indicates whether or not the Identity Provider should allow the user to authenticate and/or register using a temporary key/PIN identity. Authenticating dapps may want to prevent users from using Temporary keys/PIN identities because Temporary keys/PIN identities are less secure than Passkeys (webauthn credentials) and because Temporary keys/PIN identities generally only live in a browser database (which may get cleared by the browser/OS).
-   * @param options.derivationOrigin Origin for Identity Provider to use while generating the delegated identity
-   * @param options.windowOpenerFeatures Configures the opened authentication window
-   * @param options.onSuccess Callback once login has completed
-   * @param options.onError Callback in case authentication fails
-   * @param options.customValues Extra values to be passed in the login request during the authorize-ready phase. Note: we only perform a shallow merge for the `customValues` property.
-   * @example
-   * const authClient = await AuthClient.create();
-   * authClient.login({
-   *  identityProvider: 'http://<canisterID>.127.0.0.1:8000',
-   *  maxTimeToLive: BigInt (7) * BigInt(24) * BigInt(3_600_000_000_000), // 1 week
-   *  windowOpenerFeatures: "toolbar=0,location=0,menubar=0,width=500,height=500,left=100,top=100",
-   *  onSuccess: () => {
-   *    console.log('Login Successful!');
-   *  },
-   *  onError: (error) => {
-   *    console.error('Login Failed: ', error);
-   *  }
-   * });
-   */
-  async login(options) {
-    var _a2, _b2, _c2;
-    const loginOptions = mergeLoginOptions((_a2 = this._createOptions) == null ? void 0 : _a2.loginOptions, options);
-    const maxTimeToLive = (loginOptions == null ? void 0 : loginOptions.maxTimeToLive) ?? DEFAULT_MAX_TIME_TO_LIVE;
-    const identityProviderUrl = new URL(((_b2 = loginOptions == null ? void 0 : loginOptions.identityProvider) == null ? void 0 : _b2.toString()) || IDENTITY_PROVIDER_DEFAULT);
-    identityProviderUrl.hash = IDENTITY_PROVIDER_ENDPOINT;
-    (_c2 = this._idpWindow) == null ? void 0 : _c2.close();
-    this._removeEventListener();
-    this._eventHandler = this._getEventHandler(identityProviderUrl, {
-      maxTimeToLive,
-      ...loginOptions
-    });
-    window.addEventListener("message", this._eventHandler);
-    this._idpWindow = window.open(identityProviderUrl.toString(), "idpWindow", loginOptions == null ? void 0 : loginOptions.windowOpenerFeatures) ?? void 0;
-    const checkInterruption = () => {
-      if (this._idpWindow) {
-        if (this._idpWindow.closed) {
-          this._handleFailure(ERROR_USER_INTERRUPT, loginOptions == null ? void 0 : loginOptions.onError);
-        } else {
-          setTimeout(checkInterruption, INTERRUPT_CHECK_INTERVAL);
-        }
-      }
-    };
-    checkInterruption();
-  }
-  _getEventHandler(identityProviderUrl, options) {
-    return async (event) => {
-      var _a2, _b2, _c2;
-      if (event.origin !== identityProviderUrl.origin) {
-        return;
-      }
-      const message = event.data;
-      switch (message.kind) {
-        case "authorize-ready": {
-          const request = {
-            kind: "authorize-client",
-            sessionPublicKey: new Uint8Array((_a2 = this._key) == null ? void 0 : _a2.getPublicKey().toDer()),
-            maxTimeToLive: options == null ? void 0 : options.maxTimeToLive,
-            allowPinAuthentication: options == null ? void 0 : options.allowPinAuthentication,
-            derivationOrigin: (_b2 = options == null ? void 0 : options.derivationOrigin) == null ? void 0 : _b2.toString(),
-            // Pass any custom values to the IDP.
-            ...options == null ? void 0 : options.customValues
-          };
-          (_c2 = this._idpWindow) == null ? void 0 : _c2.postMessage(request, identityProviderUrl.origin);
-          break;
-        }
-        case "authorize-client-success":
-          try {
-            await this._handleSuccess(message, options == null ? void 0 : options.onSuccess);
-          } catch (err) {
-            this._handleFailure(err.message, options == null ? void 0 : options.onError);
-          }
-          break;
-        case "authorize-client-failure":
-          this._handleFailure(message.text, options == null ? void 0 : options.onError);
-          break;
-      }
-    };
-  }
-  _handleFailure(errorMessage, onError) {
-    var _a2;
-    (_a2 = this._idpWindow) == null ? void 0 : _a2.close();
-    onError == null ? void 0 : onError(errorMessage);
-    this._removeEventListener();
-    delete this._idpWindow;
-  }
-  _removeEventListener() {
-    if (this._eventHandler) {
-      window.removeEventListener("message", this._eventHandler);
-    }
-    this._eventHandler = void 0;
-  }
-  async logout(options = {}) {
-    await _deleteStorage(this._storage);
-    this._identity = new AnonymousIdentity();
-    this._chain = null;
-    if (options.returnTo) {
-      try {
-        window.history.pushState({}, "", options.returnTo);
-      } catch {
-        window.location.href = options.returnTo;
-      }
-    }
-  }
-}
-async function _deleteStorage(storage) {
-  await storage.remove(KEY_STORAGE_KEY);
-  await storage.remove(KEY_STORAGE_DELEGATION);
-  await storage.remove(KEY_VECTOR);
-}
-function mergeLoginOptions(loginOptions, otherLoginOptions) {
-  if (!loginOptions && !otherLoginOptions) {
-    return void 0;
-  }
-  const customValues = (loginOptions == null ? void 0 : loginOptions.customValues) || (otherLoginOptions == null ? void 0 : otherLoginOptions.customValues) ? {
-    ...loginOptions == null ? void 0 : loginOptions.customValues,
-    ...otherLoginOptions == null ? void 0 : otherLoginOptions.customValues
-  } : void 0;
-  return {
-    ...loginOptions,
-    ...otherLoginOptions,
-    customValues
-  };
-}
-const ONE_HOUR_IN_NANOSECONDS = BigInt(36e11);
-const DEFAULT_IDENTITY_PROVIDER = "https://id.ai";
-const InternetIdentityReactContext = reactExports.createContext(void 0);
-async function createAuthClient(createOptions) {
-  const config = await loadConfig();
-  const options = {
-    idleOptions: {
-      // Default behaviour of this hook is not to logout and reload window on identity expiration
-      disableDefaultIdleCallback: true,
-      disableIdle: true,
-      ...createOptions == null ? void 0 : createOptions.idleOptions
-    },
-    loginOptions: {
-      derivationOrigin: config.ii_derivation_origin
-    },
-    ...createOptions
-  };
-  const authClient = await AuthClient.create(options);
-  return authClient;
-}
-function assertProviderPresent(context) {
-  if (!context) {
-    throw new Error("InternetIdentityProvider is not present. Wrap your component tree with it.");
-  }
-}
-const useInternetIdentity = () => {
-  const context = reactExports.useContext(InternetIdentityReactContext);
-  assertProviderPresent(context);
-  return context;
-};
-function InternetIdentityProvider({ children, createOptions }) {
-  const [authClient, setAuthClient] = reactExports.useState(void 0);
-  const [identity, setIdentity] = reactExports.useState(void 0);
-  const [loginStatus, setStatus] = reactExports.useState("initializing");
-  const [loginError, setError] = reactExports.useState(void 0);
-  const setErrorMessage = reactExports.useCallback((message) => {
-    setStatus("loginError");
-    setError(new Error(message));
-  }, []);
-  const handleLoginSuccess = reactExports.useCallback(() => {
-    const latestIdentity = authClient == null ? void 0 : authClient.getIdentity();
-    if (!latestIdentity) {
-      setErrorMessage("Identity not found after successful login");
-      return;
-    }
-    setIdentity(latestIdentity);
-    setStatus("success");
-  }, [authClient, setErrorMessage]);
-  const handleLoginError = reactExports.useCallback((maybeError) => {
-    setErrorMessage(maybeError ?? "Login failed");
-  }, [setErrorMessage]);
-  const login = reactExports.useCallback(() => {
-    if (!authClient) {
-      setErrorMessage("AuthClient is not initialized yet, make sure to call `login` on user interaction e.g. click.");
-      return;
-    }
-    const currentIdentity = authClient.getIdentity();
-    if (!currentIdentity.getPrincipal().isAnonymous() && currentIdentity instanceof DelegationIdentity && isDelegationValid(currentIdentity.getDelegation())) {
-      setErrorMessage("User is already authenticated");
-      return;
-    }
-    const options = {
-      identityProvider: DEFAULT_IDENTITY_PROVIDER,
-      onSuccess: handleLoginSuccess,
-      onError: handleLoginError,
-      maxTimeToLive: ONE_HOUR_IN_NANOSECONDS * BigInt(24 * 30)
-      // 30 days
-    };
-    setStatus("logging-in");
-    void authClient.login(options);
-  }, [authClient, handleLoginError, handleLoginSuccess, setErrorMessage]);
-  const clear = reactExports.useCallback(() => {
-    if (!authClient) {
-      setErrorMessage("Auth client not initialized");
-      return;
-    }
-    void authClient.logout().then(() => {
-      setIdentity(void 0);
-      setAuthClient(void 0);
-      setStatus("idle");
-      setError(void 0);
-    }).catch((unknownError) => {
-      setStatus("loginError");
-      setError(unknownError instanceof Error ? unknownError : new Error("Logout failed"));
-    });
-  }, [authClient, setErrorMessage]);
-  reactExports.useEffect(() => {
-    let cancelled = false;
-    void (async () => {
-      try {
-        setStatus("initializing");
-        let existingClient = authClient;
-        if (!existingClient) {
-          existingClient = await createAuthClient(createOptions);
-          if (cancelled)
-            return;
-          setAuthClient(existingClient);
-        }
-        const isAuthenticated = await existingClient.isAuthenticated();
-        if (cancelled)
-          return;
-        if (isAuthenticated) {
-          const loadedIdentity = existingClient.getIdentity();
-          setIdentity(loadedIdentity);
-        }
-      } catch (unknownError) {
-        setStatus("loginError");
-        setError(unknownError instanceof Error ? unknownError : new Error("Initialization failed"));
-      } finally {
-        if (!cancelled)
-          setStatus("idle");
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [createOptions, authClient]);
-  const value = reactExports.useMemo(() => ({
-    identity,
-    login,
-    clear,
-    loginStatus,
-    isInitializing: loginStatus === "initializing",
-    isLoginIdle: loginStatus === "idle",
-    isLoggingIn: loginStatus === "logging-in",
-    isLoginSuccess: loginStatus === "success",
-    isLoginError: loginStatus === "loginError",
-    loginError
-  }), [identity, login, clear, loginStatus, loginError]);
-  return reactExports.createElement(InternetIdentityReactContext.Provider, {
-    value,
-    children
-  });
-}
 var client = { exports: {} };
 var reactDomClient_production = {};
 var scheduler = { exports: {} };
@@ -7711,7 +3334,7 @@ var scheduler_production = {};
     heap.push(node);
     a: for (; 0 < index2; ) {
       var parentIndex = index2 - 1 >>> 1, parent = heap[parentIndex];
-      if (0 < compare2(parent, node))
+      if (0 < compare(parent, node))
         heap[parentIndex] = node, heap[index2] = parent, index2 = parentIndex;
       else break a;
     }
@@ -7726,16 +3349,16 @@ var scheduler_production = {};
       heap[0] = last2;
       a: for (var index2 = 0, length = heap.length, halfLength = length >>> 1; index2 < halfLength; ) {
         var leftIndex = 2 * (index2 + 1) - 1, left = heap[leftIndex], rightIndex = leftIndex + 1, right = heap[rightIndex];
-        if (0 > compare2(left, last2))
-          rightIndex < length && 0 > compare2(right, left) ? (heap[index2] = right, heap[rightIndex] = last2, index2 = rightIndex) : (heap[index2] = left, heap[leftIndex] = last2, index2 = leftIndex);
-        else if (rightIndex < length && 0 > compare2(right, last2))
+        if (0 > compare(left, last2))
+          rightIndex < length && 0 > compare(right, left) ? (heap[index2] = right, heap[rightIndex] = last2, index2 = rightIndex) : (heap[index2] = left, heap[leftIndex] = last2, index2 = leftIndex);
+        else if (rightIndex < length && 0 > compare(right, last2))
           heap[index2] = right, heap[rightIndex] = last2, index2 = rightIndex;
         else break a;
       }
     }
     return first;
   }
-  function compare2(a, b) {
+  function compare(a, b) {
     var diff = a.sortIndex - b.sortIndex;
     return 0 !== diff ? diff : a.id - b.id;
   }
@@ -19460,15 +15083,15 @@ const stateIndexKey = "__TSR_index";
 const popStateEvent = "popstate";
 const beforeUnloadEvent = "beforeunload";
 function createHistory(opts) {
-  let location2 = opts.getLocation();
+  let location = opts.getLocation();
   const subscribers = /* @__PURE__ */ new Set();
   const notify = (action) => {
-    location2 = opts.getLocation();
-    subscribers.forEach((subscriber) => subscriber({ location: location2, action }));
+    location = opts.getLocation();
+    subscribers.forEach((subscriber) => subscriber({ location, action }));
   };
   const handleIndexChange = (action) => {
     if (opts.notifyOnIndexChange ?? true) notify(action);
-    else location2 = opts.getLocation();
+    else location = opts.getLocation();
   };
   const tryNavigation = async ({
     task,
@@ -19487,7 +15110,7 @@ function createHistory(opts) {
       for (const blocker of blockers) {
         const nextLocation = parseHref(actionInfo.path, actionInfo.state);
         const isBlocked = await blocker.blockerFn({
-          currentLocation: location2,
+          currentLocation: location,
           nextLocation,
           action: actionInfo.type
         });
@@ -19501,7 +15124,7 @@ function createHistory(opts) {
   };
   return {
     get location() {
-      return location2;
+      return location;
     },
     get length() {
       return opts.getLength();
@@ -19514,7 +15137,7 @@ function createHistory(opts) {
       };
     },
     push: (path, state, navigateOpts) => {
-      const currentIndex = location2.state[stateIndexKey];
+      const currentIndex = location.state[stateIndexKey];
       state = assignKeyAndIndex(currentIndex + 1, state);
       tryNavigation({
         task: () => {
@@ -19528,7 +15151,7 @@ function createHistory(opts) {
       });
     },
     replace: (path, state, navigateOpts) => {
-      const currentIndex = location2.state[stateIndexKey];
+      const currentIndex = location.state[stateIndexKey];
       state = assignKeyAndIndex(currentIndex, state);
       tryNavigation({
         task: () => {
@@ -19571,7 +15194,7 @@ function createHistory(opts) {
         type: "FORWARD"
       });
     },
-    canGoBack: () => location2.state[stateIndexKey] !== 0,
+    canGoBack: () => location.state[stateIndexKey] !== 0,
     createHref: (str) => opts.createHref(str),
     block: (blocker) => {
       var _a2;
@@ -20146,9 +15769,9 @@ function baseParsePathname(pathname, basePathValues) {
   if (!pathname) {
     return segments;
   }
-  const split2 = pathname.split("/").filter(Boolean);
+  const split = pathname.split("/").filter(Boolean);
   segments.push(
-    ...split2.map((part) => {
+    ...split.map((part) => {
       const partToMatch = !basePathValues && part.slice(-1) === "_" ? part.slice(0, -1) : part;
       const wildcardBracesMatch = partToMatch.match(WILDCARD_W_CURLY_BRACES_RE);
       if (wildcardBracesMatch) {
@@ -20736,8 +16359,8 @@ function createScrollRestorationCache() {
   };
 }
 const scrollRestorationCache = createScrollRestorationCache();
-const defaultGetScrollRestorationKey = (location2) => {
-  return location2.state.__TSR_key || location2.href;
+const defaultGetScrollRestorationKey = (location) => {
+  return location.state.__TSR_key || location.href;
 };
 function getCssSelector(el) {
   const path = [];
@@ -20757,7 +16380,7 @@ function restoreScroll({
   behavior,
   shouldScrollRestoration,
   scrollToTopSelectors,
-  location: location2
+  location
 }) {
   var _a2, _b2;
   let byKey;
@@ -20790,7 +16413,7 @@ function restoreScroll({
       }
       break scroll;
     }
-    const hash = (location2 ?? window.location).hash.split("#", 2)[1];
+    const hash = (location ?? window.location).hash.split("#", 2)[1];
     if (hash) {
       const hashScrollIntoViewOptions = ((_b2 = window.history.state) == null ? void 0 : _b2.__hashScrollIntoViewOptions) ?? true;
       if (hashScrollIntoViewOptions) {
@@ -21836,19 +17459,19 @@ class RouterCore {
           state: replaceEqualDeep(previousLocation == null ? void 0 : previousLocation.state, state)
         };
       };
-      const location2 = parse(locationToParse);
-      const { __tempLocation, __tempKey } = location2.state;
+      const location = parse(locationToParse);
+      const { __tempLocation, __tempKey } = location.state;
       if (__tempLocation && (!__tempKey || __tempKey === this.tempLocationKey)) {
         const parsedTempLocation = parse(__tempLocation);
-        parsedTempLocation.state.key = location2.state.key;
-        parsedTempLocation.state.__TSR_key = location2.state.__TSR_key;
+        parsedTempLocation.state.key = location.state.key;
+        parsedTempLocation.state.__TSR_key = location.state.__TSR_key;
         delete parsedTempLocation.state.__tempLocation;
         return {
           ...parsedTempLocation,
-          maskedLocation: location2
+          maskedLocation: location
         };
       }
-      return location2;
+      return location;
     };
     this.resolvePathWithBase = (from, path) => {
       const resolvedPath = resolvePath({
@@ -22117,12 +17740,12 @@ class RouterCore {
         rest.search = this.options.parseSearch(parsed.search);
         rest.hash = parsed.hash.slice(1);
       }
-      const location2 = this.buildLocation({
+      const location = this.buildLocation({
         ...rest,
         _includeValidateSearch: true
       });
       return this.commitLocation({
-        ...location2,
+        ...location,
         viewTransition,
         replace,
         resetScroll,
@@ -22140,8 +17763,8 @@ class RouterCore {
       }
       if (reloadDocument) {
         if (!href) {
-          const location2 = this.buildLocation({ to, ...rest });
-          href = this.history.createHref(location2.href);
+          const location = this.buildLocation({ to, ...rest });
+          href = this.history.createHref(location.href);
         }
         if (rest.replace) {
           window.location.replace(href);
@@ -22482,14 +18105,14 @@ class RouterCore {
         return void 0;
       }
     };
-    this.matchRoute = (location2, opts) => {
+    this.matchRoute = (location, opts) => {
       const matchLocation = {
-        ...location2,
-        to: location2.to ? this.resolvePathWithBase(
-          location2.from || "",
-          location2.to
+        ...location,
+        to: location.to ? this.resolvePathWithBase(
+          location.from || "",
+          location.to
         ) : void 0,
-        params: location2.params || {},
+        params: location.params || {},
         leaveParams: true
       };
       const next = this.buildLocation(matchLocation);
@@ -22510,8 +18133,8 @@ class RouterCore {
       if (!match) {
         return false;
       }
-      if (location2.params) {
-        if (!deepEqual(match, location2.params, { partial: true })) {
+      if (location.params) {
+        if (!deepEqual(match, location.params, { partial: true })) {
           return false;
         }
       }
@@ -22757,14 +18380,14 @@ class SearchParamError extends Error {
 }
 class PathParamError extends Error {
 }
-function getInitialRouterState(location2) {
+function getInitialRouterState(location) {
   return {
     loadedAt: 0,
     isLoading: false,
     isTransitioning: false,
     status: "idle",
     resolvedLocation: void 0,
-    location: location2,
+    location,
     matches: [],
     pendingMatches: [],
     cachedMatches: [],
@@ -23528,7 +19151,7 @@ function useLinkProps(options, forwardedRef) {
     structuralSharing: true
   });
   const from = options.from;
-  const _options2 = reactExports.useMemo(
+  const _options = reactExports.useMemo(
     () => {
       return { ...options, from };
     },
@@ -23548,8 +19171,8 @@ function useLinkProps(options, forwardedRef) {
     ]
   );
   const next = reactExports.useMemo(
-    () => router2.buildLocation({ ..._options2 }),
-    [router2, _options2]
+    () => router2.buildLocation({ ..._options }),
+    [router2, _options]
   );
   const isExternal = type === "external";
   const preload2 = options.reloadDocument || isExternal ? false : userPreload ?? router2.options.defaultPreload;
@@ -23596,11 +19219,11 @@ function useLinkProps(options, forwardedRef) {
     }
   });
   const doPreload = reactExports.useCallback(() => {
-    router2.preloadRoute({ ..._options2 }).catch((err) => {
+    router2.preloadRoute({ ..._options }).catch((err) => {
       console.warn(err);
       console.warn(preloadWarning);
     });
-  }, [router2, _options2]);
+  }, [router2, _options]);
   const preloadViewportIoCallback = reactExports.useCallback(
     (entry) => {
       if (entry == null ? void 0 : entry.isIntersecting) {
@@ -23637,7 +19260,7 @@ function useLinkProps(options, forwardedRef) {
         setIsTransitioning(false);
       });
       router2.navigate({
-        ..._options2,
+        ..._options,
         replace,
         resetScroll,
         hashScrollIntoView,
@@ -25014,7 +20637,7 @@ const getDefaultConfig = () => {
   const contrast = fromTheme("contrast");
   const grayscale = fromTheme("grayscale");
   const hueRotate = fromTheme("hueRotate");
-  const invert2 = fromTheme("invert");
+  const invert = fromTheme("invert");
   const gap = fromTheme("gap");
   const gradientColorStops = fromTheme("gradientColorStops");
   const gradientColorStopPositions = fromTheme("gradientColorStopPositions");
@@ -26499,7 +22122,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/invert
        */
       invert: [{
-        invert: [invert2]
+        invert: [invert]
       }],
       /**
        * Saturate
@@ -26563,7 +22186,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/backdrop-invert
        */
       "backdrop-invert": [{
-        "backdrop-invert": [invert2]
+        "backdrop-invert": [invert]
       }],
       /**
        * Backdrop Opacity
@@ -27220,22 +22843,11 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$z = [
+const __iconNode$y = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$z);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$y = [
-  ["path", { d: "M5 12h14", key: "1ays0h" }],
-  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
-];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$y);
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$y);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27243,6 +22855,17 @@ const ArrowRight = createLucideIcon("arrow-right", __iconNode$y);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$x = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
+];
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$x);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$w = [
   [
     "path",
     {
@@ -27252,14 +22875,14 @@ const __iconNode$x = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$x);
+const Award = createLucideIcon("award", __iconNode$w);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$w = [
+const __iconNode$v = [
   ["path", { d: "M10 2v8l3-3 3 3V2", key: "sqw3rj" }],
   [
     "path",
@@ -27269,14 +22892,14 @@ const __iconNode$w = [
     }
   ]
 ];
-const BookMarked = createLucideIcon("book-marked", __iconNode$w);
+const BookMarked = createLucideIcon("book-marked", __iconNode$v);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$v = [
+const __iconNode$u = [
   ["path", { d: "M12 7v14", key: "1akyts" }],
   [
     "path",
@@ -27286,20 +22909,7 @@ const __iconNode$v = [
     }
   ]
 ];
-const BookOpen = createLucideIcon("book-open", __iconNode$v);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$u = [
-  ["path", { d: "M8 2v4", key: "1cmpym" }],
-  ["path", { d: "M16 2v4", key: "4m81vk" }],
-  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
-  ["path", { d: "M3 10h18", key: "8toen8" }]
-];
-const Calendar = createLucideIcon("calendar", __iconNode$u);
+const BookOpen = createLucideIcon("book-open", __iconNode$u);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27307,12 +22917,12 @@ const Calendar = createLucideIcon("calendar", __iconNode$u);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$t = [
-  ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
-  ["path", { d: "M18 17V9", key: "2bz60n" }],
-  ["path", { d: "M13 17V5", key: "1frdt8" }],
-  ["path", { d: "M8 17v-3", key: "17ska0" }]
+  ["path", { d: "M8 2v4", key: "1cmpym" }],
+  ["path", { d: "M16 2v4", key: "4m81vk" }],
+  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
+  ["path", { d: "M3 10h18", key: "8toen8" }]
 ];
-const ChartColumn = createLucideIcon("chart-column", __iconNode$t);
+const Calendar = createLucideIcon("calendar", __iconNode$t);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27320,55 +22930,56 @@ const ChartColumn = createLucideIcon("chart-column", __iconNode$t);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$s = [
+  ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
+  ["path", { d: "M18 17V9", key: "2bz60n" }],
+  ["path", { d: "M13 17V5", key: "1frdt8" }],
+  ["path", { d: "M8 17v-3", key: "17ska0" }]
+];
+const ChartColumn = createLucideIcon("chart-column", __iconNode$s);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$r = [
   ["line", { x1: "18", x2: "18", y1: "20", y2: "10", key: "1xfpm4" }],
   ["line", { x1: "12", x2: "12", y1: "20", y2: "4", key: "be30l9" }],
   ["line", { x1: "6", x2: "6", y1: "20", y2: "14", key: "1r4le6" }]
 ];
-const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$s);
+const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$r);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$r = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$r);
+const __iconNode$q = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$q);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$q = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
-const ChevronLeft = createLucideIcon("chevron-left", __iconNode$q);
+const __iconNode$p = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = createLucideIcon("chevron-left", __iconNode$p);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$p = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$p);
+const __iconNode$o = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$o);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$o = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$o);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$n = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
-  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
-];
-const CircleAlert = createLucideIcon("circle-alert", __iconNode$n);
+const __iconNode$n = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$n);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27376,10 +22987,11 @@ const CircleAlert = createLucideIcon("circle-alert", __iconNode$n);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$m = [
-  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
-  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
+  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
 ];
-const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$m);
+const CircleAlert = createLucideIcon("circle-alert", __iconNode$m);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27387,10 +22999,10 @@ const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$m);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$l = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
+  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
 ];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$l);
+const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$l);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27399,10 +23011,9 @@ const CircleCheck = createLucideIcon("circle-check", __iconNode$l);
  */
 const __iconNode$k = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
-  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const CircleX = createLucideIcon("circle-x", __iconNode$k);
+const CircleCheck = createLucideIcon("circle-check", __iconNode$k);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27410,6 +23021,18 @@ const CircleX = createLucideIcon("circle-x", __iconNode$k);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$j = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
+  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
+];
+const CircleX = createLucideIcon("circle-x", __iconNode$j);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$i = [
   ["rect", { width: "8", height: "4", x: "8", y: "2", rx: "1", ry: "1", key: "tgr4d6" }],
   [
     "path",
@@ -27423,18 +23046,7 @@ const __iconNode$j = [
   ["path", { d: "M8 11h.01", key: "1dfujw" }],
   ["path", { d: "M8 16h.01", key: "18s6g9" }]
 ];
-const ClipboardList = createLucideIcon("clipboard-list", __iconNode$j);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$i = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
-];
-const Clock = createLucideIcon("clock", __iconNode$i);
+const ClipboardList = createLucideIcon("clipboard-list", __iconNode$i);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27442,13 +23054,10 @@ const Clock = createLucideIcon("clock", __iconNode$i);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$h = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
 ];
-const FileText = createLucideIcon("file-text", __iconNode$h);
+const Clock = createLucideIcon("clock", __iconNode$h);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27456,6 +23065,20 @@ const FileText = createLucideIcon("file-text", __iconNode$h);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$g = [
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+];
+const FileText = createLucideIcon("file-text", __iconNode$g);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$f = [
   [
     "path",
     {
@@ -27464,14 +23087,14 @@ const __iconNode$g = [
     }
   ]
 ];
-const Flame = createLucideIcon("flame", __iconNode$g);
+const Flame = createLucideIcon("flame", __iconNode$f);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$f = [
+const __iconNode$e = [
   ["path", { d: "M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8", key: "5wwlr5" }],
   [
     "path",
@@ -27481,14 +23104,14 @@ const __iconNode$f = [
     }
   ]
 ];
-const House = createLucideIcon("house", __iconNode$f);
+const House = createLucideIcon("house", __iconNode$e);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$e = [
+const __iconNode$d = [
   [
     "path",
     {
@@ -27499,22 +23122,7 @@ const __iconNode$e = [
   ["path", { d: "M9 18h6", key: "x1upvd" }],
   ["path", { d: "M10 22h4", key: "ceow96" }]
 ];
-const Lightbulb = createLucideIcon("lightbulb", __iconNode$e);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$d = [
-  ["path", { d: "M3 12h.01", key: "nlz23k" }],
-  ["path", { d: "M3 18h.01", key: "1tta3j" }],
-  ["path", { d: "M3 6h.01", key: "1rqtza" }],
-  ["path", { d: "M8 12h13", key: "1za7za" }],
-  ["path", { d: "M8 18h13", key: "1lx6n3" }],
-  ["path", { d: "M8 6h13", key: "ik3vkj" }]
-];
-const List = createLucideIcon("list", __iconNode$d);
+const Lightbulb = createLucideIcon("lightbulb", __iconNode$d);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27522,11 +23130,14 @@ const List = createLucideIcon("list", __iconNode$d);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$c = [
-  ["path", { d: "m10 17 5-5-5-5", key: "1bsop3" }],
-  ["path", { d: "M15 12H3", key: "6jk70r" }],
-  ["path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", key: "u53s6r" }]
+  ["path", { d: "M3 12h.01", key: "nlz23k" }],
+  ["path", { d: "M3 18h.01", key: "1tta3j" }],
+  ["path", { d: "M3 6h.01", key: "1rqtza" }],
+  ["path", { d: "M8 12h13", key: "1za7za" }],
+  ["path", { d: "M8 18h13", key: "1lx6n3" }],
+  ["path", { d: "M8 6h13", key: "ik3vkj" }]
 ];
-const LogIn = createLucideIcon("log-in", __iconNode$c);
+const List = createLucideIcon("list", __iconNode$c);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27534,11 +23145,11 @@ const LogIn = createLucideIcon("log-in", __iconNode$c);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$b = [
-  ["path", { d: "m16 17 5-5-5-5", key: "1bji2h" }],
-  ["path", { d: "M21 12H9", key: "dn1m92" }],
-  ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }]
+  ["path", { d: "m10 17 5-5-5-5", key: "1bsop3" }],
+  ["path", { d: "M15 12H3", key: "6jk70r" }],
+  ["path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", key: "u53s6r" }]
 ];
-const LogOut = createLucideIcon("log-out", __iconNode$b);
+const LogIn = createLucideIcon("log-in", __iconNode$b);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27546,11 +23157,11 @@ const LogOut = createLucideIcon("log-out", __iconNode$b);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$a = [
-  ["path", { d: "M4 12h16", key: "1lakjw" }],
-  ["path", { d: "M4 18h16", key: "19g7jn" }],
-  ["path", { d: "M4 6h16", key: "1o0s65" }]
+  ["path", { d: "m16 17 5-5-5-5", key: "1bji2h" }],
+  ["path", { d: "M21 12H9", key: "dn1m92" }],
+  ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$a);
+const LogOut = createLucideIcon("log-out", __iconNode$a);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27558,12 +23169,11 @@ const Menu = createLucideIcon("menu", __iconNode$a);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$9 = [
-  ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
-  ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
-  ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
-  ["path", { d: "M8 16H3v5", key: "1cv678" }]
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 18h16", key: "19g7jn" }],
+  ["path", { d: "M4 6h16", key: "1o0s65" }]
 ];
-const RefreshCw = createLucideIcon("refresh-cw", __iconNode$9);
+const Menu = createLucideIcon("menu", __iconNode$9);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27571,10 +23181,12 @@ const RefreshCw = createLucideIcon("refresh-cw", __iconNode$9);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$8 = [
-  ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
-  ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
+  ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
+  ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
+  ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
+  ["path", { d: "M8 16H3v5", key: "1cv678" }]
 ];
-const RotateCcw = createLucideIcon("rotate-ccw", __iconNode$8);
+const RefreshCw = createLucideIcon("refresh-cw", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27582,10 +23194,10 @@ const RotateCcw = createLucideIcon("rotate-ccw", __iconNode$8);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$7 = [
-  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
-  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
+  ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
+  ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
 ];
-const Search = createLucideIcon("search", __iconNode$7);
+const RotateCcw = createLucideIcon("rotate-ccw", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27593,15 +23205,10 @@ const Search = createLucideIcon("search", __iconNode$7);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$6 = [
-  [
-    "path",
-    {
-      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
-      key: "oel41y"
-    }
-  ]
+  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
+  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
 ];
-const Shield = createLucideIcon("shield", __iconNode$6);
+const Search = createLucideIcon("search", __iconNode$6);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27681,17 +23288,32 @@ const __iconNode = [
 ];
 const X = createLucideIcon("x", __iconNode);
 function useAuth() {
-  const { identity, login, clear, loginStatus } = useInternetIdentity();
-  const principal = identity == null ? void 0 : identity.getPrincipal();
-  const isAuthenticated = loginStatus === "success" && principal !== void 0 && !principal.isAnonymous();
-  const isLoading = loginStatus === "logging-in";
-  return {
-    isAuthenticated,
-    isLoading,
-    principal,
-    login,
-    logout: clear
+  const [isAuthenticated, setIsAuthenticated] = reactExports.useState(false);
+  const [isLoading, setIsLoading] = reactExports.useState(true);
+  const [principal, setPrincipal] = reactExports.useState(void 0);
+  reactExports.useEffect(() => {
+    const user = localStorage.getItem("cfa_user");
+    if (user) {
+      setIsAuthenticated(true);
+      setPrincipal(user);
+    }
+    setIsLoading(false);
+  }, []);
+  const login = (email, password) => {
+    if (email && password.length >= 6) {
+      localStorage.setItem("cfa_user", email);
+      setIsAuthenticated(true);
+      setPrincipal(email);
+      return true;
+    }
+    return false;
   };
+  const logout = () => {
+    localStorage.removeItem("cfa_user");
+    setIsAuthenticated(false);
+    setPrincipal(void 0);
+  };
+  return { isAuthenticated, isLoading, principal, login, logout };
 }
 const NAV_LINKS = [
   { to: "/", label: "Dashboard", icon: ChartNoAxesColumn },
@@ -27700,10 +23322,11 @@ const NAV_LINKS = [
   { to: "/history", label: "My Scores", icon: Clock }
 ];
 function Layout() {
-  const { isAuthenticated, login, logout, isLoading } = useAuth();
+  const { isAuthenticated, logout, isLoading } = useAuth();
   const [mobileOpen, setMobileOpen] = reactExports.useState(false);
-  const location2 = useLocation();
-  const isActive = (to) => to === "/" ? location2.pathname === "/" : location2.pathname.startsWith(to);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isActive = (to) => to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen flex flex-col bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "header",
@@ -27767,7 +23390,7 @@ function Layout() {
                 Button,
                 {
                   size: "sm",
-                  onClick: () => login(),
+                  onClick: () => navigate({ to: "/login" }),
                   disabled: isLoading,
                   className: "hidden md:flex bg-accent text-primary hover:bg-accent/90 font-semibold",
                   "data-ocid": "login-button",
@@ -27850,7 +23473,7 @@ function Layout() {
                   {
                     type: "button",
                     onClick: () => {
-                      login();
+                      navigate({ to: "/login" });
                       setMobileOpen(false);
                     },
                     className: "w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-sm text-accent font-semibold",
@@ -28103,510 +23726,39 @@ function CardContent({ className, ...props }) {
     }
   );
 }
-const MOCK_TOPICS = [
-  {
-    id: "ethics",
-    title: "Ethical & Professional Standards",
-    description: "Standards of Practice, Global Investment Performance Standards (GIPS), and ethical responsibilities.",
-    weight: "15-20%",
-    questionCount: 120,
-    level: "I",
-    order: 1
-  },
-  {
-    id: "quant",
-    title: "Quantitative Methods",
-    description: "Time value of money, statistical concepts, probability theory, hypothesis testing.",
-    weight: "8-12%",
-    questionCount: 140,
-    level: "I",
-    order: 2
-  },
-  {
-    id: "econ",
-    title: "Economics",
-    description: "Microeconomics, macroeconomics, market structures, monetary and fiscal policy.",
-    weight: "8-12%",
-    questionCount: 130,
-    level: "I",
-    order: 3
-  },
-  {
-    id: "fsa",
-    title: "Financial Statement Analysis",
-    description: "Income statements, balance sheets, cash flows, and financial analysis techniques.",
-    weight: "13-17%",
-    questionCount: 155,
-    level: "I",
-    order: 4
-  },
-  {
-    id: "corp",
-    title: "Corporate Issuers",
-    description: "Capital structure, leverage, working capital management, dividends and share repurchases.",
-    weight: "8-12%",
-    questionCount: 110,
-    level: "I",
-    order: 5
-  },
-  {
-    id: "equity",
-    title: "Equity Investments",
-    description: "Market organization, security valuation, industry analysis, equity valuation models.",
-    weight: "10-12%",
-    questionCount: 145,
-    level: "I",
-    order: 6
-  },
-  {
-    id: "fi",
-    title: "Fixed Income",
-    description: "Bond features, yield measures, interest rate risk, credit analysis, structured products.",
-    weight: "10-12%",
-    questionCount: 150,
-    level: "I",
-    order: 7
-  },
-  {
-    id: "deriv",
-    title: "Derivatives",
-    description: "Options, futures, forwards, swaps — pricing and risk management strategies.",
-    weight: "5-8%",
-    questionCount: 95,
-    level: "I",
-    order: 8
-  },
-  {
-    id: "alts",
-    title: "Alternative Investments",
-    description: "Hedge funds, private equity, real assets, commodities, and infrastructure.",
-    weight: "5-8%",
-    questionCount: 85,
-    level: "I",
-    order: 9
-  },
-  {
-    id: "pm",
-    title: "Portfolio Management",
-    description: "Risk-return tradeoffs, modern portfolio theory, CAPM, behavioral finance.",
-    weight: "5-8%",
-    questionCount: 100,
-    level: "I",
-    order: 10
-  }
-];
-const MOCK_QUESTIONS = [
-  // Ethics
-  {
-    id: "eth-1",
-    topicId: "ethics",
-    stem: "According to the CFA Institute Standards of Professional Conduct, a member who discovers a client has provided fraudulent information should:",
-    optionA: "Immediately report the client to regulatory authorities.",
-    optionB: "Dissociate from the activity and potentially resign from the engagement.",
-    optionC: "Continue working with the client while documenting the fraud internally.",
-    correctAnswer: "B",
-    explanation: "Standard I(A) requires members to dissociate from any participation in illegal or unethical activity. If a client provides fraudulent data, the member should first attempt to stop the conduct, then dissociate and potentially resign.",
+const MOCK_TOPICS = [{ id: "mock", title: "Mock Exams", description: "Questions imported exactly from the uploaded CFA mock portal.", weight: "Full mock", questionCount: 1080, level: "I", order: 1 }];
+const RAW_QUESTIONS = [["Joy Nash, CFA, resides in Country 1, where applicable law is less strict than the Standards. Nash does business in Country 2, where applicable law is less strict than in Country 1. According to the Standards, when doing business in Country 2, Nash must follow:", "the Code and Standards.", "applicable law of Country 1.", "applicable law of Country 2.", "A"], ["Which of the following situations most likely helps to explain why the GIPS standards were created?", "Firms were including only top performing funds to represent their performance history.", "Asset managers were including the performance of all portfolios, including those no longer managed in their performance history.", "Consistency among fund managers were needed when making investment performance presentations.", "A"], ["Daniel Morgan is a Level III candidate in the CFA Program. After taking the exam, Morgan signs into a CFA-candidate-only Internet forum and writes a post expressing the opinion that the CFA Program and examination policies are unfair. Has Morgan most likely violated the Standards?", "No.", "Yes, by providing confidential program information.", "Yes, by compromising the reputation of CFA Institute.", "A"], ["Which of the following should a GIPS-compliant firm most likely provide to each prospective client?", "A list of composite descriptions upon request.", "A copy of the GIPS standards.", "A compliant presentation every six months.", "A"], ["Which of the following is permitted according to the Standards? A member:", "exploits market inefficiencies for personal trades.", "disseminates information to give the impression of increased liquidity of an asset.", "secures a dominant position in an underlying asset to control the price of its derivative.", "A"], ['Ashley Brown, CFA, applies for a new job. She states, "As a CFA charterholder, I provide the best value in trade execution" and "I passed all three CFA Program examinations in three consecutive years." Has Brown violated the Standards?', "No.", "Yes, by stating she provides the best value in trade execution.", "Yes, by stating both the above statements.", "B"], ["Yip Wai Yin, a CFA candidate, is an independent mutual fund sales agent receiving commissions for front-end and back-end load funds. She informs clients she is paid commission but does not provide details of the compensation structure. Which Standard does Yip least likely violate?", "Referral Fees.", "Priority of Transactions.", "Avoid or Disclose Conflicts.", "A"], ["After a firm presents a minimum required number of years of GIPS-compliant performance, the firm must present an additional year of performance each year, building up to a minimum of:", "5 years of GIPS-compliant performance.", "10 years of GIPS-compliant performance.", "15 years of GIPS-compliant performance.", "B"], ["Which of the following is a violation according to the Standard relating to preservation of confidentiality?", "Members share details relating to former clients with third party service providers.", "Members convey to clients that not all firm-sponsored resources may be appropriate for communicating confidential information.", "When allowed under the law, members share confidential client information to defend themselves in a CFA Institute PCP investigation.", "A"], ["Which of the following is a recommended procedure for compliance with the standard relating to responsibilities of supervisors? Once a violation from an employee is discovered, a supervisor should:", "Avoid increasing supervision of the wrongdoer until the investigation is concluded.", "Place appropriate limitations on the wrongdoer pending the outcome of the investigation.", "Rely on an employee's written assurance that the wrongdoing will not reoccur.", "B"], ["Dimitri Kuznetsov, CFA, holds shares of Barnikoff Limited and Matric Ventures in all client portfolios. Barnikoff proposes to change its financial year-end; Matric proposes to enter into a high-risk venture. Kuznetsov would least likely violate Standard III(A) if he votes:", "with management.", "only the Matric proxy.", "only the Barnikoff proxy.", "B"], ["Umi Grabbo, CFA, and several employees begin development of their own hedge fund without informing her supervisor. According to the Standards of Practice Handbook, Grabbo should most likely address which Standard immediately?", "Priority of transactions.", "Avoid or disclose conflicts.", "Additional compensation arrangements.", "C"], ["Which of the following member actions violates the Standard relating to misconduct? Action 1: Declaring personal bankruptcy. Action 2: Allocating for her personal account shares from an oversubscribed IPO suitable for her firm's clients.", "Action 1 only.", "Action 2 only.", "Both Action 1 and Action 2.", "B"], ["According to the Standards, a member who manages an index fund is:", "only required to invest in a manner consistent with the fund's stated mandate.", "only required to determine the suitability of the fund for those who invest in the fund.", "both required to invest in a manner consistent with the fund's stated mandate and to determine the suitability of the fund for those who invest in the fund.", "A"], ["Which of the following is NOT among the recommended procedures for compliance with the Standard relating to performance presentation?", "Excluding terminated accounts as part of the performance history.", "Presenting performance of the weighted composite of similar portfolios.", "Considering the sophistication of the audience to whom a performance presentation is addressed.", "A"], ["Holly Baker, CFA is explaining CFA Institute Code of Ethics to a client. Which of the following statements could Baker make to most likely reflect disciplinary sanctions the CFA Institute may impose? Sanctions include:", "fines for violations.", "revocation of membership.", "banishment from the industry.", "B"], ["Lawrence Hall, CFA, utilized his and Bishop's research to write a report but did not include Bishop's name because he changed Bishop's conclusion. Did Hall most likely violate any CFA Institute Standards?", "No.", "Yes, with respect to misrepresentation.", "Yes, with respect to diligence and reasonable basis.", "B"], ["According to the Standard relating to referral fees, members should disclose to employers the amount and nature of compensation received at least:", "monthly.", "quarterly.", "annually.", "B"], ["In the absence of regulatory guidance, CFA Institute recommends that members maintain their investment research records for at least:", "3 years.", "5 years.", "7 years.", "C"], ["Dennis Chung, CFA, tells clients: 'ATC is scheduled to announce a substantial stock repurchase program and its stock price will increase significantly.' Chung has violated the Standard(s) relating to:", "misrepresentation only.", "communication with clients and prospective clients only.", "misrepresentation as well as communication with clients and prospective clients.", "C"], ["Which of the following member actions most likely violates the Standard relating to fair dealing?", "Providing premium service levels to clients who pay higher fees.", "Selectively offering different service levels to prospective clients.", "Using different communication methods to recommend investments to clients.", "B"], ["Zhao Xuan, CFA, is convinced that Green Run's reported 50% increase in net income is fictitious. According to the CFA Institute Code of Ethics and Standards, the LEAST appropriate action for Zhao is to:", "report her suspicions to Green Run's management.", "do nothing until other analysts support her analysis.", "recommend that her clients sell their Green Run shares immediately.", "B"], ["According to the GIPS standards, a verification report confirms all of the following EXCEPT whether:", "specific composite presentations are accurate.", "a firm has complied with all firm-wide composite construction requirements.", "processes and procedures are designed to calculate and present performance results in compliance with the GIPS standards.", "A"], ["Shruti Kurup, CFA, tells clients of her departure and cites lack of confidence in leadership as the reason, and says more employees are likely to leave soon. Kurup has violated the Standard(s) relating:", "only to loyalty.", "only to communication with clients and prospective clients.", "both to loyalty and to communication with clients and prospective clients.", "C"], ["Anjuman Khan, CFA, accepts monetary compensation and two football tickets from clients, but discloses only the monetary compensation to her supervisor by text over the holiday weekend. Has Khan violated the Standard relating to independence and objectivity?", "No.", "Yes, because she failed to notify her supervisor of her acceptance of the tickets.", "Yes, because she failed to get prior approval for accepting the monetary compensation.", "B"], ["According to the recommended procedures for compliance with the Standard relating to additional compensation arrangements, a member should make an immediate written report specifying any proposed compensation arrangements to:", "her supervisor only.", "her firm's compliance officer only.", "both to her supervisor and to her firm's compliance officer.", "C"], ["Brian Chan, CFA, CEO of Wholecare Pharmaceutical, posts on social media that WPC is launching a new medicine for heart disease, knowing it will positively impact WPC's stock price. Chan has violated the Standard(s) relating:", "only to misrepresentation.", "only to market manipulation.", "both to misrepresentation and to market manipulation.", "B"], ["Which of the following risk premiums compensates investors for the risk of loss relative to an investment's fair value if the investment needs to be converted to cash quickly?", "Liquidity premium.", "Inflation premium.", "Maturity premium.", "A"], ["Which of the following is most likely to signal manipulation of financial reporting for a large, diversified company?", "A history of large expense items classified as unusual.", "Operating margins out of line with other diversified companies.", "Changes in accounting policies to reflect new accounting standards.", "B"], ["An analyst gathers the following information about a company:\n\nROE: 6%\nROA: 4%\nAverage total assets: €600,000", "Based only on this information, average total liabilities are:", "€200,000.", "€300,000.", "€400,000.", "B"], ["Which of the following stakeholders in a mature company would most likely tolerate higher risks in return for higher return potential?", "Debtholders.", "Shareholders.", "Independent directors.", "B"], ["The term Big Data refers to:", "structured data only.", "unstructured data only.", "both structured and unstructured data.", "C"], ["Which of the following is most likely a motivation for leasing long term rather than purchasing a high-value asset?", "Reduced exposure to obsolescence risk.", "Not having to recognize an asset on the balance sheet.", "Not having to recognize a liability on the balance sheet.", "A"], ["An analyst gathers the following information (in € millions) about a firm:\n\nTotal revenue: 100\nTotal variable costs: 75\nTotal fixed costs: 40", "All else being equal, the firm will most likely:", "operate in the long-run.", "exit the market in the short-run.", "operate in the short-run and exit the market in the long-run.", "C"], ["Which of the following is most likely a drag on a company's liquidity position?", "Reduced credit lines.", "Uncollected receivables.", "Early payment to suppliers.", "B"], ["The bootstrap resampling method:", "guarantees that all items will appear in the resamples.", "relies on an analytical formula to estimate the distribution of the estimators.", "mimics the random sampling process by treating the randomly drawn sample as if it were the population.", "C"], ["Which of the following companies would most likely have the highest level of information asymmetry between managers and shareholders? Companies:", "selling simple products.", "operating in multiple markets and geographies.", "with higher levels of institutional ownership and free float.", "B"], ["An analyst runs a simple linear regression using 35 months of data:\n\nIntercept: Coefficient = −0.5778, SE = 0.3479\nInflation rate: Coefficient = 1.1300, SE = 0.1806\n\nCritical t-values (1% significance):\nOne-sided left: −2.445 | Right: +2.445 | Two-sided: ±2.733", "At a 99% confidence level, the analyst should reject the null hypothesis that:", "the intercept is zero.", "the slope is less than or equal to 0.75.", "there is no linear relationship between the country's inflation rate and short-term interest rate.", "B"], ["An analyst gathers the following data about an economy:\nReal trend growth rate: 0.5%\nCentral bank's policy rate: 1.5%", "If monetary policy is expansionary, the central bank's inflation target is:", "less than 1.0%.", "equal to 1.0%.", "greater than 1.0%.", "C"], ["Which category of financial ratios is most likely used to measure how efficiently a company performs day-to-day tasks?", "Activity.", "Liquidity.", "Solvency.", "A"], ["Deferred tax assets could arise when:", "an asset's tax base exceeds its carrying amount.", "an asset's carrying amount exceeds its tax base.", "taxes recognized on the income statement exceed income taxes payable.", "A"], ["A positively skewed unimodal distribution of returns most likely has:", "a long tail on the left side.", "a mode that is less than its mean.", "frequent small gains and a few extreme losses.", "B"], ["Sampling error is the difference between the observed value of a statistic and the:", "mean of the sample.", "quantity it is intended to estimate.", "observed value of the random variable.", "B"], ["A sign of expansionary fiscal policy is a(n):", "increase in indirect taxes.", "increase in the budget deficit.", "reduction in reserve requirements for banks.", "B"], ["The redistribution of income and wealth is most directly associated with:", "fiscal policy only.", "monetary policy only.", "both fiscal policy and monetary policy.", "A"], ["Under the revaluation model, an initial revaluation that increases the carrying value of an asset most likely results in a:", "higher net profit margin.", "lower financial leverage ratio.", "higher total asset turnover ratio.", "B"], ["Company data for the fiscal year ended 31 December:\n\nNet income: $3,100,000\nCash dividends on common stock: $775,000\nCash dividends on preferred stock: $500,000\nCommon shares outstanding on 1 January: 1,000,000\nA 2-for-1 stock split occurred on 1 July.", "Basic earnings per share for the fiscal year is closest to:", "$0.91.", "$1.30.", "$1.73.", "B"], ["If the average weekly hours worked in manufacturing decrease and unit labor costs remain the same, this most likely indicates future economic:", "decline.", "stability.", "growth.", "A"], ["The role of lender of last resort in an economy is most likely fulfilled by the:", "government.", "central bank.", "banking system.", "B"], ["Financial market information:\n\nEUR/USD spot exchange rate: 0.9876\n180-day USD risk-free rate: 1.00%\n180-day EUR risk-free rate: 1.20%\n\nEUR/USD is the amount of EUR per 1 USD.", "The 180-day EUR/USD forward exchange rate is closest to:", "0.98662.", "0.98858.", "0.98956.", "A"], ["Company's 3-year construction contract (in millions):\n\nContract price: 108\nExpected total costs: 70\nActual costs incurred in Year 1: 28\nBonus for on-time completion: 6", "Assuming it is highly probable that revenue will not be subsequently reversed, revenue (in millions) recognized in Year 1 is most likely:", "0.", "43.2.", "45.6.", "B"], ["For a manufacturing company reporting under US GAAP, which of the following is classified as an operating activity on the statement of cash flows?", "Dividends paid.", "Purchase of treasury stock.", "Purchase of trading securities.", "C"], ["Which of the following would best mitigate an analyst's confirmation bias when forecasting a firm's financial statements?", "Speaking with management of the firm.", "Ignoring information about the firm's competitors.", "Reading the research from analysts with a negative opinion of the firm.", "C"], ["The third quintile corresponds to the:", "40th percentile.", "50th percentile.", "60th percentile.", "C"], ["An inflation-targeting central bank most likely has a medium-term inflation target sufficiently:", "below zero to avoid the risk of deflation but high enough to ensure price stability.", "above zero to avoid the risk of deflation but low enough to ensure price stability.", "above zero to avoid the risk of inflation and high enough to ensure price stability.", "B"], ["A country in fiscal balance with a trade surplus will most likely:", "sell assets to foreigners to reduce the imbalance.", "increase the imbalance by lending to foreign countries.", "have an excess of domestic saving relative to investment spending.", "C"], ["A cooperative country is most likely to have characteristics of both:", "technology exchange and retaliation.", "rules standardization and reciprocation.", "harmonization of tariffs and arbitrary rules.", "B"], ["A common market has a higher degree of economic integration than a(n):", "customs union.", "monetary union.", "economic union.", "A"], ["With respect to intangible assets with indefinite lives reported under the cost model, which of the following must be disclosed?", "Date of revaluation.", "Restrictions on title.", "Amortization methods used.", "B"], ["A decrease in which of the following ratios decreases the cash conversion cycle?", "Payables turnover.", "Inventory turnover.", "Receivables turnover.", "A"], ["In periods of rising prices and increasing inventory quantities, using LIFO instead of FIFO most likely increases:", "total assets.", "cost of goods sold.", "days of inventory on hand.", "B"], ["Costs incurred during the development phase that are related to internally generated, identifiable intangible assets:", "must be expensed.", "must be capitalized.", "can be capitalized if certain criteria are met.", "C"], ["Which of the following is an assumption of Modigliani and Miller's propositions regarding capital structure?", "Investors have homogeneous expectations.", "Investors can borrow and lend at a zero interest rate.", "Financing decisions depend on investment decisions.", "A"], ["Annual returns on a stock:\nYear 1: 5%, Year 2: −2%, Year 3: 3%, Year 4: 8%\nAnnual target return: 4%", "If the annual target return is 4%, the sample target semideviation of returns is closest to:", "3.0%.", "3.5%.", "4.2%.", "B"], ["In monopolistically competitive markets, economic profits:", "cannot be earned.", "can be earned in the short run only.", "can be earned in the short run and in the long run.", "B"], ["In geopolitics, cabotage is best described as a:", "financial tool.", "multi-tool approach.", "national security tool.", "C"], ["Company current assets (in £ millions):\n\nCash: 800\nShort-term marketable securities: 400\nReceivables: 200\nInventories: 700\nCurrent liabilities: £500 million", "The quick ratio is:", "2.4.", "2.8.", "4.2.", "B"], ["Which of the following capital investments would most likely be classified as a going concern project?", "Upgrade of older production facilities to reduce costs.", "Modification of production processes to comply with new regulation.", "Funding research on the creation of new products based on an innovative technology.", "A"], ["Year-end prices for a non-dividend-paying stock:\nYear 1: €6, Year 2: €10, Year 3: €12\n(Purchased at end of Year 1, sold at end of Year 3)", "Which of the following returns is the largest?", "The geometric mean annual return.", "The arithmetic mean annual return.", "The two-year holding period return.", "C"], ["A bank account has a stated annual interest rate of 3.5% with quarterly compounding. If the current value is $100,000, the future value two years from now is closest to:", "$107,123.", "$107,207.", "$107,218.", "C"], ["The static trade-off theory of capital structure most likely considers:", "agency costs of equity.", "information asymmetry.", "the tax shield provided by debt.", "C"], ["A company is prohibited from reversing the impairment loss on a long-lived asset classified as:", "held for use under IFRS.", "held for use under US GAAP.", "held for sale under US GAAP.", "B"], ["When testing a hypothesis, the power of a test is best described as the:", "same as the level of significance of the test.", "probability of rejecting a true null hypothesis.", "probability of correctly rejecting the null hypothesis.", "C"], ["Information about three markets:\n\nMarket 1: Many sellers, Non-price competition = None\nMarket 2: Few sellers, Non-price competition = Strong\nMarket 3: Many sellers, Non-price competition = Strong", "Which market is most likely monopolistically competitive?", "Market 1.", "Market 2.", "Market 3.", "C"], ["If inventory that was written down in a previous reporting period subsequently increases in value, the amount of the original write-down can be reversed under:", "IFRS only.", "US GAAP only.", "both IFRS and US GAAP.", "A"], ["Goodness of fit measures derived from analysis of variance (ANOVA) data most likely include the:", "coefficient of variation.", "regression coefficients.", "standard error of the estimate.", "C"], ["If an auditor is experiencing some scope limitation, but can still issue an opinion, the auditor most likely issues a(n):", "qualified opinion.", "unqualified opinion.", "disclaimer of opinion.", "A"], ["Forecasted results for a company:\n\nNet profit margin: 18%\nDepreciation: $6 million\nDecrease in working capital: $1.5 million\nIncrease in fixed capital: $6 million\nMarket share: 9%\nTotal industry sales: $3.3 billion (no interest expense)", "The company's forecasted free cash flow to the firm is closest to:", "$43 million.", "$52 million.", "$55 million.", "B"], ["With respect to business models, network effects can apply to:", "internet-based businesses only.", "non-internet-based businesses only.", "both internet-based businesses and non-internet-based businesses.", "C"], ["Compared to shareholders in public companies, shareholders in private companies typically:", "have longer holding periods.", "can sell their shares more easily.", "have less control over management.", "A"], ["When calculating cash paid to suppliers based on income statement and balance sheet data, cost of sales is adjusted for changes in:", "inventory only.", "accounts payable only.", "both inventory and accounts payable.", "C"], ["Cash flows and returns for a new account:\n\nYear 1: Beginning-of-year cash inflow = €10,000; Outflow = €0; Return = −22%\nYear 2: Beginning-of-year cash inflow = €0; Outflow = €1,000; Return = 24%", "The account balance at the end of the second year is closest to:", "€8,432.", "€9,672.", "€10,912.", "A"], ["Company information:\n\nBefore-tax cost of debt: 5%\nMarginal tax rate: 30%\nCost of equity: 8%\nTarget debt-to-equity ratio: 50%", "The company's WACC is equal to:", "5.75%.", "6.50%.", "7.00%.", "B"], ["Three companies in the same industry at different lifecycle stages:\n\nCompany 1: Revenue $10M→$11M→$9M, Debt/Capital 0%\nCompany 2: Revenue $30M→$36M→$44M, Debt/Capital 8%\nCompany 3: Revenue $100M→$95M→$97M, Debt/Capital 25%", "The company in the growth phase of its lifecycle is most likely:", "Company 1.", "Company 2.", "Company 3.", "B"], ["Electronics manufacturing company data (in € thousands):\n\nYear 2 / Year 1\nCost of sales: 1,250 / 1,000\nCost of inventory: 225 / 375\nNet realizable value of inventory: 300 / 325", "The inventory turnover (based on average inventory) for Year 2 is closest to:", "4.0.", "4.2.", "4.5.", "B"], ["If the cost of capital exceeds the return on invested capital, shareholder value will:", "decrease.", "remain the same.", "increase.", "A"], ["Portfolio information:\n\nEquities: Weight=45%, Expected Return=16%\nMortgages: Weight=25%, Expected Return=12%\nCash and equivalents: Weight=30%, Expected Return=2%", "The expected return on the portfolio is closest to:", "8.2%.", "10.0%.", "10.8%.", "B"], ["The cost of which source of capital most likely requires adjustment for taxes in the calculation of a firm's weighted average cost of capital?", "Bonds.", "Common stock.", "Preferred stock.", "A"], ["Risks associated with supplier relationships are typically mitigated through:", "contracts.", "regulation.", "board representation.", "A"], ["In the year of a change in accounting policy, comparability of the presented financial statements is best with:", "prospective application.", "retrospective application.", "modified retrospective application.", "B"], ["Which of the following statements is most accurate? Cryptocurrencies:", "exhibit low volatility.", "have no limits on the total amount of currency that may be issued.", "allow transactions between parties without the need for an intermediary.", "C"], ["Private equity funds invest:", "in privately held companies only.", "in publicly traded companies only.", "both in privately held and in publicly traded companies.", "C"], ["If a bond has a modified duration of 7.1 and convexity of 49.2, the percentage change in price for a 50 basis point increase in yield is closest to:", "-3.61%.", "-3.49%.", "-1.65%.", "B"], ["Which of the following hedge fund strategies emphasizes a top-down approach?", "Macro.", "Equity hedge.", "Event-driven.", "A"], ["Which of the following most likely exhibits negative convexity?", "A callable bond.", "A putable bond.", "An option-free bond.", "A"], ["The risk-free rate is 5%, and the market risk premium is 8%. If the beta of TRL Corp. is 1.5, based on CAPM, the expected return of TRL's stock is closest to:", "9.5%.", "15.5%.", "17.0%.", "C"], ["Company's common stock and market information:\n\nDividend per share (D₀): $3.00\nDividend payout ratio: 25%\nEquity beta: 1.6\nExpected risk-free rate: 3.5%\nExpected market rate of return: 9.0%\nROE: 7.0%", "Using the Gordon growth model, the stock's intrinsic value is closest to:", "$24.96.", "$42.55.", "$44.79.", "C"], ["A security's market value and intrinsic value are most likely the same if:", "the market is efficient.", "active investment is profitable.", "the security's cash flows are complex.", "A"], ["All else being equal, which of the following indexes requires frequent rebalancing to adjust for price changes in the underlying securities?", "Price-weighted index.", "Equal-weighted index.", "Market-capitalization-weighted index.", "B"], ["Preferred shares information:\n\nPar value: $100.00\nAnnual dividend per share: $6.00\nCurrent market price: $85.71\nMaturity: 10 years", "If the required rate of return is 7% and the marginal tax rate is 30%, the preferred shares are most likely:", "undervalued.", "fairly valued.", "overvalued.", "A"], ["Compared to a European waterfall, an American waterfall is:", "less advantageous to the general partner.", "equally advantageous to the general partner.", "more advantageous to the general partner.", "C"], ["Which of the following is most likely a factor that results in different credit ratings for debt issued by a subsidiary and debt issued by its parent company?", "Differences in duration.", "Structural subordination.", "Cross-default provisions.", "B"], ["Which of the following types of investors most likely has a long-term investment time horizon and high liquidity needs?", "Endowments.", "Life insurance companies.", "Defined benefit pension plans.", "B"], ["In a semi-strong-form efficient market, which of the following is reflected in prices?", "Past market data only.", "Private information only.", "Both past market data and private information.", "A"], ["With respect to securitization, time tranching is best described as the redistribution of:", "default risk.", "inflation risk.", "prepayment risk.", "C"], ["The mental discomfort that occurs when new information conflicts with previously held beliefs is best described as:", "regret aversion.", "mental accounting.", "cognitive dissonance.", "C"], ["According to behavioral finance, observed overreaction in securities markets most likely occurs because of:", "loss aversion.", "disposition effect.", "gambler's fallacy.", "A"], ["Portfolio and market information:\n\nPortfolio: Return=11%, Std Dev=4%, Beta=1.2\nMarket: Return=10%, Std Dev=3%, Beta=1.0", "If the risk-free rate is 3%, Jensen's alpha for the portfolio is:", "-4.0%.", "-0.4%.", "0.4%.", "B"], ["Which of the following is LEAST likely a component of yield spread?", "Taxation.", "Credit risk.", "Expected inflation rate.", "C"], ["In comparison to the makeup of fixed-income indexes, the constituent securities of equity indexes are best described as:", "more liquid.", "harder to price.", "drawn from a larger universe.", "A"], ["Company fiscal year data (in £ millions):\n\nNet income: 1,500\nAverage total assets: 11,500\nAverage shareholders' equity: 7,500", "If the dividend payout ratio is 45%, the sustainable growth rate is closest to:", "7%.", "9%.", "11%.", "C"], ["Which of the following is most accurate? A derivative:", "transforms risk of the underlying.", "derives its value from an underlying.", "derives its value based on the principle that arbitrage opportunities exist in the market.", "B"], ["Investor information:\n\nRisk-free rate per annum: 1.50%\nExercise price: $9.75\n9-month call option price: $3.25", "According to put-call-forward parity, the price of a 9-month fiduciary call is closest to:", "$12.89.", "$13.00.", "$13.11.", "A"], ["Compared to trading an underlying directly, trading a derivative on the underlying most likely involves:", "higher transaction costs.", "a lower degree of leverage.", "a smaller amount of required capital.", "C"], ["During its life, the value of a forward contract is most likely equal to the price of the underlying minus the price of the:", "forward.", "forward, discounted over the original term of the contract.", "forward, discounted over the remaining term of the contract.", "C"], ["All else being equal, a bond issuer is most likely to be evaluated as less creditworthy than its peers if it has a:", "lower debt/EBITDA and a lower EBITDA/interest expense.", "lower debt/EBITDA and a higher EBITDA/interest expense.", "higher debt/EBITDA and a lower EBITDA/interest expense.", "C"], ["Which of the following is most likely considered an investor constraint in an investment policy statement?", "Time horizon.", "Risk tolerance.", "Return requirement.", "A"], ["A lifecycle fund will most likely:", "maintain a fixed asset allocation of stocks and bonds.", "use tactical asset allocation to capture market opportunities.", "change the asset allocation as the fund nears its target date.", "C"], ["Measuring the duration of a bond portfolio as a weighted average of the individual bond durations:", "is difficult to use as a measure of interest rate risk.", "assumes the yield curve shifts in a parallel manner.", "assumes the yield curve shifts in a non-parallel manner.", "B"], ["Analytical duration:", "assumes that government bond yields and spreads are independent variables.", "is lower than empirical duration for high-yield bonds under market stress scenarios.", "uses statistical methods and historical bond prices to derive the price-yield relationship for bond portfolios.", "A"], ["Which of the following best describes the process of changing the distribution of risk outcomes by using derivatives?", "Risk shifting.", "Risk transfer.", "Risk avoidance.", "A"], ["All else being equal, for option-free bonds, the percentage price change for a given yield change is most likely greater for a bond:", "with a high coupon than for a bond with a low coupon.", "with a short time-to-maturity than for a bond with a long time-to-maturity.", "when the market discount rate goes down than when the market discount rate goes up.", "C"], ["A swap is similar to a series of implicit forward contracts with each contract created at a price that corresponds to the:", "floating rate on the swap at each payment date.", "net cash flows on the swap at each payment date.", "fixed price of the swap with payments made at the same dates as the series of forward contracts.", "C"], ["The capital asset pricing model (CAPM) is based on the assumption that investors are risk:", "averse.", "neutral.", "seeking.", "A"], ["Based on put-call parity, an investor holding a long position in an underlying asset most likely creates a risk-free position by:", "only selling a call.", "selling a put and buying a call.", "selling a call and buying a put.", "C"], ["All else being equal, which of the following bonds most likely has the lowest price?", "Putable bond.", "Callable bond.", "Option-free bond.", "B"], ["Portfolio information:\n\nSecurity A: Standard Deviation = 16%, Portfolio Weight = 60%\nSecurity B: Standard Deviation = 27%, Portfolio Weight = 40%\nPortfolio's standard deviation of returns: 20.4%", "The correlation between the securities is closest to:", "-1.", "0.", "1.", "C"], ["Industry classification systems are developed by:", "commercial entities only.", "governmental agencies only.", "both commercial entities and government agencies.", "C"], ["Using the one-period binomial option pricing model, the value of an option will be affected by:", "the volatility of the underlying.", "a measure of investor risk aversion.", "the probabilities of up and down moves in the underlying.", "A"], ["An analyst estimates the value of an option-free bond at 92.733 to yield 11%. The value is 94.474 for a 60 bps decrease in yield and 91.041 for a 60 bps increase in yield. The approximate modified duration of the bond is closest to:", "1.85.", "3.09.", "6.17.", "B"], ["For an option-free bond, effective duration:", "will be equal to modified duration if the yield curve is absolutely flat.", "measures interest rate risk for both parallel and non-parallel benchmark yield curve shifts.", "is an estimate of the percentage change in bond price given a change in the bond's yield to maturity.", "A"], ["Securities dealers most likely:", "arrange IPOs.", "provide liquidity.", "securitize assets.", "B"], ["Forward curve for one-year rates:\n\n0y1y: 1.20%\n1y1y: 1.88%\n2y1y: 2.46%\n3y1y: 2.93%", "The price of a three-year, 5% annual-pay bond is closest to:", "107.42.", "109.18.", "111.73.", "B"], ["A company's cost of equity is a proxy for the:", "company's intrinsic value.", "company's accounting return on equity.", "minimum required rate of return of investors in the company's equity.", "C"], ["At initiation, the price of a forward contract is most likely:", "less than the value of the forward contract.", "equal to the value of the forward contract.", "greater than the value of the forward contract.", "B"], ["Which of the following statements about private debt is most accurate? Mezzanine debt is:", "funding provided to start-up or early-stage companies generating negative cash flow.", "subordinated to senior secured debt but senior to equity in the borrower's capital structure.", "a hybrid loan structure that combines different tranches of secured and unsecured debt into a single loan.", "B"], ["Enterprise value is most useful when:", "determining a measure of dividend-paying capacity.", "no market quotations for the company's debt are available.", "comparing companies with significant differences in capital structure.", "C"], ["Which real estate sector is the largest globally by market value?", "Industrial.", "Residential.", "Commercial.", "B"], ["Management fees for private equity funds are most likely based on:", "invested capital.", "committed capital.", "assets under management.", "B"], ["Index composed of three securities:\n\nSecurity 1: Beginning price=$50, End price=$60, Shares=300\nSecurity 2: Beginning price=$75, End price=$95, Shares=350\nSecurity 3: Beginning price=$60, End price=$65, Shares=400", "If the number of constituent shares is constant, the weighting method that results in the highest return is:", "price weighting.", "equal weighting.", "value weighting.", "A"], ["A greenfield infrastructure investment is best described as an asset that has:", "yet to be constructed.", "already been constructed.", "reached the end of its useful life.", "A"], ["Which of the following drivers of timberland returns is not applicable to farmland?", "Land prices.", "Commodity prices.", "Harvesting flexibility.", "C"], ["An investor buys a stock for $108 on margin by posting 40% of the initial stock price as equity. If the maintenance margin requirement is 20%, a margin call first occurs when the price falls below:", "$64.80.", "$81.00.", "$86.40.", "B"], ["Information about three bonds:\n\nBond 1: Payment Frequency=Monthly, Principal Amortization=Yes\nBond 2: Payment Frequency=Quarterly, Principal Amortization=Yes\nBond 3: Payment Frequency=Monthly, Principal Amortization=No", "All else being equal, the bond with the greatest reinvestment risk is most likely:", "Bond 1.", "Bond 2.", "Bond 3.", "A"], ["Which of the following statements regarding alternative asset co-investing is correct?\nStatement 1: The investor invests in assets indirectly through a fund.\nStatement 2: The investor possesses rights to invest directly in the same assets.", "Statement 1 only.", "Statement 2 only.", "Both Statement 1 and Statement 2.", "B"], ["A European call option has an exercise price of $80 and an option premium of $12. The price of the underlying is $75. The intrinsic value of the option is:", "0.", "5.", "7.", "A"], ["The free-cash-flow-to-equity model:", "excludes net borrowings.", "can be used to value non-dividend paying stocks.", "requires an estimate of future dividend payments.", "B"], ["If an investor buys a 5-year, 8% annual-pay bond for 96.11, the bond's yield-to-maturity is closest to:", "7.33%.", "8.32%.", "9.00%.", "C"], ["In an investment policy statement, which of the following investment constraints most likely outlines a client's preference for environmentally sustainable investments?", "Time horizon.", "Unique circumstances.", "Legal and regulatory factors.", "B"], ["If the current share price is $60, a trader who wants to purchase the share at $58 or less will most likely place a:", "limit order.", "market order.", "stop-buy order.", "A"], ["Sponsored depository receipts are most likely subject to:", "less reporting requirements than unsponsored ones.", "the same level of reporting requirements as unsponsored ones.", "greater reporting requirements than unsponsored ones.", "C"], ["Which of the following is best classified as a nonsystematic risk?", "Political uncertainty.", "Widespread natural disasters.", "Bankruptcy of a major automobile producer.", "C"], ["Four years ago, a 5% coupon, annual-pay bond with a 10-year maturity was issued at par. If the current market discount rate is 7%, the price of the bond per 100 of par value is closest to:", "90.34.", "90.47.", "93.23.", "B"], ["The price of a fixed-rate corporate bond with an annual modified duration of 7.15 increases from 92 to 97 per 100 of par value. If the government benchmark yield increases by 5 bps, the estimated decline in the spread over the benchmark yield is closest to:", "71 bps.", "76 bps.", "81 bps.", "C"], ["Commercial paper with a face value of $25,000,000 and a term of 120 days was issued 55 days ago. If the current market value is $24,855,000, the implied discount rate assuming a 360-day year is closest to:", "3.21%.", "3.23%.", "3.80%.", "A"], ["Hedge fund information:\n\nBeginning-of-year AUM: $100 million\nHigh-water mark: $110 million\nAnnual return before fees: 20%\nManagement fee (end-of-year AUM before fees): 1%\nIncentive fee: 10%\nHurdle rate: 5%", "If incentive fees are based on returns in excess of the hurdle rate and are calculated independent of management fees, the investor's net return for the year is:", "17.30%.", "17.80%.", "18.35%.", "C"], ["The capital allocation line is best described as combinations of a risky portfolio and the:", "risk-free asset.", "market portfolio.", "minimum variance portfolio.", "A"], ["Which of the following most likely provides the greatest redemption flexibility?", "Hedge funds.", "Private equity funds.", "Funds of hedge funds.", "C"], ["Hedge fund established at beginning of Year 1:\n\nAUM beginning Year 1: $100 million\nAUM end Year 1: $125 million\nAUM end Year 2: $110 million\nManagement fee (end-of-year AUM): 2%\nPerformance fee above high-water mark (net of fees): 20%", "The cumulative fee (in $ millions) earned by the hedge fund manager for the two years is closest to:", "5.2.", "7.2.", "9.2.", "C"], ["All else being equal, if a company declares a dividend of $1 per share, the company's share price is most likely to decrease by $1 on the:", "declaration date.", "ex-dividend date.", "holder-of-record date.", "B"], ["A call option with an exercise price of $38 was bought for $3. The price of the underlying increases from $42 to $47. At expiration, the payoff to the call buyer is equal to:", "$4.", "$6.", "$9.", "C"], ["Arbitrage is best described as an opportunity to earn:", "risk-free returns with no investment capital.", "risk-free returns with large amounts of investment capital.", "abnormal returns applying an absolute valuation methodology.", "A"], ["In the event of a default, which of the following mortgage structures exposes a lender to the greatest risk of loss?", "Interest-only, recourse loan.", "Fully amortizing, recourse loan.", "Balloon payment, non-recourse loan.", "C"], ["Contracts entered into at one point in time that require both parties to engage in a transaction at a later point in time on terms agreed upon at the start are called:", "options contracts.", "contingent claims.", "forward commitments.", "C"], ["A holder of a put option is best described as having a:", "short exposure to the option contract.", "long exposure to the underlying instrument.", "short exposure to the underlying instrument.", "C"], ["A risk-neutral investor most likely seeks to maximize:", "both risk and return.", "return irrespective of risk.", "return for a given level of risk.", "B"], ["Pricing power is most likely lowest in markets characterized by:", "strong customer loyalty.", "high barriers to firm entry.", "low switching costs for customers.", "C"], ["The value of a European call option is inversely related:", "only to the risk-free interest rate.", "only to the dividends paid by the underlying stock.", "both to the risk-free interest rate and to the dividends paid by the underlying stock.", "B"], ["In which of the following stages of the enterprise risk management process will a company's board most likely identify shortfalls within the company that would cause it to fail to achieve critical goals? When:", "monitoring and mitigating risk.", "making the risk tolerance decision.", "allocating capital to risky activities.", "B"], ["The underlying assets of an asset-backed security are directly owned by the:", "originator.", "special purpose vehicle.", "investors in the asset-backed securities.", "B"], ["The earnings multiplier for a stock increases with a decrease in the:", "expected dividend growth rate.", "expected dividend payout ratio.", "estimated required rate of return on equity.", "C"], ["With respect to portfolio construction, combining long-term capital market expectations with the objectives and constraints from the investment policy statement determines a portfolio's:", "security selection.", "tactical asset allocation.", "strategic asset allocation.", "C"], ["The central bank funds market is most likely used by:", "central banks looking to obtain short-term funding.", "lenders of last resort to transfer funds between each other.", "banks to manage the imbalances in their required reserves.", "C"], ["Consider a put option selling for $4 in which the exercise price is $58. What is the profit for a put buyer if the price of the underlying at expiration is $57?", "-$3.", "$1.", "$3.", "A"], ["In an equally weighted portfolio of many assets, an increase in the correlation between the assets' returns most likely decreases the portfolio's:", "overall risk.", "expected return.", "diversification benefit.", "C"], ["Which of the following is most likely considered an affirmative covenant?", "A minimum interest coverage ratio.", "A limit on the level of share buybacks.", "What the issuer will do with the proceeds of a bond issue.", "C"], ["An investor purchased shares on margin at €50 per share using a leverage ratio of 2.0. If the shares are sold for €70 per share, the return on the investor's equity investment is:", "40%.", "80%.", "180%.", "B"], ["Trader's order book for a stock:\n\nAsk side (sell orders):\n42.76 → 6,800 shares\n42.68 → 9,100 shares\n42.64 → 6,600 shares\n42.60 → 2,400 shares\n\nBid side (buy orders):\n42.56 → 2,000 shares\n42.52 → 4,000 shares\n42.44 → 7,100 shares\n42.42 → 5,000 shares", "She receives an order to sell 9,000 shares with a limit price of CHF 42.52. The average price (in CHF) at which the trades will be executed is closest to:", "42.52.", "42.50.", "42.53.", "C"], ["The two-fund separation theorem states that all investors will hold a combination of the:", "risk-free asset and the optimal risky portfolio.", "risk-free asset and the global minimum-variance portfolio.", "optimal risky portfolio and the global minimum-variance portfolio.", "A"], ["With respect to an investment policy statement, a maximum acceptable level of tracking risk is best described as a(n):", "relative risk objective.", "absolute risk objective.", "systematic risk objective.", "A"], ["Which of the following least likely forms the basic structure for enforcement of the CFA Institute Professional Conduct Program?", "Bylaws", "Rules of Procedure", "Board of Governors", "C"], ["Who is most likely responsible for claiming and maintaining compliance with the CFA Institute Global Investment Performance Standards (GIPS)?", "The firm claiming compliance", "Independent verification firms", "The performance measurement department", "A"], ["To be consistent with the Standard relating to diligence and reasonable basis, members who develop quantitative models should:", "only understand the technical aspects of the products they provide to clients.", "only ensure the models incorporate a wide range of possible input expectations.", "both understand the technical aspects of the products they provide to clients and ensure the models incorporate a wide range of possible input expectations.", "C"], ["A member who is an investment advisor receives a large unsolicited trade request from a client that is not aligned with the client's investment objectives. Which of the following actions by the member is consistent with the Standard relating to suitability? The member:", "immediately executes the trade.", "reduces the size of the requested investment and executes the trade.", "discusses the investment with the client, adjusts the client's investment policy statement, and executes the trade.", "C"], ["Victoria Christchurch, CFA, is a management consultant currently working with a financial services firm interested in curtailing its high staff turnover, particularly amongst CFA charterholders. In recent months, the company lost 5 of its 10 most senior managers, all of whom have cited systemic unethical business practices as the reason for their leaving. To curtail staff turnover by encouraging ethical behavior, it would be least appropriate for Christchurch to recommend the company to do which of the following?", "Implement a whistleblowing policy.", "Encourage staff retention with increased benefits.", "Create, implement, and monitor a corporate code of ethics", "B"], ["Vishwanath Reddy, CFA, is the CEO of a brokerage firm that offers regular and premium services to clients. Clients can avail premium services paying a higher fee or by making referrals. Reddy does not disclose the referral fee arrangement because prospective clients who are referred to the firm are typically friends of existing clients. Reddy has violated the Standard(s) relating to:", "fair dealing only.", "referral fees only.", "both fair dealing and referral fees.", "B"], ["The Standard relating to communication with clients and prospective clients requires members to inform which of the following of significant risks and limitations to the investment decision-making process?", "Clients only.", "Prospective clients only.", "Both clients and prospective clients", "C"], ["Diana Fairbanks, CFA, is married to an auditor who is employed at a large accounting firm. When her husband mentions that a computer firm he audits will receive a qualified opinion she thinks nothing of it. Later that week when she reviews a new client account she notices that there are substantial holdings of this computer firm. When she does a thorough internet search for news on the company, she does not find anything about its most recent audit or any other adverse information. Which of the following actions concerning the computer stock should Fairbanks most likely take to avoid violating the CFA Institute Standards of Professional Conduct?", "Take no investment action", "Complete a thorough and diligent analysis of the company and then sell the stock", "Sell the stock immediately as she has a reasonable basis for taking this investment action", "A"], ["According to the Standard relating to responsibilities of supervisors, examining the firm's incentive structure to determine whether the structure encourages profits and returns at the expense of ethically appropriate conduct is the responsibility of:", "the firm only.", "the supervisor only.", "both the firm and the supervisor", "C"], ["According to the Standard relating to additional compensation arrangements, a member must refuse to accept gifts which might reasonably be expected to create a conflict with her employer's interest unless the member obtains:", "verbal consent from her employer only.", "written consent from her employer only.", "written consent from all parties involved.", "C"], ["The recommended procedures for compliance with the Standard relating to misconduct include which of the following?\nProcedure 1: Check references of potential employees to ensure that they are of good character.\nProcedure 2: Disseminate to all employees a list of potential violations by investment personnel and the associated disciplinary sanctions imposed by the firm.", "Only Procedure 1", "Only Procedure 2", "Both Procedure 1 and Procedure 2", "C"], ["Mila Roy, CFA, heads the research division of an investment firm. Roy sends a recommended stock list to all of her firm's clients along with a notification that a detailed report on each stock is available on request. Roy later calls only her premium fee-paying clients and discusses her recommendations. Such additional services are available for all clients willing to pay premium fees and is fully disclosed as part of the client agreement. Has Roy violated the Standards?", "No", "Yes, the Standard relating to fair dealing", "Yes, the Standard relating to communication with clients and prospective clients", "A"], ["Which of the following member actions is a violation of the Standard relating to market manipulation?\nAction 1: Selling large holdings of a small-cap stock with the intent to make a profit despite being aware that the transaction could significantly impact the stock price.\nAction 2: Securing a significant position in a futures contract with the intent to drive the price of the underlying asset downward.\nAction 3: Acquiring a large position in an asset in one market and shorting the same asset in another market with the intent to generate arbitrage profits.", "Action 1.", "Action 2.", "Action 3.", "B"], ["Are both of the following statements consistent with the Standard relating to preservation of confidentiality?\nStatement 1: If permissible under applicable law, members should provide client information when requested by the CFA Institute Professional Conduct Program during an investigation into the member's conduct.\nStatement 2: Members must continue to maintain the confidentiality of client records even after the client relationship has ended.", "Yes.", "No, Statement 1 is not consistent with the Standard.", "No, Statement 2 is not consistent with the Standard.", "A"], ["Rex Leopold, CFA, is a financial advisor. Leopold plans to leave his current employer to start his own competing business. During non-business hours, and before giving notice of termination to his current employer, Leopold undertakes preparations to start his own firm, including procuring the appropriate regulatory approvals, leasing office space, and hiring an office manager. Has Leopold most likely violated the Standards?", "No.", "Yes, the Standard relating to loyalty.", "Yes, the Standard relating to misconduct.", "A"], ["Which of the following statements is accurate?", "Verification eliminates the need for in-depth due diligence of a GIPS-compliant firm for a prospective investor.", "Verification can be performed on a specific composite to ensure accuracy of the composite presentation.", "Verification provides assurance on whether the firm's policies and procedures related to pooled fund maintenance have been implemented on a firm-wide basis.", "C"], ["John Pedersen, CFA, writes in his firm's promotional material:\nStatement 1: 'I passed all three CFA Program examinations in three consecutive years.'\nStatement 2: 'Being a CFA charterholder, I am among the elite of investment professionals.'\nHas Pedersen most likely violated the Standard(s)?", "No", "Yes, by making Statement 1 only", "Yes, by making Statement 2 only", "C"], ["Which of the following statements concerning the Global Investment Performance Standards (GIPS) is most likely correct?", "The GIPS standards eliminate the need for in-depth due diligence by investors.", "Compliance with the GIPS standards enhances the credibility of investment management firms.", "Clients or prospective clients benefit from the GIPS standards because the historical track record of compliant firms is accurate and precise.", "B"], ["A member presents investment performance to potential clients. According to the Standard relating to performance presentation, the member is permitted to omit which of the following in his presentation?", "Only simulated results as a source of performance data.", "Only supporting details of recommendations if the details are made available upon request.", "Both simulated results as a source of performance data and supporting details of recommendations if the details are made available upon request.", "B"], ["According to the Standard relating to loyalty, prudence, and care, members are most likely required to:", "vote all proxies on behalf of clients even if some proxies offer no direct client benefit.", "avoid the use of soft dollars unless the services purchased have corresponding benefit for the client.", "consider each investment based solely on its characteristics, independently of other portfolio assets.", "B"], ["Shika Agarwal is a Level I candidate in the CFA program. Immediately after taking the exam, Agarwal posts in a social media group for CFA candidates arguing that the move to computer-based testing would have an adverse impact on the quality of the CFA program. She also states how surprised she was that the exam did not have quantitative questions on portfolio management. Has Agarwal violated the Standards?", "No.", "Yes, by stating that the exam did not have quantitative questions on portfolio management.", "Yes, by arguing that the move to computer-based testing would have an adverse impact on the quality of the CFA program.", "B"], ["Solomon Sulzberg, CFA, is a research analyst at Blue Water Management. Sulzberg's recommendations typically go through a number of internal reviews before they are published. In developing his recommendations, Sulzberg uses a model developed by a quantitative analyst within the firm. Sulzberg made some minor changes to the model but retained the primary framework. In his reports, Sulzberg attributes the model to both the quantitative analyst and himself. Before the internal reviews of his reports were completed, Sulzberg buys shares in one of the companies. After the internal review is complete he fails to recommend the purchase of the stock to his clients and erases all of his research related to this company. Sulzberg least likely violated the CFA Institute Code of Ethics and Standards of Professional Conduct related to:", "Record Retention.", "Misrepresentation.", "Priority of Transactions.", "B"], ["Faiza Hassan, CFA, is an equity analyst specializing in social media companies. Recently, she placed a 'buy' rating on WeGab Corp. Following her initial report on the company, Hassan's brother has purchased a large amount of WeGab stock. Hassan has no beneficial ownership in her brother's account. Hassan has been asked to write a follow-up report on WeGab because of strong takeover rumors relating to the company. Will Hassan violate the Standards if she writes the follow-up report without disclosing her brother's shareholding in the company?", "No", "Yes, the Standard relating to avoid or disclose conflicts", "Yes, the Standard relating to loyalty, prudence, and care", "A"], ["Members should encourage their firms to establish which of the following procedures to avoid violations of Standard relating to independence and objectivity?\nProcedure 1: Place a covered company on a restricted list if the firm is unwilling to disseminate adverse opinion on the company.\nProcedure 2: Prohibit employees from receiving reimbursement from corporate issuers for air transportation when attending meetings at the issuers' headquarters.", "Procedure 1 only", "Procedure 2 only", "Both Procedure 1 and Procedure 2", "A"], ["Melissa Kon, CFA, is an equity analyst. She recently left her job at Hamm Capital (HC) to join Eagle Investments (EI). Kon obtains the express consent of HC to take one of her historical research reports with her. At EI, she diligently updates the report and publishes it. Afterwards, she re-creates supporting records from sources obtained at HC. Has Kon violated the Standards?", "No", "Yes, by publishing the updated research report", "Yes, by re-creating the supporting records from sources obtained at Hamm Capital", "A"], ["Firms that claim compliance with the GIPS standards are most likely allowed to state that performance is calculated in accordance with the GIPS standards when presenting a:", "GIPS Composite Report to a prospective client.", "segregated account return to the account owner.", "GIPS Pooled Fund Report to a prospective investor.", "C"], ["Yun Hae, CFA, is a portfolio manager at Citadel Capital (CC). Hae's brother maintains a fee-paying retirement account at CC. Hae has no beneficial ownership in her brother's account. Whenever an IPO becomes available that is suitable for her clients, Hae first allocates shares to other clients before placing any remaining shares in her brother's account. She adopts this procedure to avoid potential conflicts of interest. Hae's actions violate the Standard(s) relating:", "only to fair dealing.", "only to priority of transactions.", "both to fair dealing and to priority of transactions.", "A"], ["An analyst gathers the following information about a company:\n\nTax burden: 0.4\nInterest burden: 0.75\nPretax margin: 10.0%\nTotal asset turnover: 1.5\nFinancial leverage: 1.2", "ROE is:", "5.4%.", "6.0%.", "7.2%.", "A"], ["An analyst gathers the following information (in € thousands) about a manufacturing company:\n\nEBIT: 10,000\nInterest payments: 4,000\nLease payments: 2,000", "The fixed charge coverage ratio is closest to:", "1.7.", "2.0.", "2.5.", "A"], ["An analyst gathers the following information (in € millions) about a company:\n\nCost of sales: 800\nDecrease in inventory: 250\nIncrease in accounts payable: 100", "Cash paid to suppliers (in € millions) is:", "450.", "950.", "1,150.", "A"], ["The following data are available on a company (HK$ millions):\n\nRevenue: Current Year 18,980 / Prior Year 18,250\nCost of sales: Current Year 14,600 / Prior Year 14,040\nEnding inventory: Current Year 2,150 / Prior Year 1,850\nEnding accounts receivable: Current Year 2,900 / Prior Year 3,300\nEnding accounts payable: Current Year 2,700 / Prior Year 2,900\n\nRatios (Prior Year):\nNumber of days of payables: 60\nDays of sales outstanding (DSO): 70\nDays of inventory on hand (DOH): 40", "The least likely explanation for the improvement in the cash conversion cycle is that the firm improved on its:", "payments to suppliers.", "inventory management.", "ability to collect from customers.", "A"], ["A write-down of inventory to its net realizable value by a manufacturing company most likely results in a lower:", "cost of sales than if the write-down had not occurred.", "current ratio than if the write-down had not occurred.", "inventory turnover than if the write-down had not occurred.", "B"], ["Using a common-size income statement to compare a company to its peers, an analyst can determine the company's:", "size.", "relative performance.", "revenue recognition policies.", "B"], ["Which of the following statements about bootstrap resampling is most accurate? The bootstrap resampling process requires:", "drawing random samples with replacement.", "an analytic formula to perform statistical inference.", "the number of repetitions to be equal to the sample size.", "A"], ["The structural deficit is equal to the budget deficit:", "adjusted for inflation.", "that would exist at full employment.", "excluding the impact of automatic stabilizers.", "B"], ["For a company with taxable income, if interest expense becomes tax deductible, the effective marginal cost of debt:", "decreases.", "remains the same.", "increases.", "A"], ["An analyst gathers the following information (in £ millions) about a company:\n\nTotal assets Year 2: 90, Year 1: 100\nTotal liabilities Year 2: 36, Year 1: 40\nTotal net assets Year 2: 54, Year 1: 60", "Using vertical common-size balance sheet analysis, the company's total liabilities in Year 2 are closest to:", "40%.", "67%.", "90%.", "A"], ["In a perfectly competitive market, a firm's breakeven point is the minimum point of the:", "average total cost curve.", "average fixed cost curve.", "average variable cost curve.", "A"], ["Deductible temporary differences could arise when the:", "taxable income exceeds accounting profit.", "carrying amount of an asset exceeds its tax base.", "financial accounting income tax expense exceeds income taxes payable.", "A"], ["Ignoring income taxes, an impairment loss on equipment will most likely decrease:", "net profit margin.", "total asset turnover.", "working capital turnover.", "A"], ["For a non-colluding oligopoly in a price war market, competitors are most likely to:", "match a rival's price reduction and ignore a rival's price increase.", "ignore a rival's price reduction and match a rival's price increase.", "match both a rival's price reduction as well as a rival's price increase.", "A"], ["A retailer that prepares its financial statements in accordance with IFRS has 100 office chairs in its inventory with a suggested retail price of $240 each, for which it paid a supplier an average of $200 a chair. Demand for the chairs has been low for quite a while, and in response the supplier has lowered its selling price to $160 each. However, the retailer estimates it can sell the chairs for $180 each if it offers free shipping to its customers. Shipping costs to the retailer are estimated to be $10 per chair. The total carrying amount of these 100 office chairs on the retailer's balance sheet is closest to:", "$16,000.", "$17,000.", "$18,000.", "B"], ["The entire cost of an intangible asset is most likely expensed when incurred if the asset is:", "developed internally.", "acquired through business combinations.", "purchased in a transaction other than a business combination.", "A"], ["Which of the following attributes is most accurate for a typical company in its start-up stage?", "Cash flows are negative", "The company can raise equity in public markets", "Debt is a significant component of the capital structure", "A"], ["An analyst gathers the following information (in € thousands) about a company:\n\nBeginning retained earnings: 1,500\nEnding retained earnings: 2,000\nDividends declared and paid: 400", "If there are no other items affecting shareholders' equity, net income (in € thousands) is:", "100.", "500.", "900.", "C"], ["Which of the following statements about the use of financial ratios is most accurate?", "Each financial ratio is relevant to all industries", "Financial ratios can be affected by the phase of the business cycle", "Aggregate financial ratios are useful for companies operating in different lines of business", "B"], ["One of the key roles played by central banks is:", "regulating the payments system.", "controlling aggregate demand with changes in tax rates.", "allocating resources between different sectors of the economy.", "A"], ["An analyst gathers the following information about three portfolios:\n\nPortfolio X: Expected annual return=10%, Standard deviation of returns=12%\nPortfolio Y: Expected annual return=12%, Standard deviation of returns=16%\nPortfolio Z: Expected annual return=14%, Standard deviation of returns=20%", "If the shortfall level is 5%, which portfolio has the largest safety-first ratio?", "Portfolio X", "Portfolio Y", "Portfolio Z", "A"], ["A primary aim of fiscal policy is to manage the economy through its influence on:", "real GDP.", "price stability.", "interest rates.", "A"], ["An audit disclaimer of opinion is most likely issued when:", "management commentary is unaudited.", "auditors are unable to express an opinion.", "auditors determine that the financial statements materially depart from accounting standards and are not fairly presented.", "B"], ["An analyst gathers the following information (in € millions) about a company's machine:\n\nCarrying amount prior to impairment: 8.0\nPresent value of expected future cash flows: 7.4\nUndiscounted expected future cash flows: 7.8\nCosts to sell: 0.2\nImpairment loss: 0.5", "The fair value of the machine (in € millions) is:", "7.5.", "7.7.", "7.8.", "A"], ["A US company that complies with US GAAP would like to exclude some items in determining non-GAAP financial measures, other than EBIT and EBITDA. Which of the following items may be excluded?", "Impairment charges for long-lived assets", "For liquidity measures, litigation costs requiring cash settlement", "For performance measures, items tagged as infrequent that occurred within the past two years", "A"], ["Target capital structure is often expressed using book values of equity and debt because:", "capital structure policy is aligned to measures used by third parties.", "market values can fluctuate substantially and frequently impact the appropriate level of borrowing.", "for management, the primary concern is the amount and types of capital invested in the company, not by the company", "B"], ["Which of the following stakeholders are most likely responsible for implementing a public corporation's strategy?", "Managers", "Governments", "Board of directors", "A"], ["According to capital allocation principles, managers should ignore:", "taxes.", "the volatility of cash flows.", "expenses that were already incurred.", "C"], ["The principal tool used to align the interests of management and shareholders is:", "regulation.", "proxy voting.", "compensation.", "C"], ["With respect to fintech, which of the following statements is most accurate?", "Big Data solves the issue of selection bias.", "A neural network that learns a dataset too precisely may indicate overfitting.", "Machine learning algorithms require assumptions on the underlying probability distribution of the data.", "B"], ["In hypothesis testing, the critical value is determined by the:", "p-value.", "sample's mean.", "level of significance.", "C"], ["In the recovery phase of the business cycle, the economy is most likely:", "enjoying an upswing and a positive output gap opens.", "going through a trough and a positive output gap opens.", "going through a trough and a negative output gap starts to narrow.", "C"], ["Which of the following market structures most likely has the greatest elasticity of demand?", "Oligopoly", "Perfect competition", "Monopolistic competition", "B"], ["The central limit theorem is best described as stating that the sampling distribution of the sample mean will be approximately normal for large-size samples:", "if the population distribution is normal.", "if the population distribution is symmetrical.", "for populations described by any probability distribution.", "C"], ["An increase in utility for a company's products as these products become more widely adopted best describes:", "network effects.", "operating leverage.", "product differentiation.", "A"], ["Which is most likely considered a 'pull' on liquidity?", "Obsolete inventory", "Reduction in a line of credit", "Increased difficulty in collecting receivables", "C"], ["Which of the following monetary policy regimes most likely imports the inflation of a foreign economy?", "Inflation targeting", "Interest rate targeting", "Exchange rate targeting", "C"], ["Double taxation of income occurs when a corporation pays taxes on its profits, and additional taxes are paid by the:", "shareholders on dividends received.", "corporation on distributions to shareholders.", "shareholders on gains earned from their equity investment", "A"], ["With respect to the monetary transmission mechanism, a central bank's policy rate is initially transmitted through the economy via:", "inflation.", "asset prices.", "reserve requirements.", "C"], ["Globalization is primarily the result of:", "political cooperation.", "political non-cooperation.", "economic and financial cooperation.", "C"], ["An analyst calculates a portfolio's target semideviation of returns over twelve consecutive months, including seven months of below-target returns. The sum of the squared deviations below the target is 42%. The target semideviation is closest to:", "1.87%.", "1.95%.", "2.65%.", "B"], ["If all observations in a dataset have distinct positive values, which of the following relationships holds?", "Arithmetic mean < Harmonic mean < Geometric mean", "Geometric mean < Arithmetic mean < Harmonic mean", "Harmonic mean < Geometric mean < Arithmetic mean", "C"], ["An analyst gathers the following information about a company:\n\nCompany value ($ billions): 1.5\nValue of debt ($ billions): 0.6\nMarginal tax rate: 30%", "Based on Modigliani and Miller's Proposition I with taxes, if the company issues common stock to repay outstanding debt, the value of the unlevered company will be closest to:", "$0.9 billion.", "$1.3 billion.", "$1.5 billion.", "B"], ["In a period of rising prices and stable inventory levels, which inventory valuation method will most likely result in the highest inventory turnover ratio, all else being equal?", "Last-in, first-out (LIFO)", "Weighted average cost", "First-in, first-out (FIFO)", "A"], ["An analyst gathers the following probabilities concerning Event X and some new information:\n\nPrior probability of X: 0.70\nProbability of the new information given X: 0.50\nUnconditional probability of the new information: 0.60", "Using Bayes' formula, the updated probability of X given the new information is closest to:", "0.43.", "0.58.", "0.84.", "B"], ["An analyst gathers the following exchange rate information:\n\nUSD/EUR spot rate: 1.0993\nUSD/EUR 6-month forward points: 11.7\n(USD/EUR is the amount of USD per 1 EUR)", "The USD/EUR 6-month forward rate is closest to:", "1.0981.", "1.1005.", "1.2279.", "B"], ["An investor gathers the following information:\n\nAccount 1: Stated annual interest rate=6.1%, Compounding frequency=Daily\nAccount 2: Stated annual interest rate=6.3%, Compounding frequency=Annual\nAccount 3: Stated annual interest rate=6.2%, Compounding frequency=Quarterly", "If a $1,000 deposit is made today, the future value in one year will be greatest for:", "Account 1.", "Account 2.", "Account 3", "A"], ["An analyst gathers the following information about a simple linear regression:\n\nIntercept: 1.0\nSlope coefficient: 1.5\nStandard error of the regression: 0.5", "If the value of the independent variable is 2.0, the value of the dependent variable predicted by the regression is closest to:", "3.5.", "4.0.", "4.5.", "B"], ["A project has the following cash flows:\n\nYear 0: -$1,000\nYear 1: $100\nYear 2: $100\nYear 3: $100\nYear 4: $1,100", "The internal rate of return (IRR) for the project is closest to:", "8.8%.", "9.1%.", "10.0%.", "C"], ["An exchange rate regime based on an explicit legislative commitment to exchange domestic currency for a specified foreign currency at a fixed exchange rate is best described as a:", "monetary union.", "fixed parity system.", "currency board system.", "C"], ["An analyst gathers the following information (in € millions) about a company:\n\nNet income: 108\nDepreciation expense: 20\nInterest expense: 20\nIncrease in working capital: 35\nCapital expenditures: 50\nNet borrowing: 14", "If the income tax rate is 30%, FCFF is:", "less than FCFE.", "the same as FCFE.", "greater than FCFE.", "C"], ["Non-cooperative financial tools used to further a country's national interests include which of the following?\nTool 1: Limiting access to local currency markets and restricting foreign investment\nTool 2: Nationalization of sectors perceived as vital to economic security", "Tool 1 only", "Tool 2 only", "Both Tool 1 and Tool 2", "C"], ["The 'box' in a box and whisker plot represents the:", "interquartile range.", "range between the median and the arithmetic average.", "range between the highest and lowest values of the distribution.", "A"], ["A company makes all sales on credit. According to the converged accounting standards for revenue recognition, a contract asset is most likely recognized on the seller's balance sheet when:", "goods or services are delivered and payment is received.", "payment is received in advance of transferring the goods or services.", "revenue is recognized related to some of the contractual performance obligations that have been met.", "C"], ["An investor purchases a security for $500,000. If the value of the security declines by 10% over the first 3-month period and then increases by 9% over the next 3-month period, the holding period return over the 6-month period is closest to:", "-1.9%.", "-1.0%.", "-0.5%.", "B"], ["Proxy voting is best defined as a means for:", "a would-be acquirer to gain control.", "activist shareholders to pressure management.", "shareholders voting without attending a meeting in person.", "C"], ["An analyst gathers the following information about a company's sources of capital:\n\nEquity: Amount Raised=$15 million, Before-tax Cost of Capital=8%\nDebt: Amount Raised=$10 million, Before-tax Cost of Capital=4%\nPreferred stock: Amount Raised=$1 million, Before-tax Cost of Capital=5%", "If interest is tax-deductible, a 35% marginal tax rate results in a WACC closest to:", "5.74%.", "5.81%.", "6.35%.", "B"], ["A bank has a stated annual interest rate of 7%. If an investor deposits 10,000 and earns $712.25 in interest over the first year, what frequency of compounding does the bank apply?", "Quarterly", "Continuous", "Semiannual", "C"], ["At year end, a company has non-convertible debt, ordinary shares, and employee stock options outstanding. The company's capital structure is considered to be:", "simple, if the options are antidilutive.", "complex, because the company has both debt and equity.", "complex, because the options are convertible into ordinary shares", "C"], ["An analyst gathers the following information about foreign exchange spot prices:\n\n1 January Year 1: USD/EUR=1.4025, CAD/USD=1.0800\n1 January Year 2: USD/EUR=1.3600, CAD/USD=1.0450\n(USD/EUR exchange rate quote convention is USD per EUR)", "The percentage appreciation of the EUR/CAD is closest to:", "6.17%.", "6.47%.", "6.58%.", "B"], ["An analyst estimates the following data about a company for the next year:\n\nInflation rate on the cost of sales: 10%\nIncrease in average selling price per unit: 7%\nDecrease in volumes sold: 3%", "If the company's cost of sales is 60% for the current year, the company's projected gross profit margin for next year is closest to:", "36.4%.", "38.3%.", "39.8%.", "B"], ["A company that reports under US GAAP leases assets for its own use and classifies its leases as finance leases. In the first year of a lease, how would it most likely report a lease payment on its Statement of Cash Flows?", "The full payment in cash from operations", "The full payment in cash from financing activities", "The interest portion of the payment in cash from operations", "C"], ["An analyst gathers the following information from a simple linear regression model with 30 observation pairs:\n\nSum of squares regression (SSR): 50\nSum of squares error (SSE): 16", "The F-statistic for the test of fit is closest to:", "3.1.", "87.5.", "90.6.", "B"], ["An analyst gathers the following information about a company and its common stock:\n\nExpected dividend per share (D1): $2\nEstimated dividend growth rate: 4%\nReturn on equity: 9%", "Based on the Gordon growth model, if the required rate of return increases from 8% to 14%, the value of the stock decreases by:", "50%.", "60%.", "75%.", "C"], ["Use of the asset-based valuation approach is most appropriate for a company with a high proportion of value attributed to:", "natural resources.", "business reputation.", "trademarks and patents.", "A"], ["An analyst gathers the following information (in $ millions) about two companies for the year just ended:\n\nCompany X: Operating income=10, Depreciation and amortization=2, Interest expense=1, Debt=50\nCompany Y: Operating income=12, Depreciation and amortization=1, Interest expense=3, Debt=60", "Based on an assessment of leverage, Company X has:", "lower creditworthiness than Company Y.", "the same creditworthiness as Company Y.", "higher creditworthiness than Company Y.", "C"], ["With respect to the capital market line, the market portfolio is best described as the:", "optimal risky portfolio.", "portfolio that maximizes an investor's utility.", "optimal combination of the risk-free asset and a portfolio of risky assets.", "A"], ["Compared with its market-value-weighted counterpart, a fundamental-weighted index is least likely to have a:", "value tilt.", "contrarian effect.", "momentum effect.", "C"], ["Valuing private equity investments using estimated prices rather than market prices most likely causes an:", "overestimation of both return volatility and the correlation of returns with traditional asset classes.", "underestimation of both return volatility and the correlation of returns with traditional asset classes.", "underestimation of return volatility and overestimation of the correlation of returns with traditional asset classes.", "B"], ["For an institutional investor, the investment committee's approach to appointing and reviewing investment managers for the portfolio is most likely set out during the:", "portfolio construction process.", "strategic asset allocation decision.", "preparation of the investment policy statement.", "C"], ["Financial forecasting using historical base rates and convergence is best suited for companies that are:", "in highly cyclical industries.", "in well-established industries.", "industry leaders by a wide margin.", "B"], ["An analyst will most likely put a 'sell' recommendation on a stock when its:", "intrinsic value is positive.", "market value is higher than intrinsic value.", "market value is lower than fundamental value.", "B"], ["Which of the following is most accurate regarding arbitrage in financial markets? Arbitrage traders:", "rely primarily on fundamental valuation to identify arbitrage opportunities.", "earn returns in excess of those that would be fair compensation for the risk assumed.", "actively take advantage of profit opportunities in spot commodity markets when both storage and selling short become difficult.", "B"], ["The effective convexity of a bond is a measurement of the effect of a change in:", "horizon yield.", "the yield to maturity.", "a benchmark yield curve.", "C"], ["A 5% corporate bond makes annual coupon payments on 19 March of each year. If the bond is priced for settlement on 25 March at a yield-to-maturity of 5%, its flat price is:", "below par.", "par.", "above par.", "A"], ["Compared with public equity markets, which of the following statements is most accurate about private equity markets? Operating in the private market:", "allows more opportunities to raise capital.", "allows management to better adopt a long-term focus.", "offers stronger incentives to improve corporate governance.", "B"], ["Which of the following is used by clearinghouses to determine the gain and loss to the parties of a futures contract?", "Limit up and limit down", "Margin call", "Daily settlement", "C"], ["Which of the following asset-backed securities most likely utilizes credit tranching as a form of credit enhancement?", "Covered bond", "Credit card backed security", "Agency mortgage pass-through security", "B"], ["In an efficient market, it is more likely that fundamental value will be reflected in the:", "underlying spot market before the derivative market.", "derivatives market before the underlying spot market.", "derivatives market and the underlying spot market at the same time.", "B"], ["A benefit of risk budgeting is that it:", "forces risk trade-offs.", "provides risk oversight.", "defines an organization's risk tolerance.", "A"], ["Compared with unregulated markets, regulated markets are best characterized by:", "higher transaction costs.", "lower trading volumes.", "reduced arbitrage opportunities.", "A"], ["All else being equal, a cash dividend most likely has the same effect on shareholders' wealth as a:", "stock split.", "stock dividend.", "share repurchase.", "C"], ["The value of a swap contract at initiation is most likely equal to:", "zero.", "the present value of the fixed payments of the swap.", "average price of a series of forward contracts with each forward contract maturing at each swap payment date.", "A"], ["Which of the following is best categorized as a hard commodity?", "Cattle", "Lumber", "Crude oil", "C"], ["Compared to the market value of a company's equity, the book value of a company's equity is most likely:", "measured by net income multiplied by ROE.", "influenced more directly by management decisions.", "reflective of investors' expectations about the company's future cash flows", "B"], ["An analyst gathers the following information about a forward curve for one-year rates:\n\n0y1y: 0.60%\n1y1y: 1.05%\n2y1y: 2.90%\n3y1y: 2.69%", "The three-year implied spot rate is closest to:", "1.51%.", "1.81%.", "2.21%.", "B"], ["An equity portfolio manager is evaluating her sector allocation strategy for the upcoming year. She expects the global economy to experience a slowdown period for the next two years. Furthermore, she believes that companies will be facing diminishing growth rates with respect to revenues and profits. On the basis of these beliefs, the portfolio manager will most likely overweight:", "autos.", "materials.", "consumer staples.", "C"], ["If the expected return of a stock is 15%, the expected market return is 10%, and the risk-free rate is 2%, the beta of the stock is closest to:", "1.30.", "1.50.", "1.63.", "C"], ["Which of the following involves a private equity firm introducing leverage to its portfolio company and paying itself a dividend out of the new capital structure?", "Venture debt", "Recapitalization", "Mezzanine loans", "B"], ["An investor gathers the following information about a European call option with 9 months until expiration:\n\nCurrent stock price: $112\nStrike price of option: $115\nCurrent call option price: $4\n1-year risk free rate: 2.5%", "According to put-call parity, the current price of a put option with the same maturity and strike price is closest to:", "3.11", "4.2", "4.89", "C"], ["A bond has an annual modified duration of 5.359, an annual convexity of 248.23, and is currently yielding 3.5%. If the bond's yield-to-maturity increases to 3.7%, the expected percentage price change is closest to:", "-1.02%.", "-0.97%", "1.12%.", "B"], ["Direct ownership of commercial real estate most likely:", "provides greater liquidity than a real estate investment trust.", "requires a lower initial investment than a real estate investment trust.", "offers greater investor control over underlying properties than a real estate investment trust.", "C"], ["The returns of Asset 1 and Asset 2 are perfectly positively correlated. If the assets have the same standard deviation of returns, the covariance between the returns of the assets is equal to the:", "variance of Asset 1's returns.", "standard deviation of Asset 1's returns.", "variance of Asset 1's returns times the variance of Asset 2's returns.", "A"], ["During times of severe market turmoil, the risk reduction from portfolio diversification most likely:", "decreases.", "remains the same.", "increases.", "A"], ["Which of the following statements regarding forward contracts is most accurate?", "The value of a short forward contract is the spot price minus the forward price at expiration", "The value of a long forward contract increases as the spot price of the underlying increases", "The forward price is the spot price compounded at the risk premium over the life of the contract", "B"], ["An example of nonsystematic risk is a(n):", "failure of a drug trial.", "increase in the overall rate of inflation.", "change in the central bank's interest rate policy.", "A"], ["Which of the following alternative investment categories most likely provides exposure to capital-intensive, long-lived assets that provide essential public services?", "Infrastructure", "Venture capital", "Commercial real estate", "A"], ["An analyst gathers the following information about a float-adjusted market-capitalization-weighted index composed of three stocks:\n\nStock 1: Shares Outstanding=8,500, % of Shares in Market Float=100, Price=$42\nStock 2: Shares Outstanding=10,000, % of Shares in Market Float=75, Price=$69\nStock 3: Shares Outstanding=4,000, % of Shares in Market Float=100, Price=$95", "Stock 1's weighting in the index is closest to:", "20.4%.", "25.0%.", "28.5%.", "A"], ["According to put-call-forward parity, a long put and a short call is equal to:", "a long bond and a short forward.", "a short bond and a long forward.", "a short bond and a short forward.", "A"], ["Which of the following cognitive errors is best classified as a belief perseverance bias?", "Availability bias", "Confirmation bias", "Mental accounting bias", "B"], ["A limit order book (in € per share) has the following order prices:\n\nBids: 47.85 / 47.70\nAsks: 48.20 / 48.00", "A sell order is behind the market at a price of:", "€47.70.", "€48.00.", "€48.20.", "C"], ["Which of the following most likely accounts for most of the long-term changes in a portfolio's value?", "Beta", "Alpha", "Security selection", "A"], ["Which of the following statements is most accurate? Hedge funds:", "may be invested entirely in traditional assets.", "typically invest in early-stage companies with high growth potential.", "typically pursue leveraged buyouts of established profitable and cash-generating companies.", "A"], ["An analyst gathers the following information about three companies and their common shares:\n\nCompany 1: Market price per share=$34, Book value of shareholders' equity (millions)=$452, Number of shares outstanding (millions)=45\nCompany 2: Market price per share=$12, Book value of shareholders' equity (millions)=$302, Number of shares outstanding (millions)=105\nCompany 3: Market price per share=$56, Book value of shareholders' equity (millions)=$98, Number of shares outstanding (millions)=12", "Which company has the lowest price-to-book value per share?", "Company 1", "Company 2", "Company 3", "B"], ["In contrast to life insurers, property and casualty insurers most likely:", "invest their general account assets in fixed-income securities.", "accept investments with lower returns in their general account.", "target a higher return in the surplus account than in the general account.", "C"], ["A Eurodollar bond is:", "denominated in USD.", "sold to US investors at issuance.", "underwritten by a syndicate of US-based banks.", "A"], ["Which of the following statements about market efficiency is most accurate? In a:", "weak-form efficient market, technical analysis generates abnormal returns over the long run.", "semi-strong-form efficient market, active portfolio managers outperform the market on a consistent basis.", "strong-form efficient market, insiders would not be able to earn abnormal returns from trading on private information", "C"], ["The type of developed market bond that most likely has the greatest risk of default is a:", "revenue bond.", "sovereign bond.", "general obligation bond.", "A"], ["An increase in which of the following most likely increases the time value of a European put option?", "The volatility of the underlying only", "The current market interest rate only", "Both the volatility of the underlying and the current market interest rate", "A"], ["An investor gathers the following information about a portfolio and the risk-free asset:\n\nAverage portfolio return: 8.50%\nPortfolio standard deviation of returns: 16.00%\nPortfolio beta: 1.10\nRisk-free asset return: 1.75%", "The portfolio's Sharpe ratio is closest to:", "0.06.", "0.42.", "0.53.", "B"], ["An investor holds a bond with the following characteristics:\n\nYield to maturity: 10%\nModified duration: 5.7", "If the duration gap is zero, the investment horizon is closest to:", "5.2 years.", "5.7 years.", "6.3 years.", "C"], ["The behavioral bias that best describes investors reacting slowly to new information is:", "conservatism bias.", "narrow framing bias.", "representativeness bias.", "A"], ["A bond's price sensitivity to a non-parallel shift in the benchmark yield curve is best measured by:", "key rate duration.", "effective duration.", "modified duration", "A"], ["Which of the following financial intermediaries most likely buy and sell similar instruments at different prices in different markets?", "Dealers", "Brokers", "Arbitrageurs", "C"], ["An investor buys a call for $24.70 that has a strike price of $650. If the value at expiration for this call is $47.60, the price of the underlying at expiration is closest to:", "$602.40.", "$672.90.", "$697.60.", "C"], ["Prior to expiration, an at-the-money option most likely trades:", "below intrinsic value.", "at intrinsic value.", "above intrinsic value.", "C"], ["An investor has gathered the following data for a common stock:\n\nEarnings per share, most recent year: $2.50\nDividend payout ratio, most recent year: 60%\nDividend growth rate expected during years 1 & 2: 25%\nDividend growth rate expected after year 2: 5%\nInvestors' required rate of return: 12%", "Using the two-stage dividend discount model, the value per share of this common stock is closest to:", "$28.57.", "$31.57.", "$38.70.", "B"], ["An analyst gathers the following information about a company and its perpetual preferred stock:\n\nGrowth rate in earnings: 2%\nAnnual preferred dividend: €4.70\nRequired rate of return on preferred shares: 8%", "The preferred stock's intrinsic value is closest to:", "€58.75.", "€78.33.", "€79.90.", "B"], ["You are preparing an investment policy statement for a client who manages her own successful marketing consultancy. Her annual income is approximately $500,000. She describes herself as a finance novice. Most of her savings are invested in bank term deposits and short-term government securities. In her responses to the standard risk assessment questionnaire, she strongly agrees with the statements that she 'feels more comfortable putting money in a bank account than in the stock market.' Also, she 'thinks of the word risk as being a loss'. Based on this information, your client's ability and willingness to take risk can best be described as:", "low ability and high willingness.", "high ability and willingness.", "high ability and low willingness.", "C"], ["A $100,000,000 par value bond has a value of $88,500,000 and an annual modified duration of 7.75. If the yield-to-maturity decreases by 100 basis points, the change in value is closest to:", "-$6,858,750.", "$6,858,750.", "$7,750,000.", "B"], ["If a portfolio consists of two risky assets and the portfolio's standard deviation is equal to the weighted average of the assets' standard deviations, the assets' returns are:", "perfectly negatively correlated.", "uncorrelated.", "perfectly positively correlated", "C"], ["Cryptocurrencies can be issued by:", "individuals only.", "corporations and organisations only.", "individuals, corporations and organisations.", "C"], ["An analyst gathers the following information about a bond:\n\nPrice at YTM 5.8%: 96.44\nPrice at YTM 4.2%: 96.79", "If the bond currently trades at a price of 96.63 with a yield-to-maturity of 5.0%, the approximate convexity is closest to:", "-4.851.", "-0.039.", "-0.019.", "C"], ["Which of the following statements best describes the relationship between the net costs of carry and the forward price?", "If the costs of carry exceed the benefits, the forward price would be lower", "If the costs of carry exceed the benefits, the forward price would be higher", "If the benefits exceed the costs of carry, the forward price would be higher", "B"], ["An analyst observes the fee structure and performance of a hedge fund with $100 million assets under management at the beginning of the year:\n\nAnnual management fee: 2%\nIncentive fee: 20%\nHard hurdle rate: 3%", "The annual management fee is based on the year-end valuation, and the incentive fee is calculated net of the management fee. If the fund return before fees is 10% at year end, the total annual fee earned by the fund manager is closest to:", "$3.2 million.", "$3.6 million.", "$3.8 million.", "A"], ["Short sellers most likely:", "sell securities they own.", "borrow securities from security lenders.", "cannot lose more than their initial investment.", "B"], ["In the priority of claims, the class of corporate debt that has the lowest priority of payments in the event of default is most likely:", "second lien debt.", "subordinated debt.", "junior subordinated debt.", "C"], ["Which of the following is an exclusive feature of private equity funds as opposed to hedge funds?", "Hurdle rates", "Performance fees", "Management fees based on committed capital", "C"], ["The CAPM states that two assets with the same expected return will have the same:", "standard deviation.", "correlation of returns with the market.", "covariance of returns with the market.", "C"], ["Which of the following statements is most accurate?", "The general partner theoretically has limited liability.", "Co-investment rights allow the limited partner to make additional direct investments in portfolio companies.", "The side letter is a legal document that outlines the rules of the partnership between the general partners and all limited partners.", "B"], ["A bond that allows the issuer to pay interest in the form of additional amounts of the existing bond issue rather than a cash payment best describes a:", "step-up coupon bond.", "deferred coupon bond.", "payment-in-kind coupon bond.", "C"], ["A mutual fund that does not have a sales charge to purchase or redeem shares in the fund is best described as a(n):", "exchange-traded fund.", "open-end fund.", "no-load fund.", "C"], ["An investor buys a stock on margin, posting 60% of the initial $63.00 per share price as equity. All else being equal, if the investor receives a margin call at $33.60 per share, the maintenance margin on this trade is:", "12.5%.", "25.0%.", "40.0%.", "B"], ["Redemption regimes are a feature of:", "covered bonds.", "auto loan-backed securities.", "commercial mortgage-backed securities.", "C"], ["An investor collects the following information about a put option:\n\nStock price at initiation: $110\nStrike price: $105\nOption premium: $4.50", "At expiration, if the price of the stock is $100, the investor's profit from selling the put is:", "-$0.50.", "$4.50.", "$9.50.", "A"], ["Which of the following features of an established hedge fund is most likely designed to allow orderly liquidation of positions to meet redemptions?", "Notice period", "Lockup period", "Redemption fee", "A"], ["Which of the following statements is most accurate? US commercial paper typically:", "requires the issuer to pledge collateral.", "requires the issuer to have a backup line of credit.", "has a maturity ranging from a few days up to two years.", "B"], ["The binomial option pricing model always:", "requires knowledge of the magnitude of possible up and down moves.", "requires knowledge of the actual probabilities of possible up and down moves.", "enables the construction of a risk-free hedge consisting of one unit of each of the option and the underlying.", "A"], ["A buy-and-hold investor purchases a fixed-rate bond at issuance and holds it until maturity. With respect to interest rate risk, this investor is exposed to:", "market price risk only.", "coupon reinvestment risk only.", "both market price risk and coupon reinvestment risk.", "B"], ["If 1,000 shares of stock purchased at $30 per share on 75% margin are later sold at $26 per share, the return on equity is closest to:", "-17.8%.", "-13.3%.", "-10.0%.", "A"], ["Which of the following risk metrics reflects the risk of changes in an option's delta?", "Rho", "Vega", "Gamma", "C"], ["An investor purchases a 5% coupon bond maturing in 15 years for par value. Immediately after purchase, the yield required by the market increases. The investor would then most likely have to sell the bond at:", "par.", "a discount.", "a premium.", "B"], ["The Markowitz efficient frontier is best described as the part of the minimum-variance frontier of risky assets that plots:", "to the right of the risk-free asset.", "above the global minimum-variance portfolio.", "above and to the right of the optimal risky portfolio.", "B"], ["In a declining interest rate environment, an investor would find it most difficult to estimate future cash flows for which of the following bonds with similar maturities?", "Putable bond", "Floating-rate bond with a floor", "Mortgage pass-through security", "C"], ["In the investment policy statement of a pension fund, a countrywide limit on the proportion of high-risk assets that can be held in long-term pension portfolios is most likely a:", "liquidity constraint.", "time horizon constraint.", "legal and regulatory constraints.", "C"], ["An analyst gathers the following information about a hedge fund's fee structure:\n\nAssets under management (AUM), beginning of period: $80 million\nManagement fee, based on year-end AUM: 2%\nIncentive fee: 20%", "The management and incentive fees are calculated independently. If the hedge fund generates a gross return of 25%, the assets under management after fees at the end of the period are closest to:", "$94.0 million.", "$94.4 million.", "$97.6 million.", "A"], ["An analyst calculates the duration of a portfolio containing only fixed-rate bonds, callable bonds, and asset-backed securities. Which duration measure is the most appropriate to use?", "Macaulay duration", "Effective duration", "Modified duration", "B"], ["A key motivation for adding alternative investments to a portfolio is most likely the:", "potential for diversification.", "ease of selecting portfolio managers.", "high correlation with traditional investments.", "A"], ["The free-cash-flow-to-equity model:", "requires an estimate of future dividend payments.", "can be used to value non-dividend paying stocks.", "treats non-cash expense in the same manner as cash expense.", "B"], ["Yield measures for both bonds and money market instruments are most likely:", "compounded.", "stated in annual terms.", "based on simple interest.", "B"], ["A 6% 25-year bond with semiannual payments has a market price of $850.00. The yield to maturity of this bond is closest to:", "5.72%.", "7.32%.", "7.91%.", "B"], ["Which of the following contracts is an example of a contingent claim? A(n):", "currency option", "interest rate swap", "commodity forward", "A"], ["An index provider launches a new index that will include value stocks in a specific country. This index will most likely be a:", "style index.", "large-capitalization index.", "fundamentally weighted index.", "A"], ["According to the Standards, which of the following information requires disclosure?\nInformation 1: A member's brother inherits a significant ownership of a stock that is part of the member's research coverage universe. The member has no beneficial ownership in her brother's investments.\nInformation 2: A member, a portfolio manager at an investment firm, does unpaid volunteer work during holiday weekends at a charity.\nInformation 3: Firm enters into an agreement with a mutual fund to receive commissions for recommending the fund to the firm's clients.", "Information 1", "Information 2", "Information 3", "C"], ["According to the Standard relating to suitability, a member should update a client's Investment Policy Statement at least:", "quarterly.", "semiannually.", "annually.", "C"], ["Michael Pak has recently retired from the investment business. A CFA Institute member for 20 years, Pak has decided not to pay his CFA Institute dues or file the annual Professional Conduct Statement. Applying to join the investment committee of a charitable organization, Pak writes: 'I was a CFA Institute member for 20 years.' Has Pak most likely violated the Standards?", "No", "Yes, the Standard relating to conduct as participants in CFA Institute programs", "Yes, the Standard relating to reference to CFA Institute, the CFA designation, and the CFA Program", "C"], ["Which of the following is consistent with the recommended procedures for compliance with the Standard relating to referral fees?\nStatement 1: 'Investment professionals should provide to their clients notification of approved referral fee programs.'\nStatement 2: 'Members should provide their employer at least annual updates on the amount and nature of compensation received.'", "Statement 1 only", "Statement 2 only", "Both Statement 1 and Statement 2", "C"], ["Ritu Jain, CFA, is preparing to leave her firm and join a new employer. Prior to leaving the firm, Jain calls all her clients informing them of her decision to leave. When asked by the clients, Jain states lack of confidence in the firm's leadership as the reason for her departure and also mentions that more employees are likely to leave soon. Jain has violated the Standard(s) relating:", "only to loyalty.", "only to preservation of confidentiality.", "both to loyalty and to preservation of confidentiality.", "A"], ["Which of the following is not a requirement of Standard I, Integrity of Capital Markets? Members and candidates:", "must promote the integrity and viability of the global capital markets for the ultimate benefit of society.", "must not engage in practices that distort prices or artificially inflate trading volume with the intent to mislead market participants.", "who possess material nonpublic information that could affect the value of an investment must not act or cause others to act on the information.", "A"], ["Benefits of compliance with the GIPS standards least likely include:", "strengthening internal controls.", "participating in competitive bidding.", "eliminating in-depth due diligence for investors.", "C"], ["Abe Seneca, CFA, supervises a team of analysts who create index funds for institutional investors. When Seneca makes sales demonstrations without his colleagues to potential clients simulating the fund's performance, the scenarios he prepares show outcomes based on assumptions reflecting upside bias and positive risk assessments. Gail Tremblay, CFA, an analyst in Seneca's group, observes that the actual performance of these index funds is less than indicated in the scenario outcomes shown in the sales meetings. Seneca least likely violated which of the following Standards:", "Loyalty", "Performance Presentation", "Responsibilities of Supervisors", "A"], ["Maria Bendez, CFA, is a well-known analyst. She sends her recommendations to all of her firm clients. However, Bendez does not disseminate her recommendations to the public even though she believes that her recommendations could affect security prices. A client calls her and says: 'Maria, thank you! Every time you send me your recommendations, I think you provide me with an advantage over other market participants.' Has Bendez most likely violated the Standards?", "No", "Yes, the Standard relating to material nonpublic information", "Yes, the Standard relating to material nonpublic information and the Standard relating to fair dealing", "A"], ["According to the Standard relating to preservation of confidentiality, a member is required to maintain confidentiality of information communicated to her:", "by her former clients only.", "by her prospective clients only.", "both by her former clients and by her prospective clients.", "C"], ["A firm manages $500 million in large-cap equity portfolios. Of this, non-fee-paying portfolios amount to $50 million, and fee-paying non-discretionary portfolios total $75 million.", "To be compliant with the GIPS standards, the firm must present the value of its large-cap composite as:", "$375 million.", "$425 million.", "$450 million.", "A"], ["Toni Lynn, CFA, is a research analyst. Lynn relies on her colleagues to determine whether the third-party research she uses is sound. Lynn also uses content from personal blogs and social media websites for her research after concluding it is sound. Has Lynn most likely violated the Standard relating to diligence and reasonable basis?", "No", "Yes, by using content from personal blogs and social media websites for her research", "Yes, by relying on her colleagues to determine whether the third-party research is sound", "C"], ["Jolene Campbell, CFA, a well-known analyst, is working on a report about XLK Autos (XLK). XLK is developing a fuel-efficient car about which no public information is yet available. Campbell uses financial data and information gathered from automobile experts not connected to XLK about the commercial viability of XLK's project. She then issues a 'buy' recommendation on the stock. Campbell sends her report exclusively to her firm's clients even though she expects her report to impact XLK's stock price. Has Campbell most likely violated the Standard relating to material nonpublic information?", "No", "Yes, because she uses information that is not yet public", "Yes, because she fails to make her recommendation public", "A"], ["According to the recommended procedures for compliance with the Standard relating to additional compensation arrangements, a member should make an immediate written report specifying the proposed compensation arrangements:", "only to her supervisor.", "only to her supervisor and to her firm's compliance officer.", "to her supervisor, to her firm's compliance officer, and to her clients.", "B"], ["Megan Chandra, CFA, allocates an oversubscribed IPO suitable for all the accounts she manages. Chandra does not allocate the IPO her mother's standard fee-paying account or her husband's non-fee-paying account. Has Chandra violated the Standards?", "No", "Yes, by not allocating the IPO allocation to her mother's account", "Yes, by not allocating the IPO allocation to both her husband's and her mother's accounts", "B"], ["Which of the following is not a recommended procedure for compliance with the Standard relating to misrepresentation? Firms should:", "avoid verifying information from third-party firms for timely trade executions.", "specifically designate which employees are authorized to speak on behalf of the firm.", "periodically review employee correspondence that contains representations of individual qualifications.", "A"], ["A portfolio manager is hired by an executive manager of a trust. The duty of loyalty is owed to the:", "trustee.", "executive manager.", "beneficiaries of the trust.", "C"], ["According to the recommended procedures for compliance with the Standard relating to record retention, who is most likely responsible for maintaining the records that support investment actions?", "The firm", "Research analysts", "The chief compliance officer", "A"], ["To be compliant with the GIPS standards, after a firm presents five years of performance history, it must build up to a minimum of:", "7 years of compliant performance presentation.", "10 years of compliant performance presentation.", "15 years of compliant performance presentation.", "B"], ["Meghna Shah, CFA, manages a small-cap fund. Applying mosaic theory, Shah concludes that AK Tech (AKT) is overpriced and sells the fund's significant holding in AKT for a profit. Shah is aware that her transaction could impact AKT's price because the position is large enough to require disclosure to stock exchanges. A blog tracking stock exchange news reports Shah's transaction, which leads to 8% decline in AKT's price, causing losses to other investors. Has Shah violated the Standards?", "No", "Yes, the Standard relating to market manipulation", "Yes, the Standard relating to material nonpublic information", "A"], ["Praful Chandarana, CFA, is starting a new business to offer investment consulting services to pension fund trustees in response to a new regulation that requires all pension fund Investment Policy Statements (IPS) to be reviewed and approved by an independent CFA charterholder. Prior to starting the new business, he meets with the pension fund regulator to clarify if the CFA charterholder undertaking the IPS review should be a licensed financial advisor by the capital markets regulator. The capital markets regulator requires and grants licenses to those giving investment advice to clients. The pension regulator states that they do not require the CFA charterholder to hold a financial advisor's license, despite financial-related advice being given to the pension funds during any IPS review. Chandarana therefore starts his new business to undertake IPS reviews without obtaining a financial advisor's license from the capital markets regulator. Subsequently, when clients of his former employer contact him he informs them of his new company and the services he offers. Does Chandarana most likely violate the Code and Standards?", "No", "Yes, the Standard relating to loyalty", "Yes, the Standard relating to knowledge of the law", "C"], ["Arshani Madan, CFA, develops a product that selects mutual funds based on historical data. Madan tests her methodology and produces simulated performance results. The promotional material for the product does not indicate that the results are simulated. Madan has violated the Standards relating:", "only to performance presentation.", "only to communication with clients and prospective clients.", "both to performance presentation and communication with clients and prospective clients.", "C"], ["With respect to issuer-paid research, members are not required to:", "strictly limit the type of compensation they accept from the covered company.", "fully disclose the nature of compensation received from the covered company.", "accept compensation related only to investment performance of the covered company.", "A"], ["Kush Shah, CFA, is the chief investment officer of an investment firm. Shah discovers during a routine review of the firm's trading system that the firm erroneously bought shares of lY Steel (IYS) for several clients. Shah immediately sells lY shares and realises significant profits for the clients. Later, Shah outsources a portion of the clients' portfolios to an external manager. Shah does not notify the firm's clients about the external manager because the fund's stock selection process remains unchanged. Shah has violated the Standards because he failed to notify the clients:", "only about the erroneous purchase of lY shares.", "only about outsourcing a portion of the clients' portfolios to an external manager.", "about the erroneous purchase of IY shares and about outsourcing a portion of the clients' portfolios to an external manager.", "B"], ["According to the Standard relating to conduct as participants in CFA Institute programs, CFA candidates are permitted to:", "disclose broad topical areas not tested on the exam.", "discuss curriculum material in study groups in preparation for the exam.", "disclose information on formulas tested in the exam after taking the exam.", "B"], ["The Standard relating to misconduct addresses:", "only all conduct that reflects poorly on members' professional integrity.", "only all actions violating trust in members' professional and private lives.", "both all conduct that reflects poorly on members' professional integrity and all actions violating trust in members' professional and private lives.", "C"], ["A firm claiming compliance with the GIPS standards:", "can claim compliance on specific composites.", "is responsible for maintaining that compliance.", "must be verified by an independent third party.", "B"], ["A company has a fixed $1,100 capital budget and has the opportunity to invest in the four independent projects listed in the table:\n\nProject 1: Investment Outlay=$600, NPV=$100\nProject 2: Investment Outlay=$500, NPV=$100\nProject 3: Investment Outlay=$300, NPV=$50\nProject 4: Investment Outlay=$200, NPV=$50", "The combination of projects that provides the best choice is:", "1 and 2.", "1, 3, and 4.", "2, 3, and 4.", "C"], ["An analyst gathers the following information (in $ millions) about a company's current fiscal year:\n\nNet income: 20\nInterest expensed and paid: 2\nDepreciation expense: 4\nTaxes paid: 6", "The interest coverage ratio is:", "14.", "15.", "16.", "C"], ["If trading partners are to benefit from allowing the free movement of factors of production among their members, the trading partners most likely need to form a:", "customs union.", "free trade area.", "common market.", "C"], ["With respect to debt securities measured at fair value through other comprehensive income:", "both interest income and unrealized gains and losses are recognized in other comprehensive income.", "interest income is recognized in other comprehensive income while unrealized gains and losses are not recognized.", "interest income is recognized in profit and loss while unrealized gains and losses are recognized in other comprehensive income.", "C"], ["For a non-colluding oligopoly with a price leader, the optimal market price is determined by the:", "dominant firm's demand schedule.", "market's aggregate demand curve.", "market's marginal revenue and marginal cost.", "B"], ["An analyst gathers the following information (in € thousands) about an electronics manufacturing company:\n\nCost of sales Year 2: 1000, Year 1: 800\nCost of ending inventory Year 2: 150, Year 1: 120\nNet realizable value of inventory Year 2: 125, Year 1: 160\n\nChanges to the allowance for inventory obsolescence have already been reflected in cost of sales.", "The days of inventory on hand (based on average inventory and 365-day year) for Year 2 is closest to:", "45.", "49.", "52.", "C"], ["An analyst gathers the following probability distribution of a company's earnings:\n\nProbability 0.25, Earnings $100 million\nProbability 0.70, Earnings $300 million\nProbability 0.05, Earnings $600 million", "The standard deviation of the company's earnings is closest to:", "$115 million.", "$134 million.", "$375 million.", "A"], ["Both monetary and fiscal policies can most likely be used by a government to:", "redistribute income and wealth.", "affect the level of interest rates.", "influence the level of economic activity.", "C"], ["Which of the following statements is most accurate? Fintech applications:", "can perform tasks at levels surpassing human capabilities.", "eliminate the need for humans in providing investment advice to retail investors.", "use models that outperform traditional statistical models in revealing linear relationships.", "A"], ["When estimating a target capital structure, the equity weight associated with a debt-to-equity ratio of 0.6 is closest to:", "37.5%", "40.0%.", "62.5%.", "C"], ["A company is forecasting 10% organic growth in revenues. The company believes sales volume will grow by 6.4%. The forecasted price/mix impact for the company is closest to:", "3.4%.", "17.0%.", "56.3%", "A"], ["An account has a stated annual interest rate of 3.6% with monthly compounding. The number of years it will take for an initial investment in the account to double is closest to:", "19.3.", "19.6.", "20.0.", "A"], ["When a company's payables turnover ratio is lower compared to its peers, the company is most likely:", "utilizing early payment discounts.", "taking advantage of lenient supplier terms.", "receiving payments from customers faster than its peers.", "B"], ["In hypothesis testing, which of the following is stated in terms of population parameters?", "The null hypothesis only", "The alternative hypothesis only", "Both the null hypothesis and the alternative hypothesis", "C"], ["Consider the following 20 items listed in ascending order:\n−41 −18 −17 −9 −8 −6 −5 3 3 3 5 5 7 7 11 12 20 21 21 61", "The median value of the items is closest to:", "3.", "4.", "5.", "B"], ["In ESG factor analysis, a company's ownership of stranded assets is most likely considered a(n):", "environmental risk.", "social risk.", "governance risk.", "A"], ["Using market levels as signals to measure the likelihood of a geopolitical risk best describes:", "signposting.", "scenario analysis.", "geopolitical risk translation into investment action.", "A"], ["A rising inventory-sales ratio most likely indicates the economy is undergoing a:", "recovery.", "slowdown.", "contraction.", "B"], ["Compared with its net income, a mature company's operating cash flow is most likely:", "lower.", "the same.", "higher.", "C"], ["A firm reports sales of €50,000 for a year ended 31 December. Its accounts receivable balances were €6,000 on 1 January of the year and €7,500 on 31 December. The company's cash collections from sales for the year is closest to:", "€42,500.", "€48,500.", "€51,500", "B"], ["Which of the following most likely enforces financial reporting requirements?", "Regulatory authorities only", "Standard-setting bodies only", "Both regulatory authorities and standard-setting bodies", "A"], ["The following is an excerpt from the note to the financial statements on intangible assets for a company (€ millions):\n\nLicenses Cost: 23,984 | Other Cost: 1,475 | Total Cost: 25,459\nAccumulated amortization Licenses: 7,390 | Other: 1,195 | Total: 8,585\nNet book value Year 2 Licenses: 16,594 | Other: 280 | Total: 16,874\nNet book value Year 1 Licenses: 15,200 | Other: 480 | Total: 15,680\n\nAs of end of Year 2, licenses with a net book value of €2,530 million have been pledged as security against borrowings.", "The percentage of intangible assets pledged as security against borrowings in Year 2 is closest to:", "9.9%.", "15.0%.", "15.3%.", "B"], ["If differences between accounting profit and taxable income are recoverable, deferred tax assets are created when:", "accounting profit is less than taxable income.", "accounting profit is greater than taxable income.", "income taxes payable is less than income tax expense.", "A"], ["Which of the following statements regarding inventory valuation is most accurate?", "IFRS defines market value as net realizable value less a normal profit margin.", "Both IFRS and US GAAP allow the reversal of write-downs back to the original cost.", "Both IFRS and US GAAP allow agricultural inventories to be valued at net realizable value.", "C"], ["Assume the percentage increases in each of the following listed items:\n\nReal domestic exchange rate (USD/EUR): 5\nEurozone price level: 2\nUS price level: 1.5", "The predicted change in the nominal US spot exchange rate is closest to:", "-0.5%.", "4.5%.", "5.5%.", "C"], ["Data for three companies:\n\nCompany A: EBIT=$4,761, Avg Total Assets=$42,979, Total Debt=$12,796, Avg Shareholders' Equity=$30,295, Total Shareholders' Equity=$32,000, Interest Payments=$882\nCompany B: EBIT=$24,636, Avg Total Assets=$201,536, Total Debt=$44,030, Avg Shareholders' Equity=$80,970, Total Shareholders' Equity=$82,000, Interest Payments=$3,423\nCompany C: EBIT=$1,553, Avg Total Assets=$13,970, Total Debt=$8,115, Avg Shareholders' Equity=$5,741, Total Shareholders' Equity=$6,000, Interest Payments=$327", "Based on each company's debt-to-capital and financial leverage ratios, which company is the most solvent?", "Company A", "Company B", "Company C", "B"], ["An investor is considering three investments:\n● Investment 1 makes 20 annual payments of $50,000, starting one year from today.\n● Investment 2 makes 25 annual payments of $45,000, starting today.\n● Investment 3 makes annual payments of $40,000 indefinitely, starting one year from today.\nIf the investor's discount rate is 10% per year, which investment has the highest present value?", "Investment 1", "Investment 2", "Investment 3", "B"], ["Under US GAAP, which of the following should be reported separately from continuing operations on the income statement?", "Restructuring charges", "Gain or loss from sale of an asset", "Results of discontinued operations", "C"], ["A company receives a subscription payment for a publication to be delivered next fiscal year. Ignoring income taxes, the company would recognize in the current fiscal year an increase in:", "assets and revenue.", "assets and liabilities.", "liabilities and revenue.", "B"], ["An analyst examines the following quarterly returns for a client's portfolio:\nQ1: 8%, Q2: 3%, Q3: -2%, Q4: 10%, Q5: 8%, Q6: 0%, Q7: -3%, Q8: 12%", "If the target return is 5% per quarter, the target downside deviation is closest to:", "4.50%.", "11.92%.", "20.29%.", "A"], ["A central bank most likely:", "will not lend money to banks facing shortages.", "is a monopoly supplier of a country's currency.", "does not manage a country's foreign currency reserves.", "B"], ["Which of the following statements about prediction intervals is most accurate? All else being equal:", "the width of the prediction interval does not depend on the standard error of the estimate.", "a smaller variation of the independent variable will result in a narrower prediction interval.", "a larger sample size in the regression estimation will result in a smaller standard error of the forecast.", "C"], ["In capital investment decisions, project sequencing is most likely a type of:", "timing option.", "flexibility option.", "fundamental option.", "A"], ["The arithmetic and geometric mean are calculated for the same data. If there is variability in the data, compared with the arithmetic mean, the geometric mean will most likely be:", "smaller.", "equal.", "greater.", "A"], ["An analyst gathers the following information (in € millions) about a company's land reported under the revaluation model:\n\nOriginal cost: 12\nFair market value at initial revaluation on 31 December Year 1: 17\nFair market value at second revaluation on 31 December Year 2: 12", "As a result of the second revaluation, the company recognizes in Year 2:", "a €5 million loss on the income statement.", "a €5 million loss in other comprehensive income.", "neither a loss on the income statement nor a loss in other comprehensive income.", "A"], ["Which of the following statements about kurtosis is most accurate?", "A fat-tailed distribution is referred to as platykurtic.", "All distributions with kurtosis above zero are fat-tailed.", "The calculation for kurtosis involves finding the average of deviations from the mean raised to the fourth power.", "C"], ["Which of the following is a secondary source of liquidity?", "Free cash flow", "Dividend suspension", "Short-term investment portfolio", "B"], ["An analyst calculates the following metrics about a sample of paired observations of a dependent variable Y and an independent variable X:\n\nVariance of X: 9\nVariance of Y: 15\nCovariance of Y and X: 12", "Based on the sample, the slope coefficient of the simple linear regression of Y to X is closest to:", "0.80.", "1.03.", "1.33.", "C"], ["A company's ability to support debt most likely improves with a(n):", "increase in liquidity.", "increase in leverage ratio.", "decrease in interest coverage.", "A"], ["Which of the following is an assumption in Modigliani and Miller's capital structure framework?", "Investors can lend and borrow at the risk free rate", "Interest expense is deductible from income for tax purposes", "Investors have heterogeneous expectations about future corporate earnings", "A"], ["Which of the following sampling methods involves selecting every kth member from a population until a desired sample size is obtained?", "Cluster sampling", "Systematic sampling", "Convenience sampling", "B"], ["A company's interest payments are fully tax deductible. When tax rates increase, the company's cost of debt:", "decreases.", "remains the same.", "increases.", "A"], ["A corporate takeover in which shareholders are persuaded to vote for a group seeking a controlling position on the board of directors best describes a:", "tender offer.", "proxy contest.", "hostile takeover.", "B"], ["Which of the following most likely provides an opportunity for a company's management to issue low-quality financial reports?", "Ineffective board of directors", "Concern about future career opportunities", "Incentive compensation based on earnings", "A"], ["Quantitative easing addresses the monetary policy challenges most likely caused by:", "expected periods of deflation.", "actions of bond market vigilantes.", "inflationary demand shocks or supply shocks.", "A"], ["The NZD/EUR (amount of NZD per 1 EUR) spot rate is 1.5453. If the 3-month forward discount is 24 points, the 3-month forward rate is closest to:", "1.54290.", "1.54770.", "1.54901.", "A"], ["An analyst gathers the following information (in £ thousands) about equipment owned by a company:\n\nCarrying amount prior to impairment: 36\nFair value: 34\nSelling costs: 4\nUndiscounted expected future cash flows: 38\nDiscounted expected future cash flows: 32", "The equipment is considered impaired under:", "IFRS only.", "US GAAP only.", "both IFRS and US GAAP.", "A"], ["For a company paying preferred dividends, the components needed to compute basic EPS are net income:", "and the weighted average number of common shares outstanding.", "preferred dividends, and the weighted average number of common shares outstanding.", "preferred dividends, additional shares issued if preferred is converted, and the weighted average number of common shares outstanding.", "B"], ["A company's cash contribution to its defined contribution pension plan is recorded on the company's statement of cash flows as a(n):", "operating cash outflow.", "investing cash outflow.", "financing cash outflow.", "A"], ["Assume that a central bank has decided to lower interest rates in the economy. To carry out this policy, the central bank will most likely:", "sell securities.", "buy securities.", "increase required reserve requirements.", "B"], ["Part of the conflict between shareholders and debtholders is that shareholders prefer:", "less business risk than debt holders.", "more equity issuance than debtholders.", "greater financial leverage than debt holders.", "C"], ["An analyst gathers the following information about a company's capital sources:\n\nTarget weight of debt: 25%\nTarget weight of equity: 75%\nBefore-tax marginal cost of debt: 4%\nMarginal cost of equity: 12%", "If the marginal tax rate is 20% and interest expense is tax deductible, the company's WACC is:", "9.80%.", "10.00%.", "10.25%.", "A"], ["An analysis used to forecast earnings that shows the changes in key financial quantities that result from alternative sets of economic events best describes which of the following techniques?", "Simulation", "Sensitivity analysis", "Scenario analysis", "C"], ["Which of the following is most likely a feature of sole proprietorships?", "Operational complexity", "Existence of a legal identity", "Taxation of business profits as personal income", "C"], ["With respect to the cash flow statement, under US GAAP, interest paid is reported as a(n):", "investing activity.", "financing activity.", "operating activity.", "C"], ["An expansionary fiscal policy is least likely to include an increase in:", "tax rates.", "budget deficit.", "government expenditures.", "A"], ["Tiered pricing is best described as:", "charging different prices at different times.", "charging different prices to different buyers.", "combining a low price on a piece of equipment with high-margin pricing on repeat-purchase consumables.", "B"], ["The Herfindahl-Hirschman index (HHI) is more responsive than the concentration ratio to:", "the elasticity of demand.", "potential entrants to the market.", "mergers among the existing companies in the market.", "C"], ["In jackknife resampling:", "the results are similar for every resample.", "the required number of repetitions is the same as in bootstrap resampling.", "each subsequent resample has one less observation than the previous resample.", "C"], ["Under US GAAP, which of the following is least likely a disclosure concerning inventory?", "The amount of the reversal of any write-down of inventories", "The amount of inventories recognized as an expense during the period", "The carrying amounts of inventories carried at fair value less costs to sell", "A"], ["A country seeking nationalism but willing to cooperate with other countries is best classified as:", "autarky.", "bilateral.", "hegemonic.", "B"], ["An analyst gathers the following information about a portfolio:\n\nYear 1: Equity 7.20%, Fixed Income 2.10%\nYear 2: Equity 9.60%, Fixed Income -4.60%\nYear 3: Equity -14.20%, Fixed Income 4.70%\n\nEquity weighting: 70%, Fixed-income weighting: 30%, rebalanced annually.", "If the equity weighting is 70%, the fixed-income weighting is 30% and the portfolio is rebalanced annually, the portfolio's annual geometric mean return is closest to:", "0.60%.", "0.83%.", "1.82%.", "B"], ["Firms operating under a monopolistic competition market structure most likely:", "have few competitors.", "benefit from high barriers to entry.", "sell products that are close substitutes for those offered by other firms.", "C"], ["Hedge funds are most likely characterized by:", "significant investment restrictions.", "a high correlation of returns with investment-grade bonds.", "performance relative to a traditional portfolio that may be hard to gauge.", "C"], ["The price of a forward contract most likely:", "decreases as the price of the underlying goes up.", "is constant and set as part of the contract specifications.", "increases as market risk increases.", "B"], ["Which of the following is most likely a distinction between futures and forward contracts? Futures contracts are:", "easily customized.", "traded on an exchange.", "more attractive than forwards for long positions when futures prices are negatively correlated to interest rates.", "B"], ["Which of the following yield curves is a sequence of breakeven reinvestment rates?", "Par curve", "Spot curve", "Forward curve", "C"], ["The sensitivity of a 30-year fixed-rate bond to a 50 basis points increase in the benchmark rate at the 25-30 years maturity segment is best measured by:", "key rate duration.", "effective duration.", "modified duration.", "A"], ["In using matrix pricing to estimate the required yield spread on a new corporate bond issue, the benchmark rate used is most likely to be the:", "coupon rate on a government bond with a similar time to maturity.", "yield to maturity on a government bond with a similar time to maturity.", "yield to maturity on a corporate bond with similar credit risk and time to maturity.", "B"], ["Which type of preference shares can be exchanged into a predetermined number of common shares?", "Convertible preference shares", "Cumulative preference shares", "Participating preference shares", "A"], ["Privately held convertible debt is most likely used by companies in which of the following life cycle stages?", "Seed", "Growth", "Maturity", "B"], ["Which of the following industries would most likely be included in the 'mature and cyclical' quadrant of an industry growth style box?", "Semiconductors", "Pharmaceuticals", "Freight transportation", "C"], ["A portfolio consists of the following two assets:\n\nAsset 1: Asset Weight=35%, Asset Standard Deviation=50%\nAsset 2: Asset Weight=65%, Asset Standard Deviation=15%", "If the covariance between the two assets is 0.04, the portfolio variance is closest to:", "0.04.", "0.06.", "0.12.", "B"], ["Pooled investment vehicles that frequently trade at a significant discount to net asset value are most likely:", "closed-end funds.", "open-ended funds.", "exchange-traded funds.", "A"], ["In an equally weighted portfolio, the diversification ratio is best described as a measure of the:", "relative level of risk between any two individual assets.", "amount of risk an asset contributes to the portfolio's risk.", "risk reduction benefit of investing in the portfolio versus a security from the portfolio.", "C"], ["Consider the following set of valuation multiples for three firms among seven in a particular industry sector:\n\nCompany A: P/E=17.0, P/CF=8.2, P/S=3.1, P/BV=1.2\nCompany B: P/E=12.7, P/CF=5.4, P/S=2.4, P/BV=0.8\nCompany C: P/E=14.4, P/CF=6.5, P/S=3.4, P/BV=1.4\nIndustry average: P/E=15.8, P/CF=7.4, P/S=2.6, P/BV=1.1", "Based solely on the P/E and P/CF ratios, which company appears overvalued?", "Company A", "Company B", "Company C", "A"], ["The variance of returns of a security and the market portfolio are 0.25 and 0.09, respectively. If the covariance of security returns and market returns is 0.06, the security's beta is closest to:", "0.24.", "0.40.", "0.67.", "C"], ["Which of the following is an assumption of the CAPM?", "Markets have zero transaction costs.", "Investors plan for multiple holding periods.", "Large investors can influence security prices.", "A"], ["Short sellers most likely:", "pay a short rebate to security lenders.", "receive cash collateral from security lenders.", "make payments-in-lieu of dividends to security lenders.", "C"], ["With regard to their investment in pension plans, employees with defined contribution plans accept:", "inflation risk only.", "investment risk only.", "both inflation and investment risks.", "C"], ["An analyst gathers the following information to evaluate the effect of dividends and leverage on future growth:\n\nScenario 1: Dividend payout ratio=60%, Financial leverage=3.0\nScenario 2: Dividend payout ratio=40%, Financial leverage=2.5", "If return on assets is the same for each scenario, the sustainable growth rate is:", "higher under Scenario 1.", "higher under Scenario 2.", "the same under both Scenario 1 and Scenario 2.", "B"], ["An investor values a company based on the dividend discount model. All else being equal, the estimated intrinsic value of the stock for a one-year holding period is most likely:", "lower than the estimated intrinsic value of the stock for a five-year holding period.", "equal to the estimated intrinsic value of the stock for a five-year holding period.", "higher than the estimated intrinsic value of the stock for a five-year holding period.", "B"], ["A credit issuer rating assigned by a rating agency is based on:", "the notching adjustment of a specific bond of the issuer.", "the ranking of a specific bond in the issuer's capital structure.", "the issuer's ability and willingness to service its senior unsecured debt.", "C"], ["A net investment hedge occurs when a derivative is used to:", "offset the fluctuation in the fair value of an asset or liability.", "absorb the variable cash flow of a floating rate asset or liability.", "offset the exchange rate risk of the equity of a foreign operation.", "C"], ["The value effect anomaly:", "contradicts semi-strong market efficiency.", "was identified using time series of data only.", "states that growth stocks have consistently outperformed value stocks.", "A"], ["A company's series B, 8% preferred stock has the following features: a par value of $50 paying quarterly dividends, current market value of $35, retractable at par with retraction date set for three years from today, similarly rated preferred issues have an estimated nominal required rate of return of 12%, analysts expect a sustainable growth rate of 4%. The intrinsic value estimate of a share of this preferred issue is closest to:", "$33.33.", "$45.02.", "$52.00.", "B"], ["The following information relates to a leveraged investment:\n\nPurchase price: $100/share\nSales price: $110/share\nShares purchased and subsequently sold: 10,000\nLeverage ratio: 2.5\nCall money rate per annum: 5%\nDividends received: $5/share\nHolding period: 1 year", "The return on investment is closest to:", "18%.", "25%.", "30%.", "B"], ["Which of the following is least likely to be an example of a derivative?", "An exchange-traded fund", "A contract to sell Alphabet Inc.'s shares at a fixed price", "A contract to buy Australian dollars at a predetermined exchange rate", "A"], ["Accounting standards and reporting requirements that produce meaningful and timely financial disclosures are most critical for achieving which of the following efficiencies associated with a well-functioning financial system?", "Allocational", "Informational", "Operational", "B"], ["Which of the following is least likely a primary reason a company would raise capital through the issuance of equity securities?", "Maximize the wealth of shareholders", "Directly satisfy stock compensation plans", "Finance the purchase of long-lived assets", "A"], ["Mass redemptions may force the sale of underlying real estate by managers of:", "open-end funds only.", "publicly traded REITs only.", "both open-end funds and publicly traded REITs.", "A"], ["The bonds of Apex Corporations have a par value of $10,000 each and an annual required rate of return of 10%. The bonds make quarterly coupon payments at an annual rate of 6% and have two years remaining until maturity. The current market price of each bond is closest to:", "$9,283.", "$9,306.", "$10,749.", "B"], ["Which of the following is most likely an example of a Eurobond?", "A Japanese borrower issuing US dollar-denominated bonds in the US market.", "A Canadian borrower issuing British pound-denominated bonds in the UK market.", "An Australian borrower issuing Canadian dollar-denominated bonds in the UK market.", "C"], ["For a bond investment, loss severity is:", "independent of the recovery rate.", "used in the calculation of the expected loss.", "the primary focus when assessing the creditworthiness of high-quality issuers.", "B"], ["For a call option, if the underlying asset's value is less than the option's exercise price, the option is said to be:", "at the money.", "out of the money.", "in the money.", "B"], ["For European options, all else being equal, a higher exercise price results in a higher value for:", "puts only.", "calls only.", "both puts and calls.", "A"], ["Consider the following information for a fixed-rate bond:\n\nYield to maturity: 6.57%\nAnnual coupon rate (paid semiannually): 9.00%\nMarket value: $11,189,092\nAnnualized modified duration: 4.687985", "If the bond's yield to maturity increases to 7.25%, the bond's estimated market value will be closest to:", "$9,746,599.", "$10,271,142.", "$10,832,403.", "B"], ["Initial investment capital: $100 million\nReturn at the end of one year: 12%\nManagement fee based on assets under management: 1%\nIncentive fee based on the return net of the management fee: 10%", "Assume management fees are calculated using end-of-period valuation. The investor's net return given this fee structure is closest to:", "9.68%.", "9.79%.", "10.88%.", "A"], ["Under US GAAP, an investment valued using reliable outside broker quotes is most appropriately categorized as a:", "Level 1 asset.", "Level 2 asset.", "Level 3 asset.", "B"], ["One source of return for an investor in a fixed-rate corporate bond is most likely the:", "bid-ask spread.", "interest on the collateral.", "reinvestment of coupon payments.", "C"], ["Which of the following performance measures is only relevant for well-diversified portfolios?", "Sharpe ratio", "Jensen's alpha", "M-squared (M3)", "B"], ["Which of the following behavioral biases most likely helps explain the momentum market anomaly?", "Status quo bias", "Availability bias", "Anchoring and adjustment bias", "C"], ["A good risk management framework:", "is a top-down process and guidance directing risk management activities.", "seeks to prioritize avoidance of financial loss over defining policies and processes.", "is typically a process that addresses a common set of factors within different organizations.", "A"], ["For a coupon bond with a positive yield, compounding more frequently within the year results in a yield-to-maturity that is:", "less positive.", "the same.", "more positive.", "A"], ["Which of the following ESG investment approaches best describes positive screening?", "Systematic consideration of material ESG factors in asset allocation", "Inclusion of sectors or companies in the portfolio based on specific ESG criteria", "Investments made with the intention to generate positive, measurable social and environmental impact", "B"], ["A market index has the following information:\n\nAt beginning of year: Value of Index=1,000.00 (Base)\nQuarter 1: Quarterly Price Returns=3.0%, Dividend Income=1.5%\nQuarter 2: Quarterly Price Returns=2.0%, Dividend Income=---\nQuarter 3: Quarterly Price Returns=-5.0%, Dividend Income=---", "By the end of Quarter 3, which of the following statements is most accurate?", "The price return is 1.26%.", "The value of the price return index is 998.1.", "The value of the total return index is below 1,000.", "B"], ["An asset-backed securitization with a waterfall structure is most likely structured with which type of credit enhancement?", "Subordination", "Time tranching", "Special-purpose entity (SPE)", "A"], ["If a bank wants the ability to retire debt prior to maturity in order to take advantage of lower borrowing rates, it most likely issues a:", "putable bond.", "callable bond.", "convertible bond.", "B"], ["Which of the following best describes a clawback provision? A provision that:", "protects clients from paying twice for the same performance.", "reflects the right of limited partners to reclaim part of the general partner's performance fee.", "represents the minimum rate of return that must be exceeded in order to earn a performance fee.", "B"], ["Which of the following is categorized as a social infrastructure asset?", "Airport", "Correctional facility", "Telecommunication tower", "B"], ["Which of the following is best classified as non-financial risk?", "Credit risk", "Market risk", "Solvency risk", "C"], ["With respect to margin, the leverage ratio:", "is the value of the equity investment divided by the value of the position.", "is the minimum fraction of the purchase price that must be trader's equity.", "indicates how many times larger a position is than the equity that supports it.", "C"], ["An investment-grade bond index is typically further subdivided by:", "maturity only.", "credit rating only.", "both maturity and credit rating.", "C"], ["An analyst gathers the following information about a hedge fund's first year of operations:\n\nBeginning-of-year assets under management: $100,000,000\nManagement fee based on end-of-year assets under management: 2%\nIncentive fee, calculated net of the management fee: 20%\nAnnual gross return: 15%\nSoft hurdle rate: 5%", "The total fees (in $ millions) earned by the hedge fund in Year 1 are:", "3.84.", "4.30.", "4.84.", "C"], ["If a bond has a modified duration of 6.2 and convexity of 42.8, the percentage change in price for a 50 basis point increase in yield is closest to:", "-3.15%.", "-3.05%.", "-1.44%.", "B"], ["The capital market line is best described as pricing:", "total risk.", "only systematic risk.", "only nonsystematic risk.", "A"], ["An investor gathers the following information about a company:\n\nCurrent dividend per share: $3\nHistorical annual dividend growth rate: 4%\nExpected annual dividend growth rate for the next three years: 8%\nExpected stock value per share at the end of Year 3: $33", "If the investors' required rate of return is 15%, the current estimate of the intrinsic value per share is closest to:", "$28.36.", "$29.08.", "$29.65.", "B"], ["Investors with limited resources and experience enter into alternative investments most likely through:", "co-investing.", "fund investing.", "direct investing.", "B"], ["An investor sells a European put option with the following characteristics:\n\nPut price: 15\nExercise price: 250", "If the price of the underlying at expiration is 260, the profit for the seller is:", "5", "10", "15", "C"], ["A buyer's profit from an in-the-money put option is best described as the:", "value of the option at expiration minus the option premium.", "spot price of the underlying minus the exercise price of the option.", "strike price of the option minus the value of the underlying at expiration.", "A"], ["The acquisition of a public company with the intent to take it private using debt financing best describes:", "angel investing.", "venture capital investing.", "leveraged buyout investing.", "C"], ["An advantage of using price multiples in valuation is most likely that multiples:", "allow easy cross-sectional comparisons.", "are not affected by differences in accounting rules.", "for cyclical companies are relatively stable over the economic cycle.", "A"], ["An analyst gathers the following credit measures for two companies and their industry:\n\nOperating profit margin: Company 1=13.7%, Company 2=12.1%, Industry=11.8%\nDebt/EBITDA: Company 1=1.21x, Company 2=2.89x, Industry=3.00x\nEBITDA/interest expense: Company 1=15.6x, Company 2=6.9x, Industry=6.9x", "Using these ratios, credit quality is strongest for:", "Company 1.", "Company 2.", "the industry.", "A"], ["A swap is most likely similar to a series of forward contracts when:", "all forward contracts are created with the combined value equal to zero.", "all forward contracts are entered into at the price created in the forward market.", "the value of the long forward contracts are matched with the value of the short forward contracts at each swap payment date.", "A"], ["In a binomial option pricing model, the expected payoff is based on:", "estimated probabilities and discounted at the risk-free rate.", "risk-neutral probabilities and discounted at the risk-free rate.", "risk-neutral probabilities and discounted at the risk-free rate plus a risk premium.", "B"], ["What is the most likely reason why arbitrage will not completely eliminate all pricing discrepancies for derivatives?", "Transaction costs", "Inaccurate forecasts", "Differences in risk aversion", "A"], ["Which form of market efficiency is most likely tested using technical analysis?", "Weak form", "Semi-strong form", "Strong form", "A"], ["A factor that most likely measures a client's ability to bear risk is his or her:", "time horizon.", "personality type.", "inclination to independent thinking.", "A"], ["A callable bond most likely experiences negative convexity when the bond's yield to maturity is:", "less than the bond's coupon rate.", "equal to the bond's coupon rate.", "greater than the bond's coupon rate.", "A"], ["The sum of the coupon payments over a year divided by the flat price of a bond is best defined as:", "true yield.", "simple yield.", "current yield.", "C"], ["In a rising interest rate environment, the effective duration of a putable bond relative to an otherwise identical non-putable bond, will most likely be:", "lower.", "the same.", "higher.", "A"], ["A bond issued by a province is most likely classified as a:", "supranational bond.", "quasi-government bond.", "non-sovereign government bond.", "C"], ["An investor owns a stock trading at $22 per share and would like to place an order to sell the position should the stock ever trade at or below $20 per share. The order most likely is:", "limit 20 sell.", "stop 20, market sell.", "stop 20, limit 20 sell.", "B"], ["In relation to asset allocation, which of the following is a desirable property when specifying asset classes?", "Asset classes should be mutually exclusive.", "An asset class should contain heterogeneous assets.", "Each asset class should be composed of assets with low paired correlations.", "A"], ["Based on put-call parity, a fiduciary call can be created by combining:", "a long call and a long risk-free zero-coupon bond.", "a short put and a long risk-free zero-coupon bond.", "a long call and a short risk-free zero-coupon bond.", "A"], ["All else being equal, commodity forward prices will increase as a result of a decrease in the:", "risk-free rate.", "storage costs.", "convenience yield.", "C"], ["As an investor assumes additional risk along the Markowitz efficient frontier, the rate at which expected return increases will most likely:", "decrease.", "remain constant.", "increase.", "A"], ["Which of the following sections of an IPS most likely provides information about specific types of assets to be excluded from a portfolio?", "Procedures", "Investment Guidelines", "Statement of Duties and Responsibilities", "B"], ["Indifference curves are plotted on a graph, with returns on the vertical axis and risk on the horizontal axis. For a risk-averse investor, the slope of the indifference curve is most likely:", "negative.", "zero.", "positive.", "C"], ["Which of the following most likely facilitates market efficiency?", "The presence of arbitrageurs only", "The reduction of the number of market participants only", "Both the presence of arbitrageurs and the reduction of the number of market participants", "A"], ["The correlation of cryptocurrencies with traditional assets has been:", "decreasing.", "steady.", "increasing.", "C"], ["The weighted average of the time to receipt of a bond's promised future payments is best measured by:", "effective duration.", "modified duration.", "Macaulay duration.", "C"], ["The first decision when constructing a security market index is most likely:", "identifying the target market.", "identifying the investment universe.", "determining the constituent securities.", "A"], ["Which of the following statements is most accurate? Smart beta strategies:", "invest in high market beta stocks to generate an abnormal return.", "use simple rules-based strategies as a basis for investment decisions.", "typically have lower portfolio turnover than passive market-cap weighted strategies.", "B"], ["According to put-call parity, a long position in an underlying is equivalent to a long risk-free bond combined with a:", "long call and a long put with the same strike.", "long call and a short put with the same strike.", "short call and a long put with the same strike.", "B"], ["A mortgage pass-through security most likely has:", "stable cash flows.", "an uncertain average life.", "greater cash flows than the underlying pool of mortgages.", "B"], ["A stock dividend:", "is relevant for valuation of a company.", "involves an increase in the number of shares outstanding.", "alters the shareholders' proportional ownership in the company.", "B"], ["Compared to the deal-by-deal waterfall distribution method in alternative investments, the whole-of-fund method is:", "less advantageous to general partners than to limited partners.", "equally advantageous to general partners and to limited partners.", "more advantageous to general partners than to limited partners.", "A"], ["An analyst gathers the following information about three assets:\n\nAsset 1: Systematic risk=0.10, Nonsystematic risk=0.25, Total risk=0.35\nAsset 2: Systematic risk=0.30, Nonsystematic risk=0.10, Total risk=0.40\nAsset 3: Systematic risk=0.25, Nonsystematic risk=0.20, Total risk=0.45", "According to capital market theory, which asset should have the highest expected return?", "Asset 1", "Asset 2", "Asset 3", "B"], ["A stock is currently trading at €25.00 and the risk-free rate is 1.75% per annum. The minimum price of a 9-month European call option on the stock with an exercise price of €22.50 is closest to:", "€2.21.", "€2.50.", "€2.79.", "C"], ["Duration is most accurate as a measure of interest rate risk for a bond portfolio when the slope of the yield curve:", "decreases.", "stays the same.", "increases.", "B"], ["The motivation for investing in the mezzanine tranche of a collateralized debt obligation (CDO) is most likely to:", "benefit from the credit protection provided by the senior tranche.", "earn a higher yield than that on a comparably rated corporate bond.", "receive a return in excess of what is paid out to all other bond classes.", "B"], ["Which of the following is most likely forecast by using historical depreciation and amortization expenses?", "Growth capital expenditures", "Future debt and equity levels", "Maintenance capital expenditures", "C"], ["Jorge Fernandez, CFA, is an equity analyst at a brokerage company. He suspects his colleague is trading on shares prior to his research reports being distributed to clients. When Fernandez asks his colleague about it, he is told to mind his own business. To comply with the Standard relating to knowledge of law, Fernandez should most likely:", "report his suspicions to his supervisor.", "continue to observe his colleague's trades.", "discuss his colleague's trades with other analysts at the firm.", "A"], ["A member works in a country where there is no regulation relating to investment performance standards. In the absence of any regulatory guidance, the member is required to communicate investment performance information to her clients in accordance with:", "the GIPS standards.", "the Code and Standards.", "stricter of the GIPS standards and the Code and Standards.", "B"], ["Lucie Hilbert, CFA, offers premium services to clients for an additional fee. She offers the premium services only by email to all of her clients. One client, who previously inquired about premium services, does not receive the offer due to a technical problem with the client's email system. One week later Hilbert makes an investment in an IPO on behalf of her clients. The issue is oversubscribed, so she excludes her sister, a regular fee-paying client of Hilbert's firm, to free up shares for other clients. Has Hilbert most likely violated the Standards?", "No", "Yes, the Standard relating to fair dealing", "Yes, the Standard relating to communication with clients and prospective clients", "B"], ["Joyce La Valle, CFA, is a portfolio manager at a global bank. La Valle has been told she should use a specific vendor for equity investment research that has been approved by the bank's headquarters. Because La Valle is located in a country different from the bank's headquarters, she is uncomfortable with the validity of the research provided by this vendor when it applies to her country and would like to use a local vendor on whom she has already conducted due diligence. Which research vendor(s) should La Valle use to avoid violating the Standards?", "The local research vendor", "The bank-approved research vendor", "Both the local and the bank-approved research vendors.", "A"], ["Raymond Tam, CFA, manages a fund with a mandate to invest in local equities. To improve returns for fund investors, he sells options on some of the stocks held in the fund. Three months later, the options expire and the fund reports higher returns. Tam does not mention the options in his next client update. Tam has violated the Standard(s) relating to:", "fair dealing only.", "communication with clients and prospective clients only.", "both fair dealing and communication with clients and prospective clients.", "B"], ["Jonas Balsys, CFA, has a prospective client, Edith Clancy, who mentions that she donates to environmental causes. Balsys mentions Clancy to a friend who works for an environmental agency. The next week, Balsys prepares an IPS for Clancy. Clancy does not disclose information about assets outside of her ESG investments. Balsys prepares the IPS based on the partial information provided by Clancy and enters into a formal agreement with her. Balsys has most likely violated the Standard relating to:", "suitability.", "preservation of confidentiality.", "diligence and reasonable basis.", "B"], ["According to the guidance provided by the Standards, which of the following is not among the recommended procedures for compliance with the Standard relating to independence and objectivity?", "Create a restricted list", "Prohibit the acceptance of gifts", "Appoint a senior compliance officer with oversight responsibilities", "B"], ["A member receives referral fees for recommending third-party services to clients. Before entering into an agreement with a new client, which of the following is the member required to disclose to the new client?", "Flat fees only", "Benefits received in soft dollars only", "Both flat fees and benefits received in soft dollars", "C"], ["Which of the following is a key concept relating to the GIPS standards? The GIPS standards:", "address every aspect of performance measurement.", "require firms to adhere to certain calculation methodologies to allow for comparability across firms.", "require the inclusion of all discretionary and non-discretionary segregated accounts in at least one composite.", "B"], ["John Clark, CFA, starts a new job and re-creates a research report on a company he covered at his previous employer. He uses information gathered directly from the covered company. He also uses his personal notes taken while working at his previous employer. Has Clark violated the Standard relating to record retention?", "No", "Yes, because he uses information he gathered directly from the covered company", "Yes, because he uses his personal notes taken while working at his previous employer", "C"], ["Trust is most likely the foundation of the financial industry because:", "financial products and services are often tangible and verifiable.", "investors rely on the specialized knowledge of investment professionals.", "global financial markets and their participants are highly regulated by effective laws.", "B"], ["Edo Ronde, CFA, an analyst for a hedge fund, One World Investments, is attending a key industry conference for the microelectronics industry. At lunch in a restaurant adjacent to the conference venue, Ronde sits next to a table of conference attendees and is able to read their nametags. Ronde realizes the group includes the president of a publicly traded company in the microelectronics industry, Fulda Manufacturing, a company Ronde follows. Ronde overhears the president complain about a production delay problem Fulda's factories are experiencing. The president mentions that the delay will reduce Fulda earnings more than 20% during the next year if not solved. Ronde relays this information to the portfolio manager he reports to at One World explaining that in a recent research report he recommended Fulda as a buy. The manager asks Ronde to write up a negative report on Fulda so the fund can sell the stock. According to the CFA Institute Code of Ethics and Standards of Professional Conduct Ronde should least likely:", "revise his research report.", "leave his research report as it is.", "request the portfolio manager not act on the information.", "A"], ["According to the GIPS standards, which of the following statements is most accurate? Verification:", "ensures the accuracy of composite presentations.", "is required to maintain compliance with the GIPS standards.", "tests whether a firm has complied with composite construction requirements on a firm-wide basis.", "C"], ["Feng Liu, CFA, is an investment manager. Liu organizes nonviolent demonstrations on weekends to fight climate change. After repeated demonstrations, Liu is arrested and convicted for obstructing public transit which is considered an act of civil disobedience in her country. Has Liu violated the Standards?", "No", "Yes, Liu has violated the Standard relating to loyalty", "Yes, Liu has violated the Standard relating to misconduct", "A"], ["According to the Standard relating to loyalty, prudence, and care, a member with control of client assets should submit to each client an itemized statement of their security holdings and transactions at least:", "quarterly.", "semi-annually.", "annually.", "A"], ["According to the Standard relating to loyalty, members must:", "subordinate any personal obligations to their work.", "place the interests of their employer below the interests of clients.", "refrain from entering into an independent business while still employed.", "B"], ["Preeta Singh, a CFA candidate, is an asset manager employed by a fund management company, which manages very large segregated pension funds. In her spare time outside of working hours, Singh likes to provide strategic planning consulting services to small companies to help grow their businesses. Singh is paid for the consulting services and has also provided her employer information about these outside activities. Has Singh violated the Standards?", "No", "Yes, the Standard relating to loyalty", "Yes, the Standard relating to additional compensation arrangements", "A"], [`Which of the following is consistent with the Standards? Statement 1: "An IPS should address the client's return requirements." Statement 2: "Personal data such as age and occupation are required to provide investment advice." Statement 3: "Clients are primarily responsible for determining if investments are suitable for them if they are in an advisory relationship with members."`, "Statement 1 only", "Statement 1 and Statement 2 only", "Statement 1, Statement 2, and Statement 3", "B"], ["Teresa Avila, CFA, is a micro cap investment analyst at a hedge fund. The fund requires Avila to hold any securities she recommends for the fund in her own account as well. Because Avila has such a small account, whenever she trades for her own portfolio she combines the transactions with those of the hedge fund so she is sure to have her account aligned with the fund. Has Avila most likely violated any CFA Institute Standards of Professional Conduct?", "No", "Yes, the Standard relating to misconduct", "Yes, the Standard relating to priority of transactions", "C"], ['Upon receiving notification that he passed his Level Ill CFA exam, Paulo Garcia updates his educational background on his social media site by adding "completed the CFA course." Does Garcia most likely violate the Standards?', "No", "Yes, because it could imply he has obtained the charter.", "Yes, because he doesn't describe the certification process.", "B"], ["Milene Fontes, CFA, takes over coverage of a company because the original analyst left the firm before finishing the research report. She adds her own thorough analysis and publishes the report in her name only. Has Fontes violated the Standards?", "No", "Yes, by using the original analyst's work in the report", "Yes, by not attributing the report to the original analyst", "A"], ["According to the Standard relating to responsibilities of supervisors, a member who works as a department head managing large numbers of employees must:", "have in-depth knowledge of the Code and Standards.", "personally evaluate the conduct of all employees in his department on a continuing basis.", "make reasonable efforts to ensure all employees at his firm comply with applicable laws and regulations.", "A"], ["Vai Rajan, CFA, a well-known analyst, issues a buy recommendation on a small-cap stock. Rajan shares his recommendation with the public two days after he shares the recommendation with his clients. The public dissemination leads to a significant increase in the stock price. Lise Genzo, CFA, one of Rajan's clients, buys a large position in the stock. Genzo sells the entire position for a profit after the recommendation is disseminated to the public. Her action leads to a significant decline in the stock price. Do the actions of the two members comply with the Standard relating to market manipulation?", "Yes", "No, only Rajan's action is compliant", "No, only Genzo's action is compliant", "A"], ["Ann Collins, CFA, manages a fund for Kreet Investments (KI). KI provides a retirement plan for employees offering a choice of ten large diversified mutual funds. The choices include two funds managed by KI employees. Collins changes her personal investment allocation to the two funds managed by her colleagues without disclosing the change to KI or to her clients. Has Collins violated the Standard relating to avoid or disclose conflicts?", "No", "Yes, by failing to disclose the allocation change to KI", "Yes, by failing to disclose the allocation change to her clients", "A"], ["According to the GIPS standards, a firm must:", "attain compliance for a minimum of seven years to initially claim compliance with the GIPS standards.", "include terminated composites on its list of composite descriptions for at least seven years after the composite termination date.", "update GIPS reports provided to prospective clients to include information through the most recent annual period within 12 months of that annual period end.", "C"], ["Harbor Asset Management (HAM) manages both domestic and global portfolios for its clients. HAM includes the following statements in its promotional materials: Statement 1: All investment consultants retained by HAM endorse the GIPS standards. Statement 2: All domestic portfolios managed by HAM are in compliance with the GIPS standards. Statement 3: The objective of the GIPS standards is to eliminate the need for in-depth due diligence by prospective investors. Which of HAM's statements is most consistent with the GIPS standards?", "Statement 1", "Statement 2", "Statement 3", "A"], ["Vanraj Shah has just finished taking the Level II CFA exam for the second time. To protect the integrity of the exam, Gupta is careful not to discuss the exam questions with other candidates. Shah calls his friend, a member, and contrasts his two attempts by highlighting that there were many calculation questions on derivatives in the first instance and none in the second. Later, in a public blog on investment education, Shah shares his strong disagreement regarding CFA Institute shifting to computer-based testing. Shah has violated the Standard(s) relating to:", "conduct as participants in CFA Institute programs only.", "reference to CFA Institute, the CFA designation, and the CFA program only.", "both conduct as participants in CFA Institute programs and reference to CFA Institute, the CFA designation, and the CFA program.", "A"], ["A central bank announcement of a program to raise rates to moderate inflation will most likely lead to:", "higher asset prices.", "a weaker domestic currency.", "revised interest rate expectations.", "C"], ["Deferred tax liabilities could arise when:", "accounting profit is greater than taxable income.", "the tax base of equipment is greater than its carrying value.", "tax authorities do not allow an expense item for tax purposes.", "A"], ["Which of the following statements about dispersion measures is most accurate?", "The range shows how the data are distributed", "The variance is expressed in the same unit of measurement as the observations", "The number of degrees of freedom in estimating the population variance with the sample variance is equal to the sample size minus one", "C"], ["Use the following common-size balance sheet information to answer the question below. Assets Cash and cash equivalents Marketable securities Trade and other receivables Other non-financial assets Total current assets Goodwill Intangible assets Property, plant, and equipment Other financial assets Other non-financial assets Deferred tax assets Total non-current assets Total assets Liabilities and shareholders' equity Trade and other payables Bank loans and other financial liabilities Other non-financial liabilities Deferred income Total current liabilities Company X 15.6% 3.4% 10.9% 14.3% 44.2% 1.6% 17.6% 17.7% 12.4% 0.3% 6.2% 55.8% 100.0% 3.4% 8.4% 5.0% 11.8% 28.6% Company Y 12.0% 5.1% 12.7% 11.7% 41.5% 2.2% 7.0% 25.3% 24.0% 0.0% 0.0% 58.5% 100.0% 3.5% 3.2% 11.7% 9.8% 28.2% Company Z 2.0% 12.0% 4.8% 7.4% 26.2% 28.8% 24.0% 8.2% 9.6% 2.1% 1.1% 73.8% 100.0% 2.1% 6.0% 9.0% 0.0% 17.1% Property, plant, and equipment Other financial assets Other non-financial assets Deferred tax assets Total non-current assets Total assets Liabilities and shareholders' equity Trade and other payables Bank loans and other financial liabilities Other non-financial liabilities Deferred income Total current liabilities Financial liabilities Other non-financial liabilities Deferred tax liabilities Total non-current liabilities Total liabilities Total shareholders' equity Total liabilities and shareholders' equity 17.7% 12.4% 0.3% 6.2% 55.8% 100.0% 3.4% 8.4% 5.0% 11.8% 28.6% 18.4% 12.8% 2.5% 33.7% 62.3% 37.7% 100.0% 25.3% 24.0% 0.0% 0.0% 58.5% 100.0% 3.5% 3.2% 11.7% 9.8% 28.2% 18.3% 5.7% 4.2% 27.5% 55.7% 44.3% 100.0% 8.2% 9.6% 2.1% 1.1% 73.8% 100.0% 2.1% 6.0% 9.0% 0.0% 17.1% 17.4% 7.9% 18.6% 43.9% 61.00/0 39.0% 100.0% Q. Based solely on the quick ratio, which company is most liquid?", "Company X Company Y", "C. Company Z B. Company Y", "Company Z", "C"], ["If all paired observations of random variables X and Y satisfy the equation Y = —0.2 + 0.8X, the correlation between X and Y is:", "0.6.", "0.8.", "1.0.", "C"], ["A firm is operating under an oligopoly when it is:", "the sole provider of a good or service.", "one of many providers of a good or service.", "one of a small number of providers of a good or service.", "C"], ["Which of the following best reflects good corporate governance?", "Dual-class share structure", "Established brand reputation", "Diversity, experience, and independence of directors", "C"], ["With respect to fintech applications, data curation is best described as the process of:", "ensuring data quality and accuracy.", "collecting and transforming data into a format that can be used.", "recording, archiving, and accessing data from the underlying database.", "A"], ["An analyst estimates the following risk premiums for a long-term corporate bond: Inflation premium Default risk premium Liquidity premium Maturity premium 1.5% 2.0% 1.0% 1.5% Q. If the short-term nominal risk-free interest rate is 4.0%, the yield on the bond is closest to:", "6.0%.", "8.5%.", "10.0%.", "B"], ["Credit cycles are most likely:", "shorter and shallower than business cycles.", "of equal length and depth as business cycles.", "longer and deeper than business cycles.", "C"], ["Selected year-end financial data for a company is as follows: Net income Tax rate Weighted average number of common shares outstanding 12% bond convertible into 3,000 common shares (potentially dilutive) Q. Given this information, the diluted EPS of the company is closest to:", "$1.51.", "$1.60.", "$1.61.", "B"], ["A company has announced that it is going to distribute a group of long-lived assets to its owners in a spin-off. The most appropriate way to account for the assets until the distribution occurs is to classify them as:", "held for sale with no depreciation taken.", "held for use until disposal with no deprecation taken.", "held for use until disposal with depreciation continuing to be taken.", "C"], ["An analyst uses the following information to forecast a company's gross profit margin: Sales Cost of sales Current Amount (in $ millions) 1,200 300 Forecasted Growth 40/0 8% Q. The analyst's gross margin forecast would be closest to a(n):", "decrease of 4%.", "decrease of 1%.", "increase of 1%.", "B"], ["An analyst gathers the following one-period continuously compounded returns. 4.2% 3.0% -1.00/0 r2,3 Q. The continuously compounded return from time t = 0 to time t = 3 is closest to:", "6.07%.", "6.20%.", "6.25%.", "B"], ["Which of the following is an example of a liquidity ratio?", "Defensive interval ratio", "Inventory turnover ratio", "Working capital turnover ratio", "A"], ["An analyst gathers the following information about a company: Market value of equity Cost of equity Market value of debt Before-tax cost of debt Marginal tax rate Q. The company's WACC is closest to:", "11.02%.", "11.50%.", "11.86%.", "B"], ["Which of the following best describes the link between the cash flow statement and the balance sheet?", "The cash flow statement reconciles changes in all accounts on the balance sheet", "The statement's investing activities section reconciles the changes in current assets on the balance sheet", "The cash flow statement reconciles the beginning and ending balances of cash reported on the balance sheet", "C"], ["Which of the following is best referred to as a nonparametric hypothesis test concerning correlation? A test using the:", "Pearson correlation coefficient", "bivariate correlation coefficient", "Spearman rank correlation coefficient", "C"], ["An exchange rate between two currencies has decreased to 1.3500. If the base currency has depreciated by 7% against the price currency, the initial exchange rate between the two currencies was closest to:", "1.2617.", "1.4445.", "1.4516.", "C"], ["According to Modigliani-Miller propositions, if a profitable company uses more debt in the presence of taxes, firm value will:", "decrease.", "remain the same.", "increase.", "C"], ["A qualified audit opinion is most appropriately issued when:", "there is some scope limitation or exception to accounting standards.", "the company's financial statements are fairly presented and free from material error.", "the company's financial statements materially depart from accounting standards and are not fairly presented.", "A"], ["A credit rating agency assesses a company's corporate governance structure as favorable to creditor rights. The most likely impact of this assessment on the company is a(n):", "reduction in its cost of debt.", "increase in its risk of default.", "reduction in its financial performance.", "A"], ["Which of the following statements about company stakeholders is most accurate?", "Debtholders tend to prefer that a company raise more equity", "Shareholder—debtholder conflict is greater for short-term creditors", "Shareholders are more likely than debtholders to impose contractual limits on leverage", "A"], ["Which of the following acts as an automatic stabilizer for the economy?", "A decrease in corporate tax rates", "New public spending on hospitals", "Government expenditure on unemployment benefits", "C"], ["The most appropriate statement about financial ratio analysis is that it has limited use as an analytical tool for:", "evaluating management.", "comparing companies that use different accounting methods.", "providing insights into microeconomic relationships within a company that help analysts project earnings.", "B"], ["An analyst gathers the following information about a 2-year construction contract: Contract price Estimated total costs Cash received in Year 1 Work performed in Year 1 €800,000 €270,000 Q. Work performed provides an appropriate measure of progress towards completing the contract and the performance obligations are satisfied over time. Assuming it is highly probable that revenue will not be subsequently reversed, revenue recognized in Year 1 is:", "€240,000.", "€270,000.", "€300,000.", "C"], ["An analyst gathers the following information about three companies in the same industry but at different stages of their life cycles: Year 1 Revenue (in $ Millions) Company 1 Company 2 Company 3 10 30 100 Year 2 Revenue (in $ Millions) 11 36 95 Year 3 Revenue (in $ Millions) 9 44 97 Year 3 Debt/CapitaI 00/0 8% 25% Q. Based only on this information, the company with the greatest capacity to absorb additional leverage in Year 4 is most likely:", "Company 1.", "Company 2.", "Company 3.", "B"], ["In the static trade-off theory of capital structure, when a company's capital structure is optimal, its marginal cost of financial distress is:", "less than the marginal benefit of its tax shield.", "equal to the marginal benefit its tax shield.", "greater than the marginal benefit of its tax shield.", "B"], ["A characteristic of monopolistic competition is most likely:", "high barriers to entry.", "a large number of sellers.", "strong pricing power of firms.", "B"], ["Cyber threats are most likely an example of:", "event risk.", "thematic risk.", "exogenous risk.", "B"], ["The standard error of the slope coefficient for a simple linear regression model is the ratio of the model's standard error of the estimate to the square root of the:", "sum of squares regression.", "standard error of the forecast.", "variation of the independent variable.", "C"], ["An analyst runs a simple linear regression using 35 months of data to assess a country's short-term interest rate as a function of its inflation rate, with the following results: Source Degrees of Freedom Sums of Squares Mean Square Regression Error Total 1 33 34 17.3009 20.2299 37.5308 17.3009.6130 Q. The value of the standard error of the estimate is closest to:", "0.68.", "0.78.", "1.05.", "B"], ["An increase in a central bank's policy rate most likely leads to:", "decreasing real domestic demand and increasing net external demand.", "increasing real domestic demand and decreasing net external demand.", "decreasing real domestic demand and decreasing net external demand.", "C"], ["An investor turned 25 years old today. She plans to deposit $5,000 in a savings account at the end of each year, with the first deposit to be made one year from today. The last deposit will be made on her 65th birthday. If the annual return is 4%, the total savings on the day of her last deposit will be closest to:", "$452,046.", "$475,128.", "$499,133.", "B"], ["An analyst gathers the following probability distribution of a company's EPS: Probability 0.1 0.9 Q. The standard deviation of EPS is closest to:", "$2.4.", "$4.0.", "$5.8.", "A"], ["Which of the following statements relating to the financial reporting of defined contribution pension plans is correct?", "The only balance sheet impact from contributions to defined-contribution plans is on an asset account", "Under a defined-contribution plan, company contributions to the plan are treated as an operating cash flow", "Defined-contribution plans require companies to make several assumptions in order to estimate their pension obligations", "B"], ["An analyst gathers the following information (in $ millions) about a company: Average total assets Average total liabilities Q. The financial leverage ratio is:", "0.6.", "1.5.", "25", "C"], ["An analyst gathers the following information (in € millions) about three companies: Company 1 Company 2 Company 3 Cash and short-term securities Accounts receivable Inventory Current liabilities Q. The company with the highest quick ratio is:", "Company 1.", "Company 2.", "Company 3.", "B"], ["An analyst gathers the following information about a sample from a population with a lognormal distribution: Sample size Sample mean Sum of squared deviations from the sample mean Q. The standard error of the sample mean is closest to:", "0.12.", "0.41.", "064", "A"], ["An analyst gathers the following observations of a variable: 1.0 2.0 2.0 3.0 4.0 Q. The second quartile of the observations is closest to:", "2.0.", "2.5.", "30", "A"], ["If wages and prices are rigid, which of the following policy combinations most likely leads to an increase in aggregate demand from the private sector relative to the public sector?", "Easy fiscal policy and easy monetary policy", "Easy fiscal policy and tight monetary policy", "Tight fiscal policy and easy monetary policy", "C"], ["An increase in which of the following accounts could increase the current ratio?", "Trade receivables", "Accrued expenses", "Deferred tax assets", "A"], ["An analyst gathers the following information (in E millions) about a company's expenditures in developing an intangible asset for internal use: Costs incurred during research phase Development costs incurred after reaching technical feasibility 10 15 Q. If all the criteria for capitalization have been met, the maximum amount of expenditures (in E millions) eligible for capitalization is most likely:", "10.", "15.", "25.", "B"], ["A firm in an oligopoly market most likely faces a kinked demand curve because competitors do not match:", "price increases.", "price decreases.", "both price increases and price decreases.", "A"], ["An asset management firm generated the following annual returns in their US large-cap equity portfolio: Year 2008 2009 2010 2011 Net Return (%) -34.8 32.2 11.1 -1.4 Q. The 2012 return needed to achieve a trailing five-year geometric mean annualized return of 5% when calculated at the end of 2012 is closest to:", "17.9%.", "27.6%.", "35.2%.", "C"], ["Two populations are normally distributed with unknown variances that are assumed to be equal. If a large independent random sample is drawn from each population, the most appropriate test statistic for testing the difference between the population means is the:", "t-statistic.", "z-statistic.", "F-statistic.", "A"], ["Under the revaluation model, an initial revaluation that increases the carrying amount of assets increases:", "the financial leverage ratio.", "other comprehensive income.", "current period return on assets.", "B"], ["The structural budget deficit is the deficit that exists if the economy:", "is below full potential output.", "is at full potential output.", "is above full potential output.", "B"], ["All else being equal, during periods of rising prices and constant inventory quantities, a company using the weighted average cost inventory valuation method most likely reports a:", "higher gross profit margin than if using FIFO.", "lower inventory turnover ratio than if using FIFO.", "shorter cash conversion cycle than if using FIFO.", "C"], ["A country which is a global leader and uses its political or economic influence over other countries to control resources is best described as:", "autarkic.", "multilateral.", "hegemonic.", "C"], ["Which of the following statements is most accurate? Network effects:", "lower the barriers to entry for competition.", "are created only when crowdsourcing is used.", "are present in many older, pre-internet businesses.", "C"], ["In capital investing, a production-flexibility option allows a company to:", "reduce supply on lower demand.", "sequence investments over time.", "increase prices on excess demand.", "A"], ["All else being equal, if interest expense is not tax deductible, as a company's marginal tax rate increases, the company's WACC:", "decreases.", "remains the same.", "increases.", "B"], ["An analyst gathers the following exchange rate information: AUD/USD AUD/EUR Spot rate 1.3889 1.6393 Forward rate 1.3195 1.4875 AUD/USD is the amount ofAUD per 1 USD AUD/EUR is the amount ofAUD per 1 EUR Q. The USD is expected to depreciate against:", "the AUD only.", "the EUR only.", "both the AUD and the EUR.", "A"], ["An analyst examining the statement of cash flows for possible manipulation is least likely to be concerned about a(n):", "cash flow from operations to net income ratio consistently higher than 1.", "increase in cash from operations arising from a large change in accounts payable.", "change in the classification of interest paid from an operating cash flow to a financing cash flow.", "A"], ["A project offers the following incremental after-tax cash flows (CF): Year Cash flow (€) 1 2 -12,500 2,000 4,000 3 5,000 4 2,000 Q. The appropriate discount rate to use in evaluating the project is 8%. The net present value (NPV) of the project is closest to:", "-€1,780.", "-€1,736.", "-€922.", "A"], ["Interest payable decreased during a company's fiscal year. Compared with the amount of cash interest payments made, interest expense is most likely:", "lower.", "the same.", "higher.", "A"], ["The following data are available on a company: Metric Total assets Total revenues Total expenses Research and development expenses ($ millions) 145 282 241 12 Q. Under a common-size analysis, the value used for research and development expenses is closest to:", "4.2%.", "5.0%.", "8.3%.", "A"], ["The following financial statement data are available for a company: Net income Depreciation Cash flow from operations Free cash flow to the firm Beginning total assets Ending total assets Ending cash balance Book value Q. The company's cash return on assets ratio is closest to:", "10%.", "12%.", "13%.", "B"], ["Because of a problem with the production process, a manufacturer produced a batch of defective finished goods with a total cost of $18,000. The sales value of this batch in its current condition is $6,000. With $3,000 of additional processing, however, the batch could be sold for $11,000. The value of the unsold inventory is closest to:", "$8,000.", "$9,000.", "$11,000.", "A"], ["Which of the following statements is most accurate? Private companies:", "are typically subject to registration requirements.", "may be restricted to issue securities only to accredited investors.", "have little ownership overlap between management and shareholders.", "B"], ["As a result of an inventory write-down, which of the following financial ratios most likely decreases?", "Quick ratio", "Current ratio", "Payables turnover ratio", "B"], ["An analyst gathers the following information: CAD/EUR spot exchange rate CAD 12-month risk-free rate EUR 12-month risk-free rate CAD/EUR is the amount of CAD per 1 EUR. Q. The CAD/EUR 12-month forward points are closest to:", "-211.", "21.", "214.", "C"], ["Which of the following statements regarding indexes for alternative investments is most accurate?", "Hedge funds determine whether their results will be included in an index.", "Commodity indexes consist of a market-weighted basket of one or more specific commodities", "Commodity index returns are based on changes in the prices of the underlying commodities", "A"], ["Which of the following transactions poses the risk of losing the greatest dollar amount?", "Selling a put with a strike price of $15 for $0.90", "Buying a call with a strike price of $15 for $11.25", "Buying a put with a strike price of $37.50 for $12.75", "A"], ["When the forward price of a commodity exceeds the spot price, the commodity market is most likely in:", "carry.", "contango.", "backwardation.", "B"], ["Which of the following risk metrics is best used to estimate extreme losses?", "Rho", "Delta", "Conditional VaR", "C"], ["With respect to fintech applications, the instantaneous transfer of collateral in the event of default is an example of:", "tokenization.", "smart contracts.", "high-frequency trading.", "B"], ["Which of the following is an example of an event-driven hedge fund strategy?", "Buying the stock of a company that is spinning off a subsidiary", "Selling stock options to earn premiums and benefit from limited market movements", "Taking long positions in undervalued stocks and short positions in overvalued stocks", "A"], ["Which of the following valuation models does not require the estimation of required rate of return on a share?", "A price multiple model", "The Gordon growth model", "A free-cash-flow-to-equity model", "A"], ["In derivatives pricing:", "investors are assumed to be risk averse.", "a portfolio consisting of the underlying and the derivative must earn the risk-free rate.", "expected payoffs of the derivative are discounted at the risk-free rate plus a risk premium.", "B"], ["With respect to interest rate changes, if an investor's investment time horizon is longer than the time-to-maturity of a bond, coupon reinvestment risk is:", "less important than market risk.", "is equally as important as market risk.", "more important than market risk.", "C"], ["The duration statistic that best measures the interest rate risk of a bond that does not have a well-defined internal rate of return is:", "effective duration.", "modified duration.", "Macaulay duration.", "A"], ["An analyst forecasts different outcomes for a company next year: Bear Case Sales (In € 280 millions) EBITDA margin 10 Debt to capital 75 Q. This forecast table is best described as a:", "scenario analysis.", "sensitivity analysis.", "point estimate forecast.", "A"], ["Which of the following statements concerning financial regulatory bodies is least accurate? Financial regulatory bodies:", "act to level the playing field for market participants.", "define minimum standards of competence for agents.", "require that regulated firms maintain optimum levels of capital.", "C"], ["According to the size effect anomaly:", "equities with low P/Es tend to outperform equities with high P/Es.", "equities with above-average dividend yields tend to outperform equities with below-average dividend yields.", "equities of small-cap companies tend to outperform equities of large-cap companies on a risk adjusted basis.", "C"], ["Which of the following is most likely a consequence of the overconfidence bias? An investor who:", "overestimates downside risks", "underestimates expected returns", "holds a poorly diversified portfolio", "C"], ["Which of the following statements is least accurate concerning differences in the pricing of forwards and futures?", "Interest rate volatility can explain pricing differences.", "Pricing differences can arise if futures prices and interest rates are uncorrelated.", "Differences in the pattern of cash flows of forwards and futures can explain pricing differences.", "B"], ["Which of the following sections of the IPS most likely explains how to respond to various contingencies?", "Procedures", "Investment guidelines", "Evaluation and review", "A"], ["The data for two stocks in an index are as follows: Stock Shares Outstanding 5,000 2,000 Percent of Shares in Market Float 90 100 Beginning of Period Price ($) 40 68 End of Period Price ($) 45 60 Dividends per Share ($) 1.00 0.50 Assuming the beginning value of the float-adjusted market-capitalization-weighted equity index is 100, the ending value is closest to:", "102.06.", "102.68.", "103.80.", "A"], ["An assumption of the CAPM is that:", "markets are frictionless.", "investors are risk-neutral.", "an investor's trades affect prices.", "A"], ["Which of the following factors is most appropriate to consider when determining a company's risk tolerance?", "The company's positioning within its industry", "The beliefs of the company's board members", "The short-term stability of the market environment", "A"], ["Which of the following contingency provisions in a bond most likely benefits the issuer?", "Put provision", "Call provision", "Conversion to common shares", "B"], ["Debtor-in-possession (DIP) financing refers to financing for firms:", "already in bankruptcy.", "at the risk of bankruptcy without additional financing.", "with strong financial positions and promising growth prospects.", "A"], ["An investor allocates $10 million at the beginning of the year to a hedge fund charging a management fee of 2% and an incentive fee of 20% with a 6% hard hurdle rate. At year-end the value of the investment is $11.8 million. The incentive fee is calculated net of the management fee and the management fee is based on the year-end value. The net-of-fees return the investor earned is closest to:", "13.24%.", "13.71%.", "13.93%.", "B"], ["For non-amortizing, non-mortgage asset-backed securities, the lockout period most likely represents when:", "investors start receiving repayments.", "overcollateralization begins to be reduced.", "repaid principal is reinvested in loans of equal principal.", "C"], ["Which of the following statements regarding rebalancing and reconstitution of an index is most accurate?", "Market-capitalization-weighted indexes require frequent rebalancing.", "Reconstitution can dramatically affect prices of both current and prospective constituents.", "Reconstitution is part of index management that reduces the need for rebalancing.", "B"], ["An analyst gathers the following information for a portfolio of annual pay bonds: Par value Time to maturity Coupon Yield Market value Macaulay duration Bond A 4 years 4% 4.27% 3.774 Bond B 7 years 5.5% 6.18% $7,698,251.78 5.973 Bond C 10 years 6.25% 7.2% $11 7.639 Q. The average (annual) modified duration of the portfolio is closest to:", "5.19.", "5.23.", "551", "A"], ["Based on put-call parity, a trader can replicate the payoff of a long call by creating a portfolio consisting of a:", "long put, a long asset, and a long bond.", "long put, a long asset, and a short bond.", "short put, a short asset, and a long bond.", "B"], ["An analyst gathers the following information about US bonds: Bond US government benchmark bond US corporate bond Coupon Rate 2.0% 5.0% Price 101 103 Years to Maturity 2 2 Q. Assuming annual interest payments, the G-spread is closest to:", "149 basis points.", "193 basis points.", "300 basis points.", "B"], ["Which of the following is most advantageous to the general partner of a private equity fund assuming no clawback provision?", "American waterfall", "European waterfall", "Whole-of-fund waterfall", "A"], ["An analyst gathers the following data for a 2-year option contract: Forward price Strike price Risk-free rate Call premium USD/EUR is the amount of USD per 1 EUR Q. The put premium is closest to:", "0.0273 USD/EUR.", "0.0727 USD/EUR.", "0.0750 USD/EUR.", "B"], ["Which of the following is least likely one of the main benefits of derivative markets? Derivative markets:", "reveal prices and volatility of the underlying assets.", "exhibit lower volatility compared with the spot market.", "enable companies to more easily practice risk management.", "B"], ["If a stock is purchased on margin where the minimum margin requirement is 35%, the maximum leverage ratio is closest to:", "1.54.", "1.86.", "2.86.", "C"], ["An investor analyzes the stock market of a specific country and discovers that the stock prices are very slow to reflect new information. The investor can best profit from this situation using a(n):", "active fund.", "passive fund.", "low cost approach.", "A"], ["The option-free bonds issued by ALS Corp. are currently priced at 108.50. Based on a portfolio manager's valuation model, a 1 bp increase in interest rates will result in the bond price falling to 108.40, whereas a 1 bp decrease in interest rates will result in the bond price rising to 108.59. The price value of a basis point (PVBP) for the bonds is closest to:", "0.088.", "0.095.", "0.190.", "B"], ["Over-the-counter derivatives markets most likely have a lower degree of:", "privacy than exchange-traded derivatives markets.", "flexibility than exchange-traded derivatives markets.", "transparency than exchange-traded derivatives markets.", "C"], ["An analyst gathers the following information about a company: ROA Leverage ratio Dividend payout ratio Q. The sustainable growth rate is closest to:", "3.4%.", "5.2%.", "6.2%.", "C"], ["Which of the following statements about alternative investments' compensation structures is most accurate?", "A hurdle rate protects clients from paying twice for the same performance", "The management fee for a private equity fund is based on committed capital until fully drawn", "The management fee is earned only after the fund achieves a return known as a high-water mark", "B"], ["Which of the following statements about endowments and foundations is most accurate?", "Most endowments and foundations have relatively short time horizons.", "Endowments typically allocate a sizable portion of their assets in alternative investments.", "Foundations are funds of non-profit institutions that help the institutions provide designated services.", "B"], ["If the expected return on the market portfolio is 6% and the risk-free rate is 2%, the expected return of a security with a beta of 1.25 is closest to:", "5.00%.", "7.00%.", "9.50%.", "B"], ["A hedge fund with $225 million of initial capital charges a management fee of 1% and an incentive fee of 10%. The management fee is based on assets under management at year-end, and the incentive fee is calculated independently from the management fee. Assuming the fund earns a 15% return at year-end, total fees earned by the hedge fund during the year are closest to:", "$5.63 million.", "$5.70 million.", "$5.96 million.", "C"], ["When incorporating ESG considerations into portfolio implementation and management, client-directed proxy voting is most likely a characteristic of:", "thematic investing.", "negative screening.", "shareholder engagement.", "C"], ["An investor gathers the following information about a company: Current earnings per share Current dividend per share Required rate of return Return on equity (ROE) $5.00 $3.00 15.0% 17.5% Q. Using the dividend discount model, the value of the company's stock is closest to:", "$37.50.", "$40.13.", "$73.67", "B"], ["Which of the following best describes a feature unique to the co-investing method of investing in alternative assets? A limited partner:", "participating in an investment fund alongside other limited partners.", "making an investment alongside a fund in a deal the fund has identified.", "participating in an investment fund that invests in deals identified and managed by the general partner.", "B"], ["With respect to return-generating models for stock returns, the three-factor model of Fama and French includes which of the following factors? Relative:", "earnings growth", "price-to-sales ratio", "book-to-market value", "C"], ["Which of the following statements about mutual funds is most accurate?", "Open-end funds tend to be fully invested without keeping cash.", "Closed-end funds can sell for a premium or discount to net asset value.", "Investors in a closed-end fund liquidate by selling their shares back to the fund itself.", "B"], ["Forward rate agreements can be used by firms to:", "lock in a fixed borrowing or lending rate at a future date.", "pay the return on an equity index and receive a fixed rate.", "hedge against exchange rate fluctuations in foreign-currency investments.", "A"], ["Accrued interest:", "depends on a bond's yield-to-maturity.", "is equal to a bond's full price minus its flat price.", "is typically included in the price quoted by bond dealers.", "B"], ["A put option has a strike price of $20.50. The option premium is $1.00. If the price of the underlying at expiration is $21.50, the put option is:", "in the money.", "at the money.", "out of the money.", "C"], ["All else being equal, non-cumulative preference shares most likely:", "offer dividends that are less than common shares.", "have a claim on net assets upon liquidation of the company.", "receive any past unpaid dividends prior to dividends being paid to common shareholders.", "B"], ["Which of the following objectives of a client's IPS is best described as a relative risk objective? For the next year, a client's portfolio objective is to:", "have a 95% value at risk that is less than $100,000.", "outperform the local stock market index by 100 basis points.", "earn a return within plus or minus 2 percentage points of the local stock market index return.", "C"], ["In addition to investing in core real estate, a real estate private equity fund following a core-plus strategy most likely invests in properties with:", "slightly less leasing risk than a core strategy.", "the same level of leasing risk as a core strategy.", "slightly more leasing risk than a core strategy.", "C"], ["A correlation matrix of the returns for securities A, B, and C is reported below: Security c 1 0.5 0 1 -0.5 c 1 Q. Assuming that the expected return and the standard deviation of each security are the same, a portfolio consisting of an equal allocation of which two securities will be most effective for portfolio diversification?", "Securities A and B", "Securities A and C", "Securities B and C", "C"], ["An investor purchases common shares at €22 per share on margin and deposits just enough money to cover the 60% initial margin requirement. If the maintenance margin requirement is 25%, the share price below which the investor will first receive a margin call is closest to:", "€11.73.", "€16.50.", "€17.60.", "A"], ["A key distinction between commercial mortgage-backed securities (CMBSs) and residential mortgage-backed securities (RMBSs) is that CMBSs most likely:", "have balloon maturities.", "have amortizing principal.", "do not have call protection.", "A"], ["Expected future benefits to be received from a common share are most likely an important input for a(n):", "multiplier model.", "asset-based model.", "present value model.", "C"], ["Which of the following is used by clearinghouses to determine the daily gain and loss to the parties of a futures contract?", "Mark to market", "Maintenance margin", "Limit up and limit down", "A"], ["At expiration, an option that is in the money will most likely have:", "time value, but no exercise value.", "exercise value, but no time value.", "both time value and exercise value.", "B"], ["Compared to investing in a single security, the portfolio approach can improve investors' risk—return trade-off by offering:", "lower expected return with the same overall volatility of returns.", "the same expected return with lower overall volatility of returns.", "higher overall volatility of returns for a given level of expected return.", "B"], ["When buying a stock, a limit order is more likely to be:", "executed faster than a market order.", "completely filled than a market order.", "executed at lower prices than a market order.", "C"], ["Which of the following is most likely associated with secondary capital markets?", "Book building", "Continuous trading", "Lead underwriters", "B"], ["Price multiples allow for:", "time series comparisons only.", "cross-sectional comparisons only.", "both time series and cross-sectional comparisons.", "C"], ["With respect to the absolute priority of claims in bankruptcy, which of the following most likely has the highest seniority ranking?", "Third lien debt", "Subordinated debt", "Senior unsecured debt", "A"], ["For portfolios composed of the risk-free asset and a risky asset, the expected return as a function of standard deviation of returns is graphically represented by the:", "security market line.", "capital allocation line.", "Markowitz efficient frontier.", "B"], ["An analyst gathers the following information about a company (in $ thousands): Operating income Depreciation and amortization Interest expense Year 1 255 432 170 Year 2 234 677 156 Q. Based on the interest coverage ratio using EBITDA, the company's creditworthiness has:", "deteriorated.", "remained unchanged.", "improved.", "C"], ["Which of the following is most likely used by private equity funds?", "Leveraged buyouts", "Merger arbitrage strategies", "Convertible bond arbitrage strategies", "A"], ["The minimum rate of return required by investors to purchase an equity security is most likely approximated by the company's:", "cost of equity.", "return on equity.", "weighted average cost of capital.", "A"], ["Which of the following is most likely a means of executing a differentiation competitive strategy?", "Trademarks", "Economies of scope", "Geographical proximity to its customers", "A"], ["An analyst gathers the following information about a two-asset portfolio and a third asset that is not part of the current portfolio: Portfolio standard deviation of returns Asset's standard deviation of returns Correlation of returns between the asset and the portfolio 200/0 0.5 Q. If the asset is added to the portfolio, the portfolio standard deviation will most likely:", "decrease.", "remain the same.", "increase.", "A"], ["The first date a buyer of shares is not entitled to an announced dividend is the:", "declaration date.", "ex-dividend date.", "holder-of-record date.", "B"], ["To obtain the spot yield curve, a bond analyst would most likely use the most:", "seasoned and actively traded government bonds.", "recently issued and actively traded corporate bonds.", "recently issued and actively traded government bonds.", "C"], ["Which of the following is considered an economic infrastructure asset?", "Health care assets", "Educational assets", "Information and communication technology assets", "C"], ["When defining an asset class for the purpose of asset allocation, an investor should ensure that assets in the class are relatively:", "homogeneous and have low paired correlations with other asset classes.", "homogeneous and have high paired correlations with other asset classes.", "heterogeneous and have low paired correlations with other asset classes.", "A"], ["Given two otherwise identical bonds, when interest rates rise, the price of Bond A declines more than the price of Bond B. Compared with Bond B, Bond A most likely:", "is callable.", "has a lower coupon.", "has a shorter maturity.", "B"], ["The convexity of putable bonds is:", "always positive.", "negative for a decrease in yield.", "negative for an increase in yield.", "A"], ["A 90-day commercial paper issue is quoted at a discount rate of 4.75% for a 360-day year. The bond equivalent yield for this instrument is closest to:", "4.75%.", "4.81%.", "4.87%.", "C"], ["When securitizing a corporation's loans, a special purpose entity most likely:", "services the corporation's loans.", "sells the collateral underlying the corporation's loans.", "purchases the corporation's loans to use as collateral.", "C"], ["The sensitivity of a putable bond to a flattening of the yield curve is best measured by:", "key rate duration.", "effective duration.", "modified duration.", "A"], ["A consequence of preventing the exploitation of private information is that the market is not:", "weak-form efficient.", "semi-strong efficient.", "strong-form efficient.", "C"], ["Two investors have utility functions that differ only with regard to the coefficient of risk aversion. Relative to the investor with a higher coefficient of risk aversion, the optimal portfolio for the investor with a lower coefficient of risk aversion will most likely have:", "a lower level of risk and return.", "the same level of risk and return.", "a higher level of risk and return.", "C"], ["A bond has a modified duration of 7.5 years and an annual convexity of 280. If yields decrease by 60 basis points, the percentage price change is closest to:", "4.00%.", "5.00%.", "5.51%.", "B"], ["In the binomial model, if the probability of a downward movement in an underlying increases, the value of a call option:", "decreases.", "remains unchanged.", "increases.", "B"], ["Returns adjusted for the total risk of a portfolio relative to a benchmark are most appropriately measured using which of the following?", "M-squared", "Treynor ratio", "Jensen's alpha", "A"], ["The value of a forward contract at initiation is most likely:", "less than zero.", "equal to zero.", "greater than zero.", "B"], ["Over a given holding period, performance of credit-risky bonds will most likely benefit from:", "periods of high demand.", "widening credit spreads.", "weakening economic conditions.", "A"], ["Which of the following US sovereign securities is a pure discount bond?", "Treasury bill", "Treasury note", "Treasury bond", "A"], ["The Gordon growth model is most appropriate for valuing the common stock of a dividend paying company that is:", "young and just entering the growth phase.", "mature and relatively insensitive to economic fluctuations.", "experiencing growth that is higher than the sustainable growth rate.", "B"], ["Bonds issued in which of the following markets most likely have fewer reporting, regulatory, and tax constraints?", "Eurobond markets", "Foreign bond markets", "Domestic bond markets", "A"], ["The value of a call option is inversely related to the:", "risk-free rate.", "exercise price.", "value of the underlying.", "B"], ["When the investment horizon is less than the Macaulay duration of a bond:", "coupon reinvestment risk offsets market price risk.", "market price risk is greater than coupon reinvestment risk.", "coupon reinvestment risk is greater than market price risk.", "B"], ["If a hedge fund imposes a gate, it is temporarily limiting the:", "redemptions from the fund.", "inflow of money into the fund.", "amount of leverage in the fund.", "A"], ["Financial instruments trade for delivery in:", "spot markets only.", "forward markets only.", "both spot and forward markets.", "C"], ["Toshi Hoda, CFA, is an analyst at a brokerage firm. Hoda holds shares in a company that he begins to cover. According to the Standard relating to avoid or disclose conflicts, Hoda is required to disclose his personal holdings to:", "his employer only.", "his employer and his firm's clients only.", "his employer, his firm's clients, and prospective clients.", "C"], ["Suzanna Bermi, CFA, manages portfolios for retail clients. A friend asks her if Bermi can provide investment advice in Bermi's spare time. The friend offers a donation to Bermi's favorite charity in exchange for Bermi's advice. Bermi accepts the offer and starts providing investment advice to her friend immediately after sending an email to her firm's compliance department about the arrangement, including the fact that she receives no cash payments from her friend. Has Bermi most likely violated the Standards?", "No", "Yes, the Standard relating to additional compensation arrangements", "Yes, the Standard relating to communication with clients and prospective clients", "B"], ["According to the Standard related to communication with clients and prospective clients, members must:", "only distinguish between fact and opinion in the presentation of investment analyses.", "only promptly disclose material and nonmaterial changes in the investment processes they use to select securities.", "both distinguish between fact and opinion in the presentation of investment analyses and promptly disclose material and nonmaterial changes in the investment processes they use to select securities.", "A"], ["While waiting in the business class lounge before boarding an airplane, Becca Msafari, CFA, an equity analyst, overhears a conversation by a group of senior managers, including members of the Board, from a large publicly listed bank. The managers discuss staff changes necessary to accommodate their regional expansion plans. Msafari hears several staff names mentioned. Under what circumstances could Msafari most likely use this information when making an investment recommendation to her clients?", "Under no circumstances", "If she does not breach the confidentiality of names of staff", "If the discussed changes are unlikely to affect investor perception of the bank", "C"], ["Are either of following member actions in violation of the Standard relating to misconduct? Action 1: Getting arrested for participating in a nonviolent protest during a holiday weekend in a country where such protests are considered acts of civil disobedience Action 2: Declaring personal bankruptcy because of large investment losses", "No", "Yes, Action 1 is a violation of the Standard", "Yes, Action 2 is a violation of the Standard", "A"], ["According to the Standard relating to suitability, which of the following is correct?", "An appropriate suitability determination will prevent some investments from losing value", "Members must judge the suitability of investments in the context of the client's total portfolio", "The higher the expected investment return, the lower the need to determine the investment's suitability", "B"], ["David Jacobs, CFA, and Megan Amari, CFA, work for Global Investment Inc. and receive fees for client referrals. Prior to signing service agreements with clients, Jacobs informs his clients about the referral fee arrangement without providing an estimated dollar value. Amari discloses all details of the arrangement, including the estimated dollar value, to her clients only after the service agreements are signed. Who has violated the Standards?", "Amari only", "Jacobs only", "Both Amari and Jacobs", "C"], ["Which of the following statements is accurate according to the GIPS standards? Statement 1: A firm must perform verification to claim compliance with the GIPS standards. Statement 2: Verification ensures accuracy of specific composite presentations. Statement 3: Verification is performed with respect to an entire firm.", "Statement 1", "Statement 2", "Statement 3", "C"], ["To comply with the Standard relating to knowledge of the law, members are required to take which of the following actions? Action 1: Acquire detailed knowledge of all the laws relating to their activities Action 2: Dissociate from activities of others that they believe are unethical", "Action 1 only", "Action 2 only", "Both Action 1 and Action 2", "B"], ["According to the Standards, a member engages in information-based manipulation when she:", "uses public information to implement trading strategies with an intent to exploit perceived market inefficiencies.", "induces other market participants to trade a security by issuing an overly optimistic projection of a security's value.", "relies on false rumors spread by other market participants to secure a dominant position in an underlying security.", "B"], ["Ethical conduct is most likely behavior that:", "conforms to expectations as laid out by laws and regulations.", "is perceived to be beneficial as per society's ethical expectations.", "simply considers both the direct benefit and indirect consequences on others.", "B"], ['Judith Sway has passed the Level I CFA exam. She writes in her resume: "l enrolled in the CFA Program to obtain the highest set of credentials in the global investment management industry." She adds: "The skills the CFA Program cultivates are key assets for my future career development." Has Sway most likely violated the Standards?', "No", 'Yes, by stating: "The skills the CFA Program cultivates are key assets for my future career development."', 'Yes, by stating: "l enrolled in the CFA Program to obtain the highest set of credentials in the global investment management industry."', "A"], ["Lin Liang, CFA, is an investment manager and an auto industry expert. Last month, Liang sent securities regulators an anonymous letter outlining various accounting irregularities at Road Rubber Company. Shortly before he sent the letter to the regulators, Liang shorted Road stock for his clients. Once the regulators opened an investigation, which Liang learned about from his sources inside the company, Liang leaked this information to multiple sources in the media. When news of the investigation became public, the share price of Road immediately dropped 30%. Liang then covered the short positions and made $5 per share for his clients. Liang least likely violated which of the Standards?", "Misconduct", "Market Manipulation", "Priority of Transactions", "C"], ["According to the Standard relating to misrepresentation, a member is most likely required to:", "disclose his intended use of an external manager.", "always provide a benchmark for investment strategies.", "provide attribution to a member who is no longer with the firm when issuing a report.", "A"], ["Riti Malhotra, CFA, is a research analyst covering the oil and gas sector. Malhotra visits a covered company's new oil refining facility. The company arranges a chartered flight as there are no commercial flights serving the location of the new refinery. Meals are also provided for by the company at a nearby hotel. Malhotra lets the company pay for the expenses. Has Malhotra violated the Standards?", "No", "Yes, the Standard relating to loyalty, prudence, and care", "Yes, the Standard relating to independence and objectivity", "A"], ["Tyler Cowen, CFA, retains all records relating to recommendations to buy or sell a security, but discards all notes that do not lead to a change in recommendations. Cowen's colleague Marie Thomsen, CFA, maintains all her records in electronic form but does not retain hard copies for some of her recommendations. Who has most likely violated the Standard relating to record retention?", "Cowen only", "Thomsen only", "Both Cowen and Thomsen", "A"], ["Which of the following claims can an asset management firm most likely make regarding the GIPS standards?", "Claim GIPS compliance using the GIPS Compliance Statement", "State that the firm will achieve GIPS compliance by a future date", "Claim partial GIPS compliance with details on areas of non-compliance", "A"], ["Which of the following is a recommended procedure for compliance with the Standard relating to responsibility of supervisors? Members should encourage their firms:", "only to provide their code of ethics to clients.", "only to mingle their code of ethics with their compliance procedures.", "both to provide their code of ethics to clients and to mingle their code of ethics with their compliance procedures.", "A"], ["All clients of John Chapman, CFA, are standard fee-paying clients. Chapman believes that half of his clients would benefit from premium service in exchange for higher fees. He offers the premium service only to these clients. Later that day, Chapman distributes an investment recommendation only to those clients for whom he deems it suitable. Has Chapman violated the Standard relating to fair dealing?", "No", "Yes, by offering the premium service only to clients he believes would benefit from it", "Yes, by distributing an investment recommendation only to those clients for whom he deems it suitable", "B"], ['According to the Standard relating to loyalty, which of the following statements are correct? Statement 1: "Members must not deprive their employer of the advantage of their skills and abilities." Statement 2: "Members are required to subordinate important personal and family obligations to their work." Statement 3: "Members are prohibited from entering into an independent practice for compensation while still employed."', "Statement 1 only", "Statement 1 and Statement 2 only", "Statement 1, Statement 2, and Statement 3", "A"], ["Which of the following is not a requirement of the GIPS standards? Firms are required to:", "have their performance records verified by an independent third party.", "include all discretionary, fee-paying portfolios in at least one composite.", "present a minimum of five years of annual investment performance compliant with GIPS standards.", "A"], ["To claim compliance with the GIPS standards, a firm that has been in existence for two years must:", "wait one year to present three years of GIPS-compliant performance.", "wait three years to present five years of GIPS-compliant performance.", "initially present GIPS-compliant performance since the firm's inception date.", "C"], ["Which of the following is a recommended procedure for compliance with the Standard relating to performance presentation? When presenting their firm's investment performance, members should:", "present the performance using a single representative account.", "maintain the data and records used to calculate the performance being presented.", "exclude terminated accounts as part of performance history with a clear indication of when the accounts were terminated.", "B"], ["Teresa Staal, CFA, is an investment officer in a bank trust department. She manages money for celebrities and public figures, including an influential local politician. She receives a request from the politician's political party headquarters to disclose his stock holdings. The request indicates that local law requires the disclosure. What steps should Staal most likely take to ensure she does not violate any of the Standards?", "Provide the information and inform her client", "Send the requested documents and inform her supervisor", "Check with her firm's compliance department to determine her legal responsibilities.", "C"], ["Michael Cane, CFA, is an investment manager. Cane's proxy voting policy includes a provision that voting proxies may not be required in all instances if they do not benefit clients. The proxy voting policy is disclosed to his clients only upon request. Has Cane most likely violated the Standard relating to loyalty, prudence and care?", "Yes, only because the voting of proxies is required in all instances", "Yes, only because the proxy voting policy is disclosed to his clients only upon request", "Yes, both because the voting of proxies is required in all instances and because the proxy voting policy is disclosed to his clients only upon request", "B"], ["Immediately after taking the CFA Level II exam, Tim Riley posts on social media broad topic areas that were not tested on the exam. He also posts an article on social media questioning the relevance of CFA Program for professional practice. Has Riley violated the Standards?", "No", "Yes, by posting broad topic areas not tested on the exam", "Yes, by questioning the relevance of CFA Program for professional practice", "B"], ["Which of the following is a recommended procedure for compliance with the Standard relating to diligence and reasonable basis? Members should encourage their firms to:", "consider the suitability of each investment solely on its own merits.", "develop maximum levels of scenario testing of computer-based models used in evaluating financial instruments.", "appoint an individual employee or a group of employees to determine that research reports have a reasonable and adequate basis.", "C"], ["A portfolio invested in two assets has an expected return of 11%. If expected returns for Assets A and B, respectively, are 8% and 12%, then the portfolio weight of Asset B is closest to:", "25%.", "50%.", "75%.", "C"], ["A company plans to do an upward revaluation of an asset under the revaluation model. All else being equal, the company's debt-to-assets ratio will:", "decrease.", "remain unchanged.", "increase.", "A"], ["Capital restrictions most likely:", "allow capital to earn the highest return.", "help a country exercise control over its external balance.", "lead to a higher rate of growth than would otherwise occur.", "B"], ["An individual can invest $19,000 today and receive $20,000 in one year's time. If her required rate of return is 5%, the rate of return on the investment is:", "less than the required rate of return.", "equal to the required rate of return.", "greater than the required rate of return.", "C"], ["A construction company enters into a 2-year building contract. Payment of the consideration will be at the end of the building contract when all performance obligations are met. Costs incurred provide an appropriate measure of progress towards completing the contract. The construction company has incurred 30% of the costs during the first year. Assuming it is highly probable that revenue will not be subsequently reversed, at the end of Year 1, the construction company should most likely recognize a:", "receivable.", "contract asset.", "contract liability.", "B"], ["A portfolio has a mean return of 2.2% and a standard deviation of returns of 2.5%. If the specified minimum target return is 2.2%, the sample target semideviation is:", "less than 2.5%.", "equal to 2.5%.", "greater than 2.5%.", "A"], ["A company uses both debt and equity financing as part of its capital structure. If the government reduces the corporate tax rate, the company's WACC will:", "decrease.", "remain the same.", "increase.", "C"], ["An analyst examines the distribution of portfolio returns in bullish and bearish market scenarios. To calculate the expected return on the portfolio in a bearish market scenario, the most appropriate approach is to use:", "the multiplication rule.", "conditional expected values.", "the total probability rule for expected value.", "B"], ["Which of the following statements is the most accurate description concerning the internal rate of return (IRR) method? IRR:", "is sensitive to changes in the firm's WACC.", "is the preferred method for evaluating mutually exclusive projects.", "assumes that all cash flows from a project will be reinvested at the computed IRR.", "C"], ["An example of an expansionary fiscal policy is:", "a reduction in bank reserve requirements.", "an increase in public spending on social goods and infrastructure.", "the purchase of government bonds through open market operations.", "B"], ["Which is the first step in the standard process of hypothesis testing?", "Collect data", "State the hypothesis", "Specify the level of significance", "B"], ["When forecasting earnings, an analyst's best approach is to:", "utilize the results of financial analysis and professional judgment.", "calculate a range of possibilities solely based on the results of financial analysis.", "establish a precise forecast based on the results of economic and financial analysis.", "A"], ["An analyst gathers the following sample: 0, 2, 3, 4, 6. The value of the fourth quintile is:", "4.0.", "4.8.", "5.6.", "C"], ["An analyst computes the following analysis of variance (ANOVA) table for a simple linear regression: Source Regression Error Total Sum of Squares 144 48 192 Degrees of Freedom 1 4 5 Mean Square 144 12 Q. The standard error of the estimate for the regression is closest to:", "3.5.", "6.9.", "12.0.", "A"], ["Inventory values are recorded at the lower of cost or:", "market.", "net realizable value.", "estimated selling price.", "B"], ["The money supply most likely increases when a central bank:", "purchases bonds.", "increases the policy rate.", "raises the reserve requirement.", "A"], ["Ensuring that the composition of a board of directors is aligned with a company's governance principles is most likely a responsibility of the:", "risk committee.", "audit committee.", "nominating committee.", "C"], ["Which of the following strategies is most common in business-to-business markets where the universe of potential customers is relatively small and easily reached?", "Direct sales", "Omnichannel", "Traditional channel", "A"], ["A portfolio manager considers the following joint probability function: Return on Foreign Portfolio Return on Foreign Currency Rc = -15% Rc = 30% Rp = -10% 0.6 Rp = 25% 0 0.4 Q. The covariance (in% squared) between the returns on the foreign portfolio and the foreign currency is closest to:", "294.", "378.", "819", "B"], ["Which of the following methods is most appropriate to assess the impact of a geopolitical risk?", "Groupthink", "Scenario analysis", "Linear quantitative modeling", "B"], ["The archetype of country behavior most likely characterized by globalization and cooperation is:", "hegemony.", "bilateralism.", "multilateralism.", "C"], ["According to the pecking order theory of capital structure, managers prefer:", "public debt over private debt.", "public equity over public debt.", "internal financing over private debt.", "C"], ["Which of the following statements best describes the effect of finance leases on financial statements?", "Balance sheet effects differ based on whether the lease is a direct financing lease or a sales-type lease", "The lessor reports a profit on the sale of the leased asset on the income statement in the case of a sales-type lease", "A lessee reports the interest portion of the lease payment as operating cash flow under IFRS and financing cash flow under US GAAP", "B"], ["An analyst is comparing the solvency of a company over the past two years using the information below: Year 2 Total debt Total shareholders' equity Total assets Net income Interest payments/interest expense Taxes paid Ratios in Year 1 Debt to capital Interest coverage Millions 2,300 17,000 20,000 375 200 125 12.7% 2.9 Q. The best conclusion the analyst can make about Year 2 is that compared with Year 1, the company's solvency has:", "deteriorated because both ratios have weakened.", "remained the same.", "improved because both ratios have strengthened.", "C"], ['The following information is available on a retailer (in $ thousands): Summarized Income Statement Revenues Cost of goods sold Salary and wage expense Rent expense Depreciation expense Income tax expense Net income Partial Cash Flow Statement Operating cash flows Net income Add: non-cash items Depreciation expense Increase in accounts receivable Increase in inventory Decrease in prepaid expenses Decrease in accounts payable Increase in wages payable Operating cash flows 17,210 9,283 2,981 1,275 761 823 2,087 2,087 761 (123) 511 (37) (190) 133 3,142 Q. An analyst is converting the cash flow statement to the direct method. The amount (in $ thousands) that she calculates for "Cash paid to suppliers" is closest to: Revenues Cost of goods sold Salary and wage expense Rent expense Depreciation expense Income tax expense Net income Partial Cash Flow Statement Operating cash flows Net income Add: non-cash items Depreciation expense Increase in accounts receivable Increase in inventory Decrease in prepaid expenses Decrease in accounts payable Increase in wages payable Operating cash flows 17,210 9,283 2,981 1,275 761 823 2,087 2,087 761 (123) 511 (37) (190) 133 3,142 Q. An analyst is converting the cash flow statement to the direct method. The amount (in $ thousands) that she calculates for "Cash paid to suppliers" is closest to:', "8,582.", "9,984.", "11,222.", "B"], ["Under the indirect method, which of the following should be subtracted from net income to arrive at cash flow from operating activities?", "Purchase of equipment", "Decrease in accounts payable", "Amortization expense of intangible assets", "B"], ["An analyst gathers the following USD/GBP exchange rate information: USD/GBP spot rate USD/GBP I-year forward rate USD/GBP is the amount of USD per 1 GBP. Q. The I-year forward points are closest to:", "1.2.", "13.0.", "25.0.", "B"], ["An analyst gathers the following information to test whether the population correlation coefficient equals zero: Sample correlation coefficient Sample size Q. The test statistic is closest to:", "2.3.", "2.5.", "2.7.", "A"], ["According to Modigliani and Miller, in a perfect capital market, as leverage increases, a company's value:", "decreases.", "remains the same.", "increases.", "B"], ["Which of the following fiscal policy tools is an automatic stabilizer?", "Capital expenditures", "Social benefits through transfer payments", "Current government spending on goods and services", "B"], ["Which of the following areas is most likely to apply natural language processing?", "Data encryption", "Compliance functions", "Analysis of structured data", "B"], ["Credit cycles:", "can amplify business cycles.", "are defined as fluctuations in real GDP.", "tend to be shorter than business cycles.", "A"], ["If a company raises its prices to consumers, which of the following is most likely to result in an increase in total revenue of the company?", "The company's products are price elastic", "The company is in a competitive industry", "The company has a fragmented consumer base", "C"], ["A central bank is least likely to:", "implement fiscal policy.", "oversee the payments system.", "manage foreign currency reserves.", "A"], ["The possibility of new entrants into an industry is considered in the calculation of:", "the concentration ratio.", "the Herfindahl—Hirschman index.", "neither the concentration ratio nor the Herfindahl—Hirschman index.", "C"], ["An analyst gathers the following fiscal year information (in millions) for a company: Cash flow from operating activities Purchase of equipment Sale of equipment Long-term debt repayment Increase in short-term borrowing Q. FCFE is closest to:", "million.", "million.", "million.", "C"], ["A form of economic integration that allows free movement of goods, services, and factors of production among member countries and has a common trade policy against non-members best describes a:", "free trade area.", "customs union.", "common market.", "C"], ["An analyst gathers the following information for a company's fiscal year beginning 1 January: Net income Interest expense on convertible debt Common shares outstanding on 1 January Common shares issued on 31 March Common shares outstanding on 31 December Income tax rate 4,000,000 35% Q. If the convertible debt was outstanding for the entire year and is convertible into 2,000,000 common shares, reported diluted EPS is closest to:", "€0.93.", "€0.98.", "€1.02.", "A"], ["Private companies most likely have:", "less share price transparency compared to public companies.", "similar share price transparency as public companies.", "greater share price transparency compared to public companies.", "A"], ["In the capital allocation process, companies should:", "assume no new competition in the marketplace.", "incorporate sunk costs in the investment analysis.", "ignore the impact of an investment on short-term accounting numbers.", "C"], ["An investment makes ten payments of $10,000 per year, with the first payment today. If the annual discount rate is 6%, the present value of the investment is closest to:", "$72,098.", "$73,601.", "$78,017.", "C"], ["With respect to a simple linear regression, the F-distributed test statistic is most appropriate to use when testing if:", "the intercept is significantly different from zero.", "the independent and dependent variables are significantly positively correlated.", "there is a significant linear relationship between the dependent and independent variables.", "C"], ["Which of the following factors is most likely to lead to economies of scale?", "Supply constraints", "Duplication of product lines", "Specialization by workers", "C"], ["In monopolistic competition, the level of output that minimizes average cost is:", "less than the actual level of output in the long run.", "equal to the actual level of output in the long run.", "greater than the actual level of output in the long run.", "C"], ["The reversal of a prior fiscal year inventory write-down is:", "prohibited.", "recognized as a reduction in cost of sales.", "recognized as an increase in other operating income.", "B"], ["Debt as a proportion of total capital is most likely greatest in which of the following life-cycle stages of a company?", "Start-up", "Growth", "Mature", "C"], ["Which of the following changes to compensation packages would most likely result in management becoming more risk averse in its corporate decision making?", "Decreasing the length of management tenure", "Eliminating stock grants and options from management compensation", "Tying management compensation to the size of the company's business", "B"], ["Members of a company's board of directors are most likely required to:", "report to the company's CEO.", "display loyalty to the company.", "work for the company or the industry in which the company operates.", "B"], ["An analyst collects the following information about a company: Net profit margin 4% Return on average assets 8% Return on average equity 16% Revenue €2,500,000 Q. The company's:", "total asset turnover is 4.", "financial leverage ratio is 4.", "average shareholders' equity is €625,000.", "C"], ["An analyst is reviewing the property, plant, and equipment disclosure related to a company's warehouse. Under the revaluation model, the analyst would least likely be able to determine:", "the original date of acquisition.", "how the fair value was obtained.", "the carrying amount under the cost model.", "A"], ["Which of the following types of financial ratios is most likely to be positively affected by an inventory write-down compared to if the write-down had not occurred?", "Activity ratios", "Liquidity ratios", "Solvency ratios", "A"], ["The following table summarizes income statement data for a manufacturing company (in € thousands): Net revenue Cost of goods sold Gross profit Selling, general administrative expense Operating income Interest expense Pre-tax income Income tax Net income Year 2 2,611 1,700 930 295 635 55 580 155 425 Year 1 2,325 1,550 775 260 515 55 460 120 340 Q. Compared with Year 1, the Year 2 common-size income statement may indicate:", "a lower tax rate.", "sale of a new, differentiated product.", "cost cutting in selling, general and administration.", "B"], ["If a company's receivables turnover ratio is equal to its payables turnover ratio, the company's cash conversion cycle is equal to its number of days of:", "payables.", "sales outstanding.", "inventory on hand.", "C"], ["An analyst gathers the following information about a company: Book value of debt Market value of debt Share price Shares outstanding Cost of equity Cost of debt Tax rate Q. Based on this information, the company's WACC is closest to:", "6.16%.", "6.40%.", "6.51%.", "A"], ["In contrast to non-probability sampling, probability sampling:", "depends on factors other than probability considerations.", "has a high risk of generating a non-representative sample.", "gives every member of the population an equal chance of being selected.", "C"], ["A random variable Y = exp(X) is lognormally distributed, where Xis normally distributed. The distribution of Y:", "is skewed to the left.", "is often used to model stock prices.", "has a mean equal to exp(p), where p is the mean of X.", "B"], ["Using long-term debt or equity to finance working capital needs most likely:", "reduces the cost of financing working capital.", "provides the opportunity to borrow only as needed.", "reduces the need to access capital markets in times of stress.", "C"], ["A company spends €10 million on start-up costs that are expensed for accounting purposes and fully amortized over five years using the straight-line method for tax purposes. If the start-up costs will result in future economic benefits, the tax base at the end of Year 1 is:", "€0 million.", "€8 million.", "€10 million.", "B"], ["In an economy with long-run expected inflation of 3% and a real trend rate of growth of 2%, the neutral policy rate is closest to:", "1%.", "3%.", "5%.", "C"], ["Private contracts, such as bank loan agreements, are most likely to provide an effective disciplinary mechanism to ensure high financial reporting quality because:", "lenders monitor managers and pay close attention to the firm's financial reports.", "loan covenants require the firm to meet specific financial ratios in order to renew the loan.", "loan covenants may allow the lender to recover all or part of their investment if certain financial conditions are triggered.", "A"], ["Unaudited financial statements are most likely presented in a(n):", "annual report.", "quarterly report.", "proxy statement.", "B"], ["If a company purchases, at a premium, bonds that it expects to hold until maturity, they are most likely measured on the balance sheet at:", "fair value.", "historical cost.", "amortized cost.", "C"], ["An intangible asset with an indefinite useful life is:", "not subjected to impairment testing.", "tested at least annually for impairment.", "only tested for impairment if there is an indication of impairment.", "B"], ["The multiple of invested capital (MOIC) measure takes into account:", "the realized value of an investment only.", "the residual asset value of an investment only.", "both the realized value of an investment and the residual asset value of an investment.", "C"], ["If the Macaulay duration and time-to-maturity of a bond are equal, the bond is most likely a:", "zero-coupon bond.", "coupon bond trading at par.", "coupon bond trading at a premium.", "A"], ["An example of a negative bond covenant is a:", "promise to pay required taxes.", "limit on the issuance of additional debt.", "requirement to comply with existing laws and regulations.", "B"], ["Which of the following pooled investment products is most likely to trade at a price furthest from its NAV?", "ETF", "Open-end mutual fund", "Closed-end mutual fund", "C"], ["The financial systems that are operationally efficient are most likely characterized by:", "security prices that reflect fundamental values.", "the use of resources where they are most valuable.", "liquid markets with low commissions and order price impacts.", "C"], ['An investor makes the following statements: Statement 1: "Swaps are contingent claims." Statement 2: "Swaps are characterized by a series of cash flows." Q. Which of the statements is correct?', "Statement 1 only", "Statement 2 only", "Both Statement 1 and Statement 2", "B"], ["Convenience yield is best described as the:", "opportunity cost of the money invested.", "nonmonetary advantage of holding the asset.", "net of the costs and benefits of holding an asset.", "B"], ["According to the capital asset pricing model (CAPM), the difference in the expected returns for two securities is determined by the securities':", "total risk.", "systematic risk only.", "nonsystematic risk only.", "B"], ["Which of the following attributes is least likely to be a requirement for the existence of riskless arbitrage? The underlying security:", "is relatively liquid.", "can be sold short.", "is a financial asset.", "C"], ["The value of bitcoin is most likely based on:", "underlying cash flows only.", "expected price appreciation only.", "both underlying cash flows and expected price appreciation.", "B"], ["Short positions have the potential for:", "unbounded gains only.", "unbounded losses only.", "both unbounded gains and unbounded losses.", "B"], ["For a given currency and tenor, a bond's yield spread over the standard swap rate is best described as the:", "I-spread.", "G-spread.", "Z-spread.", "A"], ["A disadvantage of computing the duration of a bond portfolio as a weighted average of time to receipt of the aggregate cash flows is that it:", "is theoretically incorrect.", "is difficult to use in practice.", "assumes the yield curve shifts in a parallel manner.", "B"], ["The money duration of a bond is best defined as:", "the bond's Macaulay duration times the bond's full price.", "the estimated change in the bond's full price in currency units for a given change in the annual yield to maturity.", "one half of the difference in the bond's full prices given a 1 basis point decrease and 1 basis point increase in yield-to-maturity.", "B"], ["A portfolio manager plans to add three securities with the following characteristics to a well-diversified portfolio: Security 1 has the highest Jensen's alpha; Security 2 has the highest information ratio; Security 3 has the lowest nonsystematic variance. Q. To maximize the portfolio's risk-adjusted return, the manager should assign the highest relative weight to:", "Security 1.", "Security 2.", "Security 3.", "B"], ["In the private debt market, a hybrid loan structure that combines secured and unsecured debt into a single loan with a blended interest rate is best described as:", "unitranche debt.", "mezzanine debt.", "a leveraged loan.", "A"], ["All else being equal, credit spreads most likely widen:", "in periods of heavy new issue supply.", "with expectations of a stronger economy.", "with increased demand for corporate bonds.", "A"], ["An analyst gathers the following balance sheet information (in $ millions) for a company: Cash Accounts receivable Inventories Net fixed assets Total assets Total liabilities Common shareholders' equity Total liabilities and equity 2.5 7.5 15.0 25.0 50.0 22.5 27.5 50.0 Q. The market value of inventories is 110% of reported value and the market value of net fixed assets is 115% of reported value. All other values are as reported. There are 2.0 million shares outstanding and the current share price is $18.00. Using an asset-based valuation approach, the company's shares are most likely:", "undervalued.", "fairly valued.", "overvalued.", "C"], ["A manager gathers the following information about two non-dividend paying stocks that constitute a market- capitalization weighted index: Stock 1 2 Market Capitalization $200 million $100 million Price per Share $30 $90 Q. If there are no other securities in the index and the price of each stock increases by 10%, the index's return will most likely be:", "less than the return of an equal-weighted index.", "equal to the return of an equal-weighted index.", "greater than the return of an equal-weighted index.", "B"], ["An analyst gathers the following information about two assets: Asset 1 expected return -5%, standard deviation of returns 5%; Asset 2 expected return 5%, standard deviation of returns 8%. Q. If the correlation between the two assets' returns is -1, the standard deviation of returns for an equally weighted portfolio of the assets is closest to:", "0.04%.", "2%.", "4%.", "B"], ["If ten board directors are to be elected, under statutory voting, the maximum number of votes a shareholder owning ten shares can cast in favor of a single candidate is:", "1.", "10.", "100.", "B"], ["In the binomial model, if the probability of an upward movement in an underlying increases, the value of a put option:", "decreases.", "remains unchanged.", "increases.", "B"], ["A limit order is an example of a(n):", "validity instruction.", "clearing instruction.", "execution instruction.", "C"], ["Which of the following statements is most accurate?", "The value of a swap fluctuates as market conditions change", "The price and the value of a swap are the same at expiration", "The price ofa swap at initiation is zero as there is no initial outlay of cash", "A"], ["A portfolio manager generated a rate of return of 15.5% on a portfolio with beta of 1.2. If the risk-free rate of return is 2.5% and the market return is 11.8%, Jensen's alpha for the portfolio is closest to:", "1.84%.", "3.70%.", "4.34%.", "A"], ["Which of the following situations will most likely indicate a reduction of market efficiency?", "An increase in arbitrage opportunities", "An increase in the number of market participants", "An increase in rules and regulations that promote financial disclosure", "A"], ["Which of the following provides the best behavioral explanation of the value stock anomaly?", "The halo effect", "The disposition effect", "The effects of the framing bias", "A"], ["Which of the following equations best describes put-call parity for European options?", "po = co - So + X/(1 + r)^T", "co = po - So - X/(1 + r)^T", "So = co - po - X/(1 + r)^T", "A"], ["A company announces an unexpected improvement in its earnings forecast for the coming year. The announcement most likely immediately impacts:", "the company's book value of equity only.", "the company's market value of equity only.", "both the company's book value of equity and the company's market value of equity.", "B"], ["After the lockout period, principal payments associated with credit card receivable-backed securities are:", "periodically distributed to investors.", "reinvested in additional receivables.", "distributed to investors as a balloon payment.", "A"], ["An analyst gathers the following information: Bond 1 Bond 2 Time to Maturity 4 years 7 years Yield to Maturity 3.3% 5.1% Q. Based only on this information, the estimated market discount rate for a 6-year bond with similar credit quality is:", "3.9%.", "4.2%.", "4.5%.", "C"], ["Which of the following is least likely a feature of a credit card receivable asset-backed security (ABS)?", "A lockout period", "Amortizing collateral", "An early amortization provision", "B"], ["If the correlation between assets in a two-asset portfolio is less than one, the standard deviation of the portfolio is:", "less than the weighted average standard deviation of the individual assets.", "equal to the weighted average standard deviation of the individual assets.", "greater than the weighted average standard deviation of the individual assets.", "A"], ["Return-generating models are best used to estimate the:", "expected return of a security.", "expected return of the market portfolio.", "expected excess return on the market portfolio.", "A"], ["If the forward price of a stock is equal to the current spot price, the price of an at-the-money put option applying put— call parity will be:", "lower than the price of at-the-money call option.", "equal to the price of at-the-money call option.", "higher than the price of at-the-money call option.", "B"], ["In which form of market efficiency do security prices fully reflect private information?", "Weak-form efficient", "Semi-strong-form efficient", "Strong-form efficient", "C"], ["The bond equivalent yield for a semiannual pay bond is most likely:", "equal to the effective annual yield.", "more than the effective annual yield.", "equal to double the yield per semiannual period.", "C"], ["The focus strategy is most likely used to defend against which of Porter's five forces?", "Industry rivalry", "Threat of new entrants", "Bargaining power of suppliers", "B"], ["Key rate duration measures the sensitivity of a bond's price to a change in:", "its yield to maturity.", "its yield to first call.", "the shape of the benchmark yield curve.", "C"], ["An analyst gathers the following information about spot rates: Time to Maturity 1 year 2 years 3 years Q. For a 3-year, 2% annual coupon payment bond, the price using Sequence 1 is:", "less than the price using Sequence 2.", "the same as the price using Sequence 2.", "greater than the price using Sequence 2.", "A"], ["An investor purchases stock at $25 per share on 55% initial margin. If the required maintenance margin is 25%, a margin call may first occur when the price falls below:", "$13.75.", "$15.00.", "$18.33.", "B"], ["The slope of the capital allocation line is the:", "beta of the market.", "market price of risk.", "market risk premium.", "B"], ["With respect to the portfolio management process, the execution step most likely includes:", "asset allocation.", "portfolio monitoring.", "developing the investment policy statement.", "A"], ["The Procedures section of an investment policy statement (IPS) most likely:", "explains the steps to keep the IPS current.", "provides information about the permissible use of leverage.", "details the investor's policy with respect to rebalancing asset class weights.", "A"], ["Zet Bank has entered into a contract with Louly Corporation in which Zet agrees to buy a 2.5% US Treasury bond maturing in ten years and promises to sell it back next month at an agreed-on price. From Zet Bank's perspective, this contract is best described as a:", "repo.", "reverse repo.", "collateralized loan.", "B"], ["The rating agency notching adjustment applied to the subordinated debt rating of speculative grade issuers is most likely:", "smaller than that applied to the subordinated debt rating of investment grade issuers.", "the same as that applied to the subordinated debt rating of investment grade issuers.", "larger than that applied to the subordinated debt rating of investment grade issuers.", "C"], ["Which of the following is most likely a high-risk infrastructure investment?", "An asset with a history of steady cash flows", "A brownfield asset leased back to a government", "A greenfield project without guarantees of demand upon completion", "C"], ["A disadvantage of a fund of hedge funds as compared to a large multi-strategy fund is:", "due diligence expertise.", "higher management fees.", "diversified exposure to various hedge fund strategies.", "B"], ["The Macaulay duration of a non-callable perpetual bond with a yield in perpetuity of 8% is closest to:", "7.4.", "80", "135", "C"], ["A bond has an annual modified duration of 2.741, an annual convexity of 22.638, and is currently yielding 5.0%. If the bond's yield-to-maturity decreases to 4.2%, the expected percentage price change is closest to:", "-2.12%.", "2.27%.", "2.34%.", "B"], ["A limited partner in a private equity fund most likely activates a clawback provision if the general partner:", "exits successful deals early in the fund's life but incurs losses on deals later.", "exits unsuccessful deals early in the fund's life but generates gains on deals later.", "exits successful deals early in the fund's life and generates additional gains on deals later.", "A"], ["With respect to an IPS, which of the following best describes an absolute risk objective for a client's portfolio?", "An annual tracking risk of less than 2 percent", "A twelve-month 95% value at risk of less than €1", "Maintaining at least €10,000 in cash for planned monthly withdrawals", "B"], ["An analyst gathers the following information about three companies and their common shares: Company 1 $1.00 Company 2 $1.00 Next year's expected dividend (DO Dividend payout ratio Company 3 $1.25 15% Q. All three companies have the same ROE of 10% and required return of 10%. Using the Gordon growth model, the company with the highest intrinsic value is:", "Company 1.", "Company 2.", "Company 3.", "A"], ["An investor sells a European put option with the following characteristics: Put price Exercise price Q. If the price of the underlying at expiration is 1,670, the profit for the seller is:", "20.", "30.", "50 50 1,640", "C"], ["In order to take advantage of short-term capital market expectations, a fund manager holds less of her portfolio in equities than the policy weights prescribe. This action is best described as:", "security selection.", "portfolio rebalancing.", "tactical asset allocation.", "C"], ["Individual investors most likely bear investment risk when participating in:", "defined benefit pension plans only.", "defined contribution pension plans only.", "both defined benefit pension plans and defined contribution pension plans.", "B"], ["Which of the following statements about limited partnerships is most accurate?", "The operations and decisions of the fund are controlled solely by the limited partners", "The partnership between the general partner and the limited partners is governed by a limited partnership agreement", "Additional regulatory and tax reporting requirements due to a limited partner's unique circumstances are documented in the limited partnership agreement", "B"], ["Among three otherwise comparable bonds, the bond with the highest price is most likely to be:", "putable.", "callable.", "option-free.", "A"], ["All else being equal, the price of a commodity futures contract will most likely decrease with a(n):", "decline in storage costs.", "increase in the risk-free rate.", "decline in the convenience yield.", "A"], ["An analyst gathers the following estimates about a company: Earnings retention rate 40%; Growth rate 3%. Q. If the justified forward P/E is 10 based on the Gordon growth model, the required rate of return is:", "6%.", "7%.", "9%.", "C"], ["In contrast to investors in otherwise-similar mortgage-backed securities, investors in covered bonds most likely:", "face higher credit risks.", "are exposed to prepayment risks.", "have recourse against the issuing financial institution.", "C"], ["Security market indexes can be used to calculate alphas, which are best described as:", "a measure of market sentiment.", "the systematic risk of a security, using the index as a proxy for the entire market.", "the difference between the return of the actively managed portfolio and the return of the passive portfolio.", "C"], ["An optimal risky portfolio has an expected return of 15% and standard deviation of 20%. The risk-free rate is currently 5%. A risk-seeking investor who is considering investing along the capital allocation line (CAL) would most likely:", "lend 100% of her wealth at the risk-free rate.", "invest 100% of her wealth in the optimal risky portfolio.", "borrow 25% of her wealth at the risk-free rate and invest 125% in the optimal risky portfolio.", "C"], ["A value-weighted equity index is most likely biased by a stock that:", "has a high price.", "splits frequently.", "has a large market capitalization.", "C"], ["An investor buys a call option for $5 with an exercise price of $100 when the underlying price is $99. The value to the call option buyer if the price of the underlying is $108 at expiration is:", "$3.", "$4.", "$8.", "C"], ["Capital provided for companies moving toward operation but before commercial manufacturing and sales have occurred best describes which stage in venture capital investing?", "Later stage", "Seed stage", "Early stage", "C"], ["Which of the following measures is an example of a top-down driver for forecasting a firm's revenue?", "Same-store sales growth", "Growth relative to GDP growth", "Volumes and average selling prices", "B"], ["Only the seller can default on a(n):", "swap.", "option.", "forward.", "B"], ["Which of the following statements about REITs is most accurate?", "Adding real estate to a portfolio of traditional investments will increase portfolio risk", "Adding real estate to a portfolio of traditional investments will decrease portfolio diversification", "Equity REIT correlations with traditional investments are at their highest during steep market downturns", "C"], ["An analyst gathers the following information about a stock purchased on margin: Purchase price of stock Leverage ratio Price below which first margin call received Q. The maintenance margin requirement is:", "20%.", "25%.", "40%.", "B"], ["Which of the following European options has the greatest value at expiration?", "A put with an exercise price of 72 and an underlying priced at 83", "A put with an exercise price of 83 and an underlying priced at 72", "A call with an exercise price of 83 and an underlying priced at 70", "B"], ["A bond is currently selling for 102.31. A valuation model estimates the price will fall to 101.12 if interest rates increase by 20 bps and rise to 103.74 if interest rates decrease by 20 bps. Using these estimates, the effective duration of the bond is closest to:", "6.31.", "6.40.", "6.48.", "B"], ["At maturity, the buyer of an over-the-counter (OTC) financial instrument faces the counterparty credit risk of the seller in:", "a profitable long forward position only.", "an in-the-money long call option position only.", "both a profitable long forward position and an in-the-money long call option position.", "C"], ["Which of the following are most likely traded in traditional investment markets?", "Commodities", "Securitized debts", "Shares in pooled investment vehicles that hold publicly traded debts", "C"], ["A 5% semiannual pay bond with a par value of $1,000 is priced for settlement on February 5. If interest payments are made on May 31 and November 30, accrued interest based on 30/360 day-count convention is closest to:", "$9.03.", "$9.18.", "$9.31.", "A"], ["The value of a European put option is inversely related to the:", "risk-free rate.", "exercise price.", "volatility of the underlying.", "A"], ["An analyst gathers the following information about a hedge fund: Beginning-of-year assets under management $100,000,000; Management fee (based on end-of-year AUM before fees) 2%; Incentive fee 10%; Soft hurdle rate 5%; Annual return before fees 20%. Q. If the incentive fee is calculated independently of the management fee, total fees for the year are:", "$3.9 million.", "$4.16 million.", "$4.4 million.", "C"], ["With respect to risk management, determining how risk is taken by an organization best describes:", "risk tolerance.", "risk mitigation.", "risk budgeting.", "C"], ["Which of the following is an underlying assumption of yield to maturity as a measure of expected return for a bond?", "The credit quality of the issuer remains the same", "The bond is sold at the same price as the purchase price", "Coupons are reinvested at the same rate as the yield to maturity at purchase", "C"], ["Which of the following measures is least appropriate for evaluating the risk of a currency option?", "Beta", "Vega", "Delta", "A"], ['A bond portfolio manager is considering three bonds (1, 2, and 3) for his portfolio. Bond 1 allows the issuer to call the bond before the stated maturity, Bond 2 allows the investor to put the bond back to the issuer before the stated maturity, and Bond 3 contains no embedded options. The bonds are otherwise identical. The manager tells his assistant, "Bond 1 and Bond 2 should have larger nominal yield spreads to a US Treasury than Bond 3 to compensate for their embedded options." Is the manager most likely correct?', "Yes", "No, because Bond I's nominal yield spread should be less than Bond 3's", "No, because Bond 2's nominal yield spread should be less than Bond 3's", "C"], ["An analyst gathers the following information (in $ millions) about a private equity fund: Initial cost Investment A 100, Investment B 150, Total 250; Profit/loss Investment A -50, Investment B 30, Total -20. Q. The manager's incentive fee is 20% of the profits. If no clawback provision applies, the total incentive fee (in $ millions) under an American-style waterfall is:", "-4.", "0.", "6.", "C"], ["Enterprise value equals the market value of a company's debt and equity reduced by the company's:", "debt.", "cash.", "preferred stock.", "B"], ["With respect to behavioral finance, an explanation for the overreaction anomaly is:", "risk aversion.", "loss aversion.", "sudden changes in economic fundamentals.", "B"], ["Compared with co-investing, direct investing in alternative investments most likely offers:", "reduced control over the investment selection process.", "the same level of control over the investment selection process.", "higher control over the investment selection process.", "C"], ["An analyst gathers the following information about a company and its common stock: Current dividend per share (Do) Dividend payout ratio ROE Q. If the required return is 8%, the intrinsic value per share using the Gordon growth model is closest to: $2.00 55% 9%", "$50.63.", "$52.68.", "$68.82.", "B"], ["All else being equal, forward and futures prices are equal when:", "futures prices and interest rates are negatively correlated.", "futures prices and interest rates are uncorrelated.", "futures prices and interest rates are positively correlated.", "B"], ["Which of the following components of an investment policy statement most likely states a client's requirements for withdrawing funds from the portfolio?", "Statement of Purpose", "Investment Constraints", "Statement of Duties and Responsibilities", "B"], ["All else being equal, a stock dividend most likely:", "decreases the share price.", "has no impact on the share price.", "increases the share price.", "A"], ["An analyst gathers the following information about two companies' non-callable, non-convertible perpetual preference shares: Par value Required rate of return Annual dividend per share Q. The value of Preference Share 1 is:", "less than the value of Preference Share 2.", "equal to the value of Preference Share 2.", "greater than the value of Preference Share 2.", "C"], ["Which of the following statements about the CFA Institute's Professional Conduct Program (PCP) is least accurate?", "Possible sanctions include condemnation by a member's peers or suspension of a candidate's participation in the CFA Program.", "If the PCP staff determine that a sanction against a member is warranted, the member must either accept the sanction or lose the right to use the CFA designation.", "Members who cooperate with a PCP inquiry by providing confidential client information to PCP staff are not in violation of Standard III(E) Preservation of Confidentiality.", "B"], ["Robert Miguel, CFA, is a portfolio manager. On Saturday, one of his clients invited Miguel and his wife to be his guests at his luxury suite for a major league baseball playoff game, which they did. Miguel told his supervisor on Monday that they had attended the game with the client and that the suite was luxurious. Miguel has:", "not violated the Standards.", "violated the Standards because disclosure must be in writing.", "violated the Standards because he must disclose the gift prior to accepting.", "A"], ["At his golf club on Saturday morning, Paul Corwin, CFA, sees Frank Roberts, a friend and institutional client of his, who tells him that he is planning to sell his house on the 7th fairway. While golfing that day, Corwin tells Robert Lowe, a realtor, that Roberts is planning to sell his house and may need a realtor. He also tells Lowe that he manages an equities account for Roberts. If Corwin has not received permission from Roberts, he has violated the Standard on preservation of confidentiality:", "both by disclosing Roberts' plan to sell his home and that he is a client.", "by disclosing Roberts' plan to sell his home but not by mentioning that he was a client.", "by disclosing that Roberts is a client of his but not by mentioning Roberts' plan to sell his home.", "C"], ["Doug Watson, CFA, serves in a sales position at Sommerset Brokerage, a registered investment adviser. Watson frequently drinks excessively. On one occasion, Watson was cited by local police for misdemeanor public intoxication. According to the Standard on knowledge of the law and the Standard on misconduct, Watson is in violation of:", "both of these Standards.", "neither of these Standards.", "only one of these Standards.", "B"], ["Peter Taylor, a CFA charterholder and a food industry analyst for a large investment firm, has been invited by Sweet Pineapple Co. to visit the firm's processing plants in Hawaii. The Standard concerning independence and objectivity recommends that Taylor:", "use and pay for commercial transportation, if available.", "obtain written permission from his employer before he accepts this invitation.", "decline this invitation if he issues recommendations on the firm's securities.", "A"], ["Ruth Brett, a Level I CFA candidate, feels nervous and unprepared the night before the exam. Brett writes a few key notes on the bottom of her shoe. At the exam, Brett sees the large number of proctors present and decides not to risk getting caught and does not look at her shoe. According to the CFA Institute Code of Ethics and Standards of Professional Conduct, Brett is:", "not in violation of any Standard or the Code of Ethics because she did not use the notes.", "in violation of the Code of Ethics for bringing the notes into the examination room but is not in violation of any Standard because she did not use the notes.", "in violation of both the Code of Ethics and the Standard governing conduct as participants in CFA Institute programs for taking the notes into the examination room.", "C"], ["Which of the following is least likely included in the CFA Institute Code of Ethics? Members of CFA Institute must:", "place their clients' interests before their employer's interests.", "strive to maintain and improve the competence of others in the profession.", "use reasonable care and exercise independent professional judgment.", "A"], [`In formulating her report on GammaCorp's common stock, Barb Kramer, CFA, did a complex series of statistical tests on the company's past sales and earnings. Based on this statistical study, Kramer stated in her report that, "GammaCorp's earnings growth for the next five years will average 15% per year." Her conclusion was based in part on a regression analysis with a high level of statistical significance. Has Kramer violated the Standard on communication with clients and prospective clients?`, "Yes, because she didn't give complete details of the statistical model used.", "Yes, because she failed to indicate that 15% growth is an estimate.", "No, because her projections are within the generally accepted bounds of statistical accuracy.", "B"], ["Dudley Thompson is a bond salesman for a small broker/dealer in London. His firm is the lead underwriter on a new junk bond issue for Ibex Corporation, and Thompson has sent details of the offering to clients. Thompson calls only his accounts over El for whom he thinks the issue is suitable. Thompson also posts his firm's optimistic projections for Ibex's performance in several Internet chat rooms. According to the Standards concerning market manipulation and fair dealing, Thompson is in violation of:", "both of these Standards.", "neither of these Standards.", "only one of these Standards.", "B"], ["Rob Elliott, CFA, is an analyst with a large asset management firm. His personal portfolio includes a large amount of common stock of Tech Inc., a semiconductor company, which his firm does not currently follow. The director of the research department has asked Elliott to analyze Tech and write a report about its investment potential. Based on the CFA Institute Standards of Professional Conduct, the most appropriate course of action for Elliot is to:", "decline to write the report.", "sell his shares of Tech before completing the report.", "disclose the ownership of the stock to his employer and in the report, if he writes it.", "C"], [`Angie Franklin, CFA, who covers technology stocks, joins a conference call for analysts presented by Cynthia Lucas, chief technology officer for LevelTech. Lucas tells the analysts that overseas shipments of the company's important new product are going to be delayed due to manufacturing defects, which is new information to the analysts. After the meeting Franklin changes her rating on Level Tech from "buy" to "hold" and sends a note to accounts recommending the sale of LevelTech. Franklin:`, "did not violate the Standards.", "violated the Standard on nonpublic information by revising her rating on LevelTech.", 'violated the Standard on fair dealing by rating the stock a "hold" but recommending sale of the shares to her accounts.', "B"], ["According to the recommended procedures for complying with the Standard on suitability, which of the following statements regarding an investment policy statement (I PS) is least accurate? An IPS should describe the roles and responsibilities of both the adviser and the", "An IPS should describe the roles and responsibilities of both the adviser and the client.", "A member or candidate is not responsible for financial information withheld by the client.", "A client's IPS must be updated at least quarterly to reflect any changes in their investment profile.", "C"], ["Sue Johnson, CFA, has an elderly client with a very large asset base. The client intends to start divesting her fortune to various charities. Johnson is on the Board of a local charitable foundation. Johnson most appropriately:", "must not discuss anything regarding her client and her client's intentions with the charitable foundation without permission.", "can discuss her client's situation with the charitable foundation as long as she informs other local charities of her client's intentions.", "can make this known to the charitable foundation so that they can solicit the client, since it is the client's wish to divest assets to charities in the future.", "A"], ["According to the Standard related to loyalty, prudence, and care, which of the following statements regarding the voting of proxies on client holdings is least accurate?", "Proxies have economic value to a client.", "An investment management firm should vote all proxies on client holdings unless the client reserves that right.", "Members and candidates should explicitly disclose the firm's proxy voting policies to clients.", "B"], ["Alvin Gold, CFA, resides in Country T and does business as an investment advisor primarily in Country U. Country T allows trading on non-public information and does not require disclosure of referral fees. Country U prohibits trading on non-public information only if it is gained by illegal means and requires disclosure of referral fees of over $100 (U.S. equivalent). Gold accepts a referral fee of $75, and in the course of a meeting with two other analysts and the firm's CFO, Gold receives material non- public information. To comply with the Code and Standards, Gold:", "need not disclose the referral fee but cannot trade on the non-public information.", "must disclose the referral fee and cannot trade on the non-public information.", "must disclose the referral fee but may trade on the non-public information.", "B"], ["Which of the following statements made in a marketing brochure is a violation of the Standards?", '"Roger Langley, Chartered Financial Analyst, has been a portfolio manager for ten years and passed all three levels of the CFA examinations on his first attempts."', '"Jennifer York has passed the Level II exam and will earn the right to use the CFA designation after completing the Level III exam this June."', `"Paul Yeng, CFA, has retired from the firm after 25 years of service. Much of the firm's past success can be attributed to Yeng's efforts as an analyst and portfolio manager."`, "B"], ["Hedge Funds Unlimited, a global hedge fund, has publicly acknowledged in writing that it has adopted the CFA Institute Code and Standards as its policies. Which of the following is least /ike/ya violation of the firm's policies? An analyst at the firm working overseas uses material nonpublic information as allowed by local law to make investment decisions for discretionary client accounts. A junior analyst at the firm uses a subscription to his local newspaper and the B) opinions of his friends and colleagues to make investment recommendations for discretionary client accounts. A CFA candidate at the firm, who is registered for the Level Ill exam, C) includes reference to participation in the CFA program and her status as a Level Ill candidate in her biographical background.", "An analyst at the firm working overseas uses material nonpublic information as allowed by local law to make investment decisions for discretionary client accounts.", "A junior analyst at the firm uses a subscription to his local newspaper and the opinions of his friends and colleagues to make investment recommendations for discretionary client accounts.", "A CFA candidate at the firm, who is registered for the Level III exam, includes reference to participation in the CFA program and her status as a Level III candidate in her biographical background.", "C"], ["According to the Code and Standards, members and candidates who are involved in distributing an initial public offering (IPO) of equity shares and wish to participate in the I P O:", "may participate unless the IPO is oversubscribed.", "may not participate because this creates a conflict of interest.", "must obtain pre-clearance from a supervisor before participating.", "A"], ["Linda Bryant, CFA, is an employee of Roomkin Investment House, which underwrites equity and debt offerings. She has been approached by SimthCo to consult on a private debt placement. According to CFA Institute Standards of Professional Conduct, before Bryant agrees to accept this job, she is required to:", "obtain written consent from Roomkin after submitting details of the arrangement.", "talk to her immediate supervisor and get her approval to take this consulting job.", "inform SimthCo in writing that she will accept the job and provide details of the arrangement to Roomkin in writing.", "A"], ["To comply with the Code and Standards, analysts who send research", "investment characteristics. report.", "send recommendations only to those clients for whom the investments are suitable.", "recommendations to clients must: not send recommendations without including the underlying analysis and basic keep records of all the data and analysis that went into creating the", "A"], ["Amy Brooks, a Level III CFA candidate, has been given supervisory responsibilities. In carrying out her responsibilities, Brooks has discovered that the firm's compliance system is inadequate. She informed her supervisor, who is not supportive of Brooks's efforts to correct the situation. According to CFA Institute Standards of Professional Conduct, Brooks: has satisfied her obligation under the Code and Standards by informing her manager of the situation. must dissociate herself from the firm if the firm is not in compliance with the CFA B) Institute Standards. should decline in writing to accept supervisory responsibilities until an adequate compliance system is adopted.", "has satisfied her obligation under the Code and Standards by informing her manager of the situation.", "must dissociate herself from the firm if the firm is not in compliance with the CFA Institute Standards.", "should decline in writing to accept supervisory responsibilities until an adequate compliance system is adopted.", "C"], ["Excluding the results of terminated accounts when calculating historical performance is recommended by:", "both GIPS and the Standard concerning performance presentation.", "GIPS, but not by the Standard concerning performance presentation.", "neither GIPS nor the Standard concerning performance presentation.", "C"], ['Ken Toma, CFA, has just completed an extensive analysis and concluded that the demand for vacation rentals in Hawaii will far exceed the supply for the foreseeable future. Toma writes a research report stating, "Based on the fact that the demand for Hawaiian beach vacations will exceed the supply of rooms for the foreseeable future, I recommend the purchase of shares of The Hawaiian REIT, a diversified portfolio of Hawaiian beachfront resorts." If Toma presents this report to his clients, he will most /ike/yviolate the CFA Institute Standards by:', "not distinguishing between fact and opinion.", "not considering the suitability of the investment for his clients.", "failing to have a reasonable and adequate basis for his recommendation.", "A"], ["Derek Stevens, CFA, manages the pension plan assets of Colors, Inc. When voting proxies for plan equities, Stevens owes a fiduciary duty to:", "the plan trustees who hired him.", "the plan participants and beneficiaries.", "the managers, stockholders, and bondholders of Colors, Inc., equally.", "B"], ['An analyst at Romer changes her rating on TelSky from "buy" to "hold" and sends an email explaining the change to all clients and firm brokers. Subsequently, Paul Stevens, CFA, a broker at Romer, receives a call from a client who wants to buy 1 5,000 shares of TelSky. Stevens must: advise his client of the change in recommendation before accepting the', "advise his client of the change in recommendation before accepting the order.", "not accept the order until the customer has had time to receive and read the new report.", "accept the order without mentioning the ratings change because the order is unsolicited.", "A"], ["Which of the following is one of the eight major sections of the GIPS standards for firms?", "Independent Third-Party Verification.", "Input Data and Calculation Methodology.", "Guidelines for Attributing Performance to Sub-Advisers.", "B"], ["Edie Pschorr, CFA, notices that a bond is priced at 98.0 in one market and 98.4 in another market. Pschorr places an order to buy a large number of these bonds in the first market and simultaneously places an order to sell the same number of bonds in the second market. The bond's price increases to 98.2 in the first market and decreases to 98.2 in the second market. Are PschorrJs trades a violation of the Code and Standards?", "No.", "Yes, because they violate the Standard concerning fair dealing.", "Yes, because they violate the Standard concerning market manipulation.", "A"], ["Greg Hoffman, CFA, has been offered a cash payment by Hill Manufacturing, Inc. to write a research report on their company. According to the Code and Standards, Hoffman:", "must disclose the nature of the compensation from Hill in his research report.", "may not accept compensation from Hill to produce research on the company.", "may produce the research report but may not make a recommendation on Hill's securities.", "A"], ["Shan Ang, CFA, is a portfolio manager at Huang Investments. Lian Jan, an old friend of Ang's, is an executive recruiter in the same city. Jan proposes that she will refer any high-level executives that she places locally to Ang, in exchange for one round of golf at Ang's country club for each new client. According to the Standard concerning referral fees, Ang would be required to disclose this referral arrangement:", "only to all prospective clients referred by Jan.", "to his employer and all prospective clients referred by Jan.", "to all prospective clients, current clients, and his employer.", "B"], ["Yvette Michaels, CFA, an analyst for Torborg Investments, inadvertently overhears a conversation between two executives of Collective Healthcare in which they mention an upcoming tender offer for Network, a stock she covers. Michaels has followed both companies extensively and feels their consolidation would be very beneficial for both", "in violation of the Standards.", "not in violation of the Standards because she told only her supervisor.", "companies. She tells her supervisor, a senior analyst, about the proposed tender not in violation of the Standards because she has not traded shares of Network or offer. Michaels' actions are: changed her report on the company.", "C"], ["Kimberwick Technologies reported the following information for the year ending December 31. Data Net sales Cash expenses Cash inputs Cash taxes Increase in receivables Depreciation expense Cash flow from investing Cash flow from financing 50,000 3,250 17,000 7,000 500 1,ooo -5,000 -4,250 If the cash balance increased $13,000 over the year, cash flow from operations (CFO) is closest to:", "$21,250.", "$21,750.", "$22,250.", "C"], ["A principal-agent conflict is most /ike/yto occur between:", "managers and employees.", "shareholders and senior managers.", "suppliers and the board of directors.", "B"], ["A financial firm employs machine learning to model its risk exposures. The machine identifies a number of risk relationships in the input data, but the firm's management believes some of these relationships are spurious. If so, it is most /ike/ythat the model:", "exhibits overfitting.", "treats true parameters as noise.", "is not complex enough to describe the data.", "A"], ["Which of the following statements about a United States public corporation's annual reports, SEC filings, and press releases is most accurate?", "Annual and quarterly SEC filings must be audited.", "Interim SEC filings typically update the major financial statements and footnotes.", "Annual reports to shareholders are typically the most factual and objective source of information about a company.", "B"], ["Which of the following is most /ike/ya motivation for a company's management to issue low-quality financial reports?", "Management has provided optimistic earnings guidance.", "Oversight provided by the board of directors is weak or inadequate.", "Accounting principles permit a wide range of acceptable treatments and estimates.", "C"], ["The initial market value of a portfolio was $100,000. One year later the portfolio was valued at $90,000 and two years later at $99,000. The geometric mean annual return excluding any dividend income is closest to:", "-0.5%.", "0.5%.", "0.0%.", "A"], ["Consider the following foreign exchange and interest rate information: spot rate: 1.3382 USD/EUR. One year riskless USD rate = 2.5%. ' One year riskless EUR rate = 3.5%. The one-year arbitrage-free forward exchange rate is closest to:", "1.2391 USD/EUR.", "1.3253 USD/EUR.", "1.3513 USD/EUR.", "C"], ["- 1.3253 USD/EUR.", "low current ratio.", "low days of payables.", "high debt-to-equity ratio. A company is most /ike/yto be viewed as having poor liquidity, compared to its industry, if it has a:", "A"], ["Haltata Turf & Sod currently uses the first in, first out (FIFO) method to account for inventory. Due to significant tax-loss carryforwards, the company has an effective tax rate of zero. Prices are rising and inventory quantities are stable. If the company were to use last in, first out (LIFO) instead of FIFO:", "net income would be lower and cash flow would be higher.", "cash flow would remain the same and working capital would be lower.", "gross margin would be higher and stockholder's equity would be lower.", "B"], ["An analyst is forecasting market shares for the top three firms (which make up 90% of the market share) in a given market Scenario Firm Market Share Firm Jones Jones Jones Market Share 40% Firm Adams Adams Adams Market Share 2 3 Smith 40% Smith 35% Smith Which scenario produces the highest Herfindahl-Hirschman Index?", "Scenario 1.", "Scenario 2.", "Scenario 3.", "B"], ["The five steps required for a company to record revenue are least /ike/yto include:", "identifying a customer contract.", "receiving proportional payments.", "identifying separate performance obligations in the contract.", "B"], ["Nate Kason is a CFO evaluating whether to take on a project which requires a $100,000 initial investment. Kason's required return for the project is 5.75%, which is equivalent to the company's weighted average cost of capital. After estimating the present value of all outflows and inflows, Kason determines the net present value of the project to be zero. Incorporating the $100,000 initial investment, the internal rate of return for the project is best described as:", "below 5.75%.", "above 5.75%.", "equal to 5.75%.", "C"], ["A simple linear regression model produces the following outputs: Total sum of squares 9,575.81 Mean regression sum of squares 7,115.74 Mean squared error 1,663.46 The F-statistic for this regression is closest to:", "1.3.", "4.3.", "5.8.", "B"], ["In the context of the tools of geopolitics, voluntary export restraints are best categorized as:", "restrictive.", "cooperative.", "noncooperative.", "C"], ["A company's investments in marketable securities include a 3-year tax-exempt bond measured at amortized cost and a 5-year government note measured at fair value through other comprehensive income. On its income statement, the company should report the coupon interest received from:", "both of these securities.", "neither of these securities.", "only one of these securities.", "A"], ["A central banles ability to achieve its policy goals is most /ike/yto be limited by available resources when which of the following actual rates is below its target rate?", "Interest rate.", "Inflation rate.", "Exchange rate.", "C"], ["Other things equal, for a profitable company, issuing debt to repurchase outstanding stock will most /ike/y.", "decrease net income and ROE.", "increase net income but not necessarily ROE.", "decrease net income with an indeterminate effect on ROE.", "C"], ["Under Modigliani and Miller's assumptions and with no taxes, the value of a firm is:", "unaffected by its capital structure.", "maximized with an all-debt capital structure.", "maximized with an all-equity capital structure.", "A"], ["Conditions that most /ike/ysupport a high weight of debt in a company's capital structure include:", "operating in a cyclical industry.", "using a subscription-based revenue model.", "having a high degree of operating leverage.", "B"], ["From the point of view of a financial analyst, when evaluating companies that use different inventory cost assumptions, in a period of:", "stable prices, LIFO inventory is preferred to FIFO inventory.", "decreasing prices, FIFO inventory is preferred to LIFO inventory.", "increasing prices, FIFO cost of sales is preferred to LIFO cost of sales.", "B"], ["An analyst estimates a stock has a 40% probability of earning a 10% return, a 40% probability of earning a 12.5% return, and a 20% probability of earning a 30% return. The stock's standard deviation of returns based on this returns model is closest to:", "3.74%.", "5.75%.", "7.58%.", "C"], ["57.5 — 7.58% -15% 57.5 Shortfall risk is best described as the probability:", "of a credit rating downgrade due to possible earnings shortfalls.", "of failing to make a contractually promised payment.", "that portfolio value will fall below some minimum level at a future date.", "C"], ["Which of the following is least /ike/ya limitation of mechanisms used to discipline financial reporting quality?", "An unqualified audit opinion offers reasonable assurance rather than a guarantee. Securities regulators may require public disclosure of the results of", "disciplinary proceedings. Loan covenants may give the borrowing company an incentive to manipulate", "reported results.", "B"], ["Given the following common-size cash flow statement: Cash Flow Statement Extract (Percentage of Revenues) Net income Accounts receivable Operating cash flow Cash from sale of fixed assets Purchase of plant and equipment Investing cash flow Cash dividends Total cash flow 13.4% 12.2% 0.7% 12.3% 11.6% -2.1% 1.1% 13.4% -0.5% 12.8% 0.75% -12.0% -11.3% -2.5% An analyst should most /ike/y conclude that:", "accounts receivable increased during the year.", "a smaller dividend was paid in 20X3 than 20X2.", "financing cash flow for 20X3 was -2.1% of revenue.", "A"], ["If a company wishes to become public in a way that will generate new capital to fund several large projects, which of the following mechanisms will be most effective in providing the capital?", "Direct listing.", "Initial public offering.", "Special purpose acquisition company.", "B"], ["The presentation format of balance sheet data that standardizes the first-year values to 1.0 and presents subsequent years' amounts relative to 1.0 is:", "an indexed balance sheet.", "a vertical common-size balance sheet.", "a horizontal common-size balance sheet.", "C"], ["For 20X1, Belcher Motors reported a decrease in its deferred tax liabilities, a decrease in its deferred tax assets, and an increase in its valuation allowance. To an analyst, this would most likely suggest that the company has:", "decreased its estimate of future profitability.", "increased the estimated useful life of some capitalized assets.", "increased its estimate of the period over which unearned revenue will be recognized.", "A"], ["Which of the following statements about hypothesis testing is most accurate?", "Rejecting a true null hypothesis is a Type I error.", "The power of a test is the probability of failing to reject the null hypothesis when it is false.", "For a one-tailed test regarding the value of parameter X, the null hypothesis would be Ho: X = 0, and the alternative hypothesis would be HA: X 0.", "A"], ["Agency costs of equity:", "are unaffected by capital structure.", "increase with greater debt in the capital structure.", "decrease with greater debt in the capital structure.", "C"], ["The bootstrap method of estimating the standard error of sample means involves drawing repeated samples from a data set, each with:", "outliers removed.", "the same sample size.", "one observation removed.", "B"], ["An analyst writes the following about two nations: ' East Dumerde has a state-dominated domestic economy and conducts little foreign trade. ' West Dumerde uses its large economy and geophysical resource endowment to discourage other nations from criticizing its human rights record. In this analyst's opinion, the geopolitics of both East Dumerde and West Dumerde are most accurately described as:", "hegemony.", "nationalism.", "non-cooperation.", "C"], ["An analyst gathered the following data about a company: • Collections from customers are $5,000. Depreciation is $800. Cash expenses (including taxes) are $2,000. Tax rate 300/0. Net cash increased by $1,000. If inventory increases over the period by $800, cash flow from operations equals:", "$1,600.", "$2,400.", "$3,000.", "C"], ["Greene Company discloses that its net income for the most recent period was reduced by a writedown of inventory to net realizable value. What effect is the inventory writedown most /ike/yto have on Greene's net income in future periods?", "Increase.", "Decrease.", "No effect.", "A"], ["Automatic stabilizers are government programs that require no legislation and tend to:", "automatically increase spending at the same growth rate as real GDP.", "reduce interest rates, thus stimulating aggregate demand.", "change the government budget deficit in an opposite direction to economic growth.", "C"], ["Jay Company is considering a new joint venture with Haiche Company. Each company would contribute $5 million to the venture in each of the next four years, but at the end of Year 2, Jay has the right to turn the full venture over to Haiche. Jay should evaluate this right as:", "a timing option.", "a flexibility option.", "an abandonment option.", "C"], ["Which of the following statements about return distributions is most accurate?", "With positive skewness, the median is greater than the mean.", "If skewness is positive, the average magnitude of positive deviations from the mean is smaller than the average magnitude of negative deviations from the mean.", "If a return distribution has positive excess kurtosis and the analyst uses statistical models that do not account for the fatter tails, the analyst will underestimate the likelihood of extreme outcomes.", "C"], ["Compared to reporting in a country where life insurance payments on key employees are deductible for tax, a company that makes such payments and reports in a country in which they are not tax deductible would report:", "a lower statutory tax rate.", "a higher effective tax rate.", "a greater deferred tax asset.", "B"], ["Assume that the spot exchange rate between the currency of Xyzia (XYZ) and the U.S. dollar (USD) is 1.264 XYZ/USD, while the spot exchange rate between the euro (EUR) and the USD is 1.083 EUR/USD. The XYZ/EUR exchange rate is closest to:", "0.857.", "1.167.", "1.369.", "B"], ["Which of the following is most /ike/y presented on a common-size balance sheet or common-size income statement?", "Total asset turnover.", "Operating profit margin.", "Return on common equity.", "B"], ["Ethyl Redd supervises an equity research team. Redd compiles the following contingency table of recommendations from her fundamental and technical analysts: Fundamental Analysts Buy Buy 28 Technical Analysts Hold 11 Hold 12 Sell 4 Using the data from this contingency table, Redd can most /ike/ytest the hypothesis that her fundamental and technical analysts' recommendations are:", "independent.", "uncorrelated.", "dispersed equally.", "A"], ["A company has a two-tier structure for its board of directors. In this structure, independent directors serve on which group within the board?", "Staggered board.", "Supervisory board.", "Management board.", "B"], ["Three years ago, the U.S. dollar/euro exchange rate was 1.32 USD/EUR. Over the last three years, the price level in the United States has increased by 18%, and the price level in the eurozone has increased by 12%. If the current exchange rate is 1.40 USD/EUR, the real exchange rate over the period has: increased, and eurozone goods are now more expensive to U.S. consumers. B) decreased, and eurozone goods are now more expensive to U.S. consumers. C) increased, and U.S. goods are now more expensive to eurozone consumers.", "increased, and eurozone goods are now more expensive to U.S. consumers.", "decreased, and eurozone goods are now more expensive to U.S. consumers.", "increased, and U.S. goods are now more expensive to eurozone consumers.", "B"], ["Which of the following items is least /ike/yto contain details about various accruals, adjustments, balances, and management assumptions?", "Income statement.", "Supplementary schedules.", "Discussion and analysis by management.", "A"], ["A going concern project has an expected time frame for completion of three years and a cost of $35 million. To implement a match funding approach, the company should ensure that:", "the project is financed with capital that has a three-year life.", "financing from outside sources provides half of the $35 million cost.", "it does not proceed with the project until it has secured the $35 million in funding.", "A"], ["An investment with an initial cost of $30,000 is sold for $60,000 after two years. The annual return on a continuously compounded basis is closest to:", "35%.", "38%.", "40%.", "A"], ["In the context of deciding on an appropriate forecast horizon, an inflection point is best described as a point at which:", "a full business cycle has been completed.", "future performance is likely to be different from the past.", "the analyst will decide whether to hold or remove the investment from the portfolio.", "B"], ["Wreathfield, Inc., is choosing between two mutually exclusive projects. The cash flows for the two projects are below. The firm has a cost of capital of 1 2%, and the risk of the projects is equivalent to the average risk of the firm. Project J: Project K: o 1 2,000 -20,000 1 4,000 3,000 2 5,000 3,000 3 6,000 4 5 6 3,000 5,000 8,000 8,000 Wreathfield should accept:", "Project J.", "Project K.", "Neither project J nor project K.", "C"], ["$3,000 $5,000 $8,000 $8,000 4,000; CF2 = 5,000; CF3 = 6,000; CPT NPV = A country has implemented tariffs and import quotas. These policies are most /ike/yto result in:", "increased consumer surplus.", "higher prices for imported goods.", "decreased domestic quantity supplied.", "B"], ["A permanent difference between pretax and taxable income is least /ike/yto arise when a firm:", "receives tax-exempt interest.", "uses the installment sales method for financial reporting.", "pays premiums on life insurance of key employees.", "B"], ["Clement Company has revalued an intangible asset with an indefinite life upward by €25 million. In its financial statements, Clement will most likely.", "disclose how it determined the fair value of the intangible asset.", "report lower net income in subsequent periods because of increased amortization expense on the asset.", "report higher assets, net income, and shareholders' equity in the most recent period than it would have reported under the cost model.", "A"], ["In the most recent fiscal year, a company's cash conversion cycle was 45 days. If the company wishes to improve this measure by 5 days during the current year, they will most likely focus on increasing their:", "days sales outstanding.", "days of inventory on hand.", "days payables outstanding.", "C"], ["Partial table of Student's t-distribution: Level of Significance for a Two-Tailed Test df 0.20 0.10 0.05 0.02 0.01 0.001", "is closest to: 16 to 82.", "From a sample of 25 paired observations, an analyst generates the simple linear 187 to 253.", "regression line Yi = —25 + 49Xi. The standard error of the forecast is 16. For an 218 to 272. observed value of X equal to 5, a 95% confidence interval for the predicted value of Y", "B"], ["A researcher has data on the 20 largest firms in each state and samples the data by choosing 20 states at random and then selecting 10 firms at random from each of the samples. Her sampling method is referred to as:", "cluster sampling.", "convenience sampling.", "stratified random sampling.", "A"], ["In a period of rising prices, management of a company that reports under IFRS is least /ike/yto attempt to influence analysts' opinions of its financial results by:", "liquidating inventory.", "increasing the useful lives of assets.", "emphasizing earnings that exclude nonrecurring costs.", "A"], ["An unexpected increase in businesses' inventory-to-sales ratios is most /ike/yto occur as an economy:", "reaches a trough.", "enters a contraction phase.", "approaches the peak of an expansion.", "C"], ["Relative to economic cycles, credit cycles:", "coincide with economic cycles.", "tend to dampen economic cycles.", "have historically been longer than economic cycles.", "C"], ["A change from a neutral monetary policy to a contractionary monetary policy is most /ike/yto be reflected in the economy by:", "decreases in price for financial assets.", "decreased lending rates in the banking system.", "depreciation of the domestic currency in the foreign exchange market.", "A"], ["Which is the correct test statistic for a test of the null hypothesis that a population variance is equal to a chosen value?", "F-statistic.", "t-statistic.", "Chi-square statistic.", "C"], ["Timely Taxis, Ltd. has signed a long-term lease for 20 underground parking spots at", "a sunk cost.", "an opportunity cost.", "$1 50 each per month for its fleet of taxis. The firm currently has 18 taxis in operation an incremental cost. and is performing an NPV analysis on the purchase of a 1 9th taxi. The cost of parking for the 19th taxi is best described as:", "C"], ["Which of the following conditions is most /ike/yto result in expansionary effects from fiscal policy being felt when an economic expansion is already underway? Slow economic growth is being caused by supply shortages rather than low aggregate demand. Expansionary fiscal policy requires policymakers to recognize an economic B) contraction and enact legislation. Government borrowing to finance expansionary spending is increasing interest rates C) faced by private sector borrowers.", "Slow economic growth is being caused by supply shortages rather than low aggregate demand.", "Expansionary fiscal policy requires policymakers to recognize an economic contraction and enact legislation.", "Government borrowing to finance expansionary spending is increasing interest rates faced by private sector borrowers.", "B"], ["A hedge fund has a hurdle rate of 6% and generates a positive return of 10% for the year. The performance fee is 15% of gains. The performance fee will equal:", "0.6% if the hurdle rate is hard.", "0.9% if the hurdle rate is soft.", "1.2% whether the hurdle rate is hard or soft.", "A"], ["FQ Corporation currently has EUR 40 million par value second lien bonds outstanding. Investors in FQs new EUR 10 million senior unsecured bonds would:", "be senior in priority to the second lien bonds.", "rank pari passu in priority to the second lien bonds.", "be subordinated in priority to the second lien bonds.", "C"], ["Mark Stewart is an executive of a publicly traded company in a country that has weak insider trading regulations. If Stewart can trade on insider information about his company and earn abnormal returns over time, the country's market may be most accurately characterized as:", "not weak-form efficient.", "not strong-form efficient.", "semi-strong-form efficient.", "B"], ["If a companys forecast current liability balances reflect an undesirable net working capital position, the company is most likely faced with:", "solvency risk.", "accounting risk.", "operational risk.", "A"], ["Annual spot interest rates are as follows:, I-year: 3.5% 2-year: 3.7% 3-year: 4.0% 4-year: 4.2% Based on these spot rates, the 4-year par rate is closest to:", "3.92%.", "4.05%.", "4.18%.", "C"], ["(1.042)4 — 100.01 A portfolio is invested 30% in Asset X with the remainder invested in Asset Y. Asset X has an expected return of 6% and variance of returns of 0.031, while Asset Y has an expected return of 7% and variance of returns of 0.045. The covariance between the returns of the two assets is 0.03735. The standard deviation of returns for the portfolio is closest to:", "18%.", "20%.", "22%.", "B"], ["Benefits of private debt investments most likely include:", "minimal liquidity risk.", "stability from fixed coupon rates.", "low correlations of returns with other investments.", "C"], ["In a derivatives contract that is subject to novation:", "the seller is required to own and hold the underlying.", "either counterparty may exit the contract by paying a stated fee.", "a central clearinghouse takes the opposite positions to both the buyer and the seller.", "C"], ["A borrower under a repurchase (repo) transaction would like to borrow exactly $100,000. If the repo haircut is 3%, the borrower must provide as collateral bonds worth:", "less than $103,OOO.", "exactly $103,OOO.", "more than $103,000.", "C"], ["Which of the following real estate investment vehicles or strategies is most /ike/yto provide a risk-return profile similar to that of equity investments?", "Core strategies.", "Value-add strategies.", "Investment grade commercial MBS.", "B"], ["Assuming a forecast object will converge to a historical base rate is most appropriate for:", "mature industries.", "cyclical industries.", "growth industries.", "A"], ["A manager states that the objectives of a firm's risk management process should be to: Identify the firm's risk tolerance. ' Identify and measure risks faced by the organization. ' Minimize or eliminate these risks. Which of these objectives is least appropriate in a risk management process?", "Identifying risk tolerance.", "Identifying and measuring risks.", "Minimizing or eliminating risks.", "C"], ["Other things equal, a fixed-coupon bond will have less convexity when its:", "coupon rate is lower.", "yield to maturity is lower.", "time to maturity is shorter.", "C"], ["An industry is experiencing a significant increase of unionized labor. In the context of Porter's Five Forces, this change most likely implies:", "decreasing threat of new entrants.", "increasing bargaining power of suppliers.", "decreasing bargaining power of customers.", "B"], ["Which of the following statements is most accurate regarding a core-satellite approach to asset allocation? Both the core and satellite portfolios utilize active strategies designed to reduce excessive trading. Passively managed indexes are used for the core portfolio and active B) strategies are used for the satellite portfolio. Active strategies are used for the core portfolio and passively managed strategies C) are used for the satellite portfolio.", "Both the core and satellite portfolios utilize active strategies designed to reduce excessive trading.", "Passively managed indexes are used for the core portfolio and active strategies are used for the satellite portfolio.", "Active strategies are used for the core portfolio and passively managed strategies are used for the satellite portfolio.", "B"], ["Bond 1 is an option-free, 3% semiannual coupon, 5-year bond. Bond 2 is a callable bond that is otherwise identical to Bond 1. Compared to Bond 1, Bond 2 has a(n):", "lower option-adjusted price.", "equal option-adjusted price.", "higher option-adjusted price.", "B"], ["Among real estate investment forms, a mortgage REIT is most accurately described as a(n):", "equity investment.", "public debt investment.", "private debt investment.", "B"], ["Stanley Park has allocated his funds across many different retirement and nonretirement accounts. His investment objectives are varied and include some key short-term objectives and some desired but not mandatory long-term ones. Park has set aside specific financial assets for each objective. Park has had success in his investment decisions for three decades and believes he can continue to earn reasonable results. Park most likely exhibits:", "framing bias.", "overconfidence.", "mental accounting.", "C"], ["The source of a hedge fund's return that is attributable to security selection is best described as:", "alpha.", "market beta.", "strategy beta.", "A"], ["Under which type of pension plan are retirement benefit payments an obligation of the sponsoring firm?", "Defined benefit plan only.", "Defined contribution plan only.", "Both a defined benefit plan and a defined contribution plan.", "A"], ["If the availability of a physical commodity over the period of a forward contract has value to users of the commodity, the commodity is said to provide:", "storage yield.", "economic yield.", "convenience yield.", "C"], ["An increase in which of the following will decrease the net cost of carry for a commodity?", "Storage cost.", "Convenience yield.", "The risk-free interest rate.", "B"], ["A portfolio manager is most /ike/yto complete a top-down analysis of the investment environment in which step of the portfolio management process?", "Planning.", "Execution.", "Feedback.", "B"], ["Changes in a fixed-coupon bondls cash flows that result from changes in yield would be reflected in the bond's:", "effective duration.", "modified duration.", "Macaulay duration.", "A"], ["A securities transaction is said to take place in the primary market if the security:", "is newly issued.", "has an investment-grade rating.", "trades on an organized exchange.", "A"], ["An analyst gathered the following data about three stocks: Stock Beta Estimated Return A B c 1.5 1.1 0.6 18.1% 15.7% 12.5% If the risk-free rate is 8%, and the market risk premium is 7%, the analyst is least /ike/y to recommend buying:", "Stock A.", "Stock B.", "Stock C.", "A"], ["A Canadian city issues a CAD 100 million general obligation bond. Which of the following credit measures is most relevant in analyzing the risk of this bond?", "Minimum coverage ratio covenants.", "Attractiveness of the local business climate.", "Riskiness of cash flows from infrastructure funded by the bonds.", "B"], ["In explaining the merits of natural resource investments such as raw land, timberland, and farmland to her clients, a financial advisor can most accurately state that:", "farmland is typically held by institutions.", "liquidity is a primary concern for all three investments.", "farmland lot sizes are usually bigger than timberland lot sizes.", "B"], ["What is the main benefit of a permissionless network, in contrast with a permissioned network? A permissionless network:", "is more cost efficient.", "has no single point of failure.", "enables faster transfer of ownership.", "B"], ["For a stock that has a beta of 0.95, it is most /ike/ythat:", "the slope of its characteristic line is 0.95.", "the market is 95% as volatile as this individual stock.", "the variance of the market return is 95% of the covariance of the stock's return with the market return.", "A"], ["A hedge fund manager is estimating a value for a non-traded bond of Yoder Company. The bond has an annual-pay 6% coupon, matures in six years, and has a CCC credit rating. Actively traded annual-pay bonds with similar credit ratings include the following: Coupon Maturity Yield to maturity 8% 5% 7% 5 years 5 years 10 years 9.45% 9.55% 10.00% Based on matrix pricing, the value of the Yoder bond as a percentage of par is closest to:", "83.9.", "84.1.", "84.5.", "B"], ["An analyst is most /ike/yto examine a companys channel strategy when evaluating the company's:", "pricing power.", "business model.", "revenue drivers.", "B"], ["In the context of risk management, entering an interest rate swap is an example of:", "risk shifting.", "risk transfer.", "diversification.", "A"], ["An analyst determines that a company has a return on equity of 16% and pays 40% of its earnings in dividends. If the firm recently paid a $1.50 dividend and the stock is selling for $40, what is the required rate of return on the stock if it is priced according to the dividend discount model?", "9.6%.", "10.2%.", "13.7%.", "C"], ["A 7.5% coupon, semiannual-pay, five-year bond has a yield to maturity of 6.80%. Over the next year, if the bond's yield to maturity remains unchanged, its price will:", "increase.", "decrease.", "remain unchanged.", "B"], ["A securities market exhibits operational efficiency if it offers:", "low transaction costs.", "prices that respond rapidly to new information.", "rates of return that are proportional to risk on average.", "A"], ["Co-investing is most accurately described as investing: as a limited partner in an investment fund, but only committing capital to one or", "as a limited partner in an investment fund, but only committing capital to one or more of the fund's portfolio companies.", "directly in one or more of an investment fund's portfolio companies, instead of investing as a limited partner in the fund.", "directly in one or more of an investment fund's portfolio companies, in addition to investing as a limited partner in the fund.", "C"], ["Other things equal, the value of a long position in a forward contract priced at will most /ike/ybe higher during its life at time tif the:", "risk-free rate is higher.", "costs of holding the underlying are lower.", "benefits of holding the underlying are higher.", "A"], ["An investor buys a stock for $50. The initial margin requirement is 50%, and the maintenance margin requirement is 25%. The price below which the investor would receive a margin call would be:", "$25.00.", "$33.33.", "$37.50.", "B"], ["Pat McCoy is analyzing a technology firm that has experienced annual earnings growth of 12%. McCoy does not expect the firm to begin paying dividends on its common shares in the foreseeable future. To estimate the value of this firm's common shares, McCoy should most appropriately use:", "a two-stage DDM.", "a free cash flow model.", "a Gordon growth model.", "B"], ["The type of credit risk that is most directly reflected in a bond's rating is:", "default risk.", "downgrade risk.", "credit spread risk.", "A"], ["Portfolio duration most accurately approximates the sensitivity of the value of a bond portfolio to:", "parallel shifts in the yield curve.", "increases in the slope of the yield curve.", "decreases in the slope of the yield curve.", "A"], ["A university endowment commits $80 million to Lawson Private Capital Fund. Lawson charges a 1% management fee per year and incentive fees of 20% on all gains, and has an American-style waterfall structure with no clawback. Lawson draws down the endowment's capital to invest in the following portfolio companies: Portfolio company Investment Adams Borland Chambers $20 million in Year 1 $25 million in Year 2 $30 million in Year 3 Cash received on exit $30 million in Year 3 $45 million in Year 4 $20 million in Year 5 At the end of Year 5, the investor's total gain after fees is closest to:", "$10 million.", "$12 million.", "$14 million.", "A"], ["A stock index consists of two stocks. As of January 1: • Company A has 50 shares outstanding valued at $2 each. ' Company B has 10 shares outstanding valued at $10 each. The price-weighted index is 6, and the value-weighted index is 100. On June 30, the price of Company A's stock has increased to $4 per share. Effective the morning of July 1, Company B's stock splits two- for-one and is priced at $5. The opening values of the price-weighted index and the value-weighted index on July 1 are: Price-weighted C) 4.5", "7.0 and 150.", "6.0 and 150.", "4.5 and 150.", "C"], ["— 150 The assertion that investors, analysts, and portfolio managers exhibit psychological tendencies that cause them to make systematic errors is most consistent with:", "behavioral finance.", "weak-form market efficiency.", "fundamental analysis.", "A"], ["Open-end mutual funds differ from closed-end funds in that:", "open-end funds stand ready to redeem their shares, while closed-end funds do not.", "closed-end funds require active management, while open-end funds do not.", "open-end funds issue shares that are then traded in secondary markets, while closed-end funds do not.", "A"], ["An 8%, semiannual pay, option-free corporate bond that is selling at par has ten years to maturity. What is the approximate modified duration of the bond based on a 75 basis point change (up or down) in rates?", "5.6.", "6.8.", "7.2.", "B"], ["Reasons why no-arbitrage pricing models for forward commitments differ from no- arbitrage pricing models for contingent claims least /ike/y include the fact that contingent claims:", "are leveraged.", "have one-sided payoffs.", "have nonzero values at initiation.", "A"], ["During the life of an option, the amount by which its price is greater than its exercise value is most accurately described as its:", "time value.", "moneyness.", "intrinsic value.", "A"], ["A bond with nine years to maturity is quoted at an interpolated spread of +1 50 basis points. The benchmark yield for this bond is:", "a swap rate.", "a matrix rate.", "a government bond yield.", "C"], ["An investor purchases 1,000 shares of each of the stocks in a price-weighted index at their closing prices (ignore transactions costs). On a total return basis, if the index stocks remain the same, this portfolio will most likely.", "perform exactly like the index over time.", "outperform the index over time.", "underperform the index over time.", "B"], ["Among valuation models, the difficulty of estimating a required rate of return is most /ike/yto be a disadvantage of using:", "a Gordon growth model.", "an asset-based valuation model.", "an enterprise value multiplier model.", "A"], ["An investor owns preference shares which stipulate that any dividend for the current period, as well as all past dividends, must be fully paid before a common stock dividend may be paid. This security is best described as:", "full-pay preferred.", "restricted preferred.", "cumulative preferred.", "C"], ["Consider two option-free, 5% annual-pay bonds from the same issuer and with the same seniority. One of the bonds has a modified duration of 3.5 and approximate convexity of 15. The other has a modified duration of 8.5 and approximate convexity of 75. Can the lower-duration bond have more price volatility than the higher-duration bond?", "No, because it also exhibits lower convexity.", "Yes, because shifts in the yield curve may be non-parallel.", "No, because its price will respond relatively less in response to changes in yield.", "C"], ["When the management team of a public company is replaced by the private equity manager in a leveraged buyout (LBO) fund, the type of LBO is best described as a(n):", "activist shareholder.", "management buy-in.", "management buyout.", "B"], ["Which of the following portfolios has the same future cash flows as a put option?", "Long call option, long risk-free bond, short underlying asset.", "Long call option, short risk-free bond, long underlying asset.", "Short call option, long risk-free bond, long underlying asset.", "A"], ["Marcia Kostner, CFA, is an advisor to individual investors. To determine each of her clients' risk tolerance objectively, Kostner uses a mathematical formula with inputs that include the client's age, family size, insurance coverage, liquidity, income, and net worth. What is the most /ike/y shortcoming of Kostner's approach to assessing risk tolerance?", "Net worth is unrelated to an investor's risk tolerance.", "This approach does not consider the investor's attitude toward risk.", "Treating clients differently based on their ages violates the Code and Standards.", "B"], ["A 10-year note issued by Gaullic Finance will be paid from a bankruptcy-remote pool of Gaullic's balance sheet assets. These notes are best described as:", "covered bonds.", "securitized bonds.", "asset-backed bonds.", "A"], ["With expected return on the Y-axis (vertical) and portfolio risk as measured by standard deviation on the X-axis (horizontal), a risk-averse investor's indifference curves will:", "be flat.", "curve upward.", "curve downward.", "B"], ["An analyst gathered the following data about a company: ' The historical earnings retention rate of 40% is projected to continue into the future. The sustainable ROE is 12%. ' The stock's beta is 1.2. The nominal risk-free rate is 6%. The expected market return is 11%. If the analyst believes next year's earnings will be $4 per share, what value should be placed on this stock?", "$22.24.", "$33.32.", "$45.45.", "B"], ["0.6 — 8.33 The type of equity depository receipt that gives its owners the right to vote and receive dividends from a companys shares is best described as:", "a global depository receipt.", "a sponsored depository receipt.", "a fully-owned depository receipt.", "C"], ["Consider the following Treasury spot rates expressed as bond equivalent yields: Maturity Spot Rate 6 months I year 1.5 years 2 years 3.0% 3.5% 4.0% 4.5% If a Treasury note with two years remaining to maturity has a 5% semiannual coupon and is priced at $1,008, the note is:", "overpriced.", "underpriced.", "correctly priced.", "B"], ["Which of the following is an advantage of a callable bond (compared to an identical option-free bond) to an investor?", "Less reinvestment risk.", "Higher yield.", "More convexity.", "B"], ["An increase in the risk-free rate, together with an increase in the expected volatility of the price of the underlying asset, will most /ike/y lead to a gain for a:", "long call option.", "long put option.", "short put option.", "C"], ["The risk-free rate is 5% and the expected market risk premium is 10%. A portfolio manager is projecting a return of 20% on a portfolio with a beta of 1.5. After adjusting for its systematic risk, this portfolio is expected to:", "equal the market's performance.", "outperform the market.", "underperform the market.", "A"], ["Which measure of return is most appropriate for investments with cash flows that may vary in their timing and amounts?", "Multiple of invested capital.", "Time-weighted rate of return.", "Internal rate of return over the investment's life.", "C"], ["The full price of a bond:", "includes accrued interest.", "includes commissions and taxes.", 'is also known as the "clean" price.', "A"], ["Which of the following is a disadvantage to bondholders if a bond has a sinking fund provision?", "Lower credit quality.", "Unfavorable tax status.", "Greater reinvestment risk.", "C"], ["Which of the following statements about the security market line (SML) and capital market line (CML) is most accurate?", "The SML involves the concept of a risk-free asset, but the CML does not.", "The SML uses beta, but the CML uses standard deviation as the risk measure.", "Both the SML and CML can be used to explain a stock's expected return.", "C"], ["The type of equity index most /ike/yto require rebalancing is:", "a price-weighted index.", "an equal-weighted index.", "a market-capitalization index.", "B"], ["The derivative that is least /ike/yto have a value of zero at initiation is:", "a credit default swap.", "a forward rate agreement.", "an at-the-money call option.", "C"], ["A distinction between cognitive errors and emotional biases is that cognitive errors:", "are more likely to be mitigated through education than emotional biases.", "are essentially processing errors, while emotional biases tend to involve belief perseverance.", "typically lead to errors of commission, while emotional biases typically lead to errors of omission.", "A"], ["The change in the intrinsic value of a firm's common stock resulting from an increase in ROE most likely.", "increases the stock's intrinsic value.", "decreases the stock's intrinsic value.", "depends on the reason for the increase in ROE.", "C"], ["Which of the following statements about short-selling equity shares is least accurate?", "A short seller is required to set up a margin account.", "A short sale involves securities the investor does not own.", "A short seller loses if the price of the stock sold short decreases.", "C"], ["For a bond currently priced at $1,018 with an effective duration of 7.48, if the market yield moved down 75 basis points, the new price would be approximately:", "$961.", "$1,075.", "$1,094.", "C"], ["0.0561 A public offering of bonds issued over a period of time is most accurately described as:", "a serial structure.", "a shelf registration.", "a waterfall structure.", "B"], ["The put-call-forward parity relationship is similar to the standard put-call parity relationship with a forward price substituted for:", "the risk-free bond.", "the underlying asset.", "either the call or put option.", "B"], ["A hedge fund uses derivative positions to take a long position in the Japanese yen and a short position in the euro. The classification of this hedge fund is most likely.", "an event-driven fund.", "a macro strategy fund.", "a quantitative directional fund.", "B"], ["Compared to an index of 100 U.S. exchange-traded stocks, an index of 100 U.S. government and corporate bonds will most /ike/y.", "reflect equally timely price data.", "be more difficult to build and maintain.", "have less turnover among the securities in the index.", "B"], ["The minimum data required to calculate the implied forward rate for three years beginning three years from now is:", "the 3-year and 6-year spot rates.", "the 4-year, 5-year, and 6-year spot rates.", "spot rates at I-year intervals for the 6-year period.", "C"], ["In a two-asset portfolio where 20% is invested in the risk-free asset, the standard deviation of the portfolio will be:", "80% of the standard deviation of the risky asset.", "less than 80% of the standard deviation of the risky asset.", "more than 80% of the standard deviations of the risky asset.", "A"], ["Which of the following types of institutions is most /ike/yto have the lowest risk tolerance?", "Commercial bank.", "College endowment.", "Mutual fund company.", "A"], ["Consider an investor who has sold a cash-settled call option at $39 on 100 shares of General Industry at a price of $5. If the share price is $41 at expiration, the investor will have a:", "loss of $300.", "profit of $300.", "payoff of $300.", "B"], ["An analyst gathered the following data about a company: ' Ahistorical earnings retention rate of 60% that is projected to continue into the future.", "' A sustainable return on equity of 10%. ' Abeta of 1.0. $20.00.", "The nominal risk-free rate is 5%. $30.50.", "The expected market return is 10%. $35.45. If next year's EPS is $2 per share, what value should be estimated for this stock?", "A"], ["— $20. Acquire Corp. has a business model based on making accretive acquisitions each year. The company has historically been successful in implementing its strategy. Earnings per share have grown each of the last five years at a 15% compounded rate. Acquire's two primary business segments are engineering construction and mining. During the past year, Acquire purchased a services company with large net operating losses. The purchase price was one-half the company's current market value. The most appropriate technique to value Acquire is based on its:", "price-to-book value ratio.", "forward price-to-earnings ratio.", "trailing price-to-sales ratio.", "B"], ["A 60-day forward rate agreement (FRA) on a 60-day market reference rate has a fixed rate of 6%. If, at the initiation of the contract, the market reference rate is 5%, the payment in 60 days:", "is unknown.", "will be received by the long position.", "will be received by the short position.", "A"], ["A characteristic of alternative investments that distinguishes them from traditional investments is that:", "redemptions are more restricted.", "they are subject to stricter regulations.", "managers hold more diversified portfolios.", "A"], ["A 3-year, 6% coupon, semiannual-pay note has a yield to maturity of 5.5%. If an investor holds this note to maturity and earns a 4.5% return on reinvested coupon income, his realized yield on the note is closest to:", "5.46%.", "5.57%.", "5.68%.", "A"], ["Public-private partnerships are most /ike/yto be a vehicle for investing in:", "tangible collectibles.", "distressed securities.", "greenfield infrastructure.", "C"], ["Liquidity is generally supplied by dealers in:", "a brokered market.", "an order-driven market.", "a quote-driven market.", "C"]];
+const RAW_EXAMS = [["mock-1-s1", "Mock Exam 1 - Session 1", "90 Qs - Source session 1", "q1", "q90"], ["mock-1-s2", "Mock Exam 1 - Session 2", "90 Qs - Source session 2", "q91", "q180"], ["mock-2-s1", "Mock Exam 2 - Session 1", "90 Qs - Source session 1", "q181", "q270"], ["mock-2-s2", "Mock Exam 2 - Session 2", "90 Qs - Source session 2", "q271", "q360"], ["mock-3-s1", "Mock Exam 3 - Session 1", "90 Qs - Source session 1", "q361", "q450"], ["mock-3-s2", "Mock Exam 3 - Session 2", "90 Qs - Source session 2", "q451", "q540"], ["mock-4-s1", "Mock Exam 4 - Session 1", "90 Qs - Source session 1", "q541", "q630"], ["mock-4-s2", "Mock Exam 4 - Session 2", "90 Qs - Source session 2", "q631", "q720"], ["mock-5-s1", "Mock Exam 5 - Session 1", "90 Qs - Source session 1", "q721", "q810"], ["mock-5-s2", "Mock Exam 5 - Session 2", "90 Qs - Source session 2", "q811", "q900"], ["kaplan-mock-1-s1", "Kaplan Mock 1 - Session 1", "90 Qs - Kaplan Q1-90", "q901", "q990"], ["kaplan-mock-1-s2", "Kaplan Mock 1 - Session 2", "90 Qs - Kaplan Q91-180", "q991", "q1080"]];
+const MOCK_QUESTIONS = RAW_QUESTIONS.map((row, index2) => {
+  const hasVignette = row.length === 6;
+  const offset = hasVignette ? 1 : 0;
+  return {
+    id: `q${index2 + 1}`,
+    topicId: "mock",
+    ...hasVignette ? { vignette: row[0] } : {},
+    stem: row[offset],
+    optionA: row[offset + 1],
+    optionB: row[offset + 2],
+    optionC: row[offset + 3],
+    correctAnswer: row[offset + 4],
+    explanation: `Correct answer: ${row[offset + 4]}`,
     difficulty: "medium"
-  },
-  {
-    id: "eth-2",
-    topicId: "ethics",
-    stem: "A portfolio manager receives a research report from a broker and uses it to make investment decisions for clients. Under the CFA Standards, this practice is:",
-    optionA: "Prohibited because it constitutes soft dollar abuse.",
-    optionB: "Acceptable as long as the research directly benefits clients.",
-    optionC: "Prohibited unless disclosed in the investment policy statement.",
-    correctAnswer: "B",
-    explanation: "Standard III(A) permits the use of client brokerage commissions to pay for research that directly benefits the client. The key test is that the research must benefit the client, not just the manager.",
-    difficulty: "easy"
-  },
-  {
-    id: "eth-3",
-    topicId: "ethics",
-    stem: "Under the CFA Institute Code of Ethics, members must act with:",
-    optionA: "Competence, diligence, and respect only when serving institutional clients.",
-    optionB: "Integrity, competence, diligence, and respect in all professional interactions.",
-    optionC: "Loyalty to the employer above all other considerations.",
-    correctAnswer: "B",
-    explanation: "The CFA Code of Ethics requires acting with integrity, competence, diligence, and respect in all professional interactions — not just with institutional clients, and placing client interests above employer interests.",
-    difficulty: "easy"
-  },
-  {
-    id: "eth-4",
-    topicId: "ethics",
-    stem: "CFA Standard VI(B) prohibits priority trading in securities EXCEPT when:",
-    optionA: "The member's personal trades have de minimis impact on market price.",
-    optionB: "Employer policy explicitly permits personal trading before client trades.",
-    optionC: "The securities involved are not in the client's portfolio.",
-    correctAnswer: "A",
-    explanation: "Standard VI(B) (Priority of Transactions) prohibits front-running client orders. An exception exists for de minimis trades with negligible market impact, as specified in employer compliance policies.",
-    difficulty: "hard"
-  },
-  {
-    id: "eth-5",
-    topicId: "ethics",
-    stem: "According to GIPS standards, a composite must include:",
-    optionA: "All fee-paying discretionary portfolios managed according to similar strategies.",
-    optionB: "Only the top-performing portfolios to ensure accurate benchmarking.",
-    optionC: "All client accounts regardless of investment mandate.",
-    correctAnswer: "A",
-    explanation: "GIPS requires composites to include all actual, fee-paying, discretionary portfolios managed to a similar investment mandate, objective, or strategy. Cherry-picking is explicitly prohibited.",
-    difficulty: "medium"
-  },
-  // Quantitative Methods
-  {
-    id: "quant-1",
-    topicId: "quant",
-    stem: "An investor deposits $10,000 today at 6% per year compounded monthly. What is the effective annual rate (EAR)?",
-    optionA: "6.00%",
-    optionB: "6.17%",
-    optionC: "6.09%",
-    correctAnswer: "B",
-    explanation: "EAR = (1 + 0.06/12)^12 − 1 = (1.005)^12 − 1 ≈ 6.168%. The monthly compounding produces an effective annual rate greater than the nominal 6%.",
-    difficulty: "medium"
-  },
-  {
-    id: "quant-2",
-    topicId: "quant",
-    stem: "Which of the following statements about the normal distribution is MOST accurate?",
-    optionA: "It is defined by its mean, median, and mode, which are all different.",
-    optionB: "Approximately 95% of observations fall within two standard deviations of the mean.",
-    optionC: "The distribution is positively skewed with a long right tail.",
-    correctAnswer: "B",
-    explanation: "For a normal distribution, approximately 68% of observations fall within 1 σ, 95% within 2 σ, and 99.7% within 3 σ of the mean. The mean, median, and mode are all equal, and the distribution is symmetric (zero skewness).",
-    difficulty: "easy"
-  },
-  {
-    id: "quant-3",
-    topicId: "quant",
-    stem: "A Type II error in hypothesis testing occurs when a test:",
-    optionA: "Rejects the null hypothesis when it is actually true.",
-    optionB: "Fails to reject the null hypothesis when it is actually false.",
-    optionC: "Uses an incorrect significance level for the test statistic.",
-    correctAnswer: "B",
-    explanation: "A Type II error (β error) is failing to reject a false null hypothesis. A Type I error (α) is rejecting a true null hypothesis. The power of a test (1 − β) is the probability of correctly rejecting a false null.",
-    difficulty: "medium"
-  },
-  {
-    id: "quant-4",
-    topicId: "quant",
-    stem: "Given a portfolio with expected return of 12% and standard deviation of 15%, what is the coefficient of variation?",
-    optionA: "0.80",
-    optionB: "1.25",
-    optionC: "0.20",
-    correctAnswer: "B",
-    explanation: "Coefficient of Variation (CV) = Standard Deviation / Expected Return = 15% / 12% = 1.25. CV measures risk per unit of return — lower is better for risk-adjusted performance.",
-    difficulty: "easy"
-  },
-  {
-    id: "quant-5",
-    topicId: "quant",
-    stem: "In regression analysis, heteroskedasticity refers to:",
-    optionA: "Correlation between the residuals and independent variables.",
-    optionB: "Non-constant variance of the regression residuals.",
-    optionC: "High correlation between two or more independent variables.",
-    correctAnswer: "B",
-    explanation: "Heteroskedasticity occurs when the variance of the error term is not constant across observations. It does not bias coefficient estimates but makes standard errors and hypothesis tests unreliable. Serial correlation relates to correlated errors; multicollinearity relates to correlated predictors.",
-    difficulty: "medium"
-  },
-  // Economics
-  {
-    id: "econ-1",
-    topicId: "econ",
-    stem: "In a perfectly competitive market, a firm's long-run equilibrium occurs where:",
-    optionA: "Price equals average total cost and economic profit is zero.",
-    optionB: "Price equals marginal cost but exceeds average total cost.",
-    optionC: "The firm earns positive economic profit to justify staying in the market.",
-    correctAnswer: "A",
-    explanation: "In long-run equilibrium for perfect competition, free entry/exit drives economic profit to zero: P = MR = MC = ATC (at minimum ATC). Firms earn only normal profit (accounting profit covering opportunity cost).",
-    difficulty: "medium"
-  },
-  {
-    id: "econ-2",
-    topicId: "econ",
-    stem: "Quantitative easing by a central bank MOST likely results in:",
-    optionA: "An increase in the money supply and downward pressure on long-term interest rates.",
-    optionB: "A decrease in the money supply that reduces inflationary pressure.",
-    optionC: "Higher short-term rates to counteract increased inflation expectations.",
-    correctAnswer: "A",
-    explanation: "QE involves a central bank purchasing long-term assets (e.g., government bonds) to inject money into the economy. This increases the money supply, pushes up asset prices, and puts downward pressure on long-term yields.",
-    difficulty: "easy"
-  },
-  {
-    id: "econ-3",
-    topicId: "econ",
-    stem: "The J-curve effect following a currency depreciation suggests that the current account balance will:",
-    optionA: "Immediately improve as exports become cheaper.",
-    optionB: "Initially worsen before eventually improving.",
-    optionC: "Remain unchanged in the short run due to price stickiness.",
-    correctAnswer: "B",
-    explanation: "The J-curve describes the short-run deterioration followed by long-run improvement in the trade balance after depreciation. Initially, import costs rise faster than export volume adjusts (existing contracts), worsening the balance before it improves.",
-    difficulty: "hard"
-  },
-  // Financial Statement Analysis
-  {
-    id: "fsa-1",
-    topicId: "fsa",
-    stem: "Under IFRS, which inventory cost flow assumption is NOT permitted?",
-    optionA: "FIFO (First-In, First-Out)",
-    optionB: "LIFO (Last-In, First-Out)",
-    optionC: "Weighted average cost",
-    correctAnswer: "B",
-    explanation: "IFRS (IAS 2) prohibits the LIFO method. US GAAP permits LIFO. The key difference is important for analysts comparing companies across standards, as LIFO can significantly affect reported inventory values and COGS during inflationary periods.",
-    difficulty: "easy"
-  },
-  {
-    id: "fsa-2",
-    topicId: "fsa",
-    stem: "The DuPont decomposition of Return on Equity (ROE) breaks it down into:",
-    optionA: "Net profit margin × Total asset turnover × Equity multiplier.",
-    optionB: "Gross profit margin × Asset turnover × Current ratio.",
-    optionC: "Operating margin × Interest burden × Tax burden × Leverage.",
-    correctAnswer: "A",
-    explanation: "The classic 3-factor DuPont formula: ROE = (Net Income/Sales) × (Sales/Total Assets) × (Total Assets/Equity) = Net Profit Margin × Asset Turnover × Equity Multiplier. The 5-factor extends this further.",
-    difficulty: "medium"
-  },
-  {
-    id: "fsa-3",
-    topicId: "fsa",
-    stem: "A company using the percentage-of-completion method for long-term contracts will recognize revenue:",
-    optionA: "Only when the contract is fully completed and accepted by the customer.",
-    optionB: "Proportionally over the contract period based on project completion milestones.",
-    optionC: "At the start of the contract based on the total contract value.",
-    correctAnswer: "B",
-    explanation: "The percentage-of-completion method recognizes revenue and profit proportional to the work completed each period, matching revenue to effort. The completed contract method only recognizes at completion — this is now restricted under IFRS 15 and ASC 606.",
-    difficulty: "medium"
-  },
-  // Corporate Issuers
-  {
-    id: "corp-1",
-    topicId: "corp",
-    stem: "According to the Modigliani-Miller theorem with no taxes, a firm's capital structure:",
-    optionA: "Has no effect on its total market value.",
-    optionB: "Optimally consists entirely of debt to minimize cost of capital.",
-    optionC: "Should balance debt and equity to achieve the optimal WACC.",
-    correctAnswer: "A",
-    explanation: "Without taxes, MM Proposition I states capital structure is irrelevant — firm value depends only on its assets and earning power, not how those assets are financed. With taxes, the interest tax shield creates value from debt.",
-    difficulty: "medium"
-  },
-  {
-    id: "corp-2",
-    topicId: "corp",
-    stem: "A company repurchases its own shares. All else equal, this will MOST likely:",
-    optionA: "Decrease EPS because fewer shares reduce total earnings.",
-    optionB: "Increase EPS because the same earnings are spread over fewer shares.",
-    optionC: "Have no effect on EPS because retained earnings offset the buyback.",
-    correctAnswer: "B",
-    explanation: "Share buybacks reduce the share count. If net income remains constant, fewer shares outstanding means higher EPS (Earnings Per Share = Net Income / Shares Outstanding). Buybacks are an alternative to dividends for returning capital.",
-    difficulty: "easy"
-  },
-  // Equity Investments
-  {
-    id: "equity-1",
-    topicId: "equity",
-    stem: "Using the Gordon Growth Model, if a stock pays a dividend of $2.00, has a required return of 10%, and dividends grow at 4% perpetually, the stock's intrinsic value is:",
-    optionA: "$33.33",
-    optionB: "$50.00",
-    optionC: "$20.00",
-    correctAnswer: "A",
-    explanation: "Gordon Growth Model: P = D₁ / (r − g) = D₀(1+g) / (r−g) = $2.00 × 1.04 / (0.10 − 0.04) = $2.08 / 0.06 = $34.67. Using D₁ = $2.00 directly: $2.00 / 0.06 = $33.33.",
-    difficulty: "medium"
-  },
-  {
-    id: "equity-2",
-    topicId: "equity",
-    stem: "A stock with a beta of 1.5 and a market risk premium of 6% has an expected return based on CAPM of (risk-free rate = 3%):",
-    optionA: "9.0%",
-    optionB: "12.0%",
-    optionC: "10.5%",
-    correctAnswer: "B",
-    explanation: "CAPM: E(R) = Rf + β × (Rm − Rf) = 3% + 1.5 × 6% = 3% + 9% = 12%. The stock's expected return exceeds the market's expected return (9%) due to its higher systematic risk (β > 1).",
-    difficulty: "easy"
-  },
-  // Fixed Income
-  {
-    id: "fi-1",
-    topicId: "fi",
-    stem: "When market interest rates increase, the price of a fixed-rate bond will:",
-    optionA: "Increase, as higher rates make the bond more attractive.",
-    optionB: "Decrease, reflecting the inverse relationship between price and yield.",
-    optionC: "Remain unchanged until maturity.",
-    correctAnswer: "B",
-    explanation: "Bond prices and yields move inversely. When market rates rise, existing bonds with lower coupons become less attractive, so their prices fall to offer the competitive market yield. Duration measures the sensitivity of price to yield changes.",
-    difficulty: "easy"
-  },
-  {
-    id: "fi-2",
-    topicId: "fi",
-    stem: "A bond with a high convexity compared to a bond with low convexity:",
-    optionA: "Will decrease more in price when yields rise.",
-    optionB: "Benefits more from yield decreases and suffers less from yield increases.",
-    optionC: "Has higher duration risk and lower credit quality.",
-    correctAnswer: "B",
-    explanation: "Convexity is a desirable property — higher convexity means the price-yield curve is more bowed. When yields fall, a high-convexity bond gains more; when yields rise, it loses less compared to a bond with identical duration but lower convexity.",
-    difficulty: "hard"
-  },
-  // Derivatives
-  {
-    id: "deriv-1",
-    topicId: "deriv",
-    stem: "A call option is in-the-money when the:",
-    optionA: "Option's exercise price is above the current market price of the underlying.",
-    optionB: "Option's exercise price is below the current market price of the underlying.",
-    optionC: "Option's exercise price equals the current market price of the underlying.",
-    correctAnswer: "B",
-    explanation: "A call option gives the right to BUY. It's in-the-money (ITM) when the market price exceeds the exercise price — meaning immediate exercise generates a profit. A put option is ITM when market price is BELOW exercise price.",
-    difficulty: "easy"
-  },
-  {
-    id: "deriv-2",
-    topicId: "deriv",
-    stem: "Put-call parity for European options states that:",
-    optionA: "C − P = S₀ − PV(X), where S₀ is spot price and X is strike price.",
-    optionB: "C + P = S₀ + PV(X), ensuring equal premiums for calls and puts.",
-    optionC: "C = P when the option is at-the-money.",
-    correctAnswer: "A",
-    explanation: "Put-call parity: C − P = S₀ − PV(X). Equivalently: C + PV(X) = P + S₀ (protective put equals fiduciary call). This arbitrage relationship holds for European options with the same strike and expiration.",
-    difficulty: "medium"
-  },
-  // Alternative Investments
-  {
-    id: "alts-1",
-    topicId: "alts",
-    stem: "Which of the following BEST describes a hedge fund's incentive fee structure?",
-    optionA: "A flat annual management fee of 2% regardless of performance.",
-    optionB: "A performance fee (e.g., 20% of profits) often subject to a high-water mark.",
-    optionC: "A fee based solely on assets under management with no performance component.",
-    correctAnswer: "B",
-    explanation: "The typical '2 and 20' hedge fund fee structure charges 2% management fee on AUM and 20% of profits above the high-water mark (highest previous NAV). The high-water mark prevents collecting performance fees on recovering losses.",
-    difficulty: "easy"
-  },
-  {
-    id: "alts-2",
-    topicId: "alts",
-    stem: "Private equity investments typically exhibit the 'J-curve effect' because:",
-    optionA: "Returns start high due to leverage and decline as the portfolio matures.",
-    optionB: "Early capital calls and fees create negative returns before portfolio companies appreciate.",
-    optionC: "The IRR calculation favors early distributions over later gains.",
-    correctAnswer: "B",
-    explanation: "PE J-curve: In early years, capital is called for investments and management fees are paid with no distributions, creating negative returns. As portfolio companies mature and are exited, returns become positive and typically accelerate in later years.",
-    difficulty: "medium"
-  },
-  // Portfolio Management
-  {
-    id: "pm-1",
-    topicId: "pm",
-    stem: "The Capital Market Line (CML) differs from the Security Market Line (SML) in that the CML:",
-    optionA: "Plots expected return against beta, while SML plots against standard deviation.",
-    optionB: "Plots expected return against total risk (σ), while SML plots against systematic risk (β).",
-    optionC: "Applies to individual securities, while SML applies to portfolios.",
-    correctAnswer: "B",
-    explanation: "CML: plots expected return vs. total risk (std deviation) — applies only to efficient portfolios on the efficient frontier. SML: plots expected return vs. beta (systematic risk) — applies to all individual securities and portfolios under CAPM.",
-    difficulty: "medium"
-  },
-  {
-    id: "pm-2",
-    topicId: "pm",
-    stem: "The Sharpe ratio measures:",
-    optionA: "Excess return per unit of systematic (market) risk.",
-    optionB: "Excess return per unit of total risk (standard deviation).",
-    optionC: "Portfolio return relative to a benchmark, adjusted for tracking error.",
-    correctAnswer: "B",
-    explanation: "Sharpe Ratio = (Rp − Rf) / σp. It measures excess return (above risk-free rate) per unit of total risk. Treynor ratio uses beta (systematic risk). Information ratio uses active return / tracking error.",
-    difficulty: "easy"
-  }
-];
-const MOCK_EXAMS = [
-  {
-    id: "mock-1",
-    title: "CFA Level I Mock Exam 1",
-    description: "Full-length mock covering all 10 topic areas. AM Session — 90 questions.",
-    questionCount: 20,
+  };
+});
+const MOCK_EXAMS = RAW_EXAMS.map(([id2, title, description, firstId, lastId]) => {
+  const first = Number(firstId.slice(1));
+  const last2 = Number(lastId.slice(1));
+  return {
+    id: id2,
+    title,
+    description,
+    questionCount: last2 - first + 1,
     durationMinutes: 135,
     level: "I",
-    createdAt: "2024-01-01T00:00:00Z"
-  },
-  {
-    id: "mock-2",
-    title: "CFA Level I Mock Exam 2",
-    description: "Emphasis on Quantitative Methods, FSA, and Fixed Income. AM Session.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-01-15T00:00:00Z"
-  },
-  {
-    id: "mock-3",
-    title: "CFA Level I Mock Exam 3",
-    description: "Focus on Equity Investments, Derivatives, and Portfolio Management.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-02-01T00:00:00Z"
-  },
-  {
-    id: "mock-4",
-    title: "CFA Level I Mock Exam 4",
-    description: "Comprehensive ethics-heavy session. High difficulty, timed under exam conditions.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-02-15T00:00:00Z"
-  },
-  {
-    id: "mock-5",
-    title: "CFA Level I Mock Exam 5",
-    description: "Balanced across all topics. Mirrors the actual CFA Institute exam format.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-03-01T00:00:00Z"
-  },
-  {
-    id: "mock-6",
-    title: "CFA Level I Mock Exam 6",
-    description: "Economics and Corporate Finance deep dive with alternative investments.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-03-15T00:00:00Z"
-  },
-  {
-    id: "mock-7",
-    title: "CFA Level I Mock Exam 7",
-    description: "Speed-focused session. 20 questions in 45 minutes. Builds exam stamina.",
-    questionCount: 20,
-    durationMinutes: 45,
-    level: "I",
-    createdAt: "2024-04-01T00:00:00Z"
-  },
-  {
-    id: "mock-8",
-    title: "CFA Level I Mock Exam 8",
-    description: "Quantitative Methods and Fixed Income mastery assessment.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-04-15T00:00:00Z"
-  },
-  {
-    id: "mock-9",
-    title: "CFA Level I Mock Exam 9",
-    description: "GIPS, Standards of Practice, and Ethics case studies.",
-    questionCount: 20,
-    durationMinutes: 60,
-    level: "I",
-    createdAt: "2024-05-01T00:00:00Z"
-  },
-  {
-    id: "mock-10",
-    title: "CFA Level I Mock Exam 10",
-    description: "Final preparation exam. Mirrors June exam difficulty and time pressure.",
-    questionCount: 20,
-    durationMinutes: 135,
-    level: "I",
-    createdAt: "2024-05-15T00:00:00Z"
-  }
-];
+    createdAt: "2026-05-19T00:00:00Z",
+    questionIds: Array.from({ length: last2 - first + 1 }, (_, index2) => `q${first + index2}`)
+  };
+});
 function useTopics() {
   return useQuery({
     queryKey: ["topics"],
@@ -28648,14 +23800,8 @@ function useMockExamQuestions(examId) {
     queryFn: async () => {
       const exam = MOCK_EXAMS.find((e) => e.id === examId);
       if (!exam) return [];
-      const allQ = MOCK_QUESTIONS;
-      let hash = 0;
-      for (let i = 0; i < examId.length; i++) {
-        hash = (hash << 5) - hash + examId.charCodeAt(i);
-        hash |= 0;
-      }
-      const shuffled = [...allQ].sort(() => hash % 2 === 0 ? 1 : -1);
-      return shuffled.slice(0, Math.min(exam.questionCount, allQ.length));
+      const questionsById = new Map(MOCK_QUESTIONS.map((q) => [q.id, q]));
+      return exam.questionIds.map((questionId) => questionsById.get(questionId)).filter((q) => Boolean(q));
     },
     staleTime: Number.POSITIVE_INFINITY
   });
@@ -28760,13 +23906,16 @@ function useSubmitExamAttempt() {
   const queryClient2 = useQueryClient();
   return useMutation({
     mutationFn: async (payload) => {
-      const questions = MOCK_QUESTIONS;
+      const exam = MOCK_EXAMS.find((e) => e.id === payload.examId);
+      const examQuestionIds = new Set((exam == null ? void 0 : exam.questionIds) ?? []);
+      const questions = examQuestionIds.size > 0 ? MOCK_QUESTIONS.filter((q) => examQuestionIds.has(q.id)) : MOCK_QUESTIONS;
       let correctCount = 0;
       for (const a of payload.answers) {
         const q = questions.find((q2) => q2.id === a.questionId);
-        if ((q == null ? void 0 : q.correctAnswer) === a.selectedAnswer) correctCount++;
+        if (a.selectedAnswer && (q == null ? void 0 : q.correctAnswer) === a.selectedAnswer) correctCount++;
       }
-      const score = payload.answers.length > 0 ? Math.round(correctCount / payload.answers.length * 100) : 0;
+      const totalQCount = (exam == null ? void 0 : exam.questionCount) ?? payload.answers.length;
+      const score = totalQCount > 0 ? Math.round(correctCount / totalQCount * 100) : 0;
       const attempt = {
         id: crypto.randomUUID(),
         examId: payload.examId,
@@ -28774,7 +23923,7 @@ function useSubmitExamAttempt() {
         answers: payload.answers,
         score,
         correctCount,
-        totalCount: payload.answers.length,
+        totalCount: totalQCount,
         completedAt: (/* @__PURE__ */ new Date()).toISOString(),
         timeTakenSeconds: payload.timeTakenSeconds
       };
@@ -29282,18 +24431,18 @@ function analyseComplexValue(value) {
     ++i;
     return SPLIT_TOKEN;
   });
-  const split2 = tokenised.split(SPLIT_TOKEN);
-  return { values, split: split2, indexes, types };
+  const split = tokenised.split(SPLIT_TOKEN);
+  return { values, split, indexes, types };
 }
 function parseComplexValue(v) {
   return analyseComplexValue(v).values;
 }
-function buildTransformer({ split: split2, types }) {
-  const numSections = split2.length;
+function buildTransformer({ split, types }) {
+  const numSections = split.length;
   return (v) => {
     let output = "";
     for (let i = 0; i < numSections; i++) {
-      output += split2[i];
+      output += split[i];
       if (v[i] !== void 0) {
         const type = types[i];
         if (type === NUMBER_TOKEN) {
@@ -30505,8 +25654,8 @@ function setStyle(element, name, value) {
 }
 const supportsFlags = {};
 function memoSupports(callback, supportsFlag) {
-  const memoized2 = /* @__PURE__ */ memo(callback);
-  return () => supportsFlags[supportsFlag] ?? memoized2();
+  const memoized = /* @__PURE__ */ memo(callback);
+  return () => supportsFlags[supportsFlag] ?? memoized();
 }
 const supportsScrollTimeline = /* @__PURE__ */ memoSupports(() => window.ScrollTimeline !== void 0, "scrollTimeline");
 const supportsLinearEasing = /* @__PURE__ */ memoSupports(() => {
@@ -37209,10 +32358,11 @@ function QuestionCard({
             }
           )
         ] }),
+        question.vignette && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-foreground text-sm leading-relaxed mb-4 whitespace-pre-line rounded-md border border-border bg-muted/30 p-4", children: question.vignette }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "p",
           {
-            className: "text-foreground font-body text-sm leading-relaxed mb-5",
+            className: "text-foreground font-body text-sm leading-relaxed mb-5 whitespace-pre-line",
             "data-ocid": "question-stem",
             children: question.stem
           }
@@ -37546,7 +32696,7 @@ function ExamResult() {
             question: q,
             index: i,
             reviewMode: true,
-            userAnswer: userAnswer == null ? void 0 : userAnswer.selectedAnswer
+            userAnswer: (userAnswer == null ? void 0 : userAnswer.selectedAnswer) || void 0
           },
           q.id
         );
@@ -37821,7 +32971,7 @@ function ExamSession() {
     setShowFinishModal(false);
     const examAnswers = questions.map((q) => ({
       questionId: q.id,
-      selectedAnswer: answers[q.id] ?? "A"
+      selectedAnswer: answers[q.id] ?? ""
     }));
     const timeTaken = Math.round((Date.now() - startTimeRef.current) / 1e3);
     try {
@@ -37962,7 +33112,8 @@ function ExamSession() {
             }
           )
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-foreground text-sm leading-relaxed mb-6", children: currentQ.stem }),
+        currentQ.vignette && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-foreground text-sm leading-relaxed mb-5 whitespace-pre-line rounded-md border border-border bg-muted/30 p-4", children: currentQ.vignette }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-foreground text-sm leading-relaxed mb-6 whitespace-pre-line", children: currentQ.stem }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "space-y-3 mb-6", "aria-label": "Answer choices", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("legend", { className: "sr-only", children: "Select an answer" }),
           OPTION_LABELS.map((opt) => {
@@ -38195,6 +33346,7 @@ function Exams() {
     ] });
   }
   const totalCompleted = completedIds.size;
+  const totalExams = (exams == null ? void 0 : exams.length) ?? 0;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-8", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-3", children: [
@@ -38202,11 +33354,14 @@ function Exams() {
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-2xl sm:text-3xl font-bold text-foreground leading-tight", children: "Mock Examinations" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground text-sm mt-0.5", children: [
-            "10 full-length practice exams · CFA Level I format ·",
+            totalExams,
+            " full-length practice exams · CFA Level I format ·",
             " ",
             /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-primary font-medium", children: [
               totalCompleted,
-              "/10 completed"
+              "/",
+              totalExams,
+              " completed"
             ] })
           ] })
         ] })
@@ -38215,7 +33370,9 @@ function Exams() {
         "div",
         {
           className: "h-full bg-primary rounded-full transition-all duration-500",
-          style: { width: `${totalCompleted / 10 * 100}%` }
+          style: {
+            width: `${totalExams > 0 ? totalCompleted / totalExams * 100 : 0}%`
+          }
         }
       ) })
     ] }),
@@ -38714,105 +33871,52 @@ function History() {
     )
   ] });
 }
-const FEATURES = [
-  {
-    icon: BookOpen,
-    text: "10 CFA Level I topic areas with practice questions"
-  },
-  { icon: ChartNoAxesColumn, text: "10 full-length mock exams with score tracking" },
-  { icon: CircleCheckBig, text: "Detailed explanations for every question" },
-  { icon: Shield, text: "Secure, private — your data stays yours" }
-];
 function Login() {
-  const { isAuthenticated, isLoading, login } = useAuth();
-  if (isAuthenticated) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Navigate, { to: "/" });
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "min-h-[calc(100vh-4rem)] bg-background flex items-center justify-center p-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full max-w-4xl grid md:grid-cols-2 gap-8 items-center", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 animate-slide-up", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-12 rounded-md bg-primary flex items-center justify-center shadow-elevated", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpen, { className: "w-6 h-6 text-primary-foreground" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-2xl font-bold text-foreground", children: "CFA Study Portal" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm", children: "Level I Exam Preparation" })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display text-3xl font-bold text-foreground leading-tight mb-3", children: "Master the CFA Exam with Confidence" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground leading-relaxed", children: "Comprehensive practice questions, mock exams, and score analytics — everything you need to pass the CFA Level I exam on your first attempt." })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "space-y-3", children: FEATURES.map(({ icon: Icon2, text }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "li",
-        {
-          className: "flex items-center gap-3 text-sm text-foreground",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-7 h-7 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-3.5 h-3.5 text-accent" }) }),
-            text
-          ]
-        },
-        text
-      )) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 py-3 px-4 bg-muted/40 rounded-md border border-border", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display text-xl font-bold text-primary", children: "10" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] text-muted-foreground uppercase tracking-wider", children: "Topics" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-px h-10 bg-border" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display text-xl font-bold text-primary", children: "200+" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] text-muted-foreground uppercase tracking-wider", children: "Questions" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-px h-10 bg-border" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display text-xl font-bold text-primary", children: "10" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] text-muted-foreground uppercase tracking-wider", children: "Mock Exams" })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "animate-slide-up", style: { animationDelay: "0.1s" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "shadow-elevated border border-border bg-card p-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Shield, { className: "w-8 h-8 text-primary" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-xl font-bold text-foreground mb-1", children: "Sign In to Continue" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "Use Internet Identity for secure, decentralized authentication. No password required." })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Button,
-        {
-          onClick: () => login(),
-          disabled: isLoading,
-          className: "w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-12 text-base shadow-card",
-          "data-ocid": "ii-login-button",
-          children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" }),
-            "Authenticating…"
-          ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Shield, { className: "w-5 h-5" }),
-            "Sign in with Internet Identity"
-          ] })
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground text-center mt-4 leading-relaxed", children: "Internet Identity is a blockchain-based authentication system. Your identity is secure and private." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 pt-5 border-t border-border", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-center text-muted-foreground mb-3 font-medium uppercase tracking-wider", children: "Your progress is tracked for:" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-2", children: [
-          "Practice scores",
-          "Mock exam results",
-          "Topic accuracy",
-          "Study streaks"
-        ].map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
-          {
-            className: "flex items-center gap-1.5 text-xs text-muted-foreground",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheckBig, { className: "w-3 h-3 text-accent flex-shrink-0" }),
-              item
-            ]
-          },
-          item
-        )) })
-      ] })
-    ] }) })
-  ] }) });
+  const [email, setEmail] = reactExports.useState("");
+  const [password, setPassword] = reactExports.useState("");
+  const [error, setError] = reactExports.useState("");
+  const { login } = useAuth();
+  const handleLogin = () => {
+    const ok = login(email, password);
+    if (ok) {
+      window.location.href = "/";
+    } else {
+      setError("Email and password (min 6 chars) required.");
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { maxWidth: 400, margin: "100px auto", padding: 24 }, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { style: { marginBottom: 24 }, children: "CFA Study Portal — Sign In" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "input",
+      {
+        type: "email",
+        placeholder: "Email",
+        value: email,
+        onChange: (e) => setEmail(e.target.value),
+        style: { display: "block", width: "100%", marginBottom: 12, padding: 8, fontSize: 16 }
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "input",
+      {
+        type: "password",
+        placeholder: "Password (min 6 chars)",
+        value: password,
+        onChange: (e) => setPassword(e.target.value),
+        style: { display: "block", width: "100%", marginBottom: 12, padding: 8, fontSize: 16 }
+      }
+    ),
+    error && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { color: "red" }, children: error }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "button",
+      {
+        onClick: handleLogin,
+        style: { width: "100%", padding: 10, fontSize: 16, background: "#1a56db", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer" },
+        children: "Sign In"
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginTop: 12, fontSize: 13, color: "#666" }, children: "Any email + any password (6+ chars) works." })
+  ] });
 }
 function PracticeSession() {
   const { topicId } = useParams({ from: "/topics/$topicId/practice" });
@@ -39211,7 +34315,7 @@ function Profile() {
   const { data: topics, isLoading: topicsLoading } = useTopics();
   const { data: examHistory } = useMyExamHistory();
   const isLoading = statsLoading || topicStatsLoading || topicsLoading;
-  const principalStr = principal ? principal.toText() : isAuthenticated ? "authenticated" : "anonymous";
+  const principalStr = principal ? principal : isAuthenticated ? "authenticated" : "anonymous";
   const bestExamScore = examHistory && examHistory.length > 0 ? Math.max(...examHistory.map((a) => a.score)) : 0;
   const topicRows = (topics ?? []).map((topic) => {
     const ts = topicStats == null ? void 0 : topicStats.find((s) => s.topicId === topic.id);
@@ -40291,10 +35395,7 @@ const router = createRouter({ routeTree });
 function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider, { router });
 }
-BigInt.prototype.toJSON = function() {
-  return this.toString();
-};
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
-  /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(InternetIdentityProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) })
+  /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );

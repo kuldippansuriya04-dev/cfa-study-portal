@@ -11,6 +11,7 @@ export interface Topic {
 export interface Question {
   id: string;
   topicId: string;
+  vignette?: string;
   stem: string;
   optionA: string;
   optionB: string;
@@ -28,11 +29,12 @@ export interface MockExam {
   durationMinutes: number;
   level: string;
   createdAt: string;
+  questionIds: string[];
 }
 
 export interface ExamAnswer {
   questionId: string;
-  selectedAnswer: "A" | "B" | "C";
+  selectedAnswer: "A" | "B" | "C" | "";
 }
 
 export interface ExamAttempt {

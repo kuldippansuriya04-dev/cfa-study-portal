@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Link, Outlet, useLocation } from "@tanstack/react-router";
+import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
 import {
   BarChart2,
   BookOpen,
@@ -24,9 +24,10 @@ const NAV_LINKS = [
 ];
 
 export default function Layout() {
-  const { isAuthenticated, login, logout, isLoading } = useAuth();
+  const { isAuthenticated, logout, isLoading } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (to: string) =>
     to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
@@ -103,7 +104,7 @@ export default function Layout() {
               ) : (
                 <Button
                   size="sm"
-                  onClick={() => login()}
+                  onClick={() => navigate({ to: "/login" })}
                   disabled={isLoading}
                   className="hidden md:flex bg-accent text-primary hover:bg-accent/90 font-semibold"
                   data-ocid="login-button"
@@ -186,7 +187,7 @@ export default function Layout() {
                   <button
                     type="button"
                     onClick={() => {
-                      login();
+                      navigate({ to: "/login" });
                       setMobileOpen(false);
                     }}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-sm text-accent font-semibold"

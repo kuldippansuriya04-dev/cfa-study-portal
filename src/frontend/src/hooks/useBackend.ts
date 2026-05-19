@@ -60,14 +60,10 @@ export function useMockExamQuestions(examId: string) {
     queryFn: async () => {
       const exam = MOCK_EXAMS.find((e) => e.id === examId);
       if (!exam) return [];
-      const allQ = MOCK_QUESTIONS;
-      let hash = 0;
-      for (let i = 0; i < examId.length; i++) {
-        hash = (hash << 5) - hash + examId.charCodeAt(i);
-        hash |= 0;
-      }
-      const shuffled = [...allQ].sort(() => (hash % 2 === 0 ? 1 : -1));
-      return shuffled.slice(0, Math.min(exam.questionCount, allQ.length));
+      const questionsById = new Map(MOCK_QUESTIONS.map((q) => [q.id, q]));
+      return exam.questionIds
+        .map((questionId) => questionsById.get(questionId))
+        .filter((q): q is Question => Boolean(q));
     },
     staleTime: Number.POSITIVE_INFINITY,
   });
@@ -194,14 +190,18 @@ export function useSubmitExamAttempt() {
       answers: ExamAnswer[];
       timeTakenSeconds: number;
     }): Promise<ExamAttempt> => {
-      const questions = MOCK_QUESTIONS;
+      const exam = MOCK_EXAMS.find((e) => e.id === payload.examId);
+      const examQuestionIds = new Set(exam?.questionIds ?? []);
+      const questions =
+        examQuestionIds.size > 0
+          ? MOCK_QUESTIONS.filter((q) => examQuestionIds.has(q.id))
+          : MOCK_QUESTIONS;
       let correctCount = 0;
       for (const a of payload.answers) {
         const q = questions.find((q) => q.id === a.questionId);
         if (a.selectedAnswer && q?.correctAnswer === a.selectedAnswer) correctCount++;
       }
-      const examQuestions = MOCK_EXAMS.find(e => e.id === payload.examId);
-      const totalQCount = examQuestions?.questionCount ?? payload.answers.length;
+      const totalQCount = exam?.questionCount ?? payload.answers.length;
       const score =
         totalQCount > 0
           ? Math.round((correctCount / totalQCount) * 100)

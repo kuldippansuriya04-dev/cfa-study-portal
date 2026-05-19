@@ -441,7 +441,13 @@ export default function ExamSession() {
               </span>
             </div>
 
-            <p className="text-foreground text-sm leading-relaxed mb-6">
+            {currentQ.vignette && (
+              <div className="text-foreground text-sm leading-relaxed mb-5 whitespace-pre-line rounded-md border border-border bg-muted/30 p-4">
+                {currentQ.vignette}
+              </div>
+            )}
+
+            <p className="text-foreground text-sm leading-relaxed mb-6 whitespace-pre-line">
               {currentQ.stem}
             </p>
 

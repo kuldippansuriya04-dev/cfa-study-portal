@@ -313,7 +313,7 @@ export default function ExamResult() {
                 question={q}
                 index={i}
                 reviewMode
-                userAnswer={userAnswer?.selectedAnswer}
+                userAnswer={userAnswer?.selectedAnswer || undefined}
               />
             );
           })}

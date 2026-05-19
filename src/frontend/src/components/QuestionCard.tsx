@@ -111,8 +111,14 @@ export function QuestionCard({
       </div>
 
       {/* Stem */}
+      {question.vignette && (
+        <div className="text-foreground text-sm leading-relaxed mb-4 whitespace-pre-line rounded-md border border-border bg-muted/30 p-4">
+          {question.vignette}
+        </div>
+      )}
+
       <p
-        className="text-foreground font-body text-sm leading-relaxed mb-5"
+        className="text-foreground font-body text-sm leading-relaxed mb-5 whitespace-pre-line"
         data-ocid="question-stem"
       >
         {question.stem}

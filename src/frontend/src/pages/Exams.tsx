@@ -50,6 +50,7 @@ export default function Exams() {
   }
 
   const totalCompleted = completedIds.size;
+  const totalExams = exams?.length ?? 0;
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -64,9 +65,9 @@ export default function Exams() {
               Mock Examinations
             </h1>
             <p className="text-muted-foreground text-sm mt-0.5">
-              10 full-length practice exams · CFA Level I format ·{" "}
+              {totalExams} full-length practice exams · CFA Level I format ·{" "}
               <span className="text-primary font-medium">
-                {totalCompleted}/10 completed
+                {totalCompleted}/{totalExams} completed
               </span>
             </p>
           </div>
@@ -76,7 +77,9 @@ export default function Exams() {
         <div className="mt-4 h-2 bg-muted rounded-full overflow-hidden max-w-sm">
           <div
             className="h-full bg-primary rounded-full transition-all duration-500"
-            style={{ width: `${(totalCompleted / 10) * 100}%` }}
+            style={{
+              width: `${totalExams > 0 ? (totalCompleted / totalExams) * 100 : 0}%`,
+            }}
           />
         </div>
       </div>
