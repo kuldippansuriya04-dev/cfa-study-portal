@@ -35391,7 +35391,10 @@ const routeTree = rootRoute.addChildren([
   historyRoute,
   profileRoute
 ]);
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  basepath: "/cfa-study-portal/".replace(/\/$/, "")
+});
 function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider, { router });
 }

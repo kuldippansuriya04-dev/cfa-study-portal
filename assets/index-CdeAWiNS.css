@@ -2467,19 +2467,19 @@ video {
 
 @font-face {
   font-family: "Fraunces";
-  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  src: url("/cfa-study-portal/assets/fonts/Fraunces.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "General Sans";
-  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  src: url("/cfa-study-portal/assets/fonts/GeneralSans.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Geist Mono";
-  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  src: url("/cfa-study-portal/assets/fonts/GeistMono.woff2") format("woff2");
   font-display: swap;
 }
 

@@ -14,6 +14,7 @@ process.env.STORAGE_GATEWAY_URL =
 
 export default defineConfig({
   logLevel: "error",
+  base: "/cfa-study-portal/",
   build: {
     emptyOutDir: true,
     sourcemap: false,
