@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight, Clock, Flag, Grid3X3, HelpCircle, Settings } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { renderFormattedText } from "../components/QuestionCard";
 import {
   useMockExam,
   useMockExamQuestions,
@@ -237,13 +238,13 @@ export default function ExamSession() {
         <section className="min-w-0 overflow-y-auto p-2">
           <div className="min-h-full rounded border border-[#cfcfcf] bg-white px-5 py-6 sm:px-8">
             {currentQ.vignette && (
-              <div className="mb-6 whitespace-pre-line rounded border border-[#d9d9d9] bg-[#f7f7f7] p-4 text-[16px] leading-7">
-                {currentQ.vignette}
+              <div className="mb-6 rounded border border-[#d9d9d9] bg-[#f7f7f7] p-4 text-[16px] leading-7">
+                {renderFormattedText(currentQ.vignette)}
               </div>
             )}
-            <p className="mb-7 whitespace-pre-line text-[18px] leading-8">
-              {currentQ.stem}
-            </p>
+            <div className="mb-7 text-[18px] leading-8">
+              {renderFormattedText(currentQ.stem)}
+            </div>
 
             <fieldset className="space-y-3" aria-label="Answer choices">
               <legend className="sr-only">Select answer</legend>

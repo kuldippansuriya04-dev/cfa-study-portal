@@ -33,7 +33,7 @@ const DIFFICULTY_COLORS = {
   hard: "bg-destructive/10 text-destructive",
 };
 
-function renderSolutionText(text: string) {
+export function renderFormattedText(text: string) {
   const lines = text.split("\n");
   const content: ReactNode[] = [];
 
@@ -185,16 +185,16 @@ export function QuestionCard({
       {/* Stem */}
       {question.vignette && (
         <div className="text-foreground text-sm leading-relaxed mb-4 whitespace-pre-line rounded-md border border-border bg-muted/30 p-4">
-          {question.vignette}
+          {renderFormattedText(question.vignette)}
         </div>
       )}
 
-      <p
-        className="text-foreground font-body text-sm leading-relaxed mb-5 whitespace-pre-line"
+      <div
+        className="text-foreground font-body text-sm leading-relaxed mb-5"
         data-ocid="question-stem"
       >
-        {question.stem}
-      </p>
+        {renderFormattedText(question.stem)}
+      </div>
 
       {/* Options — using radio inputs for accessibility */}
       <fieldset className="space-y-2.5 mb-5" aria-label="Answer choices">
@@ -249,7 +249,7 @@ export function QuestionCard({
             Solution
           </p>
           <div className="text-sm text-foreground leading-relaxed">
-            {renderSolutionText(question.explanation)}
+            {renderFormattedText(question.explanation)}
           </div>
         </div>
       )}
