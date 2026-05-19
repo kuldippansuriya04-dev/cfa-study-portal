@@ -174,9 +174,9 @@ export function QuestionCard({
       {submitted && (
         <div className="rounded-md bg-muted/50 border border-border p-4 mb-4 animate-fade-in">
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-            Explanation
+            Solution
           </p>
-          <p className="text-sm text-foreground leading-relaxed">
+          <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
             {question.explanation}
           </p>
         </div>
