@@ -18101,29 +18101,29 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$r = [
+const __iconNode$x = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$r);
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$x);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$q = [
+const __iconNode$w = [
   ["path", { d: "M5 12h14", key: "1ays0h" }],
   ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
 ];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$q);
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$w);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$p = [
+const __iconNode$v = [
   [
     "path",
     {
@@ -18133,14 +18133,14 @@ const __iconNode$p = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$p);
+const Award = createLucideIcon("award", __iconNode$v);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$o = [
+const __iconNode$u = [
   ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
   [
     "path",
@@ -18150,14 +18150,32 @@ const __iconNode$o = [
     }
   ]
 ];
-const Bell = createLucideIcon("bell", __iconNode$o);
+const Bell = createLucideIcon("bell", __iconNode$u);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$n = [
+const __iconNode$t = [
+  ["path", { d: "M12 21V7", key: "gj6g52" }],
+  ["path", { d: "m16 12 2 2 4-4", key: "mdajum" }],
+  [
+    "path",
+    {
+      d: "M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3",
+      key: "8arnkb"
+    }
+  ]
+];
+const BookOpenCheck = createLucideIcon("book-open-check", __iconNode$t);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$s = [
   ["path", { d: "M12 7v14", key: "1akyts" }],
   [
     "path",
@@ -18167,14 +18185,14 @@ const __iconNode$n = [
     }
   ]
 ];
-const BookOpen = createLucideIcon("book-open", __iconNode$n);
+const BookOpen = createLucideIcon("book-open", __iconNode$s);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$m = [
+const __iconNode$r = [
   [
     "path",
     {
@@ -18195,14 +18213,33 @@ const __iconNode$m = [
   ["circle", { cx: "20", cy: "21", r: ".5", key: "yhc1fs" }],
   ["circle", { cx: "20", cy: "8", r: ".5", key: "1e43v0" }]
 ];
-const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$m);
+const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$r);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$l = [
+const __iconNode$q = [
+  ["rect", { width: "16", height: "20", x: "4", y: "2", rx: "2", key: "1nb95v" }],
+  ["line", { x1: "8", x2: "16", y1: "6", y2: "6", key: "x4nwl0" }],
+  ["line", { x1: "16", x2: "16", y1: "14", y2: "18", key: "wjye3r" }],
+  ["path", { d: "M16 10h.01", key: "1m94wz" }],
+  ["path", { d: "M12 10h.01", key: "1nrarc" }],
+  ["path", { d: "M8 10h.01", key: "19clt8" }],
+  ["path", { d: "M12 14h.01", key: "1etili" }],
+  ["path", { d: "M8 14h.01", key: "6423bh" }],
+  ["path", { d: "M12 18h.01", key: "mhygvu" }],
+  ["path", { d: "M8 18h.01", key: "lrp35t" }]
+];
+const Calculator = createLucideIcon("calculator", __iconNode$q);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$p = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
@@ -18214,59 +18251,103 @@ const __iconNode$l = [
   ["path", { d: "M12 18h.01", key: "mhygvu" }],
   ["path", { d: "M16 18h.01", key: "kzsmim" }]
 ];
-const CalendarDays = createLucideIcon("calendar-days", __iconNode$l);
+const CalendarDays = createLucideIcon("calendar-days", __iconNode$p);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$k = [
+const __iconNode$o = [
   ["line", { x1: "18", x2: "18", y1: "20", y2: "10", key: "1xfpm4" }],
   ["line", { x1: "12", x2: "12", y1: "20", y2: "4", key: "be30l9" }],
   ["line", { x1: "6", x2: "6", y1: "20", y2: "14", key: "1r4le6" }]
 ];
-const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$k);
+const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$o);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$j = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$j);
+const __iconNode$n = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$n);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$i = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$i);
+const __iconNode$m = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$m);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$h = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
-const ChevronLeft = createLucideIcon("chevron-left", __iconNode$h);
+const __iconNode$l = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = createLucideIcon("chevron-left", __iconNode$l);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$g = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$g);
+const __iconNode$k = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$k);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$f = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$f);
+const __iconNode$j = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$j);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$i = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const CircleCheck = createLucideIcon("circle-check", __iconNode$i);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$h = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
+const Circle = createLucideIcon("circle", __iconNode$h);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$g = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+];
+const Clock = createLucideIcon("clock", __iconNode$g);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$f = [
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+];
+const FileText = createLucideIcon("file-text", __iconNode$f);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18274,50 +18355,6 @@ const ChevronUp = createLucideIcon("chevron-up", __iconNode$f);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$e = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
-];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$e);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$d = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
-const Circle = createLucideIcon("circle", __iconNode$d);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$c = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
-];
-const Clock = createLucideIcon("clock", __iconNode$c);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$b = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
-];
-const FileText = createLucideIcon("file-text", __iconNode$b);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$a = [
   [
     "path",
     {
@@ -18326,39 +18363,53 @@ const __iconNode$a = [
     }
   ]
 ];
-const Flame = createLucideIcon("flame", __iconNode$a);
+const Flame = createLucideIcon("flame", __iconNode$e);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$9 = [
+const __iconNode$d = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "M12 16v-4", key: "1dtifu" }],
   ["path", { d: "M12 8h.01", key: "e9boi3" }]
 ];
-const Info = createLucideIcon("info", __iconNode$9);
+const Info = createLucideIcon("info", __iconNode$d);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$8 = [
+const __iconNode$c = [
   ["rect", { width: "7", height: "9", x: "3", y: "3", rx: "1", key: "10lvy0" }],
   ["rect", { width: "7", height: "5", x: "14", y: "3", rx: "1", key: "16une8" }],
   ["rect", { width: "7", height: "9", x: "14", y: "12", rx: "1", key: "1hutg5" }],
   ["rect", { width: "7", height: "5", x: "3", y: "16", rx: "1", key: "ldoo1y" }]
 ];
-const LayoutDashboard = createLucideIcon("layout-dashboard", __iconNode$8);
+const LayoutDashboard = createLucideIcon("layout-dashboard", __iconNode$c);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$7 = [
+const __iconNode$b = [
+  ["path", { d: "m3 17 2 2 4-4", key: "1jhpwq" }],
+  ["path", { d: "m3 7 2 2 4-4", key: "1obspn" }],
+  ["path", { d: "M13 6h8", key: "15sg57" }],
+  ["path", { d: "M13 12h8", key: "h98zly" }],
+  ["path", { d: "M13 18h8", key: "oe0vm4" }]
+];
+const ListChecks = createLucideIcon("list-checks", __iconNode$b);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$a = [
   ["path", { d: "M3 12h.01", key: "nlz23k" }],
   ["path", { d: "M3 18h.01", key: "1tta3j" }],
   ["path", { d: "M3 6h.01", key: "1rqtza" }],
@@ -18366,26 +18417,47 @@ const __iconNode$7 = [
   ["path", { d: "M8 18h13", key: "1lx6n3" }],
   ["path", { d: "M8 6h13", key: "ik3vkj" }]
 ];
-const List = createLucideIcon("list", __iconNode$7);
+const List = createLucideIcon("list", __iconNode$a);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$6 = [
+const __iconNode$9 = [
+  [
+    "path",
+    {
+      d: "M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15",
+      key: "143lza"
+    }
+  ],
+  ["path", { d: "M11 12 5.12 2.2", key: "qhuxz6" }],
+  ["path", { d: "m13 12 5.88-9.8", key: "hbye0f" }],
+  ["path", { d: "M8 7h8", key: "i86dvs" }],
+  ["circle", { cx: "12", cy: "17", r: "5", key: "qbz8iq" }],
+  ["path", { d: "M12 18v-2h-.5", key: "fawc4q" }]
+];
+const Medal = createLucideIcon("medal", __iconNode$9);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$8 = [
   ["path", { d: "M4 12h16", key: "1lakjw" }],
   ["path", { d: "M4 18h16", key: "19g7jn" }],
   ["path", { d: "M4 6h16", key: "1o0s65" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$6);
+const Menu = createLucideIcon("menu", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$5 = [
+const __iconNode$7 = [
   ["path", { d: "M12 20h9", key: "t2du7b" }],
   [
     "path",
@@ -18396,14 +18468,14 @@ const __iconNode$5 = [
   ],
   ["path", { d: "m15 5 3 3", key: "1w25hb" }]
 ];
-const PencilLine = createLucideIcon("pencil-line", __iconNode$5);
+const PencilLine = createLucideIcon("pencil-line", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$4 = [
+const __iconNode$6 = [
   [
     "path",
     {
@@ -18413,7 +18485,33 @@ const __iconNode$4 = [
   ],
   ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
 ];
-const Pencil = createLucideIcon("pencil", __iconNode$4);
+const Pencil = createLucideIcon("pencil", __iconNode$6);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$5 = [
+  ["path", { d: "m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z", key: "7g6ntu" }],
+  ["path", { d: "m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z", key: "ijws7r" }],
+  ["path", { d: "M7 21h10", key: "1b0cd5" }],
+  ["path", { d: "M12 3v18", key: "108xh3" }],
+  ["path", { d: "M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2", key: "3gwbw2" }]
+];
+const Scale = createLucideIcon("scale", __iconNode$5);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$4 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["circle", { cx: "12", cy: "12", r: "6", key: "1vlfrh" }],
+  ["circle", { cx: "12", cy: "12", r: "2", key: "1c9p78" }]
+];
+const Target = createLucideIcon("target", __iconNode$4);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18421,11 +18519,11 @@ const Pencil = createLucideIcon("pencil", __iconNode$4);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$3 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["circle", { cx: "12", cy: "12", r: "6", key: "1vlfrh" }],
-  ["circle", { cx: "12", cy: "12", r: "2", key: "1c9p78" }]
+  ["line", { x1: "10", x2: "14", y1: "2", y2: "2", key: "14vaq8" }],
+  ["line", { x1: "12", x2: "15", y1: "14", y2: "11", key: "17fdiu" }],
+  ["circle", { cx: "12", cy: "14", r: "8", key: "1e1u0o" }]
 ];
-const Target = createLucideIcon("target", __iconNode$3);
+const Timer = createLucideIcon("timer", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -55107,6 +55205,466 @@ function PracticeQuizPage({ onNavigate }) {
     ] })
   ] });
 }
+const STUDY_PLAN = {
+  weeklyGoalHours: 14,
+  completedHours: 8.5,
+  focus: "FRA, Ethics, and Quant revision",
+  dailySessions: [
+    {
+      day: "Mon",
+      date: "Jun 01",
+      title: "Ethics Standards I-VII",
+      topicId: "ethics",
+      durationMin: 90,
+      status: "done",
+      task: "Read summary notes and solve 20 practice questions."
+    },
+    {
+      day: "Tue",
+      date: "Jun 02",
+      title: "Time Value of Money",
+      topicId: "quant",
+      durationMin: 75,
+      status: "done",
+      task: "Formula review, calculator drills, and 15 mixed questions."
+    },
+    {
+      day: "Wed",
+      date: "Jun 03",
+      title: "Financial Statements",
+      topicId: "fsa",
+      durationMin: 120,
+      status: "today",
+      task: "Income statement and balance sheet practice set."
+    },
+    {
+      day: "Thu",
+      date: "Jun 04",
+      title: "Economics Review",
+      topicId: "econ",
+      durationMin: 80,
+      status: "planned",
+      task: "Aggregate output, inflation, and business cycle notes."
+    },
+    {
+      day: "Fri",
+      date: "Jun 05",
+      title: "Equity Valuation",
+      topicId: "equity",
+      durationMin: 90,
+      status: "planned",
+      task: "DCF, market multiples, and end-of-reading questions."
+    },
+    {
+      day: "Sat",
+      date: "Jun 06",
+      title: "Mock Exam Session",
+      topicId: "pm",
+      durationMin: 180,
+      status: "planned",
+      task: "90-question timed mock plus error-log review."
+    },
+    {
+      day: "Sun",
+      date: "Jun 07",
+      title: "Fixed Income Catch-up",
+      topicId: "fi",
+      durationMin: 90,
+      status: "planned",
+      task: "Bond pricing, duration, convexity, and flashcards."
+    }
+  ],
+  nextActions: [
+    "Finish today's FRA practice set before starting a new topic.",
+    "Review every missed Ethics question in the error log.",
+    "Spend one short session on Fixed Income because progress is still low."
+  ]
+};
+const TOPIC_HOUR_PLAN = TOPICS.map((topic) => ({
+  ...topic,
+  plannedHours: Math.max(2, Math.round(topic.estimatedHours * 0.35)),
+  completedHours: Math.round(topic.estimatedHours * (topic.progress / 100) * 0.35)
+})).sort((a, b) => b.examWeightMax - a.examWeightMax);
+const ACHIEVEMENT_SUMMARY = {
+  points: 2840,
+  level: 7,
+  rank: 4,
+  totalBadges: 18,
+  unlockedBadges: 11
+};
+const BADGES = [
+  {
+    title: "Ethics Starter",
+    description: "Completed the first Ethics practice set.",
+    icon: "Scale",
+    progress: 100,
+    unlocked: true,
+    color: "#1E40AF"
+  },
+  {
+    title: "Quant Builder",
+    description: "Answered 100 Quant questions.",
+    icon: "Calculator",
+    progress: 76,
+    unlocked: false,
+    color: "#7C3AED"
+  },
+  {
+    title: "FRA Focus",
+    description: "Logged 10 hours in Financial Reporting.",
+    icon: "FileText",
+    progress: 52,
+    unlocked: false,
+    color: "#DC2626"
+  },
+  {
+    title: "Mock Warrior",
+    description: "Completed 3 timed mock sessions.",
+    icon: "Timer",
+    progress: 100,
+    unlocked: true,
+    color: "#EA580C"
+  },
+  {
+    title: "Seven Day Streak",
+    description: "Studied every day for one full week.",
+    icon: "Flame",
+    progress: 100,
+    unlocked: true,
+    color: "#F97316"
+  },
+  {
+    title: "Review Master",
+    description: "Reviewed 250 missed-question explanations.",
+    icon: "BookOpenCheck",
+    progress: 64,
+    unlocked: false,
+    color: "#059669"
+  }
+];
+const LEADERBOARD = [
+  { name: "Aarav P.", points: 3260, accuracy: 78, streak: 14 },
+  { name: "Nisha S.", points: 3095, accuracy: 75, streak: 9 },
+  { name: "Mehul K.", points: 2920, accuracy: 73, streak: 11 },
+  { name: "You", points: ACHIEVEMENT_SUMMARY.points, accuracy: 71, streak: 8 },
+  { name: "Riya D.", points: 2685, accuracy: 69, streak: 6 }
+];
+const MILESTONES = [
+  { label: "Overall progress", value: 42, target: 60 },
+  { label: "Practice accuracy", value: 71, target: 75 },
+  { label: "Mock exam average", value: 65, target: 70 },
+  { label: "Weekly study hours", value: STUDY_PLAN.completedHours, target: STUDY_PLAN.weeklyGoalHours }
+];
+const statusStyles = {
+  done: "bg-green-100 text-green-700 border-green-200",
+  today: "bg-blue-100 text-blue-700 border-blue-200",
+  planned: "bg-slate-100 text-slate-600 border-slate-200"
+};
+function formatHours(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  if (!hours) return `${mins}m`;
+  if (!mins) return `${hours}h`;
+  return `${hours}h ${mins}m`;
+}
+function StudyPlannerPage({ onNavigate }) {
+  const weeklyProgress = Math.round(
+    STUDY_PLAN.completedHours / STUDY_PLAN.weeklyGoalHours * 100
+  );
+  const totalPlannedMinutes = STUDY_PLAN.dailySessions.reduce(
+    (sum, session) => sum + session.durationMin,
+    0
+  );
+  const completedSessions = STUDY_PLAN.dailySessions.filter(
+    (session) => session.status === "done"
+  ).length;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-6 max-w-7xl mx-auto", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-sm font-semibold text-blue-700", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CalendarDays, { size: 18 }),
+          "Study Planner"
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "mt-2 text-3xl font-black tracking-tight", children: "Weekly CFA Level I Study Plan" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-1 text-sm text-muted-foreground", children: [
+          STUDY_PLAN.focus,
+          " with clear sessions, time targets, and topic priorities."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => onNavigate("topics"), children: "Review Topics" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { onClick: () => onNavigate("quiz"), children: [
+          "Start Practice ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { size: 16, className: "ml-1" })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid gap-4 md:grid-cols-3", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-wide text-muted-foreground", children: "Weekly Goal" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Target, { size: 18, className: "text-blue-600" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 text-3xl font-black", children: [
+          STUDY_PLAN.completedHours,
+          "h / ",
+          STUDY_PLAN.weeklyGoalHours,
+          "h"
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: weeklyProgress, className: "mt-3 h-2" })
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-wide text-muted-foreground", children: "Planned Time" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { size: 18, className: "text-emerald-600" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 text-3xl font-black", children: formatHours(totalPlannedMinutes) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-2 text-sm text-muted-foreground", children: [
+          "Across ",
+          STUDY_PLAN.dailySessions.length,
+          " focused sessions."
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-wide text-muted-foreground", children: "Completed" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { size: 18, className: "text-green-600" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 text-3xl font-black", children: [
+          completedSessions,
+          "/",
+          STUDY_PLAN.dailySessions.length
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground", children: "Keep today's FRA block protected." })
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid gap-5 xl:grid-cols-[1.55fr_1fr]", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-lg", children: "This Week's Schedule" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "space-y-3", children: STUDY_PLAN.dailySessions.map((session) => {
+          const topic = TOPIC_HOUR_PLAN.find(
+            (item) => item.id === session.topicId
+          );
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "grid gap-3 rounded-xl border bg-white p-4 md:grid-cols-[88px_1fr_auto]",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold", children: session.day }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: session.date })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap items-center gap-2", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-semibold", children: session.title }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      Badge,
+                      {
+                        variant: "outline",
+                        className: cn("capitalize", statusStyles[session.status]),
+                        children: session.status
+                      }
+                    )
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-muted-foreground", children: session.task }),
+                  topic && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 flex items-center gap-2 text-xs font-medium", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      "span",
+                      {
+                        className: "size-2 rounded-full",
+                        style: { backgroundColor: topic.color }
+                      }
+                    ),
+                    topic.shortName,
+                    " progress: ",
+                    topic.progress,
+                    "%"
+                  ] })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-sm font-bold text-slate-700", children: formatHours(session.durationMin) })
+              ]
+            },
+            `${session.day}-${session.title}`
+          );
+        }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardTitle, { className: "flex items-center gap-2 text-lg", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(ListChecks, { size: 18 }),
+            " Next Actions"
+          ] }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "space-y-3", children: STUDY_PLAN.nextActions.map((action) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3 text-sm", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { size: 18, className: "mt-0.5 text-blue-600" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: action })
+          ] }, action)) })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-lg", children: "Topic Hour Plan" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "space-y-4", children: TOPIC_HOUR_PLAN.slice(0, 6).map((topic) => {
+            const value = Math.min(
+              100,
+              Math.round(topic.completedHours / topic.plannedHours * 100)
+            );
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-1 flex items-center justify-between gap-2 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: topic.shortName }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-muted-foreground", children: [
+                  topic.completedHours,
+                  "h/",
+                  topic.plannedHours,
+                  "h"
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value, className: "h-2" })
+            ] }, topic.id);
+          }) })
+        ] })
+      ] })
+    ] })
+  ] });
+}
+const BADGE_ICONS = {
+  Award,
+  BookOpenCheck,
+  Calculator,
+  FileText,
+  Flame,
+  Scale,
+  Timer
+};
+function AchievementsPage({ onNavigate }) {
+  const badgeProgress = Math.round(
+    ACHIEVEMENT_SUMMARY.unlockedBadges / ACHIEVEMENT_SUMMARY.totalBadges * 100
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-6 max-w-7xl mx-auto", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-sm font-semibold text-amber-700", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Trophy, { size: 18 }),
+          "Achievements"
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "mt-2 text-3xl font-black tracking-tight", children: "Badges, Rank, and CFA Study Milestones" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-muted-foreground", children: "Track earned badges, leaderboard points, streaks, and exam-readiness targets in one place." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => onNavigate("planner"), children: "Open Planner" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: () => onNavigate("quiz"), children: "Earn More Points" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid gap-4 md:grid-cols-4", children: [
+      { label: "Total Points", value: ACHIEVEMENT_SUMMARY.points, icon: Trophy },
+      { label: "Current Level", value: ACHIEVEMENT_SUMMARY.level, icon: Award },
+      { label: "Leaderboard Rank", value: `#${ACHIEVEMENT_SUMMARY.rank}`, icon: Medal },
+      {
+        label: "Badges Unlocked",
+        value: `${ACHIEVEMENT_SUMMARY.unlockedBadges}/${ACHIEVEMENT_SUMMARY.totalBadges}`,
+        icon: BookOpenCheck
+      }
+    ].map(({ label, value, icon: Icon2 }) => /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-5", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-wide text-muted-foreground", children: label }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { size: 18, className: "text-amber-600" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-3xl font-black", children: value })
+    ] }) }, label)) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid gap-5 xl:grid-cols-[1.45fr_1fr]", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-lg", children: "Badge Collection" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "w-fit bg-amber-100 text-amber-800 hover:bg-amber-100", children: [
+            badgeProgress,
+            "% complete"
+          ] })
+        ] }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid gap-4 md:grid-cols-2", children: BADGES.map((badge) => {
+          const Icon2 = BADGE_ICONS[badge.icon] ?? Award;
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "rounded-xl border bg-white p-4 shadow-sm",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "div",
+                    {
+                      className: "flex size-11 shrink-0 items-center justify-center rounded-xl text-white",
+                      style: { backgroundColor: badge.color },
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { size: 21 })
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap items-center gap-2", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-bold", children: badge.title }),
+                      badge.unlocked && /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "bg-green-100 text-green-700 hover:bg-green-100", children: "Unlocked" })
+                    ] }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-muted-foreground", children: badge.description })
+                  ] })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-1 flex justify-between text-xs", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: "Progress" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+                      badge.progress,
+                      "%"
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: badge.progress, className: "h-2" })
+                ] })
+              ]
+            },
+            badge.title
+          );
+        }) }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-lg", children: "Leaderboard" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "space-y-2", children: LEADERBOARD.map((student, index2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: `grid grid-cols-[36px_1fr_auto] items-center gap-3 rounded-xl border p-3 ${student.name === "You" ? "border-blue-200 bg-blue-50" : "bg-white"}`,
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex size-8 items-center justify-center rounded-full bg-slate-100 text-sm font-bold", children: index2 + 1 }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold", children: student.name }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
+                    student.accuracy,
+                    "% accuracy - ",
+                    student.streak,
+                    " day streak"
+                  ] })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-right text-sm font-bold", children: student.points })
+              ]
+            },
+            student.name
+          )) })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-lg", children: "Readiness Milestones" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "space-y-4", children: MILESTONES.map((milestone) => {
+            const value = Math.min(
+              100,
+              Math.round(milestone.value / milestone.target * 100)
+            );
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-1 flex justify-between gap-2 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: milestone.label }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-muted-foreground", children: [
+                  milestone.value,
+                  "/",
+                  milestone.target
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value, className: "h-2" })
+            ] }, milestone.label);
+          }) })
+        ] })
+      ] })
+    ] })
+  ] });
+}
 const MOCK_PORTAL_URL = `${"/cfa-study-portal/"}mock-portal.html`;
 function App$1() {
   const [activePage, setActivePage] = reactExports.useState("dashboard");
@@ -55146,6 +55704,12 @@ function App$1() {
     }
     if (activePage === "quiz") {
       return /* @__PURE__ */ jsxRuntimeExports.jsx(PracticeQuizPage, { onNavigate: handleNavigate });
+    }
+    if (activePage === "planner") {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(StudyPlannerPage, { onNavigate: handleNavigate });
+    }
+    if (activePage === "achievements") {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(AchievementsPage, { onNavigate: handleNavigate });
     }
     return /* @__PURE__ */ jsxRuntimeExports.jsx(PlaceholderPage, { page: activePage, onNavigate: handleNavigate });
   };

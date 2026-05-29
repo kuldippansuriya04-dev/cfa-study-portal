@@ -10,6 +10,8 @@ import { TopicDetailPage } from "@/app/pages/TopicDetailPage";
 import { ReadingViewerPage } from "@/app/pages/ReadingViewerPage";
 import { PlaceholderPage } from "@/app/pages/PlaceholderPage";
 import { PracticeQuizPage } from "@/app/pages/PracticeQuizPage";
+import { StudyPlannerPage } from "@/app/pages/StudyPlannerPage";
+import { AchievementsPage } from "@/app/pages/AchievementsPage";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { PageId } from "@/app/types/navigation";
 
@@ -55,6 +57,12 @@ function App() {
     }
     if (activePage === "quiz") {
       return <PracticeQuizPage onNavigate={handleNavigate} />;
+    }
+    if (activePage === "planner") {
+      return <StudyPlannerPage onNavigate={handleNavigate} />;
+    }
+    if (activePage === "achievements") {
+      return <AchievementsPage onNavigate={handleNavigate} />;
     }
     return <PlaceholderPage page={activePage} onNavigate={handleNavigate} />;
   };
