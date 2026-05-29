@@ -244,7 +244,7 @@ function systemSetTimeoutZero(callback) {
   setTimeout(callback, 0);
 }
 var isServer = typeof window === "undefined" || "Deno" in globalThis;
-function noop$6() {
+function noop$7() {
 }
 function functionalUpdate(updater, input) {
   return typeof updater === "function" ? updater(input) : updater;
@@ -418,13 +418,13 @@ function replaceData(prevData, data, options) {
   }
   return data;
 }
-function addToEnd(items, item, max = 0) {
+function addToEnd(items, item, max2 = 0) {
   const newItems = [...items, item];
-  return max && newItems.length > max ? newItems.slice(1) : newItems;
+  return max2 && newItems.length > max2 ? newItems.slice(1) : newItems;
 }
-function addToStart(items, item, max = 0) {
+function addToStart(items, item, max2 = 0) {
   const newItems = [item, ...items];
-  return max && newItems.length > max ? newItems.slice(0, -1) : newItems;
+  return max2 && newItems.length > max2 ? newItems.slice(0, -1) : newItems;
 }
 var skipToken = /* @__PURE__ */ Symbol();
 function ensureQueryFn(options, fetchOptions) {
@@ -850,7 +850,7 @@ var Query = (_e = class extends Removable {
     var _a2, _b2;
     const promise = (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.promise;
     (_b2 = __privateGet(this, _retryer)) == null ? void 0 : _b2.cancel(options);
-    return promise ? promise.then(noop$6).catch(noop$6) : Promise.resolve();
+    return promise ? promise.then(noop$7).catch(noop$7) : Promise.resolve();
   }
   destroy() {
     super.destroy();
@@ -1700,7 +1700,7 @@ var MutationCache = (_g = class extends Subscribable {
     const pausedMutations = this.getAll().filter((x) => x.state.isPaused);
     return notifyManager.batch(
       () => Promise.all(
-        pausedMutations.map((mutation) => mutation.continue().catch(noop$6))
+        pausedMutations.map((mutation) => mutation.continue().catch(noop$7))
       )
     );
   }
@@ -1930,7 +1930,7 @@ var QueryClient = (_i = class {
     const promises = notifyManager.batch(
       () => __privateGet(this, _queryCache).findAll(filters).map((query) => query.cancel(defaultedCancelOptions))
     );
-    return Promise.all(promises).then(noop$6).catch(noop$6);
+    return Promise.all(promises).then(noop$7).catch(noop$7);
   }
   invalidateQueries(filters, options = {}) {
     return notifyManager.batch(() => {
@@ -1958,12 +1958,12 @@ var QueryClient = (_i = class {
       () => __privateGet(this, _queryCache).findAll(filters).filter((query) => !query.isDisabled() && !query.isStatic()).map((query) => {
         let promise = query.fetch(void 0, fetchOptions);
         if (!fetchOptions.throwOnError) {
-          promise = promise.catch(noop$6);
+          promise = promise.catch(noop$7);
         }
         return query.state.fetchStatus === "paused" ? Promise.resolve() : promise;
       })
     );
-    return Promise.all(promises).then(noop$6);
+    return Promise.all(promises).then(noop$7);
   }
   fetchQuery(options) {
     const defaultedOptions = this.defaultQueryOptions(options);
@@ -1976,14 +1976,14 @@ var QueryClient = (_i = class {
     ) ? query.fetch(defaultedOptions) : Promise.resolve(query.state.data);
   }
   prefetchQuery(options) {
-    return this.fetchQuery(options).then(noop$6).catch(noop$6);
+    return this.fetchQuery(options).then(noop$7).catch(noop$7);
   }
   fetchInfiniteQuery(options) {
     options.behavior = infiniteQueryBehavior(options.pages);
     return this.fetchQuery(options);
   }
   prefetchInfiniteQuery(options) {
-    return this.fetchInfiniteQuery(options).then(noop$6).catch(noop$6);
+    return this.fetchInfiniteQuery(options).then(noop$7).catch(noop$7);
   }
   ensureInfiniteQueryData(options) {
     options.behavior = infiniteQueryBehavior(options.pages);
@@ -2278,9 +2278,9 @@ function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {
 }
 function mapChildren(children, func, context) {
   if (null == children) return children;
-  var result = [], count = 0;
+  var result = [], count2 = 0;
   mapIntoArray(children, result, "", "", function(child) {
-    return func.call(context, child, count++);
+    return func.call(context, child, count2++);
   });
   return result;
 }
@@ -2318,7 +2318,7 @@ var reportGlobalError$1 = "function" === typeof reportError ? reportError : func
   }
   console.error(error);
 };
-function noop$5() {
+function noop$6() {
 }
 react_production.Children = {
   map: mapChildren,
@@ -2360,8 +2360,8 @@ react_production.Suspense = REACT_SUSPENSE_TYPE$1;
 react_production.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = ReactSharedInternals$2;
 react_production.__COMPILER_RUNTIME = {
   __proto__: null,
-  c: function(size) {
-    return ReactSharedInternals$2.H.useMemoCache(size);
+  c: function(size2) {
+    return ReactSharedInternals$2.H.useMemoCache(size2);
   }
 };
 react_production.cache = function(fn) {
@@ -2447,7 +2447,7 @@ react_production.startTransition = function(scope) {
   try {
     var returnValue = scope(), onStartTransitionFinish = ReactSharedInternals$2.S;
     null !== onStartTransitionFinish && onStartTransitionFinish(currentTransition, returnValue);
-    "object" === typeof returnValue && null !== returnValue && "function" === typeof returnValue.then && returnValue.then(noop$5, reportGlobalError$1);
+    "object" === typeof returnValue && null !== returnValue && "function" === typeof returnValue.then && returnValue.then(noop$6, reportGlobalError$1);
   } catch (error) {
     reportGlobalError$1(error);
   } finally {
@@ -2524,10 +2524,10 @@ react_production.version = "19.1.5";
   react.exports = react_production;
 }
 var reactExports = react.exports;
-const index$1 = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
+const React2 = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
 const React$2 = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null,
-  default: index$1
+  default: React2
 }, [reactExports]);
 var QueryClientContext = reactExports.createContext(
   void 0
@@ -2831,21 +2831,21 @@ function formatProdErrorMessage$1(code) {
   }
   return "Minified React error #" + code + "; visit " + url + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
 }
-function noop$4() {
+function noop$5() {
 }
 var Internals = {
   d: {
-    f: noop$4,
+    f: noop$5,
     r: function() {
       throw Error(formatProdErrorMessage$1(522));
     },
-    D: noop$4,
-    C: noop$4,
-    L: noop$4,
-    m: noop$4,
-    X: noop$4,
-    S: noop$4,
-    M: noop$4
+    D: noop$5,
+    C: noop$5,
+    L: noop$5,
+    m: noop$5,
+    X: noop$5,
+    S: noop$5,
+    M: noop$5
   },
   p: 0,
   findDOMNode: null
@@ -2977,6 +2977,7 @@ function checkDCE$1() {
   reactDom.exports = reactDom_production;
 }
 var reactDomExports = reactDom.exports;
+const ReactDOM$2 = /* @__PURE__ */ getDefaultExportFromCjs(reactDomExports);
 /**
  * @license React
  * react-dom-client.production.js
@@ -3159,16 +3160,16 @@ var isArrayImpl = Array.isArray, ReactSharedInternals = React.__CLIENT_INTERNALS
   data: null,
   method: null,
   action: null
-}, valueStack = [], index = -1;
+}, valueStack = [], index$1 = -1;
 function createCursor(defaultValue) {
   return { current: defaultValue };
 }
 function pop(cursor) {
-  0 > index || (cursor.current = valueStack[index], valueStack[index] = null, index--);
+  0 > index$1 || (cursor.current = valueStack[index$1], valueStack[index$1] = null, index$1--);
 }
 function push(cursor, value) {
-  index++;
-  valueStack[index] = cursor.current;
+  index$1++;
+  valueStack[index$1] = cursor.current;
   cursor.current = value;
 }
 var contextStackCursor = createCursor(null), contextFiberStackCursor = createCursor(null), rootInstanceStackCursor = createCursor(null), hostTransitionProviderCursor = createCursor(null);
@@ -4114,14 +4115,14 @@ function getListener(inst, registrationName) {
 var canUseDOM = !("undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement), passiveBrowserEventsSupported = false;
 if (canUseDOM)
   try {
-    var options = {};
-    Object.defineProperty(options, "passive", {
+    var options$1 = {};
+    Object.defineProperty(options$1, "passive", {
       get: function() {
         passiveBrowserEventsSupported = true;
       }
     });
-    window.addEventListener("test", options, options);
-    window.removeEventListener("test", options, options);
+    window.addEventListener("test", options$1, options$1);
+    window.removeEventListener("test", options$1, options$1);
   } catch (e) {
     passiveBrowserEventsSupported = false;
   }
@@ -4505,14 +4506,14 @@ function getLeafNode(node) {
   for (; node && node.firstChild; ) node = node.firstChild;
   return node;
 }
-function getNodeForCharacterOffset(root2, offset) {
+function getNodeForCharacterOffset(root2, offset2) {
   var node = getLeafNode(root2);
   root2 = 0;
   for (var nodeEnd; node; ) {
     if (3 === node.nodeType) {
       nodeEnd = root2 + node.textContent.length;
-      if (root2 <= offset && nodeEnd >= offset)
-        return { node, offset: offset - root2 };
+      if (root2 <= offset2 && nodeEnd >= offset2)
+        return { node, offset: offset2 - root2 };
       root2 = nodeEnd;
     }
     a: {
@@ -4659,9 +4660,9 @@ function markUpdateLaneFromFiberToRoot(sourceFiber, update, lane) {
   sourceFiber.lanes |= lane;
   var alternate = sourceFiber.alternate;
   null !== alternate && (alternate.lanes |= lane);
-  for (var isHidden = false, parent = sourceFiber.return; null !== parent; )
-    parent.childLanes |= lane, alternate = parent.alternate, null !== alternate && (alternate.childLanes |= lane), 22 === parent.tag && (sourceFiber = parent.stateNode, null === sourceFiber || sourceFiber._visibility & 1 || (isHidden = true)), sourceFiber = parent, parent = parent.return;
-  return 3 === sourceFiber.tag ? (parent = sourceFiber.stateNode, isHidden && null !== update && (isHidden = 31 - clz32(lane), sourceFiber = parent.hiddenUpdates, alternate = sourceFiber[isHidden], null === alternate ? sourceFiber[isHidden] = [update] : alternate.push(update), update.lane = lane | 536870912), parent) : null;
+  for (var isHidden2 = false, parent = sourceFiber.return; null !== parent; )
+    parent.childLanes |= lane, alternate = parent.alternate, null !== alternate && (alternate.childLanes |= lane), 22 === parent.tag && (sourceFiber = parent.stateNode, null === sourceFiber || sourceFiber._visibility & 1 || (isHidden2 = true)), sourceFiber = parent, parent = parent.return;
+  return 3 === sourceFiber.tag ? (parent = sourceFiber.stateNode, isHidden2 && null !== update && (isHidden2 = 31 - clz32(lane), sourceFiber = parent.hiddenUpdates, alternate = sourceFiber[isHidden2], null === alternate ? sourceFiber[isHidden2] = [update] : alternate.push(update), update.lane = lane | 536870912), parent) : null;
 }
 function getRootForUpdatedFiber(sourceFiber) {
   if (50 < nestedUpdateCount)
@@ -5618,7 +5619,7 @@ function use$1(usable) {
   }
   throw Error(formatProdErrorMessage(438, String(usable)));
 }
-function useMemoCache(size) {
+function useMemoCache(size2) {
   var memoCache = null, updateQueue = currentlyRenderingFiber.updateQueue;
   null !== updateQueue && (memoCache = updateQueue.memoCache);
   if (null == memoCache) {
@@ -5635,7 +5636,7 @@ function useMemoCache(size) {
   updateQueue.memoCache = memoCache;
   updateQueue = memoCache.data[memoCache.index];
   if (void 0 === updateQueue)
-    for (updateQueue = memoCache.data[memoCache.index] = Array(size), current = 0; current < size; current++)
+    for (updateQueue = memoCache.data[memoCache.index] = Array(size2), current = 0; current < size2; current++)
       updateQueue[current] = REACT_MEMO_CACHE_SENTINEL;
   memoCache.index++;
   return updateQueue;
@@ -10436,7 +10437,7 @@ function commitRootWhenReady(root2, finishedWork, recoverableErrors, transitions
   root2.timeoutHandle = -1;
   suspendedCommitReason = finishedWork.subtreeFlags;
   if (suspendedCommitReason & 8192 || 16785408 === (suspendedCommitReason & 16785408)) {
-    if (suspendedState = { stylesheets: null, count: 0, unsuspend: noop }, accumulateSuspenseyCommitOnFiber(finishedWork), suspendedCommitReason = waitForCommitToBeReady(), null !== suspendedCommitReason) {
+    if (suspendedState = { stylesheets: null, count: 0, unsuspend: noop$4 }, accumulateSuspenseyCommitOnFiber(finishedWork), suspendedCommitReason = waitForCommitToBeReady(), null !== suspendedCommitReason) {
       root2.cancelPendingCommit = suspendedCommitReason(
         commitRoot.bind(
           null,
@@ -13288,7 +13289,7 @@ function preloadResource(resource) {
   return "stylesheet" === resource.type && 0 === (resource.state.loading & 3) ? false : true;
 }
 var suspendedState = null;
-function noop() {
+function noop$4() {
 }
 function suspendResource(hoistableRoot, resource, props) {
   if (null === suspendedState) throw Error(formatProdErrorMessage(475));
@@ -14189,7 +14190,7 @@ var NODES$1 = [
 ];
 var Primitive$1 = NODES$1.reduce((primitive, node) => {
   const Slot2 = /* @__PURE__ */ createSlot$1(`Primitive.${node}`);
-  const Node = reactExports.forwardRef((props, forwardedRef) => {
+  const Node2 = reactExports.forwardRef((props, forwardedRef) => {
     const { asChild, ...primitiveProps } = props;
     const Comp = asChild ? Slot2 : node;
     if (typeof window !== "undefined") {
@@ -14197,9 +14198,12 @@ var Primitive$1 = NODES$1.reduce((primitive, node) => {
     }
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Comp, { ...primitiveProps, ref: forwardedRef });
   });
-  Node.displayName = `Primitive.${node}`;
-  return { ...primitive, [node]: Node };
+  Node2.displayName = `Primitive.${node}`;
+  return { ...primitive, [node]: Node2 };
 }, {});
+function dispatchDiscreteCustomEvent(target, event) {
+  if (target) reactDomExports.flushSync(() => target.dispatchEvent(event));
+}
 var useLayoutEffect2 = (globalThis == null ? void 0 : globalThis.document) ? reactExports.useLayoutEffect : () => {
 };
 function useStateMachine$1(initialState, machine) {
@@ -14384,7 +14388,7 @@ function composeContextScopes$1(...scopes) {
   createScope.scopeName = baseScope.scopeName;
   return createScope;
 }
-function useCallbackRef(callback) {
+function useCallbackRef$1(callback) {
   const callbackRef = reactExports.useRef(callback);
   reactExports.useEffect(() => {
     callbackRef.current = callback;
@@ -14399,8 +14403,8 @@ function useDirection(localDir) {
   const globalDir = reactExports.useContext(DirectionContext);
   return localDir || globalDir || "ltr";
 }
-function clamp(value, [min, max]) {
-  return Math.min(max, Math.max(min, value));
+function clamp$1(value, [min2, max2]) {
+  return Math.min(max2, Math.max(min2, value));
 }
 function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
   return function handleEvent(event) {
@@ -14481,11 +14485,11 @@ var ScrollArea$1 = reactExports.forwardRef(
   }
 );
 ScrollArea$1.displayName = SCROLL_AREA_NAME;
-var VIEWPORT_NAME = "ScrollAreaViewport";
+var VIEWPORT_NAME$1 = "ScrollAreaViewport";
 var ScrollAreaViewport = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeScrollArea, children, nonce, ...viewportProps } = props;
-    const context = useScrollAreaContext(VIEWPORT_NAME, __scopeScrollArea);
+    const context = useScrollAreaContext(VIEWPORT_NAME$1, __scopeScrollArea);
     const ref = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref, context.onViewportChange);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -14526,7 +14530,7 @@ var ScrollAreaViewport = reactExports.forwardRef(
     ] });
   }
 );
-ScrollAreaViewport.displayName = VIEWPORT_NAME;
+ScrollAreaViewport.displayName = VIEWPORT_NAME$1;
 var SCROLLBAR_NAME = "ScrollAreaScrollbar";
 var ScrollAreaScrollbar = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -14611,7 +14615,7 @@ var ScrollAreaScrollbarScroll = reactExports.forwardRef((props, forwardedRef) =>
     const scrollDirection = isHorizontal ? "scrollLeft" : "scrollTop";
     if (viewport) {
       let prevScrollPos = viewport[scrollDirection];
-      const handleScroll = () => {
+      const handleScroll2 = () => {
         const scrollPos = viewport[scrollDirection];
         const hasScrollInDirectionChanged = prevScrollPos !== scrollPos;
         if (hasScrollInDirectionChanged) {
@@ -14620,8 +14624,8 @@ var ScrollAreaScrollbarScroll = reactExports.forwardRef((props, forwardedRef) =>
         }
         prevScrollPos = scrollPos;
       };
-      viewport.addEventListener("scroll", handleScroll);
-      return () => viewport.removeEventListener("scroll", handleScroll);
+      viewport.addEventListener("scroll", handleScroll2);
+      return () => viewport.removeEventListener("scroll", handleScroll2);
     }
   }, [context.viewport, isHorizontal, send, debounceScrollEnd]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || state !== "hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -14690,8 +14694,8 @@ var ScrollAreaScrollbarVisible = reactExports.forwardRef((props, forwardedRef) =
         onThumbPositionChange: () => {
           if (context.viewport && thumbRef.current) {
             const scrollPos = context.viewport.scrollLeft;
-            const offset = getThumbOffsetFromScroll(scrollPos, sizes, context.dir);
-            thumbRef.current.style.transform = `translate3d(${offset}px, 0, 0)`;
+            const offset2 = getThumbOffsetFromScroll(scrollPos, sizes, context.dir);
+            thumbRef.current.style.transform = `translate3d(${offset2}px, 0, 0)`;
           }
         },
         onWheelScroll: (scrollPos) => {
@@ -14714,8 +14718,8 @@ var ScrollAreaScrollbarVisible = reactExports.forwardRef((props, forwardedRef) =
         onThumbPositionChange: () => {
           if (context.viewport && thumbRef.current) {
             const scrollPos = context.viewport.scrollTop;
-            const offset = getThumbOffsetFromScroll(scrollPos, sizes);
-            thumbRef.current.style.transform = `translate3d(0, ${offset}px, 0)`;
+            const offset2 = getThumbOffsetFromScroll(scrollPos, sizes);
+            thumbRef.current.style.transform = `translate3d(0, ${offset2}px, 0)`;
           }
         },
         onWheelScroll: (scrollPos) => {
@@ -14852,8 +14856,8 @@ var ScrollAreaScrollbarImpl = reactExports.forwardRef((props, forwardedRef) => {
   const prevWebkitUserSelectRef = reactExports.useRef("");
   const viewport = context.viewport;
   const maxScrollPos = sizes.content - sizes.viewport;
-  const handleWheelScroll = useCallbackRef(onWheelScroll);
-  const handleThumbPositionChange = useCallbackRef(onThumbPositionChange);
+  const handleWheelScroll = useCallbackRef$1(onWheelScroll);
+  const handleThumbPositionChange = useCallbackRef$1(onThumbPositionChange);
   const handleResize = useDebounceCallback(onResize, 10);
   function handleDragScroll(event) {
     if (rectRef.current) {
@@ -14880,10 +14884,10 @@ var ScrollAreaScrollbarImpl = reactExports.forwardRef((props, forwardedRef) => {
       scope: __scopeScrollArea,
       scrollbar,
       hasThumb,
-      onThumbChange: useCallbackRef(onThumbChange),
-      onThumbPointerUp: useCallbackRef(onThumbPointerUp),
+      onThumbChange: useCallbackRef$1(onThumbChange),
+      onThumbPointerUp: useCallbackRef$1(onThumbPointerUp),
       onThumbPositionChange: handleThumbPositionChange,
-      onThumbPointerDown: useCallbackRef(onThumbPointerDown),
+      onThumbPointerDown: useCallbackRef$1(onThumbPointerDown),
       children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         Primitive$1.div,
         {
@@ -14945,7 +14949,7 @@ var ScrollAreaThumbImpl = reactExports.forwardRef(
     reactExports.useEffect(() => {
       const viewport = scrollAreaContext.viewport;
       if (viewport) {
-        const handleScroll = () => {
+        const handleScroll2 = () => {
           debounceScrollEnd();
           if (!removeUnlinkedScrollListenerRef.current) {
             const listener = addUnlinkedScrollListener(viewport, onThumbPositionChange);
@@ -14954,8 +14958,8 @@ var ScrollAreaThumbImpl = reactExports.forwardRef(
           }
         };
         onThumbPositionChange();
-        viewport.addEventListener("scroll", handleScroll);
-        return () => viewport.removeEventListener("scroll", handleScroll);
+        viewport.addEventListener("scroll", handleScroll2);
+        return () => viewport.removeEventListener("scroll", handleScroll2);
       }
     }, [scrollAreaContext.viewport, debounceScrollEnd, onThumbPositionChange]);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -15043,9 +15047,9 @@ function getThumbSize(sizes) {
 function getScrollPositionFromPointer(pointerPos, pointerOffset, sizes, dir = "ltr") {
   const thumbSizePx = getThumbSize(sizes);
   const thumbCenter = thumbSizePx / 2;
-  const offset = pointerOffset || thumbCenter;
-  const thumbOffsetFromEnd = thumbSizePx - offset;
-  const minPointerPos = sizes.scrollbar.paddingStart + offset;
+  const offset2 = pointerOffset || thumbCenter;
+  const thumbOffsetFromEnd = thumbSizePx - offset2;
+  const minPointerPos = sizes.scrollbar.paddingStart + offset2;
   const maxPointerPos = sizes.scrollbar.size - sizes.scrollbar.paddingEnd - thumbOffsetFromEnd;
   const maxScrollPos = sizes.content - sizes.viewport;
   const scrollRange = dir === "ltr" ? [0, maxScrollPos] : [maxScrollPos * -1, 0];
@@ -15059,7 +15063,7 @@ function getThumbOffsetFromScroll(scrollPos, sizes, dir = "ltr") {
   const maxScrollPos = sizes.content - sizes.viewport;
   const maxThumbPos = scrollbar - thumbSizePx;
   const scrollClampRange = dir === "ltr" ? [0, maxScrollPos] : [maxScrollPos * -1, 0];
-  const scrollWithoutMomentum = clamp(scrollPos, scrollClampRange);
+  const scrollWithoutMomentum = clamp$1(scrollPos, scrollClampRange);
   const interpolate = linearScale([0, maxScrollPos], [0, maxThumbPos]);
   return interpolate(scrollWithoutMomentum);
 }
@@ -15088,7 +15092,7 @@ var addUnlinkedScrollListener = (node, handler = () => {
   return () => window.cancelAnimationFrame(rAF);
 };
 function useDebounceCallback(callback, delay) {
-  const handleCallback = useCallbackRef(callback);
+  const handleCallback = useCallbackRef$1(callback);
   const debounceTimerRef = reactExports.useRef(0);
   reactExports.useEffect(() => () => window.clearTimeout(debounceTimerRef.current), []);
   return reactExports.useCallback(() => {
@@ -15097,7 +15101,7 @@ function useDebounceCallback(callback, delay) {
   }, [handleCallback, delay]);
 }
 function useResizeObserver(element, onResize) {
-  const handleResize = useCallbackRef(onResize);
+  const handleResize = useCallbackRef$1(onResize);
   useLayoutEffect2(() => {
     let rAF = 0;
     if (element) {
@@ -15113,8 +15117,8 @@ function useResizeObserver(element, onResize) {
     }
   }, [element, handleResize]);
 }
-var Root$2 = ScrollArea$1;
-var Viewport = ScrollAreaViewport;
+var Root$3 = ScrollArea$1;
+var Viewport$1 = ScrollAreaViewport;
 var Corner = ScrollAreaCorner;
 function r(e) {
   var t, f, n = "";
@@ -17597,14 +17601,14 @@ function ScrollArea({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Root$2,
+    Root$3,
     {
       "data-slot": "scroll-area",
       className: cn("relative", className),
       ...props,
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Viewport,
+          Viewport$1,
           {
             "data-slot": "scroll-area-viewport",
             className: "focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1",
@@ -17679,7 +17683,7 @@ function createSlot(ownerName) {
   Slot2.displayName = `${ownerName}.Slot`;
   return Slot2;
 }
-var Slot = /* @__PURE__ */ createSlot("Slot");
+var Slot$1 = /* @__PURE__ */ createSlot("Slot");
 // @__NO_SIDE_EFFECTS__
 function createSlotClone(ownerName) {
   const SlotClone = reactExports.forwardRef((props, forwardedRef) => {
@@ -17763,7 +17767,7 @@ var NODES = [
 ];
 var Primitive = NODES.reduce((primitive, node) => {
   const Slot2 = /* @__PURE__ */ createSlot(`Primitive.${node}`);
-  const Node = reactExports.forwardRef((props, forwardedRef) => {
+  const Node2 = reactExports.forwardRef((props, forwardedRef) => {
     const { asChild, ...primitiveProps } = props;
     const Comp = asChild ? Slot2 : node;
     if (typeof window !== "undefined") {
@@ -17771,10 +17775,10 @@ var Primitive = NODES.reduce((primitive, node) => {
     }
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Comp, { ...primitiveProps, ref: forwardedRef });
   });
-  Node.displayName = `Primitive.${node}`;
-  return { ...primitive, [node]: Node };
+  Node2.displayName = `Primitive.${node}`;
+  return { ...primitive, [node]: Node2 };
 }, {});
-var NAME = "Separator";
+var NAME$2 = "Separator";
 var DEFAULT_ORIENTATION = "horizontal";
 var ORIENTATIONS = ["horizontal", "vertical"];
 var Separator$1 = reactExports.forwardRef((props, forwardedRef) => {
@@ -17792,11 +17796,11 @@ var Separator$1 = reactExports.forwardRef((props, forwardedRef) => {
     }
   );
 });
-Separator$1.displayName = NAME;
+Separator$1.displayName = NAME$2;
 function isValidOrientation(orientation) {
   return ORIENTATIONS.includes(orientation);
 }
-var Root$1 = Separator$1;
+var Root$2 = Separator$1;
 function Separator({
   className,
   orientation = "horizontal",
@@ -17804,7 +17808,7 @@ function Separator({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root$1,
+    Root$2,
     {
       "data-slot": "separator",
       decorative,
@@ -18040,10 +18044,10 @@ var defaultAttributes = {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Icon = reactExports.forwardRef(
+const Icon$1 = reactExports.forwardRef(
   ({
     color = "currentColor",
-    size = 24,
+    size: size2 = 24,
     strokeWidth = 2,
     absoluteStrokeWidth,
     className = "",
@@ -18055,10 +18059,10 @@ const Icon = reactExports.forwardRef(
     {
       ref,
       ...defaultAttributes,
-      width: size,
-      height: size,
+      width: size2,
+      height: size2,
       stroke: color,
-      strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
+      strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size2) : strokeWidth,
       className: mergeClasses("lucide", className),
       ...!children && !hasA11yProp(rest) && { "aria-hidden": "true" },
       ...rest
@@ -18077,7 +18081,7 @@ const Icon = reactExports.forwardRef(
  */
 const createLucideIcon = (iconName, iconNode) => {
   const Component2 = reactExports.forwardRef(
-    ({ className, ...props }, ref) => reactExports.createElement(Icon, {
+    ({ className, ...props }, ref) => reactExports.createElement(Icon$1, {
       ref,
       iconNode,
       className: mergeClasses(
@@ -18097,29 +18101,29 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$n = [
+const __iconNode$r = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$n);
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$r);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$m = [
+const __iconNode$q = [
   ["path", { d: "M5 12h14", key: "1ays0h" }],
   ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
 ];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$m);
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$q);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$l = [
+const __iconNode$p = [
   [
     "path",
     {
@@ -18129,14 +18133,14 @@ const __iconNode$l = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$l);
+const Award = createLucideIcon("award", __iconNode$p);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$k = [
+const __iconNode$o = [
   ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
   [
     "path",
@@ -18146,14 +18150,14 @@ const __iconNode$k = [
     }
   ]
 ];
-const Bell = createLucideIcon("bell", __iconNode$k);
+const Bell = createLucideIcon("bell", __iconNode$o);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$j = [
+const __iconNode$n = [
   ["path", { d: "M12 7v14", key: "1akyts" }],
   [
     "path",
@@ -18163,14 +18167,14 @@ const __iconNode$j = [
     }
   ]
 ];
-const BookOpen = createLucideIcon("book-open", __iconNode$j);
+const BookOpen = createLucideIcon("book-open", __iconNode$n);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$i = [
+const __iconNode$m = [
   [
     "path",
     {
@@ -18191,14 +18195,14 @@ const __iconNode$i = [
   ["circle", { cx: "20", cy: "21", r: ".5", key: "yhc1fs" }],
   ["circle", { cx: "20", cy: "8", r: ".5", key: "1e43v0" }]
 ];
-const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$i);
+const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$m);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$h = [
+const __iconNode$l = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
@@ -18210,54 +18214,89 @@ const __iconNode$h = [
   ["path", { d: "M12 18h.01", key: "mhygvu" }],
   ["path", { d: "M16 18h.01", key: "kzsmim" }]
 ];
-const CalendarDays = createLucideIcon("calendar-days", __iconNode$h);
+const CalendarDays = createLucideIcon("calendar-days", __iconNode$l);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$g = [
+const __iconNode$k = [
   ["line", { x1: "18", x2: "18", y1: "20", y2: "10", key: "1xfpm4" }],
   ["line", { x1: "12", x2: "12", y1: "20", y2: "4", key: "be30l9" }],
   ["line", { x1: "6", x2: "6", y1: "20", y2: "14", key: "1r4le6" }]
 ];
-const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$g);
+const ChartNoAxesColumn = createLucideIcon("chart-no-axes-column", __iconNode$k);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$f = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
-const ChevronLeft = createLucideIcon("chevron-left", __iconNode$f);
+const __iconNode$j = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$j);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$e = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$e);
+const __iconNode$i = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$i);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$d = [
+const __iconNode$h = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = createLucideIcon("chevron-left", __iconNode$h);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$g = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$g);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$f = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$f);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$e = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$d);
+const CircleCheck = createLucideIcon("circle-check", __iconNode$e);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$c = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
-const Circle = createLucideIcon("circle", __iconNode$c);
+const __iconNode$d = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
+const Circle = createLucideIcon("circle", __iconNode$d);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$c = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+];
+const Clock = createLucideIcon("clock", __iconNode$c);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18265,10 +18304,13 @@ const Circle = createLucideIcon("circle", __iconNode$c);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$b = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
 ];
-const Clock = createLucideIcon("clock", __iconNode$b);
+const FileText = createLucideIcon("file-text", __iconNode$b);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18276,20 +18318,6 @@ const Clock = createLucideIcon("clock", __iconNode$b);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$a = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
-];
-const FileText = createLucideIcon("file-text", __iconNode$a);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$9 = [
   [
     "path",
     {
@@ -18298,7 +18326,19 @@ const __iconNode$9 = [
     }
   ]
 ];
-const Flame = createLucideIcon("flame", __iconNode$9);
+const Flame = createLucideIcon("flame", __iconNode$a);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$9 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 16v-4", key: "1dtifu" }],
+  ["path", { d: "M12 8h.01", key: "e9boi3" }]
+];
+const Info = createLucideIcon("info", __iconNode$9);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18306,11 +18346,12 @@ const Flame = createLucideIcon("flame", __iconNode$9);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$8 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M12 16v-4", key: "1dtifu" }],
-  ["path", { d: "M12 8h.01", key: "e9boi3" }]
+  ["rect", { width: "7", height: "9", x: "3", y: "3", rx: "1", key: "10lvy0" }],
+  ["rect", { width: "7", height: "5", x: "14", y: "3", rx: "1", key: "16une8" }],
+  ["rect", { width: "7", height: "9", x: "14", y: "12", rx: "1", key: "1hutg5" }],
+  ["rect", { width: "7", height: "5", x: "3", y: "16", rx: "1", key: "ldoo1y" }]
 ];
-const Info = createLucideIcon("info", __iconNode$8);
+const LayoutDashboard = createLucideIcon("layout-dashboard", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18318,19 +18359,6 @@ const Info = createLucideIcon("info", __iconNode$8);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$7 = [
-  ["rect", { width: "7", height: "9", x: "3", y: "3", rx: "1", key: "10lvy0" }],
-  ["rect", { width: "7", height: "5", x: "14", y: "3", rx: "1", key: "16une8" }],
-  ["rect", { width: "7", height: "9", x: "14", y: "12", rx: "1", key: "1hutg5" }],
-  ["rect", { width: "7", height: "5", x: "3", y: "16", rx: "1", key: "ldoo1y" }]
-];
-const LayoutDashboard = createLucideIcon("layout-dashboard", __iconNode$7);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$6 = [
   ["path", { d: "M3 12h.01", key: "nlz23k" }],
   ["path", { d: "M3 18h.01", key: "1tta3j" }],
   ["path", { d: "M3 6h.01", key: "1rqtza" }],
@@ -18338,7 +18366,19 @@ const __iconNode$6 = [
   ["path", { d: "M8 18h13", key: "1lx6n3" }],
   ["path", { d: "M8 6h13", key: "ik3vkj" }]
 ];
-const List = createLucideIcon("list", __iconNode$6);
+const List = createLucideIcon("list", __iconNode$7);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$6 = [
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 18h16", key: "19g7jn" }],
+  ["path", { d: "M4 6h16", key: "1o0s65" }]
+];
+const Menu = createLucideIcon("menu", __iconNode$6);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18346,11 +18386,17 @@ const List = createLucideIcon("list", __iconNode$6);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$5 = [
-  ["path", { d: "M4 12h16", key: "1lakjw" }],
-  ["path", { d: "M4 18h16", key: "19g7jn" }],
-  ["path", { d: "M4 6h16", key: "1o0s65" }]
+  ["path", { d: "M12 20h9", key: "t2du7b" }],
+  [
+    "path",
+    {
+      d: "M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z",
+      key: "1ykcvy"
+    }
+  ],
+  ["path", { d: "m15 5 3 3", key: "1w25hb" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$5);
+const PencilLine = createLucideIcon("pencil-line", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -18427,15 +18473,15 @@ const NAV_SECTIONS = [
   { id: "planner", label: "Study Planner", icon: CalendarDays },
   { id: "achievements", label: "Achievements", icon: Trophy }
 ];
-const MOCK_EXAM_URL = "https://kuldippansuriya04-dev.github.io/cfa-study-portal/exams";
+const MOCK_PORTAL_URL$1 = `${"/cfa-study-portal/"}mock-portal.html`;
 function Sidebar({ activePage, onNavigate, collapsed }) {
   const isActive = (id) => activePage === id || id === "topics" && activePage.startsWith("topic-");
   const handleNavClick = (id) => {
     if (id === "mock-exam") {
-      window.open(MOCK_EXAM_URL, "_blank", "noopener,noreferrer");
-    } else {
-      onNavigate(id);
+      window.location.href = MOCK_PORTAL_URL$1;
+      return;
     }
+    onNavigate(id);
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "aside",
@@ -18445,8 +18491,8 @@ function Sidebar({ activePage, onNavigate, collapsed }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 px-4 py-5 flex-shrink-0", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white font-black text-sm", children: "CFA" }) }),
           !collapsed && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-white font-bold text-sm leading-none", children: "CFA Level I" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-blue-400 text-xs mt-0.5", children: "Study Platform" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-white font-bold text-sm leading-none", children: "CFA Level 1" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-blue-400 text-xs mt-0.5", children: "Practice Questions Hub" })
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { className: "bg-white/10" }),
@@ -18491,7 +18537,10 @@ function Sidebar({ activePage, onNavigate, collapsed }) {
                       "span",
                       {
                         className: "text-[10px] px-1.5 py-0.5 rounded font-semibold flex-shrink-0",
-                        style: { backgroundColor: topic.color + "33", color: topic.color },
+                        style: {
+                          backgroundColor: topic.color + "33",
+                          color: topic.color
+                        },
                         children: [
                           topic.examWeightMin,
                           "-",
@@ -18500,7 +18549,13 @@ function Sidebar({ activePage, onNavigate, collapsed }) {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 12, className: "opacity-0 group-hover:opacity-100 flex-shrink-0" })
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      ChevronRight,
+                      {
+                        size: 12,
+                        className: "opacity-0 group-hover:opacity-100 flex-shrink-0"
+                      }
+                    )
                   ]
                 },
                 topic.id
@@ -18530,7 +18585,7 @@ function Sidebar({ activePage, onNavigate, collapsed }) {
         ] }),
         !collapsed && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { className: "bg-white/10" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-white/30 text-[10px] text-center", children: "CFA Institute · Level I Curriculum" }) })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-white/30 text-[10px] text-center", children: "CFA Level 1 Practice Questions Hub" }) })
         ] })
       ]
     }
@@ -18612,23 +18667,23 @@ var Progress$1 = reactExports.forwardRef(
     if ((maxProp || maxProp === 0) && !isValidMaxNumber(maxProp)) {
       console.error(getInvalidMaxError(`${maxProp}`, "Progress"));
     }
-    const max = isValidMaxNumber(maxProp) ? maxProp : DEFAULT_MAX;
-    if (valueProp !== null && !isValidValueNumber(valueProp, max)) {
+    const max2 = isValidMaxNumber(maxProp) ? maxProp : DEFAULT_MAX;
+    if (valueProp !== null && !isValidValueNumber(valueProp, max2)) {
       console.error(getInvalidValueError(`${valueProp}`, "Progress"));
     }
-    const value = isValidValueNumber(valueProp, max) ? valueProp : null;
-    const valueLabel = isNumber(value) ? getValueLabel(value, max) : void 0;
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(ProgressProvider, { scope: __scopeProgress, value, max, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+    const value = isValidValueNumber(valueProp, max2) ? valueProp : null;
+    const valueLabel = isNumber(value) ? getValueLabel(value, max2) : void 0;
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(ProgressProvider, { scope: __scopeProgress, value, max: max2, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       Primitive.div,
       {
-        "aria-valuemax": max,
+        "aria-valuemax": max2,
         "aria-valuemin": 0,
         "aria-valuenow": isNumber(value) ? value : void 0,
         "aria-valuetext": valueLabel,
         role: "progressbar",
-        "data-state": getProgressState(value, max),
+        "data-state": getProgressState(value, max2),
         "data-value": value ?? void 0,
-        "data-max": max,
+        "data-max": max2,
         ...progressProps,
         ref: forwardedRef
       }
@@ -18654,8 +18709,8 @@ var ProgressIndicator = reactExports.forwardRef(
   }
 );
 ProgressIndicator.displayName = INDICATOR_NAME;
-function defaultGetValueLabel(value, max) {
-  return `${Math.round(value / max * 100)}%`;
+function defaultGetValueLabel(value, max2) {
+  return `${Math.round(value / max2 * 100)}%`;
 }
 function getProgressState(value, maxValue) {
   return value == null ? "indeterminate" : value === maxValue ? "complete" : "loading";
@@ -18663,11 +18718,11 @@ function getProgressState(value, maxValue) {
 function isNumber(value) {
   return typeof value === "number";
 }
-function isValidMaxNumber(max) {
-  return isNumber(max) && !isNaN(max) && max > 0;
+function isValidMaxNumber(max2) {
+  return isNumber(max2) && !isNaN(max2) && max2 > 0;
 }
-function isValidValueNumber(value, max) {
-  return isNumber(value) && !isNaN(value) && value <= max && value >= 0;
+function isValidValueNumber(value, max2) {
+  return isNumber(value) && !isNaN(value) && value <= max2 && value >= 0;
 }
 function getInvalidMaxError(propValue, componentName) {
   return `Invalid prop \`max\` of value \`${propValue}\` supplied to \`${componentName}\`. Only numbers greater than 0 are valid max values. Defaulting to \`${DEFAULT_MAX}\`.`;
@@ -18680,7 +18735,7 @@ function getInvalidValueError(propValue, componentName) {
 
 Defaulting to \`null\`.`;
 }
-var Root = Progress$1;
+var Root$1 = Progress$1;
 var Indicator = ProgressIndicator;
 function Progress({
   className,
@@ -18688,7 +18743,7 @@ function Progress({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root,
+    Root$1,
     {
       "data-slot": "progress",
       className: cn(
@@ -18769,7 +18824,7 @@ function Badge({
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot : "span";
+  const Comp = asChild ? Slot$1 : "span";
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Comp,
     {
@@ -18807,16 +18862,16 @@ const buttonVariants = cva(
 function Button({
   className,
   variant,
-  size,
+  size: size2,
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChild ? Slot$1 : "button";
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Comp,
     {
       "data-slot": "button",
-      className: cn(buttonVariants({ variant, size, className })),
+      className: cn(buttonVariants({ variant, size: size2, className })),
       ...props
     }
   );
@@ -18837,7 +18892,11 @@ function getDaysUntilExam(examDateStr) {
   exam.setHours(0, 0, 0, 0);
   return Math.max(0, Math.round((exam.getTime() - today.getTime()) / (1e3 * 60 * 60 * 24)));
 }
-function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifications }) {
+function TopHeader({
+  onToggleSidebar,
+  notificationsOpen,
+  onToggleNotifications
+}) {
   const daysLeft = getDaysUntilExam(MOCK_USER.examDate);
   const progress = MOCK_USER.overallProgress;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "h-14 flex-shrink-0 bg-white border-b border-border flex items-center px-4 gap-4 z-10", children: [
@@ -18853,7 +18912,7 @@ function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifications }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden sm:flex items-center gap-2 flex-shrink-0", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-6 h-6 bg-blue-600 rounded flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-[9px] font-black", children: "CFA" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-sm text-foreground", children: "Level I Platform" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-sm text-foreground", children: "CFA Level 1 Practice Hub" })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex items-center gap-1.5 bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5", children: [
@@ -18902,16 +18961,35 @@ function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifications }
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "divide-y divide-border", children: [
-          { title: "🔥 Keep your streak!", msg: "Don't forget to study today — you're on a 12-day streak!", time: "5m ago" },
-          { title: "📝 Mock exam reminder", msg: "Your scheduled Full-Length Mock Exam starts in 2 hours.", time: "1h ago" },
-          { title: "🏆 New achievement!", msg: 'You earned the "Week Warrior" badge. +50 points!', time: "2h ago" }
-        ].map((n, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-3 hover:bg-muted/50 cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium leading-snug", children: n.title }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground mt-0.5 leading-snug", children: n.msg })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground whitespace-nowrap flex-shrink-0 mt-0.5", children: n.time })
-        ] }) }, i)) }),
+          {
+            title: "🔥 Keep your streak!",
+            msg: "Don't forget to study today — you're on a 12-day streak!",
+            time: "5m ago"
+          },
+          {
+            title: "📝 Mock exam reminder",
+            msg: "Your scheduled Full-Length Mock Exam starts in 2 hours.",
+            time: "1h ago"
+          },
+          {
+            title: "🏆 New achievement!",
+            msg: 'You earned the "Week Warrior" badge. +50 points!',
+            time: "2h ago"
+          }
+        ].map((n, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "px-4 py-3 hover:bg-muted/50 cursor-pointer",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium leading-snug", children: n.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground mt-0.5 leading-snug", children: n.msg })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground whitespace-nowrap flex-shrink-0 mt-0.5", children: n.time })
+            ] })
+          },
+          i
+        )) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-2 border-t border-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "text-xs text-blue-600 hover:underline", children: "Mark all as read" }) })
       ] })
     ] }),
@@ -18965,17 +19043,70 @@ function CardContent({ className, ...props }) {
   );
 }
 const TODAY_TASKS = [
-  { id: 1, title: "Complete Reading 3: Time Value of Money", topic: "Quantitative", color: "#7C3AED", duration: 45, done: true },
-  { id: 2, title: "Practice Quiz — Ethics Standards I-VII", topic: "Ethics", color: "#1E40AF", duration: 30, done: false },
-  { id: 3, title: "Review Flashcards: Fixed Income", topic: "Fixed Income", color: "#65A30D", duration: 20, done: false },
-  { id: 4, title: "Study Reading 5: Aggregate Output", topic: "Economics", color: "#059669", duration: 60, done: false }
+  {
+    id: 1,
+    title: "Complete Reading 3: Time Value of Money",
+    topic: "Quantitative",
+    color: "#7C3AED",
+    duration: 45,
+    done: true
+  },
+  {
+    id: 2,
+    title: "Practice Quiz — Ethics Standards I-VII",
+    topic: "Ethics",
+    color: "#1E40AF",
+    duration: 30,
+    done: false
+  },
+  {
+    id: 3,
+    title: "Review Flashcards: Fixed Income",
+    topic: "Fixed Income",
+    color: "#65A30D",
+    duration: 20,
+    done: false
+  },
+  {
+    id: 4,
+    title: "Study Reading 5: Aggregate Output",
+    topic: "Economics",
+    color: "#059669",
+    duration: 60,
+    done: false
+  }
 ];
 const RECENT_ACTIVITY = [
-  { icon: "📖", text: "Completed Reading 2: Probability Concepts", topic: "Quant", time: "2h ago" },
-  { icon: "✅", text: "Scored 78% on Ethics Practice Quiz", topic: "Ethics", time: "4h ago" },
-  { icon: "🃏", text: "Reviewed 24 Flashcards", topic: "Economics", time: "Yesterday" },
-  { icon: "📝", text: "Added note: DCF Valuation Formula", topic: "Equity", time: "Yesterday" },
-  { icon: "🎯", text: "Mock Exam — Score: 65%", topic: "Full Length", time: "2 days ago" }
+  {
+    icon: "📖",
+    text: "Completed Reading 2: Probability Concepts",
+    topic: "Quant",
+    time: "2h ago"
+  },
+  {
+    icon: "✅",
+    text: "Scored 78% on Ethics Practice Quiz",
+    topic: "Ethics",
+    time: "4h ago"
+  },
+  {
+    icon: "🃏",
+    text: "Reviewed 24 Flashcards",
+    topic: "Economics",
+    time: "Yesterday"
+  },
+  {
+    icon: "📝",
+    text: "Added note: DCF Valuation Formula",
+    topic: "Equity",
+    time: "Yesterday"
+  },
+  {
+    icon: "🎯",
+    text: "Mock Exam — Score: 65%",
+    topic: "Full Length",
+    time: "2 days ago"
+  }
 ];
 function DashboardPage({ onNavigate }) {
   const daysLeft = getDaysUntilExam(MOCK_USER.examDate);
@@ -18985,23 +19116,16 @@ function DashboardPage({ onNavigate }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-6 max-w-7xl mx-auto", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-6 text-white", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-2xl font-bold", children: [
-          "Welcome back, ",
-          MOCK_USER.name.split(" ")[0],
-          "! 👋"
-        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold", children: "CFA Level 1 Practice Questions Hub" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-blue-200 mt-1 text-sm", children: [
-          "You're on a ",
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-white font-bold", children: [
-            MOCK_USER.streak,
-            "-day"
-          ] }),
-          " streak. Keep going — exam day is ",
+          "Practice questions, mock exams, and topic revision in one place. Exam day is",
+          " ",
           /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-white font-bold", children: [
             daysLeft,
             " days"
           ] }),
-          " away!"
+          " ",
+          "away."
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 flex-wrap", children: [
@@ -19069,17 +19193,32 @@ function DashboardPage({ onNavigate }) {
           MOCK_USER.mockExamAvg,
           "%"
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs mt-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-orange-500 font-semibold", children: "↑ Need 70% to pass" }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs mt-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "span",
+          {
+            className: "text-orange-500 font-semibold",
+            children: "↑ Need 70% to pass"
+          }
+        ) })
       ] }) })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-6", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "lg:col-span-2 border-none shadow-sm", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(CardHeader, { className: "flex-row items-center justify-between pb-3", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-base font-semibold", children: "Topic Progress" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { variant: "ghost", size: "sm", className: "text-xs text-blue-600 h-7", onClick: () => onNavigate("topics"), children: [
-            "View all ",
-            /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 12, className: "ml-1" })
-          ] })
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            Button,
+            {
+              variant: "ghost",
+              size: "sm",
+              className: "text-xs text-blue-600 h-7",
+              onClick: () => onNavigate("topics"),
+              children: [
+                "View all ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 12, className: "ml-1" })
+              ]
+            }
+          )
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-6 pt-0 space-y-3", children: TOPICS.map((topic) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "div",
@@ -19100,7 +19239,10 @@ function DashboardPage({ onNavigate }) {
                   "div",
                   {
                     className: "h-1.5 rounded-full transition-all",
-                    style: { width: `${topic.progress}%`, backgroundColor: topic.color }
+                    style: {
+                      width: `${topic.progress}%`,
+                      backgroundColor: topic.color
+                    }
                   }
                 ) })
               ] }),
@@ -19109,7 +19251,10 @@ function DashboardPage({ onNavigate }) {
                 {
                   variant: "outline",
                   className: "text-[10px] px-1.5 py-0 flex-shrink-0 hidden sm:flex",
-                  style: { borderColor: topic.color + "60", color: topic.color },
+                  style: {
+                    borderColor: topic.color + "60",
+                    color: topic.color
+                  },
                   children: [
                     topic.examWeightMin,
                     "-",
@@ -19127,10 +19272,19 @@ function DashboardPage({ onNavigate }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(CardHeader, { className: "flex-row items-center justify-between pb-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-base font-semibold", children: "Today's Plan" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { variant: "ghost", size: "sm", className: "text-xs text-blue-600 h-7", onClick: () => onNavigate("planner"), children: [
-              "Planner ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 12, className: "ml-1" })
-            ] })
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              Button,
+              {
+                variant: "ghost",
+                size: "sm",
+                className: "text-xs text-blue-600 h-7",
+                onClick: () => onNavigate("planner"),
+                children: [
+                  "Planner ",
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 12, className: "ml-1" })
+                ]
+              }
+            )
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-6 pt-0", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-3", children: [
@@ -19147,17 +19301,44 @@ function DashboardPage({ onNavigate }) {
                 " min"
               ] })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: studiedMin / dailyGoalMin * 100, className: "h-1.5 mb-3" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Progress,
+              {
+                value: studiedMin / dailyGoalMin * 100,
+                className: "h-1.5 mb-3"
+              }
+            ),
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2", children: TODAY_TASKS.map((task) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-2", children: [
-              task.done ? /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { size: 16, className: "text-green-500 mt-0.5 flex-shrink-0" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Circle, { size: 16, className: "text-muted-foreground mt-0.5 flex-shrink-0" }),
+              task.done ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+                CircleCheck,
+                {
+                  size: 16,
+                  className: "text-green-500 mt-0.5 flex-shrink-0"
+                }
+              ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Circle,
+                {
+                  size: 16,
+                  className: "text-muted-foreground mt-0.5 flex-shrink-0"
+                }
+              ),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-xs leading-snug ${task.done ? "line-through text-muted-foreground" : "text-foreground"}`, children: task.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "p",
+                  {
+                    className: `text-xs leading-snug ${task.done ? "line-through text-muted-foreground" : "text-foreground"}`,
+                    children: task.title
+                  }
+                ),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1 mt-0.5", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "span",
                     {
                       className: "text-[10px] px-1.5 rounded font-medium",
-                      style: { backgroundColor: task.color + "20", color: task.color },
+                      style: {
+                        backgroundColor: task.color + "20",
+                        color: task.color
+                      },
                       children: task.topic
                     }
                   ),
@@ -19187,17 +19368,47 @@ function DashboardPage({ onNavigate }) {
       ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-3", children: [
-      { icon: BookOpen, label: "Resume Study", sub: "Quant: Reading 3", color: "text-purple-600 bg-purple-100", page: "topics" },
-      { icon: Pencil, label: "Practice Quiz", sub: "Any topic, any time", color: "text-blue-600 bg-blue-100", page: "quiz" },
-      { icon: FileText, label: "Mock Exam", sub: "90 questions · 3 hrs", color: "text-red-600 bg-red-100", page: "mock-exam" },
-      { icon: Target, label: "Flashcards", sub: "12 cards due today", color: "text-green-600 bg-green-100", page: "flashcards" }
+      {
+        icon: BookOpen,
+        label: "Resume Study",
+        sub: "Quant: Reading 3",
+        color: "text-purple-600 bg-purple-100",
+        page: "topics"
+      },
+      {
+        icon: Pencil,
+        label: "Practice Quiz",
+        sub: "Any topic, any time",
+        color: "text-blue-600 bg-blue-100",
+        page: "quiz"
+      },
+      {
+        icon: FileText,
+        label: "Mock Exam",
+        sub: "90 questions · 3 hrs",
+        color: "text-red-600 bg-red-100",
+        page: "mock-exam"
+      },
+      {
+        icon: Target,
+        label: "Flashcards",
+        sub: "12 cards due today",
+        color: "text-green-600 bg-green-100",
+        page: "flashcards"
+      }
     ].map(({ icon: Icon2, label, sub, color, page }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       Card,
       {
         className: "border-none shadow-sm cursor-pointer hover:shadow-md transition-shadow",
         onClick: () => onNavigate(page),
         children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `w-9 h-9 rounded-xl flex items-center justify-center mb-3 ${color}`, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { size: 18 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: `w-9 h-9 rounded-xl flex items-center justify-center mb-3 ${color}`,
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { size: 18 })
+            }
+          ),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold", children: label }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground mt-0.5", children: sub })
         ] })
@@ -19206,97 +19417,12161 @@ function DashboardPage({ onNavigate }) {
     )) })
   ] });
 }
+const PRACTICE_PACK_QUESTIONS = [
+  {
+    id: "ethics-1",
+    topicId: "ethics",
+    stem: "Amy Joy, CFA, works at Parklane Investments Ltd. (PIL). When presenting to PILs prospective clients, Joy uses a\nbrief investment performance summary and makes available detailed supporting information only upon request. Has\nJoy violated the Standards?",
+    optionA: "No. x",
+    optionB: "Yes, the Standard relating to fair dealing.",
+    optionC: "Yes, the Standard relating to performance presentation.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-2",
+    topicId: "ethics",
+    stem: "Sue Yong, CFA, is an analyst at a large investment fim. After thorough research, she issues a buy rating on a\ncompany and submits her report to her firm's investment committee for review. The committee disagrees with Yong's\nassumptions in the report. As a result, the report is changed to a neutral rating. The final report is issued and Yong\nagrees to leave her name on the report. Has Yong violated the Standards?\nx C",
+    optionA: "No.",
+    optionB: "Yes, the Standard relating to loyalty, prudence, and care.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-3",
+    topicId: "ethics",
+    stem: "John Lee, CFA, manages portfolios for several individuals, including his brother. All of Lee's clients are standard\nfee-paying clients. Lee subscribes to an IPO for only those clients for whom the IPO is suitable, which includes his\nbrother. Lee does not receive the number of shares requested by his clients and allocates shares of the IPO pro-rata to\nthose clients, including his brother. Are Lee's actions most likely consistent with the Standards? 5\nx",
+    optionA: "Yes",
+    optionB: "No, because he allocates the IPO shares to his brother",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-4",
+    topicId: "ethics",
+    stem: "Amember believes a colleague is participating in unethical activities at work. The member does not disassociate\nhimself from the activites of his colleague. The member has most likely violated:\nx B",
+    optionA: "only the Standard relating to knowledge of the law.",
+    optionB: "only the Standard relating to avoid or disclose conflicts. % c",
+    optionC: "both the Standard relating to knowledge of the law and the Standard relating to avoid or disclose conflicts.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-5",
+    topicId: "ethics",
+    stem: "Anita Delgado is a candidate in the CFA Program. After taking the Level I examination, Delgado posts on a social\nnetworking website tha she found the exam to be very difficult and that in her opinion, the CFA Program and CFA\nInstitute were losing credibility with the public. Has Delgado most likely violated the Standards?",
+    optionA: "No x Cc",
+    optionB: "Yes, by posting information abou the exam on a public website",
+    optionC: "Yes, by compromising the reputation or integrity of CFA Institute",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-6",
+    topicId: "ethics",
+    stem: "According to the Standard relating to independence and objectivity:",
+    optionA: "a gift from a client could be considered supplementary compensation.\n: Liem —",
+    optionB: "compensation arrangements should link analyst remuneration fo investment banking assignments.",
+    optionC: "portfolio managers may report sell-side analysts to covered companies if analysts' changes in recommendation\nadversely affect client portfolios. x",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-7",
+    topicId: "ethics",
+    stem: "Which of the following most likely violates the Standard relating to preservation of confidentiality?",
+    optionA: "Recommending a former client as a potential donor for a local charity",
+    optionB: "Disclosing details of client activity to the CFA Insitute Professional Conduct Program",
+    optionC: "Providing confidential information about a prospective client when permitted by the prospective client » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-8",
+    topicId: "ethics",
+    stem: "According to recommended procedures for compliance with the Standard relating to material nonpublic information, ~~ s¢ A\nfirms should:\nx B",
+    optionA: "review employee trading through the maintenance of watch lists.",
+    optionB: "prohibit al types of propristary activity when a firm comes into possession of material nonpublic information. 5 c",
+    optionC: "permit regular interdepartmental communication of nonpublic information between the corporate finance and equity\nresearch departments of a fim. —\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-9",
+    topicId: "ethics",
+    stem: "According to the Standard relating to diligence and reasonable basis, a member is required to",
+    optionA: "exercise diligence, independence, and thoroughness in analyzing investments. % B",
+    optionB: "become an expert in the technical aspects of the models used for investment recommendations.",
+    optionC: "dissociate and remove her name from a company group report f the report does not reflect her opinion. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-10",
+    topicId: "ethics",
+    stem: `Shirin Regali, CFA, is a well-respected, sell-side analyst covering the biotech sector. While researching the market ~~ s¢ A
+prospects for a drug being trialed by BioHeal Inc., Regali interviews industry experts who are not affiated with the tals
+or BioHeal. These experts express confidence that the drug will pass the trials and be a market success. After thorough ~~ % B
+analysis and based on these experts' insights, Regal issues a "buy" recommendation for BioHeal and distributes it to
+her clients and not o the public. Has Regali most likely violated the Standard relating to material nonpublic x c
+information?`,
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-11",
+    topicId: "ethics",
+    stem: "Linda Barr, CFA, a portfolio manager, receives an unsalicited stock order from a client. She discusses the order with ~~ ¢ A\nher firm's analysts to determine how it will impact that client's portfolio. The analysts determine the stock to be highly\nundervalued and suitable for many of Barr's clients. Barr calls clients for whom the stock is suitable to recommend the\nstock. She then executes a single block trade for the original client as well as other clients for whom the stock is\nsuitable. Barr most likely violated the Standards: x Cc",
+    optionA: "only by executing the single block trade. Confidance Cavel;",
+    optionB: "only by discussing unsolicited client orders with her analysts.\n. both by executing the single block rade and by discussing unsolicited client orders with her analysts.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-12",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for complying with the Standard relating to preservation of\nconfidentiality?\nx B\n= Procedure 1: Disclose to authorized fellow employees only information that will improve service to the client\n+ Procedure 2: Encourage the adoption of standard confidentiality procedures utiized by leading fis in the industry ge Cc",
+    optionA: "Procedure 1 only",
+    optionB: "Procedure 2 only",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-13",
+    topicId: "ethics",
+    stem: "Emma Berkstein, CFA, uses third-party data to prepare a report on a company. Berkstein does not check the validity ~~ A\nof this data herself, but instead relies on her senior colleagues to conduct due diligence. Another analyst at the same\nfirm, Jimmy Brooks, CFA, prepares an industry report with a group of colleagues. After thorough research, the group\nagrees to issue a report with a positive outlook for the industry. Brooks disagrees with this conclusion, but leaves his\nname in the report. Has the Standard relating to diligence and reasonable basis most likely been violated? x Cc",
+    optionA: "No.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-14",
+    topicId: "ethics",
+    stem: "Amember most likely violates the Standard relating to knowledge of the law if she fails to:",
+    optionA: "dissociate from unethical conduct.",
+    optionB: "report legal activity to the appropriate regulatory organization.",
+    optionC: "have detailed knowledge of all the laws potentially governing her professional activites. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-15",
+    topicId: "ethics",
+    stem: `Sharon Chan, CFA, is an analyst at an investment firm. Chan issues a "buy" rating on a company in which her
+brother holds shares. Chan does not disclose her brother's holdings in her report as she has no beneficial ownership in
+her brother's account. Has Chan violated the Standards?`,
+    optionA: "No x",
+    optionB: "Yes, the Standard relating to avoid or disclose conflicts",
+    optionC: "Yes, the Standard relating to communication with clients and prospective clients",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-16",
+    topicId: "ethics",
+    stem: "Amember uses his firm's composite to show performance to a prospective client. The member states Our\ncomposite shows that we have outperformed the benchmark over the last five years, gross of fees. Has the member\n'most likely violated the Standards?",
+    optionA: "No. x",
+    optionB: "Yes, the Standard relating to misrepresentation.",
+    optionC: "Yes, the Standard relating to performance presentation.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-17",
+    topicId: "ethics",
+    stem: "Which of the following are among the recommended procedures for compliance with the Standard relating to\nindependence and objectivity?\nx B\n+ Procedure 1: Impose limits on investment personnel acquiring securities in private placements.\n+ Procedure 2: Prohibit employees from receiving reimbursement from corporate issuers for air transportation when ye c\nattending meetings at the issuers' headquarters.\n+ Procedure 3: Remove a company from the restricted list if the firm is unwilling to permit dissemination of adverse (or\nopinions about the company. BF an |",
+    optionA: "Procedure 1and Procedure 2",
+    optionB: "Procedure 1 and Procedure 3 n",
+    optionC: "Procedure 2 and Procedure 3 Confirm",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-18",
+    topicId: "ethics",
+    stem: "Max Cohen, CFA, is offered a gift by one of his premium-fee-paying clients. Prior to accepting the gift, he obtains\nwritten consent from his supervisor and the client offering the gift. He does not disclose the gift to his regular-fee-\npaying clients. Has Cohen violated the Standards?",
+    optionA: "No x",
+    optionB: "Yes, the Standard relating to independence and objectivity",
+    optionC: "Yes, the Standard relating to additional compensation arrangements",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-19",
+    topicId: "ethics",
+    stem: `Agnes Boucault belongs to an online forum of candidates studying for the Level II exam. Boucault writes on the
+forum: "Hello, | am a Level Il candidate in the CFA Program. A friend who took the Level Il exam last month tells me
+that its very difficult. Let's focus more study time on the fixed income and derivatives areas, which | think are the
+hardest." Has Boucault most likely violated the Standards?
+x Cc`,
+    optionA: "No",
+    optionB: "Yes, by improperly referencing the CFA Program",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-20",
+    topicId: "ethics",
+    stem: "Mark Monroe, CFA, is an equity analyst at an investment firn. In his spare time, he performs accounting work for\nhis local sports club in return for the club waiving his membership fees and paying his expenses to attend club social\nevents. Monroe does not disclose either the work or the compensation to his employer. Has Monroe most fikely\nviolated the Standards?\nx Cc",
+    optionA: "No",
+    optionB: "Yes, the Standard relating to loyalty",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-21",
+    topicId: "ethics",
+    stem: "According to the Standard relating to suitabilty, a member is required to do which of the following?",
+    optionA: "Judge the suitability of an investment in the context of the client's total portfolio",
+    optionB: "Update a client's investment policy statement as soon as possible after making any changes to recommendations\nfor the client",
+    optionC: "Both judge the suiabilty of an investment in the context ofthe clients total portfolio and make a reasonable inquiry ~~ X c\ninto a client's investment experience only after taking investment action.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-22",
+    topicId: "ethics",
+    stem: "Which of the following member actions most likely violates the Standard relating to material nonpublic information? ~~ A\n= Action 1: An analyst buys call options on a stock after leaming from the company's CEO that the company will ~ B\nreport earnings exceeding analyst expectations.\n+ Action 2: An analyst buys an oil company stock after speaking to a well-known industry expert who believes oil c\nprices will rise due to geopolitical risk. x",
+    optionA: "Action 1 only",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-23",
+    topicId: "ethics",
+    stem: 'Martha Ray, CFA, manages a portfolio based on an "Environment Social Governance" (ESG) style of investing. Ray ~~ 3¢ A\nis also an environmental activist. She is arrested for civil disobedience while participating in a government-authorized\nnonviolent protest against a company that is accused of damaging the environment. Has Ray most likely violated the\nStandards?\nx Cc',
+    optionA: "No",
+    optionB: "Yes, the Standard relating to misconduct",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-24",
+    topicId: "ethics",
+    stem: "According to the Standards, when presenting performance results, members should encourage their firms to:",
+    optionA: "disclose whether the results are before or after tax.",
+    optionB: "exclude terminated accounts as part of performance history.",
+    optionC: "present the results using the most representative single account. 5 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-25",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to\nmisrepresentation? Members should:\nx B",
+    optionA: "verify third-party marketing and distribution materials provided to clients.",
+    optionB: "encourage their firms to ensure that all employees are capable of describing firm services and qualifications to 5 c\nclients.\n. avoid using investment models created by former employees unless the member recreates the model from original ——\nmaterials. =\nLow | Medium | High",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-26",
+    topicId: "ethics",
+    stem: "Dennis Kim, CFA, works at Century Growth Partners (CGP) where he manages an investment account for his client ~~ s¢ A\nAmelia Frost. Frost tells Kim to invest one percent of her portfolio in biotech stocks. Kim believes such an investment is\ninconsistent with Frost's investment policy statement. CGP has no policy regarding execution of unsolicited trading\nrequests. Kim discusses his concerns with Frost, but she does not change her instruction. Without amending Frost's\ninvestment policy statement, Kim executes the trade afterward. Has Kim violated the Standards? x c",
+    optionA: "No",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-27",
+    topicId: "ethics",
+    stem: "Amember resides in Adovia, a country with securities laws and regulations that are less strict than the Code and\nStandards. She does business in Batavia, a country with securities laws and regulations that are less strict than those\nof Adovia. Which of the following statements is accurate? The member must most likely adhere to:",
+    optionA: "the Code and Standards. x",
+    optionB: "the laws and regulations of Adovia.",
+    optionC: "the laws and regulations of Batavia.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-28",
+    topicId: "ethics",
+    stem: "According to the Standards, members who are supervisors are most likely required to",
+    optionA: "have in-depth knowledge of the Standards.",
+    optionB: "personally evaluate the conduct of al of their employees on a continuing basis.",
+    optionC: "report violations of the Standards by any employee under their supervision to CFA Institute. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-29",
+    topicId: "ethics",
+    stem: "Chris Taylor, CFA, is an investment advisor with Zenith Advisors (ZA). ZA maintains a list of recommended equity\nsecurities and purchases newly rated securities for all clients in block transactions. Taylor has just gained a new client\nwho has an existing equity portfolio. Before their first meeting, Taylor reallocates the portfolio in accordance with the.\nfirm's recommended equity list without gathering additional information from the client, Taylor most likely violated the\nStandard(s) relating: x Cc",
+    optionA: "only to suitabily. [ContBancor ant",
+    optionB: "only to fair dealing. Low Medum High",
+    optionC: "both to suitability and to fair dealing.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-30",
+    topicId: "ethics",
+    stem: "According to the recommended procedures for compliance with the Standard relating to responsibies of\nsupervisors, members should encourage their firms to;\nx B",
+    optionA: "continually educate personnel regarding all of the firm's compliance procedures.",
+    optionB: "separate employees' professional conduct evaluations from their performance reviews. 5 c",
+    optionC: "integrate the firm's compliance procedures into its code of ethics to provide a comprehensive document.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-31",
+    topicId: "ethics",
+    stem: "According to the guidance for the Standard relating to loyalty, prudence, and care, which of the following statements s¢ A\nis most accurate?\nx B",
+    optionA: "Voting proxies are necessary in all instances.",
+    optionB: "Members must maximize the economic value of proxies for clients. 5 c\n. Consistent application of proxy policies includes voting with management on all nonroutine governance matters.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-32",
+    topicId: "ethics",
+    stem: `Which of the following member actions will most fkely result in a violation of the Standard relating to communication ~~
+with clients and prospective clients?
+x B
++ Action 1: Failing to disclose any limitation in liquidity and capacity associated with the investment decision process
++ Action 2: Failing to cover a company's recent quarterly eamings release in a research update about the company 2 c
+labelled "New Product Launch"`,
+    optionA: "Action 1 only",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-33",
+    topicId: "ethics",
+    stem: "According to the Standard relating to responsibilies of supervisors, a member who cannot discharge supervisory\nresponsibilies due to his firm's inadequate compliance system shoud:\nx B",
+    optionA: "decline in writing to accept supervisory responsibilty only.",
+    optionB: "report the inadequate compliance system to the CFA Institute only. 5 c\n. both decline in writing to accept supervisory responsibilty and report the inadequate compliance system to the CFA\nInstitute. .",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-34",
+    topicId: "ethics",
+    stem: "Which of the following member actions most ikely violates the Standard relating to market manipulation?",
+    optionA: "Selling one security and buying another to minimize tax liability 5 B",
+    optionB: "Writing misleading posts on social media about the development of a new product",
+    optionC: "Dividing a large block order into a series of smaller orders to achieve better exectition » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-35",
+    topicId: "ethics",
+    stem: "Ann Jules, CFA, discovered that her employer, Plutus Investments Inc. (PI), inflates investment performance in\nPil's marketing brochure. In accordance with firm policy, Jules uses Pil's marketing brochure to present to prospective\nclients. In addition, Jules emails stock recommendations to her clients in capsule form and offers additional information\nonly upon request. Jules has most likely violated the Standards:\nx C",
+    optionA: "by emailing stock recommendations to her clients in capsule form",
+    optionB: "only by using PIl's marketing brochure to present to prospective clients.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-36",
+    topicId: "ethics",
+    stem: "Rita Melmo, CFA, is an analyst at a Greensky Investment (GI). On weekends, she works as a paid employee of a\nlocal charity where she negotiates purchase agreements. Melmo does not disclose the charity employment to GI\nMelmo is asked to purchase a new truck for the charity and she negotiates a purchase agreement with a local truck.\ndealership. In the purchase agreement, the charity is charged $500 more than the truck's normal sale price. In return,\nMelmo receives retail vouchers worth $500 from the dealership for her private use. Melmo has most likely violated the ~~ % c\nStandards:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-37",
+    topicId: "ethics",
+    stem: "According to the Standard relating to independence and objectivity, which of the following is accurate?\n= Statement 1: A member should encourage her firm to remove a covered company from a restricted list if the firm is\nunwilling to permit dissemination of an adverse opinion about the company.\n+ Statement 2: A member is prohibited from accepting benefits from corporate issuers in the form of allocation of c\nshares in oversubscribed IPOs suitable for firm's clients. *",
+    optionA: "Statement 1 only",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-38",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to priority of\ntransactions? Investment personnel should:\nx B",
+    optionA: "examine all personal trades for possible conflicts immediately after execution of the trades.",
+    optionB: "direct their brokers to supply their firms with duplicate confirmations of al their personal securities transactions. 5 c",
+    optionC: "make a one-time disclosure of holdings in which they have a beneficial interest to their firm upon commencement\nof the employment relationship. —\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-39",
+    topicId: "ethics",
+    stem: "According to the Standard relating to fair dealing, when members disseminate investment recommendations, they\nare most likely required to make every effort to treat individual clients in a(n):\nx B",
+    optionA: "fair and equal manner.",
+    optionB: "fair and impartial manner.\nsnd",
+    optionC: "equal and impartial manner.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-40",
+    topicId: "ethics",
+    stem: `Maria Jennings, CFA, overhears the CEO of United Retail saying that the quarterly report to be released next week
+will miss analysts' expectations. Jennings immediately calls her brother who owns the stock to tell him what she
+overheard. One week later, Jennings writes a report on another company, KTD retail. She uses public and nonmaterial
+nonpublic information for her analysis to issue a "buy" recommendation. Has Jennings most likely violated the
+Standards? * c`,
+    optionA: "No",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-41",
+    topicId: "ethics",
+    stem: "According to the Standard related to independence and objectivity, a member must:",
+    optionA: "refuse all business-related gifts.",
+    optionB: "adhere to strict standards of conduct that govern how issuer-paid research is conducted.",
+    optionC: "pay for transportation, hotel and meal expenses when attending meetings at an issuer's headquarters. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-42",
+    topicId: "ethics",
+    stem: "Michael Mak, CFA, is a portfolio manager at an investment firm. After comprehensive research, Mak buys Advance ~~ 5¢ A\nOne Tech's (AQT) stock for al his clients for whom the investment s suitable. He then buys AT shares for his\nbrother's fee-paying account, in which Mak has beneficial ownership. AOT's stock price declines significantly after a\nmonth, resulting in substantial losses for al his clients. Are Maks actions consistent with the Standards?\nx C",
+    optionA: "Yes",
+    optionB: "No, MaK's actions are not consistent with the Standard relating to priority of transactions",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-43",
+    topicId: "ethics",
+    stem: "Donovan Jones, CFA, works at Grae Investments (GI). GI's main product invests in liquid and iliquid asses. Prices A\nfor its illiquid holdings are determined by an independent valuation firm. Jones markets performance of the GI product\nwithout providing a comparison benchmark. Jones also switches to a different independent valuation firm because of\nthe firm's reputation for giving illiquid assets higher valuations. Jones has most likely violated the Standard relating to\nmisrepresentation: x Cc",
+    optionA: "only by switching valuation firms. Confidance( vel;",
+    optionB: "only by marketing performance without a benchmark.\n. both by switching valuation firms and by marketing performance without a benchmark.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-44",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to knowledge of the ~~ 5¢ A\naw? Members should encourage their firms to\nx B",
+    optionA: "distribute summaries of applicable security laws to clients at least annually.",
+    optionB: "provide written protocals for reporting suspected legal or regulatory violations 5 c",
+    optionC: "seek the advice of a regulatory agency when in doubt about which action to take regarding potential violations.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-45",
+    topicId: "ethics",
+    stem: "According to the Standard relating to avoid or disclose conflicts, a member should:",
+    optionA: "reject a board position in a company on which the member's firm is planning to initiate a research report. % B",
+    optionB: "ensure that her firm discloses to clients any rebates received from the service feo some classes of mutual funds\ncharge to investors.",
+    optionC: "place a company on a restricted list and issue factual information about the company if the member's firm holds x c\noptions on the company's shares.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-46",
+    topicId: "ethics",
+    stem: "According to the Standards, a member who is asked to produce an issuer-paid research report is required to:",
+    optionA: "avoid cash compensation. % B",
+    optionB: "disclose the nature of their compensation in the report",
+    optionC: "decline to write the report if the member's firm provides investment banking services to the issuer. 5 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-47",
+    topicId: "ethics",
+    stem: "According to the Standards, which of the following is most likely considered material nonpublic information?",
+    optionA: "The recent execution of a large buy order from a hedge fund. % B",
+    optionB: "Significant legal challenges revealed at an internal meeting of the company's management.",
+    optionC: "Recent increases in a company's board remuneration discussed at the annual general mesting. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-48",
+    topicId: "ethics",
+    stem: "According to the Standard relating to loyalty, members must:",
+    optionA: "place their employer's interest above their personal interests in all matters.",
+    optionB: "notify their employer before engaging in an independent practice while stil employed.",
+    optionC: "nover act against their employer's interests when complying with their duties to clients, » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-49",
+    topicId: "ethics",
+    stem: "Agnes Dupy, CFA, manages discretionary accounts at a large brokerage firm. She finds a suitable set of the fi's\nproprietary equity mutual funds for one of her clients. Dupy's firm is awarding a special quarterly bonus to managers\nwho use one of the highest-fee funds on the list of suitable funds, so she invests in that fund for her client without\ncontacting the client. Dupy has most likely violated the Standard(s) relating:\nx C",
+    optionA: "only to fair dealing.",
+    optionB: "only to avoid or disclose conflicts.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-50",
+    topicId: "ethics",
+    stem: "Susana Garcia, CFA, is a widely respected analyst covering the transportation sector. She completes a new\nrecommendation for a company. The next morning, she emails the recommendation to her firs largest client. After\nlunch, she emails the recommendation to all other firm clients. One hour later, she calls the largest client to discuss the\nrecommendation in detail. Garcia has violated the Standard relating to fair dealing: 5\nx",
+    optionA: "only by calling the largest client to discuss the recommendation in detail",
+    optionB: "only by emailing the recommendation to the largest client prior to sending ito all other clients.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-51",
+    topicId: "ethics",
+    stem: "According to the guidance for the Standards, which of the following statements are accurate?\n= Statement 1: Employees must place employer interests ahead of personal interests in all matters. ~ B\n= Statement 2: Senior management of a member's firm should create financial compensation structures that do not\ndrive unethical behavior.\nx C",
+    optionA: "Statement 1 only.",
+    optionB: "Statement 2 only.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-52",
+    topicId: "ethics",
+    stem: "According to the recommended procedure for compliance with the Standard relating to far dealing, a member who ~~ s¢ A\nworks in a large firm should:\nx B",
+    optionA: "offer different levels of service to clients selectively based on the clients' investment needs.",
+    optionB: "disclose to clients and prospective clients how she selects accounts to participate in an order. 5 c\n. inform all firm staff of the conten of upcoming investment recommendations to assure that al clients' investment\nnncceoeinel",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-53",
+    topicId: "ethics",
+    stem: `Brigid O'Rourke, CFA, serves as a CFA Institute volunteer and grades Level Ill CFA exams. After grading, ORourke ~~ 5¢ A
+shares her experience with work colleagues, none of whom are CFA candidates. She says, "The Level ll exam is very
+tough." She also states, "| was surprised how few candidates could remember the Black-Scholes equation." Has
+O'Rourke most likely violated the Standards?
+x C
+ANo
+B. Yes, only by saying "| was surprised how few candidates could remember the Black-Scholes equation"`,
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: 'Yes, only by saying "| was surprised how few candidates could remember the Black-Scholes equation"',
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-54",
+    topicId: "ethics",
+    stem: "Bertram Kendall, CFA, is an investment advisor at a bank. Kendall plans to teach an economics course at a local\nuniversity in his spare time, for which he will be paid a fee by the university. In addition, Kendall plans to serve as an\ninvestment advisor for the endowment fund of a community center. Kendall will not be paid by the community center\nbut will be given free access to ts athletic facilites, which normally charge fees, in return for his services. According to\nthe Standards, Kendall is required to obtain written consent from his employer: x Cc",
+    optionA: "only for teaching the economics course. Confidance vel;",
+    optionB: "only for serving as an advisor for the community center endowment.\n. both for teaching the economics course and for serving as an advisor for the community center endowment.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-55",
+    topicId: "ethics",
+    stem: "Helen Birch, CFA, advises private clients. One of the products Birch recommends to clients for whom the productis\nsuitable has a tax advantage. The product's sales material presents a high yield to clients, based on a maximum tax\nrate assumption. Birch realizes that based on her clients' actual tax rates, the product's yield would be considerably\nless. She continues to distribute the sales material to her clients without providing additional information. Birch has\nmost likely violated the Standard(s) relating to: x Cc",
+    optionA: "fair dealing only.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-56",
+    topicId: "ethics",
+    stem: "In the absence of regulations or firm policies, the Standards recommend retaining investment-related records for a\nminimum of:\nx B",
+    optionA: "five years.",
+    optionB: "seven years. 2 c",
+    optionC: "ten years.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-57",
+    topicId: "ethics",
+    stem: "Which of the following examples is most likely a violation of the Standards? A member who is a supervisor:",
+    optionA: "delegates supervisory duties to subordinates who oversee other employees. % B",
+    optionB: "relies on an employee's statement that previous wrongdoing will not reoccur and takes no additional steps.",
+    optionC: "fails to detect al violations, although the member has taken reasonable steps to implement an offective compliance\nprogram. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-58",
+    topicId: "ethics",
+    stem: "A candidate posts questions from the most recent CFA exam in an online forum. This action is a violation of the\nStandard(s) relating:\nx B",
+    optionA: "to preservation of confidentiality only.",
+    optionB: "to conduct as participants in CFA Institute programs only. 5 c",
+    optionC: "both to preservation of confidentiality and to conduct as participants in CFA Insitute programs.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-59",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to performance\npresentation? Members should encourage their firms to:\nx B",
+    optionA: "state, when applicable, that performance results are simulated.",
+    optionB: "use a representative account to present composite performance. 5 c",
+    optionC: "use identical performance presentation reports for all types of cents.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-60",
+    topicId: "ethics",
+    stem: "Amember employed by an investment firm carries out research at the request of a client. The records of that\nresearch are the property of the:\nx B",
+    optionA: "client.",
+    optionB: "member.",
+    optionC: "investment firm. * c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-61",
+    topicId: "ethics",
+    stem: "Rayan Tengku, CFA, manages an equity fund. When talking to potential investors, Tengku presents the fund's\naverage historical performance as the minimum performance investors can expect over the next year. After releasing\nthe most recent quarterly fund report, Tengku finds an error in the report. He immediately sends the corrected report to\nall clients by e-mail and then calls only those clients who pay for premium services to discuss the report, Tengku has\nmost likely violated the Standard(s) relating: x Cc",
+    optionA: "only to fair dealing. Confidance Cavel;",
+    optionB: "only to performance presentation.",
+    optionC: "both to fair dealing and to performance presentation.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-62",
+    topicId: "ethics",
+    stem: 'Herman Standish, CFA, is a top analyst in the semiconductor industry. Standish issues a report on Intemational\nChips (IC) to clients of hs firm that highlights a change in his recommendation from "hold" to "strong buy." He writes in\nthe report: "Just as it has in the past two years, IC will double its eamings and its dividend." After three business days,\nStandish releases the report to the business press. Which of the following Standards has Standish most likely violated? 5\nx',
+    optionA: "Only the Standard relating to material nonpublic information",
+    optionB: "Only the Standard relating to communication with clients and prospective clients",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-63",
+    topicId: "ethics",
+    stem: "Hemant Sampath, CFA, is a wealth manager. He is contacted by a charity requesting donations. Sampath refuses\nto share information about existing clients to protect client confidentiality. While communicating with existing clients,\n'Sampath shares contact details of the charity. He also shares contact details of former clients with the charity. Has\n'Sampath violated the Standards?\nx C",
+    optionA: "No",
+    optionB: "Yes, the Standard relating to preservation of confidentiality",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-64",
+    topicId: "ethics",
+    stem: "CFA Institute encourages members to report other members' violations of the Code and Standards in writing to the ~~ ¢ A\nCFA Institute:\nx B",
+    optionA: "Board of Governors.",
+    optionB: "Professional Conduct Progra. 5 c",
+    optionC: "Disciplinary Review Comittee.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-65",
+    topicId: "ethics",
+    stem: "Marianne Lynn is registered for the CFA Level | exam. A few weeks after registration, she realizes that she is unable\nto prepare for the exam due to work commitments, so she informs CFA Institute that she declines to sit for the exam.\nAfterwards, shortly before the exam date, she posts on social media that she is a CFA candidate. Separately, Thomas\nPetrov, CFA, posts his investment views anonymously on social media and tags his post using #CFAcharter. Who has\nViolated the Standards? x c",
+    optionA: "Lynn only",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-66",
+    topicId: "ethics",
+    stem: "Applying standardized criteria for the selection of external managers is a requirement of the Standard relating to:",
+    optionA: "suitability.",
+    optionB: "independence and objectivity.",
+    optionC: "diligence and reasonable basis.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-67",
+    topicId: "ethics",
+    stem: "Iris Hadid, CFA, works as an investment banking analyst. She builds a financial model to value Ski Mountain Lodge\n(SML). Hadid's friend, Peter Jackson, CFA, works for a different advisory firm. Hadid shares with Jackson details about\nher analysis to receive his feedback on her valuation of SML. Based on this information, Jackson buys call options on\nSML. Who has violated the Standards?\nx C",
+    optionA: "Hadid only",
+    optionB: "Jackson only",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-68",
+    topicId: "ethics",
+    stem: "Tom Dixon, CFA, provides a brief summary of his investment performance to his clients. He indicates that further\ninformation is available upon request. He tells his clients they can expect a return of 5% in the next three years based\non his strong track record. Has Dixon most likely violated the Standards?",
+    optionA: "No. x",
+    optionB: "Yes, by indicating that further information is available upon request.",
+    optionC: "Yes, by telling his clients they can expect a return of 5% in the next three years.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-69",
+    topicId: "ethics",
+    stem: "To comply with the Standards, if applicable law requires members to maintain confidentiality of client information,\nconfidentiality must be maintained unless:\nx B",
+    optionA: "the client has died.",
+    optionB: "the client's information involves illegal activities. 5 c",
+    optionC: "the client permits the disclosure of the information.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-70",
+    topicId: "ethics",
+    stem: "Ethical and Professional Standards: Practice Pack ® This Question: 00:00 © Total: 01:12 Done Pracicing\n4 W9 Question 70 of 148 #® & ReviewAnswer of\nWhich of the following individuals can refer to themselves as a candidate in the CFA Program?\n«= Individual 1: Has passed Level Il and expects to register for Level lil in a couple of months\n= Individual 2: Has failed Level | and expects to retake the exam in its next administration\n+ Individual 3: Is awaiting results of the Level Ill exam c",
+    optionA: "Individual 1",
+    optionB: "Individual 2",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-71",
+    topicId: "ethics",
+    stem: "Andrew Mitton, CFA, is an advisor working with individual clients. Milton is careful to recommend investments for his ~~\nclients that are consistent with their overall objectives and risk tolerance. His firm gives its advisors a bonus for\nrecommending the firm's proprietary products. If all other variables are equal in an investment choice, Milton uses the\nproprietary products. Milton does not inform the clients of this bonus. Has Milton most likely violated the Standards? e\nx",
+    optionA: "No.",
+    optionB: "Yes, the Standard relating to sutabilty.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-72",
+    topicId: "ethics",
+    stem: "According to the recommended procedures for compliance with the Standard relating to misconduct, members\nshould encourage their firms to:\nx B",
+    optionA: "adopt a code of ethics to which every employee can voluntarily subscribe.",
+    optionB: "check references of potential employees to ensure that they are of good character. 5 c",
+    optionC: "disseminate to al cients and employees a lst of potential violations and associated disciplinary sanctions.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-73",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to independence and 5¢ A\nobjectivity? Members should encourage their firms to\nx B",
+    optionA: "prohibit any employee participation in equity-related IPOs.",
+    optionB: "remove a corporate client company from the research universe and put it on a restricted lst ifthe firm is unwilling 5 c\nto disseminate adverse opinions about the company.\n. provide every client wilh the procedures and policies for reporting potentially unethical behaviour, violations of —\nregulations, or other activities that may harm the firm's reputation. 2\nLow | Medium | High",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-74",
+    topicId: "ethics",
+    stem: "With respect to the Standard relating to suitabilty, members who are portfolio managers for a mutual fund are\nrequired to:\nx B",
+    optionA: "consider clients' circumstances and objectives before investing.",
+    optionB: "manage the fund in a manner consistent with the funds mandate. 5 c",
+    optionC: "gather information related to investors' taxes and other investment constraints.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-75",
+    topicId: "ethics",
+    stem: "To comply with the Standards, if a member is offered a paid position in addition to his current position that may\nconflict with his employer's interests, he is most likely required to:\nx B",
+    optionA: "deciine the position.",
+    optionB: "notify his employer in writing before accepting the position. 5 c",
+    optionC: "obtain written consent from all parties involved before accepting the position.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-76",
+    topicId: "ethics",
+    stem: `Thomas Huang, CFA, is an investment advisor for Newline Partners (NP). NP has an agreement with brokerage
+firm Ridge Capital (RC). Huang refers clients to RC in exchange for compensation. RC pays a cash fee to NP for
+referrals. Before entering into formal agreements for services, Huang makes the following disclosure to NP's clients:
+"Please note that Newline Partners receives an annual cash percentage fee from Ridge Capital for the referral of
+clients." Huang omits disclosure of the estimated dollar value of the referrals. Has Huang violated the Standards? * c`,
+    optionA: "No.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-77",
+    topicId: "ethics",
+    stem: "Which statement regarding market manipulation is consistent with the Standards? Members must refrain from:",
+    optionA: "inducing trading by disseminating verifiable information 5 B",
+    optionB: "engaging in practices which exploit perceived market inefficiencies.",
+    optionC: "securing a dominant position in a financial instrument to exploit the price of the underlying asset. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-78",
+    topicId: "ethics",
+    stem: "According to the recommended procedures for compliance with the Standard relating to priority of transactions,\nmembers should:\nx B",
+    optionA: "discourage clients from trading during blackout periods.",
+    optionB: "supply copies of their personal securities transactions to clients upon request. 5 c",
+    optionC: "preclear their participation in IPOs even if there is no conflict of interest between their participation in an IPO and\nthe client's interests. .",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-79",
+    topicId: "ethics",
+    stem: 'Kelvin Lee, CFA, is a portfolio manager at an investment fi. His social media profile reads: "Kelvin Lee passed all 5 A\nthree CFA examinations in three consecutive years. As a CFA charterholder, Lee achieves better investment\nperformance results." Has Lee violated the Standards?\nANo x Cc\nB. Yes, by stating that he passed all three CFA Program examinations in three consecutive years\nC. Yes, by stating that he achieves better investment performance resus as a CFA charterholder',
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Yes, by stating that he passed all three CFA Program examinations in three consecutive years",
+    optionC: "Yes, by stating that he achieves better investment performance resus as a CFA charterholder",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-80",
+    topicId: "ethics",
+    stem: "Amember manages two fee-paying family accounts at her firm. The member has the power to vote on the shares\nheld in Account 1 and the discretion to sell shares held in Account 2. According to the Standards, is the member\nconsidered a beneficial owner of the shares held in her family accounts?",
+    optionA: "No x",
+    optionB: "Yes, for Account 1 only",
+    optionC: "Yes, for both Account 1 and Account 2",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-81",
+    topicId: "ethics",
+    stem: "Hannah Hostetler, CFA, is a portfolio manager at a wealth management firm. Hostetler has an arrangement witha ~~ 5¢ A\nlawyer, whereby she refers clients who need legal advice to the lawyer, who in turn refers clients to Hostetter. Because\nno referral fees are involved, Hostetler does not disclose this arrangement to her existing or prospective clients. Has\nHostetler most likely violated the Standards?\nx C",
+    optionA: "No.",
+    optionB: "Yes, only by failing to disclose the arrangement to existing clients.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-82",
+    topicId: "ethics",
+    stem: "To use a quantitative model in her investment research, a member is required by the Standards to:",
+    optionA: "have developed or co-developed the model. 5 B",
+    optionB: "become an expert in every technical aspect of the model developed by others.",
+    optionC: "understand the assumptions and limitations inherent in the model developed by others. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-83",
+    topicId: "ethics",
+    stem: "Amember receives an offer of compensation from a third party that might create a conflict of interest with the\nmember's employer. According to the Standard relating to additional compensation arrangements, the member is most\nlikely required to:",
+    optionA: "refuse the offer. x",
+    optionB: "only disclose the offer to the employer.",
+    optionC: "obtain written consent from all parties involved prior to accepting the offer.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-84",
+    topicId: "ethics",
+    stem: "According to the Standard relating to loyalty, in the absence of a noncompete agreement and without employer\nconsent, a member is permitted to:\nx B",
+    optionA: "email himself a lst of his clients when leaving his employer.",
+    optionB: "enter into an independent competitive business while still employed. 5 c\n. contact clients from his previous employer using public information to solicit business at his new firm.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-85",
+    topicId: "ethics",
+    stem: "According to the recommended procedures for compliance with the Standard relating to diligence and reasonable\nbasis, members should encourage their firms to:\nx B",
+    optionA: "evaluate the adequacy of eternal advisors by customizing the evaluation criteria for each advisor.",
+    optionB: "establish maximum levels of scenario testing of all computer-based models used in evaluating financial 5 c\ninstruments.",
+    optionC: "appoint a supervisory analyst to determine whether research reports have a reasonable and adequate basis prior a\nto external circulation. .\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-86",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to loyalty, prudence, ~~ 5¢ A\nand care? Members should:\nx B",
+    optionA: "eliminate all actual and potential conflicts of interest.",
+    optionB: "make their clients aware of al forms of manager compensation. 5 c\n. submit to each client, at least annually, an itemized statement showing the funds and securities in custody.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-87",
+    topicId: "ethics",
+    stem: "Ethical and Professional Standards: Practice Pack © This Question: 00:00 © Total: 01:24 Done Pracicing\n4 W9 Question 87 of 148 # @ ReviewAnswer or\nWhich of the following statements are consistent with the Standard relating to conduct as participants in CFA Institute\nprograms?\nx B\n- Statement I: Questions that appear on the CFA examinations cannot be disclosed by candidates even after they\nare notified of their exam results. x Cc\n+ Statement I: Broad topic areas and formulas not tested on the exam cannot be publicly discussed by the\ncandidates after the exam. Corns Tava",
+    optionA: "Statement | only",
+    optionB: "Statement Il only",
+    optionC: "Both Statement | and Statement Il\nConfirm",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-88",
+    topicId: "ethics",
+    stem: "Anna Schulz, CFA, works for an investment firm. She enters into an arrangement with an independent tax advisor to ~~\nprepare Schulz's personal tax returns free of charge in exchange for Schulz referring her clients to the tax advisor.\nAccording to the Standards, Schulz is required to disclose her arrangement with the tax advisor to:",
+    optionA: "her clients only. x",
+    optionB: "her employer only.",
+    optionC: "both her clients and her employer.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-89",
+    topicId: "ethics",
+    stem: "Vikram Shah, CFA, is a wealth manager with AZ Bank (AZ). Shah refers his cient, Sean Tan, to the investment\nbanking division of AZ as Tan is considering taking his company public. AZ' policy is to pay its employees a fee for\nreferrals. According to the Standards, Shah is",
+    optionA: "required to decline the referral fees because Tan is an existing client of AZ. x Cc",
+    optionB: "not required to disclose the referral fee arrangement to Tan because the referral fee is an interdepartmental\nincentive payment",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-90",
+    topicId: "ethics",
+    stem: "David Bravoria, CFA, is an independent financial advisor for a high-net-worth client with whom he had not had\ncontact in more than two years. During a recent brief telephone conversation, the client states that he wants to\nincrease his risk exposure. Bravoria subsequently recommends and invests in several high-risk venture capital funds\non behalf of the client. Bravoria continues, as he has done in the past, to send to his client monthly, detailed, itemized\ninvestment statements. Did Bravoria most likely violate any CFA Standards? * c",
+    optionA: "No.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-91",
+    topicId: "ethics",
+    stem: "Joanne Rosewood, CFA, replaces one of the third-party advisers she uses to manage her clients' portfolios withan ~~ A\ninternal investment strategy. Rosewood does not notify her clients because there is no change in the portfolios'\ninvestment style. Rosewood has most likely violated the Standard relating to:",
+    optionA: "avid or disclose conflicts. x",
+    optionB: "loyalty, prudence, and care.",
+    optionC: "communication with clients and prospective clients.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-92",
+    topicId: "ethics",
+    stem: "Amember is in violation of the Standard relating to market manipulation if he:",
+    optionA: "frequently trades two stocks to exploit market inefficiencies. 5 B",
+    optionB: "secures a controlling position in a company's stock to exploit a potential acquisition of the company.",
+    optionC: "issues a report exaggerating negative aspects of a company with the intent to drive down its share price. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-93",
+    topicId: "ethics",
+    stem: "Disclosures about the use of leverage, sector or industry risk, and security-specific risk are most likely included in\nthe Standard relating to:\nx B",
+    optionA: "independence and objectivity.",
+    optionB: "responsibilities of supervisors. 5 c",
+    optionC: "communication with clients and prospective clients.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-94",
+    topicId: "ethics",
+    stem: `Tom Oak, CFA, is an advisor to high-net-worth individuals. The risk tolerances of Oak's clients range from
+conservative to aggressive. He recommends an equity mutual fund which the prospectus describes as a 'high-growth
+and high-risk vehicle." Oak observes that the volatility of the fund's price has been very low over the past three
+quarters. He therefore recommends investing a large proportion of each clients portfolio in the fund, citing the low
+volatiity and excellent return potential. Oak has most likely violated the Standard(s) relating: * c`,
+    optionA: "only to suitabily. (ContBancor ant",
+    optionB: "only to misrepresentation. Low Medum High",
+    optionC: "both to suitability and to misrepresentation.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-95",
+    topicId: "ethics",
+    stem: "Venture Energy Exchange (VEE) launches a new derivatives product on crude oil. The exchanges CEO, Adam\nJaafar, CFA, enters into a confidential agreement with VEE's ten largest members, who commit to trading substantial\nminimum volumes of the new product in the first six months after its launch. The product's liquidity improves over the\nnext five months. Jaafar is satisfied with the results and decides not to extend the confidential agreement once it\nexpires. Has Jaafar violated the Standards? x Cc",
+    optionA: "No",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-96",
+    topicId: "ethics",
+    stem: "Patrick Tam, CFA, is a chemicals industry analyst for an investment fim. The president of Naxos Chemicals (Naxos) ~~ s¢ A\nasks Tam to provide customized reports on global industry trends in return for free travel and accommodations for the\nNaxos annual shareholder meeting. To comply with the Standards, Tam is most likely required:",
+    optionA: "only to fully disclose the arrangement with Naxos to al of the firm's clients. x Cc",
+    optionB: "only to obtain written permission from his employer before accepting the offer from Naxos.",
+    optionC: "both to fully disclose the arrangement with Naxos to all of the firm's clients and to obtain written permission from Cordenta tase\nhis employer before accepting the offer from Naxos. EP [a |",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-97",
+    topicId: "ethics",
+    stem: "Which of the following Standards states that members must not commit any act that reflects adversely on their\nprofessional reputation, integrity, or competence? The Standard relating to:\nx B",
+    optionA: "fair dealing",
+    optionB: "misconduct",
+    optionC: "loyalty, prudence, and care * c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-98",
+    topicId: "ethics",
+    stem: "Two days after she received prior clearance, the price of Stock B had decreased, so Covington decided to purchase\n250 shares of Stock B only. In her decision to purchase 250 shares of Stock B only, did Covington violate any CFA\nInstitute Standards of Professional Conduct? Ski",
+    optionA: "No.",
+    optionB: "Yes, relating to diligence and reasonable basis.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-99",
+    topicId: "ethics",
+    stem: 'Ethical and Professional Standards: Practice Pack © This Question: 0000 ( Total: 01:34 2°" Pacing\n4 W9 Question 99 of 148 #® @ ReviewAnswer or\nTo be consistent with the Standard relating to record retention, a member should maintain records of which of the\nfollowing?\nx B\n= Item 1: A change in recommendation posted on social media.\n= Item 2: Reviews of materials that do not lead to a change in recommendation.',
+    optionA: "ltem 1 only",
+    optionB: "Item 2 only",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-100",
+    topicId: "ethics",
+    stem: "Acandidate taking the CFA Level Il exam develops an analytical model while working as an unpaid inter at a\nbrokerage firm. Before completing her internship, the candidate copies supporting documents used to create the model\nwith an intention to recreate the model at a new firm she expects to join soon. Has the candidate violated the\nStandards?\nx Cc",
+    optionA: "No",
+    optionB: "Yes, the Standard relating to record retention only",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-101",
+    topicId: "ethics",
+    stem: "Which of the following is a recommended procedure for compliance with the Standard relating to priority of\ntransactions?\nx B\n+ Procedure 1: Members should disclose personal transactions relating to shares in their firm's research universe to\nclients upon request. 2 c\n= Procedure 2: Members should establish blackout periods prior to trades for clients.\n+ Procedure 3: Members should treat fee-paying family accounts in which they have beneficial ownership in the (Or\nsame manner as they would treat their personal accounts. Low | Medium | High",
+    optionA: "Procedure 1",
+    optionB: "Procedure 2",
+    optionC: "Procedure 3 Confirm",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-102",
+    topicId: "ethics",
+    stem: 'Emilio Torro, CFA, owns a small investment fir. He sends a brochure to potential lients which states: "As a CFA\ncharterholder, Emilio Torro will deliver better investment performance compared to the competition. Over the past 6\nyears, Torro has beaten the market in every single year and will continue to do so in the future." Torro has most likely\nviolated the Standard(s) relating to:\nx C',
+    optionA: "performance presentation only.",
+    optionB: "reference to the CFA Institute, the CFA Designation, and the CFA Program only.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-103",
+    topicId: "ethics",
+    stem: "Member violations of the Standard relating to misconduct must involve a(n):",
+    optionA: "illegal act.",
+    optionB: "violation of one of the other Standards.",
+    optionC: "act that reflects adversely on the member's professional reputation. 5 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-104",
+    topicId: "ethics",
+    stem: "Which of the following is among the recommended procedures for compliance with the Standard relating to\npreservation of confidentiality?\nx B\n+ Procedure 1: Convey to clients that not all firm-sponsored resources may be appropriate for confidential\ncommunications. 5 c\n= Procedure 2: Ensure that firm-supported communications follow practices designed to prevent the accidental\ndistribution of confidential information. Corina Lava",
+    optionA: "Only Procedure 1 Low Medum High",
+    optionB: "Only Procedure 2",
+    optionC: "Both Procedure 1 and Procedure 2\nConfirm",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-105",
+    topicId: "ethics",
+    stem: "Disclosure of confidential CFA exam information will most fikely be detected by the Professional Conduct staff\nthrough:\nx B",
+    optionA: "monitoring online and social media.",
+    optionB: "analysis of Proctor Reports. 5 c",
+    optionC: "annual Professional Conduct Statements.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-106",
+    topicId: "ethics",
+    stem: "Tibor Figeczky, CFA, is an equity trader at Global Investment Bank (GB). Figeczky traded the bank's investment\nportfolio profitably for the past three years and earned significant bonuses for his efforts. Subsequently, internal\nauditors of GB formally accused Figeczky of exceeding his trading authority and engaging in unauthorized trades.\nAccording to the CFA Institute Code of Ethics and Standards of Professional Conduct, Figeczky should most likely: e\nx",
+    optionA: "disclose the complaint to CFA Institute.",
+    optionB: "refuse further bonuses until the issue is resolved.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-107",
+    topicId: "ethics",
+    stem: "Which of the following statements most likely reflects one of the six components of the CFA Code of Ethics?\nCandidates must:\nx B",
+    optionA: "place the integrity of the investment profession above their own interests.",
+    optionB: "promote the viabillty of the global capital markets for their employer's benefit. 5 c",
+    optionC: "ignore unprofessional conduct displayed by others within the profession.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-108",
+    topicId: "ethics",
+    stem: "Jan Loots, CFA, quit his job as a portfolio manager at an investment firm with which he had a non-solicitation\nagreement he signed several years ago. Loos received permission to take his investment performance history with\nhim and also took a copy of the firm's software-trading platform. Subsequently, Loots sent out messages on social\nmedia sites announcing he was looking for clients for his new investment management firm. Access to Loots' social\nmedia sites is restricted to friends, family, and former clients. Loos least likely violated the CFA Institute Standards of * c\nProfessional Conduct concerning his:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-109",
+    topicId: "ethics",
+    stem: "Lisa Hajak, CFA, specialized in research on real estate companies at Comerstone Country Bank for the past twenty ~~ 3¢ A\nyears. Hajak recently started her own investment research firm, Hajak Investment Advisory. One of her former clients at\nComerstone asks Hajak to update a research report she wrote on a real estate company when she was at\nComerstone. Hajak updates the report, which she had copied to her personal computer without the bank's knowledge,\nand replaces references to the bank with her new firm, Hajak Investment Advisory. Hajak also incorporates the * c\nconclusions of a real estate study conducted by the Realtors Association that appeared in the Wall Street Journal. She CoriBnaalaE\nreferences the Journal as her source in her report. She provides the revised report free of charge along with a cover Low Medum High\nletter for the bank's client to become a client of her firm. Conceming the reissued research report, Hajak least likely\nviolated the CFA Institute Standards of Professional Conduct because she:\nConfirm",
+    optionA: "solicited the bank's client.",
+    optionB: "did not obtain consent to use the bank report.",
+    optionC: "did not cite the actual source of the real estate study.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-110",
+    topicId: "ethics",
+    stem: "Wang Dazong, CFA, is a sole proprietor investment advisor. Dazong believes in putting his money at risk along with ~~ ¢ A\nhis clients and trades the same securities as his clients. In order to ensure fair treatment of all accounts, he rotates\ntrade allocations so that each account has an equal likelihood of receiving a fill on their orders. This allocation\nprocedure also applies to Dazong's own account. According fo the CFA Insitute Code of Ethics and Standards of\nProfessional Conduct, the allocation procedure used by Dazong: x Cc",
+    optionA: "complies with the Standards. Confidance Laval",
+    optionB: "requires revision to ensure client trades take precedence.",
+    optionC: "should be disclosed and written approval received from clients.\nDifficulty Level\nModerate\n4» Freect\n©2025 CFA Insitute. All Rights Reserved. 0",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-111",
+    topicId: "ethics",
+    stem: "David Andrews, CFA, is an investment manager with Aldona Investments. Aldona secures a block of stock in an\noversubscribed iniial public offering. Andrews decides to prorate the issue to all fee-paying accounts for which itis\nappropriate, including the fee-paying accounts of his immediate family members. Has Andrews violated the Standard\nrelating to fair dealing?\nx [63\nANo\nB. Yes, by prorating the issue to a subscribers.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Yes, by prorating the issue to a subscribers.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-112",
+    topicId: "ethics",
+    stem: `Anna Schulz, CFA, is a securities analyst. When she joined her firm, Schulz's manager, Zhang Feng, CFA, informed ~~ 5¢ A
+her only that "the CFA Institute Code and Standards pretty much cover the company's compliance rules." In her
+personal account, Schulz holds a large position in a company that she recommends for purchase to clients. Schulz
+doas not report this holding to her fim or clients. The Standards were most ikely violated: =
+x`,
+    optionA: "only by Zhang",
+    optionB: "only by Schulz.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-113",
+    topicId: "ethics",
+    stem: "Michael Butcher, CFA, has recently joined Patriot Investments (PI) as an investment manager. With information\ngathered from public sources, Butcher re-creates supporting records from his former fim for investment\nrecommendations at PI. Butcher also reviews client positions and routinely deletes records of the reviews that do not\nresult in a change. Butcher has most kel violated the Standards:\nx [63",
+    optionA: "only by deleting the reviews that do not result in a change.",
+    optionB: "only by re-creating supporting records for investment recommendations.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-114",
+    topicId: "ethics",
+    stem: "According to the Standard relating to misrepresentation, a member must",
+    optionA: "acknowledge the sources of materials used in his research reports.",
+    optionB: "change a security pricing provider solely to obtain higher valuations for clients.",
+    optionC: "refrain from providing clients with information on products with bui-in guarantees. »",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-115",
+    topicId: "ethics",
+    stem: "Adam Johnson, CFA, works at a large investment firm. After losing his taxi receipt for a business meeting, he uses\nhis colleague's taxi receipt of a slightly higher value to submit his monthly expense claim to his employer. Recently,\nJohnson declared personal bankruptcy due to large medical bills for a family member. Has Johnson violated the\nStandard relating to misconduct?\nx C",
+    optionA: "No",
+    optionB: "Yes, by submitting the expense claim",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-116",
+    topicId: "ethics",
+    stem: "Tim Newman, CFA, is an investment manager. One of his clients directs Newman to use Mercer brokerage to\nexecute trades. Newman believes Mercer does not offer best execution, but uses the brokerage commissions to\npurchase research services for his client. Newman informs the client that he may not be getting best execution. Are\nNewman's actions consistent with the Standard relating to loyalty, prudence, and care?\nx Cc",
+    optionA: "Yes.",
+    optionB: "No, because he used commissions to purchase research.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-117",
+    topicId: "ethics",
+    stem: "Sara Perkin, CFA, sends a stock recommendation in capsule form to clients and adds that additional information is ~~ A\navailable upon request. Perkins colleague, Tom Miller, CFA, uses a return forecasting model which has delivered\npositive results for his equity fund in each of the last seven years. Miller provides the model output in a marketing\nbrochure and notes: The fund will continue to deliver a positive return next year. Has the Standard relating to\ncommunication with clients and prospective clients been violated? x Cc",
+    optionA: "No",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-118",
+    topicId: "ethics",
+    stem: "Vinod Shah, CFA, is a fund manager for the employee pension plan of Jupiter Corporation, a publicly traded\ncompany. Shah owes a primary duty of loyalty, prudence, and care to the:\nx B",
+    optionA: "shareholders of Jupiter.",
+    optionB: "management of Jupiter. 5 c",
+    optionC: "beneficiaries of the pension fund.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-119",
+    topicId: "ethics",
+    stem: "Anna Yeung, CFA, is a research analyst with TL Securities (TLS). TLS does not have a policy on record retention,\nand applicable law does not require retaining records. Yeung only retains her work records electronically and deletes\nrecords older than three years. Are Yeung's actions consistent with the recommendations for compliance with the\nStandard relating to record retention?\nx C",
+    optionA: "Yes",
+    optionB: "No, because she only retains her work records electronically",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-120",
+    topicId: "ethics",
+    stem: "Kate Clark, CFA, and Tom Matt, CFA, have a referral arrangement between them. Clark directs equity clients to\nMatt. In return, Matt refers fixed income clients to Clark. Matt and Clark both disclose the details of the arrangement to\ntheir existing clients. However, only Clark discloses the referral arrangement to her prospective clients. Have the\nStandards most likely been violated?\nx C",
+    optionA: "No",
+    optionB: "Yes, by Matt",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-121",
+    topicId: "ethics",
+    stem: "Several years ago, a member purchased a large position in a small-cap stock for her own account. The member is\nunable to sell the entire position due to the stock's limited liquidity. To improve liquidity, the member trades the stock\nbetween two client accounts before selling her own position. The member has engaged in",
+    optionA: "transaction-based manipulation only. x",
+    optionB: "information-based manipulation only.",
+    optionC: "both transaction-based manipulation and information-based manipulation.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-122",
+    topicId: "ethics",
+    stem: "Ming Xu, CFA, is an investment advisor at Topnotch Advisors (TNA). Xu plans to leave TNA and start an\nindependent advisory practice that would compete with TNA. Without notifying TNA of his plans, Xu makes\npreparations during non-working hours to start his independent practice. Has Xu most likely violated the Standards?",
+    optionA: "No x",
+    optionB: "Yes, the Standard relating to loyalty",
+    optionC: "Yes, the Standard relating to disclosure of conflicts",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-123",
+    topicId: "ethics",
+    stem: "The GIPS standards most likely:",
+    optionA: "assure prospective clients of the accuracy of a firm's reported investment performance. % B",
+    optionB: "help prospective clients consider all relevant information in order to evaluate a firm's past investment performance.",
+    optionC: "require investment fims to disclose to prospective clients in a standardized form their own methodologies for\ncalculating performance. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-124",
+    topicId: "ethics",
+    stem: "An investment firm manages a $200 million composite to a small-cap growth style. The firm sells $50 milion of\nthese managed assets lo a competing money manager. In order to remain in compliance with the GIPS standards, the\nfirm must:",
+    optionA: "exclude the $50 millon from the firm's historical performance. x Cc",
+    optionB: "continue to include the $50 million in the firm's historical performance until the assets were sold.",
+    optionC: "show the historical performance of the $50 million separately from the firm's historical performance of the Corfidenta tava\nremaining $150 millon.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-125",
+    topicId: "ethics",
+    stem: "Ethical and Professional Standards: Practice Pack © This Question: 00:00 ~~ © Total: 01:55 Done Pracicing\n4 M5 Question 125 of 148 # & ReviewAnswer or\nWhich of the following statements is accurate?\nStatement 1: Compliance with the GIPS standards eliminates the need for an investor to conduct in-depth due\ndiligence of an investment management firm.\nx Cc\nStatement 2: Compliance with the GIPS standards by external managers facilitates understanding of risk and return\nsources of funds supervised by an asset owner.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-126",
+    topicId: "ethics",
+    stem: "Ethical and Professional Standards: Practice Pack ® This Question: 00:00 © Total: 01:55 Done Pracicing\n4 W9 Question 126 of 148 # & ReviewAnswer or\nWhich of the following statements describe the key concepts of the GIPS standards?\n= Statement 1: The GIPS standards are ethical standards to ensure full disclosure of investment performance.\n= Statement 2: The GIPS standards require firms to maintain composites for all strategies for which the firm\nmanages discretionary and nondiscretionary accounts. c\n+ Statement 3: The GIPS standards address all aspects of performance measurement *",
+    optionA: "Statement 1",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-127",
+    topicId: "ethics",
+    stem: "Verification provides assurance that which of the following have been designed in compliance with the GIPS\nstandards?\nx B",
+    optionA: "Only the calculation and presentation of the firm's performance.",
+    optionB: "Only the finn's policies related to composite and pooled fund maintenance. 5 c\n. Both the calculation and presentation of the firm's performance, and the firm's policies related to composite and\npooled fund maintenance. —\nLow | Medium | High",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-128",
+    topicId: "ethics",
+    stem: "Asset managers are most likely required to do which of the following as part of their adherence to the GIPS\nstandards?\nx B",
+    optionA: "Adhere to certain calculation methodologies",
+    optionB: "Only follow the minimum GIPS requirements at the time of composite creation 5 c",
+    optionC: "Include all non-discretionary funds in atleast one composite reflecting the investment mandate",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-129",
+    topicId: "ethics",
+    stem: "According to the GIPS standards, verification:",
+    optionA: "is performed on a firm-wide basis.",
+    optionB: "must be performed by a i's compliance department.",
+    optionC: "ensures the accuracy of specific composite presentations. 5 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-130",
+    topicId: "ethics",
+    stem: "Which of the following comments concerning composites meeting the requirements of the GIPS standards is\ncomet?\nx B",
+    optionA: "Afim's claim of compliance requires all fee-paying accounts managed by the firm be included in at least one\ncomposite. 5 c",
+    optionB: "The requirement to create, use and maintain composites is designed o prevent firms using the best-performing\naccounts to represent an investment strategy.\npo A 2 a =",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-131",
+    topicId: "ethics",
+    stem: "According to the GIPS standards, verification must be performed:",
+    optionA: "with respect to an entire firm.\n; :",
+    optionB: "on specific composites of a firm.",
+    optionC: "by a firm's compliance department.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-132",
+    topicId: "ethics",
+    stem: "Which of the following can claim compliance with the GIPS standards?",
+    optionA: "Only asset owners 5 B",
+    optionB: "Only software vendors that assist firms in claiming compliance with the GIPS standards",
+    optionC: "Both asset owners and software vendors that assist firms in claiming compliance with the GIPS standards » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-133",
+    topicId: "ethics",
+    stem: "Which of the following statements regarding the GIPS standards is accurate?",
+    optionA: "All fee-paying client portfolios must be included in at least one composite. % B",
+    optionB: "Al portfolios with the same investment mandate are aggregated info a composite.\n. Aggregation of portfolios into composites is based on the actual performance of the portfolios every year. » c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-134",
+    topicId: "ethics",
+    stem: "Afi claiming compliance with GIPS standards is required to:",
+    optionA: "perform verification of the firm's claim of compliance.",
+    optionB: "maintain its compliance even after the firm has been verified by an independent third party.",
+    optionC: "dtermine selection criteria regarding which existing portfolios to include in a composite at the end of the reporting\nperiod. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-135",
+    topicId: "ethics",
+    stem: "After a 3-year-old firm has presented a minimum of three years of GIPS-compliant performance, the GIPS\nstandards require the firm to present an additional year of performance each year until the firm reports a minimum of:\nx B",
+    optionA: "five years.",
+    optionB: "seven years. 2 c",
+    optionC: "ten years.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-136",
+    topicId: "ethics",
+    stem: "According to the GIPS standards, verification is:",
+    optionA: "performed with respect to an entire firm. ~ B",
+    optionB: "performed by a firm's compliance department.",
+    optionC: "mandatory for firms that claim compliance with the GIPS standards. 5 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-137",
+    topicId: "ethics",
+    stem: "Which of the following is not a key concept of the GIPS standards? The GIPS standards for firms:",
+    optionA: "require the use of composites. % B",
+    optionB: "rely on the integrity of input data.",
+    optionC: 'address every aspect of performance measurement. " c',
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-138",
+    topicId: "ethics",
+    stem: "Afi claiming compliance with the GIPS standards must:",
+    optionA: "state that its calculation methodology is in accordance with the GIPS standards.",
+    optionB: "disclose for which firm assets only partial compliance with the GIPS standards is achieved.\n. document policies and procedures used in establishing compliance with the GIPS standards. » c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-139",
+    topicId: "ethics",
+    stem: "Afirm has been in existence for seven years. In order to comply with the GIPS standards, the minimum number of\nyears of GIPS-compliant performance data the firm is initially required to present is:\nx B",
+    optionA: "three years.",
+    optionB: "five years.",
+    optionC: "seven years. * c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-140",
+    topicId: "ethics",
+    stem: "The objectives of the GIPS standards include:",
+    optionA: "promoting financial regulators' interests = B",
+    optionB: "promoting industry self-regulation on a global basis.",
+    optionC: "obtaining acceptance of multiple local standards for accurate performance presentation. » c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-141",
+    topicId: "ethics",
+    stem: "Which of the following statements is most accurate? Compliance with the GIPS standards",
+    optionA: "by firms eliminates the need for in-depth due diligence by investors.",
+    optionB: "enables fis to participate in competitive bids against other GIPS-compliant firms.",
+    optionC: "is mandatory for firms conducting business in countries that do not have regulations relating to investment\nperformance presentation. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-142",
+    topicId: "ethics",
+    stem: "Ethical and Professional Standards: Practice Pack © This Question: 00:00 © Total: 02:08 Done Pracicing\n4 W9 Question 142 of 148 #® & ReviewAnswer or\nAccording to the GIPS standards, which of the following statements is correct?\n+ Statement 1: When local regulations conflict with the GIPS standards, firms are required to comply with the GIPS\nx B\nstandards if the confiict relates to composite construction.\n= Statement 2: When local regulations confiict with the GIPS standards for performance presentation, firms are c\nrequired to comply with local regulation. x",
+    optionA: "Statement 1 only",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-143",
+    topicId: "ethics",
+    stem: "With respect to the GIPS standards, which of the following statements is most accurate? Verification:",
+    optionA: "of GIPS compliance is mandatory if the firm claims GIPS compliance.",
+    optionB: "is performed by the firm when self-regulating and certifying ts claim of compliance.",
+    optionC: "tests whether tho firm's processes are designed to present performance resus in compliance with the GIPS\nstandards. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-144",
+    topicId: "ethics",
+    stem: "A profession is most likely described as a group of people that:",
+    optionA: "has a common level of basic knowledge about a particular subject.",
+    optionB: "monitors its members based on an agreed-on code of ethics.",
+    optionC: "puts the interests of its members frst.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-145",
+    topicId: "ethics",
+    stem: "Most societies would least likely consider ethical principles to include:",
+    optionA: "justice.",
+    optionB: "duplicity. a B\nc. diligence.\nx [63",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "ethics-146",
+    topicId: "ethics",
+    stem: 'Jayson Kite, CFA, a senior analyst, is preparing a research report on a shipping company. Kite concludes that the\nstock of a company is a good investment and decides to put a "buy" recommendation on the stock. According to the\nrecommended procedures for compliance, Kite should communicate the recommendation:',
+    optionA: "within the firm first and then to customers. x",
+    optionB: "to customers first and then within the firm.",
+    optionC: "simultaneously within the firm and to customers.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-147",
+    topicId: "ethics",
+    stem: 'Elana Paralova, a Level | CFA candidate working at an asset management firm, wants to make a good impression\non a prospective client. She tells the prospect: "Getting the CFA Charter will show | am serious about protecting the\ninterests of my clients and it will boost my reputation. Once I get the Charter, | also hope to make more money by\ngetting promoted!" Her colleague, Jacob Klemmer, CFA, tells Paralova: "Study all subjects for each exam, you never\nKnow what will be included. The three exams will be the most difficult exams you will ever take. Any promotion and pay ~~ % c\nraise will reflect your enhanced skills." Did either Paralova or Klemmer violate the Standards?',
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "ethics-148",
+    topicId: "ethics",
+    stem: 'Tim Howley, CFA, "pumps up" the price of a security by spreading misleading information and later "dumps" the\nsecurity after the price reaches an artificially high level. Howley has most likely violated the Standard relating to:\nx B',
+    optionA: "market manipulation.",
+    optionB: "independence and objectivity.\n% : :",
+    optionC: "material nonpublic information.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-1",
+    topicId: "quant",
+    stem: "Which of the following statements is most accurate? The money-weighted return:",
+    optionA: "ignores cash withdrawals and additional cash investments.",
+    optionB: "measures what the investor actually eamed on the funds invested.",
+    optionC: "should be used to compare the performance of different investment managers. 5 c\nConfidence Level\nLow Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-2",
+    topicId: "quant",
+    stem: "An asset eamns 13.1% over a 16-month period. The asset's annualized compound rate of return is closest to:",
+    optionA: "9.3%.",
+    optionB: "9.7%.\n€.9.8%.\nx Cc",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-3",
+    topicId: "quant",
+    stem: "The stated annual rate for Term Deposit 2 that should make the investor indifferent between the two term deposits is Low Medium | High\nclosest to:\nfeo\nB.3.08%.\n€.4.06%.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "3.08%.\n€.4.06%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-4",
+    topicId: "quant",
+    stem: "An investor purchases a stock for $100. Immediately after receiving a dividend of $7, the investor sells the stock for\n$107. The holding period return of the investment is closest to:\nx B",
+    optionA: "0%.",
+    optionB: "7%.\nCc. 14%. x Cc",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-5",
+    topicId: "quant",
+    stem: "The investor's average cost per share is closest to: Lot |e | Hen",
+    optionA: "€14.05. 5",
+    optionB: "€14.33.",
+    optionC: "€14.63.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-6",
+    topicId: "quant",
+    stem: "If each CD has the same maturity and default risk, the opportunity cost of investing in CD 1 is closest to: Low Medium | High",
+    optionA: "0.0%. =",
+    optionB: "1.1%. Confirm",
+    optionC: "2.2%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-7",
+    topicId: "quant",
+    stem: "Abank offers a savings account with a stated annual rate of 3% in the first year and 5% in the second year. If\nreturns are compounded quarterly and €90,000 is deposited in the account at the beginning of the first year, the\naccount's value at the end of the second year is closest to:",
+    optionA: "€97,200. x",
+    optionB: "€97,335.",
+    optionC: "€97,455.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-8",
+    topicId: "quant",
+    stem: "An investor purchased a stock for $450 and then sold the stock immediately after receiving a dividend of $2. If the\nholding period return is a loss of 10.2%, the investor sold the stock at a price closest to\nx B",
+    optionA: "$402.",
+    optionB: "$404.",
+    optionC: "$406. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-9",
+    topicId: "quant",
+    stem: "The annualized ime-weightad rate of return of the investment over the two-year period is lossst 0:",
+    optionA: "9.7%.",
+    optionB: "12.0%. .\n€.123%. Bi",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-10",
+    topicId: "quant",
+    stem: "In evaluating portfolio performance, the return measure most affected by an addition of funds to the portfolio just\nbefore a market downturn is the:\nx B",
+    optionA: "time-weighted return.",
+    optionB: "arithmetic mean return. 5% c",
+    optionC: "money-weighted return.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-11",
+    topicId: "quant",
+    stem: "The investor's money-weighted rate of return is closest to:",
+    optionA: "4.4%,",
+    optionB: "4.5%.",
+    optionC: "46%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-12",
+    topicId: "quant",
+    stem: "The time preference of individuals for current instead of future real consumption is captured by the:",
+    optionA: "liquidity premium.",
+    optionB: "maturity premium.",
+    optionC: "real risk-free interest rate.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-13",
+    topicId: "quant",
+    stem: "A pension fund needs to pay a lump sum $10,000,000 to its participants in 15 years. If the fund is expected to earn\n5% per year compounded semi-annually, the amount needed today to meet ts lability in 15 years is closest to:\nx B",
+    optionA: "$4,767,427.",
+    optionB: "$4810471.",
+    optionC: "$4,802,771. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-14",
+    topicId: "quant",
+    stem: "A company estimates its revenue will be 50% higher than today in four years' time. The compound annual growth\nrate is closest to:\nx B\nA 10.7%.\nB. 11.8%.\nC.125%. x c",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "11.8%.",
+    optionC: "125%. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-15",
+    topicId: "quant",
+    stem: "For a given dataset with different non-negative observations, which of the following will have the largest value?",
+    optionA: "Harmonic mean",
+    optionB: "Arithmetic mean",
+    optionC: "Geometric mean\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-16",
+    topicId: "quant",
+    stem: "If the investor's annual discount rate is 3%, the minimum investment amount required today to fund all four years of\ncollege tuition is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-17",
+    topicId: "quant",
+    stem: "If the annual discount rate is 8%, the option with the highest present value is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-18",
+    topicId: "quant",
+    stem: "An investment pays $1,000 annually for five years, with the first payment occurring three years from today. If the\ndiscount rate is 6% compounded annually, the present value of the investment today is closest to:\nx B",
+    optionA: "$3537.",
+    optionB: "§3,749.",
+    optionC: "84.212. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-19",
+    topicId: "quant",
+    stem: "An investment requires 10 equal annual payments, starting today, and will pay out a lump sum of $500,000 15\nyears from today. If the interest rate is 4% per year compounded annually, the required annual payment is closest to:\nx B",
+    optionA: "$32,913.",
+    optionB: "534,230.\n€.$40,044. x [63",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-20",
+    topicId: "quant",
+    stem: "A graphical depiction of a continuous distribution shows the left tail to be longer than the right tail. The distribution is\nbest described as having:\nx B",
+    optionA: "leptokurtosis.\n8. positive skewness. 5% c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "negative skewness.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-21",
+    topicId: "quant",
+    stem: "The second quartile return is:\nx Cc",
+    optionA: "4%.",
+    optionB: "5%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-22",
+    topicId: "quant",
+    stem: "The coefficient of variation of a portfolio's monthly returns is best defined as the ratio of the:",
+    optionA: "standard deviation of the portfolio's retums to the mean return.",
+    optionB: "mean excess portfolio return to the standard deviation of returns.",
+    optionC: "standard deviation of the portfolio's returns to the mean excess return. 5% c\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-23",
+    topicId: "quant",
+    stem: "The mean absolute deviation of the sample returns is:\nConfirm",
+    optionA: "less than the sample standard deviation.",
+    optionB: "equal to the sample standard deviation.",
+    optionC: "greater than the sample standard deviation. .",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-24",
+    topicId: "quant",
+    stem: "Ranked in ascending order, the 19 observation in a sample of 75 is in the second:",
+    optionA: "decile.",
+    optionB: "quintile.\nc. quartile.\nx C",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-25",
+    topicId: "quant",
+    stem: "Which of the following measures best quantifies the amount of risk per unit of mean return?",
+    optionA: "Sharpe ratio",
+    optionB: "Standard deviation",
+    optionC: "Coefficient of variation\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-26",
+    topicId: "quant",
+    stem: "If a unimodal return distribution is negatively skewed, which of the following most likely has the highest value?",
+    optionA: "Mean",
+    optionB: "Mode",
+    optionC: "Median\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-27",
+    topicId: "quant",
+    stem: "An analyst observes the following EPS for four companies: £0.50, £0.50, £2.50, and £5.50. The 50th percentile of\nthe EPS values is closest to:\nx B",
+    optionA: "£1.50.",
+    optionB: "£2.00.\nc.£250. x c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-28",
+    topicId: "quant",
+    stem: "If the portfolio manager has a target annual return of 6%, the portfolios target downside deviation is closest to:\nA 12%.\nB.13%.\nC. 15%.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "13%.",
+    optionC: "15%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-29",
+    topicId: "quant",
+    stem: "An analyst discards the lowest 2.5% and the highest 2.5% of values in a sample, and computes the mean of the\nremaining 95% of values. The resulting mean is best described as\nx B",
+    optionA: "trimmed mean.",
+    optionB: "hamonic mean. B c",
+    optionC: "winsorized mean.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-30",
+    topicId: "quant",
+    stem: "Which of the following visualizations is most appropriate for interpreting the correlation between two variables?",
+    optionA: "Tree-map",
+    optionB: "Scatter plot",
+    optionC: "Clustered bar chart\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-31",
+    topicId: "quant",
+    stem: "The correlation between two variables measures:",
+    optionA: "only their linear relationship.",
+    optionB: "only their non-linear relationship.",
+    optionC: "both their linear and non-linear relationships.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-32",
+    topicId: "quant",
+    stem: "The correlation coefficient:",
+    optionA: "ranges from 0 to 1.",
+    optionB: "is not affected by outliers.",
+    optionC: "indicates the strength of the linear relationship between two random variables. 5% c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-33",
+    topicId: "quant",
+    stem: "A portfolio has a mean return of 1.0% and a standard deviation of returns of 2.7%. If the specified minimum target\nreturn is 1.0%, the sample target semideviation is:\nx B",
+    optionA: "less than 2.7%.",
+    optionB: "equal to 2.7%.",
+    optionC: "greater than 2.7%. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-34",
+    topicId: "quant",
+    stem: "For a continuous positively skewed unimodal distribution:",
+    optionA: "both the mode and the median are less than the mean.",
+    optionB: "both the mode and the median are greater than the mean.",
+    optionC: "the mode is less than the mean and the median is greater than the mean. 5% c\nConfidence Level\nLow Medium | High\nDifficulty Level\nModerate\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-35",
+    topicId: "quant",
+    stem: "The interquartile range of the sample is equal to:",
+    optionA: "31.",
+    optionB: "82.\nc. 348.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-36",
+    topicId: "quant",
+    stem: "The expected dividend per share under the favorable scenario is closest to:\nA114. .\nB.$137.\n€.$1.90.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "$137.\n€.$1.90.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-37",
+    topicId: "quant",
+    stem: "An analyst estimates the probabilities of three possible economic scenarios and the probabilities of a stock having a\nposilive or a negative return in each scenario. These scenarios are best represented by a:\nx B",
+    optionA: "tree-map.",
+    optionB: "tree diagram. 5% c",
+    optionC: "probability density function.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-38",
+    topicId: "quant",
+    stem: "An analyst assumes that a company's future EPS will be either $2.00, $2.20, or $2.40. If each scenario is equally\nlikely, the variance [in $7] of the company's future EPS is closest to:\nx B\nA003.\nB.0.16.\nc.020. x c",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "0.16.\nc.020. x c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-39",
+    topicId: "quant",
+    stem: "The standard deviation of X is closest fo: Low) | them | Hai\nA 18.73. 7\nB. 20.00.\nc.2201.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "20.00.\nc.2201.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-40",
+    topicId: "quant",
+    stem: "If the covariance between two positively correlated random variables remains the same but the variance of both\nvariables increases, the correlation between the two variables:\nx B",
+    optionA: "decreases.",
+    optionB: "stays the same. B c",
+    optionC: "increases.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-41",
+    topicId: "quant",
+    stem: `An equally weighted portfolio consists of two securities, each with a standard deviation of 3%. If the two securities"
+returns are uncorrelated, the portfolio's standard deviation is closest to:
+x B`,
+    optionA: "0.0%.",
+    optionB: "2.1%.\n€.3.0%. x c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-42",
+    topicId: "quant",
+    stem: "If the manager wants to withdraw €5,000 in one year without invading inital capital, the safety-first optimal portfolio\nis:",
+    optionA: "Portfolio 1. i",
+    optionB: "Portfolio 2. Sk",
+    optionC: "Portfolio 3.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-43",
+    topicId: "quant",
+    stem: "Roy's safety-first criterion:",
+    optionA: "evaluates only downside risk.\n4 :",
+    optionB: "uses semideviation as a risk measure.",
+    optionC: "assumes asset prices are normally distributed.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-44",
+    topicId: "quant",
+    stem: "The expected returns of companies X and Y are 14% and 9%, respectively. The covariance of returns between X\nand ¥ (in percent squared) is closest o:\nAO.\nB.S5. )\nc.14.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "S5. )\nc.14.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-45",
+    topicId: "quant",
+    stem: "If a stock's continuously compounded return is normally distributed, the future stock price is most likely:",
+    optionA: "lly distributed.\nnomally distribu 5 B",
+    optionB: "uniformly distributed.",
+    optionC: "lognormally distributed.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-46",
+    topicId: "quant",
+    stem: "An analyst draws samples from an original sample to estimate the standard error of a population mean. Which of\nthe following best describes this sampling procedure?\nx B",
+    optionA: "Bootstrap method",
+    optionB: "Cluster sampling method 5% c",
+    optionC: "Convenience sampling method",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-47",
+    topicId: "quant",
+    stem: "The lognormal distribution",
+    optionA: "is unbounded.",
+    optionB: "is asymmetrical. x =",
+    optionC: "has the same mean as that of its associated normal distribution. . c\nConfidence Level\nDifficulty Level\nModerate\nes wt The Re\n©2025 CFA Institute. All Rights Reserved. ew",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-48",
+    topicId: "quant",
+    stem: "Samples are drawn from a population that follows a binomial distribution with a probability of success on a trial of\n0.3. According to the central limit theorem, as the sample size increases, the distribution of the sample mean\napproaches a.",
+    optionA: "negatively skewed distribution. x",
+    optionB: "symmetric distribution.",
+    optionC: "positively skewed distribution. Confidence Level\nLow Medium | High\nDifficulty Level\nModerate\nge, 9 The Re\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-49",
+    topicId: "quant",
+    stem: "The central limit theorem:",
+    optionA: "requires that the population be approximately normally distributed. 5 B",
+    optionB: "implies that the sample mean is a consistent estimator of the population mean.",
+    optionC: "states that the product of independent random variables is normally distributed. . c\nConfidence Level\nDifficulty Level\nDifficult\nes wt The Re\n©2025 CFA Institute. All Rights Reserved. ew",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-50",
+    topicId: "quant",
+    stem: "Sampling error is the difference between the observed value of a:",
+    optionA: "random variable and the respective statistic.",
+    optionB: "random variable and its hypothesized value",
+    optionC: "statistic and the quantity itis intended to estimate.\nx Cc\nConfidence Level\nDifficulty Level\nDifficult\nes wt The Re\n©2025 CFA Institute. All Rights Reserved. ew",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-51",
+    topicId: "quant",
+    stem: "Which of the following is required to compute the standard error of a sample mean using the bootstrap resampling\nmethod?\nx B",
+    optionA: "The mean of each resample",
+    optionB: "The mean of the original sample B c",
+    optionC: "The standard deviation of the original sample",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-52",
+    topicId: "quant",
+    stem: "All else being equal, when compared to non-probability sampling, probability sampling most likely yields:",
+    optionA: "a less representative sample.",
+    optionB: "an equally representative sample.\n. a more representative sample.\nx C\nConfidence Level\nDifficulty Level\nModerate\nge wt The Re\n©2025 CFA Institute. All Rights Reserved. vist",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-53",
+    topicId: "quant",
+    stem: "In which of the following cases is cluster sampling most likely used? When",
+    optionA: "conducting a market survey",
+    optionB: "auditing financial statements",
+    optionC: "creating a bond portfolio to mirror the performance of a specified index 5% c\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\nBe «4 The Re\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-54",
+    topicId: "quant",
+    stem: "An analyst considers the population of all existing stocks and selects those where the company name starts with the ~~ ¢ A\nletter P. This sampling procedure is most likely an example of:\nx B",
+    optionA: "systematic sampling.",
+    optionB: "non-probability sampling. 5% c",
+    optionC: "two-stage cluster sampling.\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\nre; wt The Re\n©2025 CFA Institute. All Rights Reserved. vist",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-55",
+    topicId: "quant",
+    stem: "A nonparametric test is most appropriate when:",
+    optionA: "comparing differences between means.\nAap\nBE. data are given in ranks.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "data meet distributional assumptions.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-56",
+    topicId: "quant",
+    stem: "The probability of correctly rejecting a null hypothesis is best defined as the:",
+    optionA: "p-value.",
+    optionB: "power of the fest.",
+    optionC: "level of significance.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-57",
+    topicId: "quant",
+    stem: "In hypothesis testing, which of the following best describes a Type Il error?",
+    optionA: "Rejecting a true null hypothesis",
+    optionB: "Rejecting a false null hypothesis",
+    optionC: "Failure to reject a false null hypothesis\nx C\nConfidence Level\nLow Medium | High\nDifficulty Level\nModerate\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-58",
+    topicId: "quant",
+    stem: "To test whether a population's mean, , is greater than zero, the alternative hypothesis should be formulated as:\nAp=o0.\nB.pz0.\nc.p>0.\nx C\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "pz0.\nc.p>0.\nx C\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-59",
+    topicId: "quant",
+    stem: "An analyst performs a hypothesis test concerning the difference between the mean returns of two portfolios,\nassuming normally distributed populations with unknown but equal variances. If the analyst decides to change the\nhypothesized difference in mean returns from 0% to 1%, which of the following will change?",
+    optionA: "The value of the test statistic x",
+    optionB: "The degrees of freedom used in the test",
+    optionC: "The pooled estimate of the common population variance Confidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-60",
+    topicId: "quant",
+    stem: "Which of the following test statistics is most appropriate for a hypothesis test concerning the mean difference\nbetween two normally distributed populations?\nx B",
+    optionA: "tstatistic",
+    optionB: "Fstatistic",
+    optionC: "Chi-square statistic x c\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-61",
+    topicId: "quant",
+    stem: "For a sample of 50 observations, in which of the following situations is a nonparametric test least likely to be\nappropriate? The data:\nx B",
+    optionA: "contain outliers.",
+    optionB: "are given in ranks. 5% c",
+    optionC: "come from a population with a lognormal distribution.\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-62",
+    topicId: "quant",
+    stem: "The Spearman rank correlation coefficient between X and Y is closest to",
+    optionA: "-02.",
+    optionB: "08.\nc.10.\nDifficulty Level\nExpert\n© Freect\n©2025 CFA Institute. All Rights Reserved.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-63",
+    topicId: "quant",
+    stem: "In a parametric test of the correlation between two variables with a sample size of 51 and sample correlation of 0.6,\nthe t-statistic is closest to:\nx B\nA007.\nB.5.25.\nc.6.64 x Cc\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "5.25.\nc.6.64 x Cc\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n9 Freect\n©2025 CFA Institute. All Rights Reserved.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-64",
+    topicId: "quant",
+    stem: "Atest of independence is based on the data in a contingency table with 5 rows and 4 columns. Using a\nnonparametric test statistic that is chi-square distributed, the number of degrees of freedom is:\nx B\nAT.\nB.12.\nc.20. x c\nConfidence Level\nLow Medium | High\nDifficulty Level\nModerate\n9 Freect\n©2025 CFA Institute. All Rights Reserved. 0",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "12.\nc.20. x c\nConfidence Level\nLow Medium | High\nDifficulty Level\nModerate\n9 Freect\n©2025 CFA Institute. All Rights Reserved. 0",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-65",
+    topicId: "quant",
+    stem: "The 95% prediction interval for the stock's monthly return, given that the forecasted monthly return on the index is\nEE",
+    optionA: "0.7% t0 6.3%.",
+    optionB: "1.9% t0 7.5%.\n€.3.3% 106.1%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-66",
+    topicId: "quant",
+    stem: "An analyst runs a simple linear regression to test whether the variation in the demand for com explains the variation\nin the supply of wheat. In this model, the supply of wheat is a(n):\nx B",
+    optionA: "indicator variable.",
+    optionB: "explained variable.",
+    optionC: "independent variable. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-67",
+    topicId: "quant",
+    stem: "Which of the following is an underlying assumption of the simple linear regression model? The regression residuals:",
+    optionA: "are normally distributed.",
+    optionB: "have high correlations across observations.",
+    optionC: "have different variances across observations.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-68",
+    topicId: "quant",
+    stem: "The standard error of the estimate in a simple linear regression is best described as:",
+    optionA: "a relative measure of fit for the regression.",
+    optionB: "the percentage of the variation of the dependent variable that is explained by the independent variable.\n. a measure of the distance between the observed values of the dependent variable and those predicted from the\nestimated regression. x Cc\nConfidence Level\nLow Medium | High\nDifficulty Level\nModerate\n©2025 CFA Institute. All Rights Reserved.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-69",
+    topicId: "quant",
+    stem: "All else being equal, which of the following would most likely lead to a wider prediction interval for the dependent\nvariable when re-estimating a linear regression model? An increase in the:\nx B",
+    optionA: "sample size",
+    optionB: "level of significance 5% c",
+    optionC: "standard error of the estimate",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-70",
+    topicId: "quant",
+    stem: "Which of the following best describes when a transformation of the data may be needed to enable the use of a\nsimple linear regression modef? When the:\nx B",
+    optionA: "dependent variable is non-normally distributed.",
+    optionB: "pairs of the dependent and independent variables are uncorrelated with one another 5% c",
+    optionC: "relationship between the independent variable and the dependent variable is non-linear.\nConfidence Level\nLow Medium | High\nDifficulty Level\nDifficult\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-71",
+    topicId: "quant",
+    stem: "If the relationship between the dependent variable and independent variable is linear, the regression residuals when\nplotted against the independent value should appear to:\nx B",
+    optionA: "be linear.",
+    optionB: "be random.",
+    optionC: "follow a pattern. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-72",
+    topicId: "quant",
+    stem: "The standard error of the estimate is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-73",
+    topicId: "quant",
+    stem: "In simple linear regression analysis, the total sum of squares best describes:",
+    optionA: "a scatter plot.",
+    optionB: "the variation of the dependent variable.",
+    optionC: "a paired observation between variables.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-74",
+    topicId: "quant",
+    stem: "The simple linear regression model in which only the independent variable is in logarithmic form is best described\nas the:\nx B",
+    optionA: "log-in model.",
+    optionB: "lin-log model.",
+    optionC: "log-log model. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-75",
+    topicId: "quant",
+    stem: "The null hypothesis for the F-distributed test statistic in a simple linear regression model tests whether the:",
+    optionA: "slope is equal to zero.",
+    optionB: "intercept is equal to zero.",
+    optionC: "slope is not equal to zero.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-76",
+    topicId: "quant",
+    stem: "With respect to Big Data, which of the following is most likely classified as alternative data?\n'A. Email communication data\nB. Corporate regulatory filings\nC. Data from derivative markets\nx Cc",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Corporate regulatory filings",
+    optionC: "Data from derivative markets\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-77",
+    topicId: "quant",
+    stem: "Which of the following is most likely used to detect sentiment shifts in an analyst's commentary?",
+    optionA: "Tokenization",
+    optionB: "Data curation",
+    optionC: "Natural language processing\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-78",
+    topicId: "quant",
+    stem: "Which of the following is the most recent advancement in fintech? Applications that can:",
+    optionA: "process data",
+    optionB: "automate tasks",
+    optionC: "make decisions\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "quant-79",
+    topicId: "quant",
+    stem: "In its broadest sense, fintech is best described as:",
+    optionA: "the vast amount of data being generated by the financial services industry.",
+    optionB: "the execution of investment strategies through computer-generated algorithms.",
+    optionC: "technological innovation in the design and delivery of financial services and products. 5% c\nConfidence Level\nLow Medium | High\nDifficulty Level\nEasy\n©2025 CFA Institute. All Rights Reserved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "quant-80",
+    topicId: "quant",
+    stem: "The failure of machine leaning models to accurately predict outcomes can be the result of:",
+    optionA: "overfitting, but not underfitting.",
+    optionB: "underfitling, but not overfiting.",
+    optionC: "either overitting or underfiting.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-1",
+    topicId: "econ",
+    stem: "If a perfectly competitive industry becomes monopolistically competitive, each firm's long-run average total cost per\nunit sold will most likely:\nx B",
+    optionA: "decrease.",
+    optionB: "remain the same. = c",
+    optionC: "increase.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-2",
+    topicId: "econ",
+    stem: "The minimum production level needed to continue operations over the long run is most likely: ConfidehcalL &vel\nLow Medum High",
+    optionA: "24,000 units.",
+    optionB: "36,000 units.\n©. 72,000 units. Confirm",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-3",
+    topicId: "econ",
+    stem: "The perfectly competitive firm's supply curve is ts long-run:",
+    optionA: "marginal cost schedule. % B",
+    optionB: "average revenue schedule.",
+    optionC: "average total cost schedule.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-4",
+    topicId: "econ",
+    stem: "In theory, under which of the following market structures do firms have the least control over price?",
+    optionA: "Oligopoly",
+    optionB: "Monopoly » B",
+    optionC: "Monopolistic competition\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-5",
+    topicId: "econ",
+    stem: "Inthe short run, a firm most likely shuts down production when:",
+    optionA: "economic profit is zero. o B",
+    optionB: "sunk costs are greater than total revenue.",
+    optionC: "total revenue is less than total variable cost.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-6",
+    topicId: "econ",
+    stem: "A perfectly competitive market structure:",
+    optionA: "is not possible in reality. o B",
+    optionB: "causes all industries to ultimately fail due to lack of profits.",
+    optionC: "drives company profits to the investors' required rate of return. x c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-7",
+    topicId: "econ",
+    stem: "To calculate the Herfindahi-Hirschman index:",
+    optionA: "add the market shares of the largest firms. o B",
+    optionB: "add the market shares of the largest firms and then square the sum",
+    optionC: "square the market shares of the largest firms and then add the results. x c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-8",
+    topicId: "econ",
+    stem: "In an oligopoly market, which of the following best describes the situation when firms have no incentive to deviate\nfrom their current pricing strategy based on the anticipated choices of competitors?\nx B",
+    optionA: "The Nash equilibrium",
+    optionB: "The Stackelberg model * c",
+    optionC: "Pricing interdependence\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-9",
+    topicId: "econ",
+    stem: "Monopolistic compeition is best characterized by:",
+    optionA: "high barriers to entry and ext.",
+    optionB: "a small number of buyers and sellers.",
+    optionC: "product differentiation through non-price strategies c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-10",
+    topicId: "econ",
+    stem: "In the long run, a monopolistically competitive firm:",
+    optionA: "eams positive economic profits.",
+    optionB: "faces a perfectly elastic demand curve.",
+    optionC: "produces at a higher level of average cost than the minimum average cost. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-11",
+    topicId: "econ",
+    stem: "If the firm's total revenue is $1,000 million, the firm should:\nConfidence Level",
+    optionA: "stay in the market in both the short run and long run.",
+    optionB: "stay in the market in the short run and exit the market in the long run.",
+    optionC: "shut down production in the short run and exit the market in the long run.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-12",
+    topicId: "econ",
+    stem: "Which market is most likely an oligopoly?",
+    optionA: "Market 1 =",
+    optionB: "Market 2 Confirm",
+    optionC: "Market 3",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-13",
+    topicId: "econ",
+    stem: "Under which of the following market structures are pricing strategies most likely influenced by the expected reaction 3 A\nof other firms?\nx B",
+    optionA: "Oligopoly",
+    optionB: "Perfect competition * c",
+    optionC: "Monopolistic competition\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-14",
+    topicId: "econ",
+    stem: "In which of the following market structures does marginal revenue equal price?",
+    optionA: "Oligopoly",
+    optionB: "Monopoly » B",
+    optionC: "Perfect competition\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-15",
+    topicId: "econ",
+    stem: "Which of the following is most likely a lagging economic indicator?",
+    optionA: "Inventory-sales ratio - B",
+    optionB: "S&P 500 Stock Index",
+    optionC: "Manufacturers' new orders for consumer goods and materials - c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-16",
+    topicId: "econ",
+    stem: "Which of the following is most likely a coincident indicator of economic activity?",
+    optionA: 'Average duration of unemployment " B',
+    optionB: "Average weekly hours, manufacturing",
+    optionC: "Employees on non-agricultural payrolls\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-17",
+    topicId: "econ",
+    stem: "Which of the following indexes is most likely considered a leading economic indicator?",
+    optionA: "Consumer price index - B",
+    optionB: "Broad stock market index",
+    optionC: "Industrial production index\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-18",
+    topicId: "econ",
+    stem: "During the slowdown phase of the business cycle:",
+    optionA: "inflation decelerates. - B",
+    optionB: "business halts new orders.",
+    optionC: "business slows its rate of hiring.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-19",
+    topicId: "econ",
+    stem: "The interest rate spread between 10-year treasury yields and overnight borrowing rates most kely:",
+    optionA: "is a lagging economic indicator.",
+    optionB: "decreases when the market expects an economic downturn.",
+    optionC: "increases as the market expects future short-term interest rates to decrease. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-20",
+    topicId: "econ",
+    stem: "During the recovery phase of the business cycle, inflation most likely:",
+    optionA: "decelerates but with a lag.\n:",
+    optionB: "remains moderate.",
+    optionC: "further accelerates.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-21",
+    topicId: "econ",
+    stem: "Afiscal policy tool that can immediately influence spending is most likely:",
+    optionA: "indirect taxes.\nx B",
+    optionB: "exchange rate targeting.",
+    optionC: "capital expenditure plans.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-22",
+    topicId: "econ",
+    stem: "Which of the following changes most likely reflects a discretionary fiscal policy action?",
+    optionA: "Adecrease in corporate tax revenues due to lower corporate profitability",
+    optionB: "An increase in government expenditures due to new infrastructure projects",
+    optionC: "Anincrease in payments of unemployment benefits due to increasing unemployment c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-23",
+    topicId: "econ",
+    stem: "With respect to fiscal policy, transfer payments are best described as:",
+    optionA: "welfare payments. - B",
+    optionB: "infrastructure spending",
+    optionC: "spending on recurring goods and services.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-24",
+    topicId: "econ",
+    stem: "An objective of fiscal policy is to:",
+    optionA: 'maintain price stabilty. " B',
+    optionB: "redistribute the wealth within an economy.",
+    optionC: "influence the quantity of credit in an economy.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-25",
+    topicId: "econ",
+    stem: "Which of the following government actions is most likely an expansionary fiscal policy?",
+    optionA: "Increasing sales tax rate - B",
+    optionB: "Decreasing savings tax rate",
+    optionC: "Decreasing infrastructure spending\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-26",
+    topicId: "econ",
+    stem: "An argument against free trade is that:",
+    optionA: "it has the potential to lead to greater income inequality.",
+    optionB: "it increases average production costs in goods and services.",
+    optionC: "it discourages foreign research and development in an economy. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-27",
+    topicId: "econ",
+    stem: "Monetary policy is used to:",
+    optionA: "promote stable growth. - B",
+    optionB: "redistribute income and wealth.",
+    optionC: "determine taxation and spending.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-28",
+    topicId: "econ",
+    stem: "Which of the following fiscal policy actions is most likely contractionary?",
+    optionA: "Increasing taxes and decreasing spending",
+    optionB: "Decreasing taxes and increasing spending",
+    optionC: "Decreasing taxes and decreasing spending\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-29",
+    topicId: "econ",
+    stem: "Adecline in tax revenues due to a recession is best described as an example of a(n):",
+    optionA: "automatic stabilizer.\ni '",
+    optionB: "expansionary fiscal policy.",
+    optionC: "contractionary fiscal policy.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-30",
+    topicId: "econ",
+    stem: "Which of the following is an expansionary fiscal policy?",
+    optionA: "An increase in sales taxes - B",
+    optionB: "A decrease in interest rates.",
+    optionC: "in public spending on infrastructure\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-31",
+    topicId: "econ",
+    stem: "The inflation target of an effective central bank is most likely:",
+    optionA: "equal to zero to avoid the risk of deflation.",
+    optionB: "sufficiently below zero to maintain high credibility.",
+    optionC: "low enough to ensure a significant degree of price stability. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-32",
+    topicId: "econ",
+    stem: "Which of the following is most likely to limit the effectiveness of monetary policy?",
+    optionA: "Aliquidity trap - B",
+    optionB: "The crowding out effect",
+    optionC: "Atime lag to implement govemment spending\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-33",
+    topicId: "econ",
+    stem: "With respect to conventional monetary policy, combating inflation is most fikely:",
+    optionA: 'less difficult than combating deflation. " B',
+    optionB: "equally difficult as combating deflation.",
+    optionC: "more difficult than combating deflation.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-34",
+    topicId: "econ",
+    stem: "Which of the following monetary policy actions is most likely considered expansionary? The central bank:",
+    optionA: 'acts as the lender in a repurchase agreement. " B',
+    optionB: "sells government bonds to commercial banks",
+    optionC: "raises reserve requirements of commercial banks. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-35",
+    topicId: "econ",
+    stem: "If contractionary fiscal policy and expansionary monetary policy have offsetting effects on GDP, the public sector's\nshare of GDP will most likely:\nx B",
+    optionA: "decrease.",
+    optionB: "remain the same. x",
+    optionC: "increase.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-36",
+    topicId: "econ",
+    stem: "Al else being equal, and assuming that wages and prices of goods are rigid, a decrease in government spending\nand decreasing interest rates most likely reflect:\nx B",
+    optionA: "easy fiscal policy and easy monetary policy.",
+    optionB: "tight fiscal policy and easy monetary policy. - c",
+    optionC: "easy fiscal policy and tight monetary policy.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-37",
+    topicId: "econ",
+    stem: "Arole of most central banks is to:",
+    optionA: "setincome tax rates. - B",
+    optionB: "decide on government expenditures.",
+    optionC: "regulate their country's payments system.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-38",
+    topicId: "econ",
+    stem: "The overarching objective of most central banks is to maintain:",
+    optionA: "price stability.",
+    optionB: "full employment » B",
+    optionC: "the government's ability to service its debt.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-39",
+    topicId: "econ",
+    stem: "Independence, credibilty, and transparency are most fikely:",
+    optionA: 'key objectives of fiscal policy. " B',
+    optionB: "properties of the monetary transmission mechanism",
+    optionC: "qualities that determine the success of an inflation-targeting central bank. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-40",
+    topicId: "econ",
+    stem: "Which of the following s a limitation of monetary policy?",
+    optionA: "The presence of automatic stabilizers in the economy",
+    optionB: "The ineffectiveness of interest rate adjustments in deflationary environments",
+    optionC: "The uneven distribution of income and wealth among different segments of the population c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-41",
+    topicId: "econ",
+    stem: "When a central bank sells government bonds to commercial banks, broad money growth:",
+    optionA: "decreases.\np",
+    optionB: "remains the same.",
+    optionC: "increases.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-42",
+    topicId: "econ",
+    stem: "Under which of the following conditions is monetary policy most effective? When the:",
+    optionA: "demand for money is infinitely elastic.",
+    optionB: "central bank targets an exchange rate.",
+    optionC: "risk of inflation is greater than deflation.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-43",
+    topicId: "econ",
+    stem: "Fiat money:",
+    optionA: 'is not currently used in any major economy. " B',
+    optionB: "can be exchanged for a precious metal at the country's central bank.",
+    optionC: "derives its value via government decree and because people accept it for payment c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-44",
+    topicId: "econ",
+    stem: "The neutral policy rate is equal to:",
+    optionA: 'long-run expected inflation. " B',
+    optionB: "the real trend rate of growth of the underlying economy.",
+    optionC: "long-run expected inflation plus the real trend rate of growth of the underlying economy. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-45",
+    topicId: "econ",
+    stem: "To increase liquidity, a central bank most likely implements an interest rate policy that is:",
+    optionA: "contractionary.",
+    optionB: "neutral.",
+    optionC: "expansionary.\nx [e}",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-46",
+    topicId: "econ",
+    stem: "To be effective in targeting inflation a central bank is least likely to need:",
+    optionA: "government oversight.\ni",
+    optionB: "transparency of decisions.",
+    optionC: "credibility with market participants.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-47",
+    topicId: "econ",
+    stem: "If monetary policy is contractionary, the central bank's inflation target is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-48",
+    topicId: "econ",
+    stem: "The main objective of the World Bank Group is to:",
+    optionA: "support exchange rate stability and an open system of international payments.",
+    optionB: "provide the legal and institutional foundation of the multinational trading system.",
+    optionC: "help developing countries fight poverty and enhance environmentally sound economic growth. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-49",
+    topicId: "econ",
+    stem: "Cyber threats most likely fall into the category of:",
+    optionA: "event risk.",
+    optionB: "thematic risk » B",
+    optionC: "exogenous risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-50",
+    topicId: "econ",
+    stem: "Which of the following is most likely a benefit of globalization?",
+    optionA: 'Increased profits " B',
+    optionB: "More equal income distribution",
+    optionC: "Stronger environmental, social, and governance standards c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-51",
+    topicId: "econ",
+    stem: "Natural disasters are an example of:",
+    optionA: "event risk.",
+    optionB: "thematic risk » B",
+    optionC: "exogenous risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-52",
+    topicId: "econ",
+    stem: "Which of the following changes are investors most likely to make in response to a black swan risk?",
+    optionA: "Tactical",
+    optionB: "Sector specific » B",
+    optionC: "Asset allocation\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-53",
+    topicId: "econ",
+    stem: "Which of the following behavioral archetypes best describes a country that is high on the globalization spectrum but 3 A\nlow on the cooperation spectrum?\nx B",
+    optionA: "Autarky",
+    optionB: "Hegemony",
+    optionC: "Bilateralism x c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-54",
+    topicId: "econ",
+    stem: "With respect to geopolitics, setting standards for the size and shape of containers used for shipping is most likelyan 3 A\nexample of:\nx B",
+    optionA: "regulatory cooperation.",
+    optionB: "process standardization. * c",
+    optionC: "operational synchronization.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-55",
+    topicId: "econ",
+    stem: "Which of the following would most likely lead to an increase in globalization? A decrease in:",
+    optionA: "soft power.\nip",
+    optionB: "nationalism.",
+    optionC: "standardization.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-56",
+    topicId: "econ",
+    stem: "Which of the following organizations was founded with the goal of assisting in the reconstruction of the international ~~ sg A\npayment system?\nx B",
+    optionA: "The World Trade Organization",
+    optionB: "The International Monetary Fund - c",
+    optionC: "The International Bank for Reconstruction and Development\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-57",
+    topicId: "econ",
+    stem: "When a country that is a price taker imposes a tariff on an imported good:",
+    optionA: "national welfare increases.\ng",
+    optionB: "consumers gain consumer surplus.",
+    optionC: "local producers gain producer surplus.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-58",
+    topicId: "econ",
+    stem: "With respect to trading blocs, a common market most likely incorporates all aspects of a(n):",
+    optionA: "customs union.",
+    optionB: "monetary union » B",
+    optionC: "economic union.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-59",
+    topicId: "econ",
+    stem: "The implementation of an export subsidy for a normal good produced in a small country will most likely increase the: 5 A",
+    optionA: 'domestic consumption of the good. " B',
+    optionB: "price of the good in the domestic market",
+    optionC: "national welfare of the country providing the subsidy. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-60",
+    topicId: "econ",
+    stem: "An argument against being concerned about high national debt levels is that:",
+    optionA: "the debt is owed internally to fellow citizens.",
+    optionB: "government borrowing leads to higher private sector investment",
+    optionC: "the central bank can print money to finance a government deficit. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-61",
+    topicId: "econ",
+    stem: "Price levels increase by 2% in the US and by 6% in the Eurozone. If the nominal spot exchange rate of the\nUSD/EUR (amount of US dollars per 1 euro) decreases by 4%, the absolute change in the real exchange rate is\nclosest to",
+    optionA: "0%, x Cc",
+    optionB: "4%.",
+    optionC: "8%. Confidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-62",
+    topicId: "econ",
+    stem: "An ideal international currency regime would most likely have:",
+    optionA: "currencies that are fully convertible.",
+    optionB: "floating exchange rates between currencies.",
+    optionC: "a common monetary policy across different countries. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-63",
+    topicId: "econ",
+    stem: "Dollarization is best described as an exchange rate regime whereby a country:",
+    optionA: "uses the currency of another nation as its medium of exchange. - B",
+    optionB: "participates in a monetary union whose members share the same legal tender.",
+    optionC: "makes a commitment to exchange domestic currency for a specified foreign currency at a fixed exchange rate. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-64",
+    topicId: "econ",
+    stem: "The conversion of nominal exchange rates into real exchange rates requires the:",
+    optionA: "GDP of both countries. - B",
+    optionB: "price levels in both countries.",
+    optionC: "interest rates in both counties.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-65",
+    topicId: "econ",
+    stem: "In contrast to real exchange rates, nominal foreign exchange rates:",
+    optionA: "tend to deviate from purchasing power party. % B",
+    optionB: "represent the relative price levels in the domestic and foreign countries.",
+    optionC: "are indexes useful for understanding international trade and capital flows. c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-66",
+    topicId: "econ",
+    stem: "Which of the following economic conditions for a country best supports a well-functioning currency board exchange 5 A\nrate system?\nx B",
+    optionA: "Flexible domestic prices and wages",
+    optionB: "Rapid growth in supply of the global reserve asset - c",
+    optionC: "Large nontraded sectors of the domestic economy\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-67",
+    topicId: "econ",
+    stem: "When a country has a fiscal surplus and an excess of private saving over investment, its exports are:",
+    optionA: "less than its imports.",
+    optionB: "equal to ts imports.",
+    optionC: "greater than its imports.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-68",
+    topicId: "econ",
+    stem: "The real appreciation of the domestic currency against the foreign currency is closest to: Confidence Level",
+    optionA: "4%.",
+    optionB: "5%.",
+    optionC: "7%. Confirm",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-69",
+    topicId: "econ",
+    stem: "The USD/AUD 1-year forward rate is closest to:\nCo\nA-0.7959\nB. 0.8096.\nc. 0.8202.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "0.8096.\nc. 0.8202.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-70",
+    topicId: "econ",
+    stem: "The percentage change in the JPY/CAD cross-rate for the period is closest to:",
+    optionA: "-27%.",
+    optionB: "1.4%. :",
+    optionC: "2.8%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-71",
+    topicId: "econ",
+    stem: "If the spot USD/EUR exchange rate (the amount of USD per 1 EUR) is 1.1605 and the 1-year forward rate is\n1.17240, the forward points are:\nx B",
+    optionA: "+1015.",
+    optionB: "+1025.",
+    optionC: "+1190. x c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-72",
+    topicId: "econ",
+    stem: "The spot EURIGBP cross rate is closest to:\naaeet\nB.1.0694.\nC. 1.4855.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "1.0694.",
+    optionC: "1.4855.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "econ-73",
+    topicId: "econ",
+    stem: "With respect to the foreign exchange market, an arbitrage relationship involving countries' relative interest rates\nserves as the basis for:\nx B",
+    optionA: "real exchange rates.",
+    optionB: "forward exchange rates. x c",
+    optionC: "nominal exchange rates.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "econ-74",
+    topicId: "econ",
+    stem: "All else being equal, in an efficient market a forward exchange rate will decrease as a result of an increase in the:",
+    optionA: "spot exchange rate. - B",
+    optionB: "foreign risk-free interest rate.",
+    optionC: "domestic risk-free interest rate.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-1",
+    topicId: "fsa",
+    stem: "Which of the following opinions is the best indication that the auditor believes that the financial statements depart\nmaterially from accounting standards and are not fairly presented?\nx B",
+    optionA: "Adverse opinion",
+    optionB: "Qualified opinion\nx Cc",
+    optionC: "Disclaimer of opinion",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-2",
+    topicId: "fsa",
+    stem: "Common-size statements are most likely the output of which of the following phases of the financial statement\nanalysis framework?\nx B",
+    optionA: "Process data",
+    optionB: "Analyzelinterpret the processed data 5 c",
+    optionC: "Develop and communicate conclusions and recommendations",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-3",
+    topicId: "fsa",
+    stem: "Adisclaimer of opinion is issued when an auditor:",
+    optionA: "is unable o issue an opinion. 2 B",
+    optionB: "notes an exception to accounting standards.",
+    optionC: 'finds a material departure from accounting standards. " e',
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-4",
+    topicId: "fsa",
+    stem: "Aqualffied audit opinion is most likely issued when financial statements are prepared:",
+    optionA: "in compliance with accounting standards. % B",
+    optionB: "with material departures from accounting standards.",
+    optionC: "with some limitation or exception to accounting standards. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-5",
+    topicId: "fsa",
+    stem: "The role of financial reporting is best described as:",
+    optionA: "making operating, investing, and financial decisions % B",
+    optionB: "providing information about a company's performance, financial position, and change in financial position",
+    optionC: "evaluating a company's past, current, and potential performance for the purpose of making economic decisions. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-6",
+    topicId: "fsa",
+    stem: "Based only on the companies' common-size income statements, it appears that:",
+    optionA: "Company 1 spent more on advertising than Company 2.",
+    optionB: "both companies spent equally on research and development.",
+    optionC: "Company 1 has a higher gross profit margin than Company 2.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-7",
+    topicId: "fsa",
+    stem: "If the bonds are convertible into 200,000 common shares and there are no other potentially dilutive securities\noutstanding, the company's reported diluted EPS is closest to:",
+    optionA: "$1.01.",
+    optionB: "$1.03.\n€.$1.07.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-8",
+    topicId: "fsa",
+    stem: "For a company reporting on a calendar year basis, the receipt of a payment from a client in Year 1 for the delivery of ~~ s¢ A\nservices in Year 2 most likely increases:\nx B",
+    optionA: "net income for Year 1.",
+    optionB: "liabilities as of 31 December of Year 1. e c",
+    optionC: "cash flow from operating activities for Year 2.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-9",
+    topicId: "fsa",
+    stem: "In calculating basic and diluted EPS, if the numerators are the same but the denominators are different, the\ncompany:\nx B",
+    optionA: "split its stock during the year.",
+    optionB: "had stock options outstanding at year end. e c",
+    optionC: "had convertible debt outstanding at year end.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-10",
+    topicId: "fsa",
+    stem: "Each convertible preferred share is convertible into two common shares. If there are no other potentially dilutive\nsecurities outstanding, reported diluted EPS is closest to:",
+    optionA: "€051.",
+    optionB: "€0.57.",
+    optionC: "€059.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-11",
+    topicId: "fsa",
+    stem: "Basic EPS is closest to:",
+    optionA: "€0.36.",
+    optionB: "€0.47.",
+    optionC: "€054.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-12",
+    topicId: "fsa",
+    stem: "If a 2-for-1 stock split took effect on 1 July, basic EPS for the year is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-13",
+    topicId: "fsa",
+    stem: "One convertible preferred share is convertible into two common shares. If the tax rate is 40% and there are no other\npotentially dilutive securities outstanding, reported diluted EPS is closest to:",
+    optionA: "€0.38.",
+    optionB: "€0.48. .",
+    optionC: "€063. bed",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-14",
+    topicId: "fsa",
+    stem: "One convertible preferred share is convertible into six common shares. If there are no other potentially dilutive\nsecurities outstanding, reported diluted EPS should be closest to:",
+    optionA: "€095.",
+    optionB: "€1.02.\nc.€1.14.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-15",
+    topicId: "fsa",
+    stem: "Based only on this information, applying vertical common-size analysis to the income statement, selling, general,",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-16",
+    topicId: "fsa",
+    stem: "According to the converged standards for revenue recognition, a receivable is recognized on the seller's balance\nsheet when:\nx B",
+    optionA: "a contract is signed.",
+    optionB: "all performance obligations have been met except for payment. e c",
+    optionC: "consideration is received in advance of transferring goods or services.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-17",
+    topicId: "fsa",
+    stem: "According to the converged accounting standards for revenue recognition, which of the following is the first of five\nsteps in recognizing revenue?\nx B",
+    optionA: "Determine the transaction price",
+    optionB: "Identify the contract with the customer e c",
+    optionC: "Identify the distinct performance obligations in the contract",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-18",
+    topicId: "fsa",
+    stem: "According to the converged standards for revenue recognition, which of the following might indicate that a seller has ~~ s¢ A\ntransferred control of an asset to a buyer at a point in time? The seller has:\nx B",
+    optionA: "legal ttle of the asset.",
+    optionB: "a present right to payment for the asset. e c",
+    optionC: "significant risks and rewards of ownership related to the asset.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-19",
+    topicId: "fsa",
+    stem: "A company entered into a 5-year construction contract with a total sales price of £3,000,000. The estimated total\ncosts are £2,000,000 and the company incurred £600,000 actual costs in the first year. The company has extensive\nexperience with similar types of contracts. Costs incurred provide an appropriate measure of progress toward\ncompleting the contract. Assuming itis highly probable that revenue will not be subsequently reversed, revenue\nrecognized under the contract in Year 1 is most likely: x Cc\nRefi 001",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-20",
+    topicId: "fsa",
+    stem: "A company establishes a plan to dispose of one of its material lines of business and will have no further involvement ~~ s¢ A\nnits operation. The income statement most fikely reports the results of this line of business as:\nx B",
+    optionA: "discontinued operations.",
+    optionB: "unusual or infrequent items. e c\n. continuing operations until the actual sale is performed.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-21",
+    topicId: "fsa",
+    stem: "The adjustments related to changes in the estimated residual value of a long-lived asset should be:",
+    optionA: "handled prospectively. % B",
+    optionB: "shown separately on the income statement",
+    optionC: "handled retrospectively unless impractical to do so. % c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-22",
+    topicId: "fsa",
+    stem: "Which of the following may be reported using the modified retrospective method?",
+    optionA: "Corrections of prior period errors % 8",
+    optionB: "Changes in estimated useful life of PP&E",
+    optionC: "Changes in accounting policies based on the new revenue recognition standard c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-23",
+    topicId: "fsa",
+    stem: "A copyright, for which an active market exists, has a set finite life and is used in a company's operations over more ~~ g¢ A\nthan one fiscal period. Under U.S. GAAP, this copyright is reported using:\nx B",
+    optionA: "only the cost model,",
+    optionB: "only the revaluation model. e c",
+    optionC: "either the cost or the revaluation model.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-24",
+    topicId: "fsa",
+    stem: "A company reporting under US GAAP purchases an equity security issued by another company. If the equity\nsecurity represents less than 1% of the outstanding equity of the issuing company and the acquiring company owns no\nother equity stake in the issing company, the investment is most likely carried on the acquiring company's balance\nsheet at:\nx [63",
+    optionA: "amortized cost",
+    optionB: "fair value with any unrealized holding gains/losses recognized in the income statement.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-25",
+    topicId: "fsa",
+    stem: "Applying vertical common-size analysis to the company's balance sheet, cash and cash equivalents are:",
+    optionA: "20% —",
+    optionB: "25%\nc. 32%",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-26",
+    topicId: "fsa",
+    stem: "Accounting goodwill arising from acquisitions is:",
+    optionA: "expensed in the period it arises. % B",
+    optionB: "capitalized and amortized over a finite period",
+    optionC: "capitalized and tested for impairment annually.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-27",
+    topicId: "fsa",
+    stem: "Cash paid for other operating expenses (in £ millions) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-28",
+    topicId: "fsa",
+    stem: "Based only on this information, if Year 2 net income is £3 million and the Year 1 ending cash balance is £10 million,",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-29",
+    topicId: "fsa",
+    stem: "Which of the following is most ikely added back to net income when preparing a cash flow statement under the\nindirect method?\nx B",
+    optionA: "Gain on sale of assets",
+    optionB: "Amortization of bond discount e c",
+    optionC: "Decrease in deferred tax liability",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-30",
+    topicId: "fsa",
+    stem: "Under the indirect method of reporting cash flow from operating activities, a decrease in deferred income tax\nliabilities is:\nx B",
+    optionA: "ignored.",
+    optionB: "added back to net income. e c",
+    optionC: "subtracted from net income.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-31",
+    topicId: "fsa",
+    stem: "On the statement of cash flows, interest payments may be classified as a financing cash flow under:",
+    optionA: "IFRS only.",
+    optionB: "US GAAP only.",
+    optionC: "both IFRS and US GAAP.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-32",
+    topicId: "fsa",
+    stem: "Cash flow from operating activities (in $ thousands) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-33",
+    topicId: "fsa",
+    stem: "Cash flow from operating activities (in € thousands) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-34",
+    topicId: "fsa",
+    stem: "Interest payable on 31 December is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-35",
+    topicId: "fsa",
+    stem: "Cash received from customers (in £ millions) in Year 2 is: Lowy | Madumnc) SEO",
+    optionA: "2070. oe",
+    optionB: "2,120.\n€.2,130.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-36",
+    topicId: "fsa",
+    stem: "On the statement of cash flows, interest paid should be classified as:",
+    optionA: "a financing cash flow only.",
+    optionB: "an operating cash flow only.",
+    optionC: "either a financing or an operating cash flow.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-37",
+    topicId: "fsa",
+    stem: "On the statement of cash flows, cash dividends paid may be classified as an operating activity under:",
+    optionA: "IFRS only.",
+    optionB: "US GAAP only. ad B",
+    optionC: "both IFRS and US GAAP.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-38",
+    topicId: "fsa",
+    stem: "Cash paid to suppliers (in £ millions) s: (Coniines | eet",
+    optionA: "6,500.",
+    optionB: "9,000. oe\nC:A1,500,",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-39",
+    topicId: "fsa",
+    stem: "Cash received from customers (in € thousands) is: Lowy | Madumnc) SEO",
+    optionA: "3,800. —",
+    optionB: "5,000.\n€.6,200.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-40",
+    topicId: "fsa",
+    stem: "The company sold equipment having a historical cost of €5,000,000 and reported a loss on sale of €250,000. The",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-41",
+    topicId: "fsa",
+    stem: "With respect to the statement of cash flows under the indirect method, which of the following will increase net cash ~~ s¢ A\nprovided by operating activities compared to net income? An increase in:\nx B",
+    optionA: "inventory.",
+    optionB: "accounts payable.\nx [63",
+    optionC: "accounts receivable.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-42",
+    topicId: "fsa",
+    stem: "Under U.S. GAAP, free cash flow to equity is most likely: Lowy | Madumnc) SEO",
+    optionA: "less than free cash flow to the firm. p—",
+    optionB: "equal to free cash flow to the firm. ~",
+    optionC: "greater than free cash flow to the firm.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-43",
+    topicId: "fsa",
+    stem: "If interest paid is classified as a cash flow from operating activities and the income tax rate is 40%, net debt",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-44",
+    topicId: "fsa",
+    stem: "If interest paid is classified as a cash flow from operating activities and the income tax rate is 20%, FCFF (in €",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-45",
+    topicId: "fsa",
+    stem: "For a mature company, the primary source of cash flows is most likely from:",
+    optionA: "operating activities.",
+    optionB: "investing activities ad B",
+    optionC: "financing activities.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-46",
+    topicId: "fsa",
+    stem: "In a common-size analysis of the cash flow statement, each line item of cash inflow may be stated as a percentage\nof:\nx B",
+    optionA: "total assets.",
+    optionB: "net revenue.",
+    optionC: "net cash flow. x",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-47",
+    topicId: "fsa",
+    stem: "On a common-size statement of cash flows presented using the indirect method, net operating cash flow is: Low | Madumnc) SEI",
+    optionA: "30% oe",
+    optionB: "50%\nc.75%",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-48",
+    topicId: "fsa",
+    stem: "On 31 December of Year 2, the net realizable value of the inventory is €7 million higher than its carrying value.\nUnder US GAAP, the amount (in € millions) of the reversal of the prior write-down is:\nConfirr\nA-80\nB.5.\nCT.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "5.\nCT.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-49",
+    topicId: "fsa",
+    stem: "In an environment of steadily increasing prices and quantities, reported ending inventory most closely reflects\ncurrent replacement value under the:\nx B",
+    optionA: "FIFO method using a periodic inventory system.",
+    optionB: "LIFO method using a periodic inventory system. e c",
+    optionC: "LIFO method using a perpetual inventory system.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-50",
+    topicId: "fsa",
+    stem: "All else being equal, in a period of declining inventory unit costs and constant inventory quantities, which of the\nfollowing inventory valuation methods most likely allocates a higher amount of the total cost of goods available for sale\nto cost of sales on the income statement?",
+    optionA: "FIFO x",
+    optionB: "LIFO",
+    optionC: "Weighted average cost",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-51",
+    topicId: "fsa",
+    stem: "All else being equal, in a period of stable inventory quantities and declining inventory unit costs, using the LIFO\ninventory valuation method will result in a lower:\nx B",
+    optionA: "gross profit than if the FIFO inventory valuation method had been used.",
+    optionB: "current ratio than if the FIFO inventory valuation method had been used. e c",
+    optionC: "inventory turover ratio than if the FIFO inventory valuation method had been used.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-52",
+    topicId: "fsa",
+    stem: "Under US GAAP, which of the following is a required financial statement disclosure concerning inventory?",
+    optionA: "Only the material amount of income resulting from the liquidation of LIFO inventory % B",
+    optionB: "Only the amount of any reversal of any write-down that is recognized as a reduction in cost of goods sold in the\nperiod",
+    optionC: "Both the material amount of income resulting from the liquidation of LIFO inventory, and the amount of any reversal ~~ % c\nof any write-down that is recognized as a reduction in cost of goods sold in the period",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-53",
+    topicId: "fsa",
+    stem: "Amanufacturing company reporting under US GAAP using the FIFO inventory valuation method should measure ts s¢ A\nfinished goods inventory at the lower of:\nx B",
+    optionA: "cost and market value.",
+    optionB: "cost and net realizable value. e c",
+    optionC: "market value and net realizable value.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-54",
+    topicId: "fsa",
+    stem: "Under US GAAP and all else being equal, in a period of stable inventory quantities and rising inventory unit costs,\nwhich inventory valuation method is least likely to incur inventory write-downs?\nx B",
+    optionA: "FIFO",
+    optionB: "LIFO\nx [63",
+    optionC: "Weighted average cost",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-55",
+    topicId: "fsa",
+    stem: "The net realizable value of the inventory (in € thousands) is: Low | Medium | High",
+    optionA: "750.\nConfirm\n5.850.\n€.1,000",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-56",
+    topicId: "fsa",
+    stem: "Which of the following is an inventory-related financial statement disclosure required under US GAAP?",
+    optionA: "The carrying amount of inventories carried at fair value less costs to sell. % B",
+    optionB: "The circumstances or events that led to the reversal of a prior-year write-down of inventories.",
+    optionC: "The amount of reversal of any prior-year write-down of inventories that is recognized as a reduction in cost of sales\nin the current period. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-57",
+    topicId: "fsa",
+    stem: "The inventory tumover (calculated using average inventory) in Year 2 is closest to: Low | Madumnc) SEO",
+    optionA: '60. "\nConfirm',
+    optionB: "63, EE\nc.e7",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-58",
+    topicId: "fsa",
+    stem: "All else being equal, a write-down of inventory by a manufacturing company most likely results in a:",
+    optionA: "lower total asset turnover ratio and a lower current ratio. & B",
+    optionB: "higher total asset turnover ratio and a lower current ratio.",
+    optionC: "lower total asset turnover ratio and a higher current ratio. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-59",
+    topicId: "fsa",
+    stem: "Atthe end of Year 2, the balance sheet should reflect inventory (in € millions) of:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-60",
+    topicId: "fsa",
+    stem: "Which of the following ratios would most likely be positively affected by an inventory write-down compared to its\nvalue absent the write-down?\nx B",
+    optionA: "Activity",
+    optionB: "Liquidity\nx [63",
+    optionC: "Solvency",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-61",
+    topicId: "fsa",
+    stem: "As a result of the reversal of the write-down, the company's Year 2 financial statements should report a decrease in",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-62",
+    topicId: "fsa",
+    stem: "The inventory (in € thousands) is carried on the balance sheet at: Low | Madumnc) SEI",
+    optionA: "3,100.\nConfirm",
+    optionB: "3,200. [comm |\n€.3,300.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-63",
+    topicId: "fsa",
+    stem: "The revaluation surplus after the second revaluation is: Low | Sadumnc) SEO",
+    optionA: "—€2,500. Conti",
+    optionB: "€0. Confirm",
+    optionC: "€2,500.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-64",
+    topicId: "fsa",
+    stem: "The maximum allowable carrying amount (in € thousands) on the Year 2 balance sheet is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-65",
+    topicId: "fsa",
+    stem: "Ignoring income taxes, acquiring an intangible asset would most likely result in:",
+    optionA: "a lower net operating cash flow than internally developing the intangible asset. 8 B",
+    optionB: "the same net operating cash flow than intemally developing the intangible asset",
+    optionC: "a higher net operating cash flow than internally developing the intangible asset. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-66",
+    topicId: "fsa",
+    stem: "If the recognition criteria for an intangible asset have been met, the maximum amount of capitalized costs (in €\nmillions) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-67",
+    topicId: "fsa",
+    stem: "A company acquires a 5-year license for a product it plans to continue selling for the foreseeable future. The license ~~ s¢ A\ncan be renewed at minimal cost. The license should be:\nx B",
+    optionA: "carried on the balance sheet at historical cost.",
+    optionB: "amortised using the straight-line method over its estimated useful life. e c",
+    optionC: "amortised using the units-of-production method over is estimated useful if.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-68",
+    topicId: "fsa",
+    stem: "If a company sold PP&E with a carrying amount of £75,000 and reported a gain of £2,000, cash flow from investing\nactivities is:\nx B",
+    optionA: "£0.",
+    optionB: "£73,000.",
+    optionC: "£77,000. id c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-69",
+    topicId: "fsa",
+    stem: "Al else being equal and ignoring taxes, the revaluation at 31 December Year 1 leads to a:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-70",
+    topicId: "fsa",
+    stem: "Assuming no impairment, the abandonment of PP&E on the financial statements will result in a:\np_- S—",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-71",
+    topicId: "fsa",
+    stem: "An initial revaluation increases the carrying value of the asset valued under the revaluation model. Ignoring taxes,",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-72",
+    topicId: "fsa",
+    stem: "Financial Statement Analysis: Practice Pack @ This Question: 00:00 (3 Total: 01:32 Done Precticng\n« Question 72 of 130 # # RoviewAnswer or\nAn analyst gathers the following information (in € thousands) about a company's equipment reported under the cost\nmodel\nx B\nCarrying amount before impairment 2,000\nUndiscounted expected future cash flows 1,800 x\n1700 Gonfienco Lovet:\nCosts to sel IE",
+    optionA: "300.",
+    optionB: "350.\nc. 500.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-73",
+    topicId: "fsa",
+    stem: "The carrying value of the equipment should be:",
+    optionA: "€17,200.",
+    optionB: "€17.400.\n€.€20,000.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-74",
+    topicId: "fsa",
+    stem: "Ignoring income taxes, which of the following ratios decreases as a result of an impairment charge?",
+    optionA: "Net profit margin & B",
+    optionB: "Debt-to-equity ratio",
+    optionC: "Working capital tumover\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-75",
+    topicId: "fsa",
+    stem: "The gain on the sale (in € thousands) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-76",
+    topicId: "fsa",
+    stem: "Ignoring taxes, proceeds from sale of the equipment (in € thousands) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-77",
+    topicId: "fsa",
+    stem: "Which of the following disclosures is required for each class of PP&E carried under the cost model?",
+    optionA: "Remaining useful life\naes\n. Gross carrying amount",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Fair value and details of how it was obtained\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-78",
+    topicId: "fsa",
+    stem: "Which of the following financial statement disclosures concerning PP&E is required under US GAAP?",
+    optionA: "The balances of major classes of depreciable assets % B",
+    optionB: "The date of revaluation under the revaluation model",
+    optionC: "Areconciliation of carrying amount at the beginning and end of the period c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-79",
+    topicId: "fsa",
+    stem: "For leases with a term of twelve months or less, the lessee:",
+    optionA: "may recognize lease payments on a straight-ine basis. % B",
+    optionB: 'must report at lease inception a "right-of-use™ asset and a lease liability, which are both equal to the present value\nof future lease payments.',
+    optionC: 'must report at lease inception a *ight-of-use" asset and a lease liability, which are both equal to the undiscounted x c\nvalue of future lease payments.',
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-80",
+    topicId: "fsa",
+    stem: "Under which of the following classifications of leases will a lessor derecognize the leased asset and recognize a\nlease receivable on the balance sheet at lease inception?\nx B",
+    optionA: "Only a finance lease under IFRS",
+    optionB: "Only an operating lease under US GAAP e c",
+    optionC: "Both a finance lease under IFRS and an operating lease under US GAAP",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-81",
+    topicId: "fsa",
+    stem: "Compared to purchasing an asset using debt, leasing an asset is most likely to:",
+    optionA: "have a higher financing cost.\nrb\n. require a greater down payment.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "reduce lessees exposure to obsolescence.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-82",
+    topicId: "fsa",
+    stem: "Under US GAAP, in the second year of a multi-year lease, a lessee with an operating lease most likely reports a:",
+    optionA: "higher interest expense than it would if the lease were a finance lease. % B",
+    optionB: "lower depreciation expense than it would if the lease were a finance lease.",
+    optionC: "greater financing cash outflow than it would if the lease were a finance lease. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-83",
+    topicId: "fsa",
+    stem: "Which of the following components of change in the net pension asset or liability of a defined-benefit pension plans A\nrecognized in other comprehensive income?\nx B",
+    optionA: "Employees' service costs",
+    optionB: "Actuarial gains and losses e c",
+    optionC: "Net interest expense or income accrued on the beginning net pension asset or liability",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-84",
+    topicId: "fsa",
+    stem: "Which of the following could motivate a lessee to lease a high-value, long-lived asset rather than to purchase it?\nLease contracts:\nx B",
+    optionA: "usually require litle, if any, down payment.",
+    optionB: "are reported as off-balance sheet financing structures. e c",
+    optionC: "do not require the recognition of a liability on the balance sheet.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-85",
+    topicId: "fsa",
+    stem: "A company incurred research costs which were all expensed in the current fiscal year for financial reporting\npurposes. Applicable tax laws require research costs to be expensed over a 5-year period. If taxable profit will be\navailable against which the deductible temporary differences can be utilized, in the current fiscal year the company will ~~ % B\nmost likely record:\nx [63",
+    optionA: "a deferred tax asset.",
+    optionB: "a deferred tax liabilty.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-86",
+    topicId: "fsa",
+    stem: "Adeferred tax asset has been previously recognized. At the current balance sheet date, the criteria for economic\nbenefits are not met but the tax differences are still expected to be temporary. As a result:\nx B",
+    optionA: "the existing deferred tax asset should be reversed.",
+    optionB: "a valuation allowance account should be established. e c",
+    optionC: "the existing deferred tax asset should be reclassified as equity.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-87",
+    topicId: "fsa",
+    stem: "Deferred tax assets could arise when:",
+    optionA: "taxable income exceeds accounting profit.",
+    optionB: "the carrying amount of assets exceeds their tax base.",
+    optionC: "accounting income tax expense exceeds income taxes payable. x c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-88",
+    topicId: "fsa",
+    stem: "The carrying amount of an asset being higher than its tax base may be considered a:",
+    optionA: "temporary difference resulting in a deferred tax asset. % B",
+    optionB: "permanent difference resulting in a deferred tax asset.",
+    optionC: "temporary difference resulting in a deferred tax liabilty. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-89",
+    topicId: "fsa",
+    stem: "Under US GAAP, the recognition of a valuation allowance for deferred tax assets impacts:",
+    optionA: "the effective tax rate only. & B",
+    optionB: "the statutory tax rate only.",
+    optionC: "both the effective tax rate and statutory tax rate.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-90",
+    topicId: "fsa",
+    stem: "Adeferred tax liability could arise when:",
+    optionA: "the tax base of an asset is greater than its carrying amount & B",
+    optionB: "the carrying amount of a liabilty is greater than its tax base.",
+    optionC: "financial accounting income tax expense exceeds income taxes payable c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-91",
+    topicId: "fsa",
+    stem: "Which of the following companies would most likely be considered to have the lowest financial reporting quality,\nother things equal?\nx B",
+    optionA: "A company that reports the results from two different segments as a combined entity.",
+    optionB: "A company that reports significant profits due to a favorable exchange rate movement. e c",
+    optionC: "A company that provides high quality, decision-useful information under GAAP but delays its reports.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-92",
+    topicId: "fsa",
+    stem: "An analyst would most likely conduct additional analysis when faced with which of the following financial\npresentations?\nx B",
+    optionA: "Anon-GAAP financial measure that excludes an expense that is likely to recur",
+    optionB: "Reporting a non-GAAP financial measure in an SEC filing e c",
+    optionC: "Achange from LIFO inventory accounting to FIFO",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-93",
+    topicId: "fsa",
+    stem: "Which of the following is lowest in quality on the spectrum of GAAP conforming financial reports?",
+    optionA: "Aggressive accounting choices\n:",
+    optionB: "Earnings management",
+    optionC: "Conservative accounting choices\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-94",
+    topicId: "fsa",
+    stem: "The equipments carrying amount (in € thousands) after impairment is: Low | Sadumnc) SEO",
+    optionA: "7,000 —\n8.8,800\n€.9,000",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-95",
+    topicId: "fsa",
+    stem: "Which of the following conditions conducive to issuing low-quality financial reports is most likely a result of poor\ninternal controls?\nx B",
+    optionA: "Motivation",
+    optionB: "Opportunity",
+    optionC: "Rationalization x",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-96",
+    topicId: "fsa",
+    stem: "Under Intemational Financial Reporting Standards (IFRS), reported operating cash flows can be increased by the\nclassification choice made for:\nx B",
+    optionA: "dividends paid.",
+    optionB: "interest received. e c",
+    optionC: "impaiment losses on fixed assets",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-97",
+    topicId: "fsa",
+    stem: "Which of the following is most accurate with respect to inherent limitations of audits?",
+    optionA: "An audit opinion is based on a review of information only prepared by the auditor % B",
+    optionB: "An audit is based on an exhaustive review of al transactions during a financial year",
+    optionC: "An expectations gap may exist between the auditor's role and the public's expectation of auditors c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-98",
+    topicId: "fsa",
+    stem: "Which of the following might indicate that a company uses aggressive accounting choices to increase its reported\nperformance and financial position in the current period?\nx B",
+    optionA: "Increasing the estimated salvage values of PP",
+    optionB: "Changing the depreciation method from straight-line to double-declining balance e c",
+    optionC: "Changing from weighted average to FIFO inventory valuation method in a period of declining inventory prices and\nconstant inventory quantities —",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-99",
+    topicId: "fsa",
+    stem: "Based on this information, which company is most solvent?",
+    optionA: "Company 1",
+    optionB: "Company 2",
+    optionC: "Company 3",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-100",
+    topicId: "fsa",
+    stem: "ROE is closest to: Lov | Macken) Hoh",
+    optionA: "5.4%. p=",
+    optionB: "6.9%",
+    optionC: "8.1%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-101",
+    topicId: "fsa",
+    stem: "If all purchases and sales were made on credit, the cash conversion cycle (based on a 360-day year) is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-102",
+    topicId: "fsa",
+    stem: "All else being equal, the cash conversion cycle most likely shortens if:",
+    optionA: "payables tumover decreases.\nah\n. inventory turnover decreases.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "days of sales outstanding increases.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-103",
+    topicId: "fsa",
+    stem: "The total debt ratio is: low] | Mecha] SHioh",
+    optionA: "0.25. Si\nB00;\n€.2.00.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-104",
+    topicId: "fsa",
+    stem: "Based only on this information, which of the following ratio(s) may indicate improved solvency from Year 1 to Year\n2",
+    optionA: "Interest coverage ratio only",
+    optionB: "Financial leverage ratio only",
+    optionC: "Both interest coverage ratio and financial leverage ratio",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-105",
+    topicId: "fsa",
+    stem: "The fixed charge coverage ratio is closest to: low | Madumnc) SEO\nA12 on\nB.186\nc.20",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "186\nc.20",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-106",
+    topicId: "fsa",
+    stem: "Based only on this information, the company's debt-to-capital ratio is closest to: Low | Sadumnc) SEO\nAAT% —\nB.21%\nc.21%",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "21%\nc.21%",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-107",
+    topicId: "fsa",
+    stem: "The company's quick ratio is\nA013.\nB.033.\nc.040.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "033.\nc.040.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-108",
+    topicId: "fsa",
+    stem: "Based only on the cash conversion cycle, the company's liquidity position from Year 1 to Year 2 has:",
+    optionA: "deteriorated.\nConfirm",
+    optionB: "remained the same. [comm |",
+    optionC: "improved.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-109",
+    topicId: "fsa",
+    stem: "The company's trailing 12 month earnings (in € thousands) for the period ended 30 June of Year 2 is: Low; | Medum | EoD",
+    optionA: "1,700. Eo",
+    optionB: "3,700. Confirm\n4.200.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-110",
+    topicId: "fsa",
+    stem: "The average tax rate is closest fo:",
+    optionA: "43%.",
+    optionB: "47%.",
+    optionC: "57%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-111",
+    topicId: "fsa",
+    stem: "Which of the following ratios is most appropriate in measuring a company's ability to cover its debt payments?",
+    optionA: "Return on equity",
+    optionB: "Fixed asset tumover",
+    optionC: "Fixed charge coverage\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-112",
+    topicId: "fsa",
+    stem: "The total asset tumover ratio is closest fo:\nA10.\nB.13.\nc.15.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "13.\nc.15.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-113",
+    topicId: "fsa",
+    stem: "The financial leverage ratio may be calculated as:",
+    optionA: "EBIT divided by interest payments. % B",
+    optionB: "total debt divided by total shareholders' equity.",
+    optionC: "average total assets divided by average shareholders' equity. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-114",
+    topicId: "fsa",
+    stem: "Which of the following is defined as how long a company can continue to pay its daily cash expenditures from its\nexisting liquid assets without receiving additional cash inflow?\nx B",
+    optionA: "Cash conversion cycle",
+    optionB: "Defensive interval ratio e c",
+    optionC: "Fixed charge coverage",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-115",
+    topicId: "fsa",
+    stem: "Adebt-to-equity ratio of 1.0 most likely resuits in a debt-to-capital ratio of:",
+    optionA: "05.",
+    optionB: "10. % B\nc.20.\nx [63",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-116",
+    topicId: "fsa",
+    stem: "Which of the following most likely indicates improved efficiency of a company's credit and collection policy? An\nincrease in:\nx B",
+    optionA: "receivables tumover ratio",
+    optionB: "days of sales outstanding e c",
+    optionC: "number of days of payables",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-117",
+    topicId: "fsa",
+    stem: "Based only on this information, the payables turover ratio for Year 2 is: Low | Madumnc) SEO\nAQ. —\n8.10.\nc.12.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-118",
+    topicId: "fsa",
+    stem: 'Financial Statement Analysis: Practice Pack ® This Question: 00:00 ( Total: 02:01 Done Practicing\nil Question 118 of 130 # & ReviewAnswer of\nAn analyst gathers the following information (in € millions) about a company:\nTw " B\nEamings before res Tw)\nx c\nET NR) ones\na ROA:\nA 11%. on\nBa 3%:\nC. 15%.',
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "15%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-119",
+    topicId: "fsa",
+    stem: "Which of the following analyses can be used to compare a company's financial ratios with those of its major\ncompetitors?\nx B",
+    optionA: "Trend only",
+    optionB: "Cross-sectional only e c",
+    optionC: "Both trend and cross-sectional",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-120",
+    topicId: "fsa",
+    stem: "Compared to the industry average, which of the following financial ratios most likely indicates a company has a\nhighly efficient credit and collection process? A relatively low:\nx B",
+    optionA: "receivables tumover ratio",
+    optionB: "number of days sales outstanding x Cc",
+    optionC: "number of days of inventory on hand",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-121",
+    topicId: "fsa",
+    stem: "All else being equal, a company with older assets has a fixed asset tumover ratio that is:",
+    optionA: "lower compared to a company with newer assets.\n20)\n. the same compared to a company with newer assets.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "higher compared to a company with newer assets. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-122",
+    topicId: "fsa",
+    stem: "With respect to company analysis, measures of inventory management are best described as",
+    optionA: "activity ratios.",
+    optionB: "solvency ratios. * B",
+    optionC: "profitability ratios.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-123",
+    topicId: "fsa",
+    stem: "Which of the following is most likely a measure of a company's ability to meet ts short-term obligations?",
+    optionA: "Quick ratio",
+    optionB: "Operating profit margin ad B",
+    optionC: "Days of payables outstanding\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-124",
+    topicId: "fsa",
+    stem: "Ifthe price elasticity of demand for a product is 0.8 and its unit cost remains constant, a 10% increase in its selling\nprice will most likely result in:\nx B",
+    optionA: "no change in cost of sales.",
+    optionB: "a decrease in volume of 8%. e c",
+    optionC: "anincrease in revenue of 8%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-125",
+    topicId: "fsa",
+    stem: "Maintaining prior views or forecasts by inadequately incorporating new information best describes:",
+    optionA: "conservatism bias.",
+    optionB: "overconfidence bias. ad B",
+    optionC: "representaiveness bias.\nx [63",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-126",
+    topicId: "fsa",
+    stem: "Inthe Porter's five forces framework, a company is most likely to have the greatest profitability if:",
+    optionA: "the threat of subsitutes is low and the bargaining power of buyers is low. & B",
+    optionB: "the threat of substitutes is low and the bargaining power of buyers is high",
+    optionC: "the threat of subsitutes is high and the bargaining power of buyers is low. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-127",
+    topicId: "fsa",
+    stem: "The analyst's forecasted gross profit margin should be closest fo a(n):",
+    optionA: "decrease of 1%. po",
+    optionB: "increase of 1%. Conn",
+    optionC: "increase of 4%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fsa-128",
+    topicId: "fsa",
+    stem: "All else being equal, forecasting an increase in which of the following will most likely increase forecasted EPS fora 5 A\ncompany?\nx B",
+    optionA: "Share repurchases",
+    optionB: "Secondary stock issuances e c",
+    optionC: "Equity-based compensation of employees",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-129",
+    topicId: "fsa",
+    stem: "For a company in a cyclical industry, normalized earnings are best described as",
+    optionA: 'current earnings that include the impact of acquisitions.\n2a "\n. mid-cycle earings in the absence of temporary factors.',
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "earings from the peak years excluding temporary factors. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fsa-130",
+    topicId: "fsa",
+    stem: "Porter's five forces analysis, used in conjunction with financial forecasting, can be used to estimate a company's\nfuture profit margin relative to\nx B",
+    optionA: "only its competitors.",
+    optionB: "only ts historic margins. e c",
+    optionC: "both its competitors and its historic margins.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-1",
+    topicId: "corp",
+    stem: "With respect to motivations for globalization, which of the following is best characterized as an intrinsic gain?",
+    optionA: "Increased supply chain efficiency",
+    optionB: "Accelerated productivity from learing new methods",
+    optionC: "Access to resources that are not readily available in the home country Cc\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-2",
+    topicId: "corp",
+    stem: "In a limited partnership, business operations are the responsibility of:",
+    optionA: "the general partner only. o B",
+    optionB: "the limited partners only.",
+    optionC: "both the general partner and the limited partners. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-3",
+    topicId: "corp",
+    stem: "Compared to private corporations, which of the following is a typical characteristic of public corporations?",
+    optionA: "Agovemment is a shareholder o B",
+    optionB: "Shares are listed on a stock exchange",
+    optionC: "Transfer of ownership between investors is more difficult Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-4",
+    topicId: "corp",
+    stem: "Compared to those of public companies, share issuances of private companies most likely:",
+    optionA: 'raise larger amounts of capital. " B',
+    optionB: "includo a larger number of investors.",
+    optionC: "include investors with longer holding periods.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-5",
+    topicId: "corp",
+    stem: 'Owners have limited liability in a:\nA tion.\ncorporation. " B\nB. sole proprietorship.\nC. general partnership.\nx Cc\nConfidence Lovel:',
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "sole proprietorship.",
+    optionC: "general partnership.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-6",
+    topicId: "corp",
+    stem: "Double taxation of profits is most likely a concern for owners in:",
+    optionA: "corporations.\nre",
+    optionB: "limited partnerships.",
+    optionC: "general partnerships.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-7",
+    topicId: "corp",
+    stem: "The purchase of which of the following shares most likely requires investors to be accredited?",
+    optionA: "Public company shares only\n.",
+    optionB: "Private company shares only",
+    optionC: "Both public company shares and private company shares c\nx\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-8",
+    topicId: "corp",
+    stem: "With respect to ESG implementation, which of the following is most likely a social factor?",
+    optionA: 'Board composition " B',
+    optionB: "Pollution prevention",
+    optionC: "Management of human capital\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-9",
+    topicId: "corp",
+    stem: "A corporation's stakeholders most likely include:",
+    optionA: 'shareholders only. " B',
+    optionB: "controling shareholders only.",
+    optionC: "all shareholders and all employees.\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-10",
+    topicId: "corp",
+    stem: "Which of the following statements about corporations is most accurate?",
+    optionA: 'Upside return potential is unlimited for both equity holders and debtholders " B',
+    optionB: "Equity Is riskier than dobt from the perspective of both investors and issuers",
+    optionC: "Losses for both equity holders and debtholders are limited to their initial investment Cc\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-11",
+    topicId: "corp",
+    stem: "Which of the following is most accurate?",
+    optionA: 'Risk appetites are similar among private lenders " B',
+    optionB: "Staggered boards provide continuous implementation of strategy and oversight",
+    optionC: "A company's CEO is responsible for implementing the company's strategy under the oversight of the company's\nshareholders. x Cc\nConfidence Lovel\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-12",
+    topicId: "corp",
+    stem: "Which of the following company stakeholders is most likely exposed to the greatest information asymmetry when\ncompared to the company's management?\nx B",
+    optionA: "Abank lender",
+    optionB: "A public debtholder x c",
+    optionC: "Amember of the board\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-13",
+    topicId: "corp",
+    stem: "Which of the following is most likely a primary role of a corporate board of directors?",
+    optionA: "Voting common shares\nh",
+    optionB: "Implementing corporate strategy",
+    optionC: "Appointing the company's top managers\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-14",
+    topicId: "corp",
+    stem: "Which of the following features of an executive remuneration plan most likely indicates a misalignment of interests\nbetween executives and investors? Executive payouts that\nx B",
+    optionA: "consist of only cash and no equity.",
+    optionB: "are consistent with those of similar companies in the same industry. x c",
+    optionC: "exhibit significant variation over time based on company performance.\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-15",
+    topicId: "corp",
+    stem: "Which of the following stakeholder groups is most likely to have the highest risk tolerance with respect to the\nVolatility of a company's performance?\nx B",
+    optionA: "Creditors",
+    optionB: "Suppliers\nx Cc",
+    optionC: "Shareholders\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-16",
+    topicId: "corp",
+    stem: "With respect to corporate governance, which of the following represents a principal-agent conflict?",
+    optionA: 'Shareholders and creditors have different investment risk tolerances " B',
+    optionB: "Managers seek to maximize their benefits to the detriment of shareholders' interests",
+    optionC: "Controlling shareholders place their interests ahead of minority shareholders' interests Cc\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-17",
+    topicId: "corp",
+    stem: "The interests of creditors are least likely aligned with the interests of:",
+    optionA: "suppliers.",
+    optionB: "shareholders.",
+    optionC: "long-term customers.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-18",
+    topicId: "corp",
+    stem: "Which of the following is most likely a good corporate govemance practice?",
+    optionA: 'Disclosing related-party transactions " B',
+    optionB: "Rewarding managers for being more isk-averse than shareholders",
+    optionC: "Designing remuneration policies that encourage managers to focus on short-term stock performance c\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-19",
+    topicId: "corp",
+    stem: "Which of the following best reflects a misalignment of interests between managers/directors and shareholders?",
+    optionA: 'A compensation package relying too litle on stock options can motivate excessive risk-taking behavior by " B\nmanagement',
+    optionB: "When the overall level of board director compensation is low, directors may avoid speaking out against\nmanagement in the interest of shareholders x Cc",
+    optionC: "Management compensation which is high and fied to business size may lead to managers pursuing acquisitions\nthat might not increase shareholder value",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-20",
+    topicId: "corp",
+    stem: "Information asymmetry between managers and shareholders is most likely higher if a company:",
+    optionA: 'makes products of greater complexity. " B',
+    optionB: "has higher levels of institutional ownership.",
+    optionC: "provides more transparent accounting information. c\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-21",
+    topicId: "corp",
+    stem: "Managers' seeking to retain their jobs by pursuing initiatives they are uniquely suited to manage is most likely an\nexample of\nx B",
+    optionA: "self-dealing.",
+    optionB: "enirenchment,\nx Cc",
+    optionC: "empire building\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-22",
+    topicId: "corp",
+    stem: "Which of the following board committees is most fikely responsible for recommending the appointment of an\nexternal auditor and proposing its remuneration?\nx B",
+    optionA: "Audit committee",
+    optionB: "Nominating committee x c",
+    optionC: "Remuneration committee\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-23",
+    topicId: "corp",
+    stem: "Which of the following board committees is among the three most commonly recommended by corporate\ngovernance codes?\nx B",
+    optionA: "Risk commiiee",
+    optionB: "Creditor committee x c",
+    optionC: "Nominating committee\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-24",
+    topicId: "corp",
+    stem: "With respect to liquidity management, which of the following activities most likely provides access to a primary\nsource of liquidity?\nx B",
+    optionA: "Liquidating obsolete assets",
+    optionB: "Creating an effective cash management system x c",
+    optionC: "Negotiating new debt contracts that delay principal repayment\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-25",
+    topicId: "corp",
+    stem: "Which of the following is best categorized as a drag on liquidity?",
+    optionA: 'Insufficient oredit lines " B',
+    optionB: "Uncollected receivables",
+    optionC: "Early payments to vendors\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-26",
+    topicId: "corp",
+    stem: "Which of the following statements about sources of liquidity is most accurate?",
+    optionA: 'Filing for bankrupt is considered a secondary source of liquidity. " B',
+    optionB: "Secondary sources of liquidity have a lower cost than primary sources of liquidity.",
+    optionC: "Using a primary source of liquidity impacts the financial and operating positions of a company. c\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-27",
+    topicId: "corp",
+    stem: "Which of the following is a pull on a company's liquidity?",
+    optionA: 'Obsolete inventory " B',
+    optionB: "Reduced credit mits",
+    optionC: "Uncollected receivables\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-28",
+    topicId: "corp",
+    stem: "Which of the following is an example of a secondary source of liquidity for a company?",
+    optionA: "Short-term funds\nfal",
+    optionB: "Liquidating assets",
+    optionC: "Effective cash management\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-29",
+    topicId: "corp",
+    stem: "The expected IRR for this project is most likely: Confidence Lovel:",
+    optionA: "loss than 12%.",
+    optionB: "equal to 12%.\nSSS",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-30",
+    topicId: "corp",
+    stem: "When choosing between mutually exclusive projects, an analyst should:",
+    optionA: 'accept the project with the highest IRR. " B',
+    optionB: "use the opportunity cost of funds as the discount rate.",
+    optionC: "accept the projects for which the IRR is greater than the opportunity cost of funds. c\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-31",
+    topicId: "corp",
+    stem: "The NPV of a new project is expected to be —$0.20 million. An incremental investment of $0.40 million would give\n'management the flexibility to switch to a lower cost input in the future. If this option has an estimated value of $0.80\nmilion, the value of the project including the option is",
+    optionA: "$0.20 millon. x Cc",
+    optionB: "50.40 million.\n€.$1.00 milion. Confidence Lovel:\nLow | Medium | High",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-32",
+    topicId: "corp",
+    stem: "Ifthe hurdle rate is 8%, the company should invest in: Confidence Lovel:",
+    optionA: "Project 1 only.",
+    optionB: "Project 2 only. .",
+    optionC: "both Project 1 and Project 2. Confirm",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-33",
+    topicId: "corp",
+    stem: "The ability to abandon an investment if it has produced disappointing financial results is most likely a type of:",
+    optionA: "sizing option.",
+    optionB: "flxibilty option.",
+    optionC: "fundamental option\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-34",
+    topicId: "corp",
+    stem: "Ameasure of how effectively capital is converted into after-tax operating profits is the:",
+    optionA: "hurdle rate.",
+    optionB: "cost of capital.",
+    optionC: "return on invested capital.\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-35",
+    topicId: "corp",
+    stem: "Management most likely has the least amount of discretion when deciding to invest in a(n)",
+    optionA: 'regulatory project. " B',
+    optionB: "expansion project.",
+    optionC: "going concem project.\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-36",
+    topicId: "corp",
+    stem: 'The net present value of the investment is closest to: ow: | Mediem:| "High',
+    optionA: "$85 million. =\nConfirm",
+    optionB: "$116 milion.\n€. $175 milion.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-37",
+    topicId: "corp",
+    stem: "Which of the following is a common capital allocation pitfall?",
+    optionA: 'Ignoring sunk costs " B',
+    optionB: "Anchoring capital investment budgets to prior year amounts",
+    optionC: "Considering different states of the world for investment alternatives Cc\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-38",
+    topicId: "corp",
+    stem: "Maintenance capital expenditures include:",
+    optionA: 'continuous improvements of existing facilites. " B',
+    optionB: "anti-money-laundering training for employees.",
+    optionC: "investing in solar panel production to benefit from government subsidies. c\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-39",
+    topicId: "corp",
+    stem: "Which statement regarding capital investments is correct?",
+    optionA: 'Going concern projects are investments to increase the size of the business " B',
+    optionB: "Regulatory compliance projects seldom increase a firm's expenses with no added revenue",
+    optionC: "Capital investments are usually necessary if a firm extends its existing operations to adjacent products and\nservices x Cc\nConfidence Lovel\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-40",
+    topicId: "corp",
+    stem: "The company's WACC is closest to:",
+    optionA: "8.0%.",
+    optionB: "8.4%.\n€.92%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-41",
+    topicId: "corp",
+    stem: "When a company's target capital structure is unknown to analysts, which of the following is the least appropriate\nmethod to estimate the capital structure weights?\nx B",
+    optionA: "Using the book values of capital components",
+    optionB: "Using current market values of capital components x c",
+    optionC: "Analyzing management's statements to infer the target capital structure\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-42",
+    topicId: "corp",
+    stem: "The source of capital that most likely benefits from a tax shield is:",
+    optionA: "debt.",
+    optionB: "equity. % B",
+    optionC: "preferred equity.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-43",
+    topicId: "corp",
+    stem: "According to the pecking order theory, company managers most likely prefer to:",
+    optionA: 'issue debt as the last resort " B',
+    optionB: "raise equity first to preserve cash-flow.",
+    optionC: "rely on internal financing over new equity.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-44",
+    topicId: "corp",
+    stem: "Which of the following mature companies is most likely to use the greatest amount of leverage in its capital\nstructure?\nx B",
+    optionA: "Mining company\n8. Software company x c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Shipping company\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-45",
+    topicId: "corp",
+    stem: "The weight of debt in the company's target capital structure is closest fo:\n_ Confidence Lovel:\n: Le Medi h\nB.43%. ow jum | Hig\nc.52%",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "43%. ow jum | Hig\nc.52%",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-46",
+    topicId: "corp",
+    stem: "Based on the Modigliani-Miller propositions, the company's cost of equity is closest to:",
+    optionA: "104%.",
+    optionB: "11.3%.",
+    optionC: "12.0%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-47",
+    topicId: "corp",
+    stem: "Al else being equal, a company most likely has a reduced debt capacity when its:",
+    optionA: "current ratio increases.\n:",
+    optionB: "loverage ratio decreases.",
+    optionC: "interest coverage ratio decreases.\nx [¢}\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-48",
+    topicId: "corp",
+    stem: "At which stage in its life cycle would a typical company most likely have more debt than equity in its capital\nstructure?\nx B",
+    optionA: "Startup stage",
+    optionB: "Growth stage\nx Cc",
+    optionC: "Mature stage",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-49",
+    topicId: "corp",
+    stem: "A company increases its debt from 20% to 60% of its capital structure. Based on the Modigliani and Miller\nproposition (without taxes) regarding capital structure, the WACC of the company:\nx B",
+    optionA: "decreases.\n8. remains the same. x c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "increases.\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-50",
+    topicId: "corp",
+    stem: "According to the Modigliani-Miller Proposition I without taxes, when a firm increases the proportion of debt in its\ncapital structure, the firm value:\nx B",
+    optionA: "decreases.\n8. remains unchanged. x c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "increases.\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-51",
+    topicId: "corp",
+    stem: "Which of the following combination of factors most likely increases a company's ability to support debt in its capital\nstructure?\nx B",
+    optionA: "High revenue, low cash flow volatility, and a low level of fungible assets",
+    optionB: "High revenue, low operating leverage, and a high level of fungible assats x c",
+    optionC: "Low cash flow volatility, low operating leverage, and a low level of fungible assets\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-52",
+    topicId: "corp",
+    stem: "All else being equal, if interest on debt is tax deductible, an increase in the company's marginal tax rate will",
+    optionA: `decrease the company's WACC. " B`,
+    optionB: "not affect the company's WACC.",
+    optionC: "increase the company's WACC.\nx [¢}\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-53",
+    topicId: "corp",
+    stem: "A company's cost of equity capital exceeds its cost of debt capital. If interest expenses are tax deductible, which of\nthe following most likely decreases the company's weighted average cost of capital? An increase in the:\nx B",
+    optionA: "weighting of equity",
+    optionB: "pre-tax cost of debt x c",
+    optionC: "marginal corporate tax rate\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-54",
+    topicId: "corp",
+    stem: "Ifthe marginal corporate tax rate decreases from 35% to 10%, the change in the WACC is closest to: Confidence Lovel:",
+    optionA: "-2.25%.",
+    optionB: "—1.35%\n© 1am",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-55",
+    topicId: "corp",
+    stem: "Based on Modigliani-Miller's Proposition Il with taxes, if a firm has debt in its capital structure and the tax rate\nincreases, the firm's cost of equity will\nx B",
+    optionA: "decrease.\n8. romain the same. x c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "increase.\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-56",
+    topicId: "corp",
+    stem: "According to Modigliani-Miller Proposition I without taxes, all else being equal, the value of a levered firm increases 3 A\nas its:\nx B",
+    optionA: "unlevered value decreases.",
+    optionB: "debt-to-equity ratio decreases. x c",
+    optionC: "expected future cash flows increase.\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-57",
+    topicId: "corp",
+    stem: "If the capital structure of the corporation is 40% debt and 60% equity, the WACC of the corporation is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-58",
+    topicId: "corp",
+    stem: "Target capital structure is often expressed using book values of equity and debt because:",
+    optionA: 'capital structure policy is not aligned to measures used by third parties. " B',
+    optionB: "market values can fluctuate substantially and seldom impact the appropriate level of borrowing.",
+    optionC: "for management, the primary concern is the amount and types of capital invested in the company, not by the\ncompany. x c\nConfidence Lovel\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-59",
+    topicId: "corp",
+    stem: "With respect to capital structure, operating leverage is",
+    optionA: 'an industry factor. " B',
+    optionB: "an issuer-specific factor.",
+    optionC: "a financial market factor.\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-60",
+    topicId: "corp",
+    stem: "An increased use of debt may result in a reduction in the agency costs of equity according to the",
+    optionA: 'free cash flow hypothesis. " B',
+    optionB: "pecking order theory of capital structure.",
+    optionC: "static trade-off theory of capital structure.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-61",
+    topicId: "corp",
+    stem: "A company's required rate of return is ts:\nARR.\nB.WACC.\nC. cost of equity.\nx Cc\nConfidence Lovel:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "WACC.",
+    optionC: "cost of equity.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-62",
+    topicId: "corp",
+    stem: "Under the static trade-off theory, the optimal capital structure maximizes:",
+    optionA: "firm value.",
+    optionB: "total equity value.",
+    optionC: "the tax shield from debt.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-63",
+    topicId: "corp",
+    stem: "Which of the following pricing models is most ikely used when a firm willingly sacrifices margins to build market\nshare?\nx B",
+    optionA: "Dynamic pricing",
+    optionB: "Freemium pricing\nx Cc",
+    optionC: "Penetration pricing\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-64",
+    topicId: "corp",
+    stem: "The sequence of processes involved in the creation of a product, both within and external to a firm, is best referred\ntoas a:\nx B",
+    optionA: "value chain.",
+    optionB: "supply chain.",
+    optionC: "business model. x iS",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-65",
+    topicId: "corp",
+    stem: "The business model of a knowledge aggregation company that allows its users to contribute directly to online\ncontent is best referred to as a:\nx B",
+    optionA: "platform business model.",
+    optionB: "marketplace business model. x c",
+    optionC: "crowdsourcing business model.\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-66",
+    topicId: "corp",
+    stem: "A company manufacturing and selling a product using someone else's brand name in return for a royalty most likely 3 A\noperates:\nx B",
+    optionA: "under a franchise model.",
+    optionB: "as a contract manufacturer. x c",
+    optionC: "under a licensing arrangement\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-67",
+    topicId: "corp",
+    stem: "The flow of finished goods from manufacturer to wholesaler, retailer, and finally to the end customer best describes\na(n):\nx B",
+    optionA: "direct sales strategy.",
+    optionB: "omnichannel strategy. x Cc",
+    optionC: "traditional channel strategy.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-68",
+    topicId: "corp",
+    stem: "When analyzing a company, analysts should:",
+    optionA: `ignore the company's business model. " B`,
+    optionB: "develop their own understanding of the company's business model.",
+    optionC: "rely on management's description of the company's business model. c\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-69",
+    topicId: "corp",
+    stem: `Which of the following would most likely be included on a company's "financial" balance sheet?`,
+    optionA: 'Short-term debt obligations " B',
+    optionB: "Relationships with customers",
+    optionC: "Relationships with key suppliers.\nx Cc\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "corp-70",
+    topicId: "corp",
+    stem: "A company that produces goods to be marketed by other firms is best described as having a.",
+    optionA: "value added reseller business model.\nsen 6",
+    optionB: "licensing arrangement business model.",
+    optionC: "contract manufacturer business model.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-71",
+    topicId: "corp",
+    stem: "If a corporation is financed with both debt and equity, which of the following must the corporation pay?",
+    optionA: "Interest only",
+    optionB: "Dividends only",
+    optionC: "Both interest and dividends\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-72",
+    topicId: "corp",
+    stem: "Charging prices that differ based on product features or volume purchased best describes:",
+    optionA: "tiered pricing.\nlhe",
+    optionB: "dynamic pricing.",
+    optionC: "value-based pricing.\nx Cc\nConfidence Lovel:",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "corp-73",
+    topicId: "corp",
+    stem: `"Economic" profit is best described as the return to a firm's owners:`,
+    optionA: 'in the form of retained earnings and distributions to the owners. " B',
+    optionB: "after corporate taxes and taxes on distributions have been paid.",
+    optionC: "in excess of what they could have earned elsewhere on different investments. Cc\nx\nConfidence Lovel:\nLow | Medium | High",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-1",
+    topicId: "equity",
+    stem: "Which of the following financial intermediaries is most likely to provide liquidity service to its clients?",
+    optionA: "Brokers",
+    optionB: "Dealers LS B",
+    optionC: "Exchanges\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-2",
+    topicId: "equity",
+    stem: "An investor writes a put option on FTSE 100 Index futures. Which of the following best describes the investor's\nposition with respect to the put contract and her exposure to the underlying index future, respectively?\nx B",
+    optionA: "Long, short",
+    optionB: "Short, long\n4 x Cc",
+    optionC: "Short, short",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-3",
+    topicId: "equity",
+    stem: "A characteristic of real assets is that they most likely:",
+    optionA: "trade in liquid markets.\nx B",
+    optionB: "are inexpensive to manage.",
+    optionC: "are unique assets with different attributes.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-4",
+    topicId: "equity",
+    stem: "When a company raises common equity capital in the public market, the company most likely:",
+    optionA: "moves money from the present to the future.",
+    optionB: "agrees to make scheduled distributions in the future.",
+    optionC: "is required to meet regulatory reporting requirements. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-5",
+    topicId: "equity",
+    stem: "The market structure that uses trade pricing rules to match buyers and sellers is most likely a(n):",
+    optionA: "brokered market.\nx B",
+    optionB: "order-driven market",
+    optionC: "quote-driven market.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-6",
+    topicId: "equity",
+    stem: "Broker 1 has a minimum margin requirement of 62.5% and Broker 2 has a maximum leverage ratio of 1.6. The\n'maximum financial leverage possible with Broker 1 is:\nx B",
+    optionA: "less than the maximum financial leverage with Broker 2.",
+    optionB: "equal to the maximum financial leverage with Broker 2. x",
+    optionC: "greater than the maximum financial leverage with Broker 2.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-7",
+    topicId: "equity",
+    stem: "If securities are purchased on margin with a maximum leverage ratio of 1.75, the minimum margin requirement is\nclosest to:\nx B",
+    optionA: "43%.",
+    optionB: "57%.\nx Cc",
+    optionC: "75%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-8",
+    topicId: "equity",
+    stem: "An investor purchases a nondividend-paying stock using 35% margin. If the stock price rises by 7%, the total return\non this leveraged position is closest\nx B",
+    optionA: "95%.",
+    optionB: "10.8%.\nx Cc\n€.20.0%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-9",
+    topicId: "equity",
+    stem: "An instruction that indicates when an order may be filed is most likely a(n):",
+    optionA: "validity instruction.\ndr",
+    optionB: "clearing instruction.",
+    optionC: "execution instruction.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-10",
+    topicId: "equity",
+    stem: "If the share price declines, the highest price at which the trader will receive a margin call is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-11",
+    topicId: "equity",
+    stem: "Which of the following is most likely used to raise funds for a capital project?",
+    optionA: "Equity issuance only",
+    optionB: "A stock dividend only",
+    optionC: "Both equity issuance and a stock dividend\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-12",
+    topicId: "equity",
+    stem: "If the trader submits a fill or kill buy order for 20 shares at a limit price of $76.00, the trader's average price per\nshare for this trade will be closest to:",
+    optionA: "$75.80.",
+    optionB: "$75.97.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-13",
+    topicId: "equity",
+    stem: "The price below which a margin call will first occur is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-14",
+    topicId: "equity",
+    stem: "An investor buys a security on margin posting 50% of the initial price as equity. All else being equal, if the price\ndeclines 25%, the investor's new leverage ratio is closest to:\nx B\nA2.\nB.3.\nx Cc\nc.a.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "3.\nx Cc\nc.a.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-15",
+    topicId: "equity",
+    stem: "Clearing instructions for an order most likely indicate:",
+    optionA: "how to fill the order.",
+    optionB: "when the order may be filled.",
+    optionC: "how to arrange the settlement of the trade.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-16",
+    topicId: "equity",
+    stem: "In a well-functioning financial system, changes in asset prices primarily reflect changes in:",
+    optionA: "execution costs.\n2",
+    optionB: "the demand for liquidity.",
+    optionC: "fundamental asset values.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-17",
+    topicId: "equity",
+    stem: "When an investment bank guarantees the sale of an entire issue at a negotiated offering price, this best describes\na(n):\nx B",
+    optionA: "rights offering.",
+    optionB: "best ert ofering. % c",
+    optionC: "underwritten offering.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-18",
+    topicId: "equity",
+    stem: "Atrader uses margin to purchase a stock for $50 by posting 30% equity. If the first margin call occurs when the\nprice falls below $43.75, the maintenance margin requirement i closest to:\nx B",
+    optionA: "13%.",
+    optionB: "18%.\nx Cc\n€.20%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-19",
+    topicId: "equity",
+    stem: "If the cost to fill trades increases, the market's informational efficiency most likely:",
+    optionA: "decreases.\nx B",
+    optionB: "remains the same.",
+    optionC: "increases.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-20",
+    topicId: "equity",
+    stem: "If the ability of clients to identify competent agents increases, the need for regulation most likely:",
+    optionA: "decreases.\nx B",
+    optionB: "remains the same.",
+    optionC: "increases.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-21",
+    topicId: "equity",
+    stem: "Asell order that instructs the broker to obtain the best price immediately available without specifying a minimum\nprice is a:\nx B",
+    optionA: "stop order.",
+    optionB: "limit order.\nx Cc",
+    optionC: "market order.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-22",
+    topicId: "equity",
+    stem: "Order matching rules in order-driven trading systems are used to:",
+    optionA: "match buy orders to sell orders.",
+    optionB: "determine the prices at which the orders submitted by dealers are matched.",
+    optionC: "determine the prices at which the orders submitted by customers are matched. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-23",
+    topicId: "equity",
+    stem: "The trader's equity value as a result of the trade is closest to:",
+    optionA: "$460.\n8.52520.\n€. $3,000.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-24",
+    topicId: "equity",
+    stem: "Which of the following is an objective of market regulation?",
+    optionA: "Controlling agency problems only",
+    optionB: "Ensuring that long-term liabilities are funded only",
+    optionC: "Both controlling agency problems and ensuring that long-term liabilities are funded c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-25",
+    topicId: "equity",
+    stem: "When issuers sell securities to investors:",
+    optionA: "they trade in the primary market.\n8. they trade in the secondary market.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "funds flow between the primary and the secondary market. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-26",
+    topicId: "equity",
+    stem: "If a European investor believes the US equity market will decline in the next three months, the transaction most\nlikely to allow the investor to profi from this view is the purchase of a:\nx B",
+    optionA: "put option.",
+    optionB: "call option. % c",
+    optionC: "currency swap.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-27",
+    topicId: "equity",
+    stem: "In which markets are government bills most likely traded?",
+    optionA: "Money markets",
+    optionB: "Capital markets",
+    optionC: "Alternative investment markets\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-28",
+    topicId: "equity",
+    stem: "In the secondary market, funds flow from:",
+    optionA: "traders to traders.",
+    optionB: "issuers to investors.",
+    optionC: "investors fo issuers.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-29",
+    topicId: "equity",
+    stem: "Short sellers are most likely exposed to",
+    optionA: "unlimited gains and limited losses.",
+    optionB: "limited gains and unlimited losses.",
+    optionC: "unlimited gains and unlimited losses.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-30",
+    topicId: "equity",
+    stem: "Financial intermediaries that help their clients arrange seasoned securities offerings are best known as:",
+    optionA: "investment banks.",
+    optionB: "commercial banks.",
+    optionC: "multi-lateral trading facilities.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-31",
+    topicId: "equity",
+    stem: "If the price of a stock bought on 30% margin increases by 40%, the return on equity to the buyer is closest to:",
+    optionA: "52%.",
+    optionB: "75%. La B",
+    optionC: "133%.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-32",
+    topicId: "equity",
+    stem: "For a security position purchased on margin, the leverage ratio is the ratio of the value of the position to:",
+    optionA: "the value of equity in the position.",
+    optionB: "the amount of the margin loan in the position.",
+    optionC: "the amount of the margin loan plus equity in the position. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-33",
+    topicId: "equity",
+    stem: "An equity index representing groups of securities classified on the basis of market capitalization is most likely a",
+    optionA: "style index",
+    optionB: "sector index.",
+    optionC: "multi-market index.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-34",
+    topicId: "equity",
+    stem: "The beginning value for an index is 1540 and the ending value is 1575. If the income for the period is 55, the total\nretum of the index is closest to:\nx B",
+    optionA: "13%.",
+    optionB: "2.2%.\nx [o}",
+    optionC: "58%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-35",
+    topicId: "equity",
+    stem: "Which of the following index-weighting methods most likely gives this security the greatest weight in the index?",
+    optionA: "Price weighting",
+    optionB: "Equal weighting",
+    optionC: "Market capitalization weighting",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-36",
+    topicId: "equity",
+    stem: "Which of the following index weighting schemes most likely causes a bias in the index when high-priced stocks\nsplit?\nx B",
+    optionA: "Price weighted",
+    optionB: "Equal weighted\nx Cc",
+    optionC: "Value weighted",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-37",
+    topicId: "equity",
+    stem: "Which of the following statements best describes hedge fund indexes?",
+    optionA: "Index constituents are regulated entities",
+    optionB: "Potential survivorship bias is reduced by voluntary performance reporting",
+    optionC: "There may be little overlap in index constituents between different indexes offered by different index providers Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-38",
+    topicId: "equity",
+    stem: "Security market indices most likely serve as proxies for:",
+    optionA: "nonsystematic risk.",
+    optionB: "asset classes in asset allocation models.",
+    optionC: "the fair value of assets in asset-based valuation models. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-39",
+    topicId: "equity",
+    stem: "Which of the following indexes are regularly rebalanced by the index provider?",
+    optionA: "Price weighted indexes only",
+    optionB: "Equal-weighted indexes only",
+    optionC: "Both price-weighted indexes and equal-weighted indexes c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-40",
+    topicId: "equity",
+    stem: "Over time, which of the following indexes most likely has portfolio weights that shift away from securities that have\nincreased in relative value and toward securities that have fallen in relative value? A:\nx B",
+    optionA: "price-weighted index",
+    optionB: "fundamentally weighted index % c",
+    optionC: "market-capitalization-weighted index",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-41",
+    topicId: "equity",
+    stem: "If the index's value is 100 at the beginning of Period 1, the index's value at the end of Period 3 is closest to:\nA103.\nB. 105. Confirm\nC. 106.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "105. Confirm",
+    optionC: "106.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-42",
+    topicId: "equity",
+    stem: "Ifthere is a 2% retum from dividends for each of the three stocks, the total return of the index is\nig\nB.2%.\nC. 6%.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "2%.",
+    optionC: "6%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-43",
+    topicId: "equity",
+    stem: "Amulti-market index is most appropriately used as a benchmark:",
+    optionA: "for a single country ETF.",
+    optionB: "for a small-capitalization growth stock manager.",
+    optionC: "to calculate beta for the portfolio of a global stock manager. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-44",
+    topicId: "equity",
+    stem: "Fixed-income indexes most likely:",
+    optionA: "are more easily replicated than equity indexes.",
+    optionB: "require the provider to estimate the prices of some constituent securities.",
+    optionC: "are created from a smaller universe of possible constituent securities than the universe of equity securities. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-45",
+    topicId: "equity",
+    stem: "Which of the following indexes is composed of futures contracts?",
+    optionA: "Commodity index\nity i",
+    optionB: "Hedge fund index",
+    optionC: "Broad equity market index\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-46",
+    topicId: "equity",
+    stem: "If the stock price is $30 per share and the index value is 100, the stock's weight in the index is closest to:",
+    optionA: "25%.",
+    optionB: "30%. Confirm",
+    optionC: "35%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-47",
+    topicId: "equity",
+    stem: "If a stock index's constituents make no distributions to their shareholders, the total return of the index is:",
+    optionA: "less than its price return.\nx B",
+    optionB: "equal to its price return.",
+    optionC: "greater than its price return.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-48",
+    topicId: "equity",
+    stem: "When constructing an equity index, each company's weight in the index is dependent on its number of shares\noutstanding if the index is:\nx B",
+    optionA: "price weighted.",
+    optionB: "equal weighted. % c",
+    optionC: "market-captiization weighted.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-49",
+    topicId: "equity",
+    stem: "As time passes after inception, the value of the price version of an index is:",
+    optionA: "less than the value of the total return version.",
+    optionB: "equal to the value of the total return version.",
+    optionC: "greater than the value of the total retum version.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-50",
+    topicId: "equity",
+    stem: "Adisadvantage of using price multiples to value stocks is that:",
+    optionA: "multiples are not easily calculated.\n:",
+    optionB: "cross-sectional comparisons are not possible.",
+    optionC: "accounting methods produce different results that are not easily comparable across companies. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-51",
+    topicId: "equity",
+    stem: "Both equity and fixed-income indexes can be categorized according to the:",
+    optionA: "currency of payments.\nBy 4",
+    optionB: "issuer's economic sector.",
+    optionC: "degree of inflation protection\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-52",
+    topicId: "equity",
+    stem: "In which of the following forms of market efficiency are investors able to consistently outperform the market using\nfundamental analysis?\nx B",
+    optionA: "Weak-form market efficiency",
+    optionB: "Semi-strong-form market efficiency i c",
+    optionC: "Strong-form market efficiency",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-53",
+    topicId: "equity",
+    stem: "The observation that a large-capitalization company's stock price is inflated after the company releases unexpected y¢ A\ngood news at year end is most likely related to the:\nx B",
+    optionA: "value offect.",
+    optionB: "overreaction effect. % c",
+    optionC: "turn-of-the-year effect.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-54",
+    topicId: "equity",
+    stem: "Trading by arbitrageurs most likely:",
+    optionA: "reduces liquidity.\nx B",
+    optionB: "increases pricing discrepancies.",
+    optionC: "contributes to market efficiency.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-55",
+    topicId: "equity",
+    stem: "With respect to behavioral finance, which of the following is least likely a behavioral bias used to explain pricing\nanomalies?\nx B",
+    optionA: "Risk aversion",
+    optionB: "Loss aversion\nx Cc",
+    optionC: "Overconfidence",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-56",
+    topicId: "equity",
+    stem: "Decreased market efficiency is most likely associated with an increase in:",
+    optionA: "transaction costs.",
+    optionB: "financial disclosure. La B",
+    optionC: "the number of market participants.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-57",
+    topicId: "equity",
+    stem: "Over the long run, if a market is semi-strong-form efficient, which of the following investment strategies should result g¢ A\nin the highest retum to investors? A(n):\nx B",
+    optionA: "passive investment strategy",
+    optionB: "active trading strategy seeking to exploit price patterns ™ c",
+    optionC: "active trading strategy seeking to exploit public information",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-58",
+    topicId: "equity",
+    stem: "In contrast to the market value of an equity security, intrinsic value is most likely:",
+    optionA: "not known with certainty.",
+    optionB: "constant throughout the life of the security.",
+    optionC: "determined by the intersection of supply and demand. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-59",
+    topicId: "equity",
+    stem: "In a highly efficient market, a passive investment strategy most likely has:",
+    optionA: "higher transaction costs than an active strategy.",
+    optionB: "lower information-seeking costs than an active strategy.",
+    optionC: "higher risk-adjusted returns before all expenses than an active strategy. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-60",
+    topicId: "equity",
+    stem: "Which of the following market anomalies is best described as a time-series anomaly?",
+    optionA: "Size effect",
+    optionB: "Momentum",
+    optionC: "Initial Public Offerings\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-61",
+    topicId: "equity",
+    stem: "According to the efficient market hypothesis, if market prices reflect private information, the market is most likely:",
+    optionA: "strong-form efficient.",
+    optionB: "weak-form efficient only.",
+    optionC: "semi-strong-form efficient, but not strong-form efficient. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-62",
+    topicId: "equity",
+    stem: "The January effect is an example of:",
+    optionA: "loss aversion.\nf",
+    optionB: "an earings surprise.",
+    optionC: "a market pricing anomaly.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-63",
+    topicId: "equity",
+    stem: "Fundamental analysis most likely:",
+    optionA: "uses stock price patterns to trade.\n: .",
+    optionB: "is an input for passive portfolio management.",
+    optionC: "helps participants understand the value implications of information. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-64",
+    topicId: "equity",
+    stem: "In a weak-form efficient market, which of the following information is reflected in security prices?",
+    optionA: "Historical prices only",
+    optionB: "Historical prices and historical trading volumes only",
+    optionC: "Historical prices, historical trading volumes, and current earnings c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-65",
+    topicId: "equity",
+    stem: "Amarket where security prices fully reflect all publicly known and available information, but not private information,\nis:\nx B",
+    optionA: "weak-form efficient.",
+    optionB: "semi-strong-form efficient. &% c",
+    optionC: "strong-form efficient.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-66",
+    topicId: "equity",
+    stem: "Behavioral finance:",
+    optionA: "suggests that behavioral biases only affect novice investors,",
+    optionB: "provides a possible explanation for a number of pricing anomalies.",
+    optionC: "relies on the assumption that people consider all available information in decision-making. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-67",
+    topicId: "equity",
+    stem: "With respect to behavioral biases, when investors tend to be slow to react to new information and continue to\nmaintain their prior views, this is best described as:\nx B",
+    optionA: "conservatism.",
+    optionB: "herding behavior % c",
+    optionC: "representativeness.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-68",
+    topicId: "equity",
+    stem: "The size effect anomaly results when itis observed that on a risk-adjusted basis small cap companies tend to:",
+    optionA: "underperform equities of large-cap companies.\nx B",
+    optionB: "perform in line with equities of large-cap companies.",
+    optionC: "outperform equities of large-cap companies. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-69",
+    topicId: "equity",
+    stem: "Afeature of an efficient market is that:",
+    optionA: "the market reflects all past and present information.",
+    optionB: "asset prices react to information that is fully anticipated.",
+    optionC: "an investor can earn consistent, superior, risk-adjusted retums. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-70",
+    topicId: "equity",
+    stem: "In contrast to a public company, a company that has gone private most likely:",
+    optionA: "faces greater regulatory costs.",
+    optionB: "focuses more on short-term results.",
+    optionC: "lacks an active secondary market for its equity. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-71",
+    topicId: "equity",
+    stem: "Al else being equal, which of the following preference share characteristics may contain provisions that entitle\nshareholders to an additional distribution of the company's assets upon liquidation, above the par value?\nx B",
+    optionA: "Callable",
+    optionB: "Cumulative\nx Cc",
+    optionC: "Participating",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-72",
+    topicId: "equity",
+    stem: "Al else being equal, which of the following preference shares pays the lowest dividend?",
+    optionA: "Putable",
+    optionB: "Callable La B",
+    optionC: "Non-callable\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-73",
+    topicId: "equity",
+    stem: "Al else being equal, the preference share with the lowest certainty of future cash flows and the greatest potential\ntisk for investors is most likely:\nx B",
+    optionA: "putable with non-cumlative dividends.",
+    optionB: "non-callable with cumulative dividends. % c",
+    optionC: "callable with non-cumulative dividends.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-74",
+    topicId: "equity",
+    stem: "Which of the following is least likely to directly affect a company's book value?",
+    optionA: "Changes in the company's net income",
+    optionB: "Purchases by the company of its own shares",
+    optionC: "Investor estimates of the company's future cash flows Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-75",
+    topicId: "equity",
+    stem: "Companies issue equity securities for which of the following purpose(s)?",
+    optionA: "Making acquisitions only",
+    optionB: "Ensuring that debt covenants are met only",
+    optionC: "Both making acquisitions and ensuring that debt covenants are met Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-76",
+    topicId: "equity",
+    stem: "A company's ROE most likely decreases if shareholders' equity increases at:",
+    optionA: "a lower rate than net income.\nx B",
+    optionB: "the same rate as net income.",
+    optionC: "a higher rate than net income.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-77",
+    topicId: "equity",
+    stem: "A company's ROE most likely decreases if shareholders' equity increases at:",
+    optionA: "a lower rate than net income.\nx B",
+    optionB: "the same rate as net income.",
+    optionC: "a higher rate than net income.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-78",
+    topicId: "equity",
+    stem: "Convertible preference shares",
+    optionA: "are popular in financing venture capital and private equity transactions.",
+    optionB: "are subject to more price volatility than the underlying common shares.",
+    optionC: "do not increase in value due to an increase in price of the underlying common shares. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-79",
+    topicId: "equity",
+    stem: "All else being equal, the investor should purchase:\nB. Stock 2.\nC. Stock 3.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Stock 2.",
+    optionC: "Stock 3.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-80",
+    topicId: "equity",
+    stem: "The book value of a company's equity is:",
+    optionA: "the present value of its future cash flows.",
+    optionB: "the difference between its total assets and total liabilities.",
+    optionC: "its share price multiplied by the number of outstanding shares. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-81",
+    topicId: "equity",
+    stem: "The voting method that allows shareholders to cast all their votes for a single candidate is best described as:",
+    optionA: "proxy voting.",
+    optionB: "statutory voting.",
+    optionC: "cumulative voting.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-82",
+    topicId: "equity",
+    stem: "Common shares that are tradeable on different stock exchanges in different currencies are best described as:",
+    optionA: "global registered shares.",
+    optionB: "global depository receipts.",
+    optionC: "a basket of listed depository receipts.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-83",
+    topicId: "equity",
+    stem: "Management is more likely to focus on short-term results instead of long-term earnings growth if a company raises\nequity through\nx B",
+    optionA: "venture capital.",
+    optionB: "a leveraged buyout. % c",
+    optionC: "an initial public offering.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-84",
+    topicId: "equity",
+    stem: "A company's net income available to ordinary shareholders divided by the average total book value of equity is bests A\ndescribed as the:\nx B",
+    optionA: "company's intrinsic value.",
+    optionB: "company's return on equity. % c",
+    optionC: "minimum required rate of retum of investors in the company's equity.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-85",
+    topicId: "equity",
+    stem: "Preference shares most likely rank above common shares with respect to:",
+    optionA: "voting rights.",
+    optionB: "sharing in the operating performance of the company.",
+    optionC: "the distribution of the company's net assets upon liquidation. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-86",
+    topicId: "equity",
+    stem: "Convertible preference shares most likely:",
+    optionA: "are riskier than the underlying common shares for investors.",
+    optionB: "allow investors to benefit from a rise in the price of the common shares.",
+    optionC: "are issued primarily by companies of lower risk and used as a financing option. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-87",
+    topicId: "equity",
+    stem: "Sponsored depository receipts most likely differ from unsponsored ones in terms of whether:",
+    optionA: "investors have voting rights.",
+    optionB: "they are traded on exchanges.",
+    optionC: "their prices are affected by exchange rate movements. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-88",
+    topicId: "equity",
+    stem: "Private equity securities most likely:",
+    optionA: "are listed on public exchanges.",
+    optionB: "are illiquid and difficult to trade.",
+    optionC: "have easily available financial information.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-89",
+    topicId: "equity",
+    stem: "Preference shares are less risky than common shares because preference shares have:",
+    optionA: "fixed dividends.",
+    optionB: "a guaranteed return if a company is liquidated.",
+    optionC: "a larger portion of total return based on future price return. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-90",
+    topicId: "equity",
+    stem: "Downside and upside risk factors are most likely included in:",
+    optionA: "an initial company research report only.\nx B",
+    optionB: "a subsequent company research report only.",
+    optionC: "both initial and subsequent company research reports. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-91",
+    topicId: "equity",
+    stem: "Anatural resources company having access to cheap energy most likely will be able to sell its output",
+    optionA: "at market price.",
+    optionB: "above market price.",
+    optionC: "ata price unilaterally set by management.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-92",
+    topicId: "equity",
+    stem: "Which of the following is best described as a source of capital?",
+    optionA: "Debt issuances",
+    optionB: "Share repurchases La B",
+    optionC: "Positive net working capital\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-93",
+    topicId: "equity",
+    stem: "Industries whose revenues and profits are least affected by fluctuations in the overall economy are most likely:",
+    optionA: "growth industries.",
+    optionB: "cyclical industries.",
+    optionC: "defensive industries.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-94",
+    topicId: "equity",
+    stem: "External factors affecting an industry's growth most likely include:",
+    optionA: "cost structures.\nx B",
+    optionB: "economies of scale.",
+    optionC: "technological influences.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-95",
+    topicId: "equity",
+    stem: "The Global Industry Classification Standard's broadest level of classification is a(n):",
+    optionA: "sector.",
+    optionB: "industry.",
+    optionC: "industry group.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-96",
+    topicId: "equity",
+    stem: "Porter's five determinants of the intensity of competition in an industry do not include the:",
+    optionA: "power of buyers.\n[2 buy",
+    optionB: "threat of substitutes.",
+    optionC: "position of a company in its life-cycle stage.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-97",
+    topicId: "equity",
+    stem: "Which of the following is most likely a demographic influence on industry growth?",
+    optionA: "Lifestyle",
+    optionB: "Distribution of age",
+    optionC: "Spending behavior\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-98",
+    topicId: "equity",
+    stem: "Which of the following is considered an external influence on industry growth?",
+    optionA: "Social trends",
+    optionB: "Barriers to entry",
+    optionC: "Industry concentration\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-99",
+    topicId: "equity",
+    stem: "Commercial industry classification systems are most likely updated:",
+    optionA: "less frequently than government classification systems.\nx B",
+    optionB: "as frequently as government classification systems.",
+    optionC: "more frequently than government classification systems. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-100",
+    topicId: "equity",
+    stem: "Industry classification systems are developed and used by:",
+    optionA: "commercial entities only.",
+    optionB: "governmental agencies only.",
+    optionC: "both commercial entities and governmental agencies. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-101",
+    topicId: "equity",
+    stem: "Which of the following industries or sectors is most likely classified as cyclical?",
+    optionA: "Utilities",
+    optionB: "Industrials",
+    optionC: "Health care\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-102",
+    topicId: "equity",
+    stem: "Which of the following best describes an industry-level force in a thorough industry analysis?",
+    optionA: "Threat of new entrants",
+    optionB: "Demographic influences",
+    optionC: "Technological influences\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-103",
+    topicId: "equity",
+    stem: "Within Porter's five forces framework, the power of buyers within an industry is most likely influenced by the:",
+    optionA: "industry concentration.",
+    optionB: "availability of lower priced alternative brands.",
+    optionC: "number of customers for the industry's products: c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-104",
+    topicId: "equity",
+    stem: "Which of the following forecast objects for a bank's revenue is best classified as a top-down driver?",
+    optionA: "Net interest income",
+    optionB: "Growth in market share",
+    optionC: "Growth in the number of branches\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-105",
+    topicId: "equity",
+    stem: "Depreciation expense is best used in forecasting:",
+    optionA: "growth capital expenditure only.",
+    optionB: "maintenance capital expenditure only.",
+    optionC: "both growth capital expenditure and maintenance capital expenditure. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-106",
+    topicId: "equity",
+    stem: "Which of the following statements about forecasting selling, general and administrative (SG&A) expenses is most\naccurate?\nx B",
+    optionA: "General corporate costs are mostly variable costs",
+    optionB: "Selling and distribution expenses can be modeled as a percentage of sales ™ c",
+    optionC: "Overall SG&A expenses have a more direct relationship with revenues than cost of goods sold",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-107",
+    topicId: "equity",
+    stem: "Which of the following statements about scenario analysis is most accurate?",
+    optionA: "Scenario analysis provides a point estimate forecast",
+    optionB: "Forecast scenarios can be compared to forecasts implied by current valuations",
+    optionC: "Generic risk factors in scenario analysis are assumed to affect all companies in the same way c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-108",
+    topicId: "equity",
+    stem: "Which financial statement forecasting approach is best suited for companies in highly cyclical industries?",
+    optionA: "Historical results",
+    optionB: "Management guidance",
+    optionC: "Analyst's discretionary forecasts\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-109",
+    topicId: "equity",
+    stem: "Afirm reports negative eamings for the year just ended. The price multiple of the firm's stock that is feast likely lobe gg A\nmeaningful is:\nx B",
+    optionA: "price to cash flow.",
+    optionB: "trailing price to earnings. % c",
+    optionC: "leading price to earnings.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-110",
+    topicId: "equity",
+    stem: "The most appropriate model to value this stock s the:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-111",
+    topicId: "equity",
+    stem: "Based only on this information, the most overvalued company is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-112",
+    topicId: "equity",
+    stem: "A company's perpetual preferred stock has a $100 par value and a $1.50 quarterly dividend. The required rate of\nretum is 5%. The intrinsic value of the preferred stock is most likely:\nx B",
+    optionA: "loss than the par value.",
+    optionB: "squal to the par value. % c",
+    optionC: "greater than the par value.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-113",
+    topicId: "equity",
+    stem: "The stock's intrinsic value is closest to: Ew | Weck) dlioh",
+    optionA: "€33.90. Fe",
+    optionB: "€34.22. 9\nc.€35.17.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-114",
+    topicId: "equity",
+    stem: "The analyst estimates the market value of net fixed assets to be 125% of book value and the market value of\ninventories to be 90% of book value. If the stock is currently trading at €19.50 per share, the asset-based value per\nshare is most likely:",
+    optionA: "loss than the market price.",
+    optionB: "aqua to the market price.",
+    optionC: "greater than the market price.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-115",
+    topicId: "equity",
+    stem: "A$25 par value non-callable, non-convertible preferred share pays an annual dividend rate of 5%. If the required\nrate of return is 4%, the preferred share's intrinsic value is closest to:\nx B",
+    optionA: "$25.25.",
+    optionB: "526.00.\nx Cc\n€.$31.25.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-116",
+    topicId: "equity",
+    stem: "Asset-based valuation most likely uses estimates of the company's:",
+    optionA: "assets only.",
+    optionB: "assets and liabilities only.",
+    optionC: "assets, liabilities, and projected cash flow.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-117",
+    topicId: "equity",
+    stem: "Using the Gordon growth model, the company's dividend payout ratio is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-118",
+    topicId: "equity",
+    stem: "All else being equal, at the beginning of trading on 20 August, the company's shares wil most fikely trade at:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-119",
+    topicId: "equity",
+    stem: "Based only on this information, if the share price is $30, the company's shares are most likely overvalued based on:",
+    optionA: "PB.",
+    optionB: "PE.",
+    optionC: "PICF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-120",
+    topicId: "equity",
+    stem: "The best estimate of the company's dividend growth rae is:\nConfirm",
+    optionA: "58%.",
+    optionB: "6.7%.",
+    optionC: "74%. :",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-121",
+    topicId: "equity",
+    stem: "If the analyst estimates the intrinsic value to be €26.00 per share, the required rate of return is closest to:",
+    optionA: "5.96%.",
+    optionB: "6.20%. Confirm",
+    optionC: "6.32%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-122",
+    topicId: "equity",
+    stem: "Ifthe investor's required rate of return is 9%, the company's justified forward P/E is: Low | Medium High",
+    optionA: "less than the peer group's justified forward P/E.",
+    optionB: "the same as the peer group's justified forward PIE. Confirm",
+    optionC: "greater than the peer group's justified forward P/E.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-123",
+    topicId: "equity",
+    stem: "All else being equal, an increase in which of the following most likely increases a company's enterprise value?",
+    optionA: "Book value of debt",
+    optionB: "Market value of investments",
+    optionC: "Market value of preferred stock\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-124",
+    topicId: "equity",
+    stem: "Based on enterprise value multiples, which of the three companies is likely the most undervalued?\nlid]\nB. Company 2\nC. Company 3",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Company 2",
+    optionC: "Company 3",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-125",
+    topicId: "equity",
+    stem: "Anon-callable, non-convertible perpetual preferred share pays a level dividend of $1.20 with a current market price ~~ A\nof $20. If an investor has a required rate of return of 6%, the preferred shares are most likely:\nx B",
+    optionA: "undervalued.",
+    optionB: "fairly valued.\nx Cc",
+    optionC: "overvalued.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-126",
+    topicId: "equity",
+    stem: "Ifthe investor's required rate of return is 10%, the company's ROE is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-127",
+    topicId: "equity",
+    stem: "Enterprise value is most likely associated with:",
+    optionA: "multiplier models.\nEe",
+    optionB: "present value models.",
+    optionC: "asset-based valuation models.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-128",
+    topicId: "equity",
+    stem: "Using the dividend discount model, if the required rate of return is 10% and the stock's current market price is",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-129",
+    topicId: "equity",
+    stem: "Adisadvantage of an equal-weighted index is that:",
+    optionA: "maintaining equal weights requires frequent reconstitution of the index.",
+    optionB: "securities that represent a relatively large fraction of the target market value are underrepresented.",
+    optionC: "securities that represent a relatively small fraction of the target market value are underrepresented. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-130",
+    topicId: "equity",
+    stem: "When using a multiplier model, the fundamental variable is stated on:",
+    optionA: "a railing basis only.",
+    optionB: "a forward basis only. La B",
+    optionC: "either a trailing basis or a forward basis.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-131",
+    topicId: "equity",
+    stem: "A free-cash-flow-to-equity model is a(n)",
+    optionA: "multiplier model.",
+    optionB: "present value model.",
+    optionC: "asset-based valuation model.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-132",
+    topicId: "equity",
+    stem: "All else being equal, which of the following has the same effect on shareholders' wealth as a cash dividend?",
+    optionA: "Astock spit",
+    optionB: "A stock dividend",
+    optionC: "Ashare repurchase\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-133",
+    topicId: "equity",
+    stem: "At which of the following days does a buyer of a company's shares first become no longer eligible to receive a\ndividend?\nx B",
+    optionA: "Day before the ex-dividend date",
+    optionB: "Ex-dividend date x",
+    optionC: "Day after the ex-dividend date",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-134",
+    topicId: "equity",
+    stem: "Astock dividend:",
+    optionA: "is relevant for valuation of a company.",
+    optionB: "involves a reduction in the number of shares outstanding.",
+    optionC: "does not affect the shareholders' proportional ownership in the company. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-135",
+    topicId: "equity",
+    stem: "Asset-based valuation models are most appropriate for companies with a high proportion of:",
+    optionA: "illiquid assets.\nLai",
+    optionB: "current assets.",
+    optionC: "intangible assets.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-136",
+    topicId: "equity",
+    stem: "All else being equal, which of the following are equivalent to stock dividends in terms of the economic effect on the\ncompany and shareholders?\nx B",
+    optionA: "Stock splits",
+    optionB: "Cash dividends\nx Cc",
+    optionC: "Share repurchases",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-137",
+    topicId: "equity",
+    stem: "In dividend payment chronology, the ex-dividend date most likely comes after the:",
+    optionA: "record date.",
+    optionB: "payment date.",
+    optionC: "declaration date.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "equity-138",
+    topicId: "equity",
+    stem: "All else being equal, a reverse stock split results in:",
+    optionA: "a decrease in the number of shares and an increase in the share price.",
+    optionB: "an increase in the number of shares and a decrease in the share price.",
+    optionC: "an increase in the number of shares and an increase in the share price. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-139",
+    topicId: "equity",
+    stem: "The dividend discount model assumes that dividends are paid:",
+    optionA: "quarterly.",
+    optionB: "half yearly.",
+    optionC: "at the end of each year.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "equity-140",
+    topicId: "equity",
+    stem: "Free-cash-flow-to-equity is equal to cash flow from operations:",
+    optionA: "less fixed capital investment less net borrowing.",
+    optionB: "less fixed capital investment plus net borrowing.",
+    optionC: "plus fixed capital investment less net borrowing.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-1",
+    topicId: "fi",
+    stem: "A 2-year treasury note is best classified as a(n):",
+    optionA: "asset-backed security. = B",
+    optionB: "capital market security.",
+    optionC: "money market security.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-2",
+    topicId: "fi",
+    stem: "Which of the following is most likely a zero-coupon bond? A bond with a par value of £1,000 that was issued in a\npositive yield market at:\nx B",
+    optionA: "£620,",
+    optionB: "£1,000.\n€.£1,100. % c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-3",
+    topicId: "fi",
+    stem: "Which of the following is most likely a negative covenant?",
+    optionA: "The issuer must comply with all laws and regulations. = B",
+    optionB: "The issuance of new debt must be junior to existing bondholder debt",
+    optionC: "New debt obligations are treated the same as the borrower's other senior debt instruments. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-4",
+    topicId: "fi",
+    stem: "If an issuer is required to retire a specified portion of the bond's principal each year, the bond most likely:\nAis callable.\nis callable. % B\nB.is a step-up note.\nC. has a sinking fund provision.\nx [of",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "is a step-up note.",
+    optionC: "has a sinking fund provision.\nx [of",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-5",
+    topicId: "fi",
+    stem: "A bond that allows the issuer to pay interest in the form of additional amounts of the existing bond issue rather than\na cash payment best describes a:\nx B",
+    optionA: "step-up coupon bond.",
+    optionB: "deferred coupon bond. 5 c",
+    optionC: "payment-n-kind coupon bond.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-6",
+    topicId: "fi",
+    stem: "All else being equal, reinvestment risk is greatest for:",
+    optionA: "putable bonds.",
+    optionB: "callable bonds. % B",
+    optionC: "non-callable convertible bonds.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-7",
+    topicId: "fi",
+    stem: "The number of common shares a convertible bond can be converted into is the:\nA ion ratio.\nconversion rato 5 B\nB. conversion price.\nC. conversion value.\nx Cc",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "conversion price.",
+    optionC: "conversion value.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-8",
+    topicId: "fi",
+    stem: "Compared to an otherwise similar option-free bond, investors require a higher yield for a corporate bond with a:",
+    optionA: "put provision.\nisdn ba",
+    optionB: "call provision.",
+    optionC: "conversion provision.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-9",
+    topicId: "fi",
+    stem: "Bonds issued in the Eurobond market are mos fikely:",
+    optionA: "denominated only in euros. % B",
+    optionB: "in the form of registered bonds.",
+    optionC: "issued within the jurisdiction of the issuer's home country. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-10",
+    topicId: "fi",
+    stem: "The price of a bond issued in the United Kingdom by a US-based company and denominated in British pounds most ~~ s¢ A\nlikely changes when:\nx B",
+    optionA: "US interest rates change only.",
+    optionB: "British interest rates change only. 5 c",
+    optionC: "both US and British interest rates change.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-11",
+    topicId: "fi",
+    stem: "Using the rating scale from Standard & Poor's or Fitch, the lowest rating for an investment-grade bond is:",
+    optionA: "BBB-.",
+    optionB: "BBB. % B",
+    optionC: "B8B+.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-12",
+    topicId: "fi",
+    stem: "In a repurchase agreement:",
+    optionA: "only the lender of funds is exposed to credit risk. 5 B",
+    optionB: "credit risk is eliminated by using highly rated sovereign bonds as collateral.",
+    optionC: "the initial margin offers partial protection against changes in the market value of the collateral. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-13",
+    topicId: "fi",
+    stem: "US municipal bonds are best described as:",
+    optionA: "agency bonds.",
+    optionB: "non-sovereign bonds. % B",
+    optionC: "quasi-government bonds.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-14",
+    topicId: "fi",
+    stem: "Matrix pricing is most likely used to estimate the price of a bond that:",
+    optionA: "is highly liquid.\nBis not yet issued. % B",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "has unknown credit quality.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-15",
+    topicId: "fi",
+    stem: "Athree-year, semiannual-pay bond with a $100 par value and a 5% coupon rate is purchased for $108. One year\nlater, if the yield to maturity has decreased by 100 basis points, the change in the value of this bond is closest to:\nx B",
+    optionA: "$057.",
+    optionB: "$152\n€.$3.08. x c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-16",
+    topicId: "fi",
+    stem: "For a yield to maturity of 4%, the price of the bond per 100 of par value is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-17",
+    topicId: "fi",
+    stem: "All else being equal, if the market discount rate decreases by 50 basis points, the bond most fikely to experience the",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-18",
+    topicId: "fi",
+    stem: "The price of an option-free bond increases by 7% when the yield to maturity decreases by 100 basis points. If the\nprice of this bond decreases by 7%, the yield to maturity most likely increases by:\nx B",
+    optionA: "less than 100 basis points.",
+    optionB: "100 basis points. 5 c",
+    optionC: "more than 100 basis points.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-19",
+    topicId: "fi",
+    stem: "All else being equal, the absolute value of the percentage price change for an option-free bond is most likely:",
+    optionA: "less when the market discount rate decreases than when it increases by the same amount. 5 B",
+    optionB: "the same whether the market discount rate decreases or increases by the same amount.",
+    optionC: "greater when the market discount rate decreases than when it increases by the same amount. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-20",
+    topicId: "fi",
+    stem: "If the market discount rate is 5%, the market value of this bond is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-21",
+    topicId: "fi",
+    stem: "Based only on this information, the estimated market discount rate for a 5-year bond with similar credit quality is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-22",
+    topicId: "fi",
+    stem: "The flat price of a bond:",
+    optionA: 'is also referred to as the "dirty" price.',
+    optionB: 'is "pulled to par" along the constant-yield price trajectory.',
+    optionC: "includes interest which is received by the seller on the settlement date. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-23",
+    topicId: "fi",
+    stem: "Which of the following does not depend on the market discount rate? A bond's:",
+    optionA: "flat price",
+    optionB: "full price % B",
+    optionC: "accrued interest\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-24",
+    topicId: "fi",
+    stem: "The current yield for a 4.5% coupon, 10-year bond, with a maturity par value of $100 and currently priced at $85.70\nis closest to:\nx B",
+    optionA: "4.50%.",
+    optionB: "5.25%.\n€.5.93%. x c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-25",
+    topicId: "fi",
+    stem: "The yield spread of a specific bond over the standard swap rate in that currency of the same tenor best describes\nthe:\nx B",
+    optionA: "I-spread.",
+    optionB: "Z-spread.",
+    optionC: "option-adjusted spread. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-26",
+    topicId: "fi",
+    stem: "This bond's yield to worst is the:\nConfirm",
+    optionA: "yield to maturity.",
+    optionB: "yield to first call.",
+    optionC: "yield to second call. )",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-27",
+    topicId: "fi",
+    stem: "The stated annual yield to maturity on a semiannual bond basis is 3.66%. The effective annual yield is closest to:",
+    optionA: "3.63%.",
+    optionB: "3.69%.",
+    optionC: "7.45%.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-28",
+    topicId: "fi",
+    stem: "Afive-year semiannual bond has an annual percentage rate (APR) of 8%. Converted to a quarterly periodicity, the\nAPRs closest to\nx B",
+    optionA: "1.98%.",
+    optionB: "3.92%.\n€.7.92%. * c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-29",
+    topicId: "fi",
+    stem: "For a coupon bond with a negative yield, compounding more frequently within the year resus in a yield-to-maturity ~~ ¢ A\nthat is:\nx B",
+    optionA: "more negative.",
+    optionB: "the same. ) x",
+    optionC: "less negative.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-30",
+    topicId: "fi",
+    stem: "The yield spread over an interpolated sovereign bond is best described as a(n):",
+    optionA: "I-spread.",
+    optionB: "G-spread. % B",
+    optionC: "Z-spread.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-31",
+    topicId: "fi",
+    stem: "For a floating-rate note, the specified yield spread over the reference rate best defines the:",
+    optionA: "coupon.",
+    optionB: "quoted margin. % B",
+    optionC: "required margin.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-32",
+    topicId: "fi",
+    stem: "For a 365-day year, the discount rate is closest to",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-33",
+    topicId: "fi",
+    stem: "Money market yields are:",
+    optionA: "annualized and compounded. 5 B",
+    optionB: "stated for a common periodicity.",
+    optionC: "stated on a simple interest basis.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-34",
+    topicId: "fi",
+    stem: "Afloating-rate note makes semiannual interest payments and has a coupon rate equal to the six-month market\nreference rate plus 45 basis points. The interest payments are made in June and December. If the six-month market\nreference rate was 1.95% in June and 2.25% in December of the same year, the coupon rate paid in December of that ~~ B\nyear was closest to:\nx Cc",
+    optionA: "2.40%.",
+    optionB: "2.55%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-35",
+    topicId: "fi",
+    stem: "Abreak-even reinvestment rate is most likely equivalent to a(n):",
+    optionA: "par rate.",
+    optionB: "spot rate. % B",
+    optionC: "implied forward rate.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-36",
+    topicId: "fi",
+    stem: "Using only this information, the price per 100 of par value of a 3-year, 1% annual coupon bond is closest to: Low, | Beau] teh",
+    optionA: "8405.\nConfi",
+    optionB: "01.74.\n€.96.23.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-37",
+    topicId: "fi",
+    stem: "If the coupon rate of a 3-year annual-pay bond is 4%, the price of the bond is closest to: Low Medium = High",
+    optionA: "07.28. o",
+    optionB: "99.86. Confirm\n€.100.00.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-38",
+    topicId: "fi",
+    stem: "The 2y1y implied forward rate is closest to: Low Medium = High",
+    optionA: "4.5%, .",
+    optionB: "5.5%. Confirm\n€.6.6%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-39",
+    topicId: "fi",
+    stem: "Implied forward rates are best defined as the:",
+    optionA: "geometric average of spot rates. 5 B",
+    optionB: "breakeven reinvestment rates between zero-coupon bonds.",
+    optionC: "current yield to maturity on zero-coupon bonds of different maturities. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-40",
+    topicId: "fi",
+    stem: "Abond trading at its no-arbitrage value is priced at a premium. The sum of the present value of the bond's cash\nflows discounted at spot rates is:\nx B",
+    optionA: "less than the sum of the present values of the bond's cash flows discounted at ts yield to maturity.",
+    optionB: "equal to the sum of the present values of the bond's cash flows discounted at ts yield to maturity. 5 c",
+    optionC: "greater than the sum of the present values of the bond's cash flows discounted at ts yield to maturity.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-41",
+    topicId: "fi",
+    stem: "The 2-year forward rate, four years from today is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-42",
+    topicId: "fi",
+    stem: "The bond's annualized Macaulay duration is closest to: Low, | Scour] teh\nA428.\nCony\nB.4.45\nC.463.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "4.45",
+    optionC: "463.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-43",
+    topicId: "fi",
+    stem: "For a fixed-rate bond, when interest rates decrease, the future value of reinvested coupon payments most likely:",
+    optionA: "decreases and the market price of the bond increases. 5 B",
+    optionB: "increases and the market price of the bond decreases.",
+    optionC: "increases and the market price of the bond increases. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-44",
+    topicId: "fi",
+    stem: "The Macaulay duration of a zero-coupon bond is most key:",
+    optionA: "less than the time to maturity. 5 B",
+    optionB: "equal to the time to maturity.",
+    optionC: "greater than the time to maturity.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-45",
+    topicId: "fi",
+    stem: "The yield to maturity at purchase was most likely:\nA loss them 4.2%",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-46",
+    topicId: "fi",
+    stem: "If interest rates rise over the holding period, the total return of a coupon bond held until maturity is most likely to be:",
+    optionA: "less than the yield to maturity at purchase.",
+    optionB: "equal to the yield to maturity at purchase.",
+    optionC: "greater than the yield to maturity at purchase.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-47",
+    topicId: "fi",
+    stem: "If the duration gap is zero, the investment horizon is closest to:\npos",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-48",
+    topicId: "fi",
+    stem: "An investor sells a fixed-rate bond originally purchased at a discount. The resulting capital gain or loss should be\nmeasured by comparing the bond's selling price with its:\nx B",
+    optionA: "par value.",
+    optionB: "carrying value.",
+    optionC: "purchase price. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-49",
+    topicId: "fi",
+    stem: "If the holding period was seven years, the horizon yield is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-50",
+    topicId: "fi",
+    stem: "The approximate convexity of this bond is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-51",
+    topicId: "fi",
+    stem: "With respect to interest rate risk, an investor who sells a fixed-rate bond after the first coupon is received and before\nits maturity is exposed to;\nx B",
+    optionA: "market price risk only.",
+    optionB: "coupon reinvestment risk only. 5 c",
+    optionC: "both market price risk and coupon reinvestment risk.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-52",
+    topicId: "fi",
+    stem: "Modified duration is the most appropriate measure of interest rate risk for which of the following securities?",
+    optionA: "Callable bond",
+    optionB: "US Treasury bond % B",
+    optionC: "Mortgage-backed bond\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-53",
+    topicId: "fi",
+    stem: "The percentage price change for a bond, given a change in its yield to maturity, is best estimated by:",
+    optionA: "effective duration.",
+    optionB: "modified duration.",
+    optionC: "Macaulay duration.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-54",
+    topicId: "fi",
+    stem: "If the current price is 106, the duration of this bond is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-55",
+    topicId: "fi",
+    stem: "The price value of a basis point (PVBP) for a bond with a full price of 103.50 and a modified duration of 6.2 is\nclosest to,\nx B",
+    optionA: "0.0642.",
+    optionB: "0.6420.",
+    optionC: "6.4200. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-56",
+    topicId: "fi",
+    stem: "All else being equal, the bond with the lowest Macaulay duration is most likely:\nfins\nB.Bond 2.\nC.Bond 3.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Bond 2.",
+    optionC: "Bond 3.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-57",
+    topicId: "fi",
+    stem: "If the bond trades at 101.80 per 100 of par value, its approximate modified duration is closest to: Low, | Seow] Heh\nA172\nConf\nB.2.25\nc.3.44.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "2.25\nc.3.44.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-58",
+    topicId: "fi",
+    stem: "For an option-free fixed-rate bond trading at a premium, as the coupon payment date approaches, Macaulay\nduration most likely:\nx B",
+    optionA: "decreases.\n8. remains constant. 5 c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "increases.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-59",
+    topicId: "fi",
+    stem: "The bond's money duration (per 100 of par value) is closest to: Low, | Beau] teh",
+    optionA: "553.67.\nfen",
+    optionB: "561.51\n¢.575.70.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-60",
+    topicId: "fi",
+    stem: "The duration of the portfolio is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-61",
+    topicId: "fi",
+    stem: "If the market discount rate is 4.75% for the holding period, the future value of reinvested coupons at the end of the",
+    optionA: "15.05.",
+    optionB: "17.30.\nc.18.12.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-62",
+    topicId: "fi",
+    stem: "If yields are expected to decrease by 50 basis points, the expected price change for the bond is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-63",
+    topicId: "fi",
+    stem: "A bond priced at 99.4 has a modified duration of 6.9 and an annual convexity statistic of 212. If the market yield\nincreases by 75 basis points, the price of this bond is closest to:\nx B\nA937.\nB.943.\nc.949. * c",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "943.\nc.949. * c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-64",
+    topicId: "fi",
+    stem: "The modified duration of this portfolio is closest to:\nConfirm",
+    optionA: "59.",
+    optionB: "60.\nc.6.. )",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-65",
+    topicId: "fi",
+    stem: "If the bond's yield decreases by 10 basis points, the expected percentage price change for this bond is closest to:\n—",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-66",
+    topicId: "fi",
+    stem: "If each bond has a par value of £25 millon, the modified duration of this bond portfolio is closest to: Low | Medium | High",
+    optionA: "58.\nco\nc.62.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-67",
+    topicId: "fi",
+    stem: "If the yield decreases by 1%, the bond's percentage change in price is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-68",
+    topicId: "fi",
+    stem: "Two par bonds have the same duration but different convexity. All else being equal, if yields to maturity increase by\n10 basis points, itis most likely that:\nx B",
+    optionA: "the more convex bond underperforms the less convex bond.",
+    optionB: "both bond prices decrease by the same amount. 5 c",
+    optionC: "the more convex bond outperforms the less convex bond.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-69",
+    topicId: "fi",
+    stem: "The effective duration of this bond is closest to",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-70",
+    topicId: "fi",
+    stem: "The most appropriate measure of interest rate risk for a bond with an embedded option is:",
+    optionA: "effective duration.",
+    optionB: "modified duration. % B",
+    optionC: "Macaulay duration.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-71",
+    topicId: "fi",
+    stem: "When interest rates are high relative to the coupon rate, a bond that is callable at par will most likely exhibit:",
+    optionA: "negati iy.\nnegative convexity. 5% B",
+    optionB: "zero convexity.",
+    optionC: "positive convexity.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-72",
+    topicId: "fi",
+    stem: "The yield duration and the curve duration of a zero-coupon bond are most similar when the:",
+    optionA: "benchmark yield curve is fat. % B",
+    optionB: "bond has a long time to maturity.",
+    optionC: "bond is priced at a significant discount.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-73",
+    topicId: "fi",
+    stem: "All else being equal, when the market interest rate falls below a bond's coupon rate, potential price appreciation is\nmost limited for a:\nx B",
+    optionA: "putable bond.",
+    optionB: "callable bond. c",
+    optionC: "option-free bond. *",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-74",
+    topicId: "fi",
+    stem: "With respect to a bond with an embedded option, for parallel shifts in the benchmark yield curve, effective duration\nmost likely indicates the same interest rate sensitivity as:\nx B",
+    optionA: "modified duration.",
+    optionB: "key rate durations. c",
+    optionC: "Macaulay duration. x",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-75",
+    topicId: "fi",
+    stem: "Which of the following statements is most accurate? The convexity adjustment is:",
+    optionA: "positive for an option-free bond in all circumstances. 5 B",
+    optionB: "negative for a callable bond when the value of the option is very low.",
+    optionC: "positive when bond yields decrease and negative when bond yields increase. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-76",
+    topicId: "fi",
+    stem: "Effective duration is the most appropriate interest rate risk measure for a bond when:",
+    optionA: "the shape of the yield curve changes. B",
+    optionB: "there is a change in the bond's credit spread.",
+    optionC: "the issuer has the right to pay off the bond prior to maturity. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-77",
+    topicId: "fi",
+    stem: "The effective duration of the bond is closest to: Low, | bedum'| Heh",
+    optionA: "65.\nConfirm",
+    optionB: "76. EZ\nc.87.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-78",
+    topicId: "fi",
+    stem: "Effective duration is:",
+    optionA: "a useful interest rate risk measure only for bonds with embedded options. % B",
+    optionB: "an accurate estimate of interest rate risk only when the assumed benchmark rate change is small.",
+    optionC: "the same as the modified duration of an option-free bond only when the yield curve is perfectly flat. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-79",
+    topicId: "fi",
+    stem: "Which of the following is a curve duration measure?",
+    optionA: "Modified duration B",
+    optionB: "Effective duration",
+    optionC: "Macaulay duration\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-80",
+    topicId: "fi",
+    stem: "The bond's effective duration is closest to: Low, | bedi] Heb\nA375.\nConf\nB.7.45\nC.7.50.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "7.45",
+    optionC: "7.50.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-81",
+    topicId: "fi",
+    stem: "Effective duration is the most appropriate measure of interest rate risk for a bond with an embedded option because\nthe bond does not have a well-defined:\nx B",
+    optionA: "effective convexity.\n8. infernal rate of return. 5 c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "curve duration statistic.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-82",
+    topicId: "fi",
+    stem: "The key rate duration best measures a bond's sensitivity to a change in the:",
+    optionA: "level of the yield-to-maturity. 5 B",
+    optionB: "slope of the yield-to-worst curve.",
+    optionC: "shape of the benchmark yield curve.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-83",
+    topicId: "fi",
+    stem: "For a bond with an embedded option, effective duration is the most appropriate measure of interest rate risk\nbecause the bond's:\nx B",
+    optionA: "future cash flows are uncertain.",
+    optionB: "intemal rate of return is well-defined. 5 c",
+    optionC: "pricing is sensitive to changes in credit spreads.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-84",
+    topicId: "fi",
+    stem: "Callable bonds exhibit:",
+    optionA: "positive convexity only. 5 B",
+    optionB: "negative convexity only.",
+    optionC: "either positive or negative convexity.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-85",
+    topicId: "fi",
+    stem: "Which of the following duration statistics best measures the sensitivity of a bond's price to a flattening of the yield\ncurve?\nx B",
+    optionA: "Key rate duration",
+    optionB: "Effective duration c",
+    optionC: "Macaulay duration *",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-86",
+    topicId: "fi",
+    stem: "An analyst is concerned that a bond might be downgraded one category by Standard & Poor's and become non-\ninvestment grade. The current rating of this bond is most likely:\nx B\nAA\nB.BB-.\nC.BBB-. * c",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "BB-.",
+    optionC: "BBB-. * c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-87",
+    topicId: "fi",
+    stem: "For an option-free fixed-rate corporate bond, the duration and convexity statistics are most likely relevant for a\nchange in:\nx B",
+    optionA: "the credit spread only.",
+    optionB: "the benchmark yield only. 5 c",
+    optionC: "both the credit spread and the benchmark yield.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-88",
+    topicId: "fi",
+    stem: "All else being equal, an investment-grade bond issuer most likely has:",
+    optionA: "loss market liquidity risk than a below-investment-grade issuer. % B",
+    optionB: "the same market liquidity risk as a below-invesiment-grade issuer.",
+    optionC: "greater market liquidity risk than a below-investment-grade issuer. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-89",
+    topicId: "fi",
+    stem: "Tightening corporate bond yield spreads are most likely associated with:",
+    optionA: "issuers' deteriorating creditworthiness. 5 B",
+    optionB: "periods of high demand for corporate bonds.",
+    optionC: "broker-dealers' reduced ability and willingness to make markets. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-90",
+    topicId: "fi",
+    stem: "All else being equal, expected loss for a debt instrument:",
+    optionA: "is independent of the recovery rate.\n-",
+    optionB: "decreases as the recovery rate increases",
+    optionC: "changes proportionally to the recovery rate.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-91",
+    topicId: "fi",
+    stem: "Which of the following is most likely a key factor in the credit analysis of revenue-backed non-sovereign government ~~ y¢ A\nbonds?\nx B",
+    optionA: "Per capita income",
+    optionB: "Breadth of the tax base 5 c",
+    optionC: "Debt-service-coverage ratio of the project",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-92",
+    topicId: "fi",
+    stem: "A corporate family rating most likely:",
+    optionA: "reflects the priority of claims in a bankruptcy. 5 B",
+    optionB: "refers to specific financial obligations of an issuer.",
+    optionC: "is assigned to a company based on ts overall creditworthiness. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-93",
+    topicId: "fi",
+    stem: "An issuer's credit rating most likely applies to its:",
+    optionA: "subordinated debt. 5 B",
+    optionB: "senior secured debt.",
+    optionC: "senior unsecured debt.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-94",
+    topicId: "fi",
+    stem: "The EBITDAVinterest expense ratio is best classified as a",
+    optionA: "leverage ratio.",
+    optionB: "coverage ratio. % B",
+    optionC: "profitability ratio.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-95",
+    topicId: "fi",
+    stem: "Abond issuer has a credit rating of BBB. Based only on this information, the rating of a senior unsecured bond from\nthis issuer is most likely to be:\nx B",
+    optionA: "lower than BBB.",
+    optionB: "BBB. c",
+    optionC: "higher than BBB. *",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-96",
+    topicId: "fi",
+    stem: "Interest coverage using EBIT is closest to: Low Medium = High\nATX .\nB. 8x. Confirm\nc.ox.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "8x. Confirm\nc.ox.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-97",
+    topicId: "fi",
+    stem: "Which of the following debt categories has the highest ranking in terms of priority of payment?",
+    optionA: "Second lien debt 5 B",
+    optionB: "Subordinated debt",
+    optionC: "Senior unsecured debt\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-98",
+    topicId: "fi",
+    stem: "In a bankruptcy scenario, if the priority of claims is enforced, itis most likely that:",
+    optionA: "fixed-rate bond is repaid first because it matures earlier.",
+    optionB: "both bondholders are repaid proportionally to the amount owed. Confirm",
+    optionC: "FRN is repaid first because it has the highest amount outstanding.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-99",
+    topicId: "fi",
+    stem: "With respect to the notching process adopted by credit rating agencies, a corporates subordinated debt is most\nlikely:\nx B",
+    optionA: "notched up from the corporate's junior subordinated debt.",
+    optionB: "subject to a smaller notching adjustment the higher the corporate's issuer rating. 5 c",
+    optionC: "notched down from the corporates issuer rating due to higher probabilty of default.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-100",
+    topicId: "fi",
+    stem: "In the securitization process, the trustee most likely:",
+    optionA: "sells the underlying collateral. % B",
+    optionB: "owns the underying collateral.",
+    optionC: "holds the underlying collateral.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-101",
+    topicId: "fi",
+    stem: "In a securitization, the purchase agreement between the seller of the collateral and the special purpose entity most\nlikely provides:\nx B",
+    optionA: "a description of the transaction structure.",
+    optionB: "representations about the qualiy of the assets. % c",
+    optionC: "documentation of enhancements used to reduce credit risk.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-102",
+    topicId: "fi",
+    stem: "In the event of default, investors in covered bonds most likely have recourse against:",
+    optionA: "the issuer only. % B",
+    optionB: "a segregated pool of asses only",
+    optionC: "both the issuer and a segregated pool of assets.\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-103",
+    topicId: "fi",
+    stem: "A credit card receivable asset-backed security most likely:",
+    optionA: "faces high prepayment risk.\noh",
+    optionB: "uses fuly-amoriizing loans as collateral.",
+    optionC: "reinvests principal repayments during the lockout period.\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-104",
+    topicId: "fi",
+    stem: "In a securitization, a senior/subordinated structure is most likely a form of:",
+    optionA: "time tranching.",
+    optionB: "credit ranching. % =",
+    optionC: "prepayment risk management.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "fi-105",
+    topicId: "fi",
+    stem: "Which of the following types of collateralized debt obligations (CDOs) are most likely backed by asset-backed\nsecurities?\nx B",
+    optionA: "Structured finance CDOs\n8. Collateralized loan obligations 5% c",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Collateralized bond obligations",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-106",
+    topicId: "fi",
+    stem: "Which of the following mortgage features most likely benefits the lender?",
+    optionA: "Non\non-recourse loan 5% B",
+    optionB: "Prepayment option",
+    optionC: "Prepayment penalty\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-107",
+    topicId: "fi",
+    stem: "The coupon of a residential mortgage-backed security is the:",
+    optionA: "pass-through rate. % B",
+    optionB: "weighted average coupon rate.",
+    optionC: "rate on the underlying pool of mortgages.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-108",
+    topicId: "fi",
+    stem: "Al else being equal, the risk of a strategic default for a non-recourse mortgage is most likely:",
+    optionA: "lower than for a recourse morigage.\nx B",
+    optionB: "the same as for a recourse mortgage.",
+    optionC: "greater than for a recourse morgage.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-109",
+    topicId: "fi",
+    stem: "When interest rates increase, mortgage-backed securities most likely exhibit increased:",
+    optionA: "extension risk.",
+    optionB: "contraction isk. % =",
+    optionC: "reinvestment isk.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "fi-110",
+    topicId: "fi",
+    stem: "In a securitization, time tranching most likely refers to differences in:",
+    optionA: "default isk.",
+    optionB: "expected marities. % =",
+    optionC: "underlying collateral.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-1",
+    topicId: "deriv",
+    stem: "Which of the following most likely has an embedded derivative in its structure?",
+    optionA: "A put option",
+    optionB: "A callable bond * B",
+    optionC: "Afutures contract\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-2",
+    topicId: "deriv",
+    stem: "In the over-the-counter derivatives market, most transactions occur between end users and:",
+    optionA: "dealers.",
+    optionB: "other end users. * B",
+    optionC: "a central counterparty.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-3",
+    topicId: "deriv",
+    stem: "An end user seeking to hedge a specific underlying exposure having non-standard size and settlement dates would\n'most likely trade on a(n):\nx B",
+    optionA: "futures market.",
+    optionB: "over-the-counter derivative market. x (e]\nCC. exchange-traded derivative market.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-4",
+    topicId: "deriv",
+    stem: "Compared to over-the-counter derivatives, exchange-traded derivatives:",
+    optionA: "are less standardized.",
+    optionB: "provide less transparency.",
+    optionC: "have lower transaction costs.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-5",
+    topicId: "deriv",
+    stem: "The portfolio containing a derivative acting as a firm commitment to hedge the stock is most fikely: £ow | Madu] Eh\nC. Portfolio 3.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Portfolio 3.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-6",
+    topicId: "deriv",
+    stem: "The value of the put option to the option seller at expiration is:\nAST",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-7",
+    topicId: "deriv",
+    stem: "Acall option that is sold for $4 has an exercise price of $40. If the price of the underlying is $43 at expiration, the\nvalue of the option to the seller is closest to:\nx B",
+    optionA: "-$3, and the loss to the seller is $1",
+    optionB: "$3, and the profit to the seller is $1. x (@",
+    optionC: "$3, and the loss to the seller is $1.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-8",
+    topicId: "deriv",
+    stem: "If the price of the underlying is $17 at expiration, the profit to the option holder is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-9",
+    topicId: "deriv",
+    stem: "The profit to the call seller is closest fo:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-10",
+    topicId: "deriv",
+    stem: "An American put has a srike price of ¥5,000 and expires in one year. The current price of the underlying is ¥4,200\nand the risk-free rate is 2%. The maximum value of this put is:\nx B",
+    optionA: "¥800.",
+    optionB: "¥4,900.",
+    optionC: "¥5,000. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-11",
+    topicId: "deriv",
+    stem: "An investor pays $5 for a European put option with an exercise price of $102. At expiration, if the price of the\nunderlying is $100, the value of the put option is:\nx B",
+    optionA: "-$3.",
+    optionB: "50.",
+    optionC: "$2. 3% c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-12",
+    topicId: "deriv",
+    stem: "If $; denotes the price of the underlying at the expiration date and X is the exercise price of the option, the payoff at\nexpiration to a call seller is best described as:\nx B",
+    optionA: "-Max(0, S;- X).",
+    optionB: "-Max(0, X- S,). x fo]",
+    optionC: "Max(0, S;-X).",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-13",
+    topicId: "deriv",
+    stem: "Which of the following types of derivatives most likely has a daily setting of gains and losses?",
+    optionA: "Currency swap",
+    optionB: "Futures contract L B",
+    optionC: "Forward commitment\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-14",
+    topicId: "deriv",
+    stem: "If the price of the underlying at expiration is $27, the profit for a buyer of the put is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-15",
+    topicId: "deriv",
+    stem: "The type of derivative that provides the right but not the obligation to buy an underlying is a",
+    optionA: "swap.",
+    optionB: "contingent claim. LS B",
+    optionC: "forward commitment.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-16",
+    topicId: "deriv",
+    stem: "All else being equal, if the price of the underlying at expiration exceeds the exercise price, the option value at\nexpiration for the seller of a put most likely is:\nx B",
+    optionA: "less than the option value at expiration for the seller of a call",
+    optionB: "equal to the option value at expiration for the seller of a call. x c",
+    optionC: "greater than the option value at expiration for the seller of a call.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-17",
+    topicId: "deriv",
+    stem: "An option is a type of a:",
+    optionA: "swap.",
+    optionB: "contingent claim. LS B",
+    optionC: "forward commitment.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-18",
+    topicId: "deriv",
+    stem: "An investor buys a call for $5.75 that has a strike price of $130. If the value at expiration for this call is $17.80, the\nprice of the underlying at expiration is closest to:\nx B",
+    optionA: "$112.20.",
+    optionB: "$142.05",
+    optionC: "$147.80. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-19",
+    topicId: "deriv",
+    stem: "Which party in an option contract has the right to sell the underlying stock at the exercise price?",
+    optionA: "The buyer of a call option % B",
+    optionB: "The buyer of a put option",
+    optionC: "The seller of a put option\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-20",
+    topicId: "deriv",
+    stem: "Which of the following is most accurate?",
+    optionA: "Aforward contract is traded on an organized exchange.",
+    optionB: "Forward contracts are more transparent than futures contracts.",
+    optionC: "The buyer of a forward contract agrees to buy the underlying asset at a fixed price on a future date. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-21",
+    topicId: "deriv",
+    stem: "Al ise being equal, which portfolio wil benefit rom an increase in price of the underlying?",
+    optionA: "Portfolio 1",
+    optionB: "Portfolio 2",
+    optionC: "Portfolio 3\nortfolio",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-22",
+    topicId: "deriv",
+    stem: "A principal argument against using derivalives is that they:",
+    optionA: "destabilize the financial system.",
+    optionB: "are ineffective in transferring risk between parties.",
+    optionC: "prevent price discovery of underlying assets in spot markefs. c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-23",
+    topicId: "deriv",
+    stem: "The potential divergence between the cash flow timing of a derivative instrument versus ts underlying best\ndescribes:\nx B",
+    optionA: "basis risk.",
+    optionB: "liquidity risk.",
+    optionC: "systemic risk. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-24",
+    topicId: "deriv",
+    stem: "The potential divergence between the expected value of a derivative instrument versus an underlying or hedged\ntransaction best describes:\nx B",
+    optionA: "basis risk.",
+    optionB: "liquidity risk.",
+    optionC: "systemic risk. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-25",
+    topicId: "deriv",
+    stem: "With respect to hedge accounting designation types, a:",
+    optionA: "foreign exchange forward to hedge forecasted sales is an example of a fair value hedge.",
+    optionB: "commodity futures contract used to hedge inventory is an example of a cash flow hedge.",
+    optionC: "currency forward to offset the foreign exchange risk of equity of a foreign operation is an example of a net\ninvestment hedge. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-26",
+    topicId: "deriv",
+    stem: "Acommodities producer selling its inventory forward in anticipation of lower prices in the future is an example of a:",
+    optionA: "fair value hedge.",
+    optionB: "cash flow hedge. LS B",
+    optionC: "net investment hedge.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-27",
+    topicId: "deriv",
+    stem: "Basis risk is best described as a(n):",
+    optionA: "investor's inability to meet a margin call due to a lack of funds.",
+    optionB: "potential divergence between the expected value of a derivative and its underlying.",
+    optionC: "divergence in the cash flow timing of a derivative versus that of an underlying transaction. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-28",
+    topicId: "deriv",
+    stem: 'Derivatives: Practice Pack © This Question: 00:00 © Total: 00:36 0°" Pin\n<b Question 28075 # & RoviewAnswer or\nAQ. The spot price of an asset is $70.00. If the annual risk-free rate is 2.50%, the 9-month forward price is closest to:',
+    optionA: "$68.72.",
+    optionB: "$71.31. LS B",
+    optionC: "$71.75.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-29",
+    topicId: "deriv",
+    stem: 'Derivatives: Practice Pack © This Question: 00:00 © Total: 00:36 0°" Pin\n4} Question290f75 # & RoviewAnswer or\nAQ. An investor observes that the price of an underlying asset is $20. The investor immediately enters into forward\ncontract to purchase the underlying asset in one year at a price of $10. At contract initiation, the value of the forward\ncontract is closest to:',
+    optionA: "$0. x Cc",
+    optionB: "$10.\n€. $30.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-30",
+    topicId: "deriv",
+    stem: "At expiration, if the spot price is $282, the value to the seller is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-31",
+    topicId: "deriv",
+    stem: "Two-year and three-year government benchmark zero-coupon bonds are priced at 96 and 93 (per 100 face value),\nrespectively. The implied one-year forward rate in two years' time is closest to:\nx B",
+    optionA: "3.00%.",
+    optionB: "3.23%.",
+    optionC: "3.36%. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-32",
+    topicId: "deriv",
+    stem: "All else being equal, the price of a forward contract is most ikely higher than the price of a futures contract if interest ~~ s¢ A\nrates are:\nx B",
+    optionA: "negatively correlated with futures prices.",
+    optionB: "uncorrelated with futures prices. x",
+    optionC: "positively correlated with futures prices.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-33",
+    topicId: "deriv",
+    stem: 'Derivatives: Practice Pack © This Question: 00:00 © Total: 00:39 0°" Ping\n"4 I) Question 33 of 75 # # Review Answer of\nAQ. The differential between forward and futures prices is determined by which of the following?',
+    optionA: "Interest rate volatility only ~ B",
+    optionB: "The correlation between futures prices and interest rates only",
+    optionC: "Both interest rate volatility and the correlation between futures prices and interest rates Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-34",
+    topicId: "deriv",
+    stem: "Afutures contracts:",
+    optionA: "mark-to-market is not settled until maturity.",
+    optionB: "price remains fixed until the contract matures.",
+    optionC: "variation margin reduces counterparty credit risk.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-35",
+    topicId: "deriv",
+    stem: "Based on 365 days per year, the futures price per barrel of crude oil is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-36",
+    topicId: "deriv",
+    stem: "Which of the following interest rate derivatives most likely has the largest convexity bias?",
+    optionA: "Forward rate agreement on a 1-month market reference rate",
+    optionB: "Forward rate agreement on a 3-month market reference rate",
+    optionC: "Interest rate futures contract on a 3-month market reference rate Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-37",
+    topicId: "deriv",
+    stem: "Which of the following derivatives realize a gain as the market reference rate rises above the initial fixed rate?",
+    optionA: "Long forward rate agreements only ~ B",
+    optionB: "Short interest rate futures contracts only",
+    optionC: "Both long forward rate agreements and short interest rate futures contracts Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-38",
+    topicId: "deriv",
+    stem: "Which of the following statements is most accurate? A standard interest rate swap has:",
+    optionA: "a symmetric payoff profile. 2 B",
+    optionB: "the principal cash flow exchanged upfront.",
+    optionC: "periodic settlements that occur at the beginning of each period. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-39",
+    topicId: "deriv",
+    stem: "The periodic settlement value in Year 3 for the fixed-rate payer is expected to be closest to:\nig\nB.-$60,000.\nC. $60,000.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "-$60,000.",
+    optionC: "$60,000.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-40",
+    topicId: "deriv",
+    stem: "Aseries of forward rate agreements and an interest rate swap contract covering the same periods and using the\n'same market reference rate will most likely have the same:\nx B",
+    optionA: "fixed rates.",
+    optionB: "cash flows upfront. x",
+    optionC: "settlement cash flows.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-41",
+    topicId: "deriv",
+    stem: "From the fixed-rate receiver's perspective, if the market reference rate increases, the value of a swap contract",
+    optionA: "decreases.",
+    optionB: "stays the same. L B",
+    optionC: "increases.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-42",
+    topicId: "deriv",
+    stem: "Al, else held equal, the value of a European call option is best characterized as having a:",
+    optionA: "negative relationship with the price of the underlying.",
+    optionB: "negative relationship with the volatility of the underlying.",
+    optionC: "positive relationship with the time to expiration.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-43",
+    topicId: "deriv",
+    stem: "The value of a European call option is inversely related to the:",
+    optionA: "exercise price.",
+    optionB: "time to expiration. LS B",
+    optionC: "risk-free interest rate.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-44",
+    topicId: "deriv",
+    stem: "A put option with the greatest moneyness has a strike price:",
+    optionA: "less than the price of the underlying. 2 B",
+    optionB: "equal to the price of the underlying.",
+    optionC: "greater than the price of the underlying.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-45",
+    topicId: "deriv",
+    stem: "Ifthe price of the underlying is $57, which of the following long option positions is out of the money? A:",
+    optionA: "put with a strike price of $60 2 B",
+    optionB: "put with a strike price of $50",
+    optionC: "call with a strike price of $50\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-46",
+    topicId: "deriv",
+    stem: "Which of the following European options has the greatest value at expiration? A:",
+    optionA: "call with an exercise price of 72 and an underlying priced at 83 2 B",
+    optionB: "call with an exercise price of 83 and an underlying priced at 70",
+    optionC: "put with an exercise price of 70 and an underlying priced at 83 c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-47",
+    topicId: "deriv",
+    stem: "For a European call option with one month until expiration, if the spot price is below the exercise price, the call\noption most likely has:\nx B",
+    optionA: "positive time value only.",
+    optionB: "positive intrinsic value only. x",
+    optionC: "both positive time value and positive intrinsic value.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-48",
+    topicId: "deriv",
+    stem: "All else being equal, if the risk-free rate increases, the value of a European put option:",
+    optionA: "decreases.",
+    optionB: "remains the same. LS B",
+    optionC: "increases.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-49",
+    topicId: "deriv",
+    stem: "The value of a long position in a European put option is directly related to the:",
+    optionA: "exercise price.",
+    optionB: "risk-free interest rate. LS B",
+    optionC: "value of the underlying.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-50",
+    topicId: "deriv",
+    stem: 'Derivatives: Practice Pack © This Question: 00:00 © Total: 00:52 0°" Ping\n4} Question 50075 # @® ReviewAnswer or\nAQ. The current price of the underlying is $7.40 and the annual risk-free rate is 6%. The minimum price for a 6-month\ncall option with a strike price of $7.50 is closest to:\nx B',
+    optionA: "$0.00.",
+    optionB: "$0.12.",
+    optionC: "$0.31. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-51",
+    topicId: "deriv",
+    stem: "All else being equal, if the exercise values of a European call option and a European put option on the same\nunderlying are equal, both options must be:\nx B",
+    optionA: "in-the-money options.",
+    optionB: "at-the-money options. x Cc",
+    optionC: "out-of-the-money options.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-52",
+    topicId: "deriv",
+    stem: "The upper bound of a put value is the:",
+    optionA: "exercise price.",
+    optionB: "price of the underlying. LS B",
+    optionC: "present value of the exercise price minus the spot price. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-53",
+    topicId: "deriv",
+    stem: "The upper bound of a call value is the:",
+    optionA: "underlying's price. 2 B",
+    optionB: "underlying's price plus the present value of its exercise price or zero, whichever is greater.",
+    optionC: "underlying's price minus the present value of its exercise price or zero, whichever is greater. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-54",
+    topicId: "deriv",
+    stem: "Al else being equal, the cost of a fiduciary call must be:",
+    optionA: "less than the cost of a synthetic protective put.",
+    optionB: "equal to the cost of a synthetic protective put.",
+    optionC: "greater than the cost of a synthetic protective put.\nx [&3\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-55",
+    topicId: "deriv",
+    stem: "Afiduciary call is a strategy in which a trader purchases a call option:",
+    optionA: "and takes a short position in the underlying asset. ~ B",
+    optionB: "with funds received from selling short a zero coupon bond of the same maturity as the call option.",
+    optionC: "along with a zero coupon bond of the same maturity as the call option and with a face value equal to the exercise.\nprice of the option. x Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-56",
+    topicId: "deriv",
+    stem: "Which of the following is most accurate? Put-call-forward parity:",
+    optionA: "assumes that the strike of the options is equal to the forward price of the underlying. ~ B",
+    optionB: "is derived by equating the price of an at the money put to the price of an at the money call.",
+    optionC: "assumes that the maturity of the put option, the call option, the forward and the bond are the same. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-57",
+    topicId: "deriv",
+    stem: "All else being equal, based on put-call-forward parity, the price of a put is higher than the price of a call when:",
+    optionA: "the forward price of the underlying is lower than the exercise price.",
+    optionB: "the forward price of the underlying is equal to the exercise price.",
+    optionC: "the forward price of the underlying is higher than the exercise price. x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-58",
+    topicId: "deriv",
+    stem: "Based on put-call parity, the payoff on a short underlying position is equivalent to the payoff on a portfolio consisting ~~ s¢ A\nofa:\nx B",
+    optionA: "short call, a long put, and a long bond.",
+    optionB: "short call, a long put, and a short bond. x",
+    optionC: "long call, a short put, and a short bond.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-59",
+    topicId: "deriv",
+    stem: "According to put-call-forward parity, a trader can create a synthetic short position in a risk-free bond by setting up a\nlong position in a call option along with a:\nx B",
+    optionA: "short position in a forward contract and a long position in a put.",
+    optionB: "long position in a forward contract and a short position in a put. x",
+    optionC: "short position in a forward contract and a short position in a put.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-60",
+    topicId: "deriv",
+    stem: "According to put-call parity, the price of the put is closest to:",
+    optionA: "$28.25",
+    optionB: "$30.00.",
+    optionC: "$108.25.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-61",
+    topicId: "deriv",
+    stem: "According to put-call-forward parity, the price of the call is closest to:",
+    optionA: "$127.84.",
+    optionB: "$129.80.",
+    optionC: "$131.96.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-62",
+    topicId: "deriv",
+    stem: "According to put-call-forward parity, the payoff on a synthetic protective put is equivalent to the payoff on a portfolio\nconsisting of:\nx B",
+    optionA: "along call and a long risk-free bond.",
+    optionB: "along call, a short forward contract and a long risk-free bond. x",
+    optionC: "along put, a short forward contract and a short risk-free bond.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-63",
+    topicId: "deriv",
+    stem: "According to put-call parity, the payoff of a long risk-free bond can be replicated synthetically by going",
+    optionA: "long an asset, long a put and long a call. 2 B",
+    optionB: "long an asset, long a put and short a call.",
+    optionC: "long an asset, short a put and short a call.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "deriv-64",
+    topicId: "deriv",
+    stem: "Which of the following factors affects the option price when using a binomial model? The:",
+    optionA: "risk-free rate.",
+    optionB: "level of investors' risk aversion.",
+    optionC: "expected return of the underlying.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-65",
+    topicId: "deriv",
+    stem: "All else being equal, if the up gross return increases in a one-period binomial model, the risk-neutral probability of\nan upward price movement of the asset will:\nx B",
+    optionA: "decrease.",
+    optionB: "remain the same. x",
+    optionC: "increase.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-66",
+    topicId: "deriv",
+    stem: "Risk-neutral pricing establishes no-arbitrage option values independent of the:",
+    optionA: "spot price of the underlying. 2 B",
+    optionB: "investor's views on the volatiity of the underlying.",
+    optionC: "future price of the underlying following an up or down move. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-67",
+    topicId: "deriv",
+    stem: "Using a one-period binomial model, the risk-neutral probability of a price increase is closest to:\nAg\nc.054",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-68",
+    topicId: "deriv",
+    stem: "Based on a one-period binomial pricing model, which of the following has the largest payoff? Low | Medium | High",
+    optionA: "Put option following an up move }",
+    optionB: "Put option following a down move Confirm",
+    optionC: "Call option following a down move",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-69",
+    topicId: "deriv",
+    stem: "According to put-call parity, a long put option is equivalent to being",
+    optionA: "long a call, short the underlying asset, and long a risk-free bond. 2 B",
+    optionB: "long a call, long the underlying asset, and short a risk-free bond.",
+    optionC: "short a call, long the underlying asset, and long a risk-free bond. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-70",
+    topicId: "deriv",
+    stem: "The rate typically used in derivative pricing models to discount expected payoffs is the:",
+    optionA: "risk-free rate.",
+    optionB: "risk-free rate plus a risk premium.",
+    optionC: "risk-free rate multiplied by the risk-neutral probability. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-71",
+    topicId: "deriv",
+    stem: "If the net cost of cary is zero, the forward price of a commodity is most likely:",
+    optionA: "less than the commodity's spot price compounded at the risk-free rate over the life of the contract.",
+    optionB: "equal to the commodity's spot price compounded at the risk-free rate over the life of the contract.",
+    optionC: "greater than the commodity's spot price compounded at the risk-free rate over the life of the contract. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-72",
+    topicId: "deriv",
+    stem: "The risk-free rate is 3% and the risk premium for an asset is 2%. If an investor creates a perfect hedge by\n'combining the asset with a derivative, the combined position should eam:\nx B",
+    optionA: "0%.",
+    optionB: "3%.",
+    optionC: "5%. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-73",
+    topicId: "deriv",
+    stem: "A stock with a dividend yield of 3% is trading in the spot market at $50. If the annual risk-free rate is 5%, the 6-\nmonth forward price of the stock is closest to:\nx B",
+    optionA: "$49.50.",
+    optionB: "$50.50.",
+    optionC: "$51.27. 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-74",
+    topicId: "deriv",
+    stem: "All else being equal, the cost of carry on a dividend-paying stock is:",
+    optionA: "lower than the cost of carry on a stock with no dividends.",
+    optionB: "the same as the cost of carry on a stock with no dividends.",
+    optionC: "higher than the cost of carry on a stock with no dividends. Cc\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "deriv-75",
+    topicId: "deriv",
+    stem: "Which of the following asset classes is most likely to have a convenience yield?",
+    optionA: "Commodities",
+    optionB: "Interest rates L B",
+    optionC: "Foreign exchange\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-1",
+    topicId: "alts",
+    stem: "If the fund's return is 18% at the end of the first year, the fund's investors' net return is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-2",
+    topicId: "alts",
+    stem: "When market prices are used to value underlying positions held by a hedge fund, the most conservative approach\nuses:\nx B",
+    optionA: "bid prices only.",
+    optionB: "the average of bid and ask prices. - Cc",
+    optionC: "bid prices for longs and ask prices for shorts.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-3",
+    topicId: "alts",
+    stem: "If the performance fee is calculated net of the management fee and there were no capital contributions or\nilhrauwas, the nit annua return to the investor is closest to:",
+    optionA: "16.3%.",
+    optionB: "16.4%. i",
+    optionC: "165%. hd",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-4",
+    topicId: "alts",
+    stem: "If the management and incentive fees are calculated independently and there were no capital contributions or Low | Medium High\nwithdrawals, total fees for Year 2 are closest to:\nConfirm",
+    optionA: "$37.8 million.",
+    optionB: "$39.7 million.",
+    optionC: "$41.6 million.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-5",
+    topicId: "alts",
+    stem: "The management fee and incentive fee are based on the year-end value. If the fund generates a gross retum of Low | Medium High\n10%, the net return is closest to:\nConfirm",
+    optionA: "6.2%",
+    optionB: "6.8%.",
+    optionC: "7.2%. )",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-6",
+    topicId: "alts",
+    stem: "If the incentive fee is calculated on returns in excess of a 6% hurdle rate, total annual fees eamed by the fund Low | Medum | High\nmanager are closest to:\nConfirm",
+    optionA: "$34,800,000.",
+    optionB: "$70,800,000.",
+    optionC: "$78,000,000 :\nS78",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-7",
+    topicId: "alts",
+    stem: "Apercsived benefit of adding alternative assets to a portfolio of traditional assets is most likely the higher:",
+    optionA: 'risk-adjusted return profile of the resulting portfolio. " B',
+    optionB: "regulation and transparency of alternative assets relative to traditional assets.",
+    optionC: "expected correlation of returns between alternative assets and traditional assets. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-8",
+    topicId: "alts",
+    stem: "The incentive fee is calculated net of the management fee. f the gross annual retum is 15%, the net-of-fees retum",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-9",
+    topicId: "alts",
+    stem: "Ahedge fund has assets under management of $20 million at the beginning of the year and $24 million at the end\nof the year. The fund charges a 2% management fee based on year-end assets under management and a 20%\nincentive fee. If the incentive fee is calculated net of the management fee, the total fee charged for the year is closest\nto:\nx C",
+    optionA: "$0.88 million.",
+    optionB: "$1.18 million.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-10",
+    topicId: "alts",
+    stem: "If the incentive fee is based on returns net of management fees and the fee structure includes the use of a high-\nato ma, tho Investor nat rotum for to years oso o:",
+    optionA: "6.24%.",
+    optionB: "6.96%.",
+    optionC: "7.57%.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-11",
+    topicId: "alts",
+    stem: "Which of the following has most likely been designed to provide an opportunity for a hedge fund manager to\nliquidate positions in an orderly fashion without magnifying the losses?\nx B",
+    optionA: "Notice periods",
+    optionB: "Lockup periods\nx C",
+    optionC: "Redemption fees",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-12",
+    topicId: "alts",
+    stem: "The lag in marking private equity investments to market most likely makes private equity appear:",
+    optionA: 'less volatile than it really is. " B',
+    optionB: "less resilient than it really is.",
+    optionC: "more correlated with traditional assets than it really is. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-13",
+    topicId: "alts",
+    stem: "Hedge fund mark-to-model valuations most likely reflect a:",
+    optionA: "liquidation value.",
+    optionB: "theoretical value. = B",
+    optionC: "publicly traded price.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-14",
+    topicId: "alts",
+    stem: "If the fund's gross retum is 25% during the year, the total fees eamed by the fund manager are:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-15",
+    topicId: "alts",
+    stem: "Which of the following is private debt funding used by companies that are in the seed stage of their life cycle?",
+    optionA: "Venture debt",
+    optionB: "Direct lending",
+    optionC: "Mezzanine financing\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-16",
+    topicId: "alts",
+    stem: "The clawback provision of a private equity fund most likely benefits the:",
+    optionA: "broker.",
+    optionB: "investors.",
+    optionC: "general partner.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-17",
+    topicId: "alts",
+    stem: "Aleveraged private investment vehicle that employs both long and short positions is most likely a",
+    optionA: "hedge fund.",
+    optionB: "private equity fund. = B",
+    optionC: "venture capital fund\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-18",
+    topicId: "alts",
+    stem: "Venture capital is best classified as a sub-category of:",
+    optionA: "real estate.",
+    optionB: "hedge funds.",
+    optionC: "private equity.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-19",
+    topicId: "alts",
+    stem: "Ahedge fund feature that allows an incentive fee to be eamed only after the fund exceeds a specified return best\ndefines a:\nx B",
+    optionA: "lockup.\nx C",
+    optionB: "hurdle rate.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-20",
+    topicId: "alts",
+    stem: "Aprivate equity fund structured as a partnership is managed by:",
+    optionA: "the general partner only. ~ B",
+    optionB: "the limited partners only.",
+    optionC: "both the general partner and the limited partners.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-21",
+    topicId: "alts",
+    stem: "Ahedge fund's lockup period is best defined as the required period of time before:",
+    optionA: "incentive fees are earned. ~ B",
+    optionB: "redemptions are permitted.",
+    optionC: "committed capital is drawn down.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-22",
+    topicId: "alts",
+    stem: "Until drawdown of capital is complete, the management fee on a private equity fund is most likely based on:",
+    optionA: "drawn capital.",
+    optionB: "invested capital BN 2",
+    optionC: "committed capital\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-23",
+    topicId: "alts",
+    stem: "Alternative investments:",
+    optionA: 'include tangible assets only. " B',
+    optionB: "include intangible assets only.",
+    optionC: "may include both tangible and intangible assets.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-24",
+    topicId: "alts",
+    stem: "Which of the following statements is most accurate? Alternative investments:",
+    optionA: 'tend to be more efficiently priced than traditional investments. " B',
+    optionB: "fall outside of the definition of long-only positions in stocks, bonds, and cash",
+    optionC: "have relatively high correlation of returns with those of traditional investments. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-25",
+    topicId: "alts",
+    stem: "Within a limited partnership structure, the limited partner is most likely to:",
+    optionA: 'jointly control the operations and decisions of the fund. " B',
+    optionB: "have total commitments to the fund limited to the upfront cash outflows.",
+    optionC: "be expected to understand and be able to assume the risks associated with the investments. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-26",
+    topicId: "alts",
+    stem: "Which of the following is most appropriately categorized as a traditional investment?",
+    optionA: "Gold",
+    optionB: "Cash",
+    optionC: "Real estate\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-27",
+    topicId: "alts",
+    stem: "Which of the following methods of investing in alternative investments requires the least amount of investment\nexpertise?\nx B",
+    optionA: "Co-investing",
+    optionB: "Fund investing\nx Cc",
+    optionC: "Direct investing",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-28",
+    topicId: "alts",
+    stem: "Compared with fund investing in alternative investments, the co-investing method most likely has",
+    optionA: 'lower management fees. I" B',
+    optionB: "the same level of management fees.",
+    optionC: "higher management fees.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-29",
+    topicId: "alts",
+    stem: "Compared with direct investing, co-investing in alternative investments most likely offers:",
+    optionA: 'reduced control over the investment selection process. " B',
+    optionB: "the same level of control over the investment selection process.",
+    optionC: "higher control over the investment selection process. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-30",
+    topicId: "alts",
+    stem: "In co-investing, the investor invests in alternative assets indirectly through a fund but also has the:",
+    optionA: 'right to invest directly in the same assets alongside the fund " B',
+    optionB: "obligation to invest directly in the same assets alongside the fund.",
+    optionC: "right to invest in the general partner's fund management company. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-31",
+    topicId: "alts",
+    stem: "Which of the following methods of investing in alternative investments provides the most flexibility to the investor?",
+    optionA: "Co-investing",
+    optionB: "Fund investing",
+    optionC: "Direct investing\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-32",
+    topicId: "alts",
+    stem: "Which of the following statements about limited partnerships is most accurate? Limited partners:",
+    optionA: 'play passive roles in the partnership. I" B',
+    optionB: "are involved in the management of the partnership.",
+    optionC: "make only limited decisions related to the operations of the partnership. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-33",
+    topicId: "alts",
+    stem: "Management fees are most likely based on assets under management for:",
+    optionA: "hedge funds only.",
+    optionB: "private equity funds only.",
+    optionC: "both hedge funds and private equity funds.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-34",
+    topicId: "alts",
+    stem: "In alternative investments, the American waterfall distribution method is more advantageous to the:",
+    optionA: 'limited partners because performance fees are collected on a per-deal basis. " B',
+    optionB: "general partner because performance fees are collected on a per-deal basis.",
+    optionC: "limited partners because the general partner does not participate in any profits until the hurdle rate has been met. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-35",
+    topicId: "alts",
+    stem: "Afeature that protects hedge fund clients from paying twice for the same performance is most likely a:",
+    optionA: "discount.",
+    optionB: "hurdle rate.",
+    optionC: "high-water mark.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-36",
+    topicId: "alts",
+    stem: "Private equity indexes most likely overestimate:",
+    optionA: "volatility.",
+    optionB: "performance.",
+    optionC: "correlation with traditional assets.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-37",
+    topicId: "alts",
+    stem: "An exit strategy where a private equity manager sells a company to a strategic buyer in the same industry best\ndescribes a:\nx B",
+    optionA: "trade sale.",
+    optionB: "secondary sale. % c",
+    optionC: "recapitalization.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-38",
+    topicId: "alts",
+    stem: "With respect to private equity, the growth capital strategy is also known as:",
+    optionA: "venture capital.",
+    optionB: "recapitalization.",
+    optionC: "minority equity investing.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-39",
+    topicId: "alts",
+    stem: "Which of the following is most likely a primary exit strategy for a company held by a private equity fund's portfolio?",
+    optionA: "IPO",
+    optionB: "Management buy-in",
+    optionC: "Management buyout\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-40",
+    topicId: "alts",
+    stem: "From the perspective of a private equity firm, an advantage of exiting a portfolio company through a special purpose ~~ %¢ A\nacquisition company (SPAC) most likely include:\nx B",
+    optionA: "floating valuation.",
+    optionB: "flexibility of the transaction structure.",
+    optionC: "lower deal risk due to restrictions on redemptions.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-41",
+    topicId: "alts",
+    stem: "Mezzanine debt:",
+    optionA: 'is less risky then senior secured debt. I" B',
+    optionB: "often provides equity participation features.",
+    optionC: "combines different tranches of secured and unsecured debt into a single loan with a single, blended interest rate. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-42",
+    topicId: "alts",
+    stem: "Which of the following statements is most accurate? Venture debt:",
+    optionA: 'requires assets as debt collateral. " B',
+    optionB: "allows entrepreneurs to obtain additional financing without further diluting shareholder ownership.",
+    optionC: "is a common form of debt financing for companies approaching the mature phase of their life cycle. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-43",
+    topicId: "alts",
+    stem: "Which of the following entails buying the debt of mature companies in financial difficulty?",
+    optionA: "Venture debt",
+    optionB: "Distressed debt = B",
+    optionC: "Unitranche debt\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-44",
+    topicId: "alts",
+    stem: "Compared to unsecured debt, unitranche debt most likely features:",
+    optionA: "lower borrowing costs.",
+    optionB: "the same borrowing costs",
+    optionC: "higher borrowing costs.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-45",
+    topicId: "alts",
+    stem: "Which of the following is best categorized as core real estate?",
+    optionA: 'A high-quality office building in a rural area i" B',
+    optionB: "Alow-quality office building in a major urban center",
+    optionC: "A high-quality office building in a major urban center c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-46",
+    topicId: "alts",
+    stem: "The benefits of adding investments in infrastructure assets to a portfolio most likely include:",
+    optionA: 'inflation protection only. " B',
+    optionB: "low correlation with existing portfolio assets only.",
+    optionC: "both inflation protection and low correlation with existing portfolio assets. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-47",
+    topicId: "alts",
+    stem: "Which of the following are best categorized as social infrastructure assets?",
+    optionA: "Airports",
+    optionB: "Correctional facilities - B",
+    optionC: "Telecommunication towers\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-48",
+    topicId: "alts",
+    stem: "Which of the following infrastructure investments most likely have the highest risk?",
+    optionA: 'Brownfield investments with the majority of their return from current yield. " B',
+    optionB: "Brownfield investments with the majority of their return from capital appreciation.",
+    optionC: "Greenfield investments with the majority of their retum from capital appreciation. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-49",
+    topicId: "alts",
+    stem: "Adisadvantage of direct real estate investing is:",
+    optionA: "a lack of control.",
+    optionB: "unfavorable tax rules. - B",
+    optionC: "the time required to manage the property.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-50",
+    topicId: "alts",
+    stem: "Which of the following real estate investing strategies is most likely to focus on modest redevelopment or upgrades,\nthe leasing of vacant space, and the repositioning of underlying properties to eam a higher retum?\nx B",
+    optionA: "Core-plus",
+    optionB: "Value add :",
+    optionC: "Opportunistic",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-51",
+    topicId: "alts",
+    stem: "With respect to infrastructure investments, a take-or-pay arrangement is most likely used to mitigate:",
+    optionA: "demand risk.",
+    optionB: "operational risk",
+    optionC: "construction risk.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-52",
+    topicId: "alts",
+    stem: "With respect to infrastructure investments, a take-or-pay arrangement is most likely used to mitigate:",
+    optionA: "demand risk.",
+    optionB: "operational risk",
+    optionC: "construction risk.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-53",
+    topicId: "alts",
+    stem: "Which of the following is most likely a characteristic of private real estate markets?",
+    optionA: 'Transaction costs are high i" B',
+    optionB: "Private market indexes are investable",
+    optionC: "ltis easy for small investors to establish a diversified portfolio of wholly owned properties c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-54",
+    topicId: "alts",
+    stem: "Investors in greenfield infrastructure projects typically:",
+    optionA: "rely on the assets' financial and operating history.\nx B",
+    optionB: "invest alongside strategic investors or developers.",
+    optionC: "have lower development risk than investors in brownfield projects. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-55",
+    topicId: "alts",
+    stem: "All else being equal, when a commodity futures market is in contango, the forward curve is most likely:",
+    optionA: "downward sloping.",
+    optionB: "flat. = B",
+    optionC: "upward sloping\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-56",
+    topicId: "alts",
+    stem: "If a commodity's storage cost is equal to its convenience yield, its futures prices will be greater than its spot price if\nthe risk-free rate is:\nx B",
+    optionA: "negative.",
+    optionB: "zero.\nx C",
+    optionC: "positive.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-57",
+    topicId: "alts",
+    stem: "Crude oil is categorized as:",
+    optionA: "a soft commodity.",
+    optionB: "a hard commodity. B",
+    optionC: "neither a soft commodity nor a hard commodity.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-58",
+    topicId: "alts",
+    stem: "Which of the following is best classified as a commodity?",
+    optionA: "Livestock",
+    optionB: "Timberland Bh B",
+    optionC: "Agricultural land\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-59",
+    topicId: "alts",
+    stem: "Timberland investments offer:",
+    optionA: 'an income stream only. " B',
+    optionB: "the potential for capital gain only.",
+    optionC: "both an income stream and the potential for capital gain. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-60",
+    topicId: "alts",
+    stem: "Ahedge fund that seeks to profit from a view on overall market direction as influenced by economic trends best\ndescribes a:\nx B",
+    optionA: "macro hedge fund.",
+    optionB: "multi-strategy hedge fund. ii Cc",
+    optionC: "market-neutral hedge fund.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-61",
+    topicId: "alts",
+    stem: "Ahedge fund strategy that seeks to influence a company's policies through the purchase of equity is best described ~~ g¢ A\nasa(n):\nx B",
+    optionA: "activist strategy.",
+    optionB: "market-neutral strategy. ii Cc",
+    optionC: "merger arbitrage strategy.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-62",
+    topicId: "alts",
+    stem: "What is the most likely effect of a redemption fee on the returns of the remaining investors in a hedge fund? A\nredemption fee:\nx B",
+    optionA: "reduces investor returns.",
+    optionB: "has no effect on investor returns.",
+    optionC: "enhances investor returns.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-63",
+    topicId: "alts",
+    stem: "Which of the following hedge funds most likely have a beta close to zero?",
+    optionA: 'Short-biased funds. " B',
+    optionB: "Market-neutral funds",
+    optionC: "Fundamental long/short growth funds\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-64",
+    topicId: "alts",
+    stem: "Event-driven hedge fund strategies are most likely:",
+    optionA: 'long biased. " B',
+    optionB: "based on 'top-down' analysis.",
+    optionC: "exploiting short-term pricing discrepancies between two related securities. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-65",
+    topicId: "alts",
+    stem: "Which of the following is best described as a relative value hedge fund strategy?",
+    optionA: "Short biased",
+    optionB: "Special situations. = B",
+    optionC: "Convertible bond arbitrage\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-66",
+    topicId: "alts",
+    stem: "The process of representing ownership rights to physical assets on a distributed ledger is referred to as:",
+    optionA: "tokenization.",
+    optionB: "initial coin offering",
+    optionC: "consensus mechanism.\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-67",
+    topicId: "alts",
+    stem: "Which of the following is most likely a major driver of bitcoin returns?",
+    optionA: 'Increased market adoption " B',
+    optionB: "The prospect of underlying cashflow generation",
+    optionC: "Consistently high correlation with traditional asset classes c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-68",
+    topicId: "alts",
+    stem: "Compared to traditional financial assets, digital assets:",
+    optionA: 'can be invested in through indirect investment vehicles such as ETFs. " B',
+    optionB: "are generally recorded in private ledgers maintained by central intermediaries.",
+    optionC: "do not have an inherent value based on underlying assets or on potential cash flows. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "alts-69",
+    topicId: "alts",
+    stem: "Which of the following forms of digital asset investment most likely involves the use of a cryptocurrency wallet?",
+    optionA: 'Direct investment " B',
+    optionB: "Indirect investment via ETFs",
+    optionC: "Indirect investment via coin trusts\nx C",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "alts-70",
+    topicId: "alts",
+    stem: "Compared to centralized cryptocurrency exchanges, decentralized exchanges are:",
+    optionA: 'less likely to be regulated and less susceptible to attacks from hackers. I" B',
+    optionB: "less likely to be regulated and more susceptible to attacks from hackers.",
+    optionC: "more likely to be regulated and less susceptible to attacks from hackers. c\nx",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-1",
+    topicId: "pm",
+    stem: "Risk-averse investors make investment decisions that maximize:",
+    optionA: "both return and risk. % B",
+    optionB: "return irrespective of risk.",
+    optionC: "return for the same amount of risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-2",
+    topicId: "pm",
+    stem: "The correlation of returns between two securities with equal standard deviation of returns is 0.75. If the covariance\nof retums is 5.5%?, the standard deviation of returns for each security is closest to\nx B",
+    optionA: "2.7%.",
+    optionB: "3.7%.",
+    optionC: "7.3%. le c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-3",
+    topicId: "pm",
+    stem: "The global minimum-variance portfolio is a portfolio that lies:",
+    optionA: "anywhere along the minimum-variance frontier. % B",
+    optionB: "at the left-most point of the minimum-variance frontier.",
+    optionC: "at the upper right-most point of the minimum-variance frontier. % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-4",
+    topicId: "pm",
+    stem: "An equally weighted portfolio is composed of two risky assets. If the correlation of asset returns is equal to zero, the\nportfolio standard deviation is:\nx B",
+    optionA: "equal to zero.",
+    optionB: "equal to the weighted average of the assets' standard deviations. & c",
+    optionC: "less than the weighted average of the assets' standard deviations.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-5",
+    topicId: "pm",
+    stem: "As the number of assets in an equally weighted portfolio becomes large, the portfolio's variance of returns most\nlikely approaches:\nx B",
+    optionA: "zero.",
+    optionB: "the average variance of the individual assets' returns. x CG",
+    optionC: "the average covariance between the individual assets' returns.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-6",
+    topicId: "pm",
+    stem: "The variance of retums for an equally weighted portfolio of the two assets is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-7",
+    topicId: "pm",
+    stem: "If the portfolio has an expected return of 12.6% and the returns of the two securities are uncorrelated, the portfolio's\nstandard deviation is closest to:\naint\nB. 15.2%.\n€. 19.2%.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "15.2%.\n€. 19.2%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-8",
+    topicId: "pm",
+    stem: "For a risk-seeking investor, an investment in a risk-free asset generates utility that is:",
+    optionA: "less than the utiity generated for a risk-averse investor. § B",
+    optionB: "equal to the utility generated for a risk-averse investor.",
+    optionC: "greater than the utility generated for a risk-averse investor. 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-9",
+    topicId: "pm",
+    stem: "The Markowitz efficient frontier is best described as a curve that:",
+    optionA: "lies above and to the left of the minimum-variance frontier. § B",
+    optionB: "connects the minimum-variance portfolios for all possible returns.\n. contains all portfolios of risky assets that rational, risk-averse investors will choose. % c\nConfidence Level",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-10",
+    topicId: "pm",
+    stem: "When creating a long-only portfolio, which of the following correlation coefficients between assets would be most\neffective at reducing portfolio risk?\nx B",
+    optionA: "-05.",
+    optionB: "0.",
+    optionC: "05. L c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-11",
+    topicId: "pm",
+    stem: "With respect to capital market theory, which of the following statements is most accurate?",
+    optionA: "The optimal risky portfolio is dependent on the risk-free rate. § B",
+    optionB: "The optimal risky portfolio is dependent on the investor's risk profile.",
+    optionC: "The investor's optimal portfolio must lie on the Markowitz efficient frontier. 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-12",
+    topicId: "pm",
+    stem: "Long-term historical data on the risk-return trade-off of securities show that investors are most likely:",
+    optionA: "risk averse.",
+    optionB: "isk neutral.",
+    optionC: "risk seeking.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-13",
+    topicId: "pm",
+    stem: "When evaluating the return distribution of an asset class, the probability of extreme returns is best assessed by the\ndistributions:\nx B",
+    optionA: "kurtosis.",
+    optionB: "variance.",
+    optionC: "skewness. L c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-14",
+    topicId: "pm",
+    stem: "Two investors have indifference curves that are tangent to the same capital allocation line (CAL). If Investor 1 is\nmore risk averse than Investor 2, Investor 1's optimal portfolio is:\nx B",
+    optionA: "to the left of Investor 2's optimal portfolio on the CAL.",
+    optionB: "at the same point on the CAL as Investor 2's optimal portfolio. ™ c",
+    optionC: "to the right of Investor 2's optimal portfolio on the CAL.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-15",
+    topicId: "pm",
+    stem: "The expected return for a security is equal to the market's risk premium. If the risk-free rate is positive and the\nCAPM holds, the beta of the security is:\nx B",
+    optionA: "less than 1.",
+    optionB: "equal to 1.",
+    optionC: "greater than 1. pe c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-16",
+    topicId: "pm",
+    stem: "According to the CAPM, the expected return of the security is closest to:",
+    optionA: "57%.",
+    optionB: "13.2%.\n€.16.0%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-17",
+    topicId: "pm",
+    stem: "The risk-return trade-off of a portfolio of only risky assets most likely improves when a risk-free asset is added to\nthe portfolio because\nx B",
+    optionA: "the risk-free asset is uncorrelated with the other assets in the portfolio.",
+    optionB: "the lower return on the risk-free asset provides a diversification effect. x (",
+    optionC: "the correlations among the risky assets decrease, providing a diversification effect.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-18",
+    topicId: "pm",
+    stem: "The slope of the security market line is most likely the:",
+    optionA: "security's beta.",
+    optionB: "market risk premium.",
+    optionC: "market risk premium divided by the market standard deviation. % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-19",
+    topicId: "pm",
+    stem: "Based on the CAPM, the asset's beta is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-20",
+    topicId: "pm",
+    stem: "The covariance between the returns of the asset and the market is closest to:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-21",
+    topicId: "pm",
+    stem: "According to capital market theory, an efficient market does not reward investors for taking on:",
+    optionA: "market risk.",
+    optionB: "systematic risk.",
+    optionC: "idiosyncratic risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-22",
+    topicId: "pm",
+    stem: "An analyst estimates the standard deviation of returns for the market portfolio to be 15% and the standard deviation\nof returns for a stock to be 25%. If the correlation of returns between the stock and the market portfolio is 0.6, the stock\nhas:",
+    optionA: "less systematic isk than the market portfolio. x",
+    optionB: "the same systematic risk as the market portfolio.",
+    optionC: "more systematic risk than the market portfolio.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-23",
+    topicId: "pm",
+    stem: "If all investors have homogeneous expectations, the total risk and expected return of portfolios consisting of the\nrisk-free asset and the optimal risky portfolio are plotted on the:\nx B",
+    optionA: "capital market line.",
+    optionB: "security market ine. ™ c",
+    optionC: "security characteristic line.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-24",
+    topicId: "pm",
+    stem: "According to capital market theory, the only type of risk that is priced is:",
+    optionA: "systematic risk.",
+    optionB: "diversifiable risk.",
+    optionC: "idiosyneratic risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-25",
+    topicId: "pm",
+    stem: "If the standard deviation of market retums is equal to 10%, the stock with the highest nonsystematic risk is:",
+    optionA: "Stock 1.",
+    optionB: "Stock 2.",
+    optionC: "Stock 3.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-26",
+    topicId: "pm",
+    stem: "An investor who can lend and borrow at the risk-free rate builds a portfolio using the risk-free asset and the market\nportfolio. The risk-free rate is 3% and the expected market return is 15%. If the expected portfolio return is 18%, the\ninvestor's portfolio is:",
+    optionA: "a lending portfolio. x",
+    optionB: "a leveraged portfolio.",
+    optionC: "the optimal risky portfolio.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-27",
+    topicId: "pm",
+    stem: "The correlation between the security's returns and the markets returns is closest lo:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-28",
+    topicId: "pm",
+    stem: "The intercept on the y-axis of the security characteristic line is:",
+    optionA: "beta.",
+    optionB: "Jensen's alpha.",
+    optionC: "the risk-free rate of return.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-29",
+    topicId: "pm",
+    stem: "A security with a beta of 1.5 has an expected return of 11% according to the CAPM. If the risk-free rate is 2%, the\nmarket risk premium is closest to\nx B",
+    optionA: "4.0%.",
+    optionB: "6.0%.",
+    optionC: "7.3%. L c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-30",
+    topicId: "pm",
+    stem: "The portfolio's Treynor ratio is closest to:\nConf",
+    optionA: "0.060.",
+    optionB: "O.14.\n€.0413.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-31",
+    topicId: "pm",
+    stem: "With respect to return-generating models, statistical factor models:",
+    optionA: "only include factors that have economic meaning. § B",
+    optionB: "identify factors that explain the covariance in observed returns.",
+    optionC: "only include factors that have a fundamental connection to returns. % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-32",
+    topicId: "pm",
+    stem: "Momentum, defined as relative past stock returns, is most likely a factor in:",
+    optionA: "fundamental factor models. § B",
+    optionB: "the Carhart four-factor model.",
+    optionC: "the Fama-French three-factor model.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-33",
+    topicId: "pm",
+    stem: "The market model is most likely used to predict:",
+    optionA: "market returns in a future period. § B",
+    optionB: "economic growth in a future period.",
+    optionC: "company-specific returns in a future period.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-34",
+    topicId: "pm",
+    stem: "Jensen's alpha for the portfolio is:\na\nB. 1.2%.\n€.2.2%.",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "1.2%.\n€.2.2%.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-35",
+    topicId: "pm",
+    stem: "Which of the following measures uses only systematic risk to evaluate portfolio performance?\nAm\nB. Sharpe ratio\nC. Jensen's alpha\nx Cc\nConfidence Level",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Sharpe ratio",
+    optionC: "Jensen's alpha\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-36",
+    topicId: "pm",
+    stem: "A portfolio has an annual retum of 15.2% and a standard deviation of retums of 11.7%. If the risk-free rate is 3.1%,\nthe portfolio's Sharpe ratio is closest to:\nx B",
+    optionA: "1.03.",
+    optionB: "1.30.",
+    optionC: "1.56. L c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-37",
+    topicId: "pm",
+    stem: "Which of the following performance measures is equal to the slope of the capital allocation line?\nAm\nB. Sharpe ratio\nC. Treynor ratio\nx Cc\nConfidence Level",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Sharpe ratio",
+    optionC: "Treynor ratio\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-38",
+    topicId: "pm",
+    stem: "The capital market line most likely consists of portfolios that:",
+    optionA: "are fully diversified. § B",
+    optionB: "have zero systematic risk.",
+    optionC: "have nonsystematic risk equal to beta.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-39",
+    topicId: "pm",
+    stem: "Which of the following lines is plotted on a graph with the excess return of a security on the y-axis and the excess\nreturn of the market on the x-axis?\nx B",
+    optionA: "Capital market line",
+    optionB: "Security market line ™ c",
+    optionC: "Security characteristic line",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-40",
+    topicId: "pm",
+    stem: "According to capital market theory, if the analyst believes the stock will have a return of 7%, the stock is:",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-41",
+    topicId: "pm",
+    stem: "The market has a return of 8% and a standard deviation of returns of 12%. The risk-free rate is 2%. If a portfolio has\na Sharpe ratio of 0.8, the portfolio's M? alpha is closest to\nx B",
+    optionA: "3.6%.",
+    optionB: "5.6%.",
+    optionC: "11.6%. L c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-42",
+    topicId: "pm",
+    stem: "Which of the following measures is most appropriate to evaluate the performance of a portfolio that is not fully\ndiversified?\nx B",
+    optionA: "Sharpe ratio",
+    optionB: "Treynor ratio",
+    optionC: "Jensen's alpha x c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-43",
+    topicId: "pm",
+    stem: "The correlation between the risk-free asset and the optimal risky portfolio is expected to be:",
+    optionA: "negative.\negative. § B",
+    optionB: "zero.",
+    optionC: "positive.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-44",
+    topicId: "pm",
+    stem: "The security market line plots the expected return of a portfolio against a measure of the portfolio's:",
+    optionA: "total risk.",
+    optionB: "systematic risk.",
+    optionC: "unsystematic risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-45",
+    topicId: "pm",
+    stem: "Which of the following funds is most likely to trade at a price furthest from its net asset value?",
+    optionA: "Exchange-traded fund § B",
+    optionB: "Open-end mutual fund",
+    optionC: "Closed-end mutual fund\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-46",
+    topicId: "pm",
+    stem: "The portfolio approach to investing most likely:",
+    optionA: "prevents portfolio losses during market downturns. § B",
+    optionB: "reduces the systematic risk of individual assets in a portfolio.",
+    optionC: "helps avoid disastrous investment outcomes during normal market conditions. % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-47",
+    topicId: "pm",
+    stem: "Sovereign wealth funds are best described as investment funds:",
+    optionA: "owned by governments. § B",
+    optionB: "traded as closed-end country funds.",
+    optionC: "restricted from investing in foreign securities.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-48",
+    topicId: "pm",
+    stem: "For an equally weighted portfolio, an increase in the correlations between asset returns most likely decreases the:",
+    optionA: "portfolio's expected return. § B",
+    optionB: "portfolio's standard deviation of returns.",
+    optionC: "level of risk reduction provided by the portfolio.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-49",
+    topicId: "pm",
+    stem: "Which of the following best describes a characteristic of defined contribution pension plans?",
+    optionA: "The employee accepts the investment and inflation risk. § B",
+    optionB: "The employer is responsible for adequately funding the plan.",
+    optionC: "Defined contribution plans typically have a higher cost to the company than defined benefit plans. 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-50",
+    topicId: "pm",
+    stem: "The diversification ratio of a portfolio is best described as the ratio of the:",
+    optionA: "standard deviation of the equally weighted portfolios returns to the average standard deviation of the individual § B\nsecurities' returns.",
+    optionB: "standard deviation of the market-capitalization-weighted portfolio's returns to the standard deviation of the equally\nweighted portfolio's returns. x Cc",
+    optionC: "average standard deviation of the individual securities' returns to the standard deviation of the market-\ncapitalization-weighted portfolio's returns.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-51",
+    topicId: "pm",
+    stem: "In regard to the asset allocation process, a top-down analysis most likely begins with an examination of:",
+    optionA: "macroeconomic growth. § B",
+    optionB: "a company's board of directors.",
+    optionC: "the expected growth of a company's competitors.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-52",
+    topicId: "pm",
+    stem: "Relative to passive market-cap-weighted strategies, smart beta strategies typically have:",
+    optionA: "lower management fees and higher portfolio turnover. § B",
+    optionB: "higher management fees and lower portfolio turnover.",
+    optionC: "higher management fees and higher portfolio turnover. 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-53",
+    topicId: "pm",
+    stem: "Robo-advisers most likely:",
+    optionA: "face high barriers to entry. § B",
+    optionB: "cater to the demand from investors with lower levels of investable assets.",
+    optionC: "prefer actively managed funds to index funds when constructing client portfolios. 2 c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-54",
+    topicId: "pm",
+    stem: "Exchange-traded funds (ETFs):",
+    optionA: "are priced once a trading day. § B",
+    optionB: "usually pay out dividends to shareholders.",
+    optionC: "are generally structured as closed-end funds.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-55",
+    topicId: "pm",
+    stem: "Which of the following statements about pension plans is most accurate?",
+    optionA: "Defined benefit plans typically have a low risk tolerance. § B",
+    optionB: "Defined contribution plans typically have a low risk tolerance.",
+    optionC: "The sponsor of a defined benefit plan specifies the obligation owed to participants. 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-56",
+    topicId: "pm",
+    stem: "Open-end mutual funds typically:",
+    optionA: "are priced intraday. § B",
+    optionB: "have a fixed number of shares outstanding.",
+    optionC: "have a larger required minimum investment than ETFs. % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-57",
+    topicId: "pm",
+    stem: "In the portfolio management process, the feedback step most likely involves:",
+    optionA: "rebalancing the portfolio. § B",
+    optionB: "deciding on an asset allocation.",
+    optionC: "understanding the client's constraints.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-58",
+    topicId: "pm",
+    stem: "Which of the following statements about different types of investors is most accurate?",
+    optionA: "For banks, the liquidity of their investments is a paramount concern. § B",
+    optionB: "For endowments, investment horizons are short due to their short-term spending needs.",
+    optionC: "For insurance companies, the risk tolerance of their general and surplus accounts is typically the same. % c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-59",
+    topicId: "pm",
+    stem: "Which of the following sections of an investment policy statement most likely provides guidance on obtaining\nfeedback on investment results?\nx B",
+    optionA: "Investment Guidelines",
+    optionB: "Evaluation and Review x (",
+    optionC: "Statement of Duties and Responsibilities\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-60",
+    topicId: "pm",
+    stem: "Which of the following most likely affects a client's ability to take risk? The client's:",
+    optionA: "utiity function § B",
+    optionB: "degree of risk aversion",
+    optionC: "level of wealth relative to liabilities\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-61",
+    topicId: "pm",
+    stem: "With respect to an investment policy statement, which of the following is most closely linked to the client's distinctive\nneeds?\nx B",
+    optionA: "The evaluation and review section",
+    optionB: "The objectives and constraints sections x (",
+    optionC: "The statement of duties and responsibilities\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-62",
+    topicId: "pm",
+    stem: "When defining asset classes for a strategic asset allocation, which of the following pairwise correlations between\nasset class retums is most preferable?\nx B",
+    optionA: "00",
+    optionB: "05\nc.1.0 L c",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-63",
+    topicId: "pm",
+    stem: "If the weights of the asset classes in a portfolio deviate from the policy weights over time due to changes in market\nvalue, this is best described as:\nx B",
+    optionA: "drift.",
+    optionB: "value at risk.",
+    optionC: "tracking error. i c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-64",
+    topicId: "pm",
+    stem: "Which of the following actions best describes tactical asset allocation?",
+    optionA: "Providing exposure to different asset classes to meet long-term objectives § B",
+    optionB: "Underweighting an asset class relative to the policy weight for that asset class",
+    optionC: "Overweighting specific securities with higher expected returns than the benchmark 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-65",
+    topicId: "pm",
+    stem: "An IPS most likely specifies",
+    optionA: "only the tactical asset allocation target. § B",
+    optionB: "only the strategic asset allocation target.",
+    optionC: "both the tactical and the strategic asset allocation targets. 2 c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-66",
+    topicId: "pm",
+    stem: "Which of the following characteristics is most likely used to determine an investor's ability to take risk? The\ninvestor's:\nx B",
+    optionA: "risk attitude.",
+    optionB: "self-confidence.",
+    optionC: "years until retirement. i c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-67",
+    topicId: "pm",
+    stem: "With regard to an investment policy statement, which of the following statements about return objectives is most\naccurate?\nx B",
+    optionA: "A return objective cannot be a required rate of return.",
+    optionB: "Return objectives must be set independent of risk objectives. ™ c",
+    optionC: "When setting a relative return objective, a good benchmark should be investable.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-68",
+    topicId: "pm",
+    stem: "With respect to portfolio construction, the decision to deliberately deviate from the policy exposures to systematic\nrisk factors with the intent to add value based on forecasts of near-term retums of asset classes best describes:\nx B",
+    optionA: "risk budgeting.",
+    optionB: "security selection. ™ c",
+    optionC: "tactical asset allocation.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-69",
+    topicId: "pm",
+    stem: "A portfolio manager's decision to temporarily invest more in equities than the policy weights prescribe is best\ndescribed as:\nx B",
+    optionA: "security selection.",
+    optionB: "tactical asset allocation. x (",
+    optionC: "strategic asset allocation.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-70",
+    topicId: "pm",
+    stem: "Which investor most likely has the highest overall risk tolerance? Low | Medium | High",
+    optionA: "Investor 1",
+    optionB: "Investor 2 Cou",
+    optionC: "Investor 3",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-71",
+    topicId: "pm",
+    stem: "Achange in an investor's risk aversion most likely results in a change in the investor's:",
+    optionA: "efficient frontier only.\nbags",
+    optionB: "indifference curves only.",
+    optionC: "efficient frontier and indifference curves.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-72",
+    topicId: "pm",
+    stem: "Inflation is expected to average 2% per year over the next 15 years. Based only on the above information and",
+    optionA: "Option A could not be read clearly from the PDF.",
+    optionB: "Option B could not be read clearly from the PDF.",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-73",
+    topicId: "pm",
+    stem: "An investor has a 15-year time horizon but needs to withdraw funds from her portfolio in one year's time to pay for\ntuition fees. Which of the following investments is most suitable to cover the investors liquidity requirement due to the\ntuition fees?",
+    optionA: "Commercial paper x",
+    optionB: "Private equity securities",
+    optionC: "Large-capitalization stocks",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-74",
+    topicId: "pm",
+    stem: "The risk-return profile of a portfolios strategic asset allocation is most likely determined by the expected retums.\nand risks of the individual asset classes and the:\nx B",
+    optionA: "correlations between those asset classes.",
+    optionB: "use of security selection for each of those asset classes. x (",
+    optionC: "allowable deviation of portfolio weights from policy weights for those asset classes.\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-75",
+    topicId: "pm",
+    stem: "Which of the following sections of an investment policy statement (IPS) most likely explains how and when the IPS.\nshould be reviewed?\nx B",
+    optionA: "Procedures",
+    optionB: "Investment Guidelines x (&",
+    optionC: "Statement of Duties and Responsibilities",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-76",
+    topicId: "pm",
+    stem: "Which of the following is most likely a legal and regulatory constraint in an investment policy statement?",
+    optionA: "A pension fund's decision to limit investments in real estate § B",
+    optionB: "Ataxable investor's requirement to avoid investments in securities generating interest income",
+    optionC: "A public company director's restriction on trading the company's stock shortly before the publication of financial\nresults x c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-77",
+    topicId: "pm",
+    stem: "Which of the following sections of an investment policy statement for a pension plan most likely specifies the.\ndiscretion that portfolio managers have with respect to executing the investment strategy?\nx B",
+    optionA: "Procedures",
+    optionB: "Investment Constraints x (",
+    optionC: "Statement of Duties and Responsibilities",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-78",
+    topicId: "pm",
+    stem: "Information regarding the permissible use of derivatives in a portfolio is most likely found in which of the following\nsections of an investment policy statement?\nx B",
+    optionA: "Procedures",
+    optionB: "Investment Guidelines x (&",
+    optionC: "Statement of Duties and Responsibilities",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-79",
+    topicId: "pm",
+    stem: "Which of the following is most accurate regarding an investment policy statement (IPS)?",
+    optionA: "Policies on sustainable investing require a separate IPS. § B",
+    optionB: "Investment constraints can be determined by the client or by the law.",
+    optionC: "Cients can specify diffrent spending goas, but each goa must have th same tisk (lerance and feu objective. c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-80",
+    topicId: "pm",
+    stem: "Aclient's time horizon is most appropriately used by an investment adviser to determine the client's:",
+    optionA: "risk attitude.",
+    optionB: "ability to take risk.",
+    optionC: "willingness to take risk.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-81",
+    topicId: "pm",
+    stem: "When defining asset classes, the paired correlations of assets within an asset class should be:",
+    optionA: "negative.\negative. § B",
+    optionB: "zero.",
+    optionC: "positive.\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-82",
+    topicId: "pm",
+    stem: "Which of the following statements about asset allocation is most accurate?",
+    optionA: "Investors should diversify their wealth between asset classes in order to eliminate systematic risk. § B",
+    optionB: "Investors with a below-average risk tolerance should have an above-average weight in alternative investments.",
+    optionC: "Adding asset classes with a low correlation to existing asset classes improves an investor's isk-return trade-off. % c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-83",
+    topicId: "pm",
+    stem: "Which of the following is most likely a consequence of overconfidence bias? Investors:",
+    optionA: "holding poorly diversified portfolios. § B",
+    optionB: "continuing to hold classes of assets with which they are familiar.",
+    optionC: "holding investments in a loss position longer than justified, in the hope that they will return to breakeven. % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-84",
+    topicId: "pm",
+    stem: "Which of the following is most likely a consequence of the illusion of control bias?",
+    optionA: "An investor's portfolio turmover is too low. § B",
+    optionB: "The investor's portfolio contains concentrated positions in companies.",
+    optionC: "An investor uses a simple forecasting model for portfolio construction. 2 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-85",
+    topicId: "pm",
+    stem: "Which of the following is most closely associated with representativeness bias?",
+    optionA: "Momentum",
+    optionB: "The halo effect",
+    optionC: "Bubbles and crashes\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-86",
+    topicId: "pm",
+    stem: "Cognitive errors:",
+    optionA: "stem from impulses and intuition. § B",
+    optionB: "result in the same decision as assumed by traditional finance theory.",
+    optionC: "can often be corrected or eliminated through better information, education, and advice. 2 c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-87",
+    topicId: "pm",
+    stem: "Failing to act in pursuit of long-term goals in favor of short-term satisfaction best describes which of the following\nemotional biases?\nx B",
+    optionA: "Self-control bias",
+    optionB: "Endowment bias x (",
+    optionC: "Loss-aversion bias\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-88",
+    topicId: "pm",
+    stem: "Which of the following best describes a potential consequence of the regret-aversion bias for financial market\nparticipants?\nx B",
+    optionA: "Engaging in herding behaviour",
+    optionB: "Borrowing excessively to finance present consumption ™ c",
+    optionC: "Misidentifying risk tolerances because of how questions about risk tolerance were framed",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-89",
+    topicId: "pm",
+    stem: "Which of the following behavioral biases is most likely the hardest to correct?",
+    optionA: "Hindsight bias",
+    optionB: "Loss-aversion bias",
+    optionC: "Representativeness bias\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-90",
+    topicId: "pm",
+    stem: "Which of the following can best be explained by overconfidence when predicting companies' eamings growth rates? A",
+    optionA: "Base-rate neglect § B",
+    optionB: "The value anomaly",
+    optionC: "The disposition effect\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-91",
+    topicId: "pm",
+    stem: "In risk management, which of the following should be taken into account when determining an enterprise's risk\ntolerance?\nx B",
+    optionA: "Management compensation",
+    optionB: "The enterprise's value at risk (VaR) ™ c",
+    optionC: "The government and regulatory landscape",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-92",
+    topicId: "pm",
+    stem: "Which of the following is best classified as a financial risk?",
+    optionA: "Taxrisk",
+    optionB: "Credit risk\n. Accounting risk\nx Cc\nConfidence Level",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-93",
+    topicId: "pm",
+    stem: "The risk management measure that captures the sensitivity of a derivative's delta to a change in the value of the\nunderlying best describes:\nx B",
+    optionA: "rho.",
+    optionB: "vega.",
+    optionC: "gamma. i c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-94",
+    topicId: "pm",
+    stem: "Abank determines that its value at risk (VaR) is £5 million at 5% for one day. The bank is expecting a minimum loss\nof £5 million once every:\nx B",
+    optionA: "5 business days.",
+    optionB: "13 business days.",
+    optionC: "20 business days. i c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-95",
+    topicId: "pm",
+    stem: "A good risk management process should:",
+    optionA: "predict when a crisis will ocour. § B",
+    optionB: "consider the balance between expected returns and losses.\n. only consider losses occurring from events that have a high likelihood. % c\nConfidence Level",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-96",
+    topicId: "pm",
+    stem: "Which of the following is most likely undertaken during the risk budgeting process?",
+    optionA: "Assessing risk appetite § B",
+    optionB: "Setting a limit for value at risk (VaR)",
+    optionC: "Establishing a reserve to cover potential future losses % c\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-97",
+    topicId: "pm",
+    stem: "The process of risk management is best described as the set of decisions that maximizes a company's value while:",
+    optionA: "minimizing the risk taken. § B",
+    optionB: "bearing a tolerable level of risk.",
+    optionC: "predicting the potential risk correctly.\nx Cc",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-98",
+    topicId: "pm",
+    stem: "Which of the following is best classified as a non-financial risk?",
+    optionA: "Credit risk",
+    optionB: "Liquidity risk",
+    optionC: "Accounting risk\nx Cc\nConfidence Level",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "easy"
+  },
+  {
+    id: "pm-99",
+    topicId: "pm",
+    stem: "Which of the following metrics is most appropriate to estimate a bond's average extreme loss?",
+    optionA: "VaR of loss § B",
+    optionB: "Standard deviation of loss\n. Expected loss given default\nx Cc\nConfidence Level",
+    optionC: "Option C could not be read clearly from the PDF.",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  },
+  {
+    id: "pm-100",
+    topicId: "pm",
+    stem: "Which of the following is least consistent with effective risk governance?",
+    optionA: "Taking an enterprise-wide view % B",
+    optionB: "Defining the enterprise's risk tolerance",
+    optionC: "Following a bottom-up process to direct risk management activities 3 c",
+    correctAnswer: "A",
+    answerKeyStatus: "missing",
+    explanation: "Answer key not available: the supplied answer ZIP is empty, so this imported practice-pack question is not scoreable yet.",
+    difficulty: "medium"
+  }
+];
 function TopicsPage({ onNavigate }) {
+  const practiceTopicId2 = (topicId) => topicId === "alt" ? "alts" : topicId;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-6 max-w-7xl mx-auto", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold", children: "Study Topics" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: "CFA Level I covers 10 topic areas. Click a topic to see readings and start studying." })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4", children: TOPICS.map((topic) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Card,
-      {
-        className: "border-none shadow-sm cursor-pointer hover:shadow-md transition-all group overflow-hidden",
-        onClick: () => onNavigate(`topic-${topic.id}`),
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "div",
-            {
-              className: "h-2 w-full",
-              style: { backgroundColor: topic.color }
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-2 mb-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl", children: topic.icon }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-sm leading-tight", children: topic.shortName }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground", children: topic.code })
-                ] })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4", children: TOPICS.map((topic) => {
+      const questionCount = PRACTICE_PACK_QUESTIONS.filter(
+        (question) => question.topicId === practiceTopicId2(topic.id)
+      ).length;
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        Card,
+        {
+          className: "border-none shadow-sm cursor-pointer hover:shadow-md transition-all group overflow-hidden",
+          onClick: () => onNavigate(`topic-${topic.id}`),
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "div",
+              {
+                className: "h-2 w-full",
+                style: { backgroundColor: topic.color }
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-4", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-2 mb-3", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl", children: topic.icon }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-sm leading-tight", children: topic.shortName }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground", children: topic.code })
+                  ] })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  Badge,
+                  {
+                    className: "text-[10px] px-2 py-0.5 flex-shrink-0 text-white",
+                    style: { backgroundColor: topic.color },
+                    children: [
+                      topic.examWeightMin,
+                      "–",
+                      topic.examWeightMax,
+                      "%"
+                    ]
+                  }
+                )
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                Badge,
-                {
-                  className: "text-[10px] px-2 py-0.5 flex-shrink-0 text-white",
-                  style: { backgroundColor: topic.color },
-                  children: [
-                    topic.examWeightMin,
-                    "–",
-                    topic.examWeightMax,
-                    "%"
-                  ]
-                }
-              )
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2", children: topic.description }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-3 text-xs text-muted-foreground", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpen, { size: 11 }),
-                " ",
-                topic.totalReadings,
-                " readings"
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2", children: topic.description }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-3 text-xs text-muted-foreground", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpen, { size: 11 }),
+                  " ",
+                  topic.totalReadings,
+                  " readings"
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(PencilLine, { size: 11 }),
+                  " ",
+                  questionCount,
+                  " Qs"
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { size: 11 }),
+                  " ~",
+                  topic.estimatedHours,
+                  "h"
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "span",
+                  {
+                    className: "ml-auto px-2 py-0.5 rounded-full text-[10px] font-semibold",
+                    style: {
+                      backgroundColor: topic.color + "20",
+                      color: topic.color
+                    },
+                    children: topic.difficulty
+                  }
+                )
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { size: 11 }),
-                " ~",
-                topic.estimatedHours,
-                "h"
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground", children: "Progress" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    "span",
+                    {
+                      className: "text-[10px] font-semibold",
+                      style: { color: topic.color },
+                      children: [
+                        topic.progress,
+                        "%"
+                      ]
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: topic.progress, className: "h-1.5" })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-end mt-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 "span",
                 {
-                  className: "ml-auto px-2 py-0.5 rounded-full text-[10px] font-semibold",
-                  style: { backgroundColor: topic.color + "20", color: topic.color },
-                  children: topic.difficulty
+                  className: "text-xs font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity",
+                  style: { color: topic.color },
+                  children: [
+                    "Open topic ",
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { size: 12 })
+                  ]
                 }
-              )
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground", children: "Progress" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] font-semibold", style: { color: topic.color }, children: [
-                  topic.progress,
-                  "%"
-                ] })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: topic.progress, className: "h-1.5" })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-end mt-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "span",
-              {
-                className: "text-xs font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity",
-                style: { color: topic.color },
-                children: [
-                  "Open topic ",
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { size: 12 })
-                ]
-              }
-            ) })
-          ] })
-        ]
-      },
-      topic.id
-    )) })
+              ) })
+            ] })
+          ]
+        },
+        topic.id
+      );
+    }) })
   ] });
 }
 const CFA_READINGS = {
@@ -37109,6 +49384,9 @@ scrutiny by Pellie. But rather than investigate as required by law, Pellie did n
 function estimateMinutes(pages) {
   return Math.round(pages * 2.5);
 }
+function practiceTopicId(topicId) {
+  return topicId === "alt" ? "alts" : topicId;
+}
 function TopicDetailPage({ topicId, onNavigate }) {
   const topic = TOPICS.find((t) => t.id === topicId);
   const modules = CFA_READINGS[topicId] ?? [];
@@ -37116,11 +49394,23 @@ function TopicDetailPage({ topicId, onNavigate }) {
   if (!topic) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center h-full p-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Topic not found." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "ghost", size: "sm", className: "mt-4", onClick: () => onNavigate("topics"), children: "← Back to Topics" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Button,
+        {
+          variant: "ghost",
+          size: "sm",
+          className: "mt-4",
+          onClick: () => onNavigate("topics"),
+          children: "← Back to Topics"
+        }
+      )
     ] }) });
   }
   const completedCount = completed.size;
   const totalCount = modules.length;
+  const practiceQuestionCount = PRACTICE_PACK_QUESTIONS.filter(
+    (question) => question.topicId === practiceTopicId(topicId)
+  ).length;
   const progressPct = totalCount > 0 ? Math.round(completedCount / totalCount * 100) : 0;
   const toggleComplete = (num, e) => {
     e.stopPropagation();
@@ -37131,15 +49421,26 @@ function TopicDetailPage({ topicId, onNavigate }) {
     });
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-6 max-w-5xl mx-auto", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { variant: "ghost", size: "sm", className: "text-muted-foreground -ml-2", onClick: () => onNavigate("topics"), children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeft, { size: 16, className: "mr-1" }),
-      " All Topics"
-    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      Button,
+      {
+        variant: "ghost",
+        size: "sm",
+        className: "text-muted-foreground -ml-2",
+        onClick: () => onNavigate("topics"),
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeft, { size: 16, className: "mr-1" }),
+          " All Topics"
+        ]
+      }
+    ),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
         className: "rounded-2xl p-6 text-white",
-        style: { background: `linear-gradient(135deg, ${topic.color}, ${topic.color}cc)` },
+        style: {
+          background: `linear-gradient(135deg, ${topic.color}, ${topic.color}cc)`
+        },
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -37161,20 +49462,34 @@ function TopicDetailPage({ topicId, onNavigate }) {
                 onClick: () => onNavigate("quiz"),
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpen, { size: 14, className: "mr-1" }),
-                  " Practice Quiz"
+                  " Practice",
+                  " ",
+                  practiceQuestionCount,
+                  " Qs"
                 ]
               }
             ) })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-3 mt-4", children: [
-            { icon: "⚖️", label: `${topic.examWeightMin}–${topic.examWeightMax}% exam weight` },
+            {
+              icon: "⚖️",
+              label: `${topic.examWeightMin}–${topic.examWeightMax}% exam weight`
+            },
             { icon: "⏱️", label: `~${topic.estimatedHours}h estimated` },
             { icon: "📖", label: `${totalCount} learning modules` },
+            { icon: "✏️", label: `${practiceQuestionCount} practice questions` },
             { icon: "📊", label: `${topic.difficulty} difficulty` }
-          ].map(({ icon, label }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 bg-white/20 rounded-full px-3 py-1 text-xs font-medium", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: icon }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: label })
-          ] }, label)) })
+          ].map(({ icon, label }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "flex items-center gap-1.5 bg-white/20 rounded-full px-3 py-1 text-xs font-medium",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: icon }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: label })
+              ]
+            },
+            label
+          )) })
         ]
       }
     ),
@@ -37223,12 +49538,18 @@ function TopicDetailPage({ topicId, onNavigate }) {
                   }
                 ),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: `text-sm font-medium ${isDone ? "text-green-700" : "text-foreground"}`, children: [
-                    "LM",
-                    mod.number,
-                    ": ",
-                    mod.title
-                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    "p",
+                    {
+                      className: `text-sm font-medium ${isDone ? "text-green-700" : "text-foreground"}`,
+                      children: [
+                        "LM",
+                        mod.number,
+                        ": ",
+                        mod.title
+                      ]
+                    }
+                  ),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mt-0.5", children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-muted-foreground flex items-center gap-1", children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { size: 10 }),
@@ -37243,7 +49564,14 @@ function TopicDetailPage({ topicId, onNavigate }) {
                     ] }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground", children: "·" }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground", children: "📄 PDF Content" }),
-                    isDone && /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "outline", className: "text-[10px] px-1.5 py-0 text-green-600 border-green-300", children: "Completed" })
+                    isDone && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      Badge,
+                      {
+                        variant: "outline",
+                        className: "text-[10px] px-1.5 py-0 text-green-600 border-green-300",
+                        children: "Completed"
+                      }
+                    )
                   ] })
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -37625,11 +49953,5170 @@ function PlaceholderPage({ page, onNavigate }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "← Back to Dashboard" }) })
   ] }) }) });
 }
+function createCollection(name) {
+  const PROVIDER_NAME = name + "CollectionProvider";
+  const [createCollectionContext, createCollectionScope2] = createContextScope$1(PROVIDER_NAME);
+  const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(
+    PROVIDER_NAME,
+    { collectionRef: { current: null }, itemMap: /* @__PURE__ */ new Map() }
+  );
+  const CollectionProvider = (props) => {
+    const { scope, children } = props;
+    const ref = React2.useRef(null);
+    const itemMap = React2.useRef(/* @__PURE__ */ new Map()).current;
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionProviderImpl, { scope, itemMap, collectionRef: ref, children });
+  };
+  CollectionProvider.displayName = PROVIDER_NAME;
+  const COLLECTION_SLOT_NAME = name + "CollectionSlot";
+  const CollectionSlotImpl = /* @__PURE__ */ createSlot$1(COLLECTION_SLOT_NAME);
+  const CollectionSlot = React2.forwardRef(
+    (props, forwardedRef) => {
+      const { scope, children } = props;
+      const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
+      const composedRefs = useComposedRefs(forwardedRef, context.collectionRef);
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionSlotImpl, { ref: composedRefs, children });
+    }
+  );
+  CollectionSlot.displayName = COLLECTION_SLOT_NAME;
+  const ITEM_SLOT_NAME = name + "CollectionItemSlot";
+  const ITEM_DATA_ATTR = "data-radix-collection-item";
+  const CollectionItemSlotImpl = /* @__PURE__ */ createSlot$1(ITEM_SLOT_NAME);
+  const CollectionItemSlot = React2.forwardRef(
+    (props, forwardedRef) => {
+      const { scope, children, ...itemData } = props;
+      const ref = React2.useRef(null);
+      const composedRefs = useComposedRefs(forwardedRef, ref);
+      const context = useCollectionContext(ITEM_SLOT_NAME, scope);
+      React2.useEffect(() => {
+        context.itemMap.set(ref, { ref, ...itemData });
+        return () => void context.itemMap.delete(ref);
+      });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionItemSlotImpl, { ...{ [ITEM_DATA_ATTR]: "" }, ref: composedRefs, children });
+    }
+  );
+  CollectionItemSlot.displayName = ITEM_SLOT_NAME;
+  function useCollection2(scope) {
+    const context = useCollectionContext(name + "CollectionConsumer", scope);
+    const getItems = React2.useCallback(() => {
+      const collectionNode = context.collectionRef.current;
+      if (!collectionNode) return [];
+      const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
+      const items = Array.from(context.itemMap.values());
+      const orderedItems = items.sort(
+        (a, b) => orderedNodes.indexOf(a.ref.current) - orderedNodes.indexOf(b.ref.current)
+      );
+      return orderedItems;
+    }, [context.collectionRef, context.itemMap]);
+    return getItems;
+  }
+  return [
+    { Provider: CollectionProvider, Slot: CollectionSlot, ItemSlot: CollectionItemSlot },
+    useCollection2,
+    createCollectionScope2
+  ];
+}
+function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
+  const onEscapeKeyDown = useCallbackRef$1(onEscapeKeyDownProp);
+  reactExports.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onEscapeKeyDown(event);
+      }
+    };
+    ownerDocument.addEventListener("keydown", handleKeyDown, { capture: true });
+    return () => ownerDocument.removeEventListener("keydown", handleKeyDown, { capture: true });
+  }, [onEscapeKeyDown, ownerDocument]);
+}
+var DISMISSABLE_LAYER_NAME = "DismissableLayer";
+var CONTEXT_UPDATE = "dismissableLayer.update";
+var POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
+var FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
+var originalBodyPointerEvents;
+var DismissableLayerContext = reactExports.createContext({
+  layers: /* @__PURE__ */ new Set(),
+  layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
+  branches: /* @__PURE__ */ new Set()
+});
+var DismissableLayer = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      disableOutsidePointerEvents = false,
+      onEscapeKeyDown,
+      onPointerDownOutside,
+      onFocusOutside,
+      onInteractOutside,
+      onDismiss,
+      ...layerProps
+    } = props;
+    const context = reactExports.useContext(DismissableLayerContext);
+    const [node, setNode] = reactExports.useState(null);
+    const ownerDocument = (node == null ? void 0 : node.ownerDocument) ?? (globalThis == null ? void 0 : globalThis.document);
+    const [, force] = reactExports.useState({});
+    const composedRefs = useComposedRefs(forwardedRef, (node2) => setNode(node2));
+    const layers = Array.from(context.layers);
+    const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
+    const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
+    const index2 = node ? layers.indexOf(node) : -1;
+    const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
+    const isPointerEventsEnabled = index2 >= highestLayerWithOutsidePointerEventsDisabledIndex;
+    const pointerDownOutside = usePointerDownOutside((event) => {
+      const target = event.target;
+      const isPointerDownOnBranch = [...context.branches].some((branch) => branch.contains(target));
+      if (!isPointerEventsEnabled || isPointerDownOnBranch) return;
+      onPointerDownOutside == null ? void 0 : onPointerDownOutside(event);
+      onInteractOutside == null ? void 0 : onInteractOutside(event);
+      if (!event.defaultPrevented) onDismiss == null ? void 0 : onDismiss();
+    }, ownerDocument);
+    const focusOutside = useFocusOutside((event) => {
+      const target = event.target;
+      const isFocusInBranch = [...context.branches].some((branch) => branch.contains(target));
+      if (isFocusInBranch) return;
+      onFocusOutside == null ? void 0 : onFocusOutside(event);
+      onInteractOutside == null ? void 0 : onInteractOutside(event);
+      if (!event.defaultPrevented) onDismiss == null ? void 0 : onDismiss();
+    }, ownerDocument);
+    useEscapeKeydown((event) => {
+      const isHighestLayer = index2 === context.layers.size - 1;
+      if (!isHighestLayer) return;
+      onEscapeKeyDown == null ? void 0 : onEscapeKeyDown(event);
+      if (!event.defaultPrevented && onDismiss) {
+        event.preventDefault();
+        onDismiss();
+      }
+    }, ownerDocument);
+    reactExports.useEffect(() => {
+      if (!node) return;
+      if (disableOutsidePointerEvents) {
+        if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
+          originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
+          ownerDocument.body.style.pointerEvents = "none";
+        }
+        context.layersWithOutsidePointerEventsDisabled.add(node);
+      }
+      context.layers.add(node);
+      dispatchUpdate();
+      return () => {
+        if (disableOutsidePointerEvents && context.layersWithOutsidePointerEventsDisabled.size === 1) {
+          ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+        }
+      };
+    }, [node, ownerDocument, disableOutsidePointerEvents, context]);
+    reactExports.useEffect(() => {
+      return () => {
+        if (!node) return;
+        context.layers.delete(node);
+        context.layersWithOutsidePointerEventsDisabled.delete(node);
+        dispatchUpdate();
+      };
+    }, [node, context]);
+    reactExports.useEffect(() => {
+      const handleUpdate = () => force({});
+      document.addEventListener(CONTEXT_UPDATE, handleUpdate);
+      return () => document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
+    }, []);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive$1.div,
+      {
+        ...layerProps,
+        ref: composedRefs,
+        style: {
+          pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
+          ...props.style
+        },
+        onFocusCapture: composeEventHandlers(props.onFocusCapture, focusOutside.onFocusCapture),
+        onBlurCapture: composeEventHandlers(props.onBlurCapture, focusOutside.onBlurCapture),
+        onPointerDownCapture: composeEventHandlers(
+          props.onPointerDownCapture,
+          pointerDownOutside.onPointerDownCapture
+        )
+      }
+    );
+  }
+);
+DismissableLayer.displayName = DISMISSABLE_LAYER_NAME;
+var BRANCH_NAME = "DismissableLayerBranch";
+var DismissableLayerBranch = reactExports.forwardRef((props, forwardedRef) => {
+  const context = reactExports.useContext(DismissableLayerContext);
+  const ref = reactExports.useRef(null);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
+  reactExports.useEffect(() => {
+    const node = ref.current;
+    if (node) {
+      context.branches.add(node);
+      return () => {
+        context.branches.delete(node);
+      };
+    }
+  }, [context.branches]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { ...props, ref: composedRefs });
+});
+DismissableLayerBranch.displayName = BRANCH_NAME;
+function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
+  const handlePointerDownOutside = useCallbackRef$1(onPointerDownOutside);
+  const isPointerInsideReactTreeRef = reactExports.useRef(false);
+  const handleClickRef = reactExports.useRef(() => {
+  });
+  reactExports.useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (event.target && !isPointerInsideReactTreeRef.current) {
+        let handleAndDispatchPointerDownOutsideEvent2 = function() {
+          handleAndDispatchCustomEvent(
+            POINTER_DOWN_OUTSIDE,
+            handlePointerDownOutside,
+            eventDetail,
+            { discrete: true }
+          );
+        };
+        const eventDetail = { originalEvent: event };
+        if (event.pointerType === "touch") {
+          ownerDocument.removeEventListener("click", handleClickRef.current);
+          handleClickRef.current = handleAndDispatchPointerDownOutsideEvent2;
+          ownerDocument.addEventListener("click", handleClickRef.current, { once: true });
+        } else {
+          handleAndDispatchPointerDownOutsideEvent2();
+        }
+      } else {
+        ownerDocument.removeEventListener("click", handleClickRef.current);
+      }
+      isPointerInsideReactTreeRef.current = false;
+    };
+    const timerId = window.setTimeout(() => {
+      ownerDocument.addEventListener("pointerdown", handlePointerDown);
+    }, 0);
+    return () => {
+      window.clearTimeout(timerId);
+      ownerDocument.removeEventListener("pointerdown", handlePointerDown);
+      ownerDocument.removeEventListener("click", handleClickRef.current);
+    };
+  }, [ownerDocument, handlePointerDownOutside]);
+  return {
+    // ensures we check React component tree (not just DOM tree)
+    onPointerDownCapture: () => isPointerInsideReactTreeRef.current = true
+  };
+}
+function useFocusOutside(onFocusOutside, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
+  const handleFocusOutside = useCallbackRef$1(onFocusOutside);
+  const isFocusInsideReactTreeRef = reactExports.useRef(false);
+  reactExports.useEffect(() => {
+    const handleFocus = (event) => {
+      if (event.target && !isFocusInsideReactTreeRef.current) {
+        const eventDetail = { originalEvent: event };
+        handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, eventDetail, {
+          discrete: false
+        });
+      }
+    };
+    ownerDocument.addEventListener("focusin", handleFocus);
+    return () => ownerDocument.removeEventListener("focusin", handleFocus);
+  }, [ownerDocument, handleFocusOutside]);
+  return {
+    onFocusCapture: () => isFocusInsideReactTreeRef.current = true,
+    onBlurCapture: () => isFocusInsideReactTreeRef.current = false
+  };
+}
+function dispatchUpdate() {
+  const event = new CustomEvent(CONTEXT_UPDATE);
+  document.dispatchEvent(event);
+}
+function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
+  const target = detail.originalEvent.target;
+  const event = new CustomEvent(name, { bubbles: false, cancelable: true, detail });
+  if (handler) target.addEventListener(name, handler, { once: true });
+  if (discrete) {
+    dispatchDiscreteCustomEvent(target, event);
+  } else {
+    target.dispatchEvent(event);
+  }
+}
+var count$1 = 0;
+function useFocusGuards() {
+  reactExports.useEffect(() => {
+    const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
+    document.body.insertAdjacentElement("afterbegin", edgeGuards[0] ?? createFocusGuard());
+    document.body.insertAdjacentElement("beforeend", edgeGuards[1] ?? createFocusGuard());
+    count$1++;
+    return () => {
+      if (count$1 === 1) {
+        document.querySelectorAll("[data-radix-focus-guard]").forEach((node) => node.remove());
+      }
+      count$1--;
+    };
+  }, []);
+}
+function createFocusGuard() {
+  const element = document.createElement("span");
+  element.setAttribute("data-radix-focus-guard", "");
+  element.tabIndex = 0;
+  element.style.outline = "none";
+  element.style.opacity = "0";
+  element.style.position = "fixed";
+  element.style.pointerEvents = "none";
+  return element;
+}
+var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
+var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
+var EVENT_OPTIONS = { bubbles: false, cancelable: true };
+var FOCUS_SCOPE_NAME = "FocusScope";
+var FocusScope = reactExports.forwardRef((props, forwardedRef) => {
+  const {
+    loop = false,
+    trapped = false,
+    onMountAutoFocus: onMountAutoFocusProp,
+    onUnmountAutoFocus: onUnmountAutoFocusProp,
+    ...scopeProps
+  } = props;
+  const [container, setContainer] = reactExports.useState(null);
+  const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
+  const onUnmountAutoFocus = useCallbackRef$1(onUnmountAutoFocusProp);
+  const lastFocusedElementRef = reactExports.useRef(null);
+  const composedRefs = useComposedRefs(forwardedRef, (node) => setContainer(node));
+  const focusScope = reactExports.useRef({
+    paused: false,
+    pause() {
+      this.paused = true;
+    },
+    resume() {
+      this.paused = false;
+    }
+  }).current;
+  reactExports.useEffect(() => {
+    if (trapped) {
+      let handleFocusIn2 = function(event) {
+        if (focusScope.paused || !container) return;
+        const target = event.target;
+        if (container.contains(target)) {
+          lastFocusedElementRef.current = target;
+        } else {
+          focus(lastFocusedElementRef.current, { select: true });
+        }
+      }, handleFocusOut2 = function(event) {
+        if (focusScope.paused || !container) return;
+        const relatedTarget = event.relatedTarget;
+        if (relatedTarget === null) return;
+        if (!container.contains(relatedTarget)) {
+          focus(lastFocusedElementRef.current, { select: true });
+        }
+      }, handleMutations2 = function(mutations) {
+        const focusedElement = document.activeElement;
+        if (focusedElement !== document.body) return;
+        for (const mutation of mutations) {
+          if (mutation.removedNodes.length > 0) focus(container);
+        }
+      };
+      document.addEventListener("focusin", handleFocusIn2);
+      document.addEventListener("focusout", handleFocusOut2);
+      const mutationObserver = new MutationObserver(handleMutations2);
+      if (container) mutationObserver.observe(container, { childList: true, subtree: true });
+      return () => {
+        document.removeEventListener("focusin", handleFocusIn2);
+        document.removeEventListener("focusout", handleFocusOut2);
+        mutationObserver.disconnect();
+      };
+    }
+  }, [trapped, container, focusScope.paused]);
+  reactExports.useEffect(() => {
+    if (container) {
+      focusScopesStack.add(focusScope);
+      const previouslyFocusedElement = document.activeElement;
+      const hasFocusedCandidate = container.contains(previouslyFocusedElement);
+      if (!hasFocusedCandidate) {
+        const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS);
+        container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+        container.dispatchEvent(mountEvent);
+        if (!mountEvent.defaultPrevented) {
+          focusFirst(removeLinks(getTabbableCandidates(container)), { select: true });
+          if (document.activeElement === previouslyFocusedElement) {
+            focus(container);
+          }
+        }
+      }
+      return () => {
+        container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+        setTimeout(() => {
+          const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS);
+          container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+          container.dispatchEvent(unmountEvent);
+          if (!unmountEvent.defaultPrevented) {
+            focus(previouslyFocusedElement ?? document.body, { select: true });
+          }
+          container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+          focusScopesStack.remove(focusScope);
+        }, 0);
+      };
+    }
+  }, [container, onMountAutoFocus, onUnmountAutoFocus, focusScope]);
+  const handleKeyDown = reactExports.useCallback(
+    (event) => {
+      if (!loop && !trapped) return;
+      if (focusScope.paused) return;
+      const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
+      const focusedElement = document.activeElement;
+      if (isTabKey && focusedElement) {
+        const container2 = event.currentTarget;
+        const [first, last] = getTabbableEdges(container2);
+        const hasTabbableElementsInside = first && last;
+        if (!hasTabbableElementsInside) {
+          if (focusedElement === container2) event.preventDefault();
+        } else {
+          if (!event.shiftKey && focusedElement === last) {
+            event.preventDefault();
+            if (loop) focus(first, { select: true });
+          } else if (event.shiftKey && focusedElement === first) {
+            event.preventDefault();
+            if (loop) focus(last, { select: true });
+          }
+        }
+      }
+    },
+    [loop, trapped, focusScope.paused]
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { tabIndex: -1, ...scopeProps, ref: composedRefs, onKeyDown: handleKeyDown });
+});
+FocusScope.displayName = FOCUS_SCOPE_NAME;
+function focusFirst(candidates, { select = false } = {}) {
+  const previouslyFocusedElement = document.activeElement;
+  for (const candidate of candidates) {
+    focus(candidate, { select });
+    if (document.activeElement !== previouslyFocusedElement) return;
+  }
+}
+function getTabbableEdges(container) {
+  const candidates = getTabbableCandidates(container);
+  const first = findVisible(candidates, container);
+  const last = findVisible(candidates.reverse(), container);
+  return [first, last];
+}
+function getTabbableCandidates(container) {
+  const nodes = [];
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
+    acceptNode: (node) => {
+      const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
+      if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
+      return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  return nodes;
+}
+function findVisible(elements, container) {
+  for (const element of elements) {
+    if (!isHidden(element, { upTo: container })) return element;
+  }
+}
+function isHidden(node, { upTo }) {
+  if (getComputedStyle(node).visibility === "hidden") return true;
+  while (node) {
+    if (upTo !== void 0 && node === upTo) return false;
+    if (getComputedStyle(node).display === "none") return true;
+    node = node.parentElement;
+  }
+  return false;
+}
+function isSelectableInput(element) {
+  return element instanceof HTMLInputElement && "select" in element;
+}
+function focus(element, { select = false } = {}) {
+  if (element && element.focus) {
+    const previouslyFocusedElement = document.activeElement;
+    element.focus({ preventScroll: true });
+    if (element !== previouslyFocusedElement && isSelectableInput(element) && select)
+      element.select();
+  }
+}
+var focusScopesStack = createFocusScopesStack();
+function createFocusScopesStack() {
+  let stack = [];
+  return {
+    add(focusScope) {
+      const activeFocusScope = stack[0];
+      if (focusScope !== activeFocusScope) {
+        activeFocusScope == null ? void 0 : activeFocusScope.pause();
+      }
+      stack = arrayRemove(stack, focusScope);
+      stack.unshift(focusScope);
+    },
+    remove(focusScope) {
+      var _a2;
+      stack = arrayRemove(stack, focusScope);
+      (_a2 = stack[0]) == null ? void 0 : _a2.resume();
+    }
+  };
+}
+function arrayRemove(array, item) {
+  const updatedArray = [...array];
+  const index2 = updatedArray.indexOf(item);
+  if (index2 !== -1) {
+    updatedArray.splice(index2, 1);
+  }
+  return updatedArray;
+}
+function removeLinks(items) {
+  return items.filter((item) => item.tagName !== "A");
+}
+var useReactId = React$2[" useId ".trim().toString()] || (() => void 0);
+var count = 0;
+function useId(deterministicId) {
+  const [id, setId] = reactExports.useState(useReactId());
+  useLayoutEffect2(() => {
+    setId((reactId) => reactId ?? String(count++));
+  }, [deterministicId]);
+  return deterministicId || (id ? `radix-${id}` : "");
+}
+const sides = ["top", "right", "bottom", "left"];
+const min = Math.min;
+const max = Math.max;
+const round = Math.round;
+const floor = Math.floor;
+const createCoords = (v) => ({
+  x: v,
+  y: v
+});
+const oppositeSideMap = {
+  left: "right",
+  right: "left",
+  bottom: "top",
+  top: "bottom"
+};
+function clamp(start, value, end) {
+  return max(start, min(value, end));
+}
+function evaluate(value, param) {
+  return typeof value === "function" ? value(param) : value;
+}
+function getSide(placement) {
+  return placement.split("-")[0];
+}
+function getAlignment(placement) {
+  return placement.split("-")[1];
+}
+function getOppositeAxis(axis) {
+  return axis === "x" ? "y" : "x";
+}
+function getAxisLength(axis) {
+  return axis === "y" ? "height" : "width";
+}
+function getSideAxis(placement) {
+  const firstChar = placement[0];
+  return firstChar === "t" || firstChar === "b" ? "y" : "x";
+}
+function getAlignmentAxis(placement) {
+  return getOppositeAxis(getSideAxis(placement));
+}
+function getAlignmentSides(placement, rects, rtl) {
+  if (rtl === void 0) {
+    rtl = false;
+  }
+  const alignment = getAlignment(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const length = getAxisLength(alignmentAxis);
+  let mainAlignmentSide = alignmentAxis === "x" ? alignment === (rtl ? "end" : "start") ? "right" : "left" : alignment === "start" ? "bottom" : "top";
+  if (rects.reference[length] > rects.floating[length]) {
+    mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
+  }
+  return [mainAlignmentSide, getOppositePlacement(mainAlignmentSide)];
+}
+function getExpandedPlacements(placement) {
+  const oppositePlacement = getOppositePlacement(placement);
+  return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
+}
+function getOppositeAlignmentPlacement(placement) {
+  return placement.includes("start") ? placement.replace("start", "end") : placement.replace("end", "start");
+}
+const lrPlacement = ["left", "right"];
+const rlPlacement = ["right", "left"];
+const tbPlacement = ["top", "bottom"];
+const btPlacement = ["bottom", "top"];
+function getSideList(side, isStart, rtl) {
+  switch (side) {
+    case "top":
+    case "bottom":
+      if (rtl) return isStart ? rlPlacement : lrPlacement;
+      return isStart ? lrPlacement : rlPlacement;
+    case "left":
+    case "right":
+      return isStart ? tbPlacement : btPlacement;
+    default:
+      return [];
+  }
+}
+function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+  const alignment = getAlignment(placement);
+  let list = getSideList(getSide(placement), direction === "start", rtl);
+  if (alignment) {
+    list = list.map((side) => side + "-" + alignment);
+    if (flipAlignment) {
+      list = list.concat(list.map(getOppositeAlignmentPlacement));
+    }
+  }
+  return list;
+}
+function getOppositePlacement(placement) {
+  const side = getSide(placement);
+  return oppositeSideMap[side] + placement.slice(side.length);
+}
+function expandPaddingObject(padding) {
+  return {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...padding
+  };
+}
+function getPaddingObject(padding) {
+  return typeof padding !== "number" ? expandPaddingObject(padding) : {
+    top: padding,
+    right: padding,
+    bottom: padding,
+    left: padding
+  };
+}
+function rectToClientRect(rect) {
+  const {
+    x,
+    y,
+    width,
+    height
+  } = rect;
+  return {
+    width,
+    height,
+    top: y,
+    left: x,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+  };
+}
+function computeCoordsFromPlacement(_ref, placement, rtl) {
+  let {
+    reference,
+    floating
+  } = _ref;
+  const sideAxis = getSideAxis(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const alignLength = getAxisLength(alignmentAxis);
+  const side = getSide(placement);
+  const isVertical = sideAxis === "y";
+  const commonX = reference.x + reference.width / 2 - floating.width / 2;
+  const commonY = reference.y + reference.height / 2 - floating.height / 2;
+  const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
+  let coords;
+  switch (side) {
+    case "top":
+      coords = {
+        x: commonX,
+        y: reference.y - floating.height
+      };
+      break;
+    case "bottom":
+      coords = {
+        x: commonX,
+        y: reference.y + reference.height
+      };
+      break;
+    case "right":
+      coords = {
+        x: reference.x + reference.width,
+        y: commonY
+      };
+      break;
+    case "left":
+      coords = {
+        x: reference.x - floating.width,
+        y: commonY
+      };
+      break;
+    default:
+      coords = {
+        x: reference.x,
+        y: reference.y
+      };
+  }
+  switch (getAlignment(placement)) {
+    case "start":
+      coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+      break;
+    case "end":
+      coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+      break;
+  }
+  return coords;
+}
+async function detectOverflow(state, options) {
+  var _await$platform$isEle;
+  if (options === void 0) {
+    options = {};
+  }
+  const {
+    x,
+    y,
+    platform: platform2,
+    rects,
+    elements,
+    strategy
+  } = state;
+  const {
+    boundary = "clippingAncestors",
+    rootBoundary = "viewport",
+    elementContext = "floating",
+    altBoundary = false,
+    padding = 0
+  } = evaluate(options, state);
+  const paddingObject = getPaddingObject(padding);
+  const altContext = elementContext === "floating" ? "reference" : "floating";
+  const element = elements[altBoundary ? altContext : elementContext];
+  const clippingClientRect = rectToClientRect(await platform2.getClippingRect({
+    element: ((_await$platform$isEle = await (platform2.isElement == null ? void 0 : platform2.isElement(element))) != null ? _await$platform$isEle : true) ? element : element.contextElement || await (platform2.getDocumentElement == null ? void 0 : platform2.getDocumentElement(elements.floating)),
+    boundary,
+    rootBoundary,
+    strategy
+  }));
+  const rect = elementContext === "floating" ? {
+    x,
+    y,
+    width: rects.floating.width,
+    height: rects.floating.height
+  } : rects.reference;
+  const offsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(elements.floating));
+  const offsetScale = await (platform2.isElement == null ? void 0 : platform2.isElement(offsetParent)) ? await (platform2.getScale == null ? void 0 : platform2.getScale(offsetParent)) || {
+    x: 1,
+    y: 1
+  } : {
+    x: 1,
+    y: 1
+  };
+  const elementClientRect = rectToClientRect(platform2.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform2.convertOffsetParentRelativeRectToViewportRelativeRect({
+    elements,
+    rect,
+    offsetParent,
+    strategy
+  }) : rect);
+  return {
+    top: (clippingClientRect.top - elementClientRect.top + paddingObject.top) / offsetScale.y,
+    bottom: (elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom) / offsetScale.y,
+    left: (clippingClientRect.left - elementClientRect.left + paddingObject.left) / offsetScale.x,
+    right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
+  };
+}
+const MAX_RESET_COUNT = 50;
+const computePosition$1 = async (reference, floating, config) => {
+  const {
+    placement = "bottom",
+    strategy = "absolute",
+    middleware = [],
+    platform: platform2
+  } = config;
+  const platformWithDetectOverflow = platform2.detectOverflow ? platform2 : {
+    ...platform2,
+    detectOverflow
+  };
+  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(floating));
+  let rects = await platform2.getElementRects({
+    reference,
+    floating,
+    strategy
+  });
+  let {
+    x,
+    y
+  } = computeCoordsFromPlacement(rects, placement, rtl);
+  let statefulPlacement = placement;
+  let resetCount = 0;
+  const middlewareData = {};
+  for (let i = 0; i < middleware.length; i++) {
+    const currentMiddleware = middleware[i];
+    if (!currentMiddleware) {
+      continue;
+    }
+    const {
+      name,
+      fn
+    } = currentMiddleware;
+    const {
+      x: nextX,
+      y: nextY,
+      data,
+      reset
+    } = await fn({
+      x,
+      y,
+      initialPlacement: placement,
+      placement: statefulPlacement,
+      strategy,
+      middlewareData,
+      rects,
+      platform: platformWithDetectOverflow,
+      elements: {
+        reference,
+        floating
+      }
+    });
+    x = nextX != null ? nextX : x;
+    y = nextY != null ? nextY : y;
+    middlewareData[name] = {
+      ...middlewareData[name],
+      ...data
+    };
+    if (reset && resetCount < MAX_RESET_COUNT) {
+      resetCount++;
+      if (typeof reset === "object") {
+        if (reset.placement) {
+          statefulPlacement = reset.placement;
+        }
+        if (reset.rects) {
+          rects = reset.rects === true ? await platform2.getElementRects({
+            reference,
+            floating,
+            strategy
+          }) : reset.rects;
+        }
+        ({
+          x,
+          y
+        } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+      }
+      i = -1;
+    }
+  }
+  return {
+    x,
+    y,
+    placement: statefulPlacement,
+    strategy,
+    middlewareData
+  };
+};
+const arrow$3 = (options) => ({
+  name: "arrow",
+  options,
+  async fn(state) {
+    const {
+      x,
+      y,
+      placement,
+      rects,
+      platform: platform2,
+      elements,
+      middlewareData
+    } = state;
+    const {
+      element,
+      padding = 0
+    } = evaluate(options, state) || {};
+    if (element == null) {
+      return {};
+    }
+    const paddingObject = getPaddingObject(padding);
+    const coords = {
+      x,
+      y
+    };
+    const axis = getAlignmentAxis(placement);
+    const length = getAxisLength(axis);
+    const arrowDimensions = await platform2.getDimensions(element);
+    const isYAxis = axis === "y";
+    const minProp = isYAxis ? "top" : "left";
+    const maxProp = isYAxis ? "bottom" : "right";
+    const clientProp = isYAxis ? "clientHeight" : "clientWidth";
+    const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
+    const startDiff = coords[axis] - rects.reference[axis];
+    const arrowOffsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(element));
+    let clientSize = arrowOffsetParent ? arrowOffsetParent[clientProp] : 0;
+    if (!clientSize || !await (platform2.isElement == null ? void 0 : platform2.isElement(arrowOffsetParent))) {
+      clientSize = elements.floating[clientProp] || rects.floating[length];
+    }
+    const centerToReference = endDiff / 2 - startDiff / 2;
+    const largestPossiblePadding = clientSize / 2 - arrowDimensions[length] / 2 - 1;
+    const minPadding = min(paddingObject[minProp], largestPossiblePadding);
+    const maxPadding = min(paddingObject[maxProp], largestPossiblePadding);
+    const min$1 = minPadding;
+    const max2 = clientSize - arrowDimensions[length] - maxPadding;
+    const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
+    const offset2 = clamp(min$1, center, max2);
+    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center !== offset2 && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+    const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max2 : 0;
+    return {
+      [axis]: coords[axis] + alignmentOffset,
+      data: {
+        [axis]: offset2,
+        centerOffset: center - offset2 - alignmentOffset,
+        ...shouldAddOffset && {
+          alignmentOffset
+        }
+      },
+      reset: shouldAddOffset
+    };
+  }
+});
+const flip$2 = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "flip",
+    options,
+    async fn(state) {
+      var _middlewareData$arrow, _middlewareData$flip;
+      const {
+        placement,
+        middlewareData,
+        rects,
+        initialPlacement,
+        platform: platform2,
+        elements
+      } = state;
+      const {
+        mainAxis: checkMainAxis = true,
+        crossAxis: checkCrossAxis = true,
+        fallbackPlacements: specifiedFallbackPlacements,
+        fallbackStrategy = "bestFit",
+        fallbackAxisSideDirection = "none",
+        flipAlignment = true,
+        ...detectOverflowOptions
+      } = evaluate(options, state);
+      if ((_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
+        return {};
+      }
+      const side = getSide(placement);
+      const initialSideAxis = getSideAxis(initialPlacement);
+      const isBasePlacement = getSide(initialPlacement) === initialPlacement;
+      const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating));
+      const fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipAlignment ? [getOppositePlacement(initialPlacement)] : getExpandedPlacements(initialPlacement));
+      const hasFallbackAxisSideDirection = fallbackAxisSideDirection !== "none";
+      if (!specifiedFallbackPlacements && hasFallbackAxisSideDirection) {
+        fallbackPlacements.push(...getOppositeAxisPlacements(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
+      }
+      const placements = [initialPlacement, ...fallbackPlacements];
+      const overflow = await platform2.detectOverflow(state, detectOverflowOptions);
+      const overflows = [];
+      let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
+      if (checkMainAxis) {
+        overflows.push(overflow[side]);
+      }
+      if (checkCrossAxis) {
+        const sides2 = getAlignmentSides(placement, rects, rtl);
+        overflows.push(overflow[sides2[0]], overflow[sides2[1]]);
+      }
+      overflowsData = [...overflowsData, {
+        placement,
+        overflows
+      }];
+      if (!overflows.every((side2) => side2 <= 0)) {
+        var _middlewareData$flip2, _overflowsData$filter;
+        const nextIndex = (((_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) || 0) + 1;
+        const nextPlacement = placements[nextIndex];
+        if (nextPlacement) {
+          const ignoreCrossAxisOverflow = checkCrossAxis === "alignment" ? initialSideAxis !== getSideAxis(nextPlacement) : false;
+          if (!ignoreCrossAxisOverflow || // We leave the current main axis only if every placement on that axis
+          // overflows the main axis.
+          overflowsData.every((d) => getSideAxis(d.placement) === initialSideAxis ? d.overflows[0] > 0 : true)) {
+            return {
+              data: {
+                index: nextIndex,
+                overflows: overflowsData
+              },
+              reset: {
+                placement: nextPlacement
+              }
+            };
+          }
+        }
+        let resetPlacement = (_overflowsData$filter = overflowsData.filter((d) => d.overflows[0] <= 0).sort((a, b) => a.overflows[1] - b.overflows[1])[0]) == null ? void 0 : _overflowsData$filter.placement;
+        if (!resetPlacement) {
+          switch (fallbackStrategy) {
+            case "bestFit": {
+              var _overflowsData$filter2;
+              const placement2 = (_overflowsData$filter2 = overflowsData.filter((d) => {
+                if (hasFallbackAxisSideDirection) {
+                  const currentSideAxis = getSideAxis(d.placement);
+                  return currentSideAxis === initialSideAxis || // Create a bias to the `y` side axis due to horizontal
+                  // reading directions favoring greater width.
+                  currentSideAxis === "y";
+                }
+                return true;
+              }).map((d) => [d.placement, d.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$filter2[0];
+              if (placement2) {
+                resetPlacement = placement2;
+              }
+              break;
+            }
+            case "initialPlacement":
+              resetPlacement = initialPlacement;
+              break;
+          }
+        }
+        if (placement !== resetPlacement) {
+          return {
+            reset: {
+              placement: resetPlacement
+            }
+          };
+        }
+      }
+      return {};
+    }
+  };
+};
+function getSideOffsets(overflow, rect) {
+  return {
+    top: overflow.top - rect.height,
+    right: overflow.right - rect.width,
+    bottom: overflow.bottom - rect.height,
+    left: overflow.left - rect.width
+  };
+}
+function isAnySideFullyClipped(overflow) {
+  return sides.some((side) => overflow[side] >= 0);
+}
+const hide$2 = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "hide",
+    options,
+    async fn(state) {
+      const {
+        rects,
+        platform: platform2
+      } = state;
+      const {
+        strategy = "referenceHidden",
+        ...detectOverflowOptions
+      } = evaluate(options, state);
+      switch (strategy) {
+        case "referenceHidden": {
+          const overflow = await platform2.detectOverflow(state, {
+            ...detectOverflowOptions,
+            elementContext: "reference"
+          });
+          const offsets = getSideOffsets(overflow, rects.reference);
+          return {
+            data: {
+              referenceHiddenOffsets: offsets,
+              referenceHidden: isAnySideFullyClipped(offsets)
+            }
+          };
+        }
+        case "escaped": {
+          const overflow = await platform2.detectOverflow(state, {
+            ...detectOverflowOptions,
+            altBoundary: true
+          });
+          const offsets = getSideOffsets(overflow, rects.floating);
+          return {
+            data: {
+              escapedOffsets: offsets,
+              escaped: isAnySideFullyClipped(offsets)
+            }
+          };
+        }
+        default: {
+          return {};
+        }
+      }
+    }
+  };
+};
+const originSides = /* @__PURE__ */ new Set(["left", "top"]);
+async function convertValueToCoords(state, options) {
+  const {
+    placement,
+    platform: platform2,
+    elements
+  } = state;
+  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating));
+  const side = getSide(placement);
+  const alignment = getAlignment(placement);
+  const isVertical = getSideAxis(placement) === "y";
+  const mainAxisMulti = originSides.has(side) ? -1 : 1;
+  const crossAxisMulti = rtl && isVertical ? -1 : 1;
+  const rawValue = evaluate(options, state);
+  let {
+    mainAxis,
+    crossAxis,
+    alignmentAxis
+  } = typeof rawValue === "number" ? {
+    mainAxis: rawValue,
+    crossAxis: 0,
+    alignmentAxis: null
+  } : {
+    mainAxis: rawValue.mainAxis || 0,
+    crossAxis: rawValue.crossAxis || 0,
+    alignmentAxis: rawValue.alignmentAxis
+  };
+  if (alignment && typeof alignmentAxis === "number") {
+    crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
+  }
+  return isVertical ? {
+    x: crossAxis * crossAxisMulti,
+    y: mainAxis * mainAxisMulti
+  } : {
+    x: mainAxis * mainAxisMulti,
+    y: crossAxis * crossAxisMulti
+  };
+}
+const offset$2 = function(options) {
+  if (options === void 0) {
+    options = 0;
+  }
+  return {
+    name: "offset",
+    options,
+    async fn(state) {
+      var _middlewareData$offse, _middlewareData$arrow;
+      const {
+        x,
+        y,
+        placement,
+        middlewareData
+      } = state;
+      const diffCoords = await convertValueToCoords(state, options);
+      if (placement === ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse.placement) && (_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
+        return {};
+      }
+      return {
+        x: x + diffCoords.x,
+        y: y + diffCoords.y,
+        data: {
+          ...diffCoords,
+          placement
+        }
+      };
+    }
+  };
+};
+const shift$2 = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "shift",
+    options,
+    async fn(state) {
+      const {
+        x,
+        y,
+        placement,
+        platform: platform2
+      } = state;
+      const {
+        mainAxis: checkMainAxis = true,
+        crossAxis: checkCrossAxis = false,
+        limiter = {
+          fn: (_ref) => {
+            let {
+              x: x2,
+              y: y2
+            } = _ref;
+            return {
+              x: x2,
+              y: y2
+            };
+          }
+        },
+        ...detectOverflowOptions
+      } = evaluate(options, state);
+      const coords = {
+        x,
+        y
+      };
+      const overflow = await platform2.detectOverflow(state, detectOverflowOptions);
+      const crossAxis = getSideAxis(getSide(placement));
+      const mainAxis = getOppositeAxis(crossAxis);
+      let mainAxisCoord = coords[mainAxis];
+      let crossAxisCoord = coords[crossAxis];
+      if (checkMainAxis) {
+        const minSide = mainAxis === "y" ? "top" : "left";
+        const maxSide = mainAxis === "y" ? "bottom" : "right";
+        const min2 = mainAxisCoord + overflow[minSide];
+        const max2 = mainAxisCoord - overflow[maxSide];
+        mainAxisCoord = clamp(min2, mainAxisCoord, max2);
+      }
+      if (checkCrossAxis) {
+        const minSide = crossAxis === "y" ? "top" : "left";
+        const maxSide = crossAxis === "y" ? "bottom" : "right";
+        const min2 = crossAxisCoord + overflow[minSide];
+        const max2 = crossAxisCoord - overflow[maxSide];
+        crossAxisCoord = clamp(min2, crossAxisCoord, max2);
+      }
+      const limitedCoords = limiter.fn({
+        ...state,
+        [mainAxis]: mainAxisCoord,
+        [crossAxis]: crossAxisCoord
+      });
+      return {
+        ...limitedCoords,
+        data: {
+          x: limitedCoords.x - x,
+          y: limitedCoords.y - y,
+          enabled: {
+            [mainAxis]: checkMainAxis,
+            [crossAxis]: checkCrossAxis
+          }
+        }
+      };
+    }
+  };
+};
+const limitShift$2 = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    options,
+    fn(state) {
+      const {
+        x,
+        y,
+        placement,
+        rects,
+        middlewareData
+      } = state;
+      const {
+        offset: offset2 = 0,
+        mainAxis: checkMainAxis = true,
+        crossAxis: checkCrossAxis = true
+      } = evaluate(options, state);
+      const coords = {
+        x,
+        y
+      };
+      const crossAxis = getSideAxis(placement);
+      const mainAxis = getOppositeAxis(crossAxis);
+      let mainAxisCoord = coords[mainAxis];
+      let crossAxisCoord = coords[crossAxis];
+      const rawOffset = evaluate(offset2, state);
+      const computedOffset = typeof rawOffset === "number" ? {
+        mainAxis: rawOffset,
+        crossAxis: 0
+      } : {
+        mainAxis: 0,
+        crossAxis: 0,
+        ...rawOffset
+      };
+      if (checkMainAxis) {
+        const len = mainAxis === "y" ? "height" : "width";
+        const limitMin = rects.reference[mainAxis] - rects.floating[len] + computedOffset.mainAxis;
+        const limitMax = rects.reference[mainAxis] + rects.reference[len] - computedOffset.mainAxis;
+        if (mainAxisCoord < limitMin) {
+          mainAxisCoord = limitMin;
+        } else if (mainAxisCoord > limitMax) {
+          mainAxisCoord = limitMax;
+        }
+      }
+      if (checkCrossAxis) {
+        var _middlewareData$offse, _middlewareData$offse2;
+        const len = mainAxis === "y" ? "width" : "height";
+        const isOriginSide = originSides.has(getSide(placement));
+        const limitMin = rects.reference[crossAxis] - rects.floating[len] + (isOriginSide ? ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse[crossAxis]) || 0 : 0) + (isOriginSide ? 0 : computedOffset.crossAxis);
+        const limitMax = rects.reference[crossAxis] + rects.reference[len] + (isOriginSide ? 0 : ((_middlewareData$offse2 = middlewareData.offset) == null ? void 0 : _middlewareData$offse2[crossAxis]) || 0) - (isOriginSide ? computedOffset.crossAxis : 0);
+        if (crossAxisCoord < limitMin) {
+          crossAxisCoord = limitMin;
+        } else if (crossAxisCoord > limitMax) {
+          crossAxisCoord = limitMax;
+        }
+      }
+      return {
+        [mainAxis]: mainAxisCoord,
+        [crossAxis]: crossAxisCoord
+      };
+    }
+  };
+};
+const size$2 = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "size",
+    options,
+    async fn(state) {
+      var _state$middlewareData, _state$middlewareData2;
+      const {
+        placement,
+        rects,
+        platform: platform2,
+        elements
+      } = state;
+      const {
+        apply = () => {
+        },
+        ...detectOverflowOptions
+      } = evaluate(options, state);
+      const overflow = await platform2.detectOverflow(state, detectOverflowOptions);
+      const side = getSide(placement);
+      const alignment = getAlignment(placement);
+      const isYAxis = getSideAxis(placement) === "y";
+      const {
+        width,
+        height
+      } = rects.floating;
+      let heightSide;
+      let widthSide;
+      if (side === "top" || side === "bottom") {
+        heightSide = side;
+        widthSide = alignment === (await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating)) ? "start" : "end") ? "left" : "right";
+      } else {
+        widthSide = side;
+        heightSide = alignment === "end" ? "top" : "bottom";
+      }
+      const maximumClippingHeight = height - overflow.top - overflow.bottom;
+      const maximumClippingWidth = width - overflow.left - overflow.right;
+      const overflowAvailableHeight = min(height - overflow[heightSide], maximumClippingHeight);
+      const overflowAvailableWidth = min(width - overflow[widthSide], maximumClippingWidth);
+      const noShift = !state.middlewareData.shift;
+      let availableHeight = overflowAvailableHeight;
+      let availableWidth = overflowAvailableWidth;
+      if ((_state$middlewareData = state.middlewareData.shift) != null && _state$middlewareData.enabled.x) {
+        availableWidth = maximumClippingWidth;
+      }
+      if ((_state$middlewareData2 = state.middlewareData.shift) != null && _state$middlewareData2.enabled.y) {
+        availableHeight = maximumClippingHeight;
+      }
+      if (noShift && !alignment) {
+        const xMin = max(overflow.left, 0);
+        const xMax = max(overflow.right, 0);
+        const yMin = max(overflow.top, 0);
+        const yMax = max(overflow.bottom, 0);
+        if (isYAxis) {
+          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
+        } else {
+          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
+        }
+      }
+      await apply({
+        ...state,
+        availableWidth,
+        availableHeight
+      });
+      const nextDimensions = await platform2.getDimensions(elements.floating);
+      if (width !== nextDimensions.width || height !== nextDimensions.height) {
+        return {
+          reset: {
+            rects: true
+          }
+        };
+      }
+      return {};
+    }
+  };
+};
+function hasWindow() {
+  return typeof window !== "undefined";
+}
+function getNodeName(node) {
+  if (isNode(node)) {
+    return (node.nodeName || "").toLowerCase();
+  }
+  return "#document";
+}
+function getWindow(node) {
+  var _node$ownerDocument;
+  return (node == null || (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+}
+function getDocumentElement(node) {
+  var _ref;
+  return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+}
+function isNode(value) {
+  if (!hasWindow()) {
+    return false;
+  }
+  return value instanceof Node || value instanceof getWindow(value).Node;
+}
+function isElement(value) {
+  if (!hasWindow()) {
+    return false;
+  }
+  return value instanceof Element || value instanceof getWindow(value).Element;
+}
+function isHTMLElement(value) {
+  if (!hasWindow()) {
+    return false;
+  }
+  return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
+}
+function isShadowRoot(value) {
+  if (!hasWindow() || typeof ShadowRoot === "undefined") {
+    return false;
+  }
+  return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
+}
+function isOverflowElement(element) {
+  const {
+    overflow,
+    overflowX,
+    overflowY,
+    display
+  } = getComputedStyle$1(element);
+  return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && display !== "inline" && display !== "contents";
+}
+function isTableElement(element) {
+  return /^(table|td|th)$/.test(getNodeName(element));
+}
+function isTopLayer(element) {
+  try {
+    if (element.matches(":popover-open")) {
+      return true;
+    }
+  } catch (_e2) {
+  }
+  try {
+    return element.matches(":modal");
+  } catch (_e2) {
+    return false;
+  }
+}
+const willChangeRe = /transform|translate|scale|rotate|perspective|filter/;
+const containRe = /paint|layout|strict|content/;
+const isNotNone = (value) => !!value && value !== "none";
+let isWebKitValue;
+function isContainingBlock(elementOrCss) {
+  const css = isElement(elementOrCss) ? getComputedStyle$1(elementOrCss) : elementOrCss;
+  return isNotNone(css.transform) || isNotNone(css.translate) || isNotNone(css.scale) || isNotNone(css.rotate) || isNotNone(css.perspective) || !isWebKit() && (isNotNone(css.backdropFilter) || isNotNone(css.filter)) || willChangeRe.test(css.willChange || "") || containRe.test(css.contain || "");
+}
+function getContainingBlock(element) {
+  let currentNode = getParentNode(element);
+  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    if (isContainingBlock(currentNode)) {
+      return currentNode;
+    } else if (isTopLayer(currentNode)) {
+      return null;
+    }
+    currentNode = getParentNode(currentNode);
+  }
+  return null;
+}
+function isWebKit() {
+  if (isWebKitValue == null) {
+    isWebKitValue = typeof CSS !== "undefined" && CSS.supports && CSS.supports("-webkit-backdrop-filter", "none");
+  }
+  return isWebKitValue;
+}
+function isLastTraversableNode(node) {
+  return /^(html|body|#document)$/.test(getNodeName(node));
+}
+function getComputedStyle$1(element) {
+  return getWindow(element).getComputedStyle(element);
+}
+function getNodeScroll(element) {
+  if (isElement(element)) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+  return {
+    scrollLeft: element.scrollX,
+    scrollTop: element.scrollY
+  };
+}
+function getParentNode(node) {
+  if (getNodeName(node) === "html") {
+    return node;
+  }
+  const result = (
+    // Step into the shadow DOM of the parent of a slotted node.
+    node.assignedSlot || // DOM Element detected.
+    node.parentNode || // ShadowRoot detected.
+    isShadowRoot(node) && node.host || // Fallback.
+    getDocumentElement(node)
+  );
+  return isShadowRoot(result) ? result.host : result;
+}
+function getNearestOverflowAncestor(node) {
+  const parentNode = getParentNode(node);
+  if (isLastTraversableNode(parentNode)) {
+    return node.ownerDocument ? node.ownerDocument.body : node.body;
+  }
+  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
+    return parentNode;
+  }
+  return getNearestOverflowAncestor(parentNode);
+}
+function getOverflowAncestors(node, list, traverseIframes) {
+  var _node$ownerDocument2;
+  if (list === void 0) {
+    list = [];
+  }
+  if (traverseIframes === void 0) {
+    traverseIframes = true;
+  }
+  const scrollableAncestor = getNearestOverflowAncestor(node);
+  const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
+  const win = getWindow(scrollableAncestor);
+  if (isBody) {
+    const frameElement = getFrameElement(win);
+    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], frameElement && traverseIframes ? getOverflowAncestors(frameElement) : []);
+  } else {
+    return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
+  }
+}
+function getFrameElement(win) {
+  return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
+}
+function getCssDimensions(element) {
+  const css = getComputedStyle$1(element);
+  let width = parseFloat(css.width) || 0;
+  let height = parseFloat(css.height) || 0;
+  const hasOffset = isHTMLElement(element);
+  const offsetWidth = hasOffset ? element.offsetWidth : width;
+  const offsetHeight = hasOffset ? element.offsetHeight : height;
+  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
+  if (shouldFallback) {
+    width = offsetWidth;
+    height = offsetHeight;
+  }
+  return {
+    width,
+    height,
+    $: shouldFallback
+  };
+}
+function unwrapElement(element) {
+  return !isElement(element) ? element.contextElement : element;
+}
+function getScale(element) {
+  const domElement = unwrapElement(element);
+  if (!isHTMLElement(domElement)) {
+    return createCoords(1);
+  }
+  const rect = domElement.getBoundingClientRect();
+  const {
+    width,
+    height,
+    $
+  } = getCssDimensions(domElement);
+  let x = ($ ? round(rect.width) : rect.width) / width;
+  let y = ($ ? round(rect.height) : rect.height) / height;
+  if (!x || !Number.isFinite(x)) {
+    x = 1;
+  }
+  if (!y || !Number.isFinite(y)) {
+    y = 1;
+  }
+  return {
+    x,
+    y
+  };
+}
+const noOffsets = /* @__PURE__ */ createCoords(0);
+function getVisualOffsets(element) {
+  const win = getWindow(element);
+  if (!isWebKit() || !win.visualViewport) {
+    return noOffsets;
+  }
+  return {
+    x: win.visualViewport.offsetLeft,
+    y: win.visualViewport.offsetTop
+  };
+}
+function shouldAddVisualOffsets(element, isFixed, floatingOffsetParent) {
+  if (isFixed === void 0) {
+    isFixed = false;
+  }
+  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== getWindow(element)) {
+    return false;
+  }
+  return isFixed;
+}
+function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
+  if (includeScale === void 0) {
+    includeScale = false;
+  }
+  if (isFixedStrategy === void 0) {
+    isFixedStrategy = false;
+  }
+  const clientRect = element.getBoundingClientRect();
+  const domElement = unwrapElement(element);
+  let scale = createCoords(1);
+  if (includeScale) {
+    if (offsetParent) {
+      if (isElement(offsetParent)) {
+        scale = getScale(offsetParent);
+      }
+    } else {
+      scale = getScale(element);
+    }
+  }
+  const visualOffsets = shouldAddVisualOffsets(domElement, isFixedStrategy, offsetParent) ? getVisualOffsets(domElement) : createCoords(0);
+  let x = (clientRect.left + visualOffsets.x) / scale.x;
+  let y = (clientRect.top + visualOffsets.y) / scale.y;
+  let width = clientRect.width / scale.x;
+  let height = clientRect.height / scale.y;
+  if (domElement) {
+    const win = getWindow(domElement);
+    const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
+    let currentWin = win;
+    let currentIFrame = getFrameElement(currentWin);
+    while (currentIFrame && offsetParent && offsetWin !== currentWin) {
+      const iframeScale = getScale(currentIFrame);
+      const iframeRect = currentIFrame.getBoundingClientRect();
+      const css = getComputedStyle$1(currentIFrame);
+      const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
+      const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
+      x *= iframeScale.x;
+      y *= iframeScale.y;
+      width *= iframeScale.x;
+      height *= iframeScale.y;
+      x += left;
+      y += top;
+      currentWin = getWindow(currentIFrame);
+      currentIFrame = getFrameElement(currentWin);
+    }
+  }
+  return rectToClientRect({
+    width,
+    height,
+    x,
+    y
+  });
+}
+function getWindowScrollBarX(element, rect) {
+  const leftScroll = getNodeScroll(element).scrollLeft;
+  if (!rect) {
+    return getBoundingClientRect(getDocumentElement(element)).left + leftScroll;
+  }
+  return rect.left + leftScroll;
+}
+function getHTMLOffset(documentElement, scroll) {
+  const htmlRect = documentElement.getBoundingClientRect();
+  const x = htmlRect.left + scroll.scrollLeft - getWindowScrollBarX(documentElement, htmlRect);
+  const y = htmlRect.top + scroll.scrollTop;
+  return {
+    x,
+    y
+  };
+}
+function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
+  let {
+    elements,
+    rect,
+    offsetParent,
+    strategy
+  } = _ref;
+  const isFixed = strategy === "fixed";
+  const documentElement = getDocumentElement(offsetParent);
+  const topLayer = elements ? isTopLayer(elements.floating) : false;
+  if (offsetParent === documentElement || topLayer && isFixed) {
+    return rect;
+  }
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  let scale = createCoords(1);
+  const offsets = createCoords(0);
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isOffsetParentAnElement) {
+      const offsetRect = getBoundingClientRect(offsetParent);
+      scale = getScale(offsetParent);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    }
+  }
+  const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : createCoords(0);
+  return {
+    width: rect.width * scale.x,
+    height: rect.height * scale.y,
+    x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x + htmlOffset.x,
+    y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y + htmlOffset.y
+  };
+}
+function getClientRects(element) {
+  return Array.from(element.getClientRects());
+}
+function getDocumentRect(element) {
+  const html = getDocumentElement(element);
+  const scroll = getNodeScroll(element);
+  const body = element.ownerDocument.body;
+  const width = max(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
+  const height = max(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
+  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
+  const y = -scroll.scrollTop;
+  if (getComputedStyle$1(body).direction === "rtl") {
+    x += max(html.clientWidth, body.clientWidth) - width;
+  }
+  return {
+    width,
+    height,
+    x,
+    y
+  };
+}
+const SCROLLBAR_MAX = 25;
+function getViewportRect(element, strategy) {
+  const win = getWindow(element);
+  const html = getDocumentElement(element);
+  const visualViewport = win.visualViewport;
+  let width = html.clientWidth;
+  let height = html.clientHeight;
+  let x = 0;
+  let y = 0;
+  if (visualViewport) {
+    width = visualViewport.width;
+    height = visualViewport.height;
+    const visualViewportBased = isWebKit();
+    if (!visualViewportBased || visualViewportBased && strategy === "fixed") {
+      x = visualViewport.offsetLeft;
+      y = visualViewport.offsetTop;
+    }
+  }
+  const windowScrollbarX = getWindowScrollBarX(html);
+  if (windowScrollbarX <= 0) {
+    const doc = html.ownerDocument;
+    const body = doc.body;
+    const bodyStyles = getComputedStyle(body);
+    const bodyMarginInline = doc.compatMode === "CSS1Compat" ? parseFloat(bodyStyles.marginLeft) + parseFloat(bodyStyles.marginRight) || 0 : 0;
+    const clippingStableScrollbarWidth = Math.abs(html.clientWidth - body.clientWidth - bodyMarginInline);
+    if (clippingStableScrollbarWidth <= SCROLLBAR_MAX) {
+      width -= clippingStableScrollbarWidth;
+    }
+  } else if (windowScrollbarX <= SCROLLBAR_MAX) {
+    width += windowScrollbarX;
+  }
+  return {
+    width,
+    height,
+    x,
+    y
+  };
+}
+function getInnerBoundingClientRect(element, strategy) {
+  const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
+  const top = clientRect.top + element.clientTop;
+  const left = clientRect.left + element.clientLeft;
+  const scale = isHTMLElement(element) ? getScale(element) : createCoords(1);
+  const width = element.clientWidth * scale.x;
+  const height = element.clientHeight * scale.y;
+  const x = left * scale.x;
+  const y = top * scale.y;
+  return {
+    width,
+    height,
+    x,
+    y
+  };
+}
+function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
+  let rect;
+  if (clippingAncestor === "viewport") {
+    rect = getViewportRect(element, strategy);
+  } else if (clippingAncestor === "document") {
+    rect = getDocumentRect(getDocumentElement(element));
+  } else if (isElement(clippingAncestor)) {
+    rect = getInnerBoundingClientRect(clippingAncestor, strategy);
+  } else {
+    const visualOffsets = getVisualOffsets(element);
+    rect = {
+      x: clippingAncestor.x - visualOffsets.x,
+      y: clippingAncestor.y - visualOffsets.y,
+      width: clippingAncestor.width,
+      height: clippingAncestor.height
+    };
+  }
+  return rectToClientRect(rect);
+}
+function hasFixedPositionAncestor(element, stopNode) {
+  const parentNode = getParentNode(element);
+  if (parentNode === stopNode || !isElement(parentNode) || isLastTraversableNode(parentNode)) {
+    return false;
+  }
+  return getComputedStyle$1(parentNode).position === "fixed" || hasFixedPositionAncestor(parentNode, stopNode);
+}
+function getClippingElementAncestors(element, cache) {
+  const cachedResult = cache.get(element);
+  if (cachedResult) {
+    return cachedResult;
+  }
+  let result = getOverflowAncestors(element, [], false).filter((el) => isElement(el) && getNodeName(el) !== "body");
+  let currentContainingBlockComputedStyle = null;
+  const elementIsFixed = getComputedStyle$1(element).position === "fixed";
+  let currentNode = elementIsFixed ? getParentNode(element) : element;
+  while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    const computedStyle = getComputedStyle$1(currentNode);
+    const currentNodeIsContaining = isContainingBlock(currentNode);
+    if (!currentNodeIsContaining && computedStyle.position === "fixed") {
+      currentContainingBlockComputedStyle = null;
+    }
+    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === "static" && !!currentContainingBlockComputedStyle && (currentContainingBlockComputedStyle.position === "absolute" || currentContainingBlockComputedStyle.position === "fixed") || isOverflowElement(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
+    if (shouldDropCurrentNode) {
+      result = result.filter((ancestor) => ancestor !== currentNode);
+    } else {
+      currentContainingBlockComputedStyle = computedStyle;
+    }
+    currentNode = getParentNode(currentNode);
+  }
+  cache.set(element, result);
+  return result;
+}
+function getClippingRect(_ref) {
+  let {
+    element,
+    boundary,
+    rootBoundary,
+    strategy
+  } = _ref;
+  const elementClippingAncestors = boundary === "clippingAncestors" ? isTopLayer(element) ? [] : getClippingElementAncestors(element, this._c) : [].concat(boundary);
+  const clippingAncestors = [...elementClippingAncestors, rootBoundary];
+  const firstRect = getClientRectFromClippingAncestor(element, clippingAncestors[0], strategy);
+  let top = firstRect.top;
+  let right = firstRect.right;
+  let bottom = firstRect.bottom;
+  let left = firstRect.left;
+  for (let i = 1; i < clippingAncestors.length; i++) {
+    const rect = getClientRectFromClippingAncestor(element, clippingAncestors[i], strategy);
+    top = max(rect.top, top);
+    right = min(rect.right, right);
+    bottom = min(rect.bottom, bottom);
+    left = max(rect.left, left);
+  }
+  return {
+    width: right - left,
+    height: bottom - top,
+    x: left,
+    y: top
+  };
+}
+function getDimensions(element) {
+  const {
+    width,
+    height
+  } = getCssDimensions(element);
+  return {
+    width,
+    height
+  };
+}
+function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  const isFixed = strategy === "fixed";
+  const rect = getBoundingClientRect(element, true, isFixed, offsetParent);
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  const offsets = createCoords(0);
+  function setLeftRTLScrollbarOffset() {
+    offsets.x = getWindowScrollBarX(documentElement);
+  }
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isOffsetParentAnElement) {
+      const offsetRect = getBoundingClientRect(offsetParent, true, isFixed, offsetParent);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    } else if (documentElement) {
+      setLeftRTLScrollbarOffset();
+    }
+  }
+  if (isFixed && !isOffsetParentAnElement && documentElement) {
+    setLeftRTLScrollbarOffset();
+  }
+  const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : createCoords(0);
+  const x = rect.left + scroll.scrollLeft - offsets.x - htmlOffset.x;
+  const y = rect.top + scroll.scrollTop - offsets.y - htmlOffset.y;
+  return {
+    x,
+    y,
+    width: rect.width,
+    height: rect.height
+  };
+}
+function isStaticPositioned(element) {
+  return getComputedStyle$1(element).position === "static";
+}
+function getTrueOffsetParent(element, polyfill2) {
+  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
+    return null;
+  }
+  if (polyfill2) {
+    return polyfill2(element);
+  }
+  let rawOffsetParent = element.offsetParent;
+  if (getDocumentElement(element) === rawOffsetParent) {
+    rawOffsetParent = rawOffsetParent.ownerDocument.body;
+  }
+  return rawOffsetParent;
+}
+function getOffsetParent(element, polyfill2) {
+  const win = getWindow(element);
+  if (isTopLayer(element)) {
+    return win;
+  }
+  if (!isHTMLElement(element)) {
+    let svgOffsetParent = getParentNode(element);
+    while (svgOffsetParent && !isLastTraversableNode(svgOffsetParent)) {
+      if (isElement(svgOffsetParent) && !isStaticPositioned(svgOffsetParent)) {
+        return svgOffsetParent;
+      }
+      svgOffsetParent = getParentNode(svgOffsetParent);
+    }
+    return win;
+  }
+  let offsetParent = getTrueOffsetParent(element, polyfill2);
+  while (offsetParent && isTableElement(offsetParent) && isStaticPositioned(offsetParent)) {
+    offsetParent = getTrueOffsetParent(offsetParent, polyfill2);
+  }
+  if (offsetParent && isLastTraversableNode(offsetParent) && isStaticPositioned(offsetParent) && !isContainingBlock(offsetParent)) {
+    return win;
+  }
+  return offsetParent || getContainingBlock(element) || win;
+}
+const getElementRects = async function(data) {
+  const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
+  const getDimensionsFn = this.getDimensions;
+  const floatingDimensions = await getDimensionsFn(data.floating);
+  return {
+    reference: getRectRelativeToOffsetParent(data.reference, await getOffsetParentFn(data.floating), data.strategy),
+    floating: {
+      x: 0,
+      y: 0,
+      width: floatingDimensions.width,
+      height: floatingDimensions.height
+    }
+  };
+};
+function isRTL(element) {
+  return getComputedStyle$1(element).direction === "rtl";
+}
+const platform = {
+  convertOffsetParentRelativeRectToViewportRelativeRect,
+  getDocumentElement,
+  getClippingRect,
+  getOffsetParent,
+  getElementRects,
+  getClientRects,
+  getDimensions,
+  getScale,
+  isElement,
+  isRTL
+};
+function rectsAreEqual(a, b) {
+  return a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
+}
+function observeMove(element, onMove) {
+  let io = null;
+  let timeoutId;
+  const root2 = getDocumentElement(element);
+  function cleanup() {
+    var _io;
+    clearTimeout(timeoutId);
+    (_io = io) == null || _io.disconnect();
+    io = null;
+  }
+  function refresh(skip, threshold) {
+    if (skip === void 0) {
+      skip = false;
+    }
+    if (threshold === void 0) {
+      threshold = 1;
+    }
+    cleanup();
+    const elementRectForRootMargin = element.getBoundingClientRect();
+    const {
+      left,
+      top,
+      width,
+      height
+    } = elementRectForRootMargin;
+    if (!skip) {
+      onMove();
+    }
+    if (!width || !height) {
+      return;
+    }
+    const insetTop = floor(top);
+    const insetRight = floor(root2.clientWidth - (left + width));
+    const insetBottom = floor(root2.clientHeight - (top + height));
+    const insetLeft = floor(left);
+    const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
+    const options = {
+      rootMargin,
+      threshold: max(0, min(1, threshold)) || 1
+    };
+    let isFirstUpdate = true;
+    function handleObserve(entries) {
+      const ratio = entries[0].intersectionRatio;
+      if (ratio !== threshold) {
+        if (!isFirstUpdate) {
+          return refresh();
+        }
+        if (!ratio) {
+          timeoutId = setTimeout(() => {
+            refresh(false, 1e-7);
+          }, 1e3);
+        } else {
+          refresh(false, ratio);
+        }
+      }
+      if (ratio === 1 && !rectsAreEqual(elementRectForRootMargin, element.getBoundingClientRect())) {
+        refresh();
+      }
+      isFirstUpdate = false;
+    }
+    try {
+      io = new IntersectionObserver(handleObserve, {
+        ...options,
+        // Handle <iframe>s
+        root: root2.ownerDocument
+      });
+    } catch (_e2) {
+      io = new IntersectionObserver(handleObserve, options);
+    }
+    io.observe(element);
+  }
+  refresh(true);
+  return cleanup;
+}
+function autoUpdate(reference, floating, update, options) {
+  if (options === void 0) {
+    options = {};
+  }
+  const {
+    ancestorScroll = true,
+    ancestorResize = true,
+    elementResize = typeof ResizeObserver === "function",
+    layoutShift = typeof IntersectionObserver === "function",
+    animationFrame = false
+  } = options;
+  const referenceEl = unwrapElement(reference);
+  const ancestors = ancestorScroll || ancestorResize ? [...referenceEl ? getOverflowAncestors(referenceEl) : [], ...floating ? getOverflowAncestors(floating) : []] : [];
+  ancestors.forEach((ancestor) => {
+    ancestorScroll && ancestor.addEventListener("scroll", update, {
+      passive: true
+    });
+    ancestorResize && ancestor.addEventListener("resize", update);
+  });
+  const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
+  let reobserveFrame = -1;
+  let resizeObserver = null;
+  if (elementResize) {
+    resizeObserver = new ResizeObserver((_ref) => {
+      let [firstEntry] = _ref;
+      if (firstEntry && firstEntry.target === referenceEl && resizeObserver && floating) {
+        resizeObserver.unobserve(floating);
+        cancelAnimationFrame(reobserveFrame);
+        reobserveFrame = requestAnimationFrame(() => {
+          var _resizeObserver;
+          (_resizeObserver = resizeObserver) == null || _resizeObserver.observe(floating);
+        });
+      }
+      update();
+    });
+    if (referenceEl && !animationFrame) {
+      resizeObserver.observe(referenceEl);
+    }
+    if (floating) {
+      resizeObserver.observe(floating);
+    }
+  }
+  let frameId;
+  let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
+  if (animationFrame) {
+    frameLoop();
+  }
+  function frameLoop() {
+    const nextRefRect = getBoundingClientRect(reference);
+    if (prevRefRect && !rectsAreEqual(prevRefRect, nextRefRect)) {
+      update();
+    }
+    prevRefRect = nextRefRect;
+    frameId = requestAnimationFrame(frameLoop);
+  }
+  update();
+  return () => {
+    var _resizeObserver2;
+    ancestors.forEach((ancestor) => {
+      ancestorScroll && ancestor.removeEventListener("scroll", update);
+      ancestorResize && ancestor.removeEventListener("resize", update);
+    });
+    cleanupIo == null || cleanupIo();
+    (_resizeObserver2 = resizeObserver) == null || _resizeObserver2.disconnect();
+    resizeObserver = null;
+    if (animationFrame) {
+      cancelAnimationFrame(frameId);
+    }
+  };
+}
+const offset$1 = offset$2;
+const shift$1 = shift$2;
+const flip$1 = flip$2;
+const size$1 = size$2;
+const hide$1 = hide$2;
+const arrow$2 = arrow$3;
+const limitShift$1 = limitShift$2;
+const computePosition = (reference, floating, options) => {
+  const cache = /* @__PURE__ */ new Map();
+  const mergedOptions = {
+    platform,
+    ...options
+  };
+  const platformWithCache = {
+    ...mergedOptions.platform,
+    _c: cache
+  };
+  return computePosition$1(reference, floating, {
+    ...mergedOptions,
+    platform: platformWithCache
+  });
+};
+var isClient = typeof document !== "undefined";
+var noop = function noop2() {
+};
+var index = isClient ? reactExports.useLayoutEffect : noop;
+function deepEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+  if (typeof a !== typeof b) {
+    return false;
+  }
+  if (typeof a === "function" && a.toString() === b.toString()) {
+    return true;
+  }
+  let length;
+  let i;
+  let keys;
+  if (a && b && typeof a === "object") {
+    if (Array.isArray(a)) {
+      length = a.length;
+      if (length !== b.length) return false;
+      for (i = length; i-- !== 0; ) {
+        if (!deepEqual(a[i], b[i])) {
+          return false;
+        }
+      }
+      return true;
+    }
+    keys = Object.keys(a);
+    length = keys.length;
+    if (length !== Object.keys(b).length) {
+      return false;
+    }
+    for (i = length; i-- !== 0; ) {
+      if (!{}.hasOwnProperty.call(b, keys[i])) {
+        return false;
+      }
+    }
+    for (i = length; i-- !== 0; ) {
+      const key = keys[i];
+      if (key === "_owner" && a.$$typeof) {
+        continue;
+      }
+      if (!deepEqual(a[key], b[key])) {
+        return false;
+      }
+    }
+    return true;
+  }
+  return a !== a && b !== b;
+}
+function getDPR(element) {
+  if (typeof window === "undefined") {
+    return 1;
+  }
+  const win = element.ownerDocument.defaultView || window;
+  return win.devicePixelRatio || 1;
+}
+function roundByDPR(element, value) {
+  const dpr = getDPR(element);
+  return Math.round(value * dpr) / dpr;
+}
+function useLatestRef(value) {
+  const ref = reactExports.useRef(value);
+  index(() => {
+    ref.current = value;
+  });
+  return ref;
+}
+function useFloating(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  const {
+    placement = "bottom",
+    strategy = "absolute",
+    middleware = [],
+    platform: platform2,
+    elements: {
+      reference: externalReference,
+      floating: externalFloating
+    } = {},
+    transform = true,
+    whileElementsMounted,
+    open
+  } = options;
+  const [data, setData] = reactExports.useState({
+    x: 0,
+    y: 0,
+    strategy,
+    placement,
+    middlewareData: {},
+    isPositioned: false
+  });
+  const [latestMiddleware, setLatestMiddleware] = reactExports.useState(middleware);
+  if (!deepEqual(latestMiddleware, middleware)) {
+    setLatestMiddleware(middleware);
+  }
+  const [_reference, _setReference] = reactExports.useState(null);
+  const [_floating, _setFloating] = reactExports.useState(null);
+  const setReference = reactExports.useCallback((node) => {
+    if (node !== referenceRef.current) {
+      referenceRef.current = node;
+      _setReference(node);
+    }
+  }, []);
+  const setFloating = reactExports.useCallback((node) => {
+    if (node !== floatingRef.current) {
+      floatingRef.current = node;
+      _setFloating(node);
+    }
+  }, []);
+  const referenceEl = externalReference || _reference;
+  const floatingEl = externalFloating || _floating;
+  const referenceRef = reactExports.useRef(null);
+  const floatingRef = reactExports.useRef(null);
+  const dataRef = reactExports.useRef(data);
+  const hasWhileElementsMounted = whileElementsMounted != null;
+  const whileElementsMountedRef = useLatestRef(whileElementsMounted);
+  const platformRef = useLatestRef(platform2);
+  const openRef = useLatestRef(open);
+  const update = reactExports.useCallback(() => {
+    if (!referenceRef.current || !floatingRef.current) {
+      return;
+    }
+    const config = {
+      placement,
+      strategy,
+      middleware: latestMiddleware
+    };
+    if (platformRef.current) {
+      config.platform = platformRef.current;
+    }
+    computePosition(referenceRef.current, floatingRef.current, config).then((data2) => {
+      const fullData = {
+        ...data2,
+        // The floating element's position may be recomputed while it's closed
+        // but still mounted (such as when transitioning out). To ensure
+        // `isPositioned` will be `false` initially on the next open, avoid
+        // setting it to `true` when `open === false` (must be specified).
+        isPositioned: openRef.current !== false
+      };
+      if (isMountedRef.current && !deepEqual(dataRef.current, fullData)) {
+        dataRef.current = fullData;
+        reactDomExports.flushSync(() => {
+          setData(fullData);
+        });
+      }
+    });
+  }, [latestMiddleware, placement, strategy, platformRef, openRef]);
+  index(() => {
+    if (open === false && dataRef.current.isPositioned) {
+      dataRef.current.isPositioned = false;
+      setData((data2) => ({
+        ...data2,
+        isPositioned: false
+      }));
+    }
+  }, [open]);
+  const isMountedRef = reactExports.useRef(false);
+  index(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+  index(() => {
+    if (referenceEl) referenceRef.current = referenceEl;
+    if (floatingEl) floatingRef.current = floatingEl;
+    if (referenceEl && floatingEl) {
+      if (whileElementsMountedRef.current) {
+        return whileElementsMountedRef.current(referenceEl, floatingEl, update);
+      }
+      update();
+    }
+  }, [referenceEl, floatingEl, update, whileElementsMountedRef, hasWhileElementsMounted]);
+  const refs = reactExports.useMemo(() => ({
+    reference: referenceRef,
+    floating: floatingRef,
+    setReference,
+    setFloating
+  }), [setReference, setFloating]);
+  const elements = reactExports.useMemo(() => ({
+    reference: referenceEl,
+    floating: floatingEl
+  }), [referenceEl, floatingEl]);
+  const floatingStyles = reactExports.useMemo(() => {
+    const initialStyles = {
+      position: strategy,
+      left: 0,
+      top: 0
+    };
+    if (!elements.floating) {
+      return initialStyles;
+    }
+    const x = roundByDPR(elements.floating, data.x);
+    const y = roundByDPR(elements.floating, data.y);
+    if (transform) {
+      return {
+        ...initialStyles,
+        transform: "translate(" + x + "px, " + y + "px)",
+        ...getDPR(elements.floating) >= 1.5 && {
+          willChange: "transform"
+        }
+      };
+    }
+    return {
+      position: strategy,
+      left: x,
+      top: y
+    };
+  }, [strategy, transform, elements.floating, data.x, data.y]);
+  return reactExports.useMemo(() => ({
+    ...data,
+    update,
+    refs,
+    elements,
+    floatingStyles
+  }), [data, update, refs, elements, floatingStyles]);
+}
+const arrow$1 = (options) => {
+  function isRef(value) {
+    return {}.hasOwnProperty.call(value, "current");
+  }
+  return {
+    name: "arrow",
+    options,
+    fn(state) {
+      const {
+        element,
+        padding
+      } = typeof options === "function" ? options(state) : options;
+      if (element && isRef(element)) {
+        if (element.current != null) {
+          return arrow$2({
+            element: element.current,
+            padding
+          }).fn(state);
+        }
+        return {};
+      }
+      if (element) {
+        return arrow$2({
+          element,
+          padding
+        }).fn(state);
+      }
+      return {};
+    }
+  };
+};
+const offset = (options, deps) => {
+  const result = offset$1(options);
+  return {
+    name: result.name,
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+const shift = (options, deps) => {
+  const result = shift$1(options);
+  return {
+    name: result.name,
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+const limitShift = (options, deps) => {
+  const result = limitShift$1(options);
+  return {
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+const flip = (options, deps) => {
+  const result = flip$1(options);
+  return {
+    name: result.name,
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+const size = (options, deps) => {
+  const result = size$1(options);
+  return {
+    name: result.name,
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+const hide = (options, deps) => {
+  const result = hide$1(options);
+  return {
+    name: result.name,
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+const arrow = (options, deps) => {
+  const result = arrow$1(options);
+  return {
+    name: result.name,
+    fn: result.fn,
+    options: [options, deps]
+  };
+};
+var NAME$1 = "Arrow";
+var Arrow$1 = reactExports.forwardRef((props, forwardedRef) => {
+  const { children, width = 10, height = 5, ...arrowProps } = props;
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Primitive$1.svg,
+    {
+      ...arrowProps,
+      ref: forwardedRef,
+      width,
+      height,
+      viewBox: "0 0 30 10",
+      preserveAspectRatio: "none",
+      children: props.asChild ? children : /* @__PURE__ */ jsxRuntimeExports.jsx("polygon", { points: "0,0 30,0 15,10" })
+    }
+  );
+});
+Arrow$1.displayName = NAME$1;
+var Root = Arrow$1;
+function useSize(element) {
+  const [size2, setSize] = reactExports.useState(void 0);
+  useLayoutEffect2(() => {
+    if (element) {
+      setSize({ width: element.offsetWidth, height: element.offsetHeight });
+      const resizeObserver = new ResizeObserver((entries) => {
+        if (!Array.isArray(entries)) {
+          return;
+        }
+        if (!entries.length) {
+          return;
+        }
+        const entry = entries[0];
+        let width;
+        let height;
+        if ("borderBoxSize" in entry) {
+          const borderSizeEntry = entry["borderBoxSize"];
+          const borderSize = Array.isArray(borderSizeEntry) ? borderSizeEntry[0] : borderSizeEntry;
+          width = borderSize["inlineSize"];
+          height = borderSize["blockSize"];
+        } else {
+          width = element.offsetWidth;
+          height = element.offsetHeight;
+        }
+        setSize({ width, height });
+      });
+      resizeObserver.observe(element, { box: "border-box" });
+      return () => resizeObserver.unobserve(element);
+    } else {
+      setSize(void 0);
+    }
+  }, [element]);
+  return size2;
+}
+var POPPER_NAME = "Popper";
+var [createPopperContext, createPopperScope] = createContextScope$1(POPPER_NAME);
+var [PopperProvider, usePopperContext] = createPopperContext(POPPER_NAME);
+var Popper = (props) => {
+  const { __scopePopper, children } = props;
+  const [anchor, setAnchor] = reactExports.useState(null);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PopperProvider, { scope: __scopePopper, anchor, onAnchorChange: setAnchor, children });
+};
+Popper.displayName = POPPER_NAME;
+var ANCHOR_NAME = "PopperAnchor";
+var PopperAnchor = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopePopper, virtualRef, ...anchorProps } = props;
+    const context = usePopperContext(ANCHOR_NAME, __scopePopper);
+    const ref = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
+    const anchorRef = reactExports.useRef(null);
+    reactExports.useEffect(() => {
+      const previousAnchor = anchorRef.current;
+      anchorRef.current = (virtualRef == null ? void 0 : virtualRef.current) || ref.current;
+      if (previousAnchor !== anchorRef.current) {
+        context.onAnchorChange(anchorRef.current);
+      }
+    });
+    return virtualRef ? null : /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { ...anchorProps, ref: composedRefs });
+  }
+);
+PopperAnchor.displayName = ANCHOR_NAME;
+var CONTENT_NAME$1 = "PopperContent";
+var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME$1);
+var PopperContent = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    var _a2, _b2, _c2, _d2, _e2, _f2;
+    const {
+      __scopePopper,
+      side = "bottom",
+      sideOffset = 0,
+      align = "center",
+      alignOffset = 0,
+      arrowPadding = 0,
+      avoidCollisions = true,
+      collisionBoundary = [],
+      collisionPadding: collisionPaddingProp = 0,
+      sticky = "partial",
+      hideWhenDetached = false,
+      updatePositionStrategy = "optimized",
+      onPlaced,
+      ...contentProps
+    } = props;
+    const context = usePopperContext(CONTENT_NAME$1, __scopePopper);
+    const [content, setContent] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
+    const [arrow$12, setArrow] = reactExports.useState(null);
+    const arrowSize = useSize(arrow$12);
+    const arrowWidth = (arrowSize == null ? void 0 : arrowSize.width) ?? 0;
+    const arrowHeight = (arrowSize == null ? void 0 : arrowSize.height) ?? 0;
+    const desiredPlacement = side + (align !== "center" ? "-" + align : "");
+    const collisionPadding = typeof collisionPaddingProp === "number" ? collisionPaddingProp : { top: 0, right: 0, bottom: 0, left: 0, ...collisionPaddingProp };
+    const boundary = Array.isArray(collisionBoundary) ? collisionBoundary : [collisionBoundary];
+    const hasExplicitBoundaries = boundary.length > 0;
+    const detectOverflowOptions = {
+      padding: collisionPadding,
+      boundary: boundary.filter(isNotNull),
+      // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
+      altBoundary: hasExplicitBoundaries
+    };
+    const { refs, floatingStyles, placement, isPositioned, middlewareData } = useFloating({
+      // default to `fixed` strategy so users don't have to pick and we also avoid focus scroll issues
+      strategy: "fixed",
+      placement: desiredPlacement,
+      whileElementsMounted: (...args) => {
+        const cleanup = autoUpdate(...args, {
+          animationFrame: updatePositionStrategy === "always"
+        });
+        return cleanup;
+      },
+      elements: {
+        reference: context.anchor
+      },
+      middleware: [
+        offset({ mainAxis: sideOffset + arrowHeight, alignmentAxis: alignOffset }),
+        avoidCollisions && shift({
+          mainAxis: true,
+          crossAxis: false,
+          limiter: sticky === "partial" ? limitShift() : void 0,
+          ...detectOverflowOptions
+        }),
+        avoidCollisions && flip({ ...detectOverflowOptions }),
+        size({
+          ...detectOverflowOptions,
+          apply: ({ elements, rects, availableWidth, availableHeight }) => {
+            const { width: anchorWidth, height: anchorHeight } = rects.reference;
+            const contentStyle = elements.floating.style;
+            contentStyle.setProperty("--radix-popper-available-width", `${availableWidth}px`);
+            contentStyle.setProperty("--radix-popper-available-height", `${availableHeight}px`);
+            contentStyle.setProperty("--radix-popper-anchor-width", `${anchorWidth}px`);
+            contentStyle.setProperty("--radix-popper-anchor-height", `${anchorHeight}px`);
+          }
+        }),
+        arrow$12 && arrow({ element: arrow$12, padding: arrowPadding }),
+        transformOrigin({ arrowWidth, arrowHeight }),
+        hideWhenDetached && hide({ strategy: "referenceHidden", ...detectOverflowOptions })
+      ]
+    });
+    const [placedSide, placedAlign] = getSideAndAlignFromPlacement(placement);
+    const handlePlaced = useCallbackRef$1(onPlaced);
+    useLayoutEffect2(() => {
+      if (isPositioned) {
+        handlePlaced == null ? void 0 : handlePlaced();
+      }
+    }, [isPositioned, handlePlaced]);
+    const arrowX = (_a2 = middlewareData.arrow) == null ? void 0 : _a2.x;
+    const arrowY = (_b2 = middlewareData.arrow) == null ? void 0 : _b2.y;
+    const cannotCenterArrow = ((_c2 = middlewareData.arrow) == null ? void 0 : _c2.centerOffset) !== 0;
+    const [contentZIndex, setContentZIndex] = reactExports.useState();
+    useLayoutEffect2(() => {
+      if (content) setContentZIndex(window.getComputedStyle(content).zIndex);
+    }, [content]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        ref: refs.setFloating,
+        "data-radix-popper-content-wrapper": "",
+        style: {
+          ...floatingStyles,
+          transform: isPositioned ? floatingStyles.transform : "translate(0, -200%)",
+          // keep off the page when measuring
+          minWidth: "max-content",
+          zIndex: contentZIndex,
+          ["--radix-popper-transform-origin"]: [
+            (_d2 = middlewareData.transformOrigin) == null ? void 0 : _d2.x,
+            (_e2 = middlewareData.transformOrigin) == null ? void 0 : _e2.y
+          ].join(" "),
+          // hide the content if using the hide middleware and should be hidden
+          // set visibility to hidden and disable pointer events so the UI behaves
+          // as if the PopperContent isn't there at all
+          ...((_f2 = middlewareData.hide) == null ? void 0 : _f2.referenceHidden) && {
+            visibility: "hidden",
+            pointerEvents: "none"
+          }
+        },
+        dir: props.dir,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          PopperContentProvider,
+          {
+            scope: __scopePopper,
+            placedSide,
+            onArrowChange: setArrow,
+            arrowX,
+            arrowY,
+            shouldHideArrow: cannotCenterArrow,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Primitive$1.div,
+              {
+                "data-side": placedSide,
+                "data-align": placedAlign,
+                ...contentProps,
+                ref: composedRefs,
+                style: {
+                  ...contentProps.style,
+                  // if the PopperContent hasn't been placed yet (not all measurements done)
+                  // we prevent animations so that users's animation don't kick in too early referring wrong sides
+                  animation: !isPositioned ? "none" : void 0
+                }
+              }
+            )
+          }
+        )
+      }
+    );
+  }
+);
+PopperContent.displayName = CONTENT_NAME$1;
+var ARROW_NAME$1 = "PopperArrow";
+var OPPOSITE_SIDE = {
+  top: "bottom",
+  right: "left",
+  bottom: "top",
+  left: "right"
+};
+var PopperArrow = reactExports.forwardRef(function PopperArrow2(props, forwardedRef) {
+  const { __scopePopper, ...arrowProps } = props;
+  const contentContext = useContentContext(ARROW_NAME$1, __scopePopper);
+  const baseSide = OPPOSITE_SIDE[contentContext.placedSide];
+  return (
+    // we have to use an extra wrapper because `ResizeObserver` (used by `useSize`)
+    // doesn't report size as we'd expect on SVG elements.
+    // it reports their bounding box which is effectively the largest path inside the SVG.
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "span",
+      {
+        ref: contentContext.onArrowChange,
+        style: {
+          position: "absolute",
+          left: contentContext.arrowX,
+          top: contentContext.arrowY,
+          [baseSide]: 0,
+          transformOrigin: {
+            top: "",
+            right: "0 0",
+            bottom: "center 0",
+            left: "100% 0"
+          }[contentContext.placedSide],
+          transform: {
+            top: "translateY(100%)",
+            right: "translateY(50%) rotate(90deg) translateX(-50%)",
+            bottom: `rotate(180deg)`,
+            left: "translateY(50%) rotate(-90deg) translateX(50%)"
+          }[contentContext.placedSide],
+          visibility: contentContext.shouldHideArrow ? "hidden" : void 0
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Root,
+          {
+            ...arrowProps,
+            ref: forwardedRef,
+            style: {
+              ...arrowProps.style,
+              // ensures the element can be measured correctly (mostly for if SVG)
+              display: "block"
+            }
+          }
+        )
+      }
+    )
+  );
+});
+PopperArrow.displayName = ARROW_NAME$1;
+function isNotNull(value) {
+  return value !== null;
+}
+var transformOrigin = (options) => ({
+  name: "transformOrigin",
+  options,
+  fn(data) {
+    var _a2, _b2, _c2;
+    const { placement, rects, middlewareData } = data;
+    const cannotCenterArrow = ((_a2 = middlewareData.arrow) == null ? void 0 : _a2.centerOffset) !== 0;
+    const isArrowHidden = cannotCenterArrow;
+    const arrowWidth = isArrowHidden ? 0 : options.arrowWidth;
+    const arrowHeight = isArrowHidden ? 0 : options.arrowHeight;
+    const [placedSide, placedAlign] = getSideAndAlignFromPlacement(placement);
+    const noArrowAlign = { start: "0%", center: "50%", end: "100%" }[placedAlign];
+    const arrowXCenter = (((_b2 = middlewareData.arrow) == null ? void 0 : _b2.x) ?? 0) + arrowWidth / 2;
+    const arrowYCenter = (((_c2 = middlewareData.arrow) == null ? void 0 : _c2.y) ?? 0) + arrowHeight / 2;
+    let x = "";
+    let y = "";
+    if (placedSide === "bottom") {
+      x = isArrowHidden ? noArrowAlign : `${arrowXCenter}px`;
+      y = `${-arrowHeight}px`;
+    } else if (placedSide === "top") {
+      x = isArrowHidden ? noArrowAlign : `${arrowXCenter}px`;
+      y = `${rects.floating.height + arrowHeight}px`;
+    } else if (placedSide === "right") {
+      x = `${-arrowHeight}px`;
+      y = isArrowHidden ? noArrowAlign : `${arrowYCenter}px`;
+    } else if (placedSide === "left") {
+      x = `${rects.floating.width + arrowHeight}px`;
+      y = isArrowHidden ? noArrowAlign : `${arrowYCenter}px`;
+    }
+    return { data: { x, y } };
+  }
+});
+function getSideAndAlignFromPlacement(placement) {
+  const [side, align = "center"] = placement.split("-");
+  return [side, align];
+}
+var Root2$1 = Popper;
+var Anchor = PopperAnchor;
+var Content = PopperContent;
+var Arrow = PopperArrow;
+var PORTAL_NAME$1 = "Portal";
+var Portal$1 = reactExports.forwardRef((props, forwardedRef) => {
+  var _a2;
+  const { container: containerProp, ...portalProps } = props;
+  const [mounted, setMounted] = reactExports.useState(false);
+  useLayoutEffect2(() => setMounted(true), []);
+  const container = containerProp || mounted && ((_a2 = globalThis == null ? void 0 : globalThis.document) == null ? void 0 : _a2.body);
+  return container ? ReactDOM$2.createPortal(/* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { ...portalProps, ref: forwardedRef }), container) : null;
+});
+Portal$1.displayName = PORTAL_NAME$1;
+var useInsertionEffect = React$2[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
+function useControllableState({
+  prop,
+  defaultProp,
+  onChange = () => {
+  },
+  caller
+}) {
+  const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
+    defaultProp,
+    onChange
+  });
+  const isControlled = prop !== void 0;
+  const value = isControlled ? prop : uncontrolledProp;
+  {
+    const isControlledRef = reactExports.useRef(prop !== void 0);
+    reactExports.useEffect(() => {
+      const wasControlled = isControlledRef.current;
+      if (wasControlled !== isControlled) {
+        const from = wasControlled ? "controlled" : "uncontrolled";
+        const to = isControlled ? "controlled" : "uncontrolled";
+        console.warn(
+          `${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`
+        );
+      }
+      isControlledRef.current = isControlled;
+    }, [isControlled, caller]);
+  }
+  const setValue = reactExports.useCallback(
+    (nextValue) => {
+      var _a2;
+      if (isControlled) {
+        const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
+        if (value2 !== prop) {
+          (_a2 = onChangeRef.current) == null ? void 0 : _a2.call(onChangeRef, value2);
+        }
+      } else {
+        setUncontrolledProp(nextValue);
+      }
+    },
+    [isControlled, prop, setUncontrolledProp, onChangeRef]
+  );
+  return [value, setValue];
+}
+function useUncontrolledState({
+  defaultProp,
+  onChange
+}) {
+  const [value, setValue] = reactExports.useState(defaultProp);
+  const prevValueRef = reactExports.useRef(value);
+  const onChangeRef = reactExports.useRef(onChange);
+  useInsertionEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+  reactExports.useEffect(() => {
+    var _a2;
+    if (prevValueRef.current !== value) {
+      (_a2 = onChangeRef.current) == null ? void 0 : _a2.call(onChangeRef, value);
+      prevValueRef.current = value;
+    }
+  }, [value, prevValueRef]);
+  return [value, setValue, onChangeRef];
+}
+function isFunction(value) {
+  return typeof value === "function";
+}
+function usePrevious(value) {
+  const ref = reactExports.useRef({ value, previous: value });
+  return reactExports.useMemo(() => {
+    if (ref.current.value !== value) {
+      ref.current.previous = ref.current.value;
+      ref.current.value = value;
+    }
+    return ref.current.previous;
+  }, [value]);
+}
+var VISUALLY_HIDDEN_STYLES = Object.freeze({
+  // See: https://github.com/twbs/bootstrap/blob/main/scss/mixins/_visually-hidden.scss
+  position: "absolute",
+  border: 0,
+  width: 1,
+  height: 1,
+  padding: 0,
+  margin: -1,
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  wordWrap: "normal"
+});
+var NAME = "VisuallyHidden";
+var VisuallyHidden = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive$1.span,
+      {
+        ...props,
+        ref: forwardedRef,
+        style: { ...VISUALLY_HIDDEN_STYLES, ...props.style }
+      }
+    );
+  }
+);
+VisuallyHidden.displayName = NAME;
+var getDefaultParent = function(originalTarget) {
+  if (typeof document === "undefined") {
+    return null;
+  }
+  var sampleTarget = Array.isArray(originalTarget) ? originalTarget[0] : originalTarget;
+  return sampleTarget.ownerDocument.body;
+};
+var counterMap = /* @__PURE__ */ new WeakMap();
+var uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+var markerMap = {};
+var lockCount = 0;
+var unwrapHost = function(node) {
+  return node && (node.host || unwrapHost(node.parentNode));
+};
+var correctTargets = function(parent, targets) {
+  return targets.map(function(target) {
+    if (parent.contains(target)) {
+      return target;
+    }
+    var correctedTarget = unwrapHost(target);
+    if (correctedTarget && parent.contains(correctedTarget)) {
+      return correctedTarget;
+    }
+    console.error("aria-hidden", target, "in not contained inside", parent, ". Doing nothing");
+    return null;
+  }).filter(function(x) {
+    return Boolean(x);
+  });
+};
+var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
+  var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+  if (!markerMap[markerName]) {
+    markerMap[markerName] = /* @__PURE__ */ new WeakMap();
+  }
+  var markerCounter = markerMap[markerName];
+  var hiddenNodes = [];
+  var elementsToKeep = /* @__PURE__ */ new Set();
+  var elementsToStop = new Set(targets);
+  var keep = function(el) {
+    if (!el || elementsToKeep.has(el)) {
+      return;
+    }
+    elementsToKeep.add(el);
+    keep(el.parentNode);
+  };
+  targets.forEach(keep);
+  var deep = function(parent) {
+    if (!parent || elementsToStop.has(parent)) {
+      return;
+    }
+    Array.prototype.forEach.call(parent.children, function(node) {
+      if (elementsToKeep.has(node)) {
+        deep(node);
+      } else {
+        try {
+          var attr = node.getAttribute(controlAttribute);
+          var alreadyHidden = attr !== null && attr !== "false";
+          var counterValue = (counterMap.get(node) || 0) + 1;
+          var markerValue = (markerCounter.get(node) || 0) + 1;
+          counterMap.set(node, counterValue);
+          markerCounter.set(node, markerValue);
+          hiddenNodes.push(node);
+          if (counterValue === 1 && alreadyHidden) {
+            uncontrolledNodes.set(node, true);
+          }
+          if (markerValue === 1) {
+            node.setAttribute(markerName, "true");
+          }
+          if (!alreadyHidden) {
+            node.setAttribute(controlAttribute, "true");
+          }
+        } catch (e) {
+          console.error("aria-hidden: cannot operate on ", node, e);
+        }
+      }
+    });
+  };
+  deep(parentNode);
+  elementsToKeep.clear();
+  lockCount++;
+  return function() {
+    hiddenNodes.forEach(function(node) {
+      var counterValue = counterMap.get(node) - 1;
+      var markerValue = markerCounter.get(node) - 1;
+      counterMap.set(node, counterValue);
+      markerCounter.set(node, markerValue);
+      if (!counterValue) {
+        if (!uncontrolledNodes.has(node)) {
+          node.removeAttribute(controlAttribute);
+        }
+        uncontrolledNodes.delete(node);
+      }
+      if (!markerValue) {
+        node.removeAttribute(markerName);
+      }
+    });
+    lockCount--;
+    if (!lockCount) {
+      counterMap = /* @__PURE__ */ new WeakMap();
+      counterMap = /* @__PURE__ */ new WeakMap();
+      uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+      markerMap = {};
+    }
+  };
+};
+var hideOthers = function(originalTarget, parentNode, markerName) {
+  if (markerName === void 0) {
+    markerName = "data-aria-hidden";
+  }
+  var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+  var activeParentNode = getDefaultParent(originalTarget);
+  if (!activeParentNode) {
+    return function() {
+      return null;
+    };
+  }
+  targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
+  return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
+};
+var __assign = function() {
+  __assign = Object.assign || function __assign2(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+  var t = {};
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+    t[p] = s[p];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function")
+    for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+      if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+        t[p[i]] = s[p[i]];
+    }
+  return t;
+}
+function __spreadArray(to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+}
+typeof SuppressedError === "function" ? SuppressedError : function(error, suppressed, message) {
+  var e = new Error(message);
+  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+var zeroRightClassName = "right-scroll-bar-position";
+var fullWidthClassName = "width-before-scroll-bar";
+var noScrollbarsClassName = "with-scroll-bars-hidden";
+var removedBarSizeVariable = "--removed-body-scroll-bar-size";
+function assignRef(ref, value) {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+  return ref;
+}
+function useCallbackRef(initialValue, callback) {
+  var ref = reactExports.useState(function() {
+    return {
+      // value
+      value: initialValue,
+      // last callback
+      callback,
+      // "memoized" public interface
+      facade: {
+        get current() {
+          return ref.value;
+        },
+        set current(value) {
+          var last = ref.value;
+          if (last !== value) {
+            ref.value = value;
+            ref.callback(value, last);
+          }
+        }
+      }
+    };
+  })[0];
+  ref.callback = callback;
+  return ref.facade;
+}
+var useIsomorphicLayoutEffect = typeof window !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+var currentValues = /* @__PURE__ */ new WeakMap();
+function useMergeRefs(refs, defaultValue) {
+  var callbackRef = useCallbackRef(null, function(newValue) {
+    return refs.forEach(function(ref) {
+      return assignRef(ref, newValue);
+    });
+  });
+  useIsomorphicLayoutEffect(function() {
+    var oldValue = currentValues.get(callbackRef);
+    if (oldValue) {
+      var prevRefs_1 = new Set(oldValue);
+      var nextRefs_1 = new Set(refs);
+      var current_1 = callbackRef.current;
+      prevRefs_1.forEach(function(ref) {
+        if (!nextRefs_1.has(ref)) {
+          assignRef(ref, null);
+        }
+      });
+      nextRefs_1.forEach(function(ref) {
+        if (!prevRefs_1.has(ref)) {
+          assignRef(ref, current_1);
+        }
+      });
+    }
+    currentValues.set(callbackRef, refs);
+  }, [refs]);
+  return callbackRef;
+}
+function ItoI(a) {
+  return a;
+}
+function innerCreateMedium(defaults, middleware) {
+  if (middleware === void 0) {
+    middleware = ItoI;
+  }
+  var buffer = [];
+  var assigned = false;
+  var medium = {
+    read: function() {
+      if (assigned) {
+        throw new Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
+      }
+      if (buffer.length) {
+        return buffer[buffer.length - 1];
+      }
+      return defaults;
+    },
+    useMedium: function(data) {
+      var item = middleware(data, assigned);
+      buffer.push(item);
+      return function() {
+        buffer = buffer.filter(function(x) {
+          return x !== item;
+        });
+      };
+    },
+    assignSyncMedium: function(cb) {
+      assigned = true;
+      while (buffer.length) {
+        var cbs = buffer;
+        buffer = [];
+        cbs.forEach(cb);
+      }
+      buffer = {
+        push: function(x) {
+          return cb(x);
+        },
+        filter: function() {
+          return buffer;
+        }
+      };
+    },
+    assignMedium: function(cb) {
+      assigned = true;
+      var pendingQueue = [];
+      if (buffer.length) {
+        var cbs = buffer;
+        buffer = [];
+        cbs.forEach(cb);
+        pendingQueue = buffer;
+      }
+      var executeQueue = function() {
+        var cbs2 = pendingQueue;
+        pendingQueue = [];
+        cbs2.forEach(cb);
+      };
+      var cycle = function() {
+        return Promise.resolve().then(executeQueue);
+      };
+      cycle();
+      buffer = {
+        push: function(x) {
+          pendingQueue.push(x);
+          cycle();
+        },
+        filter: function(filter) {
+          pendingQueue = pendingQueue.filter(filter);
+          return buffer;
+        }
+      };
+    }
+  };
+  return medium;
+}
+function createSidecarMedium(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  var medium = innerCreateMedium(null);
+  medium.options = __assign({ async: true, ssr: false }, options);
+  return medium;
+}
+var SideCar$1 = function(_a2) {
+  var sideCar = _a2.sideCar, rest = __rest(_a2, ["sideCar"]);
+  if (!sideCar) {
+    throw new Error("Sidecar: please provide `sideCar` property to import the right car");
+  }
+  var Target2 = sideCar.read();
+  if (!Target2) {
+    throw new Error("Sidecar medium not found");
+  }
+  return reactExports.createElement(Target2, __assign({}, rest));
+};
+SideCar$1.isSideCarExport = true;
+function exportSidecar(medium, exported) {
+  medium.useMedium(exported);
+  return SideCar$1;
+}
+var effectCar = createSidecarMedium();
+var nothing = function() {
+  return;
+};
+var RemoveScroll = reactExports.forwardRef(function(props, parentRef) {
+  var ref = reactExports.useRef(null);
+  var _a2 = reactExports.useState({
+    onScrollCapture: nothing,
+    onWheelCapture: nothing,
+    onTouchMoveCapture: nothing
+  }), callbacks = _a2[0], setCallbacks = _a2[1];
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noRelative = props.noRelative, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b2 = props.as, Container = _b2 === void 0 ? "div" : _b2, gapMode = props.gapMode, rest = __rest(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noRelative", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
+  var SideCar2 = sideCar;
+  var containerRef = useMergeRefs([ref, parentRef]);
+  var containerProps = __assign(__assign({}, rest), callbacks);
+  return reactExports.createElement(
+    reactExports.Fragment,
+    null,
+    enabled && reactExports.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noRelative, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
+    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign(__assign({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign({}, containerProps, { className, ref: containerRef }), children)
+  );
+});
+RemoveScroll.defaultProps = {
+  enabled: true,
+  removeScrollBar: true,
+  inert: false
+};
+RemoveScroll.classNames = {
+  fullWidth: fullWidthClassName,
+  zeroRight: zeroRightClassName
+};
+var getNonce = function() {
+  if (typeof __webpack_nonce__ !== "undefined") {
+    return __webpack_nonce__;
+  }
+  return void 0;
+};
+function makeStyleTag() {
+  if (!document)
+    return null;
+  var tag = document.createElement("style");
+  tag.type = "text/css";
+  var nonce = getNonce();
+  if (nonce) {
+    tag.setAttribute("nonce", nonce);
+  }
+  return tag;
+}
+function injectStyles(tag, css) {
+  if (tag.styleSheet) {
+    tag.styleSheet.cssText = css;
+  } else {
+    tag.appendChild(document.createTextNode(css));
+  }
+}
+function insertStyleTag(tag) {
+  var head = document.head || document.getElementsByTagName("head")[0];
+  head.appendChild(tag);
+}
+var stylesheetSingleton = function() {
+  var counter = 0;
+  var stylesheet = null;
+  return {
+    add: function(style2) {
+      if (counter == 0) {
+        if (stylesheet = makeStyleTag()) {
+          injectStyles(stylesheet, style2);
+          insertStyleTag(stylesheet);
+        }
+      }
+      counter++;
+    },
+    remove: function() {
+      counter--;
+      if (!counter && stylesheet) {
+        stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
+        stylesheet = null;
+      }
+    }
+  };
+};
+var styleHookSingleton = function() {
+  var sheet = stylesheetSingleton();
+  return function(styles, isDynamic) {
+    reactExports.useEffect(function() {
+      sheet.add(styles);
+      return function() {
+        sheet.remove();
+      };
+    }, [styles && isDynamic]);
+  };
+};
+var styleSingleton = function() {
+  var useStyle = styleHookSingleton();
+  var Sheet = function(_a2) {
+    var styles = _a2.styles, dynamic = _a2.dynamic;
+    useStyle(styles, dynamic);
+    return null;
+  };
+  return Sheet;
+};
+var zeroGap = {
+  left: 0,
+  top: 0,
+  right: 0,
+  gap: 0
+};
+var parse = function(x) {
+  return parseInt(x || "", 10) || 0;
+};
+var getOffset = function(gapMode) {
+  var cs = window.getComputedStyle(document.body);
+  var left = cs[gapMode === "padding" ? "paddingLeft" : "marginLeft"];
+  var top = cs[gapMode === "padding" ? "paddingTop" : "marginTop"];
+  var right = cs[gapMode === "padding" ? "paddingRight" : "marginRight"];
+  return [parse(left), parse(top), parse(right)];
+};
+var getGapWidth = function(gapMode) {
+  if (gapMode === void 0) {
+    gapMode = "margin";
+  }
+  if (typeof window === "undefined") {
+    return zeroGap;
+  }
+  var offsets = getOffset(gapMode);
+  var documentWidth = document.documentElement.clientWidth;
+  var windowWidth = window.innerWidth;
+  return {
+    left: offsets[0],
+    top: offsets[1],
+    right: offsets[2],
+    gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
+  };
+};
+var Style = styleSingleton();
+var lockAttribute = "data-scroll-locked";
+var getStyles = function(_a2, allowRelative, gapMode, important) {
+  var left = _a2.left, top = _a2.top, right = _a2.right, gap = _a2.gap;
+  if (gapMode === void 0) {
+    gapMode = "margin";
+  }
+  return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
+    allowRelative && "position: relative ".concat(important, ";"),
+    gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
+    gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
+  ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
+};
+var getCurrentUseCounter = function() {
+  var counter = parseInt(document.body.getAttribute(lockAttribute) || "0", 10);
+  return isFinite(counter) ? counter : 0;
+};
+var useLockAttribute = function() {
+  reactExports.useEffect(function() {
+    document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
+    return function() {
+      var newCounter = getCurrentUseCounter() - 1;
+      if (newCounter <= 0) {
+        document.body.removeAttribute(lockAttribute);
+      } else {
+        document.body.setAttribute(lockAttribute, newCounter.toString());
+      }
+    };
+  }, []);
+};
+var RemoveScrollBar = function(_a2) {
+  var noRelative = _a2.noRelative, noImportant = _a2.noImportant, _b2 = _a2.gapMode, gapMode = _b2 === void 0 ? "margin" : _b2;
+  useLockAttribute();
+  var gap = reactExports.useMemo(function() {
+    return getGapWidth(gapMode);
+  }, [gapMode]);
+  return reactExports.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
+};
+var passiveSupported = false;
+if (typeof window !== "undefined") {
+  try {
+    var options = Object.defineProperty({}, "passive", {
+      get: function() {
+        passiveSupported = true;
+        return true;
+      }
+    });
+    window.addEventListener("test", options, options);
+    window.removeEventListener("test", options, options);
+  } catch (err) {
+    passiveSupported = false;
+  }
+}
+var nonPassive = passiveSupported ? { passive: false } : false;
+var alwaysContainsScroll = function(node) {
+  return node.tagName === "TEXTAREA";
+};
+var elementCanBeScrolled = function(node, overflow) {
+  if (!(node instanceof Element)) {
+    return false;
+  }
+  var styles = window.getComputedStyle(node);
+  return (
+    // not-not-scrollable
+    styles[overflow] !== "hidden" && // contains scroll inside self
+    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === "visible")
+  );
+};
+var elementCouldBeVScrolled = function(node) {
+  return elementCanBeScrolled(node, "overflowY");
+};
+var elementCouldBeHScrolled = function(node) {
+  return elementCanBeScrolled(node, "overflowX");
+};
+var locationCouldBeScrolled = function(axis, node) {
+  var ownerDocument = node.ownerDocument;
+  var current = node;
+  do {
+    if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
+      current = current.host;
+    }
+    var isScrollable = elementCouldBeScrolled(axis, current);
+    if (isScrollable) {
+      var _a2 = getScrollVariables(axis, current), scrollHeight = _a2[1], clientHeight = _a2[2];
+      if (scrollHeight > clientHeight) {
+        return true;
+      }
+    }
+    current = current.parentNode;
+  } while (current && current !== ownerDocument.body);
+  return false;
+};
+var getVScrollVariables = function(_a2) {
+  var scrollTop = _a2.scrollTop, scrollHeight = _a2.scrollHeight, clientHeight = _a2.clientHeight;
+  return [
+    scrollTop,
+    scrollHeight,
+    clientHeight
+  ];
+};
+var getHScrollVariables = function(_a2) {
+  var scrollLeft = _a2.scrollLeft, scrollWidth = _a2.scrollWidth, clientWidth = _a2.clientWidth;
+  return [
+    scrollLeft,
+    scrollWidth,
+    clientWidth
+  ];
+};
+var elementCouldBeScrolled = function(axis, node) {
+  return axis === "v" ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
+};
+var getScrollVariables = function(axis, node) {
+  return axis === "v" ? getVScrollVariables(node) : getHScrollVariables(node);
+};
+var getDirectionFactor = function(axis, direction) {
+  return axis === "h" && direction === "rtl" ? -1 : 1;
+};
+var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
+  var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
+  var delta = directionFactor * sourceDelta;
+  var target = event.target;
+  var targetInLock = endTarget.contains(target);
+  var shouldCancelScroll = false;
+  var isDeltaPositive = delta > 0;
+  var availableScroll = 0;
+  var availableScrollTop = 0;
+  do {
+    if (!target) {
+      break;
+    }
+    var _a2 = getScrollVariables(axis, target), position = _a2[0], scroll_1 = _a2[1], capacity = _a2[2];
+    var elementScroll = scroll_1 - capacity - directionFactor * position;
+    if (position || elementScroll) {
+      if (elementCouldBeScrolled(axis, target)) {
+        availableScroll += elementScroll;
+        availableScrollTop += position;
+      }
+    }
+    var parent_1 = target.parentNode;
+    target = parent_1 && parent_1.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parent_1.host : parent_1;
+  } while (
+    // portaled content
+    !targetInLock && target !== document.body || // self content
+    targetInLock && (endTarget.contains(target) || endTarget === target)
+  );
+  if (isDeltaPositive && (Math.abs(availableScroll) < 1 || false)) {
+    shouldCancelScroll = true;
+  } else if (!isDeltaPositive && (Math.abs(availableScrollTop) < 1 || false)) {
+    shouldCancelScroll = true;
+  }
+  return shouldCancelScroll;
+};
+var getTouchXY = function(event) {
+  return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
+};
+var getDeltaXY = function(event) {
+  return [event.deltaX, event.deltaY];
+};
+var extractRef = function(ref) {
+  return ref && "current" in ref ? ref.current : ref;
+};
+var deltaCompare = function(x, y) {
+  return x[0] === y[0] && x[1] === y[1];
+};
+var generateStyle = function(id) {
+  return "\n  .block-interactivity-".concat(id, " {pointer-events: none;}\n  .allow-interactivity-").concat(id, " {pointer-events: all;}\n");
+};
+var idCounter = 0;
+var lockStack = [];
+function RemoveScrollSideCar(props) {
+  var shouldPreventQueue = reactExports.useRef([]);
+  var touchStartRef = reactExports.useRef([0, 0]);
+  var activeAxis = reactExports.useRef();
+  var id = reactExports.useState(idCounter++)[0];
+  var Style2 = reactExports.useState(styleSingleton)[0];
+  var lastProps = reactExports.useRef(props);
+  reactExports.useEffect(function() {
+    lastProps.current = props;
+  }, [props]);
+  reactExports.useEffect(function() {
+    if (props.inert) {
+      document.body.classList.add("block-interactivity-".concat(id));
+      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
+      allow_1.forEach(function(el) {
+        return el.classList.add("allow-interactivity-".concat(id));
+      });
+      return function() {
+        document.body.classList.remove("block-interactivity-".concat(id));
+        allow_1.forEach(function(el) {
+          return el.classList.remove("allow-interactivity-".concat(id));
+        });
+      };
+    }
+    return;
+  }, [props.inert, props.lockRef.current, props.shards]);
+  var shouldCancelEvent = reactExports.useCallback(function(event, parent) {
+    if ("touches" in event && event.touches.length === 2 || event.type === "wheel" && event.ctrlKey) {
+      return !lastProps.current.allowPinchZoom;
+    }
+    var touch = getTouchXY(event);
+    var touchStart = touchStartRef.current;
+    var deltaX = "deltaX" in event ? event.deltaX : touchStart[0] - touch[0];
+    var deltaY = "deltaY" in event ? event.deltaY : touchStart[1] - touch[1];
+    var currentAxis;
+    var target = event.target;
+    var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
+    if ("touches" in event && moveDirection === "h" && target.type === "range") {
+      return false;
+    }
+    var selection = window.getSelection();
+    var anchorNode = selection && selection.anchorNode;
+    var isTouchingSelection = anchorNode ? anchorNode === target || anchorNode.contains(target) : false;
+    if (isTouchingSelection) {
+      return false;
+    }
+    var canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+    if (!canBeScrolledInMainDirection) {
+      return true;
+    }
+    if (canBeScrolledInMainDirection) {
+      currentAxis = moveDirection;
+    } else {
+      currentAxis = moveDirection === "v" ? "h" : "v";
+      canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+    }
+    if (!canBeScrolledInMainDirection) {
+      return false;
+    }
+    if (!activeAxis.current && "changedTouches" in event && (deltaX || deltaY)) {
+      activeAxis.current = currentAxis;
+    }
+    if (!currentAxis) {
+      return true;
+    }
+    var cancelingAxis = activeAxis.current || currentAxis;
+    return handleScroll(cancelingAxis, parent, event, cancelingAxis === "h" ? deltaX : deltaY);
+  }, []);
+  var shouldPrevent = reactExports.useCallback(function(_event) {
+    var event = _event;
+    if (!lockStack.length || lockStack[lockStack.length - 1] !== Style2) {
+      return;
+    }
+    var delta = "deltaY" in event ? getDeltaXY(event) : getTouchXY(event);
+    var sourceEvent = shouldPreventQueue.current.filter(function(e) {
+      return e.name === event.type && (e.target === event.target || event.target === e.shadowParent) && deltaCompare(e.delta, delta);
+    })[0];
+    if (sourceEvent && sourceEvent.should) {
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+      return;
+    }
+    if (!sourceEvent) {
+      var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
+        return node.contains(event.target);
+      });
+      var shouldStop = shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation;
+      if (shouldStop) {
+        if (event.cancelable) {
+          event.preventDefault();
+        }
+      }
+    }
+  }, []);
+  var shouldCancel = reactExports.useCallback(function(name, delta, target, should) {
+    var event = { name, delta, target, should, shadowParent: getOutermostShadowParent(target) };
+    shouldPreventQueue.current.push(event);
+    setTimeout(function() {
+      shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
+        return e !== event;
+      });
+    }, 1);
+  }, []);
+  var scrollTouchStart = reactExports.useCallback(function(event) {
+    touchStartRef.current = getTouchXY(event);
+    activeAxis.current = void 0;
+  }, []);
+  var scrollWheel = reactExports.useCallback(function(event) {
+    shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+  }, []);
+  var scrollTouchMove = reactExports.useCallback(function(event) {
+    shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+  }, []);
+  reactExports.useEffect(function() {
+    lockStack.push(Style2);
+    props.setCallbacks({
+      onScrollCapture: scrollWheel,
+      onWheelCapture: scrollWheel,
+      onTouchMoveCapture: scrollTouchMove
+    });
+    document.addEventListener("wheel", shouldPrevent, nonPassive);
+    document.addEventListener("touchmove", shouldPrevent, nonPassive);
+    document.addEventListener("touchstart", scrollTouchStart, nonPassive);
+    return function() {
+      lockStack = lockStack.filter(function(inst) {
+        return inst !== Style2;
+      });
+      document.removeEventListener("wheel", shouldPrevent, nonPassive);
+      document.removeEventListener("touchmove", shouldPrevent, nonPassive);
+      document.removeEventListener("touchstart", scrollTouchStart, nonPassive);
+    };
+  }, []);
+  var removeScrollBar = props.removeScrollBar, inert = props.inert;
+  return reactExports.createElement(
+    reactExports.Fragment,
+    null,
+    inert ? reactExports.createElement(Style2, { styles: generateStyle(id) }) : null,
+    removeScrollBar ? reactExports.createElement(RemoveScrollBar, { noRelative: props.noRelative, gapMode: props.gapMode }) : null
+  );
+}
+function getOutermostShadowParent(node) {
+  var shadowParent = null;
+  while (node !== null) {
+    if (node instanceof ShadowRoot) {
+      shadowParent = node.host;
+      node = node.host;
+    }
+    node = node.parentNode;
+  }
+  return shadowParent;
+}
+const SideCar = exportSidecar(effectCar, RemoveScrollSideCar);
+var ReactRemoveScroll = reactExports.forwardRef(function(props, ref) {
+  return reactExports.createElement(RemoveScroll, __assign({}, props, { ref, sideCar: SideCar }));
+});
+ReactRemoveScroll.classNames = RemoveScroll.classNames;
+var OPEN_KEYS = [" ", "Enter", "ArrowUp", "ArrowDown"];
+var SELECTION_KEYS = [" ", "Enter"];
+var SELECT_NAME = "Select";
+var [Collection, useCollection, createCollectionScope] = createCollection(SELECT_NAME);
+var [createSelectContext] = createContextScope$1(SELECT_NAME, [
+  createCollectionScope,
+  createPopperScope
+]);
+var usePopperScope = createPopperScope();
+var [SelectProvider, useSelectContext] = createSelectContext(SELECT_NAME);
+var [SelectNativeOptionsProvider, useSelectNativeOptionsContext] = createSelectContext(SELECT_NAME);
+var Select$1 = (props) => {
+  const {
+    __scopeSelect,
+    children,
+    open: openProp,
+    defaultOpen,
+    onOpenChange,
+    value: valueProp,
+    defaultValue,
+    onValueChange,
+    dir,
+    name,
+    autoComplete,
+    disabled,
+    required,
+    form
+  } = props;
+  const popperScope = usePopperScope(__scopeSelect);
+  const [trigger, setTrigger] = reactExports.useState(null);
+  const [valueNode, setValueNode] = reactExports.useState(null);
+  const [valueNodeHasChildren, setValueNodeHasChildren] = reactExports.useState(false);
+  const direction = useDirection(dir);
+  const [open, setOpen] = useControllableState({
+    prop: openProp,
+    defaultProp: defaultOpen ?? false,
+    onChange: onOpenChange,
+    caller: SELECT_NAME
+  });
+  const [value, setValue] = useControllableState({
+    prop: valueProp,
+    defaultProp: defaultValue,
+    onChange: onValueChange,
+    caller: SELECT_NAME
+  });
+  const triggerPointerDownPosRef = reactExports.useRef(null);
+  const isFormControl = trigger ? form || !!trigger.closest("form") : true;
+  const [nativeOptionsSet, setNativeOptionsSet] = reactExports.useState(/* @__PURE__ */ new Set());
+  const nativeSelectKey = Array.from(nativeOptionsSet).map((option) => option.props.value).join(";");
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$1, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    SelectProvider,
+    {
+      required,
+      scope: __scopeSelect,
+      trigger,
+      onTriggerChange: setTrigger,
+      valueNode,
+      onValueNodeChange: setValueNode,
+      valueNodeHasChildren,
+      onValueNodeHasChildrenChange: setValueNodeHasChildren,
+      contentId: useId(),
+      value,
+      onValueChange: setValue,
+      open,
+      onOpenChange: setOpen,
+      dir: direction,
+      triggerPointerDownPosRef,
+      disabled,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.Provider, { scope: __scopeSelect, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SelectNativeOptionsProvider,
+          {
+            scope: props.__scopeSelect,
+            onNativeOptionAdd: reactExports.useCallback((option) => {
+              setNativeOptionsSet((prev) => new Set(prev).add(option));
+            }, []),
+            onNativeOptionRemove: reactExports.useCallback((option) => {
+              setNativeOptionsSet((prev) => {
+                const optionsSet = new Set(prev);
+                optionsSet.delete(option);
+                return optionsSet;
+              });
+            }, []),
+            children
+          }
+        ) }),
+        isFormControl ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          SelectBubbleInput,
+          {
+            "aria-hidden": true,
+            required,
+            tabIndex: -1,
+            name,
+            autoComplete,
+            value,
+            onChange: (event) => setValue(event.target.value),
+            disabled,
+            form,
+            children: [
+              value === void 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "" }) : null,
+              Array.from(nativeOptionsSet)
+            ]
+          },
+          nativeSelectKey
+        ) : null
+      ]
+    }
+  ) });
+};
+Select$1.displayName = SELECT_NAME;
+var TRIGGER_NAME = "SelectTrigger";
+var SelectTrigger$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, disabled = false, ...triggerProps } = props;
+    const popperScope = usePopperScope(__scopeSelect);
+    const context = useSelectContext(TRIGGER_NAME, __scopeSelect);
+    const isDisabled = context.disabled || disabled;
+    const composedRefs = useComposedRefs(forwardedRef, context.onTriggerChange);
+    const getItems = useCollection(__scopeSelect);
+    const pointerTypeRef = reactExports.useRef("touch");
+    const [searchRef, handleTypeaheadSearch, resetTypeahead] = useTypeaheadSearch((search) => {
+      const enabledItems = getItems().filter((item) => !item.disabled);
+      const currentItem = enabledItems.find((item) => item.value === context.value);
+      const nextItem = findNextItem(enabledItems, search, currentItem);
+      if (nextItem !== void 0) {
+        context.onValueChange(nextItem.value);
+      }
+    });
+    const handleOpen = (pointerEvent) => {
+      if (!isDisabled) {
+        context.onOpenChange(true);
+        resetTypeahead();
+      }
+      if (pointerEvent) {
+        context.triggerPointerDownPosRef.current = {
+          x: Math.round(pointerEvent.pageX),
+          y: Math.round(pointerEvent.pageY)
+        };
+      }
+    };
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Anchor, { asChild: true, ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive$1.button,
+      {
+        type: "button",
+        role: "combobox",
+        "aria-controls": context.contentId,
+        "aria-expanded": context.open,
+        "aria-required": context.required,
+        "aria-autocomplete": "none",
+        dir: context.dir,
+        "data-state": context.open ? "open" : "closed",
+        disabled: isDisabled,
+        "data-disabled": isDisabled ? "" : void 0,
+        "data-placeholder": shouldShowPlaceholder(context.value) ? "" : void 0,
+        ...triggerProps,
+        ref: composedRefs,
+        onClick: composeEventHandlers(triggerProps.onClick, (event) => {
+          event.currentTarget.focus();
+          if (pointerTypeRef.current !== "mouse") {
+            handleOpen(event);
+          }
+        }),
+        onPointerDown: composeEventHandlers(triggerProps.onPointerDown, (event) => {
+          pointerTypeRef.current = event.pointerType;
+          const target = event.target;
+          if (target.hasPointerCapture(event.pointerId)) {
+            target.releasePointerCapture(event.pointerId);
+          }
+          if (event.button === 0 && event.ctrlKey === false && event.pointerType === "mouse") {
+            handleOpen(event);
+            event.preventDefault();
+          }
+        }),
+        onKeyDown: composeEventHandlers(triggerProps.onKeyDown, (event) => {
+          const isTypingAhead = searchRef.current !== "";
+          const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
+          if (!isModifierKey && event.key.length === 1) handleTypeaheadSearch(event.key);
+          if (isTypingAhead && event.key === " ") return;
+          if (OPEN_KEYS.includes(event.key)) {
+            handleOpen();
+            event.preventDefault();
+          }
+        })
+      }
+    ) });
+  }
+);
+SelectTrigger$1.displayName = TRIGGER_NAME;
+var VALUE_NAME = "SelectValue";
+var SelectValue$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, className, style: style2, children, placeholder = "", ...valueProps } = props;
+    const context = useSelectContext(VALUE_NAME, __scopeSelect);
+    const { onValueNodeHasChildrenChange } = context;
+    const hasChildren = children !== void 0;
+    const composedRefs = useComposedRefs(forwardedRef, context.onValueNodeChange);
+    useLayoutEffect2(() => {
+      onValueNodeHasChildrenChange(hasChildren);
+    }, [onValueNodeHasChildrenChange, hasChildren]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive$1.span,
+      {
+        ...valueProps,
+        ref: composedRefs,
+        style: { pointerEvents: "none" },
+        children: shouldShowPlaceholder(context.value) ? /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: placeholder }) : children
+      }
+    );
+  }
+);
+SelectValue$1.displayName = VALUE_NAME;
+var ICON_NAME = "SelectIcon";
+var SelectIcon = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, children, ...iconProps } = props;
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.span, { "aria-hidden": true, ...iconProps, ref: forwardedRef, children: children || "▼" });
+  }
+);
+SelectIcon.displayName = ICON_NAME;
+var PORTAL_NAME = "SelectPortal";
+var SelectPortal = (props) => {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { asChild: true, ...props });
+};
+SelectPortal.displayName = PORTAL_NAME;
+var CONTENT_NAME = "SelectContent";
+var SelectContent$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const context = useSelectContext(CONTENT_NAME, props.__scopeSelect);
+    const [fragment, setFragment] = reactExports.useState();
+    useLayoutEffect2(() => {
+      setFragment(new DocumentFragment());
+    }, []);
+    if (!context.open) {
+      const frag = fragment;
+      return frag ? reactDomExports.createPortal(
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContentProvider, { scope: props.__scopeSelect, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.Slot, { scope: props.__scopeSelect, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: props.children }) }) }),
+        frag
+      ) : null;
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContentImpl, { ...props, ref: forwardedRef });
+  }
+);
+SelectContent$1.displayName = CONTENT_NAME;
+var CONTENT_MARGIN = 10;
+var [SelectContentProvider, useSelectContentContext] = createSelectContext(CONTENT_NAME);
+var CONTENT_IMPL_NAME = "SelectContentImpl";
+var Slot = /* @__PURE__ */ createSlot$1("SelectContent.RemoveScroll");
+var SelectContentImpl = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      __scopeSelect,
+      position = "item-aligned",
+      onCloseAutoFocus,
+      onEscapeKeyDown,
+      onPointerDownOutside,
+      //
+      // PopperContent props
+      side,
+      sideOffset,
+      align,
+      alignOffset,
+      arrowPadding,
+      collisionBoundary,
+      collisionPadding,
+      sticky,
+      hideWhenDetached,
+      avoidCollisions,
+      //
+      ...contentProps
+    } = props;
+    const context = useSelectContext(CONTENT_NAME, __scopeSelect);
+    const [content, setContent] = reactExports.useState(null);
+    const [viewport, setViewport] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
+    const [selectedItem, setSelectedItem] = reactExports.useState(null);
+    const [selectedItemText, setSelectedItemText] = reactExports.useState(
+      null
+    );
+    const getItems = useCollection(__scopeSelect);
+    const [isPositioned, setIsPositioned] = reactExports.useState(false);
+    const firstValidItemFoundRef = reactExports.useRef(false);
+    reactExports.useEffect(() => {
+      if (content) return hideOthers(content);
+    }, [content]);
+    useFocusGuards();
+    const focusFirst2 = reactExports.useCallback(
+      (candidates) => {
+        const [firstItem, ...restItems] = getItems().map((item) => item.ref.current);
+        const [lastItem] = restItems.slice(-1);
+        const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
+        for (const candidate of candidates) {
+          if (candidate === PREVIOUSLY_FOCUSED_ELEMENT) return;
+          candidate == null ? void 0 : candidate.scrollIntoView({ block: "nearest" });
+          if (candidate === firstItem && viewport) viewport.scrollTop = 0;
+          if (candidate === lastItem && viewport) viewport.scrollTop = viewport.scrollHeight;
+          candidate == null ? void 0 : candidate.focus();
+          if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) return;
+        }
+      },
+      [getItems, viewport]
+    );
+    const focusSelectedItem = reactExports.useCallback(
+      () => focusFirst2([selectedItem, content]),
+      [focusFirst2, selectedItem, content]
+    );
+    reactExports.useEffect(() => {
+      if (isPositioned) {
+        focusSelectedItem();
+      }
+    }, [isPositioned, focusSelectedItem]);
+    const { onOpenChange, triggerPointerDownPosRef } = context;
+    reactExports.useEffect(() => {
+      if (content) {
+        let pointerMoveDelta = { x: 0, y: 0 };
+        const handlePointerMove = (event) => {
+          var _a2, _b2;
+          pointerMoveDelta = {
+            x: Math.abs(Math.round(event.pageX) - (((_a2 = triggerPointerDownPosRef.current) == null ? void 0 : _a2.x) ?? 0)),
+            y: Math.abs(Math.round(event.pageY) - (((_b2 = triggerPointerDownPosRef.current) == null ? void 0 : _b2.y) ?? 0))
+          };
+        };
+        const handlePointerUp = (event) => {
+          if (pointerMoveDelta.x <= 10 && pointerMoveDelta.y <= 10) {
+            event.preventDefault();
+          } else {
+            if (!content.contains(event.target)) {
+              onOpenChange(false);
+            }
+          }
+          document.removeEventListener("pointermove", handlePointerMove);
+          triggerPointerDownPosRef.current = null;
+        };
+        if (triggerPointerDownPosRef.current !== null) {
+          document.addEventListener("pointermove", handlePointerMove);
+          document.addEventListener("pointerup", handlePointerUp, { capture: true, once: true });
+        }
+        return () => {
+          document.removeEventListener("pointermove", handlePointerMove);
+          document.removeEventListener("pointerup", handlePointerUp, { capture: true });
+        };
+      }
+    }, [content, onOpenChange, triggerPointerDownPosRef]);
+    reactExports.useEffect(() => {
+      const close = () => onOpenChange(false);
+      window.addEventListener("blur", close);
+      window.addEventListener("resize", close);
+      return () => {
+        window.removeEventListener("blur", close);
+        window.removeEventListener("resize", close);
+      };
+    }, [onOpenChange]);
+    const [searchRef, handleTypeaheadSearch] = useTypeaheadSearch((search) => {
+      const enabledItems = getItems().filter((item) => !item.disabled);
+      const currentItem = enabledItems.find((item) => item.ref.current === document.activeElement);
+      const nextItem = findNextItem(enabledItems, search, currentItem);
+      if (nextItem) {
+        setTimeout(() => nextItem.ref.current.focus());
+      }
+    });
+    const itemRefCallback = reactExports.useCallback(
+      (node, value, disabled) => {
+        const isFirstValidItem = !firstValidItemFoundRef.current && !disabled;
+        const isSelectedItem = context.value !== void 0 && context.value === value;
+        if (isSelectedItem || isFirstValidItem) {
+          setSelectedItem(node);
+          if (isFirstValidItem) firstValidItemFoundRef.current = true;
+        }
+      },
+      [context.value]
+    );
+    const handleItemLeave = reactExports.useCallback(() => content == null ? void 0 : content.focus(), [content]);
+    const itemTextRefCallback = reactExports.useCallback(
+      (node, value, disabled) => {
+        const isFirstValidItem = !firstValidItemFoundRef.current && !disabled;
+        const isSelectedItem = context.value !== void 0 && context.value === value;
+        if (isSelectedItem || isFirstValidItem) {
+          setSelectedItemText(node);
+        }
+      },
+      [context.value]
+    );
+    const SelectPosition = position === "popper" ? SelectPopperPosition : SelectItemAlignedPosition;
+    const popperContentProps = SelectPosition === SelectPopperPosition ? {
+      side,
+      sideOffset,
+      align,
+      alignOffset,
+      arrowPadding,
+      collisionBoundary,
+      collisionPadding,
+      sticky,
+      hideWhenDetached,
+      avoidCollisions
+    } : {};
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SelectContentProvider,
+      {
+        scope: __scopeSelect,
+        content,
+        viewport,
+        onViewportChange: setViewport,
+        itemRefCallback,
+        selectedItem,
+        onItemLeave: handleItemLeave,
+        itemTextRefCallback,
+        focusSelectedItem,
+        selectedItemText,
+        position,
+        isPositioned,
+        searchRef,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot, allowPinchZoom: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          FocusScope,
+          {
+            asChild: true,
+            trapped: context.open,
+            onMountAutoFocus: (event) => {
+              event.preventDefault();
+            },
+            onUnmountAutoFocus: composeEventHandlers(onCloseAutoFocus, (event) => {
+              var _a2;
+              (_a2 = context.trigger) == null ? void 0 : _a2.focus({ preventScroll: true });
+              event.preventDefault();
+            }),
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              DismissableLayer,
+              {
+                asChild: true,
+                disableOutsidePointerEvents: true,
+                onEscapeKeyDown,
+                onPointerDownOutside,
+                onFocusOutside: (event) => event.preventDefault(),
+                onDismiss: () => context.onOpenChange(false),
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  SelectPosition,
+                  {
+                    role: "listbox",
+                    id: context.contentId,
+                    "data-state": context.open ? "open" : "closed",
+                    dir: context.dir,
+                    onContextMenu: (event) => event.preventDefault(),
+                    ...contentProps,
+                    ...popperContentProps,
+                    onPlaced: () => setIsPositioned(true),
+                    ref: composedRefs,
+                    style: {
+                      // flex layout so we can place the scroll buttons properly
+                      display: "flex",
+                      flexDirection: "column",
+                      // reset the outline by default as the content MAY get focused
+                      outline: "none",
+                      ...contentProps.style
+                    },
+                    onKeyDown: composeEventHandlers(contentProps.onKeyDown, (event) => {
+                      const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
+                      if (event.key === "Tab") event.preventDefault();
+                      if (!isModifierKey && event.key.length === 1) handleTypeaheadSearch(event.key);
+                      if (["ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) {
+                        const items = getItems().filter((item) => !item.disabled);
+                        let candidateNodes = items.map((item) => item.ref.current);
+                        if (["ArrowUp", "End"].includes(event.key)) {
+                          candidateNodes = candidateNodes.slice().reverse();
+                        }
+                        if (["ArrowUp", "ArrowDown"].includes(event.key)) {
+                          const currentElement = event.target;
+                          const currentIndex = candidateNodes.indexOf(currentElement);
+                          candidateNodes = candidateNodes.slice(currentIndex + 1);
+                        }
+                        setTimeout(() => focusFirst2(candidateNodes));
+                        event.preventDefault();
+                      }
+                    })
+                  }
+                )
+              }
+            )
+          }
+        ) })
+      }
+    );
+  }
+);
+SelectContentImpl.displayName = CONTENT_IMPL_NAME;
+var ITEM_ALIGNED_POSITION_NAME = "SelectItemAlignedPosition";
+var SelectItemAlignedPosition = reactExports.forwardRef((props, forwardedRef) => {
+  const { __scopeSelect, onPlaced, ...popperProps } = props;
+  const context = useSelectContext(CONTENT_NAME, __scopeSelect);
+  const contentContext = useSelectContentContext(CONTENT_NAME, __scopeSelect);
+  const [contentWrapper, setContentWrapper] = reactExports.useState(null);
+  const [content, setContent] = reactExports.useState(null);
+  const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
+  const getItems = useCollection(__scopeSelect);
+  const shouldExpandOnScrollRef = reactExports.useRef(false);
+  const shouldRepositionRef = reactExports.useRef(true);
+  const { viewport, selectedItem, selectedItemText, focusSelectedItem } = contentContext;
+  const position = reactExports.useCallback(() => {
+    if (context.trigger && context.valueNode && contentWrapper && content && viewport && selectedItem && selectedItemText) {
+      const triggerRect = context.trigger.getBoundingClientRect();
+      const contentRect = content.getBoundingClientRect();
+      const valueNodeRect = context.valueNode.getBoundingClientRect();
+      const itemTextRect = selectedItemText.getBoundingClientRect();
+      if (context.dir !== "rtl") {
+        const itemTextOffset = itemTextRect.left - contentRect.left;
+        const left = valueNodeRect.left - itemTextOffset;
+        const leftDelta = triggerRect.left - left;
+        const minContentWidth = triggerRect.width + leftDelta;
+        const contentWidth = Math.max(minContentWidth, contentRect.width);
+        const rightEdge = window.innerWidth - CONTENT_MARGIN;
+        const clampedLeft = clamp$1(left, [
+          CONTENT_MARGIN,
+          // Prevents the content from going off the starting edge of the
+          // viewport. It may still go off the ending edge, but this can be
+          // controlled by the user since they may want to manage overflow in a
+          // specific way.
+          // https://github.com/radix-ui/primitives/issues/2049
+          Math.max(CONTENT_MARGIN, rightEdge - contentWidth)
+        ]);
+        contentWrapper.style.minWidth = minContentWidth + "px";
+        contentWrapper.style.left = clampedLeft + "px";
+      } else {
+        const itemTextOffset = contentRect.right - itemTextRect.right;
+        const right = window.innerWidth - valueNodeRect.right - itemTextOffset;
+        const rightDelta = window.innerWidth - triggerRect.right - right;
+        const minContentWidth = triggerRect.width + rightDelta;
+        const contentWidth = Math.max(minContentWidth, contentRect.width);
+        const leftEdge = window.innerWidth - CONTENT_MARGIN;
+        const clampedRight = clamp$1(right, [
+          CONTENT_MARGIN,
+          Math.max(CONTENT_MARGIN, leftEdge - contentWidth)
+        ]);
+        contentWrapper.style.minWidth = minContentWidth + "px";
+        contentWrapper.style.right = clampedRight + "px";
+      }
+      const items = getItems();
+      const availableHeight = window.innerHeight - CONTENT_MARGIN * 2;
+      const itemsHeight = viewport.scrollHeight;
+      const contentStyles = window.getComputedStyle(content);
+      const contentBorderTopWidth = parseInt(contentStyles.borderTopWidth, 10);
+      const contentPaddingTop = parseInt(contentStyles.paddingTop, 10);
+      const contentBorderBottomWidth = parseInt(contentStyles.borderBottomWidth, 10);
+      const contentPaddingBottom = parseInt(contentStyles.paddingBottom, 10);
+      const fullContentHeight = contentBorderTopWidth + contentPaddingTop + itemsHeight + contentPaddingBottom + contentBorderBottomWidth;
+      const minContentHeight = Math.min(selectedItem.offsetHeight * 5, fullContentHeight);
+      const viewportStyles = window.getComputedStyle(viewport);
+      const viewportPaddingTop = parseInt(viewportStyles.paddingTop, 10);
+      const viewportPaddingBottom = parseInt(viewportStyles.paddingBottom, 10);
+      const topEdgeToTriggerMiddle = triggerRect.top + triggerRect.height / 2 - CONTENT_MARGIN;
+      const triggerMiddleToBottomEdge = availableHeight - topEdgeToTriggerMiddle;
+      const selectedItemHalfHeight = selectedItem.offsetHeight / 2;
+      const itemOffsetMiddle = selectedItem.offsetTop + selectedItemHalfHeight;
+      const contentTopToItemMiddle = contentBorderTopWidth + contentPaddingTop + itemOffsetMiddle;
+      const itemMiddleToContentBottom = fullContentHeight - contentTopToItemMiddle;
+      const willAlignWithoutTopOverflow = contentTopToItemMiddle <= topEdgeToTriggerMiddle;
+      if (willAlignWithoutTopOverflow) {
+        const isLastItem = items.length > 0 && selectedItem === items[items.length - 1].ref.current;
+        contentWrapper.style.bottom = "0px";
+        const viewportOffsetBottom = content.clientHeight - viewport.offsetTop - viewport.offsetHeight;
+        const clampedTriggerMiddleToBottomEdge = Math.max(
+          triggerMiddleToBottomEdge,
+          selectedItemHalfHeight + // viewport might have padding bottom, include it to avoid a scrollable viewport
+          (isLastItem ? viewportPaddingBottom : 0) + viewportOffsetBottom + contentBorderBottomWidth
+        );
+        const height = contentTopToItemMiddle + clampedTriggerMiddleToBottomEdge;
+        contentWrapper.style.height = height + "px";
+      } else {
+        const isFirstItem = items.length > 0 && selectedItem === items[0].ref.current;
+        contentWrapper.style.top = "0px";
+        const clampedTopEdgeToTriggerMiddle = Math.max(
+          topEdgeToTriggerMiddle,
+          contentBorderTopWidth + viewport.offsetTop + // viewport might have padding top, include it to avoid a scrollable viewport
+          (isFirstItem ? viewportPaddingTop : 0) + selectedItemHalfHeight
+        );
+        const height = clampedTopEdgeToTriggerMiddle + itemMiddleToContentBottom;
+        contentWrapper.style.height = height + "px";
+        viewport.scrollTop = contentTopToItemMiddle - topEdgeToTriggerMiddle + viewport.offsetTop;
+      }
+      contentWrapper.style.margin = `${CONTENT_MARGIN}px 0`;
+      contentWrapper.style.minHeight = minContentHeight + "px";
+      contentWrapper.style.maxHeight = availableHeight + "px";
+      onPlaced == null ? void 0 : onPlaced();
+      requestAnimationFrame(() => shouldExpandOnScrollRef.current = true);
+    }
+  }, [
+    getItems,
+    context.trigger,
+    context.valueNode,
+    contentWrapper,
+    content,
+    viewport,
+    selectedItem,
+    selectedItemText,
+    context.dir,
+    onPlaced
+  ]);
+  useLayoutEffect2(() => position(), [position]);
+  const [contentZIndex, setContentZIndex] = reactExports.useState();
+  useLayoutEffect2(() => {
+    if (content) setContentZIndex(window.getComputedStyle(content).zIndex);
+  }, [content]);
+  const handleScrollButtonChange = reactExports.useCallback(
+    (node) => {
+      if (node && shouldRepositionRef.current === true) {
+        position();
+        focusSelectedItem == null ? void 0 : focusSelectedItem();
+        shouldRepositionRef.current = false;
+      }
+    },
+    [position, focusSelectedItem]
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    SelectViewportProvider,
+    {
+      scope: __scopeSelect,
+      contentWrapper,
+      shouldExpandOnScrollRef,
+      onScrollButtonChange: handleScrollButtonChange,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "div",
+        {
+          ref: setContentWrapper,
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            position: "fixed",
+            zIndex: contentZIndex
+          },
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Primitive$1.div,
+            {
+              ...popperProps,
+              ref: composedRefs,
+              style: {
+                // When we get the height of the content, it includes borders. If we were to set
+                // the height without having `boxSizing: 'border-box'` it would be too big.
+                boxSizing: "border-box",
+                // We need to ensure the content doesn't get taller than the wrapper
+                maxHeight: "100%",
+                ...popperProps.style
+              }
+            }
+          )
+        }
+      )
+    }
+  );
+});
+SelectItemAlignedPosition.displayName = ITEM_ALIGNED_POSITION_NAME;
+var POPPER_POSITION_NAME = "SelectPopperPosition";
+var SelectPopperPosition = reactExports.forwardRef((props, forwardedRef) => {
+  const {
+    __scopeSelect,
+    align = "start",
+    collisionPadding = CONTENT_MARGIN,
+    ...popperProps
+  } = props;
+  const popperScope = usePopperScope(__scopeSelect);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Content,
+    {
+      ...popperScope,
+      ...popperProps,
+      ref: forwardedRef,
+      align,
+      collisionPadding,
+      style: {
+        // Ensure border-box for floating-ui calculations
+        boxSizing: "border-box",
+        ...popperProps.style,
+        // re-namespace exposed content custom properties
+        ...{
+          "--radix-select-content-transform-origin": "var(--radix-popper-transform-origin)",
+          "--radix-select-content-available-width": "var(--radix-popper-available-width)",
+          "--radix-select-content-available-height": "var(--radix-popper-available-height)",
+          "--radix-select-trigger-width": "var(--radix-popper-anchor-width)",
+          "--radix-select-trigger-height": "var(--radix-popper-anchor-height)"
+        }
+      }
+    }
+  );
+});
+SelectPopperPosition.displayName = POPPER_POSITION_NAME;
+var [SelectViewportProvider, useSelectViewportContext] = createSelectContext(CONTENT_NAME, {});
+var VIEWPORT_NAME = "SelectViewport";
+var SelectViewport = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, nonce, ...viewportProps } = props;
+    const contentContext = useSelectContentContext(VIEWPORT_NAME, __scopeSelect);
+    const viewportContext = useSelectViewportContext(VIEWPORT_NAME, __scopeSelect);
+    const composedRefs = useComposedRefs(forwardedRef, contentContext.onViewportChange);
+    const prevScrollTopRef = reactExports.useRef(0);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "style",
+        {
+          dangerouslySetInnerHTML: {
+            __html: `[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}`
+          },
+          nonce
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.Slot, { scope: __scopeSelect, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Primitive$1.div,
+        {
+          "data-radix-select-viewport": "",
+          role: "presentation",
+          ...viewportProps,
+          ref: composedRefs,
+          style: {
+            // we use position: 'relative' here on the `viewport` so that when we call
+            // `selectedItem.offsetTop` in calculations, the offset is relative to the viewport
+            // (independent of the scrollUpButton).
+            position: "relative",
+            flex: 1,
+            // Viewport should only be scrollable in the vertical direction.
+            // This won't work in vertical writing modes, so we'll need to
+            // revisit this if/when that is supported
+            // https://developer.chrome.com/blog/vertical-form-controls
+            overflow: "hidden auto",
+            ...viewportProps.style
+          },
+          onScroll: composeEventHandlers(viewportProps.onScroll, (event) => {
+            const viewport = event.currentTarget;
+            const { contentWrapper, shouldExpandOnScrollRef } = viewportContext;
+            if ((shouldExpandOnScrollRef == null ? void 0 : shouldExpandOnScrollRef.current) && contentWrapper) {
+              const scrolledBy = Math.abs(prevScrollTopRef.current - viewport.scrollTop);
+              if (scrolledBy > 0) {
+                const availableHeight = window.innerHeight - CONTENT_MARGIN * 2;
+                const cssMinHeight = parseFloat(contentWrapper.style.minHeight);
+                const cssHeight = parseFloat(contentWrapper.style.height);
+                const prevHeight = Math.max(cssMinHeight, cssHeight);
+                if (prevHeight < availableHeight) {
+                  const nextHeight = prevHeight + scrolledBy;
+                  const clampedNextHeight = Math.min(availableHeight, nextHeight);
+                  const heightDiff = nextHeight - clampedNextHeight;
+                  contentWrapper.style.height = clampedNextHeight + "px";
+                  if (contentWrapper.style.bottom === "0px") {
+                    viewport.scrollTop = heightDiff > 0 ? heightDiff : 0;
+                    contentWrapper.style.justifyContent = "flex-end";
+                  }
+                }
+              }
+            }
+            prevScrollTopRef.current = viewport.scrollTop;
+          })
+        }
+      ) })
+    ] });
+  }
+);
+SelectViewport.displayName = VIEWPORT_NAME;
+var GROUP_NAME = "SelectGroup";
+var [SelectGroupContextProvider, useSelectGroupContext] = createSelectContext(GROUP_NAME);
+var SelectGroup = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, ...groupProps } = props;
+    const groupId = useId();
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(SelectGroupContextProvider, { scope: __scopeSelect, id: groupId, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { role: "group", "aria-labelledby": groupId, ...groupProps, ref: forwardedRef }) });
+  }
+);
+SelectGroup.displayName = GROUP_NAME;
+var LABEL_NAME = "SelectLabel";
+var SelectLabel = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, ...labelProps } = props;
+    const groupContext = useSelectGroupContext(LABEL_NAME, __scopeSelect);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { id: groupContext.id, ...labelProps, ref: forwardedRef });
+  }
+);
+SelectLabel.displayName = LABEL_NAME;
+var ITEM_NAME = "SelectItem";
+var [SelectItemContextProvider, useSelectItemContext] = createSelectContext(ITEM_NAME);
+var SelectItem$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      __scopeSelect,
+      value,
+      disabled = false,
+      textValue: textValueProp,
+      ...itemProps
+    } = props;
+    const context = useSelectContext(ITEM_NAME, __scopeSelect);
+    const contentContext = useSelectContentContext(ITEM_NAME, __scopeSelect);
+    const isSelected = context.value === value;
+    const [textValue, setTextValue] = reactExports.useState(textValueProp ?? "");
+    const [isFocused, setIsFocused] = reactExports.useState(false);
+    const composedRefs = useComposedRefs(
+      forwardedRef,
+      (node) => {
+        var _a2;
+        return (_a2 = contentContext.itemRefCallback) == null ? void 0 : _a2.call(contentContext, node, value, disabled);
+      }
+    );
+    const textId = useId();
+    const pointerTypeRef = reactExports.useRef("touch");
+    const handleSelect = () => {
+      if (!disabled) {
+        context.onValueChange(value);
+        context.onOpenChange(false);
+      }
+    };
+    if (value === "") {
+      throw new Error(
+        "A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder."
+      );
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SelectItemContextProvider,
+      {
+        scope: __scopeSelect,
+        value,
+        disabled,
+        textId,
+        isSelected,
+        onItemTextChange: reactExports.useCallback((node) => {
+          setTextValue((prevTextValue) => prevTextValue || ((node == null ? void 0 : node.textContent) ?? "").trim());
+        }, []),
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Collection.ItemSlot,
+          {
+            scope: __scopeSelect,
+            value,
+            disabled,
+            textValue,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Primitive$1.div,
+              {
+                role: "option",
+                "aria-labelledby": textId,
+                "data-highlighted": isFocused ? "" : void 0,
+                "aria-selected": isSelected && isFocused,
+                "data-state": isSelected ? "checked" : "unchecked",
+                "aria-disabled": disabled || void 0,
+                "data-disabled": disabled ? "" : void 0,
+                tabIndex: disabled ? void 0 : -1,
+                ...itemProps,
+                ref: composedRefs,
+                onFocus: composeEventHandlers(itemProps.onFocus, () => setIsFocused(true)),
+                onBlur: composeEventHandlers(itemProps.onBlur, () => setIsFocused(false)),
+                onClick: composeEventHandlers(itemProps.onClick, () => {
+                  if (pointerTypeRef.current !== "mouse") handleSelect();
+                }),
+                onPointerUp: composeEventHandlers(itemProps.onPointerUp, () => {
+                  if (pointerTypeRef.current === "mouse") handleSelect();
+                }),
+                onPointerDown: composeEventHandlers(itemProps.onPointerDown, (event) => {
+                  pointerTypeRef.current = event.pointerType;
+                }),
+                onPointerMove: composeEventHandlers(itemProps.onPointerMove, (event) => {
+                  var _a2;
+                  pointerTypeRef.current = event.pointerType;
+                  if (disabled) {
+                    (_a2 = contentContext.onItemLeave) == null ? void 0 : _a2.call(contentContext);
+                  } else if (pointerTypeRef.current === "mouse") {
+                    event.currentTarget.focus({ preventScroll: true });
+                  }
+                }),
+                onPointerLeave: composeEventHandlers(itemProps.onPointerLeave, (event) => {
+                  var _a2;
+                  if (event.currentTarget === document.activeElement) {
+                    (_a2 = contentContext.onItemLeave) == null ? void 0 : _a2.call(contentContext);
+                  }
+                }),
+                onKeyDown: composeEventHandlers(itemProps.onKeyDown, (event) => {
+                  var _a2;
+                  const isTypingAhead = ((_a2 = contentContext.searchRef) == null ? void 0 : _a2.current) !== "";
+                  if (isTypingAhead && event.key === " ") return;
+                  if (SELECTION_KEYS.includes(event.key)) handleSelect();
+                  if (event.key === " ") event.preventDefault();
+                })
+              }
+            )
+          }
+        )
+      }
+    );
+  }
+);
+SelectItem$1.displayName = ITEM_NAME;
+var ITEM_TEXT_NAME = "SelectItemText";
+var SelectItemText = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, className, style: style2, ...itemTextProps } = props;
+    const context = useSelectContext(ITEM_TEXT_NAME, __scopeSelect);
+    const contentContext = useSelectContentContext(ITEM_TEXT_NAME, __scopeSelect);
+    const itemContext = useSelectItemContext(ITEM_TEXT_NAME, __scopeSelect);
+    const nativeOptionsContext = useSelectNativeOptionsContext(ITEM_TEXT_NAME, __scopeSelect);
+    const [itemTextNode, setItemTextNode] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(
+      forwardedRef,
+      (node) => setItemTextNode(node),
+      itemContext.onItemTextChange,
+      (node) => {
+        var _a2;
+        return (_a2 = contentContext.itemTextRefCallback) == null ? void 0 : _a2.call(contentContext, node, itemContext.value, itemContext.disabled);
+      }
+    );
+    const textContent = itemTextNode == null ? void 0 : itemTextNode.textContent;
+    const nativeOption = reactExports.useMemo(
+      () => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: itemContext.value, disabled: itemContext.disabled, children: textContent }, itemContext.value),
+      [itemContext.disabled, itemContext.value, textContent]
+    );
+    const { onNativeOptionAdd, onNativeOptionRemove } = nativeOptionsContext;
+    useLayoutEffect2(() => {
+      onNativeOptionAdd(nativeOption);
+      return () => onNativeOptionRemove(nativeOption);
+    }, [onNativeOptionAdd, onNativeOptionRemove, nativeOption]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.span, { id: itemContext.textId, ...itemTextProps, ref: composedRefs }),
+      itemContext.isSelected && context.valueNode && !context.valueNodeHasChildren ? reactDomExports.createPortal(itemTextProps.children, context.valueNode) : null
+    ] });
+  }
+);
+SelectItemText.displayName = ITEM_TEXT_NAME;
+var ITEM_INDICATOR_NAME = "SelectItemIndicator";
+var SelectItemIndicator = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, ...itemIndicatorProps } = props;
+    const itemContext = useSelectItemContext(ITEM_INDICATOR_NAME, __scopeSelect);
+    return itemContext.isSelected ? /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.span, { "aria-hidden": true, ...itemIndicatorProps, ref: forwardedRef }) : null;
+  }
+);
+SelectItemIndicator.displayName = ITEM_INDICATOR_NAME;
+var SCROLL_UP_BUTTON_NAME = "SelectScrollUpButton";
+var SelectScrollUpButton$1 = reactExports.forwardRef((props, forwardedRef) => {
+  const contentContext = useSelectContentContext(SCROLL_UP_BUTTON_NAME, props.__scopeSelect);
+  const viewportContext = useSelectViewportContext(SCROLL_UP_BUTTON_NAME, props.__scopeSelect);
+  const [canScrollUp, setCanScrollUp] = reactExports.useState(false);
+  const composedRefs = useComposedRefs(forwardedRef, viewportContext.onScrollButtonChange);
+  useLayoutEffect2(() => {
+    if (contentContext.viewport && contentContext.isPositioned) {
+      let handleScroll2 = function() {
+        const canScrollUp2 = viewport.scrollTop > 0;
+        setCanScrollUp(canScrollUp2);
+      };
+      const viewport = contentContext.viewport;
+      handleScroll2();
+      viewport.addEventListener("scroll", handleScroll2);
+      return () => viewport.removeEventListener("scroll", handleScroll2);
+    }
+  }, [contentContext.viewport, contentContext.isPositioned]);
+  return canScrollUp ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+    SelectScrollButtonImpl,
+    {
+      ...props,
+      ref: composedRefs,
+      onAutoScroll: () => {
+        const { viewport, selectedItem } = contentContext;
+        if (viewport && selectedItem) {
+          viewport.scrollTop = viewport.scrollTop - selectedItem.offsetHeight;
+        }
+      }
+    }
+  ) : null;
+});
+SelectScrollUpButton$1.displayName = SCROLL_UP_BUTTON_NAME;
+var SCROLL_DOWN_BUTTON_NAME = "SelectScrollDownButton";
+var SelectScrollDownButton$1 = reactExports.forwardRef((props, forwardedRef) => {
+  const contentContext = useSelectContentContext(SCROLL_DOWN_BUTTON_NAME, props.__scopeSelect);
+  const viewportContext = useSelectViewportContext(SCROLL_DOWN_BUTTON_NAME, props.__scopeSelect);
+  const [canScrollDown, setCanScrollDown] = reactExports.useState(false);
+  const composedRefs = useComposedRefs(forwardedRef, viewportContext.onScrollButtonChange);
+  useLayoutEffect2(() => {
+    if (contentContext.viewport && contentContext.isPositioned) {
+      let handleScroll2 = function() {
+        const maxScroll = viewport.scrollHeight - viewport.clientHeight;
+        const canScrollDown2 = Math.ceil(viewport.scrollTop) < maxScroll;
+        setCanScrollDown(canScrollDown2);
+      };
+      const viewport = contentContext.viewport;
+      handleScroll2();
+      viewport.addEventListener("scroll", handleScroll2);
+      return () => viewport.removeEventListener("scroll", handleScroll2);
+    }
+  }, [contentContext.viewport, contentContext.isPositioned]);
+  return canScrollDown ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+    SelectScrollButtonImpl,
+    {
+      ...props,
+      ref: composedRefs,
+      onAutoScroll: () => {
+        const { viewport, selectedItem } = contentContext;
+        if (viewport && selectedItem) {
+          viewport.scrollTop = viewport.scrollTop + selectedItem.offsetHeight;
+        }
+      }
+    }
+  ) : null;
+});
+SelectScrollDownButton$1.displayName = SCROLL_DOWN_BUTTON_NAME;
+var SelectScrollButtonImpl = reactExports.forwardRef((props, forwardedRef) => {
+  const { __scopeSelect, onAutoScroll, ...scrollIndicatorProps } = props;
+  const contentContext = useSelectContentContext("SelectScrollButton", __scopeSelect);
+  const autoScrollTimerRef = reactExports.useRef(null);
+  const getItems = useCollection(__scopeSelect);
+  const clearAutoScrollTimer = reactExports.useCallback(() => {
+    if (autoScrollTimerRef.current !== null) {
+      window.clearInterval(autoScrollTimerRef.current);
+      autoScrollTimerRef.current = null;
+    }
+  }, []);
+  reactExports.useEffect(() => {
+    return () => clearAutoScrollTimer();
+  }, [clearAutoScrollTimer]);
+  useLayoutEffect2(() => {
+    var _a2;
+    const activeItem = getItems().find((item) => item.ref.current === document.activeElement);
+    (_a2 = activeItem == null ? void 0 : activeItem.ref.current) == null ? void 0 : _a2.scrollIntoView({ block: "nearest" });
+  }, [getItems]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Primitive$1.div,
+    {
+      "aria-hidden": true,
+      ...scrollIndicatorProps,
+      ref: forwardedRef,
+      style: { flexShrink: 0, ...scrollIndicatorProps.style },
+      onPointerDown: composeEventHandlers(scrollIndicatorProps.onPointerDown, () => {
+        if (autoScrollTimerRef.current === null) {
+          autoScrollTimerRef.current = window.setInterval(onAutoScroll, 50);
+        }
+      }),
+      onPointerMove: composeEventHandlers(scrollIndicatorProps.onPointerMove, () => {
+        var _a2;
+        (_a2 = contentContext.onItemLeave) == null ? void 0 : _a2.call(contentContext);
+        if (autoScrollTimerRef.current === null) {
+          autoScrollTimerRef.current = window.setInterval(onAutoScroll, 50);
+        }
+      }),
+      onPointerLeave: composeEventHandlers(scrollIndicatorProps.onPointerLeave, () => {
+        clearAutoScrollTimer();
+      })
+    }
+  );
+});
+var SEPARATOR_NAME = "SelectSeparator";
+var SelectSeparator = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, ...separatorProps } = props;
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive$1.div, { "aria-hidden": true, ...separatorProps, ref: forwardedRef });
+  }
+);
+SelectSeparator.displayName = SEPARATOR_NAME;
+var ARROW_NAME = "SelectArrow";
+var SelectArrow = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSelect, ...arrowProps } = props;
+    const popperScope = usePopperScope(__scopeSelect);
+    const context = useSelectContext(ARROW_NAME, __scopeSelect);
+    const contentContext = useSelectContentContext(ARROW_NAME, __scopeSelect);
+    return context.open && contentContext.position === "popper" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Arrow, { ...popperScope, ...arrowProps, ref: forwardedRef }) : null;
+  }
+);
+SelectArrow.displayName = ARROW_NAME;
+var BUBBLE_INPUT_NAME = "SelectBubbleInput";
+var SelectBubbleInput = reactExports.forwardRef(
+  ({ __scopeSelect, value, ...props }, forwardedRef) => {
+    const ref = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
+    const prevValue = usePrevious(value);
+    reactExports.useEffect(() => {
+      const select = ref.current;
+      if (!select) return;
+      const selectProto = window.HTMLSelectElement.prototype;
+      const descriptor = Object.getOwnPropertyDescriptor(
+        selectProto,
+        "value"
+      );
+      const setValue = descriptor.set;
+      if (prevValue !== value && setValue) {
+        const event = new Event("change", { bubbles: true });
+        setValue.call(select, value);
+        select.dispatchEvent(event);
+      }
+    }, [prevValue, value]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive$1.select,
+      {
+        ...props,
+        style: { ...VISUALLY_HIDDEN_STYLES, ...props.style },
+        ref: composedRefs,
+        defaultValue: value
+      }
+    );
+  }
+);
+SelectBubbleInput.displayName = BUBBLE_INPUT_NAME;
+function shouldShowPlaceholder(value) {
+  return value === "" || value === void 0;
+}
+function useTypeaheadSearch(onSearchChange) {
+  const handleSearchChange = useCallbackRef$1(onSearchChange);
+  const searchRef = reactExports.useRef("");
+  const timerRef = reactExports.useRef(0);
+  const handleTypeaheadSearch = reactExports.useCallback(
+    (key) => {
+      const search = searchRef.current + key;
+      handleSearchChange(search);
+      (function updateSearch(value) {
+        searchRef.current = value;
+        window.clearTimeout(timerRef.current);
+        if (value !== "") timerRef.current = window.setTimeout(() => updateSearch(""), 1e3);
+      })(search);
+    },
+    [handleSearchChange]
+  );
+  const resetTypeahead = reactExports.useCallback(() => {
+    searchRef.current = "";
+    window.clearTimeout(timerRef.current);
+  }, []);
+  reactExports.useEffect(() => {
+    return () => window.clearTimeout(timerRef.current);
+  }, []);
+  return [searchRef, handleTypeaheadSearch, resetTypeahead];
+}
+function findNextItem(items, search, currentItem) {
+  const isRepeated = search.length > 1 && Array.from(search).every((char) => char === search[0]);
+  const normalizedSearch = isRepeated ? search[0] : search;
+  const currentItemIndex = currentItem ? items.indexOf(currentItem) : -1;
+  let wrappedItems = wrapArray(items, Math.max(currentItemIndex, 0));
+  const excludeCurrentItem = normalizedSearch.length === 1;
+  if (excludeCurrentItem) wrappedItems = wrappedItems.filter((v) => v !== currentItem);
+  const nextItem = wrappedItems.find(
+    (item) => item.textValue.toLowerCase().startsWith(normalizedSearch.toLowerCase())
+  );
+  return nextItem !== currentItem ? nextItem : void 0;
+}
+function wrapArray(array, startIndex) {
+  return array.map((_, index2) => array[(startIndex + index2) % array.length]);
+}
+var Root2 = Select$1;
+var Trigger = SelectTrigger$1;
+var Value = SelectValue$1;
+var Icon = SelectIcon;
+var Portal = SelectPortal;
+var Content2 = SelectContent$1;
+var Viewport = SelectViewport;
+var Item = SelectItem$1;
+var ItemText = SelectItemText;
+var ItemIndicator = SelectItemIndicator;
+var ScrollUpButton = SelectScrollUpButton$1;
+var ScrollDownButton = SelectScrollDownButton$1;
+function Select({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2, { "data-slot": "select", ...props });
+}
+function SelectValue({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Value, { "data-slot": "select-value", ...props });
+}
+function SelectTrigger({
+  className,
+  size: size2 = "default",
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Trigger,
+    {
+      "data-slot": "select-trigger",
+      "data-size": size2,
+      className: cn(
+        "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className
+      ),
+      ...props,
+      children: [
+        children,
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { className: "size-4 opacity-50" }) })
+      ]
+    }
+  );
+}
+function SelectContent({
+  className,
+  children,
+  position = "popper",
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Content2,
+    {
+      "data-slot": "select-content",
+      className: cn(
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
+        position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+        className
+      ),
+      position,
+      ...props,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SelectScrollUpButton, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Viewport,
+          {
+            className: cn(
+              "p-1",
+              position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1"
+            ),
+            children
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SelectScrollDownButton, {})
+      ]
+    }
+  ) });
+}
+function SelectItem({
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Item,
+    {
+      "data-slot": "select-item",
+      className: cn(
+        "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        className
+      ),
+      ...props,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute right-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ItemIndicator, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "size-4" }) }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ItemText, { children })
+      ]
+    }
+  );
+}
+function SelectScrollUpButton({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    ScrollUpButton,
+    {
+      "data-slot": "select-scroll-up-button",
+      className: cn(
+        "flex cursor-default items-center justify-center py-1",
+        className
+      ),
+      ...props,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { className: "size-4" })
+    }
+  );
+}
+function SelectScrollDownButton({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    ScrollDownButton,
+    {
+      "data-slot": "select-scroll-down-button",
+      className: cn(
+        "flex cursor-default items-center justify-center py-1",
+        className
+      ),
+      ...props,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { className: "size-4" })
+    }
+  );
+}
+const OPTIONS = ["A", "B", "C"];
+function toPracticeTopicId(topicId) {
+  return topicId === "alt" ? "alts" : topicId;
+}
+function getOptionText(question, option) {
+  if (option === "A") return question.optionA;
+  if (option === "B") return question.optionB;
+  return question.optionC;
+}
+function inferMarkedAnswer(question) {
+  var _a2;
+  const values = [
+    ["A", question.optionA],
+    ["B", question.optionB],
+    ["C", question.optionC]
+  ];
+  for (const [option, value] of values) {
+    if (/(^|\s)x\s*$/i.test(value) || /(?:^|\s)x\s*[^\w]*$/i.test(value)) {
+      return option;
+    }
+  }
+  const joined = [
+    question.stem,
+    question.optionA,
+    question.optionB,
+    question.optionC
+  ].join("\n");
+  const match = joined.match(/(?:^|\s)x\s*([ABC])c?(?:\b|\s)/i) ?? joined.match(/(?:^|\s)([ABC])\s*x(?:\b|\s)/i);
+  return ((_a2 = match == null ? void 0 : match[1]) == null ? void 0 : _a2.toUpperCase()) ?? null;
+}
+function cleanPracticeText(value) {
+  return value.replace(/(?:^|\s)x\s*([ABC])c?\b/gi, "").replace(/\b([ABC])\s*x\b/gi, "").replace(/\s+x\s*$/i, "").replace(/\s{2,}/g, " ").trim();
+}
+function PracticeQuizPage({ onNavigate }) {
+  var _a2;
+  const [topicId, setTopicId] = reactExports.useState(((_a2 = TOPICS[0]) == null ? void 0 : _a2.id) ?? "ethics");
+  const [currentIndex, setCurrentIndex] = reactExports.useState(0);
+  const [selected, setSelected] = reactExports.useState(null);
+  const [submitted, setSubmitted] = reactExports.useState(false);
+  const [results, setResults] = reactExports.useState({});
+  const questions = reactExports.useMemo(
+    () => PRACTICE_PACK_QUESTIONS.filter(
+      (question) => question.topicId === toPracticeTopicId(topicId)
+    ),
+    [topicId]
+  );
+  const topic = TOPICS.find((item) => item.id === topicId) ?? TOPICS[0];
+  const currentQuestion = questions[currentIndex];
+  const inferredAnswer = currentQuestion ? inferMarkedAnswer(currentQuestion) : null;
+  const answeredCount = Object.keys(results).length;
+  const scorable = Object.values(results).filter(
+    (result) => result !== null
+  );
+  const correctCount = scorable.filter(Boolean).length;
+  const score = scorable.length > 0 ? Math.round(correctCount / scorable.length * 100) : 0;
+  const progress = questions.length > 0 ? Math.round(answeredCount / questions.length * 100) : 0;
+  const answerKeyMissing = (currentQuestion == null ? void 0 : currentQuestion.answerKeyStatus) === "missing" && !inferredAnswer;
+  const correctAnswer = inferredAnswer ?? (currentQuestion == null ? void 0 : currentQuestion.correctAnswer);
+  const resetForTopic = (nextTopicId) => {
+    setTopicId(nextTopicId);
+    setCurrentIndex(0);
+    setSelected(null);
+    setSubmitted(false);
+    setResults({});
+  };
+  const submit = () => {
+    if (!currentQuestion || !selected || submitted) return;
+    const result = answerKeyMissing ? null : selected === correctAnswer;
+    setResults((previous) => ({ ...previous, [currentQuestion.id]: result }));
+    setSubmitted(true);
+  };
+  const next = () => {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex((value) => value + 1);
+      setSelected(null);
+      setSubmitted(false);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-5 max-w-5xl mx-auto", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4 md:flex-row md:items-end md:justify-between", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Button,
+          {
+            variant: "ghost",
+            size: "sm",
+            className: "text-muted-foreground -ml-2 mb-2",
+            onClick: () => onNavigate("topics"),
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeft, { size: 16, className: "mr-1" }),
+              " Study Topics"
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold", children: "Practice Quiz" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: "Imported CFA Level I practice-pack questions by subject." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: topicId, onValueChange: resetForTopic, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-full md:w-72 bg-white", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Choose topic" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: TOPICS.map((item) => {
+          const count2 = PRACTICE_PACK_QUESTIONS.filter(
+            (question) => question.topicId === toPracticeTopicId(item.id)
+          ).length;
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectItem, { value: item.id, children: [
+            item.shortName,
+            " · ",
+            count2,
+            " Qs"
+          ] }, item.id);
+        }) })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3", children: [
+      { label: "Subject", value: topic.shortName },
+      { label: "Questions", value: questions.length },
+      { label: "Answered", value: answeredCount },
+      { label: "Score", value: scorable.length > 0 ? `${score}%` : "N/A" }
+    ].map(({ label, value }) => /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-muted-foreground uppercase tracking-wide", children: label }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-lg mt-1", children: value })
+    ] }) }, label)) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm overflow-hidden", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2", style: { backgroundColor: topic.color } }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl", children: topic.icon }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold", children: topic.name }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
+                "Question ",
+                Math.min(currentIndex + 1, questions.length),
+                " of",
+                " ",
+                questions.length
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            Badge,
+            {
+              className: "w-fit text-white",
+              style: { backgroundColor: topic.color },
+              children: [
+                progress,
+                "% complete"
+              ]
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: progress, className: "h-2 mb-5" }),
+        !currentQuestion ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "No imported questions are available for this topic." }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "outline", className: "mb-3", children: currentQuestion.difficulty }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm leading-relaxed whitespace-pre-line", children: cleanPracticeText(currentQuestion.stem) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2.5", children: OPTIONS.map((option) => {
+            const isChosen = selected === option;
+            const isCorrect = submitted && !answerKeyMissing && correctAnswer === option;
+            const isWrong = submitted && isChosen && !answerKeyMissing && !isCorrect;
+            return /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                type: "button",
+                disabled: submitted,
+                onClick: () => setSelected(option),
+                className: cn(
+                  "w-full text-left rounded-xl border bg-white p-3.5 transition-all",
+                  !submitted && "hover:border-blue-300 hover:bg-blue-50/40",
+                  isChosen && !submitted && "border-blue-500 bg-blue-50",
+                  submitted && answerKeyMissing && isChosen && "border-blue-500 bg-blue-50",
+                  isCorrect && "border-green-500 bg-green-50",
+                  isWrong && "border-red-500 bg-red-50"
+                ),
+                children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "span",
+                    {
+                      className: cn(
+                        "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs font-bold",
+                        isChosen ? "border-blue-500 bg-blue-500 text-white" : "border-muted-foreground/30 text-muted-foreground",
+                        isCorrect && "border-green-500 bg-green-500",
+                        isWrong && "border-red-500 bg-red-500"
+                      ),
+                      children: option
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm leading-relaxed whitespace-pre-line", children: cleanPracticeText(
+                    getOptionText(currentQuestion, option)
+                  ) }),
+                  isCorrect && /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "ml-auto size-5 shrink-0 text-green-600" })
+                ] })
+              },
+              option
+            );
+          }) }),
+          submitted && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "overflow-hidden rounded-md border border-border bg-white text-sm", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "border-b border-border bg-muted/30 px-4 py-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-lg font-semibold text-foreground", children: "Solution" }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 px-4 py-4", children: [
+              answerKeyMissing ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: currentQuestion.explanation }) : OPTIONS.map((option) => {
+                const isCorrectOption = option === correctAnswer;
+                return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "div",
+                  {
+                    className: "grid grid-cols-[24px_1fr] gap-2 leading-7",
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "font-bold text-foreground", children: [
+                        option,
+                        "."
+                      ] }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          "span",
+                          {
+                            className: cn(
+                              "font-semibold",
+                              isCorrectOption ? "text-foreground" : "text-muted-foreground"
+                            ),
+                            children: isCorrectOption ? "Correct" : "Incorrect"
+                          }
+                        ),
+                        " - ",
+                        "Exact copy-paste solution text is not available in the uploaded files for this option."
+                      ] })
+                    ]
+                  },
+                  option
+                );
+              }),
+              !answerKeyMissing && selected && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-2 rounded-md bg-muted/40 px-3 py-2 text-xs text-muted-foreground", children: [
+                "Your answer: ",
+                selected,
+                " · Correct answer:",
+                " ",
+                correctAnswer
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-end gap-2", children: !submitted ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: submit, disabled: !selected, children: "Submit Answer" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            Button,
+            {
+              onClick: next,
+              disabled: currentIndex >= questions.length - 1,
+              children: [
+                "Next Question ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { size: 16, className: "ml-1" })
+              ]
+            }
+          ) })
+        ] })
+      ] })
+    ] })
+  ] });
+}
+const MOCK_PORTAL_URL = `${"/cfa-study-portal/"}mock-portal.html`;
 function App$1() {
   const [activePage, setActivePage] = reactExports.useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = reactExports.useState(false);
   const [notificationsOpen, setNotificationsOpen] = reactExports.useState(false);
   const handleNavigate = (page) => {
+    if (page === "mock-exam") {
+      window.location.href = MOCK_PORTAL_URL;
+      return;
+    }
     setActivePage(page);
     setNotificationsOpen(false);
   };
@@ -37657,33 +55144,43 @@ function App$1() {
         }
       );
     }
+    if (activePage === "quiz") {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(PracticeQuizPage, { onNavigate: handleNavigate });
+    }
     return /* @__PURE__ */ jsxRuntimeExports.jsx(PlaceholderPage, { page: activePage, onNavigate: handleNavigate });
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-screen w-full overflow-hidden bg-muted/30", onClick: () => notificationsOpen && setNotificationsOpen(false), children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Sidebar,
-      {
-        activePage,
-        onNavigate: handleNavigate,
-        collapsed: sidebarCollapsed
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col flex-1 min-w-0 overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        TopHeader,
-        {
-          onToggleSidebar: () => setSidebarCollapsed((c) => !c),
-          notificationsOpen,
-          onToggleNotifications: (e) => {
-            var _a2;
-            (_a2 = e == null ? void 0 : e.stopPropagation) == null ? void 0 : _a2.call(e);
-            setNotificationsOpen((o) => !o);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      className: "flex h-screen w-full overflow-hidden bg-muted/30",
+      onClick: () => notificationsOpen && setNotificationsOpen(false),
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Sidebar,
+          {
+            activePage,
+            onNavigate: handleNavigate,
+            collapsed: sidebarCollapsed
           }
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollArea, { className: "flex-1", children: renderPage() })
-    ] })
-  ] });
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col flex-1 min-w-0 overflow-hidden", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            TopHeader,
+            {
+              onToggleSidebar: () => setSidebarCollapsed((c) => !c),
+              notificationsOpen,
+              onToggleNotifications: (e) => {
+                var _a2;
+                (_a2 = e == null ? void 0 : e.stopPropagation) == null ? void 0 : _a2.call(e);
+                setNotificationsOpen((o) => !o);
+              }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollArea, { className: "flex-1", children: renderPage() })
+        ] })
+      ]
+    }
+  );
 }
 function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(App$1, {});

@@ -1,14 +1,8 @@
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { MOCK_USER, getDaysUntilExam } from '@/app/data/mockUser';
-import {
-  Flame,
-  Bell,
-  Menu,
-  Clock,
-  Target,
-} from 'lucide-react';
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { MOCK_USER, getDaysUntilExam } from "@/app/data/mockUser";
+import { Flame, Bell, Menu, Clock, Target } from "lucide-react";
 
 interface TopHeaderProps {
   onToggleSidebar: () => void;
@@ -16,7 +10,11 @@ interface TopHeaderProps {
   onToggleNotifications: (e?: React.MouseEvent) => void;
 }
 
-export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifications }: TopHeaderProps) {
+export function TopHeader({
+  onToggleSidebar,
+  notificationsOpen,
+  onToggleNotifications,
+}: TopHeaderProps) {
   const daysLeft = getDaysUntilExam(MOCK_USER.examDate);
   const progress = MOCK_USER.overallProgress;
 
@@ -37,7 +35,9 @@ export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifica
         <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
           <span className="text-white text-[9px] font-black">CFA</span>
         </div>
-        <span className="font-semibold text-sm text-foreground">Level I Platform</span>
+        <span className="font-semibold text-sm text-foreground">
+          CFA Level 1 Practice Hub
+        </span>
       </div>
 
       <div className="flex-1" />
@@ -45,7 +45,9 @@ export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifica
       {/* Study Streak */}
       <div className="hidden md:flex items-center gap-1.5 bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5">
         <Flame size={15} className="text-orange-500" />
-        <span className="text-sm font-bold text-orange-600">{MOCK_USER.streak}</span>
+        <span className="text-sm font-bold text-orange-600">
+          {MOCK_USER.streak}
+        </span>
         <span className="text-xs text-orange-500">day streak</span>
       </div>
 
@@ -62,7 +64,9 @@ export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifica
         <div className="flex-1">
           <div className="flex items-center justify-between mb-0.5">
             <span className="text-xs text-muted-foreground">Overall</span>
-            <span className="text-xs font-semibold text-foreground">{progress}%</span>
+            <span className="text-xs font-semibold text-foreground">
+              {progress}%
+            </span>
           </div>
           <Progress value={progress} className="h-1.5" />
         </div>
@@ -94,15 +98,34 @@ export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifica
             </div>
             <div className="divide-y divide-border">
               {[
-                { title: '🔥 Keep your streak!', msg: "Don't forget to study today — you're on a 12-day streak!", time: '5m ago' },
-                { title: '📝 Mock exam reminder', msg: 'Your scheduled Full-Length Mock Exam starts in 2 hours.', time: '1h ago' },
-                { title: '🏆 New achievement!', msg: 'You earned the "Week Warrior" badge. +50 points!', time: '2h ago' },
+                {
+                  title: "🔥 Keep your streak!",
+                  msg: "Don't forget to study today — you're on a 12-day streak!",
+                  time: "5m ago",
+                },
+                {
+                  title: "📝 Mock exam reminder",
+                  msg: "Your scheduled Full-Length Mock Exam starts in 2 hours.",
+                  time: "1h ago",
+                },
+                {
+                  title: "🏆 New achievement!",
+                  msg: 'You earned the "Week Warrior" badge. +50 points!',
+                  time: "2h ago",
+                },
               ].map((n, i) => (
-                <div key={i} className="px-4 py-3 hover:bg-muted/50 cursor-pointer">
+                <div
+                  key={i}
+                  className="px-4 py-3 hover:bg-muted/50 cursor-pointer"
+                >
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <p className="text-sm font-medium leading-snug">{n.title}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5 leading-snug">{n.msg}</p>
+                      <p className="text-sm font-medium leading-snug">
+                        {n.title}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-0.5 leading-snug">
+                        {n.msg}
+                      </p>
                     </div>
                     <span className="text-[10px] text-muted-foreground whitespace-nowrap flex-shrink-0 mt-0.5">
                       {n.time}
@@ -112,7 +135,9 @@ export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifica
               ))}
             </div>
             <div className="px-4 py-2 border-t border-border">
-              <button className="text-xs text-blue-600 hover:underline">Mark all as read</button>
+              <button className="text-xs text-blue-600 hover:underline">
+                Mark all as read
+              </button>
             </div>
           </div>
         )}
@@ -121,7 +146,10 @@ export function TopHeader({ onToggleSidebar, notificationsOpen, onToggleNotifica
       {/* User Avatar */}
       <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 cursor-pointer">
         <span className="text-white text-xs font-bold">
-          {MOCK_USER.name.split(' ').map(n => n[0]).join('')}
+          {MOCK_USER.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")}
         </span>
       </div>
     </header>

@@ -1,8 +1,8 @@
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
-import { TOPICS } from '@/app/data/topics';
-import type { PageId } from '@/app/types/navigation';
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { TOPICS } from "@/app/data/topics";
+import type { PageId } from "@/app/types/navigation";
 import {
   LayoutDashboard,
   BookOpen,
@@ -12,7 +12,7 @@ import {
   CalendarDays,
   Trophy,
   ChevronRight,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface SidebarProps {
   activePage: PageId;
@@ -21,34 +21,34 @@ interface SidebarProps {
 }
 
 const NAV_SECTIONS = [
-  { id: 'dashboard' as PageId, label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'topics' as PageId, label: 'Study Topics', icon: BookOpen },
-  { id: 'quiz' as PageId, label: 'Practice Quiz', icon: Pencil },
-  { id: 'mock-exam' as PageId, label: 'Mock Exam', icon: FileText },
-  { id: 'flashcards' as PageId, label: 'Flashcards', icon: BrainCircuit },
-  { id: 'notes' as PageId, label: 'Study Notes', icon: FileText },
-  { id: 'planner' as PageId, label: 'Study Planner', icon: CalendarDays },
-  { id: 'achievements' as PageId, label: 'Achievements', icon: Trophy },
+  { id: "dashboard" as PageId, label: "Dashboard", icon: LayoutDashboard },
+  { id: "topics" as PageId, label: "Study Topics", icon: BookOpen },
+  { id: "quiz" as PageId, label: "Practice Quiz", icon: Pencil },
+  { id: "mock-exam" as PageId, label: "Mock Exam", icon: FileText },
+  { id: "flashcards" as PageId, label: "Flashcards", icon: BrainCircuit },
+  { id: "notes" as PageId, label: "Study Notes", icon: FileText },
+  { id: "planner" as PageId, label: "Study Planner", icon: CalendarDays },
+  { id: "achievements" as PageId, label: "Achievements", icon: Trophy },
 ];
 
-const MOCK_EXAM_URL = 'https://kuldippansuriya04-dev.github.io/cfa-study-portal/exams';
+const MOCK_PORTAL_URL = `${import.meta.env.BASE_URL}mock-portal.html`;
 
 export function Sidebar({ activePage, onNavigate, collapsed }: SidebarProps) {
   const isActive = (id: PageId) =>
-    activePage === id || (id === 'topics' && activePage.startsWith('topic-'));
+    activePage === id || (id === "topics" && activePage.startsWith("topic-"));
 
   const handleNavClick = (id: PageId) => {
-    if (id === 'mock-exam') {
-      window.open(MOCK_EXAM_URL, '_blank', 'noopener,noreferrer');
-    } else {
-      onNavigate(id);
+    if (id === "mock-exam") {
+      window.location.href = MOCK_PORTAL_URL;
+      return;
     }
+    onNavigate(id);
   };
 
   return (
     <aside
       className={`flex flex-col h-full bg-[#0F172A] border-r border-white/10 transition-all duration-300 ${
-        collapsed ? 'w-16' : 'w-60'
+        collapsed ? "w-16" : "w-60"
       } flex-shrink-0`}
     >
       {/* Logo */}
@@ -58,8 +58,12 @@ export function Sidebar({ activePage, onNavigate, collapsed }: SidebarProps) {
         </div>
         {!collapsed && (
           <div>
-            <div className="text-white font-bold text-sm leading-none">CFA Level I</div>
-            <div className="text-blue-400 text-xs mt-0.5">Study Platform</div>
+            <div className="text-white font-bold text-sm leading-none">
+              CFA Level 1
+            </div>
+            <div className="text-blue-400 text-xs mt-0.5">
+              Practice Questions Hub
+            </div>
           </div>
         )}
       </div>
@@ -80,9 +84,9 @@ export function Sidebar({ activePage, onNavigate, collapsed }: SidebarProps) {
               onClick={() => handleNavClick(id)}
               className={`w-full flex items-center gap-3 px-2 py-2 rounded-lg text-sm font-medium transition-all mb-0.5 ${
                 isActive(id)
-                  ? 'bg-blue-600 text-white'
-                  : 'text-white/60 hover:text-white hover:bg-white/10'
-              } ${collapsed ? 'justify-center' : ''}`}
+                  ? "bg-blue-600 text-white"
+                  : "text-white/60 hover:text-white hover:bg-white/10"
+              } ${collapsed ? "justify-center" : ""}`}
               title={collapsed ? label : undefined}
             >
               <Icon size={18} className="flex-shrink-0" />
@@ -107,21 +111,31 @@ export function Sidebar({ activePage, onNavigate, collapsed }: SidebarProps) {
                   key={topic.id}
                   onClick={() => onNavigate(topicPageId)}
                   className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs font-medium transition-all mb-0.5 group ${
-                    active ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white/80 hover:bg-white/5'
+                    active
+                      ? "bg-white/10 text-white"
+                      : "text-white/50 hover:text-white/80 hover:bg-white/5"
                   }`}
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
                     style={{ backgroundColor: topic.color }}
                   />
-                  <span className="truncate flex-1 text-left">{topic.shortName}</span>
+                  <span className="truncate flex-1 text-left">
+                    {topic.shortName}
+                  </span>
                   <span
                     className="text-[10px] px-1.5 py-0.5 rounded font-semibold flex-shrink-0"
-                    style={{ backgroundColor: topic.color + '33', color: topic.color }}
+                    style={{
+                      backgroundColor: topic.color + "33",
+                      color: topic.color,
+                    }}
                   >
                     {topic.examWeightMin}-{topic.examWeightMax}%
                   </span>
-                  <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 flex-shrink-0" />
+                  <ChevronRight
+                    size={12}
+                    className="opacity-0 group-hover:opacity-100 flex-shrink-0"
+                  />
                 </button>
               );
             })}
@@ -139,7 +153,7 @@ export function Sidebar({ activePage, onNavigate, collapsed }: SidebarProps) {
                   onClick={() => onNavigate(topicPageId)}
                   title={topic.shortName}
                   className={`w-full flex justify-center py-1.5 rounded-lg transition-all ${
-                    active ? 'bg-white/10' : 'hover:bg-white/5'
+                    active ? "bg-white/10" : "hover:bg-white/5"
                   }`}
                 >
                   <span
@@ -159,7 +173,7 @@ export function Sidebar({ activePage, onNavigate, collapsed }: SidebarProps) {
           <Separator className="bg-white/10" />
           <div className="px-4 py-3">
             <div className="text-white/30 text-[10px] text-center">
-              CFA Institute · Level I Curriculum
+              CFA Level 1 Practice Questions Hub
             </div>
           </div>
         </>
