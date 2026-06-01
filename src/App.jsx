@@ -20,6 +20,7 @@ function App() {
         <p>Subjects</p>
         <p>Mock Tests</p>
         <p>Analytics</p>
+        <p>Comics</p>
       </div>
 
       <div style={{
