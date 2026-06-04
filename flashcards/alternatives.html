@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alternatives Flashcards</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+    body{background:#f3f4f6;display:flex;justify-content:center;align-items:center;height:100vh;}
+    .flashcard-container{width:650px;max-width:90%;}
+    .card{width:100%;height:360px;perspective:1000px;cursor:pointer;}
+    .card-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;}
+    .card.flipped .card-inner{transform:rotateY(180deg);}
+    .card-front,.card-back{position:absolute;width:100%;height:100%;border-radius:24px;padding:40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;backface-visibility:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+    .card-front{background:white;color:#111827;}
+    .card-back{background:#2563eb;color:white;transform:rotateY(180deg);}
+    .tag{padding:10px 22px;border-radius:30px;font-size:14px;font-weight:bold;margin-bottom:30px;}
+    .front-tag{background:#dbeafe;color:#2563eb;}
+    .back-tag{background:white;color:#2563eb;}
+    h2{font-size:32px;line-height:1.4;max-width:90%;}
+    .hint{margin-top:35px;font-size:14px;opacity:0.7;}
+    .controls{margin-top:35px;display:flex;justify-content:space-between;align-items:center;}
+    button{border:none;background:#2563eb;color:white;padding:16px 28px;border-radius:14px;cursor:pointer;font-size:20px;font-weight:600;transition:0.2s;}
+    button:hover{background:#1d4ed8;}
+cat > flashcards/alternatives.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alternatives Flashcards</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+    body{background:#f3f4f6;display:flex;justify-content:center;align-items:center;height:100vh;}
+    .flashcard-container{width:650px;max-width:90%;}
+    .card{width:100%;height:360px;perspective:1000px;cursor:pointer;}
+    .card-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;}
+    .card.flipped .card-inner{transform:rotateY(180deg);}
+    .card-front,.card-back{position:absolute;width:100%;height:100%;border-radius:24px;padding:40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;backface-visibility:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+    .card-front{background:white;color:#111827;}
+    .card-back{background:#2563eb;color:white;transform:rotateY(180deg);}
+    .tag{padding:10px 22px;border-radius:30px;font-size:14px;font-weight:bold;margin-bottom:30px;}
+    .front-tag{background:#dbeafe;color:#2563eb;}
+    .back-tag{background:white;color:#2563eb;}
+    h2{font-size:32px;line-height:1.4;max-width:90%;}
+    .hint{margin-top:35px;font-size:14px;opacity:0.7;}
+    .controls{margin-top:35px;display:flex;justify-content:space-between;align-items:center;}
+    button{border:none;background:#2563eb;color:white;padding:16px 28px;border-radius:14px;cursor:pointer;font-size:20px;font-weight:600;transition:0.2s;}
+    button:hover{background:#1d4ed8;}
+    .counter{font-size:30px;font-weight:bold;color:#374151;}
+  </style>
+</head>
+<body>
+  <div class="flashcard-container">
+    <div class="card" id="flashcard">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="tag front-tag">QUESTION</div>
+          <h2 id="question"></h2>
+          <div class="hint">Click card to flip</div>
+        </div>
+        <div class="card-back">
+          <div class="tag back-tag">ANSWER</div>
+          <h2 id="answer"></h2>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <button onclick="prevCard()">← Previous</button>
+      <div class="counter" id="counter">1 / 20</div>
+      <button onclick="nextCard()">Next →</button>
+    </div>
+  </div>
+  <script>
+    const flashcards = [
+      {question:"What are alternative investments?",answer:"Investments outside traditional stocks, bonds, and cash."},
+      {question:"Examples of tangible alternative investments?",answer:"Art, wine, stamps, and antique furniture."},
+      {question:"Examples of intangible alternative investments?",answer:"Patents and digital assets."},
+      {question:"What are the three investment methods?",answer:"Fund investment, co-investment, and direct investment."},
+      {question:"What is fund investment?",answer:"Indirect investment through pooled funds."},
+      {question:"What is co-investment?",answer:"Direct investment alongside a fund."},
+      {question:"What is direct investment?",answer:"Managing investments directly."},
+      {question:"Who manages a limited partnership?",answer:"The General Partner (GP)."},
+      {question:"Who are Limited Partners?",answer:"Passive investors providing capital."},
+      {question:"What is a management fee?",answer:"Fee charged for managing investments."},
+      {question:"What is a performance fee?",answer:"Fee based on profits earned."},
+      {question:"What is a hurdle rate?",answer:"Minimum return before incentive fees."},
+      {question:"What is a high-water mark?",answer:"Highest previous portfolio value."},
+      {question:"What is a clawback provision?",answer:"Managers return excess compensation."},
+      {question:"What are waterfall structures?",answer:"Methods for profit distribution."},
+      {question:"What is private equity?",answer:"Investment in private companies."},
+      {question:"What is due diligence?",answer:"Detailed investigation before investing."},
+      {question:"What are hedge funds known for?",answer:"Flexible investment strategies."},
+      {question:"What is blockchain?",answer:"Distributed ledger storing linked transactions."},
+      {question:"What are smart contracts?",answer:"Self-executing digital contracts."}
+    ];
+    let currentCard=0;
+    const card=document.getElementById("flashcard");
+    const question=document.getElementById("question");
+    const answer=document.getElementById("answer");
+    const counter=document.getElementById("counter");
+    card.addEventListener("click",()=>card.classList.toggle("flipped"));
+    function loadCard(){
+      question.textContent=flashcards[currentCard].question;
+      answer.textContent=flashcards[currentCard].answer;
+      counter.textContent=`${currentCard+1} / ${flashcards.length}`;
+      card.classList.remove("flipped");
+    }
+    function nextCard(){currentCard=(currentCard+1)%flashcards.length;loadCard();}
+    function prevCard(){currentCard=(currentCard-1+flashcards.length)%flashcards.length;loadCard();}
+    loadCard();
+  </script>
+</body>
+</html>
