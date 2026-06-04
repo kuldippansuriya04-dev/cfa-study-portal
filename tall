@@ -1,0 +1,34 @@
+[33m08afdd5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Updated flashcards
+[33m81723e6[m Add alternatives and corporate issuers flashcards
+[33m0a3c501[m Add flashcard HTML pages
+[33mad6ad2c[m Restore flashcards and comics website pages
+[33m92b9e94[m Deploy: Add flashcards feature
+[33m79e01ed[m Add Flashcards feature with CFA topic data
+[33m0c5ad9a[m Fix GitHub Pages entrypoint
+[33mdd6b01c[m Add login system
+[33m9aa2c64[m feat: add Comics section
+[33mfddaaf2[m feat: add Comics section with Quant Methods comic
+[33mb30ebed[m Add planner and achievements pages
+[33m7a7023f[m Publish latest CFA portal updates
+[33mc5fcfc8[m[33m ([m[1;32mbackup-old-ui[m[33m)[m update website
+[33ma387595[m Publish uploaded study platform build
+[33m51988fe[m Replace portal with uploaded study platform
+[33m8215e42[m Render mock question tables
+[33mf8b7b54[m Format solution tables in review
+[33m3dfd2e7[m Add Mock 1 Session 1 solutions
+[33md9de504[m Keep exam controls visible
+[33mb88422d[m Integrate mock portal into website
+[33m286587a[m Publish exact mock portal HTML
+[33m31ea69d[m Publish app through GitHub Pages
+[33m3db93bb[m Replace mock exams from uploaded portal
+[33m11c9b48[m Fix score calculation
+[33me847d2e[m Fix principal.toText in Profile
+[33m27e37cf[m Fix score calculation and skip handling
+[33me809fb4[m Fix Login
+[33m768b03d[m Replace Internet Identity with simple email auth
+[33m29a233f[m Fix unescaped quotes in explanations
+[33m7d35f82[m Add real explanations for Mock 1 SS1 and SS2
+[33m93e010c[m Add real explanations for Mock 1 SS1 and SS2 from PDF
+[33m33ee704[m Update mockData.ts
+[33mc560f55[m #1: Add initial project plan for CFA-style learning portal
+[33m073970b[m Initial commit
