@@ -4,6 +4,7 @@ export type PageId =
   | 'quiz'
   | 'mock-exam'
   | 'flashcards'
+  | 'comics'
   | 'notes'
   | 'planner'
   | 'achievements'

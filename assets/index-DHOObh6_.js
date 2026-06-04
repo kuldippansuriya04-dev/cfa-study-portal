@@ -18567,6 +18567,7 @@ const NAV_SECTIONS = [
   { id: "quiz", label: "Practice Quiz", icon: Pencil },
   { id: "mock-exam", label: "Mock Exam", icon: FileText },
   { id: "flashcards", label: "Flashcards", icon: BrainCircuit },
+  { id: "comics", label: "Comics", icon: BookOpenCheck },
   { id: "notes", label: "Study Notes", icon: FileText },
   { id: "planner", label: "Study Planner", icon: CalendarDays },
   { id: "achievements", label: "Achievements", icon: Trophy }
@@ -19493,6 +19494,14 @@ function DashboardPage({ onNavigate }) {
         sub: "12 cards due today",
         color: "text-green-600 bg-green-100",
         page: "flashcards"
+      }
+    ,
+      {
+        icon: BookOpenCheck,
+        label: "Comics",
+        sub: "Quant story revision",
+        color: "text-cyan-700 bg-cyan-100",
+        page: "comics"
       }
     ].map(({ icon: Icon2, label, sub, color, page }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       Card,
@@ -50051,6 +50060,110 @@ function PlaceholderPage({ page, onNavigate }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "← Back to Dashboard" }) })
   ] }) }) });
 }
+
+const SUBJECT_DECKS = [
+  { subject: "Quantitative Methods", shortName: "Quant", color: "#7C3AED", cards: [["Time Value of Money", "A dollar today is worth more than a dollar later because it can earn a return over time."], ["Holding Period Return", "Income plus price change divided by the beginning value."], ["Standard Deviation", "A measure of dispersion around the mean; higher standard deviation means higher total risk."]] },
+  { subject: "Ethics", shortName: "Ethics", color: "#1E40AF", cards: [["Standard I(A)", "Know and comply with all applicable laws, rules, and regulations. Follow the stricter rule."], ["Loyalty to Clients", "Place client interests before employer and personal interests."], ["Misrepresentation", "Do not knowingly make false statements or omit material facts."]] },
+  { subject: "Economics", shortName: "Econ", color: "#059669", cards: [["Elasticity", "Measures how responsive quantity demanded or supplied is to a change in price or income."], ["GDP", "The market value of final goods and services produced within a country in a period."]] },
+  { subject: "Corporate Issuers", shortName: "Corp", color: "#DC2626", cards: [["NPV Rule", "Accept projects with positive net present value because they add shareholder value."], ["WACC", "The weighted average required return for debt and equity capital."]] },
+  { subject: "Financial Statement Analysis", shortName: "FSA", color: "#EA580C", cards: [["Current Ratio", "Current assets divided by current liabilities. It measures short-term liquidity."], ["Accrual Accounting", "Revenue and expenses are recognized when earned or incurred, not necessarily when cash moves."]] },
+  { subject: "Equity Investments", shortName: "Equity", color: "#DB2777", cards: [["Gordon Growth Model", "Value equals next dividend divided by required return minus constant growth rate: D1 / (r - g)."], ["Market Capitalization", "Share price multiplied by shares outstanding."]] },
+  { subject: "Fixed Income", shortName: "Fixed", color: "#65A30D", cards: [["Duration", "Approximate percentage price change for a 1% change in yield, holding other factors constant."], ["Coupon Rate", "Annual coupon payment divided by bond par value."]] },
+  { subject: "Derivatives", shortName: "Deriv", color: "#0891B2", cards: [["Forward Contract", "A private agreement to buy or sell an asset at a set future price and date."], ["Option", "A contract that gives the buyer a right, not an obligation, to buy or sell an asset."]] },
+  { subject: "Alternative Investments", shortName: "Alt", color: "#9333EA", cards: [["Private Equity", "Investment in companies that are not publicly traded."], ["Real Estate", "Property investment that may provide income, appreciation, and diversification."]] },
+  { subject: "Portfolio Management", shortName: "PM", color: "#0F766E", cards: [["Sharpe Ratio", "Excess return per unit of total risk: portfolio return minus risk-free rate divided by standard deviation."], ["Diversification", "Combining imperfectly correlated assets can reduce portfolio risk."]] }
+];
+function FlashcardsPage({ onNavigate }) {
+  const [subjectIndex, setSubjectIndex] = reactExports.useState(0);
+  const [cardIndex, setCardIndex] = reactExports.useState(0);
+  const [showAnswer, setShowAnswer] = reactExports.useState(false);
+  const subject = SUBJECT_DECKS[subjectIndex];
+  const card = subject.cards[cardIndex];
+  const totalCards = SUBJECT_DECKS.reduce((sum, deck) => sum + deck.cards.length, 0);
+  const progress = (cardIndex + 1) / subject.cards.length * 100;
+  const selectSubject = (index) => {
+    setSubjectIndex(index);
+    setCardIndex(0);
+    setShowAnswer(false);
+  };
+  const goToCard = (nextIndex) => {
+    setCardIndex((nextIndex + subject.cards.length) % subject.cards.length);
+    setShowAnswer(false);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 max-w-7xl mx-auto space-y-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-sm font-semibold text-blue-700", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(BrainCircuit, { size: 18 }),
+          "Flashcards"
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold mt-1", children: "Subject-wise CFA Flashcards" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Choose a subject, flip the card, and revise one concept at a time." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "Back to Dashboard" })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3", children: SUBJECT_DECKS.map((deck, index) => /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: () => selectSubject(index), className: "text-left rounded-lg border bg-white p-4 shadow-sm transition hover:shadow-md " + (index === subjectIndex ? "ring-2 ring-blue-500 border-blue-200" : ""), children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block h-2 w-10 rounded-full mb-3", style: { backgroundColor: deck.color } }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block text-sm font-semibold", children: deck.shortName }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "block text-xs text-muted-foreground mt-1", children: [deck.cards.length, " cards"] })
+    ] }, deck.subject)) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardHeader, { className: "pb-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "outline", style: { borderColor: subject.color, color: subject.color }, children: subject.subject }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs text-muted-foreground", children: [cardIndex + 1, " / ", subject.cards.length] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: progress, className: "h-1.5 mt-3" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "space-y-5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: () => setShowAnswer((value) => !value), className: "w-full min-h-[320px] rounded-lg border bg-white p-8 text-left shadow-sm transition hover:bg-muted/30", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-wide text-muted-foreground", children: showAnswer ? "Answer" : "Question" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 text-2xl font-bold leading-snug", children: showAnswer ? card[1] : card[0] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-6 text-sm text-muted-foreground", children: ["Click card to ", showAnswer ? "hide answer" : "show answer", "."] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap items-center gap-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: () => setShowAnswer((value) => !value), children: "Flip Card" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => goToCard(cardIndex - 1), children: "Previous" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => goToCard(cardIndex + 1), children: "Next" })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-base", children: "Deck Summary" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "space-y-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-3xl font-black", children: totalCards }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "starter flashcards across all Level 1 subjects" }),
+          SUBJECT_DECKS.map((deck, index) => /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: () => selectSubject(index), className: "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm hover:bg-muted", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: deck.shortName }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: deck.cards.length })
+          ] }, deck.subject))
+        ] })
+      ] })
+    ] })
+  ] });
+}
+const COMIC_URL = "/cfa-study-portal/public/comics/cfa_quant_comics.html";
+function ComicsPage({ onNavigate }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 max-w-6xl mx-auto space-y-4", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-sm font-semibold text-blue-700", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpenCheck, { size: 18 }),
+          "CFA Comics"
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold mt-1", children: "Quant Methods Comic" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Visual revision for CFA Level 1 concepts." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "Back" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { size: "sm", onClick: () => window.open(COMIC_URL, "_blank", "noopener,noreferrer"), children: "Open Comic" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("iframe", { title: "CFA Quant Methods Comic", src: COMIC_URL, className: "w-full h-[calc(100vh-220px)] min-h-[560px] bg-white" }) }) })
+  ] });
+}
+
 function createCollection(name) {
   const PROVIDER_NAME = name + "CollectionProvider";
   const [createCollectionContext, createCollectionScope2] = createContextScope$1(PROVIDER_NAME);
@@ -55704,6 +55817,12 @@ function App$1() {
     }
     if (activePage === "quiz") {
       return /* @__PURE__ */ jsxRuntimeExports.jsx(PracticeQuizPage, { onNavigate: handleNavigate });
+    }
+    if (activePage === "flashcards") {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(FlashcardsPage, { onNavigate: handleNavigate });
+    }
+    if (activePage === "comics") {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(ComicsPage, { onNavigate: handleNavigate });
     }
     if (activePage === "planner") {
       return /* @__PURE__ */ jsxRuntimeExports.jsx(StudyPlannerPage, { onNavigate: handleNavigate });

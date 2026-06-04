@@ -6,6 +6,7 @@ import type { PageId } from "@/app/types/navigation";
 import {
   LayoutDashboard,
   BookOpen,
+  BookOpenCheck,
   Pencil,
   BrainCircuit,
   FileText,
@@ -26,6 +27,7 @@ const NAV_SECTIONS = [
   { id: "quiz" as PageId, label: "Practice Quiz", icon: Pencil },
   { id: "mock-exam" as PageId, label: "Mock Exam", icon: FileText },
   { id: "flashcards" as PageId, label: "Flashcards", icon: BrainCircuit },
+  { id: "comics" as PageId, label: "Comics", icon: BookOpenCheck },
   { id: "notes" as PageId, label: "Study Notes", icon: FileText },
   { id: "planner" as PageId, label: "Study Planner", icon: CalendarDays },
   { id: "achievements" as PageId, label: "Achievements", icon: Trophy },

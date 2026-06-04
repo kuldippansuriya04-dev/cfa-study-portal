@@ -12,7 +12,8 @@ import { PlaceholderPage } from "@/app/pages/PlaceholderPage";
 import { PracticeQuizPage } from "@/app/pages/PracticeQuizPage";
 import { StudyPlannerPage } from "@/app/pages/StudyPlannerPage";
 import { AchievementsPage } from "@/app/pages/AchievementsPage";
-import { FlashcardsPage } from "./pages/FlashcardsPage";
+import { FlashcardsPage } from "@/app/pages/FlashcardsPage";
+import { ComicsPage } from "@/app/pages/ComicsPage";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { PageId } from "@/app/types/navigation";
 
@@ -60,9 +61,12 @@ function App() {
       return <PracticeQuizPage onNavigate={handleNavigate} />;
     }
     if (activePage === "flashcards") {
-    return <FlashcardsPage onNavigate={handleNavigate} />;
-  }
-  if (activePage === "planner") {
+      return <FlashcardsPage onNavigate={handleNavigate} />;
+    }
+    if (activePage === "comics") {
+      return <ComicsPage />;
+    }
+    if (activePage === "planner") {
       return <StudyPlannerPage onNavigate={handleNavigate} />;
     }
     if (activePage === "achievements") {

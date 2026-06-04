@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFA Ethics – Comic Strip Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #fffef5;
+    --yellow: #ffd700;
+    --red: #e63946;
+    --blue: #2196f3;
+    --green: #4caf50;
+    --purple: #9c27b0;
+    --orange: #ff9800;
+    --panel-bg: #fff;
+    --border: 3px solid #1a1a2e;
+    --thick: 5px solid #1a1a2e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    font-family: 'Comic Neue', cursive;
+    color: var(--ink);
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(0,0,0,0.05) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(0,0,0,0.03) 28px);
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--ink);
+    color: var(--yellow);
+    text-align: center;
+    padding: 50px 20px 40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 8px solid var(--yellow);
+  }
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,215,0,0.04) 20px, rgba(255,215,0,0.04) 40px);
+  }
+  .cover-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 4px 16px;
+    border: 3px solid #fff;
+    transform: rotate(-2deg);
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    letter-spacing: 4px;
+    line-height: 1.1;
+    text-shadow: 4px 4px 0 var(--red), 8px 8px 0 rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .cover-sub {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 12px;
+  }
+  .cover-stars {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    margin-top: 10px;
+    letter-spacing: 6px;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 20px;
+    background: var(--yellow);
+    border-bottom: var(--thick);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav a {
+    font-family: 'Bangers', cursive;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--ink);
+    text-decoration: none;
+    background: #fff;
+    border: 2px solid var(--ink);
+    padding: 4px 12px;
+    transition: all 0.15s;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  nav a:hover { background: var(--ink); color: var(--yellow); transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--yellow); }
+
+  /* MODULE */
+  .module {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: var(--thick);
+    background: var(--ink);
+    color: #fff;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    box-shadow: 6px 6px 0 var(--yellow);
+    position: relative;
+  }
+  .module-num {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    color: var(--yellow);
+    line-height: 1;
+    min-width: 60px;
+  }
+  .module-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+  .module-tagline {
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-top: 4px;
+  }
+
+  /* accent colors per module */
+  .m1 .module-header { box-shadow: 6px 6px 0 var(--blue); }
+  .m2 .module-header { box-shadow: 6px 6px 0 var(--red); }
+  .m3 .module-header { box-shadow: 6px 6px 0 var(--green); }
+  .m4 .module-header { box-shadow: 6px 6px 0 var(--purple); }
+  .m5 .module-header { box-shadow: 6px 6px 0 var(--orange); }
+
+  /* COMIC GRID */
+  .comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    border: var(--thick);
+    background: var(--ink);
+  }
+
+  /* PANEL */
+  .panel {
+    background: var(--panel-bg);
+    border: var(--border);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .panel-scene {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px 10px;
+    position: relative;
+    gap: 10px;
+  }
+
+  .panel-caption {
+    font-family: 'Bangers', cursive;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--ink);
+    padding: 4px 10px;
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .panel-bottom {
+    padding: 10px 14px 14px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .panel-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  /* SPEECH BUBBLES */
+  .bubble {
+    position: relative;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+    max-width: 90%;
+  }
+  .bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 10px solid transparent;
+    border-top: 10px solid var(--ink);
+  }
+  .bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top: 8px solid #fff;
+    z-index: 1;
+  }
+  .thought-bubble {
+    border-radius: 50%;
+    padding: 10px;
+  }
+  .thought-bubble::after { display: none; }
+  .thought-bubble::before { display: none; }
+
+  /* CHARACTERS (SVG illustrations) */
+  .char {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+  }
+  .char-sm { width: 55px; height: 55px; }
+  .char-lg { width: 90px; height: 90px; }
+
+  /* SCENE BACKGROUNDS */
+  .bg-office { background: linear-gradient(180deg, #e8f4fd 60%, #c8e6fa 100%); }
+  .bg-street { background: linear-gradient(180deg, #fce4ec 60%, #f8bbd9 100%); }
+  .bg-dark { background: linear-gradient(180deg, #1a1a2e 60%, #16213e 100%); }
+  .bg-gold { background: linear-gradient(180deg, #fff9c4 60%, #fff176 100%); }
+  .bg-green { background: linear-gradient(180deg, #e8f5e9 60%, #c8e6c9 100%); }
+  .bg-purple { background: linear-gradient(180deg, #f3e5f5 60%, #e1bee7 100%); }
+  .bg-orange { background: linear-gradient(180deg, #fff3e0 60%, #ffe0b2 100%); }
+
+  /* WIDE PANEL */
+  .panel-wide {
+    grid-column: span 2;
+  }
+  @media (max-width: 600px) {
+    .panel-wide { grid-column: span 1; }
+  }
+
+  /* SFX */
+  .sfx {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    transform: rotate(-5deg);
+    display: inline-block;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  }
+  .sfx-blue { color: var(--blue); }
+  .sfx-red { color: var(--red); }
+  .sfx-green { color: var(--green); }
+  .sfx-purple { color: var(--purple); }
+  .sfx-orange { color: var(--orange); }
+
+  /* KEY LESSON BOX */
+  .key-lesson {
+    margin: 24px 0;
+    border: var(--thick);
+    background: var(--yellow);
+    padding: 16px 20px;
+    box-shadow: 4px 4px 0 var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .key-icon { font-size: 2rem; flex-shrink: 0; }
+  .key-lesson h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .key-lesson p { font-size: 0.85rem; line-height: 1.5; }
+
+  /* STANDARDS CARD (module 3) */
+  .standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .std-card {
+    border: var(--border);
+    background: #fff;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .std-card-head {
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 6px 12px;
+  }
+  .std-card-body {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #888;
+    border-top: var(--thick);
+    margin-top: 60px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--ink) 0, var(--ink) 20px, var(--yellow) 20px, var(--yellow) 40px);
+    margin: 40px 0;
+  }
+
+  /* NARRATION BOX */
+  .narration {
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-style: italic;
+    align-self: stretch;
+    text-align: left;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">📚 CFA Level 1 • Vol 10</div>
+  <h1>ETHICS<br>UNLEASHED!</h1>
+  <div class="cover-sub">All 5 Learning Modules — Now in Glorious Comic Form</div>
+  <div class="cover-stars">★ ★ ★ ★ ★</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#m1">① Ethics & Trust</a>
+  <a href="#m2">② Code of Ethics</a>
+  <a href="#m3">③ Standards I–VII</a>
+  <a href="#m4">④ GIPS</a>
+  <a href="#m5">⑤ Ethics Application</a>
+</nav>
+
+<!-- ══════════════════════════════════════ -->
+<!-- MODULE 1 -->
+<!-- ══════════════════════════════════════ -->
+<section class="module m1" id="m1">
+  <div class="module-header">
+    <div class="module-num">1</div>
+    <div>
+      <div class="module-title">Ethics & Trust in the Investment Profession</div>
+      <div class="module-tagline">What even IS ethics? And why should you care?</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+    <!-- Panel 1 -->
+    <div class="panel">
+      <div class="panel-caption">The Big Question</div>
+      <div class="panel-scene bg-office">
+        <svg class="char-lg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- Simple analyst character -->
+          <circle cx="40" cy="22" r="14" fill="#FFD180" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="26" y="36" width="28" height="28" rx="4" fill="#1565C0" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="34" y="64" width="6" height="10" fill="#424242" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="42" y="64" width="6" height="10" fill="#424242" stroke="#1a1a2e" stroke-width="1.5"/>
+          <!-- tie -->
+          <polygon points="40,38 37,50 40,54 43,50" fill="#e63946"/>
+          <!-- eyes -->
+          <circle cx="35" cy="20" r="2.5" fill="#1a1a2e"/>
+          <circle cx="45" cy="20" r="2.5" fill="#1a1a2e"/>
+          <!-- smile -->
+          <path d="M35 27 Q40 31 45 27" stroke="#1a1a2e" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- question mark thought -->
+          <text x="56" y="14" font-size="18" fill="#e63946" font-weight="bold" font-family="sans-serif">?</text>
+        </svg>
+        <div class="bubble">"What exactly IS ethics, anyway?"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Ethics = moral principles that guide our behavior and affect others (our stakeholders).</div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="panel">
+      <div class="panel-caption">Stakeholders Everywhere!</div>
+      <div class="panel-scene bg-gold">
+        <svg viewBox="0 0 120 80" class="char-lg" style="width:120px" xmlns="http://www.w3.org/2000/svg">
+          <!-- 3 people icons -->
+          <circle cx="20" cy="20" r="10" fill="#FFD180" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="12" y="30" width="16" height="18" rx="3" fill="#4CAF50" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="14" y="60" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Client</text>
+          <circle cx="60" cy="20" r="10" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="52" y="30" width="16" height="18" rx="3" fill="#2196F3" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="50" y="60" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Employer</text>
+          <circle cx="100" cy="20" r="10" fill="#FFAB40" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="92" y="30" width="16" height="18" rx="3" fill="#9C27B0" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="92" y="60" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Society</text>
+          <!-- arrows toward center -->
+          <line x1="32" y1="25" x2="50" y2="25" stroke="#e63946" stroke-width="2" marker-end="url(#arr)"/>
+          <line x1="88" y1="25" x2="70" y2="25" stroke="#e63946" stroke-width="2"/>
+        </svg>
+        <div class="narration">Your decisions ripple out…</div>
+        <div class="bubble">"Every choice I make affects colleagues, clients, regulators, AND society!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Investment pros affect many stakeholders — always consider the ripple effects.</div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="panel">
+      <div class="panel-caption">What Makes a Profession?</div>
+      <div class="panel-scene bg-green">
+        <svg class="char" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="20" r="12" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="23" y="32" width="24" height="24" rx="3" fill="#4CAF50" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- graduation cap -->
+          <rect x="25" y="9" width="20" height="5" rx="1" fill="#1a1a2e"/>
+          <polygon points="35,4 25,9 45,9" fill="#1a1a2e"/>
+          <rect x="43" y="9" width="2" height="8" fill="#1a1a2e"/>
+          <circle cx="44" cy="17" r="2" fill="#e63946"/>
+          <!-- eyes -->
+          <circle cx="30" cy="19" r="2" fill="#1a1a2e"/>
+          <circle cx="40" cy="19" r="2" fill="#1a1a2a"/>
+        </svg>
+        <div class="bubble" style="max-width:80%">"High entry standards. Code of ethics. Serving clients first. THAT's a profession!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Professions = specialized knowledge + ethical standards + public trust mandate.</div>
+      </div>
+    </div>
+
+    <!-- Panel 4 — wide -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Ethical vs. Legal — They're Not the Same!</div>
+      <div class="panel-scene bg-street" style="flex-direction:row; flex-wrap:wrap; justify-content:space-around; gap:16px; padding:20px">
+        <div style="text-align:center">
+          <div class="sfx sfx-blue">LEGAL</div><br>
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#e3f2fd" stroke="#1a1a2e" stroke-width="2"/>
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="26" font-family="sans-serif">⚖️</text>
+          </svg>
+          <div style="font-size:0.75rem; font-weight:bold; margin-top:4px">The law sets the <u>floor</u></div>
+        </div>
+        <div style="display:flex;align-items:center;font-family:Bangers,cursive;font-size:2rem;color:var(--red)">≠</div>
+        <div style="text-align:center">
+          <div class="sfx sfx-green">ETHICAL</div><br>
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#e8f5e9" stroke="#1a1a2e" stroke-width="2"/>
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="26" font-family="sans-serif">💎</text>
+          </svg>
+          <div style="font-size:0.75rem; font-weight:bold; margin-top:4px">Ethics sets the <u>ceiling</u></div>
+        </div>
+        <div style="max-width:200px; align-self:center">
+          <div class="bubble" style="max-width:100%">"Some legal things are unethical… and some ethical things might even be <em>illegal</em>! Always aim higher than the law."</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Legal ≠ Ethical. The CFA Code asks you to EXCEED legal minimums.</div>
+      </div>
+    </div>
+
+    <!-- Panel 5 -->
+    <div class="panel">
+      <div class="panel-caption">The Devil on Your Shoulder</div>
+      <div class="panel-scene" style="background:linear-gradient(180deg,#fff3e0 60%,#ffe0b2 100%)">
+        <!-- brain with bias icon -->
+        <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="35" cy="32" rx="24" ry="20" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- squiggles = brain -->
+          <path d="M20 28 Q25 22 30 28 Q35 34 40 28 Q45 22 50 28" stroke="#e63946" stroke-width="2" fill="none"/>
+          <path d="M22 35 Q27 29 32 35 Q37 41 42 35 Q47 29 52 35" stroke="#e63946" stroke-width="2" fill="none"/>
+          <text x="35" y="56" text-anchor="middle" font-size="20" font-family="sans-serif">😈</text>
+        </svg>
+        <div class="bubble">"Overconfidence bias: 'I'm honest — I'd NEVER do anything wrong!' … Famous last words."</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Biases (overconfidence, loyalty, situational pressure) can sabotage even good people.</div>
+      </div>
+    </div>
+
+    <!-- Panel 6 -->
+    <div class="panel">
+      <div class="panel-caption">The Decision Framework</div>
+      <div class="panel-scene bg-office" style="padding: 14px 12px 10px; gap: 0;">
+        <!-- Step 1 -->
+        <div style="width:100%; background:#2196F3; border:3px solid #1a1a2e; border-radius:8px; padding:8px 10px; text-align:center; box-shadow:3px 3px 0 #1a1a2e;">
+          <span style="font-family:'Bangers',cursive; font-size:0.75rem; color:#fff; letter-spacing:1px;">STEP 1</span>
+          <div style="font-family:'Comic Neue',cursive; font-weight:700; font-size:0.9rem; color:#fff; line-height:1.2;">🧩 Identify Stakeholders</div>
+        </div>
+        <!-- Arrow -->
+        <div style="font-size:1.4rem; line-height:1; color:#1a1a2e; font-weight:900;">▼</div>
+        <!-- Step 2 -->
+        <div style="width:100%; background:#4CAF50; border:3px solid #1a1a2e; border-radius:8px; padding:8px 10px; text-align:center; box-shadow:3px 3px 0 #1a1a2e;">
+          <span style="font-family:'Bangers',cursive; font-size:0.75rem; color:#fff; letter-spacing:1px;">STEP 2</span>
+          <div style="font-family:'Comic Neue',cursive; font-weight:700; font-size:0.9rem; color:#fff; line-height:1.2;">⚖️ Consider Consequences</div>
+        </div>
+        <!-- Arrow -->
+        <div style="font-size:1.4rem; line-height:1; color:#1a1a2e; font-weight:900;">▼</div>
+        <!-- Step 3 -->
+        <div style="width:100%; background:#e63946; border:3px solid #1a1a2e; border-radius:8px; padding:8px 10px; text-align:center; box-shadow:3px 3px 0 #1a1a2e;">
+          <span style="font-family:'Bangers',cursive; font-size:0.75rem; color:#fff; letter-spacing:1px;">STEP 3</span>
+          <div style="font-family:'Comic Neue',cursive; font-weight:700; font-size:0.9rem; color:#fff; line-height:1.2;">✅ Make Ethical Decision</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">"Would I be comfortable on the front page of a newspaper?" Use this 3-step framework every time!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">💡</div>
+    <div>
+      <h3>Module 1 Key Takeaway</h3>
+      <p>Ethics are moral principles that guide behavior. Professions demand more than just legality — they demand trustworthiness. Watch out for cognitive biases, and always use a structured decision-making framework when facing ethical dilemmas.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- MODULE 2 -->
+<!-- ══════════════════════════════════════ -->
+<section class="module m2" id="m2">
+  <div class="module-header">
+    <div class="module-num">2</div>
+    <div>
+      <div class="module-title">Code of Ethics & Standards of Professional Conduct</div>
+      <div class="module-tagline">The rulebook that makes CFA charterholders legendary.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+    <!-- Panel 1 -->
+    <div class="panel">
+      <div class="panel-caption">Why Does Ethics Matter?</div>
+      <div class="panel-scene bg-street">
+        <svg width="80" height="70" viewBox="0 0 80 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- money bag -->
+          <ellipse cx="40" cy="45" rx="24" ry="22" fill="#ffd700" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="40" y="50" text-anchor="middle" font-size="18" font-family="sans-serif">💰</text>
+          <rect x="34" y="20" width="12" height="12" rx="3" fill="#ffd700" stroke="#1a1a2e" stroke-width="2"/>
+          <ellipse cx="40" cy="20" rx="8" ry="5" fill="#e8d44d" stroke="#1a1a2e" stroke-width="2"/>
+        </svg>
+        <div class="bubble" style="max-width:85%">"Finance touches EVERYONE'S savings. One bad actor destroys trust for ALL of us!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Trust is the foundation of capital markets. Unethical behavior corrupts the whole system.</div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="panel">
+      <div class="panel-caption">The Code of Ethics — 6 Pillars</div>
+      <div class="panel-scene bg-gold">
+        <svg width="100" height="80" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- pillars -->
+          <rect x="5" y="20" width="12" height="50" fill="#1a1a2e"/>
+          <rect x="22" y="30" width="12" height="40" fill="#2196F3"/>
+          <rect x="39" y="15" width="12" height="55" fill="#e63946"/>
+          <rect x="56" y="25" width="12" height="45" fill="#4CAF50"/>
+          <rect x="73" y="10" width="12" height="60" fill="#9C27B0"/>
+          <rect x="90" y="20" width="12" height="50" fill="#FF9800"/>
+          <!-- roof -->
+          <polygon points="0,20 50,2 100,20" fill="#1a1a2e"/>
+          <!-- labels (tiny) -->
+          <text x="11" y="78" text-anchor="middle" font-size="5.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Ethics</text>
+          <text x="28" y="78" text-anchor="middle" font-size="5.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Client</text>
+          <text x="45" y="78" text-anchor="middle" font-size="5.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Integrity</text>
+          <text x="62" y="78" text-anchor="middle" font-size="5.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Diligence</text>
+          <text x="79" y="78" text-anchor="middle" font-size="5.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Respect</text>
+          <text x="96" y="78" text-anchor="middle" font-size="5.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Market</text>
+        </svg>
+        <div class="bubble" style="max-width:80%">"Six pillars hold up the whole temple of trust!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">The Code covers: ethics, client interests, integrity, diligence, respect, and market integrity.</div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="panel">
+      <div class="panel-caption">7 Standards Revealed!</div>
+      <div class="panel-scene bg-purple">
+        <svg width="90" height="75" viewBox="0 0 90 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- scroll -->
+          <rect x="10" y="8" width="70" height="60" rx="4" fill="#fff9c4" stroke="#1a1a2e" stroke-width="2"/>
+          <ellipse cx="10" cy="38" rx="6" ry="30" fill="#f5f5dc" stroke="#1a1a2e" stroke-width="2"/>
+          <ellipse cx="80" cy="38" rx="6" ry="30" fill="#f5f5dc" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- lines of text -->
+          <text x="23" y="24" font-size="7" font-weight="bold" fill="#1a1a2e" font-family="sans-serif">I. Professionalism</text>
+          <text x="23" y="34" font-size="7" font-weight="bold" fill="#1a1a2e" font-family="sans-serif">II. Capital Markets</text>
+          <text x="23" y="44" font-size="7" font-weight="bold" fill="#1a1a2e" font-family="sans-serif">III. Duties to Clients</text>
+          <text x="23" y="54" font-size="7" font-weight="bold" fill="#1a1a2e" font-family="sans-serif">IV. Duties to Employers</text>
+          <text x="23" y="61" font-size="6.5" font-weight="bold" fill="#1a1a2e" font-family="sans-serif">V–VII. Analysis, Conflicts, CFA</text>
+        </svg>
+        <div class="sfx sfx-purple">BOOM!</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Seven categories of standards govern every aspect of a CFA professional's conduct.</div>
+      </div>
+    </div>
+
+    <!-- Panel 4 — wide -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">The CFA Institute: Guardians of the Code</div>
+      <div class="panel-scene bg-office" style="flex-direction:row; flex-wrap:wrap; gap:16px; padding:20px; justify-content:center">
+        <svg width="70" height="80" viewBox="0 0 70 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- shield -->
+          <path d="M35 5 L65 18 L65 45 Q65 65 35 75 Q5 65 5 45 L5 18 Z" fill="#1565C0" stroke="#1a1a2e" stroke-width="2.5"/>
+          <text x="35" y="45" text-anchor="middle" font-size="28" font-family="sans-serif">CFA</text>
+          <!-- stars -->
+          <text x="35" y="62" text-anchor="middle" font-size="10" fill="#ffd700" font-family="sans-serif">★★★</text>
+        </svg>
+        <div style="max-width:400px">
+          <div class="narration">Mission: "Lead the investment profession globally, promoting the highest standards of ethics, education, and professional excellence."</div>
+          <div class="bubble" style="max-width:100%; margin-top:10px">"The CFA Institute Professional Conduct Program investigates and disciplines members who violate the Code. The badge means something!"</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">CFA Institute enforces the Code through its Professional Conduct Program — violations have real consequences.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">📜</div>
+    <div>
+      <h3>Module 2 Key Takeaway</h3>
+      <p>The CFA Code of Ethics and 7 Standards of Professional Conduct aren't just rules — they're the promise that makes clients trust their money with you. Knowing them isn't optional. Living them is the whole point.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- MODULE 3 -->
+<!-- ══════════════════════════════════════ -->
+<section class="module m3" id="m3">
+  <div class="module-header">
+    <div class="module-num">3</div>
+    <div>
+      <div class="module-title">Guidance for Standards I–VII</div>
+      <div class="module-tagline">Real situations. Real rules. Real consequences.</div>
+    </div>
+  </div>
+
+  <!-- Standards grid cards -->
+  <div class="standards-grid">
+    <div class="std-card">
+      <div class="std-card-head">⚖️ Standard I — Professionalism</div>
+      <div class="std-card-body">Know the law. Be independent & objective. No misrepresentation. No misconduct. Maintain competence.</div>
+    </div>
+    <div class="std-card">
+      <div class="std-card-head">🏦 Standard II — Capital Markets</div>
+      <div class="std-card-body">No trading on material nonpublic information. No market manipulation. Full stop.</div>
+    </div>
+    <div class="std-card">
+      <div class="std-card-head">🤝 Standard III — Duties to Clients</div>
+      <div class="std-card-body">Loyalty, prudence & care. Fair dealing. Suitability. Performance presentation. Confidentiality.</div>
+    </div>
+    <div class="std-card">
+      <div class="std-card-head">🏢 Standard IV — Duties to Employers</div>
+      <div class="std-card-body">Loyalty to employer. No additional secret compensation. Proper supervision.</div>
+    </div>
+    <div class="std-card">
+      <div class="std-card-head">🔬 Standard V — Analysis & Actions</div>
+      <div class="std-card-body">Diligence & reasonable basis. Clear communication. Keep records. No fishing without data.</div>
+    </div>
+    <div class="std-card">
+      <div class="std-card-head">🎯 Standard VI — Conflicts of Interest</div>
+      <div class="std-card-body">Disclose conflicts. Clients before you. No referral fees without disclosure.</div>
+    </div>
+    <div class="std-card">
+      <div class="std-card-head">🎓 Standard VII — CFA Responsibilities</div>
+      <div class="std-card-body">Don't cheat on exams. Don't misuse the CFA designation. Uphold program integrity.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+    <!-- Panel 1 -->
+    <div class="panel">
+      <div class="panel-caption">Standard I(B) — Independence Alert!</div>
+      <div class="panel-scene bg-orange">
+        <svg width="100" height="70" viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- Person with gift -->
+          <circle cx="30" cy="20" r="12" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="20" y="32" width="20" height="22" rx="3" fill="#2196F3" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="30" cy="19" r="2" fill="#111"/>
+          <circle cx="36" cy="19" r="2" fill="#111"/>
+          <!-- gift box -->
+          <rect x="60" y="32" width="25" height="22" rx="2" fill="#e63946" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="60" y="28" width="25" height="8" rx="2" fill="#c62828" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="72" y="48" text-anchor="middle" font-size="14" font-family="sans-serif">🎁</text>
+          <!-- X over gift -->
+          <line x1="55" y1="25" x2="90" y2="62" stroke="#e63946" stroke-width="4"/>
+          <line x1="90" y1="25" x2="55" y2="62" stroke="#e63946" stroke-width="4"/>
+        </svg>
+        <div class="bubble">"That 'gift' from a client could bias my research report. I must REFUSE or DISCLOSE!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Never let gifts, entertainment, or pressure compromise objectivity in research.</div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="panel">
+      <div class="panel-caption">Standard II(A) — Insider Info!</div>
+      <div class="panel-scene bg-dark">
+        <svg width="90" height="70" viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- shady character in shadows -->
+          <circle cx="45" cy="22" r="14" fill="#555" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="33" y="36" width="24" height="24" rx="4" fill="#333" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- eye -->
+          <circle cx="40" cy="21" r="3" fill="#ffd700"/>
+          <circle cx="50" cy="21" r="3" fill="#ffd700"/>
+          <!-- whisper -->
+          <text x="62" y="20" font-size="16" font-family="sans-serif">🤫</text>
+          <rect x="2" y="45" width="86" height="20" rx="3" fill="#e63946" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="45" y="58" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">MATERIAL NONPUBLIC INFO ⛔</text>
+        </svg>
+        <div class="bubble" style="color:#fff; background:#333; border-color:#ffd700">"Psst — the merger is happening tomorrow…" → DO NOT TRADE ON THIS!</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Trading on inside info = illegal AND unethical. Build a firewall. Report it. Don't touch it.</div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="panel">
+      <div class="panel-caption">Standard III — Client First!</div>
+      <div class="panel-scene bg-green">
+        <svg width="90" height="70" viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- podium -->
+          <rect x="30" y="30" width="30" height="30" fill="#ffd700" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="45" y="52" text-anchor="middle" font-size="20" font-family="sans-serif">🏆</text>
+          <text x="45" y="26" text-anchor="middle" font-size="9" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">CLIENT</text>
+          <!-- arrows pointing up at client -->
+          <text x="12" y="45" font-size="20" font-family="sans-serif">👤</text>
+          <text x="66" y="45" font-size="20" font-family="sans-serif">👤</text>
+          <text x="10" y="65" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">Analyst</text>
+          <text x="72" y="65" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">Employer</text>
+        </svg>
+        <div class="bubble">"Loyalty, prudence, care — clients sit on the pedestal. I serve THEM first."</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Duty of loyalty to clients overrides personal interests and employer pressure (within legal limits).</div>
+      </div>
+    </div>
+
+    <!-- Panel 4 wide -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Standard IV — Supervisors Are Responsible Too!</div>
+      <div class="panel-scene bg-office" style="flex-direction:row; flex-wrap:wrap; gap:16px; padding:20px; justify-content:center">
+        <svg width="110" height="75" viewBox="0 0 110 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- boss at top -->
+          <circle cx="55" cy="14" r="12" fill="#FFAB40" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="43" y="26" width="24" height="18" rx="3" fill="#9C27B0" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="55" y="13" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">BOSS</text>
+          <!-- lines down -->
+          <line x1="45" y1="44" x2="22" y2="54" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="65" y1="44" x2="88" y2="54" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- employees -->
+          <circle cx="20" cy="58" r="9" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="90" cy="58" r="9" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- warning bubble -->
+          <rect x="35" y="55" width="40" height="15" rx="3" fill="#ffd700" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="55" y="66" text-anchor="middle" font-size="7.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">COMPLIANCE REQUIRED</text>
+        </svg>
+        <div style="max-width:340px">
+          <div class="narration">When junior staff violate rules, supervisors share responsibility if they failed to implement adequate compliance systems.</div>
+          <div class="bubble" style="max-width:100%; margin-top:10px">"If I'm the boss and my team trades on inside info because I had no oversight — THAT'S on me!"</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Supervisors must implement AND enforce adequate compliance procedures. Ignorance is not a defense.</div>
+      </div>
+    </div>
+
+    <!-- Panel 5 -->
+    <div class="panel">
+      <div class="panel-caption">Standard VI — Disclose Conflicts!</div>
+      <div class="panel-scene bg-purple">
+        <svg width="80" height="70" viewBox="0 0 80 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- magnifying glass over person -->
+          <circle cx="50" cy="28" r="20" fill="none" stroke="#9C27B0" stroke-width="4"/>
+          <line x1="36" y1="44" x2="22" y2="60" stroke="#9C27B0" stroke-width="5" stroke-linecap="round"/>
+          <!-- person inside -->
+          <circle cx="50" cy="22" r="8" fill="#FFCC80" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="43" y="30" width="14" height="16" rx="2" fill="#e63946" stroke="#1a1a2e" stroke-width="1.5"/>
+          <!-- dollar sign -->
+          <text x="14" y="26" font-size="20" fill="#ffd700" font-family="sans-serif">$</text>
+        </svg>
+        <div class="bubble">"If I own stock in the company I'm recommending, I MUST disclose that!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Any personal interest that could bias advice must be disclosed — clients deserve to know.</div>
+      </div>
+    </div>
+
+    <!-- Panel 6 -->
+    <div class="panel">
+      <div class="panel-caption">Standard VII — Don't Cheat!</div>
+      <div class="panel-scene bg-street">
+        <svg width="80" height="75" viewBox="0 0 80 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- CFA exam paper -->
+          <rect x="15" y="10" width="50" height="55" rx="3" fill="#fff" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="40" y="28" text-anchor="middle" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">CFA EXAM</text>
+          <line x1="22" y1="36" x2="58" y2="36" stroke="#1a1a2e" stroke-width="1"/>
+          <line x1="22" y1="43" x2="58" y2="43" stroke="#1a1a2e" stroke-width="1"/>
+          <line x1="22" y1="50" x2="58" y2="50" stroke="#1a1a2e" stroke-width="1"/>
+          <!-- big X -->
+          <line x1="10" y1="10" x2="70" y2="70" stroke="#e63946" stroke-width="5" opacity="0.85"/>
+          <line x1="70" y1="10" x2="10" y2="70" stroke="#e63946" stroke-width="5" opacity="0.85"/>
+        </svg>
+        <div class="bubble">"Sharing exam questions, misusing 'CFA' on your business card — instant investigation!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Protect the CFA designation's integrity. No cheating. No misrepresentation. Ever.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🛡️</div>
+    <div>
+      <h3>Module 3 Key Takeaway</h3>
+      <p>Standards I–VII cover every dimension of professional life — from independence and insider trading, to client duties, supervision, and protecting the CFA designation. When in doubt: disclose, dissociate, and always put clients first.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- MODULE 4 -->
+<!-- ══════════════════════════════════════ -->
+<section class="module m4" id="m4">
+  <div class="module-header">
+    <div class="module-num">4</div>
+    <div>
+      <div class="module-title">Introduction to GIPS</div>
+      <div class="module-tagline">Global Investment Performance Standards — no more cherry-picking!</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+    <!-- Panel 1 -->
+    <div class="panel">
+      <div class="panel-caption">The Problem GIPS Solved</div>
+      <div class="panel-scene bg-street">
+        <svg width="100" height="75" viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- bar chart with cherry pick arrow -->
+          <rect x="10" y="45" width="14" height="25" fill="#4CAF50" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="30" y="30" width="14" height="40" fill="#e63946" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="50" y="55" width="14" height="15" fill="#e63946" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="70" y="40" width="14" height="30" fill="#e63946" stroke="#1a1a2e" stroke-width="1.5"/>
+          <!-- arrow pointing to first bar only -->
+          <path d="M17 10 L17 42" stroke="#ffd700" stroke-width="3" marker-end="url(#arr2)" stroke-dasharray="4"/>
+          <text x="17" y="8" text-anchor="middle" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">SHOW ONLY THIS!</text>
+          <!-- X circle -->
+          <circle cx="85" cy="12" r="10" fill="#e63946" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="85" y="16" text-anchor="middle" font-size="14" fill="#fff" font-family="sans-serif">✕</text>
+        </svg>
+        <div class="bubble">"Before GIPS, firms showed ONLY their best-performing accounts. Pure cherry-picking!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Pre-GIPS, misleading performance data was rampant. Investors couldn't compare apples to apples.</div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="panel">
+      <div class="panel-caption">GIPS to the Rescue!</div>
+      <div class="panel-scene bg-purple">
+        <svg width="80" height="75" viewBox="0 0 80 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- globe -->
+          <circle cx="40" cy="38" r="28" fill="#1565C0" stroke="#1a1a2e" stroke-width="2.5"/>
+          <ellipse cx="40" cy="38" rx="14" ry="28" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3"/>
+          <line x1="12" y1="38" x2="68" y2="38" stroke="#fff" stroke-width="1.5"/>
+          <line x1="14" y1="26" x2="66" y2="26" stroke="#fff" stroke-width="1"/>
+          <line x1="14" y1="50" x2="66" y2="50" stroke="#fff" stroke-width="1"/>
+          <!-- checkmark -->
+          <circle cx="40" cy="10" r="10" fill="#4CAF50" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="40" y="14" text-anchor="middle" font-size="12" fill="#fff" font-family="sans-serif">✓</text>
+        </svg>
+        <div class="bubble">"GIPS = global ethical standards for fair, full performance reporting. One standard for the whole world!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">GIPS promotes ethics and integrity through universal, transparent performance presentation.</div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="panel">
+      <div class="panel-caption">The Magic of Composites</div>
+      <div class="panel-scene bg-gold">
+        <svg width="100" height="70" viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- multiple account circles → one composite -->
+          <circle cx="15" cy="30" r="10" fill="#2196F3" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="15" cy="55" r="10" fill="#4CAF50" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="35" cy="42" r="10" fill="#e63946" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- arrows to composite -->
+          <line x1="25" y1="30" x2="52" y2="40" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="25" y1="55" x2="52" y2="44" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="45" y1="42" x2="52" y2="42" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- composite box -->
+          <rect x="54" y="30" width="38" height="25" rx="4" fill="#ffd700" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="73" y="44" text-anchor="middle" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">COMPOSITE</text>
+          <text x="73" y="52" text-anchor="middle" font-size="7" fill="#1a1a2e" font-family="sans-serif">ALL accounts</text>
+        </svg>
+        <div class="bubble">"A composite groups ALL similarly managed accounts — so you can't hide the bad ones!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">GIPS requires composites: all accounts with the same strategy go in together. No hiding losers.</div>
+      </div>
+    </div>
+
+    <!-- Panel 4 wide -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Who Can Claim Compliance? Who Benefits?</div>
+      <div class="panel-scene bg-green" style="flex-direction:row; flex-wrap:wrap; gap:20px; padding:20px; justify-content:center">
+        <div style="text-align:center; max-width:160px">
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#e8f5e9" stroke="#1a1a2e" stroke-width="2"/>
+            <text x="30" y="38" text-anchor="middle" font-size="28" font-family="sans-serif">🏛️</text>
+          </svg>
+          <div style="font-size:0.8rem; font-weight:bold; margin-top:4px">Asset Managers</div>
+          <div style="font-size:0.72rem; color:#555">Can claim GIPS compliance</div>
+        </div>
+        <div style="text-align:center; max-width:160px">
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#e3f2fd" stroke="#1a1a2e" stroke-width="2"/>
+            <text x="30" y="38" text-anchor="middle" font-size="28" font-family="sans-serif">👥</text>
+          </svg>
+          <div style="font-size:0.8rem; font-weight:bold; margin-top:4px">Investors</div>
+          <div style="font-size:0.72rem; color:#555">Can compare firms fairly</div>
+        </div>
+        <div style="text-align:center; max-width:160px">
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#fff3e0" stroke="#1a1a2e" stroke-width="2"/>
+            <text x="30" y="38" text-anchor="middle" font-size="28" font-family="sans-serif">🔍</text>
+          </svg>
+          <div style="font-size:0.8rem; font-weight:bold; margin-top:4px">Verifiers</div>
+          <div style="font-size:0.72rem; color:#555">Independent third parties validate</div>
+        </div>
+        <div class="bubble" style="align-self:center; max-width:200px">"Software can't be GIPS compliant. Consultants can't claim it unless they manage actual assets. Only the FIRM claims!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Only asset-managing firms can claim GIPS compliance. Independent verification adds extra credibility.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">📊</div>
+    <div>
+      <h3>Module 4 Key Takeaway</h3>
+      <p>GIPS was created to end misleading performance presentations. It requires all similar accounts to be grouped in composites, ensures fair full disclosure, and allows investors everywhere to compare managers on equal footing. Compliance is voluntary but powerfully signals integrity.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- MODULE 5 -->
+<!-- ══════════════════════════════════════ -->
+<section class="module m5" id="m5">
+  <div class="module-header">
+    <div class="module-num">5</div>
+    <div>
+      <div class="module-title">Ethics Application</div>
+      <div class="module-tagline">Real-world case studies — spot the violation!</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+    <!-- Panel 1 — Scenario A -->
+    <div class="panel">
+      <div class="panel-caption">Case 1: The Misleading Tweet</div>
+      <div class="panel-scene bg-street">
+        <svg width="80" height="75" viewBox="0 0 80 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- phone -->
+          <rect x="22" y="8" width="36" height="60" rx="5" fill="#333" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="26" y="14" width="28" height="44" rx="2" fill="#e3f2fd"/>
+          <text x="40" y="32" text-anchor="middle" font-size="8" fill="#e63946" font-weight="bold" font-family="sans-serif">"Funding</text>
+          <text x="40" y="42" text-anchor="middle" font-size="8" fill="#e63946" font-weight="bold" font-family="sans-serif">secured!" 💥</text>
+          <circle cx="40" cy="63" r="3" fill="#555"/>
+        </svg>
+        <div class="bubble">"A CEO tweets funding is 'secured' — but it was just a vague conversation. That's misrepresentation!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Violation: Standard I(C) Misrepresentation & Standard II(B) Market Manipulation.</div>
+      </div>
+    </div>
+
+    <!-- Panel 2 — Scenario B -->
+    <div class="panel">
+      <div class="panel-caption">Case 2: New Job, New Skills Gap</div>
+      <div class="panel-scene bg-orange">
+        <svg width="80" height="70" viewBox="0 0 80 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- person at desk looking nervous -->
+          <circle cx="40" cy="20" r="13" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="28" y="33" width="24" height="22" rx="3" fill="#4CAF50" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- sweat drop -->
+          <ellipse cx="56" cy="15" rx="4" ry="7" fill="#2196F3" stroke="#1a1a2e" stroke-width="1.5"/>
+          <!-- eyes wide -->
+          <circle cx="35" cy="18" r="3" fill="#1a1a2e"/>
+          <circle cx="45" cy="18" r="3" fill="#1a1a2e"/>
+          <!-- desk -->
+          <rect x="10" y="55" width="60" height="8" rx="2" fill="#8D6E63" stroke="#1a1a2e" stroke-width="1.5"/>
+          <!-- question marks -->
+          <text x="14" y="50" font-size="14" fill="#e63946" font-family="sans-serif">?</text>
+          <text x="60" y="50" font-size="14" fill="#e63946" font-family="sans-serif">?</text>
+        </svg>
+        <div class="bubble">"Mahajan took a new job supervising ESG analysts… but he's never supervised anyone before!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Violation risk: Standard I(E) Competence. Must build supervisory skills before taking on the role.</div>
+      </div>
+    </div>
+
+    <!-- Panel 3 — Scenario C -->
+    <div class="panel">
+      <div class="panel-caption">Case 3: Overheard at a Party</div>
+      <div class="panel-scene bg-purple">
+        <svg width="90" height="70" viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- 2 people chatting -->
+          <circle cx="25" cy="20" r="11" fill="#FFCC80" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="15" y="31" width="20" height="20" rx="3" fill="#9C27B0" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="65" cy="20" r="11" fill="#FFD180" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="55" y="31" width="20" height="20" rx="3" fill="#e63946" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- speech bubble connecting -->
+          <rect x="30" y="8" width="30" height="20" rx="5" fill="#fff" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="45" y="18" text-anchor="middle" font-size="7.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">"ZP is being</text>
+          <text x="45" y="26" text-anchor="middle" font-size="7.5" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">acquired…"</text>
+          <!-- third observer -->
+          <circle cx="45" cy="55" r="9" fill="#FFF9C4" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="45" y="59" text-anchor="middle" font-size="12" font-family="sans-serif">👀</text>
+        </svg>
+        <div class="bubble">"Khatri overheard a confidential acquisition plan. Even indirect knowledge = nonpublic material info!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Violation: Standard II(A) Material Nonpublic Information. Mosaic theory doesn't apply here.</div>
+      </div>
+    </div>
+
+    <!-- Panel 4 wide — Solution Framework -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">The Ethics Application Checklist — Use This Every Time!</div>
+      <div class="panel-scene bg-gold" style="flex-direction:row; flex-wrap:wrap; gap:12px; padding:18px; justify-content:center">
+        <svg width="70" height="80" viewBox="0 0 70 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- clipboard -->
+          <rect x="8" y="12" width="54" height="65" rx="4" fill="#fff" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="22" y="5" width="26" height="12" rx="3" fill="#1a1a2e"/>
+          <!-- checklist items -->
+          <text x="16" y="32" font-size="9" fill="#4CAF50" font-family="sans-serif">✔</text>
+          <text x="28" y="32" font-size="7.5" fill="#1a1a2e" font-family="sans-serif">Who are stakeholders?</text>
+          <text x="16" y="44" font-size="9" fill="#4CAF50" font-family="sans-serif">✔</text>
+          <text x="28" y="44" font-size="7.5" fill="#1a1a2e" font-family="sans-serif">Which Standard applies?</text>
+          <text x="16" y="56" font-size="9" fill="#4CAF50" font-family="sans-serif">✔</text>
+          <text x="28" y="56" font-size="7.5" fill="#1a1a2e" font-family="sans-serif">Was there a violation?</text>
+          <text x="16" y="68" font-size="9" fill="#4CAF50" font-family="sans-serif">✔</text>
+          <text x="28" y="68" font-size="7.5" fill="#1a1a2e" font-family="sans-serif">What's the right action?</text>
+        </svg>
+        <div style="max-width:380px">
+          <div class="narration">In every ethics application scenario, work through the same steps:</div>
+          <div class="bubble" style="max-width:100%; margin-top:8px">
+            "1. Identify the ethical issue<br>
+             2. Spot relevant Standards<br>
+             3. Determine if violated<br>
+             4. Recommend corrective action<br>
+             <strong>Always ask: What would a reasonable CFA charterholder do?</strong>"
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Module 5 puts theory into practice — use the framework systematically for every scenario.</div>
+      </div>
+    </div>
+
+    <!-- Panel 5 -->
+    <div class="panel">
+      <div class="panel-caption">Case 4: Clients Treated Unequally</div>
+      <div class="panel-scene bg-office">
+        <svg width="90" height="70" viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- scales -->
+          <line x1="45" y1="10" x2="45" y2="35" stroke="#1a1a2e" stroke-width="3"/>
+          <line x1="20" y1="35" x2="70" y2="35" stroke="#1a1a2e" stroke-width="3"/>
+          <!-- left pan (high) with VIP -->
+          <line x1="20" y1="35" x2="20" y2="55" stroke="#1a1a2e" stroke-width="2"/>
+          <ellipse cx="20" cy="57" rx="16" ry="6" fill="#ffd700" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="20" y="60" text-anchor="middle" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">VIP Client</text>
+          <!-- right pan (low) with small client -->
+          <line x1="70" y1="35" x2="70" y2="65" stroke="#1a1a2e" stroke-width="2"/>
+          <ellipse cx="70" cy="67" rx="16" ry="6" fill="#e0e0e0" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="70" y="70" text-anchor="middle" font-size="8" fill="#1a1a2e" font-weight="bold" font-family="sans-serif">Small Client</text>
+          <!-- tilted beam -->
+          <line x1="15" y1="32" x2="75" y2="38" stroke="#e63946" stroke-width="3"/>
+        </svg>
+        <div class="bubble">"Giving hot IPO shares ONLY to big clients = violation of Standard III(B) Fair Dealing!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">All clients must be treated fairly — not just the biggest ones. Fair dealing is non-negotiable.</div>
+      </div>
+    </div>
+
+    <!-- Panel 6 -->
+    <div class="panel">
+      <div class="panel-caption">The Golden Rule of Ethics</div>
+      <div class="panel-scene bg-green">
+        <svg width="80" height="75" viewBox="0 0 80 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- mirror -->
+          <rect x="18" y="10" width="44" height="55" rx="22" fill="#e8f5e9" stroke="#1a1a2e" stroke-width="2.5"/>
+          <!-- face left -->
+          <circle cx="30" cy="35" r="10" fill="#FFCC80" stroke="#1a1a2e" stroke-width="1.5"/>
+          <circle cx="27" cy="33" r="2" fill="#1a1a2e"/>
+          <circle cx="33" cy="33" r="2" fill="#1a1a2e"/>
+          <path d="M27 39 Q30 43 33 39" stroke="#1a1a2e" stroke-width="1.5" fill="none"/>
+          <!-- reflection line -->
+          <line x1="40" y1="15" x2="40" y2="60" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="4"/>
+          <!-- face right (mirror) -->
+          <circle cx="50" cy="35" r="10" fill="#FFCC80" stroke="#1a1a2e" stroke-width="1.5"/>
+          <circle cx="47" cy="33" r="2" fill="#1a1a2e"/>
+          <circle cx="53" cy="33" r="2" fill="#1a1a2e"/>
+          <path d="M47 39 Q50 43 53 39" stroke="#1a1a2e" stroke-width="1.5" fill="none"/>
+        </svg>
+        <div class="bubble">"Would I be comfortable if my boss, my client, AND the newspaper saw exactly what I just did?"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">The "mirror test" — if you can't look at yourself (and the public) confidently, don't do it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🎯</div>
+    <div>
+      <h3>Module 5 Key Takeaway</h3>
+      <p>Ethics Application bridges theory and practice. Every real-world scenario tests: Which standard applies? Was it violated? What should the professional do instead? Practice spotting violations — it's the heart of the CFA ethics exam questions.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL SUMMARY -->
+<section class="module" style="max-width:900px; margin: 0 auto 60px; padding: 0 16px;">
+  <div style="border: 5px solid #1a1a2e; background: #1a1a2e; color: #fff; padding: 24px 28px; box-shadow: 8px 8px 0 var(--yellow);">
+    <div style="font-family:'Bangers',cursive; font-size:2rem; color:var(--yellow); letter-spacing:3px; margin-bottom:12px;">🏁 THE GRAND FINALE</div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap:12px; font-size:0.85rem;">
+      <div style="background:#16213e; border:2px solid var(--blue); padding:10px; border-radius:4px;">
+        <div style="font-family:'Bangers',cursive; color:var(--blue); font-size:1rem;">① Ethics & Trust</div>
+        Moral principles, stakeholders, ethical &gt; legal, avoid bias.
+      </div>
+      <div style="background:#16213e; border:2px solid var(--red); padding:10px; border-radius:4px;">
+        <div style="font-family:'Bangers',cursive; color:var(--red); font-size:1rem;">② Code of Ethics</div>
+        6-pillar Code + 7 Standards. CFA Institute enforces it all.
+      </div>
+      <div style="background:#16213e; border:2px solid var(--green); padding:10px; border-radius:4px;">
+        <div style="font-family:'Bangers',cursive; color:var(--green); font-size:1rem;">③ Standards I–VII</div>
+        Professionalism → Capital Markets → Clients → Employers → Analysis → Conflicts → CFA duties.
+      </div>
+      <div style="background:#16213e; border:2px solid #ce93d8; padding:10px; border-radius:4px;">
+        <div style="font-family:'Bangers',cursive; color:#ce93d8; font-size:1rem;">④ GIPS</div>
+        Fair, full performance reporting. Composites. No cherry-picking. Global standard.
+      </div>
+      <div style="background:#16213e; border:2px solid var(--orange); padding:10px; border-radius:4px;">
+        <div style="font-family:'Bangers',cursive; color:var(--orange); font-size:1rem;">⑤ Ethics Application</div>
+        Identify → Apply Standard → Determine violation → Recommend action.
+      </div>
+    </div>
+    <div style="margin-top:20px; font-family:'Permanent Marker',cursive; font-size:1.1rem; color:var(--yellow); text-align:center;">
+      "Do the right thing. Even when no one is watching. <em>Especially</em> when no one is watching."
+    </div>
+  </div>
+</section>
+
+<footer>
+  CFA® ETHICS — COMIC EDITION &nbsp;|&nbsp; Based on CFA Program Curriculum 2025 · Level I · Volume 10<br>
+  <span style="font-size:0.75rem; letter-spacing:0; font-family:Comic Neue,cursive; color:#aaa;">For study purposes only. Not for distribution.</span>
+</footer>
+
+</body>
+</html>
