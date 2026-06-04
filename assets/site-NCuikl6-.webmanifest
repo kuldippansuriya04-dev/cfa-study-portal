@@ -1,0 +1,10 @@
+{
+  "name": "CFA Level 1 Practice Questions Hub",
+  "short_name": "CFA Practice Hub",
+  "description": "CFA Level 1 practice questions, mock exams, quizzes, and study revision tools.",
+  "start_url": "/cfa-study-portal/",
+  "scope": "/cfa-study-portal/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb"
+}
