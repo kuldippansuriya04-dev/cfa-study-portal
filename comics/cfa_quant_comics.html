@@ -1,1 +1,1615 @@
-404: Not Found
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFA Quant Methods – Comic Strip Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d1a;
+    --paper: #f8f9ff;
+    --yellow: #ffd700;
+    --red: #e63946;
+    --blue: #1565c0;
+    --lblue: #2196f3;
+    --green: #2e7d32;
+    --lgreen: #4caf50;
+    --purple: #6a1b9a;
+    --lpurple: #9c27b0;
+    --orange: #e65100;
+    --lorange: #ff9800;
+    --teal: #00695c;
+    --lteal: #009688;
+    --pink: #880e4f;
+    --lpink: #e91e63;
+    --cyan: #006064;
+    --lcyan: #00bcd4;
+    --panel-bg: #ffffff;
+    --border: 3px solid #0d0d1a;
+    --thick: 5px solid #0d0d1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    font-family: 'Comic Neue', cursive;
+    color: var(--ink);
+    background-image:
+      repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,50,0.04) 28px),
+      repeating-linear-gradient(90deg,transparent,transparent 27px,rgba(0,0,50,0.02) 28px);
+  }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a1a4e 50%, #0d0d1a 100%);
+    color: var(--yellow);
+    text-align: center;
+    padding: 50px 20px 40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 8px solid var(--yellow);
+  }
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(33,150,243,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(156,39,176,0.15) 0%, transparent 50%);
+  }
+  .cover-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 4px 16px;
+    border: 3px solid #fff;
+    transform: rotate(-2deg);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.8rem, 9vw, 5.5rem);
+    letter-spacing: 4px;
+    line-height: 1.1;
+    text-shadow: 4px 4px 0 var(--red), 8px 8px 0 rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .cover-sub { font-family:'Permanent Marker',cursive; font-size:1.2rem; color:#aac; margin-top:12px; }
+  .cover-modules {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin-top: 20px; position: relative;
+  }
+  .cover-module-chip {
+    font-family: 'Bangers', cursive;
+    font-size: 0.8rem; letter-spacing: 1px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,215,0,0.4);
+    color: #ffd; padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* NAV */
+  nav {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    justify-content: center; padding: 14px 16px;
+    background: var(--yellow); border-bottom: var(--thick);
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav a {
+    font-family: 'Bangers', cursive; font-size: 0.8rem; letter-spacing: 1px;
+    color: var(--ink); text-decoration: none;
+    background: #fff; border: 2px solid var(--ink);
+    padding: 3px 10px; transition: all 0.15s;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  nav a:hover { background: var(--ink); color: var(--yellow); transform: translate(-1px,-1px); }
+
+  /* MODULE */
+  .module { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
+
+  .module-header {
+    display: flex; align-items: center; gap: 16px;
+    border: var(--thick); padding: 14px 22px;
+    margin-bottom: 20px;
+    position: relative; overflow: hidden;
+  }
+  .module-num {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem; line-height: 1; min-width: 56px;
+  }
+  .module-title { font-family:'Bangers',cursive; font-size:clamp(1.1rem,3vw,1.9rem); letter-spacing:2px; line-height:1.2; }
+  .module-tagline { font-size:0.82rem; margin-top:3px; opacity:0.75; }
+
+  /* per-module accent colours */
+  .m1  .module-header { background:#e3f2fd; border-color:var(--blue); box-shadow:6px 6px 0 var(--blue); }
+  .m1  .module-num  { color:var(--blue); }
+  .m2  .module-header { background:#e8f5e9; border-color:var(--green); box-shadow:6px 6px 0 var(--green); }
+  .m2  .module-num  { color:var(--green); }
+  .m3  .module-header { background:#fce4ec; border-color:var(--pink); box-shadow:6px 6px 0 var(--pink); }
+  .m3  .module-num  { color:var(--pink); }
+  .m4  .module-header { background:#f3e5f5; border-color:var(--purple); box-shadow:6px 6px 0 var(--purple); }
+  .m4  .module-num  { color:var(--purple); }
+  .m5  .module-header { background:#fff3e0; border-color:var(--orange); box-shadow:6px 6px 0 var(--orange); }
+  .m5  .module-num  { color:var(--orange); }
+  .m6  .module-header { background:#e0f7fa; border-color:var(--teal); box-shadow:6px 6px 0 var(--teal); }
+  .m6  .module-num  { color:var(--teal); }
+  .m7  .module-header { background:#f9fbe7; border-color:#827717; box-shadow:6px 6px 0 #827717; }
+  .m7  .module-num  { color:#827717; }
+  .m8  .module-header { background:#ffebee; border-color:var(--red); box-shadow:6px 6px 0 var(--red); }
+  .m8  .module-num  { color:var(--red); }
+  .m9  .module-header { background:#e8eaf6; border-color:#283593; box-shadow:6px 6px 0 #283593; }
+  .m9  .module-num  { color:#283593; }
+  .m10 .module-header { background:#efebe9; border-color:#4e342e; box-shadow:6px 6px 0 #4e342e; }
+  .m10 .module-num  { color:#4e342e; }
+
+  /* COMIC GRID */
+  .comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    border: var(--thick); background: var(--ink); gap: 0;
+  }
+  .panel {
+    background: var(--panel-bg); border: var(--border);
+    display: flex; flex-direction: column; min-height: 255px; overflow: hidden;
+  }
+  .panel-wide { grid-column: span 2; }
+  @media(max-width:580px){ .panel-wide { grid-column:span 1; } }
+
+  .panel-caption {
+    font-family:'Bangers',cursive; font-size:0.72rem; letter-spacing:2px;
+    text-transform:uppercase; color:#fff; background:var(--ink);
+    padding:4px 10px; text-align:center;
+  }
+  .panel-scene {
+    flex:1; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:14px 14px 8px; gap:8px; position:relative;
+  }
+  .panel-bottom {
+    padding:8px 12px 12px; border-top:2px solid var(--ink);
+  }
+  .panel-text { font-size:0.82rem; font-weight:700; line-height:1.4; text-align:center; }
+
+  /* BUBBLES */
+  .bubble {
+    position:relative; background:#fff; border:2px solid var(--ink);
+    border-radius:16px; padding:7px 11px;
+    font-size:0.78rem; font-weight:700; line-height:1.35; text-align:center; max-width:92%;
+  }
+  .bubble::after {
+    content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%);
+    border:10px solid transparent; border-top:10px solid var(--ink);
+  }
+  .bubble::before {
+    content:''; position:absolute; bottom:-7px; left:50%; transform:translateX(-50%);
+    border:8px solid transparent; border-top:8px solid #fff; z-index:1;
+  }
+  .bubble-left::after { left:18px; transform:none; }
+  .bubble-left::before { left:20px; transform:none; }
+  .bubble-right::after { left:auto; right:18px; transform:none; }
+  .bubble-right::before { left:auto; right:20px; transform:none; }
+
+  .narration {
+    background:var(--yellow); border:2px solid var(--ink);
+    padding:4px 10px; font-size:0.73rem; font-weight:700;
+    font-style:italic; align-self:stretch; text-align:left;
+  }
+
+  /* SFX */
+  .sfx {
+    font-family:'Bangers',cursive; font-size:1.8rem; letter-spacing:2px;
+    transform:rotate(-5deg); display:inline-block;
+    text-shadow:2px 2px 0 rgba(0,0,0,0.18);
+  }
+
+  /* KEY LESSON */
+  .key-lesson {
+    margin:20px 0 0; border:var(--thick); padding:14px 18px;
+    box-shadow:4px 4px 0 var(--ink);
+    display:flex; align-items:flex-start; gap:12px;
+  }
+  .key-icon { font-size:2rem; flex-shrink:0; }
+  .key-lesson h3 { font-family:'Bangers',cursive; font-size:1.05rem; letter-spacing:1px; margin-bottom:4px; }
+  .key-lesson p { font-size:0.82rem; line-height:1.5; }
+  .m1  .key-lesson { background:#e3f2fd; }
+  .m2  .key-lesson { background:#e8f5e9; }
+  .m3  .key-lesson { background:#fce4ec; }
+  .m4  .key-lesson { background:#f3e5f5; }
+  .m5  .key-lesson { background:#fff3e0; }
+  .m6  .key-lesson { background:#e0f7fa; }
+  .m7  .key-lesson { background:#f9fbe7; }
+  .m8  .key-lesson { background:#ffebee; }
+  .m9  .key-lesson { background:#e8eaf6; }
+  .m10 .key-lesson { background:#efebe9; }
+
+  /* FORMULA BOX */
+  .formula-box {
+    background:#0d0d1a; color:var(--yellow);
+    border:2px solid var(--yellow); border-radius:6px;
+    padding:8px 14px; font-family:monospace; font-size:0.9rem;
+    font-weight:700; text-align:center; letter-spacing:1px;
+    box-shadow:3px 3px 0 var(--yellow);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height:6px; margin:36px 0;
+    background:repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 20px,var(--yellow) 20px,var(--yellow) 40px);
+  }
+
+  /* BG helpers */
+  .bg-blue   { background:linear-gradient(180deg,#e3f2fd 60%,#bbdefb 100%); }
+  .bg-green  { background:linear-gradient(180deg,#e8f5e9 60%,#c8e6c9 100%); }
+  .bg-pink   { background:linear-gradient(180deg,#fce4ec 60%,#f8bbd0 100%); }
+  .bg-purple { background:linear-gradient(180deg,#f3e5f5 60%,#e1bee7 100%); }
+  .bg-orange { background:linear-gradient(180deg,#fff3e0 60%,#ffe0b2 100%); }
+  .bg-teal   { background:linear-gradient(180deg,#e0f7fa 60%,#b2ebf2 100%); }
+  .bg-lime   { background:linear-gradient(180deg,#f9fbe7 60%,#f0f4c3 100%); }
+  .bg-red    { background:linear-gradient(180deg,#ffebee 60%,#ffcdd2 100%); }
+  .bg-indigo { background:linear-gradient(180deg,#e8eaf6 60%,#c5cae9 100%); }
+  .bg-brown  { background:linear-gradient(180deg,#efebe9 60%,#d7ccc8 100%); }
+  .bg-dark   { background:linear-gradient(180deg,#1a1a3e 60%,#0d0d1a 100%); }
+  .bg-gold   { background:linear-gradient(180deg,#fffde7 60%,#fff176 100%); }
+
+  /* flowstep helper */
+  .flowstep {
+    width:100%; border:3px solid var(--ink); border-radius:8px;
+    padding:7px 10px; text-align:center;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .flowstep .label { font-family:'Bangers',cursive; font-size:0.7rem; letter-spacing:1px; opacity:0.85; }
+  .flowstep .content { font-weight:700; font-size:0.88rem; line-height:1.2; }
+  .flow-arrow { font-size:1.3rem; line-height:1; font-weight:900; }
+
+  footer {
+    text-align:center; padding:28px; font-family:'Bangers',cursive;
+    font-size:1rem; letter-spacing:2px; color:#888;
+    border-top:var(--thick); margin-top:60px;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">📐 CFA Level 1 • Vol 1</div>
+  <h1>QUANT<br>METHODS<br>COMICS!</h1>
+  <div class="cover-sub">All 10 Learning Modules — Visualised & Demystified</div>
+  <div class="cover-modules">
+    <span class="cover-module-chip">① Rates & Returns</span>
+    <span class="cover-module-chip">② TVM in Finance</span>
+    <span class="cover-module-chip">③ Stats Measures</span>
+    <span class="cover-module-chip">④ Probability Trees</span>
+    <span class="cover-module-chip">⑤ Portfolio Math</span>
+    <span class="cover-module-chip">⑥ Simulation</span>
+    <span class="cover-module-chip">⑦ Estimation</span>
+    <span class="cover-module-chip">⑧ Hypothesis Testing</span>
+    <span class="cover-module-chip">⑨ Tests of Independence</span>
+    <span class="cover-module-chip">⑩ Linear Regression</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#m1">① Rates</a>
+  <a href="#m2">② TVM</a>
+  <a href="#m3">③ Stats</a>
+  <a href="#m4">④ Probability</a>
+  <a href="#m5">⑤ Portfolio</a>
+  <a href="#m6">⑥ Simulation</a>
+  <a href="#m7">⑦ Estimation</a>
+  <a href="#m8">⑧ Hypothesis</a>
+  <a href="#m9">⑨ Independence</a>
+  <a href="#m10">⑩ Regression</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════ MODULE 1 ═══════════════════════════════════ -->
+<section class="module m1" id="m1">
+  <div class="module-header">
+    <div class="module-num">1</div>
+    <div>
+      <div class="module-title">Rates and Returns</div>
+      <div class="module-tagline">Interest rates, HPR, Arithmetic vs Geometric, real vs nominal — the return zoo.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: What is an interest rate? -->
+    <div class="panel">
+      <div class="panel-caption">What's an Interest Rate, Anyway?</div>
+      <div class="panel-scene bg-blue">
+        <svg width="110" height="80" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- Three interpretations -->
+          <rect x="2" y="5" width="32" height="22" rx="4" fill="#1565c0" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="18" y="14" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Required</text>
+          <text x="18" y="23" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Rate of Return</text>
+          <rect x="39" y="5" width="32" height="22" rx="4" fill="#e63946" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="55" y="14" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Discount</text>
+          <text x="55" y="23" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Rate</text>
+          <rect x="76" y="5" width="32" height="22" rx="4" fill="#2e7d32" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="92" y="14" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Opportunity</text>
+          <text x="92" y="23" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Cost</text>
+          <!-- arrows down to r -->
+          <line x1="18" y1="27" x2="55" y2="50" stroke="#0d0d1a" stroke-width="1.5"/>
+          <line x1="55" y1="27" x2="55" y2="50" stroke="#0d0d1a" stroke-width="1.5"/>
+          <line x1="92" y1="27" x2="55" y2="50" stroke="#0d0d1a" stroke-width="1.5"/>
+          <circle cx="55" cy="55" r="14" fill="#ffd700" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="55" y="59" text-anchor="middle" font-size="14" font-weight="bold" font-family="sans-serif" fill="#0d0d1a">r</text>
+        </svg>
+        <div class="bubble">"Same rate, three interpretations! Context decides which hat it's wearing."</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">r = required return = discount rate = opportunity cost. It's ALL of these at once.</div>
+      </div>
+    </div>
+
+    <!-- P2: Rate components -->
+    <div class="panel">
+      <div class="panel-caption">Building Blocks of Interest Rate</div>
+      <div class="panel-scene bg-gold">
+        <div style="width:100%;display:flex;flex-direction:column;gap:4px;padding:0 8px">
+          <div class="flowstep" style="background:#1565c0; color:#fff; border-color:#1565c0;">
+            <div class="content">Real Risk-Free Rate 🏦</div>
+          </div>
+          <div style="text-align:center;font-size:1rem;font-weight:900">+</div>
+          <div class="flowstep" style="background:#e63946; color:#fff; border-color:#e63946;">
+            <div class="content">Inflation Premium 📈</div>
+          </div>
+          <div style="text-align:center;font-size:1rem;font-weight:900">+</div>
+          <div class="flowstep" style="background:#ff9800; color:#fff; border-color:#ff9800;">
+            <div class="content">Risk Premiums (default, liquidity, maturity) ⚠️</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">r = Real risk-free rate + Inflation premium + Default + Liquidity + Maturity premiums.</div>
+      </div>
+    </div>
+
+    <!-- P3: HPR -->
+    <div class="panel">
+      <div class="panel-caption">Holding Period Return (HPR)</div>
+      <div class="panel-scene bg-blue">
+        <svg width="100" height="75" viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- buy low sell high -->
+          <rect x="5" y="50" width="28" height="22" rx="4" fill="#e8f5e9" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="19" y="59" text-anchor="middle" font-size="7" font-weight="bold" fill="#2e7d32" font-family="sans-serif">BUY</text>
+          <text x="19" y="68" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d0d1a" font-family="sans-serif">$100</text>
+          <rect x="67" y="20" width="28" height="22" rx="4" fill="#fce4ec" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="81" y="29" text-anchor="middle" font-size="7" font-weight="bold" fill="#e63946" font-family="sans-serif">SELL</text>
+          <text x="81" y="38" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d0d1a" font-family="sans-serif">$110</text>
+          <!-- arrow up -->
+          <path d="M33 55 Q55 20 67 31" stroke="#1565c0" stroke-width="3" fill="none" stroke-linecap="round" marker-end="url(#a1)"/>
+          <text x="48" y="38" text-anchor="middle" font-size="7" fill="#2e7d32" font-weight="bold" font-family="sans-serif">+$5 income</text>
+        </svg>
+        <div class="formula-box" style="font-size:0.78rem;">HPR = (P₁ − P₀ + Income) / P₀</div>
+        <div class="bubble" style="font-size:0.73rem;">"Buy at 100, sell at 110, get $5 income → HPR = 15%!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">HPR = total gain (price + income) divided by the initial price. Simple. Powerful.</div>
+      </div>
+    </div>
+
+    <!-- P4: Arithmetic vs Geometric (wide) -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Arithmetic vs Geometric Mean Return — The Big Fight!</div>
+      <div class="panel-scene" style="background:linear-gradient(90deg,#e3f2fd 50%,#e8f5e9 50%); flex-direction:row; flex-wrap:wrap; gap:14px; padding:18px; justify-content:center;">
+        <div style="max-width:230px; text-align:center;">
+          <div class="sfx" style="color:#1565c0; display:block; margin-bottom:8px;">ARITHMETIC</div>
+          <svg width="130" height="70" viewBox="0 0 130 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="20" width="115" height="30" rx="4" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+            <text x="62" y="32" text-anchor="middle" font-size="8" fill="#1565c0" font-weight="bold" font-family="sans-serif">Simple average of returns</text>
+            <text x="62" y="44" text-anchor="middle" font-size="8" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">(R₁+R₂+…+Rn) / n</text>
+          </svg>
+          <div style="font-size:0.75rem; font-weight:700; color:#555; margin-top:4px;">✅ Best for: forward-looking estimates<br>⚠️ Overstates compounded growth!</div>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <div style="font-family:Bangers,cursive; font-size:2.5rem; color:var(--red)">VS</div>
+        </div>
+        <div style="max-width:230px; text-align:center;">
+          <div class="sfx" style="color:#2e7d32; display:block; margin-bottom:8px;">GEOMETRIC</div>
+          <svg width="130" height="70" viewBox="0 0 130 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="20" width="115" height="30" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+            <text x="62" y="32" text-anchor="middle" font-size="8" fill="#2e7d32" font-weight="bold" font-family="sans-serif">Compound growth rate</text>
+            <text x="62" y="44" text-anchor="middle" font-size="8" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">[(1+R₁)(1+R₂)…]^(1/n) − 1</text>
+          </svg>
+          <div style="font-size:0.75rem; font-weight:700; color:#555; margin-top:4px;">✅ Best for: past performance<br>✅ Accounts for compounding!</div>
+        </div>
+        <div style="align-self:center; max-width:180px;">
+          <div class="bubble" style="max-width:100%">"Returns: +50%, −50%. Arithmetic = 0%. Geometric = −13.4%! The geometric truth HURTS. 😅"</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Geometric mean ≤ Arithmetic mean. Always use geometric for multi-period compounded performance.</div>
+      </div>
+    </div>
+
+    <!-- P5: Money-weighted vs Time-weighted -->
+    <div class="panel">
+      <div class="panel-caption">Money-Weighted vs Time-Weighted</div>
+      <div class="panel-scene bg-blue">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- MWR = IRR side -->
+          <rect x="2" y="5" width="50" height="35" rx="4" fill="#1565c0" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="27" y="17" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Money-</text>
+          <text x="27" y="26" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Weighted (MWR)</text>
+          <text x="27" y="34" text-anchor="middle" font-size="6.5" fill="#ffd700" font-family="sans-serif">= IRR of cash flows</text>
+          <!-- TWR side -->
+          <rect x="58" y="5" width="50" height="35" rx="4" fill="#2e7d32" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="83" y="17" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Time-</text>
+          <text x="83" y="26" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Weighted (TWR)</text>
+          <text x="83" y="34" text-anchor="middle" font-size="6.5" fill="#ffd700" font-family="sans-serif">links sub-period returns</text>
+          <!-- labels below -->
+          <text x="27" y="55" text-anchor="middle" font-size="6.5" fill="#1565c0" font-weight="bold" font-family="sans-serif">Client controls timing</text>
+          <text x="27" y="64" text-anchor="middle" font-size="6.5" fill="#555" font-family="sans-serif">→ reflects investor exp.</text>
+          <text x="83" y="55" text-anchor="middle" font-size="6.5" fill="#2e7d32" font-weight="bold" font-family="sans-serif">Manager can't control</text>
+          <text x="83" y="64" text-anchor="middle" font-size="6.5" fill="#555" font-family="sans-serif">→ best for mgr eval!</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"TWR = gold standard for comparing fund managers. MWR = actual investor experience."</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">TWR eliminates the effect of external cash flows — best for evaluating manager skill.</div>
+      </div>
+    </div>
+
+    <!-- P6: Real vs Nominal -->
+    <div class="panel">
+      <div class="panel-caption">Real vs Nominal Returns</div>
+      <div class="panel-scene bg-gold">
+        <svg width="100" height="78" viewBox="0 0 100 78" xmlns="http://www.w3.org/2000/svg">
+          <!-- nominal bar -->
+          <rect x="15" y="18" width="24" height="52" fill="#1565c0" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="27" y="13" text-anchor="middle" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">Nominal 8%</text>
+          <!-- real bar -->
+          <rect x="61" y="33" width="24" height="37" fill="#2e7d32" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="73" y="28" text-anchor="middle" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">Real ~5%</text>
+          <!-- inflation arrow -->
+          <rect x="40" y="25" width="20" height="14" rx="3" fill="#e63946" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="50" y="35" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">−3% 🔥</text>
+          <!-- ground -->
+          <line x1="5" y1="70" x2="95" y2="70" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="50" y="78" text-anchor="middle" font-size="6.5" fill="#555" font-family="sans-serif">Inflation eats your gains!</text>
+        </svg>
+        <div class="formula-box" style="font-size:0.75rem;">(1+nominal) = (1+real)(1+inflation)</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Real return removes inflation. It's what actually grows your purchasing power.</div>
+      </div>
+    </div>
+
+  </div><!-- /comic-grid -->
+
+  <div class="key-lesson">
+    <div class="key-icon">📈</div>
+    <div>
+      <h3>Module 1 Key Takeaway</h3>
+      <p>Interest rates have three roles (return, discount rate, opportunity cost) and are built from real rate + risk premiums. Use geometric mean for compounded past performance, TWR to compare managers, and always strip inflation to find the real return.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 2 ═══════════════════════════════════ -->
+<section class="module m2" id="m2">
+  <div class="module-header">
+    <div class="module-num">2</div>
+    <div>
+      <div class="module-title">Time Value of Money in Finance</div>
+      <div class="module-tagline">Bonds, equities, forward rates, no-arbitrage, option pricing — TVM everywhere!</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Bond pricing -->
+    <div class="panel">
+      <div class="panel-caption">Bond = PV of Future Cash Flows</div>
+      <div class="panel-scene bg-green">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- timeline -->
+          <line x1="5" y1="50" x2="105" y2="50" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="5" y="45" font-size="7" fill="#0d0d1a" font-family="sans-serif">t=0</text>
+          <!-- coupon arrows -->
+          <line x1="25" y1="50" x2="25" y2="28" stroke="#2e7d32" stroke-width="2"/>
+          <rect x="15" y="18" width="20" height="10" rx="2" fill="#4caf50" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="25" y="26" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">C</text>
+          <line x1="50" y1="50" x2="50" y2="28" stroke="#2e7d32" stroke-width="2"/>
+          <rect x="40" y="18" width="20" height="10" rx="2" fill="#4caf50" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="50" y="26" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">C</text>
+          <line x1="75" y1="50" x2="75" y2="18" stroke="#1565c0" stroke-width="2"/>
+          <rect x="61" y="8" width="28" height="10" rx="2" fill="#1565c0" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="75" y="16" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">C+Face</text>
+          <!-- PV arrow back to 0 -->
+          <path d="M75 60 Q40 72 10 62" stroke="#e63946" stroke-width="2" fill="none" stroke-dasharray="4"/>
+          <text x="42" y="78" text-anchor="middle" font-size="7" fill="#e63946" font-weight="bold" font-family="sans-serif">PV = Bond Price</text>
+        </svg>
+        <div class="formula-box" style="font-size:0.72rem;">Price = Σ C/(1+r)ᵗ + Face/(1+r)ⁿ</div>
+        <div class="bubble" style="font-size:0.72rem;">"When rates ↑, price ↓. Bond price and yield move OPPOSITE!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">A bond's price = PV of all coupons + PV of face value, discounted at the market yield.</div>
+      </div>
+    </div>
+
+    <!-- P2: Equity (Gordon Growth) -->
+    <div class="panel">
+      <div class="panel-caption">Equity: Gordon Growth Model</div>
+      <div class="panel-scene bg-green">
+        <svg width="100" height="75" viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- growing dividends bar chart -->
+          <rect x="8" y="55" width="14" height="15" fill="#4caf50" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="15" y="52" text-anchor="middle" font-size="6.5" fill="#0d0d1a" font-family="sans-serif">D₁</text>
+          <rect x="28" y="47" width="14" height="23" fill="#4caf50" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="35" y="44" text-anchor="middle" font-size="6.5" fill="#0d0d1a" font-family="sans-serif">D₂</text>
+          <rect x="48" y="38" width="14" height="32" fill="#4caf50" stroke="#0d0d1a" stroke-width="2"/>
+          <rect x="68" y="28" width="14" height="42" fill="#4caf50" stroke="#0d0d1a" stroke-width="2"/>
+          <!-- growth arrow -->
+          <path d="M12 54 Q50 20 78 27" stroke="#e63946" stroke-width="2" fill="none" stroke-dasharray="3"/>
+          <text x="55" y="20" text-anchor="middle" font-size="7" fill="#e63946" font-weight="bold" font-family="sans-serif">grows at g!</text>
+          <line x1="0" y1="70" x2="100" y2="70" stroke="#0d0d1a" stroke-width="1.5"/>
+        </svg>
+        <div class="formula-box" style="font-size:0.78rem;">V₀ = D₁ / (r − g)</div>
+        <div class="bubble" style="font-size:0.72rem;">"Stock value = next dividend divided by (required return − growth). Simple!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Gordon Growth Model: stock = PV of perpetually growing dividends. Works when g &lt; r.</div>
+      </div>
+    </div>
+
+    <!-- P3: No-arbitrage forward rates -->
+    <div class="panel">
+      <div class="panel-caption">No-Arbitrage Forward Rates</div>
+      <div class="panel-scene bg-green">
+        <svg width="110" height="80" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- two paths must equal -->
+          <text x="5" y="18" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">Path A: invest 2 years</text>
+          <rect x="5" y="22" width="100" height="12" rx="3" fill="#2e7d32" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="55" y="31" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">(1+S₂)² → $1 grows for 2yr</text>
+          <text x="5" y="46" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">Path B: 1yr + forward 1yr</text>
+          <rect x="5" y="50" width="46" height="12" rx="3" fill="#1565c0" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="28" y="59" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">(1+S₁)</text>
+          <rect x="56" y="50" width="49" height="12" rx="3" fill="#e63946" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="80" y="59" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">× (1+₁f₁)</text>
+          <!-- equals sign -->
+          <text x="55" y="74" text-anchor="middle" font-size="8" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">Must be EQUAL (no free lunch!)</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"Both paths must give same result — or arbitrageurs will exploit the difference!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Forward rates are implied by spot rates via no-arbitrage: (1+S₂)² = (1+S₁)(1+₁f₁).</div>
+      </div>
+    </div>
+
+    <!-- P4: Option pricing (wide) -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Option Pricing via Cash Flow Additivity (No-Arbitrage)</div>
+      <div class="panel-scene bg-green" style="flex-direction:row;flex-wrap:wrap;gap:16px;padding:16px;justify-content:center;">
+        <div style="text-align:center;max-width:180px;">
+          <div style="font-family:Bangers,cursive;font-size:1.1rem;color:#2e7d32;letter-spacing:1px;">KEY IDEA</div>
+          <svg width="150" height="70" viewBox="0 0 150 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="20" width="40" height="30" rx="4" fill="#4caf50" stroke="#0d0d1a" stroke-width="2"/>
+            <text x="25" y="32" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Call</text>
+            <text x="25" y="41" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">Option</text>
+            <text x="52" y="38" font-size="14" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">+</text>
+            <rect x="62" y="20" width="40" height="30" rx="4" fill="#1565c0" stroke="#0d0d1a" stroke-width="2"/>
+            <text x="82" y="32" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">PV of</text>
+            <text x="82" y="41" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">Strike</text>
+            <text x="110" y="38" font-size="14" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">=</text>
+            <rect x="122" y="20" width="24" height="30" rx="4" fill="#e63946" stroke="#0d0d1a" stroke-width="2"/>
+            <text x="134" y="32" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Put</text>
+            <text x="134" y="41" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">+ S</text>
+          </svg>
+          <div style="font-size:0.72rem;font-weight:700;">Put-Call Parity:<br>C + PV(X) = P + S</div>
+        </div>
+        <div style="max-width:340px;">
+          <div class="narration">Two portfolios with identical future payoffs must have identical prices today — or free money exists!</div>
+          <div class="bubble" style="max-width:100%;margin-top:10px;">"If left side ≠ right side → BUY the cheap portfolio, SELL the expensive one. Riskless profit! But markets eliminate these quickly."</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Cash flow additivity + no-arbitrage → price any instrument by matching future payoffs.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">💵</div>
+    <div>
+      <h3>Module 2 Key Takeaway</h3>
+      <p>TVM is the engine of finance. Bond prices = PV of cash flows (inverse to yield). Stocks = PV of growing dividends. Forward rates are implied by spot rates via no-arbitrage. Put-call parity prices options. One principle rules them all: same future cash flows → same present price.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 3 ═══════════════════════════════════ -->
+<section class="module m3" id="m3">
+  <div class="module-header">
+    <div class="module-num">3</div>
+    <div>
+      <div class="module-title">Statistical Measures of Asset Returns</div>
+      <div class="module-tagline">Mean, median, variance, skewness, kurtosis, correlation — stats boot camp!</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Central tendency -->
+    <div class="panel">
+      <div class="panel-caption">Mean, Median, Mode — Who Wins?</div>
+      <div class="panel-scene bg-pink">
+        <svg width="110" height="80" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- distribution hump -->
+          <path d="M10 65 Q30 10 55 8 Q80 6 100 65" fill="#fce4ec" stroke="#880e4f" stroke-width="2.5"/>
+          <!-- mode line -->
+          <line x1="55" y1="8" x2="55" y2="65" stroke="#e63946" stroke-width="2" stroke-dasharray="4"/>
+          <text x="57" y="20" font-size="7" fill="#e63946" font-weight="bold" font-family="sans-serif">Mode</text>
+          <!-- median line -->
+          <line x1="62" y1="12" x2="62" y2="65" stroke="#9c27b0" stroke-width="2" stroke-dasharray="4"/>
+          <text x="64" y="30" font-size="7" fill="#9c27b0" font-weight="bold" font-family="sans-serif">Med</text>
+          <!-- mean line -->
+          <line x1="70" y1="18" x2="70" y2="65" stroke="#1565c0" stroke-width="2" stroke-dasharray="4"/>
+          <text x="72" y="38" font-size="7" fill="#1565c0" font-weight="bold" font-family="sans-serif">Mean</text>
+          <!-- label: right skewed -->
+          <text x="55" y="75" text-anchor="middle" font-size="7.5" fill="#880e4f" font-weight="bold" font-family="sans-serif">Right-Skewed Distribution</text>
+          <text x="14" y="68" font-size="6.5" fill="#555" font-family="sans-serif">tail</text>
+          <text x="82" y="68" font-size="6.5" fill="#555" font-family="sans-serif">tail →</text>
+        </svg>
+        <div class="bubble" style="font-size:0.73rem;">"In right-skewed data: Mode &lt; Median &lt; Mean. The mean gets dragged by outliers!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Skewness pulls the mean away from median. Use median for outlier-prone financial data.</div>
+      </div>
+    </div>
+
+    <!-- P2: Dispersion measures -->
+    <div class="panel">
+      <div class="panel-caption">Measuring Spread: Variance & Std Dev</div>
+      <div class="panel-scene bg-pink">
+        <div style="width:100%;display:flex;flex-direction:column;gap:5px;padding:0 8px;">
+          <div class="flowstep" style="background:#880e4f;color:#fff;border-color:#880e4f;">
+            <div class="content">Range = Max − Min &nbsp;📏</div>
+          </div>
+          <div class="flowstep" style="background:#e91e63;color:#fff;border-color:#e91e63;">
+            <div class="content">Variance = avg squared deviations from mean &nbsp;σ²</div>
+          </div>
+          <div class="flowstep" style="background:#9c27b0;color:#fff;border-color:#9c27b0;">
+            <div class="content">Std Dev = √Variance &nbsp;σ &nbsp;← same units as returns!</div>
+          </div>
+          <div class="flowstep" style="background:#1565c0;color:#fff;border-color:#1565c0;">
+            <div class="content">CV = σ / Mean &nbsp;← risk per unit of return</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Std Dev = most common risk measure. CV lets you compare risk across different assets.</div>
+      </div>
+    </div>
+
+    <!-- P3: Skewness & Kurtosis -->
+    <div class="panel">
+      <div class="panel-caption">Skewness & Kurtosis — Shape Matters!</div>
+      <div class="panel-scene bg-pink">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- normal -->
+          <path d="M5 65 Q28 10 55 8 Q82 10 105 65" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="5"/>
+          <!-- leptokurtic (fat tails) -->
+          <path d="M5 62 Q20 60 55 2 Q90 60 105 62" fill="#fce4ec" stroke="#e63946" stroke-width="2"/>
+          <!-- platykurtic -->
+          <path d="M5 60 Q28 40 55 38 Q82 40 105 60" fill="none" stroke="#1565c0" stroke-width="2" stroke-dasharray="3"/>
+          <!-- labels -->
+          <text x="55" y="78" text-anchor="middle" font-size="6.5" fill="#e63946" font-weight="bold" font-family="sans-serif">Leptokurtic (fat tails, kurtosis&gt;3)</text>
+          <text x="55" y="12" text-anchor="middle" font-size="6" fill="#e63946" font-family="sans-serif">PEAK!</text>
+          <text x="8" y="56" font-size="6" fill="#555" font-family="sans-serif">fat tail</text>
+          <text x="88" y="56" font-size="6" fill="#555" font-family="sans-serif">fat tail</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"Fat tails = extreme outcomes more likely than normal. BIG deal in risk management!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Excess kurtosis &gt; 0 = fat tails. Financial returns often leptokurtic — crashes happen more than normal predicts!</div>
+      </div>
+    </div>
+
+    <!-- P4: Correlation (wide) -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Correlation — How Two Assets Move Together</div>
+      <div class="panel-scene bg-pink" style="flex-direction:row;flex-wrap:wrap;gap:14px;padding:16px;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- +1 scatter -->
+          <text x="40" y="10" text-anchor="middle" font-size="8" font-weight="bold" fill="#2e7d32" font-family="sans-serif">ρ = +1</text>
+          <circle cx="15" cy="68" r="3" fill="#2e7d32"/><circle cx="25" cy="58" r="3" fill="#2e7d32"/>
+          <circle cx="35" cy="48" r="3" fill="#2e7d32"/><circle cx="50" cy="33" r="3" fill="#2e7d32"/>
+          <circle cx="65" cy="18" r="3" fill="#2e7d32"/>
+          <line x1="10" y1="72" x2="70" y2="12" stroke="#2e7d32" stroke-width="1.5" stroke-dasharray="3"/>
+        </svg>
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- 0 scatter -->
+          <text x="40" y="10" text-anchor="middle" font-size="8" font-weight="bold" fill="#888" font-family="sans-serif">ρ = 0</text>
+          <circle cx="15" cy="30" r="3" fill="#888"/><circle cx="30" cy="60" r="3" fill="#888"/>
+          <circle cx="45" cy="25" r="3" fill="#888"/><circle cx="60" cy="55" r="3" fill="#888"/>
+          <circle cx="25" cy="50" r="3" fill="#888"/><circle cx="55" cy="35" r="3" fill="#888"/>
+        </svg>
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- -1 scatter -->
+          <text x="40" y="10" text-anchor="middle" font-size="8" font-weight="bold" fill="#e63946" font-family="sans-serif">ρ = −1</text>
+          <circle cx="15" cy="18" r="3" fill="#e63946"/><circle cx="25" cy="30" r="3" fill="#e63946"/>
+          <circle cx="40" cy="45" r="3" fill="#e63946"/><circle cx="55" cy="58" r="3" fill="#e63946"/>
+          <circle cx="65" cy="68" r="3" fill="#e63946"/>
+          <line x1="10" y1="12" x2="70" y2="72" stroke="#e63946" stroke-width="1.5" stroke-dasharray="3"/>
+        </svg>
+        <div style="align-self:center;max-width:180px;">
+          <div class="bubble" style="max-width:100%">"Correlation ranges −1 to +1. NEVER implies causation! Two ice cream stocks may correlate — but eating ice cream doesn't cause the market to rise. 🍦"</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Correlation ρ ∈ [−1, +1]. Key for diversification — combining low-corr assets reduces portfolio risk.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">📊</div>
+    <div>
+      <h3>Module 3 Key Takeaway</h3>
+      <p>Central tendency (mean/median/mode), dispersion (variance, std dev, CV), shape (skewness, kurtosis), and correlation form the statistical toolkit for analysing returns. Fat tails and skewness mean normal distribution assumptions can be dangerous in real markets!</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 4 ═══════════════════════════════════ -->
+<section class="module m4" id="m4">
+  <div class="module-header">
+    <div class="module-num">4</div>
+    <div>
+      <div class="module-title">Probability Trees & Conditional Expectations</div>
+      <div class="module-tagline">Expected value, probability trees, Bayes' theorem — probability in action!</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Expected value -->
+    <div class="panel">
+      <div class="panel-caption">Expected Value — Probability-Weighted Average</div>
+      <div class="panel-scene bg-purple">
+        <svg width="110" height="80" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- dice analogy -->
+          <rect x="5" y="15" width="45" height="50" rx="6" fill="#fff" stroke="#0d0d1a" stroke-width="2.5"/>
+          <text x="27" y="35" text-anchor="middle" font-size="20" font-family="sans-serif">🎲</text>
+          <text x="27" y="52" text-anchor="middle" font-size="7" fill="#6a1b9a" font-weight="bold" font-family="sans-serif">P(each)=1/6</text>
+          <text x="60" y="38" font-size="14" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">→</text>
+          <rect x="72" y="25" width="34" height="25" rx="4" fill="#6a1b9a" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="89" y="36" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">E[X]</text>
+          <text x="89" y="45" text-anchor="middle" font-size="8" fill="#ffd700" font-weight="bold" font-family="sans-serif">= 3.5</text>
+          <text x="55" y="72" text-anchor="middle" font-size="7.5" fill="#0d0d1a" font-family="sans-serif">Σ P(xᵢ) × xᵢ</text>
+        </svg>
+        <div class="bubble" style="font-size:0.73rem;">"E[X] = probability-weighted sum of all possible outcomes. The long-run average!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Expected value = Σ P(xᵢ)·xᵢ. It's the fair price and the long-run average of repeated trials.</div>
+      </div>
+    </div>
+
+    <!-- P2: Probability Tree -->
+    <div class="panel">
+      <div class="panel-caption">Probability Tree — Map All Scenarios</div>
+      <div class="panel-scene bg-purple">
+        <svg width="115" height="85" viewBox="0 0 115 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- root -->
+          <circle cx="15" cy="42" r="10" fill="#6a1b9a" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="15" y="46" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">Start</text>
+          <!-- branches -->
+          <line x1="25" y1="35" x2="52" y2="20" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="35" y="25" font-size="7" fill="#2e7d32" font-weight="bold" font-family="sans-serif">0.6</text>
+          <circle cx="58" cy="17" r="9" fill="#4caf50" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="58" y="21" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Up</text>
+          <line x1="25" y1="49" x2="52" y2="64" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="35" y="62" font-size="7" fill="#e63946" font-weight="bold" font-family="sans-serif">0.4</text>
+          <circle cx="58" cy="67" r="9" fill="#e63946" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="58" y="71" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Down</text>
+          <!-- 2nd branches -->
+          <line x1="67" y1="12" x2="90" y2="5" stroke="#0d0d1a" stroke-width="1.5"/>
+          <line x1="67" y1="22" x2="90" y2="28" stroke="#0d0d1a" stroke-width="1.5"/>
+          <line x1="67" y1="62" x2="90" y2="55" stroke="#0d0d1a" stroke-width="1.5"/>
+          <line x1="67" y1="72" x2="90" y2="78" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="92" y="8" font-size="7" fill="#0d0d1a" font-family="sans-serif">0.7 → +20%</text>
+          <text x="92" y="32" font-size="7" fill="#0d0d1a" font-family="sans-serif">0.3 → +5%</text>
+          <text x="92" y="58" font-size="7" fill="#0d0d1a" font-family="sans-serif">0.5 → −5%</text>
+          <text x="92" y="80" font-size="7" fill="#0d0d1a" font-family="sans-serif">0.5 → −15%</text>
+        </svg>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Trees map conditional outcomes. E[X] = multiply joint probabilities × outcomes, sum all branches.</div>
+      </div>
+    </div>
+
+    <!-- P3: Bayes wide -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Bayes' Theorem — Updating Beliefs with New Info</div>
+      <div class="panel-scene bg-purple" style="flex-direction:row;flex-wrap:wrap;gap:18px;padding:16px;justify-content:center;">
+        <div style="text-align:center;max-width:180px;">
+          <div style="font-family:Bangers,cursive;font-size:1.1rem;color:#6a1b9a;letter-spacing:1px;margin-bottom:8px;">PRIOR BELIEF</div>
+          <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="80" height="40" rx="6" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2"/>
+            <text x="50" y="28" text-anchor="middle" font-size="8" fill="#6a1b9a" font-weight="bold" font-family="sans-serif">P(Rain) = 40%</text>
+            <text x="50" y="40" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">Before looking outside</text>
+          </svg>
+        </div>
+        <div style="font-family:Bangers,cursive;font-size:2rem;color:#0d0d1a;align-self:center;">+<br><span style="font-size:1rem;">NEW DATA</span></div>
+        <div style="text-align:center;max-width:180px;">
+          <div style="font-family:Bangers,cursive;font-size:1.1rem;color:#1565c0;letter-spacing:1px;margin-bottom:8px;">LIKELIHOOD</div>
+          <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="80" height="40" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+            <text x="50" y="28" text-anchor="middle" font-size="7.5" fill="#1565c0" font-weight="bold" font-family="sans-serif">Clouds observed!</text>
+            <text x="50" y="40" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">P(Clouds|Rain)=80%</text>
+          </svg>
+        </div>
+        <div style="font-family:Bangers,cursive;font-size:2rem;color:#0d0d1a;align-self:center;">=</div>
+        <div style="text-align:center;max-width:180px;">
+          <div style="font-family:Bangers,cursive;font-size:1.1rem;color:#2e7d32;letter-spacing:1px;margin-bottom:8px;">POSTERIOR</div>
+          <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="80" height="40" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+            <text x="50" y="28" text-anchor="middle" font-size="8" fill="#2e7d32" font-weight="bold" font-family="sans-serif">P(Rain|Clouds)</text>
+            <text x="50" y="40" text-anchor="middle" font-size="8" fill="#2e7d32" font-weight="bold" font-family="sans-serif">= Updated!</text>
+          </svg>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="formula-box" style="font-size:0.73rem;">P(A|B) = P(B|A) × P(A) / P(B) &nbsp;&nbsp;← Bayes' Theorem</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🌳</div>
+    <div>
+      <h3>Module 4 Key Takeaway</h3>
+      <p>Expected value weights outcomes by probability. Probability trees visualise conditional paths. Bayes' theorem is the engine for updating beliefs: prior × likelihood = posterior. Essential for scenario analysis and forecasting in investments.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 5 ═══════════════════════════════════ -->
+<section class="module m5" id="m5">
+  <div class="module-header">
+    <div class="module-num">5</div>
+    <div>
+      <div class="module-title">Portfolio Mathematics</div>
+      <div class="module-tagline">Expected return, variance, covariance, correlation, normal distribution & VaR.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Portfolio expected return -->
+    <div class="panel">
+      <div class="panel-caption">Portfolio Expected Return</div>
+      <div class="panel-scene bg-orange">
+        <svg width="110" height="80" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- Two assets weighted -->
+          <rect x="4" y="20" width="40" height="35" rx="5" fill="#e65100" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="24" y="34" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Asset A</text>
+          <text x="24" y="44" text-anchor="middle" font-size="7.5" fill="#ffd700" font-weight="bold" font-family="sans-serif">w₁ × E[Rₐ]</text>
+          <text x="48" y="40" font-size="16" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">+</text>
+          <rect x="58" y="20" width="48" height="35" rx="5" fill="#ff9800" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="82" y="34" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Asset B</text>
+          <text x="82" y="44" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">w₂ × E[R_b]</text>
+          <line x1="55" y1="60" x2="55" y2="68" stroke="#0d0d1a" stroke-width="2"/>
+          <rect x="20" y="68" width="70" height="12" rx="4" fill="#0d0d1a"/>
+          <text x="55" y="77" text-anchor="middle" font-size="7.5" fill="#ffd700" font-weight="bold" font-family="sans-serif">E[Rₚ] = portfolio return!</text>
+        </svg>
+        <div class="bubble" style="font-size:0.73rem;">"Just the weighted average of each asset's return. Nice and clean!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Portfolio E[R] = Σ wᵢ · E[Rᵢ]. Simple weighted average. The magic is in the variance.</div>
+      </div>
+    </div>
+
+    <!-- P2: Portfolio Variance — diversification magic -->
+    <div class="panel">
+      <div class="panel-caption">Diversification Magic 🪄</div>
+      <div class="panel-scene bg-orange">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- two volatile assets -->
+          <polyline points="5,55 20,30 35,55 50,30 65,55 80,30 95,55" fill="none" stroke="#e63946" stroke-width="2"/>
+          <polyline points="5,30 20,55 35,30 50,55 65,30 80,55 95,30" fill="none" stroke="#1565c0" stroke-width="2"/>
+          <!-- combined line flat -->
+          <line x1="5" y1="42" x2="95" y2="42" stroke="#2e7d32" stroke-width="3"/>
+          <text x="10" y="25" font-size="7" fill="#e63946" font-weight="bold" font-family="sans-serif">Asset A (volatile)</text>
+          <text x="10" y="78" font-size="7" fill="#1565c0" font-weight="bold" font-family="sans-serif">Asset B (volatile)</text>
+          <rect x="28" y="64" width="55" height="14" rx="3" fill="#2e7d32" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="55" y="74" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Portfolio (smooth!) ✅</text>
+        </svg>
+        <div class="bubble" style="font-size:0.73rem;">"When ρ = −1 → variance drops to ZERO! That's perfect diversification."</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="formula-box" style="font-size:0.7rem;">σ²ₚ = w₁²σ₁² + w₂²σ₂² + 2w₁w₂σ₁σ₂ρ₁₂</div>
+      </div>
+    </div>
+
+    <!-- P3: Normal dist & VaR -->
+    <div class="panel">
+      <div class="panel-caption">Normal Distribution & VaR</div>
+      <div class="panel-scene bg-orange">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- bell curve -->
+          <path d="M5 72 Q20 72 35 65 Q55 10 75 65 Q90 72 105 72" fill="#fff3e0" stroke="#e65100" stroke-width="2.5"/>
+          <!-- shade left tail -->
+          <path d="M5 72 Q15 72 22 70 Q18 65 16 72 Z" fill="#e63946" opacity="0.6"/>
+          <!-- 1/2.5% labels -->
+          <text x="5" y="84" font-size="6.5" fill="#e63946" font-weight="bold" font-family="sans-serif">5% VaR</text>
+          <line x1="22" y1="58" x2="22" y2="72" stroke="#e63946" stroke-width="2" stroke-dasharray="3"/>
+          <!-- std marks -->
+          <text x="55" y="84" text-anchor="middle" font-size="6.5" fill="#555" font-family="sans-serif">μ</text>
+          <line x1="55" y1="10" x2="55" y2="72" stroke="#888" stroke-width="1.5" stroke-dasharray="3"/>
+          <text x="22" y="56" text-anchor="middle" font-size="6.5" fill="#e63946" font-family="sans-serif">−1.65σ</text>
+          <!-- 68-95-99 labels -->
+          <rect x="2" y="2" width="60" height="22" rx="3" fill="rgba(255,255,255,0.85)" stroke="#e65100" stroke-width="1.5"/>
+          <text x="32" y="12" text-anchor="middle" font-size="6.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">68% within ±1σ</text>
+          <text x="32" y="20" text-anchor="middle" font-size="6.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">95% within ±2σ</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"VaR at 5% = I'll lose MORE than this only 5% of the time. Regulatory gold standard!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Normal distribution: 68-95-99.7 rule. VaR answers "what's the worst likely loss at X% confidence?"</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🗂️</div>
+    <div>
+      <h3>Module 5 Key Takeaway</h3>
+      <p>Portfolio return = weighted average of asset returns. Portfolio variance includes a covariance term — this is where diversification lives! Low/negative correlation reduces portfolio risk without sacrificing return. Normal distribution assumptions underpin VaR and risk budgeting.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 6 ═══════════════════════════════════ -->
+<section class="module m6" id="m6">
+  <div class="module-header">
+    <div class="module-num">6</div>
+    <div>
+      <div class="module-title">Simulation Methods</div>
+      <div class="module-tagline">Lognormal distribution, Monte Carlo simulation, Bootstrapping.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Lognormal -->
+    <div class="panel">
+      <div class="panel-caption">Why Asset Prices Are Lognormal</div>
+      <div class="panel-scene bg-teal">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- normal returns → lognormal prices -->
+          <rect x="2" y="12" width="45" height="28" rx="4" fill="#e0f7fa" stroke="#00695c" stroke-width="2"/>
+          <text x="24" y="24" text-anchor="middle" font-size="7.5" fill="#00695c" font-weight="bold" font-family="sans-serif">Returns</text>
+          <text x="24" y="34" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">Normal dist.</text>
+          <text x="52" y="28" font-size="10" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">eˣ</text>
+          <text x="64" y="22" font-size="8" fill="#0d0d1a" font-family="sans-serif">→</text>
+          <rect x="72" y="12" width="36" height="28" rx="4" fill="#00695c" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="90" y="24" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">Prices</text>
+          <text x="90" y="34" text-anchor="middle" font-size="7" fill="#ffd700" font-family="sans-serif">Lognormal!</text>
+          <!-- key property -->
+          <rect x="5" y="52" width="100" height="24" rx="4" fill="#ffd700" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="55" y="62" text-anchor="middle" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">✅ Prices can't go below ZERO</text>
+          <text x="55" y="72" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">Right-skewed: big gains possible, floor at 0</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"If returns are normal → prices are lognormal. And a stock can never be worth less than $0!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Lognormal prices = naturally bounded above zero. ln(price) is normally distributed.</div>
+      </div>
+    </div>
+
+    <!-- P2: Monte Carlo -->
+    <div class="panel">
+      <div class="panel-caption">Monte Carlo Simulation 🎰</div>
+      <div class="panel-scene bg-teal">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- many random paths -->
+          <polyline points="5,50 20,42 40,55 60,30 80,45 105,25" fill="none" stroke="#e63946" stroke-width="1.5" opacity="0.7"/>
+          <polyline points="5,50 20,60 40,45 60,55 80,35 105,50" fill="none" stroke="#2196f3" stroke-width="1.5" opacity="0.7"/>
+          <polyline points="5,50 20,35 40,25 60,40 80,20 105,15" fill="none" stroke="#4caf50" stroke-width="1.5" opacity="0.7"/>
+          <polyline points="5,50 20,55 40,65 60,58 80,68 105,72" fill="none" stroke="#9c27b0" stroke-width="1.5" opacity="0.7"/>
+          <polyline points="5,50 20,48 40,38 60,44 80,52 105,38" fill="none" stroke="#ff9800" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="5" cy="50" r="5" fill="#0d0d1a"/>
+          <text x="5" y="78" font-size="6.5" fill="#0d0d1a" font-family="sans-serif">Today</text>
+          <text x="85" y="78" font-size="6.5" fill="#0d0d1a" font-family="sans-serif">Future</text>
+          <text x="55" y="9" text-anchor="middle" font-size="7.5" fill="#00695c" font-weight="bold" font-family="sans-serif">1000s of simulated paths!</text>
+        </svg>
+        <div class="bubble" style="font-size:0.73rem;">"Run 10,000 random scenarios. Count outcomes. Build a distribution of possibilities!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Monte Carlo: simulate many random paths using assumed distributions → estimate risk & return distributions.</div>
+      </div>
+    </div>
+
+    <!-- P3: Bootstrapping -->
+    <div class="panel">
+      <div class="panel-caption">Bootstrapping — Resample the Data!</div>
+      <div class="panel-scene bg-teal">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- original dataset box -->
+          <rect x="2" y="8" width="50" height="30" rx="4" fill="#e0f7fa" stroke="#00695c" stroke-width="2"/>
+          <text x="27" y="20" text-anchor="middle" font-size="7.5" fill="#00695c" font-weight="bold" font-family="sans-serif">Historical</text>
+          <text x="27" y="30" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">Data Sample</text>
+          <!-- resample arrows -->
+          <path d="M52 18 Q70 10 80 18" stroke="#0d0d1a" stroke-width="2" fill="none" stroke-dasharray="3" marker-end="url(#a2)"/>
+          <path d="M52 23 Q70 23 80 30" stroke="#0d0d1a" stroke-width="2" fill="none" stroke-dasharray="3"/>
+          <path d="M52 28 Q70 36 80 42" stroke="#0d0d1a" stroke-width="2" fill="none" stroke-dasharray="3"/>
+          <!-- resampled datasets -->
+          <rect x="80" y="6" width="28" height="14" rx="3" fill="#009688" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="94" y="16" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Sample 1</text>
+          <rect x="80" y="24" width="28" height="14" rx="3" fill="#009688" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="94" y="34" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Sample 2</text>
+          <rect x="80" y="42" width="28" height="14" rx="3" fill="#009688" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="94" y="52" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">Sample N…</text>
+          <!-- advantage -->
+          <rect x="2" y="58" width="106" height="22" rx="4" fill="#ffd700" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="55" y="68" text-anchor="middle" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">✅ No distribution assumptions needed!</text>
+          <text x="55" y="77" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">Let the data speak for itself.</text>
+        </svg>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Bootstrapping resamples with replacement from actual data — makes no parametric assumptions.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🎲</div>
+    <div>
+      <h3>Module 6 Key Takeaway</h3>
+      <p>Asset prices follow lognormal distribution (bounded at zero, right-skewed). Monte Carlo simulates thousands of paths under assumed distributions. Bootstrapping resamples actual historical data — model-free and assumption-free. Both are powerful tools for estimating risk.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 7 ═══════════════════════════════════ -->
+<section class="module m7" id="m7">
+  <div class="module-header">
+    <div class="module-num">7</div>
+    <div>
+      <div class="module-title">Estimation and Inference</div>
+      <div class="module-tagline">Sampling methods, the magical Central Limit Theorem, standard error.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Sampling methods -->
+    <div class="panel">
+      <div class="panel-caption">4 Ways to Sample a Population</div>
+      <div class="panel-scene bg-lime">
+        <div style="width:100%;display:flex;flex-direction:column;gap:4px;padding:0 6px;">
+          <div class="flowstep" style="background:#827717;color:#fff;border-color:#827717;">
+            <div class="label">①</div><div class="content">Simple Random — everyone equal chance 🎱</div>
+          </div>
+          <div class="flowstep" style="background:#9e9d24;color:#fff;border-color:#9e9d24;">
+            <div class="label">②</div><div class="content">Stratified — split into groups, sample each 📂</div>
+          </div>
+          <div class="flowstep" style="background:#afb42b;color:#fff;border-color:#afb42b;">
+            <div class="label">③</div><div class="content">Cluster — random clusters, sample whole cluster 🔵</div>
+          </div>
+          <div class="flowstep" style="background:#c0ca33;color:#fff;border-color:#c0ca33;">
+            <div class="label">④</div><div class="content">Non-Probability — convenience, judgment 🤔</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Choose sampling method carefully — bias in sampling means bias in conclusions.</div>
+      </div>
+    </div>
+
+    <!-- P2: CLT (wide) -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">The Central Limit Theorem — One of Statistics' Greatest Hits! 🎸</div>
+      <div class="panel-scene bg-lime" style="flex-direction:row;flex-wrap:wrap;gap:14px;padding:16px;justify-content:center;">
+        <div style="text-align:center;max-width:160px;">
+          <div style="font-family:Bangers,cursive;color:#827717;font-size:1rem;letter-spacing:1px;">ANY Population</div>
+          <svg width="130" height="70" viewBox="0 0 130 70" xmlns="http://www.w3.org/2000/svg">
+            <!-- uniform ugly distribution -->
+            <rect x="5" y="30" width="120" height="30" fill="#f0f4c3" stroke="#827717" stroke-width="2"/>
+            <text x="65" y="50" text-anchor="middle" font-size="8" fill="#827717" font-weight="bold" font-family="sans-serif">Uniform / Skewed / Weird</text>
+          </svg>
+        </div>
+        <div style="font-family:Bangers,cursive;font-size:2rem;color:#0d0d1a;align-self:center;">→<br><span style="font-size:0.8rem;">large n samples</span></div>
+        <div style="text-align:center;max-width:180px;">
+          <div style="font-family:Bangers,cursive;color:#2e7d32;font-size:1rem;letter-spacing:1px;">Sample Means</div>
+          <svg width="130" height="70" viewBox="0 0 130 70" xmlns="http://www.w3.org/2000/svg">
+            <!-- normal bell curve -->
+            <path d="M5 65 Q30 65 55 10 Q80 65 105 65" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+            <text x="65" y="30" text-anchor="middle" font-size="8" fill="#2e7d32" font-weight="bold" font-family="sans-serif">NORMAL!</text>
+            <text x="55" y="62" text-anchor="middle" font-size="7" fill="#555" font-family="sans-serif">Always bell-shaped 🔔</text>
+          </svg>
+        </div>
+        <div style="align-self:center;max-width:200px;">
+          <div class="bubble" style="max-width:100%;">"No matter how weird the underlying distribution — sample means become NORMAL as n grows. This is why statistics WORKS in finance!"</div>
+          <div class="formula-box" style="font-size:0.72rem;margin-top:8px;">SE = σ/√n &nbsp;← standard error of mean</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">CLT: sample means → Normal(μ, σ²/n) as n→∞. Standard error shrinks as sample grows.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🔬</div>
+    <div>
+      <h3>Module 7 Key Takeaway</h3>
+      <p>Sampling method choice affects data quality. The Central Limit Theorem is the cornerstone of inferential statistics: sample means are approximately normal for large n, regardless of population shape. Standard error = σ/√n — bigger samples → more precise estimates.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 8 ═══════════════════════════════════ -->
+<section class="module m8" id="m8">
+  <div class="module-header">
+    <div class="module-num">8</div>
+    <div>
+      <div class="module-title">Hypothesis Testing</div>
+      <div class="module-tagline">H₀ vs H₁, p-values, t-tests, Type I & II errors — prove it statistically!</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: The Hypothesis Testing Process -->
+    <div class="panel">
+      <div class="panel-caption">The 5-Step Hypothesis Testing Process</div>
+      <div class="panel-scene bg-red">
+        <div style="width:100%;display:flex;flex-direction:column;gap:4px;padding:0 6px;">
+          <div class="flowstep" style="background:#b71c1c;color:#fff;border-color:#b71c1c;">
+            <div class="content">① State H₀ (null) and Hₐ (alternative)</div>
+          </div>
+          <div class="flow-arrow" style="text-align:center;">▼</div>
+          <div class="flowstep" style="background:#c62828;color:#fff;border-color:#c62828;">
+            <div class="content">② Choose significance level α (1%, 5%, 10%)</div>
+          </div>
+          <div class="flow-arrow" style="text-align:center;">▼</div>
+          <div class="flowstep" style="background:#d32f2f;color:#fff;border-color:#d32f2f;">
+            <div class="content">③ Calculate test statistic (t, z, F, χ²)</div>
+          </div>
+          <div class="flow-arrow" style="text-align:center;">▼</div>
+          <div class="flowstep" style="background:#e53935;color:#fff;border-color:#e53935;">
+            <div class="content">④ Find critical value / p-value</div>
+          </div>
+          <div class="flow-arrow" style="text-align:center;">▼</div>
+          <div class="flowstep" style="background:#2e7d32;color:#fff;border-color:#2e7d32;">
+            <div class="content">⑤ Reject H₀ or Fail to Reject H₀ ✅</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Always: state → choose α → compute statistic → compare to critical value → decide.</div>
+      </div>
+    </div>
+
+    <!-- P2: Type I & II Errors -->
+    <div class="panel">
+      <div class="panel-caption">Type I & Type II Errors — The Double Danger</div>
+      <div class="panel-scene bg-red">
+        <svg width="115" height="90" viewBox="0 0 115 90" xmlns="http://www.w3.org/2000/svg">
+          <!-- truth vs decision grid -->
+          <rect x="30" y="5" width="40" height="14" rx="2" fill="#0d0d1a"/>
+          <text x="50" y="15" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">REALITY</text>
+          <rect x="30" y="19" width="40" height="13" rx="2" fill="#2e7d32"/>
+          <text x="50" y="28" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">H₀ True</text>
+          <rect x="72" y="19" width="40" height="13" rx="2" fill="#e63946"/>
+          <text x="92" y="28" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif">H₀ False</text>
+
+          <rect x="2" y="34" width="27" height="14" rx="2" fill="#1565c0"/>
+          <text x="15" y="44" text-anchor="middle" font-size="5.5" fill="#fff" font-weight="bold" font-family="sans-serif">Reject H₀</text>
+          <rect x="30" y="34" width="40" height="26" rx="2" fill="#e63946" opacity="0.85"/>
+          <text x="50" y="43" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">TYPE I ❌</text>
+          <text x="50" y="54" text-anchor="middle" font-size="6.5" fill="#fff" font-family="sans-serif">False Positive</text>
+          <rect x="72" y="34" width="40" height="26" rx="2" fill="#4caf50" opacity="0.85"/>
+          <text x="92" y="43" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">CORRECT ✅</text>
+          <text x="92" y="54" text-anchor="middle" font-size="6.5" fill="#fff" font-family="sans-serif">Power = 1−β</text>
+
+          <rect x="2" y="62" width="27" height="14" rx="2" fill="#1565c0"/>
+          <text x="15" y="72" text-anchor="middle" font-size="5.5" fill="#fff" font-weight="bold" font-family="sans-serif">Fail Reject</text>
+          <rect x="30" y="62" width="40" height="26" rx="2" fill="#4caf50" opacity="0.85"/>
+          <text x="50" y="71" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">CORRECT ✅</text>
+          <rect x="72" y="62" width="40" height="26" rx="2" fill="#ff9800" opacity="0.85"/>
+          <text x="92" y="71" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">TYPE II ❌</text>
+          <text x="92" y="80" text-anchor="middle" font-size="6.5" fill="#fff" font-family="sans-serif">False Negative</text>
+        </svg>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Type I (α): reject true H₀. Type II (β): fail to reject false H₀. Reducing α increases β!</div>
+      </div>
+    </div>
+
+    <!-- P3: p-value explained -->
+    <div class="panel">
+      <div class="panel-caption">The p-value — Smallest α to Reject H₀</div>
+      <div class="panel-scene bg-red">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- bell curve -->
+          <path d="M5 68 Q30 68 55 8 Q80 68 105 68" fill="#ffebee" stroke="#e63946" stroke-width="2"/>
+          <!-- rejection region -->
+          <path d="M88 68 Q96 68 105 60 L105 68 Z" fill="#e63946" opacity="0.7"/>
+          <path d="M5 60 Q15 68 22 68 L5 68 Z" fill="#e63946" opacity="0.7"/>
+          <!-- test stat vertical -->
+          <line x1="80" y1="25" x2="80" y2="68" stroke="#1565c0" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="80" y="20" text-anchor="middle" font-size="7.5" fill="#1565c0" font-weight="bold" font-family="sans-serif">test stat</text>
+          <!-- p-value shading -->
+          <path d="M80 30 Q92 68 105 68 L80 68 Z" fill="#1565c0" opacity="0.25"/>
+          <text x="96" y="56" text-anchor="middle" font-size="7" fill="#1565c0" font-weight="bold" font-family="sans-serif">p-value</text>
+          <!-- conclusion -->
+          <rect x="5" y="70" width="100" height="12" rx="3" fill="#ffd700" stroke="#0d0d1a" stroke-width="1.5"/>
+          <text x="55" y="79" text-anchor="middle" font-size="7.5" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">p &lt; α → Reject H₀! 🎉</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"p-value = probability of seeing this result IF H₀ were true. Small p = suspicious of H₀!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">p-value &lt; α → reject H₀. p-value is NOT the probability that H₀ is true — common mistake!</div>
+      </div>
+    </div>
+
+    <!-- P4: t-test vs F-test (wide) -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">Which Test to Use? The Quick Reference</div>
+      <div class="panel-scene bg-red" style="flex-direction:row;flex-wrap:wrap;gap:12px;padding:16px;justify-content:center;">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:500px;">
+          <div style="background:#b71c1c;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;box-shadow:3px 3px 0 #0d0d1a;">
+            <div style="font-family:Bangers,cursive;font-size:1rem;color:#ffd700;">t-test</div>
+            <div style="font-size:0.76rem;line-height:1.4;">Test a mean or difference between means. Unknown σ. Use t-distribution.</div>
+          </div>
+          <div style="background:#c62828;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;box-shadow:3px 3px 0 #0d0d1a;">
+            <div style="font-family:Bangers,cursive;font-size:1rem;color:#ffd700;">z-test</div>
+            <div style="font-size:0.76rem;line-height:1.4;">Test a mean when σ is known OR n is large (CLT kicks in).</div>
+          </div>
+          <div style="background:#1565c0;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;box-shadow:3px 3px 0 #0d0d1a;">
+            <div style="font-family:Bangers,cursive;font-size:1rem;color:#ffd700;">F-test</div>
+            <div style="font-size:0.76rem;line-height:1.4;">Compare two variances. Always right-tailed. Ratio of two χ² distributions.</div>
+          </div>
+          <div style="background:#2e7d32;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;box-shadow:3px 3px 0 #0d0d1a;">
+            <div style="font-family:Bangers,cursive;font-size:1rem;color:#ffd700;">χ² test</div>
+            <div style="font-size:0.76rem;line-height:1.4;">Test a single variance or goodness of fit. Always positive, right-skewed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Match the right test to the right question: means → t/z, variances → F or χ², always check assumptions!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">🔍</div>
+    <div>
+      <h3>Module 8 Key Takeaway</h3>
+      <p>Hypothesis testing has 5 steps. p-value &lt; α → reject H₀. Type I error (false positive) = α. Type II error (false negative) = β. There's always a trade-off: tightening one loosens the other. Use t for means, F for comparing variances, χ² for single variance.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 9 ═══════════════════════════════════ -->
+<section class="module m9" id="m9">
+  <div class="module-header">
+    <div class="module-num">9</div>
+    <div>
+      <div class="module-title">Parametric & Non-Parametric Tests of Independence</div>
+      <div class="module-tagline">Correlation tests, Spearman rank correlation, contingency tables.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: Parametric correlation test -->
+    <div class="panel">
+      <div class="panel-caption">Is That Correlation Real or Random?</div>
+      <div class="panel-scene bg-indigo">
+        <svg width="110" height="82" viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+          <!-- scatter with fitted line -->
+          <circle cx="15" cy="60" r="3.5" fill="#283593"/><circle cx="28" cy="52" r="3.5" fill="#283593"/>
+          <circle cx="40" cy="44" r="3.5" fill="#283593"/><circle cx="55" cy="35" r="3.5" fill="#283593"/>
+          <circle cx="68" cy="28" r="3.5" fill="#283593"/><circle cx="80" cy="20" r="3.5" fill="#283593"/>
+          <circle cx="20" cy="55" r="3.5" fill="#283593"/><circle cx="90" cy="15" r="3.5" fill="#283593"/>
+          <line x1="10" y1="65" x2="95" y2="10" stroke="#e63946" stroke-width="2" stroke-dasharray="4"/>
+          <!-- test annotation -->
+          <rect x="2" y="2" width="70" height="20" rx="3" fill="rgba(255,255,255,0.9)" stroke="#283593" stroke-width="1.5"/>
+          <text x="37" y="11" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">H₀: ρ = 0 (no correlation)</text>
+          <text x="37" y="19" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">t = r√(n−2)/√(1−r²)</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"We found r = 0.6 — but is it statistically significant? Use the t-test for correlation!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Parametric test: t = r√(n−2) / √(1−r²). Reject H₀: ρ=0 if |t| exceeds critical value.</div>
+      </div>
+    </div>
+
+    <!-- P2: Spearman Rank -->
+    <div class="panel">
+      <div class="panel-caption">Spearman Rank Correlation — No Assumptions!</div>
+      <div class="panel-scene bg-indigo">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- table -->
+          <rect x="2" y="5" width="106" height="65" rx="4" fill="#e8eaf6" stroke="#283593" stroke-width="2"/>
+          <!-- header -->
+          <rect x="2" y="5" width="106" height="14" rx="4" fill="#283593"/>
+          <text x="22" y="14" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">Return</text>
+          <text x="60" y="14" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">Rank A</text>
+          <text x="95" y="14" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">Rank B</text>
+          <!-- rows -->
+          <text x="22" y="27" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">15%</text>
+          <text x="60" y="27" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">1</text>
+          <text x="95" y="27" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">2</text>
+          <text x="22" y="38" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">−3%</text>
+          <text x="60" y="38" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">4</text>
+          <text x="95" y="38" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">4</text>
+          <text x="22" y="49" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">8%</text>
+          <text x="60" y="49" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">2</text>
+          <text x="95" y="49" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">1</text>
+          <text x="22" y="60" text-anchor="middle" font-size="7" fill="#0d0d1a" font-family="sans-serif">2%</text>
+          <text x="60" y="60" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">3</text>
+          <text x="95" y="60" text-anchor="middle" font-size="7" fill="#283593" font-weight="bold" font-family="sans-serif">3</text>
+          <text x="55" y="78" text-anchor="middle" font-size="7.5" fill="#283593" font-weight="bold" font-family="sans-serif">rₛ = 1 − 6Σdᵢ²/n(n²−1)</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"Convert data to ranks first, then compute correlation. Works for non-normal data!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Spearman = nonparametric. Ranks the data, then correlates ranks. Robust to outliers and non-normality.</div>
+      </div>
+    </div>
+
+    <!-- P3: Contingency table -->
+    <div class="panel">
+      <div class="panel-caption">Chi-Square Test of Independence</div>
+      <div class="panel-scene bg-indigo">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- 2x2 contingency table -->
+          <rect x="28" y="2" width="40" height="14" rx="2" fill="#283593"/>
+          <text x="48" y="12" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">Recession</text>
+          <rect x="70" y="2" width="38" height="14" rx="2" fill="#e63946"/>
+          <text x="89" y="12" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="sans-serif">Expansion</text>
+          <rect x="2" y="18" width="25" height="28" rx="2" fill="#283593"/>
+          <text x="14" y="33" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif" transform="rotate(-90,14,33)">Stock ↑</text>
+          <rect x="2" y="48" width="25" height="28" rx="2" fill="#e63946"/>
+          <text x="14" y="63" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="bold" font-family="sans-serif" transform="rotate(-90,14,63)">Stock ↓</text>
+          <!-- cells -->
+          <rect x="28" y="18" width="40" height="28" fill="#e8eaf6" stroke="#283593" stroke-width="1.5"/>
+          <text x="48" y="35" text-anchor="middle" font-size="11" font-weight="bold" fill="#283593" font-family="sans-serif">30</text>
+          <rect x="70" y="18" width="38" height="28" fill="#e8eaf6" stroke="#283593" stroke-width="1.5"/>
+          <text x="89" y="35" text-anchor="middle" font-size="11" font-weight="bold" fill="#283593" font-family="sans-serif">70</text>
+          <rect x="28" y="48" width="40" height="28" fill="#fce4ec" stroke="#e63946" stroke-width="1.5"/>
+          <text x="48" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#e63946" font-family="sans-serif">60</text>
+          <rect x="70" y="48" width="38" height="28" fill="#fce4ec" stroke="#e63946" stroke-width="1.5"/>
+          <text x="89" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#e63946" font-family="sans-serif">40</text>
+          <text x="55" y="82" text-anchor="middle" font-size="7.5" fill="#283593" font-weight="bold" font-family="sans-serif">χ² = Σ (O−E)²/E</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"Are stock direction and economic cycle independent? Chi-square tells you!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Contingency table + χ² test checks independence between two categorical variables. No normality needed.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">📐</div>
+    <div>
+      <h3>Module 9 Key Takeaway</h3>
+      <p>Parametric correlation test uses t-distribution (assumes normality). Spearman rank is nonparametric — converts data to ranks, robust to outliers. Chi-square contingency table tests independence of categorical variables. Always match the test to the data type!</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════ MODULE 10 ═══════════════════════════════════ -->
+<section class="module m10" id="m10">
+  <div class="module-header">
+    <div class="module-num">10</div>
+    <div>
+      <div class="module-title">Simple Linear Regression</div>
+      <div class="module-tagline">OLS estimation, 4 key assumptions, ANOVA, R², prediction intervals.</div>
+    </div>
+  </div>
+
+  <div class="comic-grid">
+
+    <!-- P1: The regression line -->
+    <div class="panel">
+      <div class="panel-caption">The Regression Line: Best Fit Through the Data</div>
+      <div class="panel-scene bg-brown">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- scatter -->
+          <circle cx="12" cy="70" r="3" fill="#4e342e"/><circle cx="22" cy="60" r="3" fill="#4e342e"/>
+          <circle cx="35" cy="55" r="3" fill="#4e342e"/><circle cx="48" cy="45" r="3" fill="#4e342e"/>
+          <circle cx="60" cy="38" r="3" fill="#4e342e"/><circle cx="72" cy="28" r="3" fill="#4e342e"/>
+          <circle cx="85" cy="22" r="3" fill="#4e342e"/><circle cx="30" cy="62" r="3" fill="#4e342e"/>
+          <!-- regression line -->
+          <line x1="5" y1="78" x2="100" y2="12" stroke="#e63946" stroke-width="2.5"/>
+          <!-- residual lines -->
+          <line x1="35" y1="55" x2="35" y2="66" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3"/>
+          <line x1="60" y1="38" x2="60" y2="44" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3"/>
+          <!-- annotation -->
+          <text x="55" y="72" text-anchor="middle" font-size="7.5" fill="#4e342e" font-weight="bold" font-family="sans-serif">Yᵢ = b₀ + b₁Xᵢ + εᵢ</text>
+          <text x="5" y="82" font-size="6.5" fill="#1565c0" font-weight="bold" font-family="sans-serif">← residuals (εᵢ)</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"OLS minimizes the SUM of SQUARED residuals — least squares!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Ŷ = b₀ + b₁X. OLS finds b₀, b₁ that minimise Σεᵢ². Slope b₁ = Cov(X,Y)/Var(X).</div>
+      </div>
+    </div>
+
+    <!-- P2: 4 Assumptions (wide) -->
+    <div class="panel panel-wide">
+      <div class="panel-caption">The 4 Assumptions of OLS — Violate These at Your Peril!</div>
+      <div class="panel-scene bg-brown" style="flex-direction:row;flex-wrap:wrap;gap:10px;padding:14px;justify-content:center;">
+        <div style="background:#3e2723;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;width:130px;box-shadow:3px 3px 0 #0d0d1a;">
+          <div style="font-family:Bangers,cursive;color:#ffd700;font-size:1rem;">① Linearity</div>
+          <div style="font-size:0.75rem;line-height:1.4;">X and Y have a linear relationship. Plot it first!</div>
+        </div>
+        <div style="background:#4e342e;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;width:150px;box-shadow:3px 3px 0 #0d0d1a;">
+          <div style="font-family:Bangers,cursive;color:#ffd700;font-size:1rem;">② Homoskedasticity</div>
+          <div style="font-size:0.75rem;line-height:1.4;">Variance of errors is CONSTANT. If not → heteroskedasticity → wrong SEs!</div>
+        </div>
+        <div style="background:#5d4037;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;width:130px;box-shadow:3px 3px 0 #0d0d1a;">
+          <div style="font-family:Bangers,cursive;color:#ffd700;font-size:1rem;">③ Independence</div>
+          <div style="font-size:0.75rem;line-height:1.4;">Errors not correlated with each other. Violation = serial correlation!</div>
+        </div>
+        <div style="background:#6d4c41;color:#fff;border:2px solid #0d0d1a;border-radius:6px;padding:10px;width:130px;box-shadow:3px 3px 0 #0d0d1a;">
+          <div style="font-family:Bangers,cursive;color:#ffd700;font-size:1rem;">④ Normality</div>
+          <div style="font-size:0.75rem;line-height:1.4;">Errors normally distributed → enables valid t-tests and p-values!</div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">If any assumption is violated, OLS estimates may be BLUE (Best Linear Unbiased) but inference is invalid.</div>
+      </div>
+    </div>
+
+    <!-- P3: ANOVA & R-squared -->
+    <div class="panel">
+      <div class="panel-caption">ANOVA & R² — How Good Is Your Model?</div>
+      <div class="panel-scene bg-brown">
+        <svg width="110" height="85" viewBox="0 0 110 85" xmlns="http://www.w3.org/2000/svg">
+          <!-- total variation breakdown -->
+          <rect x="5" y="8" width="100" height="20" rx="4" fill="#4e342e" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="55" y="21" text-anchor="middle" font-size="8" fill="#ffd700" font-weight="bold" font-family="sans-serif">SST = Total Variation</text>
+          <line x1="30" y1="28" x2="20" y2="40" stroke="#0d0d1a" stroke-width="1.5"/>
+          <rect x="2" y="40" width="48" height="18" rx="3" fill="#2e7d32" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="26" y="52" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">SSR (explained)</text>
+          <line x1="80" y1="28" x2="90" y2="40" stroke="#0d0d1a" stroke-width="1.5"/>
+          <rect x="58" y="40" width="50" height="18" rx="3" fill="#e63946" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="83" y="52" text-anchor="middle" font-size="7.5" fill="#fff" font-weight="bold" font-family="sans-serif">SSE (residual)</text>
+          <!-- R² -->
+          <rect x="20" y="66" width="70" height="16" rx="4" fill="#ffd700" stroke="#0d0d1a" stroke-width="2"/>
+          <text x="55" y="77" text-anchor="middle" font-size="9" fill="#0d0d1a" font-weight="bold" font-family="sans-serif">R² = SSR/SST ∈ [0, 1]</text>
+        </svg>
+        <div class="bubble" style="font-size:0.72rem;">"R² = 0.85 means X explains 85% of Y's variation. Higher = better fit!"</div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">R² = SSR/SST. ANOVA F-test checks if the overall model is statistically significant.</div>
+      </div>
+    </div>
+
+    <!-- P4: Functional forms -->
+    <div class="panel">
+      <div class="panel-caption">Log-Lin, Lin-Log, Log-Log — Pick Your Form!</div>
+      <div class="panel-scene bg-brown">
+        <div style="width:100%;display:flex;flex-direction:column;gap:5px;padding:0 6px;">
+          <div class="flowstep" style="background:#3e2723;color:#fff;border-color:#3e2723;">
+            <div class="content">Lin-Lin: Y = b₀+b₁X &nbsp;← standard, both untransformed</div>
+          </div>
+          <div class="flowstep" style="background:#5d4037;color:#fff;border-color:#5d4037;">
+            <div class="content">Log-Lin: ln(Y) = b₀+b₁X &nbsp;← % change in Y for unit ΔX</div>
+          </div>
+          <div class="flowstep" style="background:#6d4c41;color:#fff;border-color:#6d4c41;">
+            <div class="content">Lin-Log: Y = b₀+b₁ln(X) &nbsp;← unit ΔY for % change in X</div>
+          </div>
+          <div class="flowstep" style="background:#4e342e;color:#ffd700;border-color:#4e342e;">
+            <div class="content">Log-Log: ln(Y)=b₀+b₁ln(X) &nbsp;← b₁ is elasticity!</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-bottom">
+        <div class="panel-text">Choose functional form based on the economic relationship. R² and residual plots help decide.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="key-lesson">
+    <div class="key-icon">📉</div>
+    <div>
+      <h3>Module 10 Key Takeaway</h3>
+      <p>Simple linear regression: Ŷ = b₀ + b₁X, fit by OLS (minimise squared residuals). Four assumptions (linearity, homoskedasticity, independence, normality). R² measures fit. ANOVA F-test checks overall significance. Log transformations handle nonlinear and percentage relationships.</p>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+
+<!-- GRAND FINALE -->
+<section style="max-width:1000px;margin:0 auto 60px;padding:0 16px;">
+  <div style="border:5px solid #0d0d1a;background:#0d0d1a;color:#fff;padding:24px 28px;box-shadow:8px 8px 0 var(--yellow);">
+    <div style="font-family:Bangers,cursive;font-size:2rem;color:var(--yellow);letter-spacing:3px;margin-bottom:16px;">🏁 THE QUANT SURVIVAL KIT</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;font-size:0.8rem;">
+      <div style="background:#16213e;border:2px solid #2196f3;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#2196f3;font-size:1rem;">① Rates & Returns</div>
+        r = real + premiums. HPR, geometric mean, TWR, real returns.
+      </div>
+      <div style="background:#16213e;border:2px solid #4caf50;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#4caf50;font-size:1rem;">② TVM in Finance</div>
+        Bond = PV(CF). Stock = D₁/(r−g). Forward rates. No-arbitrage. Put-call parity.
+      </div>
+      <div style="background:#16213e;border:2px solid #e91e63;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#e91e63;font-size:1rem;">③ Statistics</div>
+        Mean/median/mode. Variance, std dev, CV. Skewness, kurtosis, correlation.
+      </div>
+      <div style="background:#16213e;border:2px solid #9c27b0;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#9c27b0;font-size:1rem;">④ Probability</div>
+        E[X] = Σp·x. Prob trees for conditional outcomes. Bayes updates priors.
+      </div>
+      <div style="background:#16213e;border:2px solid #ff9800;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#ff9800;font-size:1rem;">⑤ Portfolio Math</div>
+        E[Rₚ] = weighted avg. σ²ₚ includes covariance. Low ρ → diversification!
+      </div>
+      <div style="background:#16213e;border:2px solid #009688;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#009688;font-size:1rem;">⑥ Simulation</div>
+        Lognormal prices. Monte Carlo = many paths. Bootstrap = resample real data.
+      </div>
+      <div style="background:#16213e;border:2px solid #cddc39;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#cddc39;font-size:1rem;">⑦ Estimation</div>
+        Sampling methods. CLT → means are normal. SE = σ/√n.
+      </div>
+      <div style="background:#16213e;border:2px solid #f44336;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#f44336;font-size:1rem;">⑧ Hypothesis</div>
+        5 steps. p &lt; α → reject H₀. Type I = α. Type II = β. t, z, F, χ² tests.
+      </div>
+      <div style="background:#16213e;border:2px solid #7986cb;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#7986cb;font-size:1rem;">⑨ Independence</div>
+        Parametric t-test for ρ. Spearman for non-normal data. χ² for categories.
+      </div>
+      <div style="background:#16213e;border:2px solid #a1887f;padding:10px;border-radius:4px;">
+        <div style="font-family:Bangers,cursive;color:#a1887f;font-size:1rem;">⑩ Regression</div>
+        Ŷ = b₀+b₁X. OLS. 4 assumptions. R² = SSR/SST. Log transformations.
+      </div>
+    </div>
+    <div style="margin-top:20px;font-family:Permanent Marker,cursive;font-size:1.1rem;color:var(--yellow);text-align:center;">
+      "Quant is not about memorising formulas.<br>It's about understanding <em>why</em> the formulas exist."
+    </div>
+  </div>
+</section>
+
+<footer>
+  CFA® QUANTITATIVE METHODS — COMIC EDITION &nbsp;|&nbsp; CFA Program Curriculum 2025 · Level I · Volume 1<br>
+  <span style="font-size:0.75rem;letter-spacing:0;font-family:Comic Neue,cursive;color:#aaa;">For study purposes only. Not for distribution.</span>
+</footer>
+
+</body>
+</html>
