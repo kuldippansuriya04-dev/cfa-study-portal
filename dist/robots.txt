@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kuldippansuriya04-dev.github.io/cfa-study-portal/sitemap.xml
