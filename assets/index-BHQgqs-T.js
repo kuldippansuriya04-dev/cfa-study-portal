@@ -14,5 +14,20 @@
     <li><a href="./flashcards/pm.html">Portfolio Management</a></li>
     <li><a href="./flashcards/qm.html">Quant Methods</a></li>
   </ul>
+
+  <h2>Comics</h2>
+
+  <ul>
+    <li><a href="./comics/cfa_economics_comics.html">Economics</a></li>
+    <li><a href="./comics/cfa_ethics_comics.html">Ethics</a></li>
+    <li><a href="./comics/cfa_equity_comics.html">Equity</a></li>
+    <li><a href="./comics/cfa_fixed_income_comics.html">Fixed Income</a></li>
+    <li><a href="./comics/cfa_derivatives_comics.html">Derivatives</a></li>
+    <li><a href="./comics/cfa_fsa_comics.html">FSA</a></li>
+    <li><a href="./comics/cfa_portfolio_management_comics.html">Portfolio Management</a></li>
+    <li><a href="./comics/cfa_quant_comics.html">Quant Methods</a></li>
+    <li><a href="./comics/cfa_corporate_issuers_comics.html">Corporate Issuers</a></li>
+    <li><a href="./comics/cfa_alternative_investments_comics.html">Alternative Investments</a></li>
+  </ul>
 </div>
 `;
