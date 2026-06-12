@@ -2,8 +2,13 @@
   "name": "CFA Study Portal",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
   "postCreateCommand": "npm ci",
-  "forwardPorts": [5173],
+  "postStartCommand": "pgrep -f \"wetty.*--port 3000\" || nohup npx -y wetty --host 0.0.0.0 --port 3000 >/tmp/wetty.log 2>&1 &",
+  "forwardPorts": [3000, 5173],
   "portsAttributes": {
+    "3000": {
+      "label": "Web terminal",
+      "onAutoForward": "openBrowser"
+    },
     "5173": {
       "label": "Vite dev server",
       "onAutoForward": "openPreview"
