@@ -50152,15 +50152,15 @@ function ComicsPage({ onNavigate }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpenCheck, { size: 18 }),
           "CFA Comics"
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold mt-1", children: "Quant Methods Comic" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Visual revision for CFA Level 1 concepts." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold mt-1", children: "CFA Comics Library" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Open and read all CFA Level 1 comic books in the full available space." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "Back" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { size: "sm", onClick: () => window.open(COMIC_URL, "_blank", "noopener,noreferrer"), children: "Open Comic" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("iframe", { title: "CFA Comics Library", src: COMIC_URL, className: "w-full bg-white", style: { width: "100%", height: "calc(100vh - 220px)", minHeight: "560px", border: 0, display: "block" } }) }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("iframe", { title: "CFA Comics Library", src: COMIC_URL, className: "w-full bg-white", style: { width: "100%", height: "calc(100vh - 150px)", minHeight: "720px", border: 0, display: "block" } }) }) })
   ] });
 }
 
