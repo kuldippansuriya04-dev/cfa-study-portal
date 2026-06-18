@@ -50160,7 +50160,7 @@ function ComicsPage({ onNavigate }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { size: "sm", onClick: () => window.open(COMIC_URL, "_blank", "noopener,noreferrer"), children: "Open Comic" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("iframe", { title: "CFA Comics Library", src: COMIC_URL, className: "w-full h-[calc(100vh-220px)] min-h-[560px] bg-white" }) }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("iframe", { title: "CFA Comics Library", src: COMIC_URL, className: "w-full bg-white", style: { width: "100%", height: "calc(100vh - 220px)", minHeight: "560px", border: 0, display: "block" } }) }) })
   ] });
 }
 
