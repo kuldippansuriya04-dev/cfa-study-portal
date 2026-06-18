@@ -50094,6 +50094,7 @@ function FlashcardsPage({ onNavigate }) {
   ] });
 }
 function ComicsPage({ onNavigate }) {
+  const COMIC_URL = "/cfa-study-portal/public/comics/index.html";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 max-w-6xl mx-auto space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
