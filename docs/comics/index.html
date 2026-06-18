@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CFA Level 1 Comics Library</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #101828;
+        --muted: #667085;
+        --line: #d0d5dd;
+        --blue: #175cd3;
+        --blue-soft: #eff8ff;
+        --gold: #fdb022;
+        --green: #079455;
+        --page: #f8fafc;
+        --card: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--page);
+        color: var(--ink);
+      }
+
+      header {
+        background: linear-gradient(135deg, #123c8c, #175cd3);
+        color: white;
+        padding: 28px clamp(18px, 4vw, 44px);
+        border-bottom: 4px solid var(--gold);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(28px, 5vw, 44px);
+        line-height: 1;
+      }
+
+      header p {
+        margin: 0;
+        max-width: 760px;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 15px;
+      }
+
+      main {
+        padding: clamp(18px, 4vw, 44px);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      a {
+        display: flex;
+        min-height: 132px;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--card);
+        color: inherit;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(16, 24, 40, 0.07);
+        transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      a:hover {
+        transform: translateY(-2px);
+        border-color: #84caff;
+        box-shadow: 0 12px 30px rgba(23, 92, 211, 0.14);
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-size: 22px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .open {
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CFA Comics Library</h1>
+      <p>Choose any Level 1 topic and open the new comic book revision page.</p>
+    </header>
+    <main>
+      <section class="grid" aria-label="CFA comic books">
+        <a href="./cfa_ethics_comics.html">
+          <span class="icon">⚖</span>
+          <h2>Ethics</h2>
+          <span class="meta">Standards, conduct, and professional judgment</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_quant_comics.html">
+          <span class="icon">∑</span>
+          <h2>Quantitative Methods</h2>
+          <span class="meta">Time value, probability, statistics, and testing</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_economics_comics.html">
+          <span class="icon">⌁</span>
+          <h2>Economics</h2>
+          <span class="meta">Markets, macro, currency, and growth concepts</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_fsa_comics.html">
+          <span class="icon">▤</span>
+          <h2>FSA / FRA</h2>
+          <span class="meta">Financial statements and analysis basics</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_corporate_issuers_comics.html">
+          <span class="icon">▣</span>
+          <h2>Corporate Issuers</h2>
+          <span class="meta">Capital budgeting, governance, and financing</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_equity_comics.html">
+          <span class="icon">↗</span>
+          <h2>Equity</h2>
+          <span class="meta">Markets, valuation, and equity analysis</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_fixed_income_comics.html">
+          <span class="icon">◫</span>
+          <h2>Fixed Income</h2>
+          <span class="meta">Bonds, yields, duration, and credit risk</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_derivatives_comics.html">
+          <span class="icon">⇄</span>
+          <h2>Derivatives</h2>
+          <span class="meta">Forwards, futures, options, and swaps</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_alternative_investments_comics.html">
+          <span class="icon">◇</span>
+          <h2>Alternative Investments</h2>
+          <span class="meta">Real assets, private capital, and hedge funds</span>
+          <span class="open">Open comic</span>
+        </a>
+        <a href="./cfa_portfolio_management_comics.html">
+          <span class="icon">◎</span>
+          <h2>Portfolio Management</h2>
+          <span class="meta">Risk, return, diversification, and planning</span>
+          <span class="open">Open comic</span>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
