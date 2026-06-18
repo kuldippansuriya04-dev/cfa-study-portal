@@ -1,1 +1,380 @@
-PASTE_ECONOMICS_HTML_HERE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Economics Flashcards</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:700px;
+      max-width:95%;
+    }
+
+    .card{
+      width:100%;
+      height:400px;
+      perspective:1000px;
+      cursor:pointer;
+    }
+
+    .card-inner{
+      width:100%;
+      height:100%;
+      position:relative;
+      transition:transform 0.7s;
+      transform-style:preserve-3d;
+    }
+
+    .card.flipped .card-inner{
+      transform:rotateY(180deg);
+    }
+
+    .front,
+    .back{
+      position:absolute;
+      width:100%;
+      height:100%;
+      border-radius:24px;
+      padding:40px;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+
+      backface-visibility:hidden;
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .front{
+      background:white;
+      color:#111827;
+    }
+
+    .back{
+      background:#16a34a;
+      color:white;
+      transform:rotateY(180deg);
+    }
+
+    .badge{
+      padding:10px 22px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:bold;
+      margin-bottom:25px;
+    }
+
+    .front-badge{
+      background:#dcfce7;
+      color:#16a34a;
+    }
+
+    .back-badge{
+      background:white;
+      color:#16a34a;
+    }
+
+    h2{
+      font-size:32px;
+      line-height:1.5;
+    }
+
+    .hint{
+      margin-top:28px;
+      font-size:14px;
+      opacity:0.7;
+    }
+
+    .controls{
+      margin-top:30px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      background:#16a34a;
+      color:white;
+      padding:14px 24px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:18px;
+      font-weight:600;
+      transition:0.2s;
+    }
+
+    button:hover{
+      background:#15803d;
+    }
+
+    .counter{
+      font-size:28px;
+      font-weight:bold;
+      color:#374151;
+    }
+
+    @media(max-width:600px){
+
+      .card{
+        height:450px;
+      }
+
+      h2{
+        font-size:24px;
+      }
+
+      .controls{
+        flex-direction:column;
+      }
+
+      button{
+        width:100%;
+      }
+
+      .counter{
+        font-size:22px;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="card" id="card">
+
+      <div class="card-inner">
+
+        <div class="front">
+
+          <div class="badge front-badge">
+            ECONOMICS QUESTION
+          </div>
+
+          <h2 id="question"></h2>
+
+          <div class="hint">
+            Click card to flip
+          </div>
+
+        </div>
+
+        <div class="back">
+
+          <div class="badge back-badge">
+            ANSWER
+          </div>
+
+          <h2 id="answer"></h2>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="controls">
+
+      <button onclick="prevCard()">
+        ← Previous
+      </button>
+
+      <div class="counter" id="counter">
+        1 / 20
+      </div>
+
+      <button onclick="nextCard()">
+        Next →
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const flashcards = [
+
+      {
+        question:"What is perfect competition?",
+        answer:"A market with many small firms selling identical products with free entry and exit."
+      },
+
+      {
+        question:"What is monopoly?",
+        answer:"A market where one dominant firm controls pricing and supply."
+      },
+
+      {
+        question:"What is Average Revenue (AR)?",
+        answer:"Revenue earned per unit sold."
+      },
+
+      {
+        question:"What is Marginal Revenue (MR)?",
+        answer:"Additional revenue earned from selling one extra unit."
+      },
+
+      {
+        question:"What is Total Revenue (TR)?",
+        answer:"Total money earned from sales."
+      },
+
+      {
+        question:"What is Total Fixed Cost (TFC)?",
+        answer:"Costs that remain constant regardless of output."
+      },
+
+      {
+        question:"What is Total Variable Cost (TVC)?",
+        answer:"Costs that change with production levels."
+      },
+
+      {
+        question:"What is Average Total Cost (ATC)?",
+        answer:"Total cost divided by quantity produced."
+      },
+
+      {
+        question:"What is Marginal Cost (MC)?",
+        answer:"Extra cost of producing one more unit."
+      },
+
+      {
+        question:"What is profit maximization?",
+        answer:"Producing where marginal revenue equals marginal cost."
+      },
+
+      {
+        question:"What is business cycle?",
+        answer:"Fluctuations in economic activity over time."
+      },
+
+      {
+        question:"What are the four phases of business cycle?",
+        answer:"Recovery, Expansion, Slowdown, and Contraction."
+      },
+
+      {
+        question:"What are leading indicators?",
+        answer:"Indicators that predict future economic activity."
+      },
+
+      {
+        question:"What is diffusion index?",
+        answer:"An index showing how many indicators move in the same direction."
+      },
+
+      {
+        question:"What is fiscal policy?",
+        answer:"Government spending and taxation policies."
+      },
+
+      {
+        question:"What is MPC?",
+        answer:"Marginal Propensity to Consume — portion of extra income spent."
+      },
+
+      {
+        question:"What is monetary policy?",
+        answer:"Central bank actions to control money supply and interest rates."
+      },
+
+      {
+        question:"What is globalization?",
+        answer:"Increasing economic and financial integration across countries."
+      },
+
+      {
+        question:"What is trade creation?",
+        answer:"Replacing costly domestic production with cheaper imports from members."
+      },
+
+      {
+        question:"What is geopolitical risk?",
+        answer:"Risk arising from political events affecting economies and markets."
+      }
+
+    ];
+
+    let currentCard = 0;
+
+    const card = document.getElementById("card");
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+    const counter = document.getElementById("counter");
+
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
+
+    function loadCard(){
+
+      question.textContent =
+        flashcards[currentCard].question;
+
+      answer.textContent =
+        flashcards[currentCard].answer;
+
+      counter.textContent =
+        `${currentCard + 1} / ${flashcards.length}`;
+
+      card.classList.remove("flipped");
+    }
+
+    function nextCard(){
+
+      currentCard++;
+
+      if(currentCard >= flashcards.length){
+        currentCard = 0;
+      }
+
+      loadCard();
+    }
+
+    function prevCard(){
+
+      currentCard--;
+
+      if(currentCard < 0){
+        currentCard = flashcards.length - 1;
+      }
+
+      loadCard();
+    }
+
+    loadCard();
+
+  </script>
+
+</body>
+</html>

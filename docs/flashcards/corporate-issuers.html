@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CFA Derivatives Flashcards</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Corporate Issuers Flashcards</title>
 
   <style>
 
@@ -19,18 +20,17 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height:100vh;
-      padding:20px;
+      height:100vh;
     }
 
     .flashcard-container{
-      width:700px;
-      max-width:95%;
+      width:650px;
+      max-width:90%;
     }
 
     .card{
       width:100%;
-      height:380px;
+      height:360px;
       perspective:1000px;
       cursor:pointer;
     }
@@ -78,11 +78,11 @@
     }
 
     .tag{
-      padding:10px 24px;
-      border-radius:999px;
+      padding:10px 22px;
+      border-radius:30px;
       font-size:14px;
       font-weight:bold;
-      margin-bottom:28px;
+      margin-bottom:30px;
     }
 
     .front-tag{
@@ -96,34 +96,32 @@
     }
 
     h2{
-      font-size:34px;
-      line-height:1.5;
-      max-width:95%;
+      font-size:38px;
+      line-height:1.4;
+      max-width:90%;
     }
 
     .hint{
-      margin-top:30px;
+      margin-top:35px;
       font-size:14px;
       opacity:0.7;
     }
 
     .controls{
-      margin-top:30px;
+      margin-top:35px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:15px;
-      flex-wrap:wrap;
     }
 
     button{
       border:none;
       background:#2563eb;
       color:white;
-      padding:15px 26px;
+      padding:16px 28px;
       border-radius:14px;
       cursor:pointer;
-      font-size:18px;
+      font-size:20px;
       font-weight:600;
       transition:0.2s;
     }
@@ -133,38 +131,15 @@
     }
 
     .counter{
-      font-size:28px;
+      font-size:30px;
       font-weight:bold;
       color:#374151;
-    }
-
-    @media(max-width:600px){
-
-      .card{
-        height:430px;
-      }
-
-      h2{
-        font-size:26px;
-      }
-
-      .counter{
-        font-size:22px;
-      }
-
-      button{
-        width:100%;
-      }
-
-      .controls{
-        flex-direction:column;
-      }
-
     }
 
   </style>
 
 </head>
+
 <body>
 
   <div class="flashcard-container">
@@ -173,10 +148,12 @@
 
       <div class="card-inner">
 
+        <!-- FRONT -->
+
         <div class="card-front">
 
           <div class="tag front-tag">
-            DERIVATIVES QUESTION
+            QUESTION
           </div>
 
           <h2 id="question"></h2>
@@ -186,6 +163,8 @@
           </div>
 
         </div>
+
+        <!-- BACK -->
 
         <div class="card-back">
 
@@ -200,6 +179,8 @@
       </div>
 
     </div>
+
+    <!-- CONTROLS -->
 
     <div class="controls">
 
@@ -224,103 +205,103 @@
     const flashcards = [
 
       {
-        question: "What are derivatives?",
-        answer: "Financial instruments whose value depends on an underlying asset."
+        question: "What is a sole proprietorship?",
+        answer: "Business owned by one individual."
       },
 
       {
-        question: "What are OTC derivatives?",
-        answer: "Customized contracts traded privately between parties."
+        question: "What is a partnership?",
+        answer: "Business jointly owned by multiple individuals."
       },
 
       {
-        question: "What are Exchange-Traded Derivatives (ETD)?",
-        answer: "Standardized derivative contracts traded on formal exchanges."
+        question: "What is a corporation?",
+        answer: "Separate legal entity owned by shareholders."
       },
 
       {
-        question: "What is counterparty risk?",
-        answer: "Risk that the other party may fail to meet obligations."
+        question: "What is limited liability?",
+        answer: "Owners are not personally liable beyond investment."
       },
 
       {
-        question: "What is central clearing?",
-        answer: "A CCP stands between buyers and sellers to reduce risk."
+        question: "What is corporate governance?",
+        answer: "System used to direct and control a company."
       },
 
       {
-        question: "Examples of derivative underlyings?",
-        answer: "Equities, bonds, currencies, commodities, credit, and crypto."
+        question: "What are stakeholders?",
+        answer: "Groups affected by company decisions."
       },
 
       {
-        question: "What are forwards?",
-        answer: "Customized contracts to buy or sell assets in the future."
+        question: "What is ESG?",
+        answer: "Environmental, social, and governance considerations."
       },
 
       {
-        question: "What are futures?",
-        answer: "Standardized forward contracts traded on exchanges."
+        question: "What is working capital?",
+        answer: "Current assets minus current liabilities."
       },
 
       {
-        question: "What are options?",
-        answer: "Contracts giving the right but not obligation to trade assets."
+        question: "What is liquidity?",
+        answer: "Ability to meet short-term obligations."
       },
 
       {
-        question: "What is open interest?",
-        answer: "Total outstanding derivative contracts not yet closed."
+        question: "What is the cash conversion cycle?",
+        answer: "Time required to convert inventory into cash."
       },
 
       {
-        question: "What are swaps?",
-        answer: "Contracts where parties exchange future cash flows."
+        question: "What is inventory turnover?",
+        answer: "Measure of inventory selling efficiency."
       },
 
       {
-        question: "What is intrinsic value of an option?",
-        answer: "Immediate exercise value of the option."
+        question: "What is receivables turnover?",
+        answer: "Measure of receivables collection efficiency."
       },
 
       {
-        question: "What is arbitrage?",
-        answer: "Risk-free profit from price differences in markets."
+        question: "What is payables turnover?",
+        answer: "Measure of supplier payment speed."
       },
 
       {
-        question: "What is replication?",
-        answer: "Creating derivative cash flows using underlying assets and borrowing/lending."
+        question: "What is capital budgeting?",
+        answer: "Evaluating long-term investment projects."
       },
 
       {
-        question: "What is cost of carry?",
-        answer: "Net cost or benefit of holding an asset over time."
+        question: "What is NPV?",
+        answer: "Present value of inflows minus outflows."
       },
 
       {
-        question: "What is a forward contract value?",
-        answer: "Difference between market forward price and contract price."
+        question: "What is IRR?",
+        answer: "Discount rate that makes NPV equal zero."
       },
 
       {
-        question: "What is mark-to-market in futures?",
-        answer: "Daily settlement of gains and losses."
+        question: "What is cost of capital?",
+        answer: "Required return expected by investors."
       },
 
       {
-        question: "What is convexity bias?",
-        answer: "Difference between futures and forward prices due to interest rate volatility."
+        question: "What is cost of debt?",
+        answer: "Interest paid on borrowed funds."
       },
 
       {
-        question: "What is put-call parity?",
-        answer: "Relationship between European call, put, stock, and bond prices."
+        question: "What is cost of equity?",
+        answer: "Return required by shareholders."
       },
 
       {
-        question: "What is the binomial model?",
-        answer: "A model valuing derivatives using possible up and down price movements."
+        question: "What is WACC?",
+        answer: "Weighted average cost of capital."
       }
 
     ];

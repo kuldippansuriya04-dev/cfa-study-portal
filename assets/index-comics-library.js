@@ -50074,76 +50074,25 @@ const SUBJECT_DECKS = [
   { subject: "Portfolio Management", shortName: "PM", color: "#0F766E", cards: [["Sharpe Ratio", "Excess return per unit of total risk: portfolio return minus risk-free rate divided by standard deviation."], ["Diversification", "Combining imperfectly correlated assets can reduce portfolio risk."]] }
 ];
 function FlashcardsPage({ onNavigate }) {
-  const [subjectIndex, setSubjectIndex] = reactExports.useState(0);
-  const [cardIndex, setCardIndex] = reactExports.useState(0);
-  const [showAnswer, setShowAnswer] = reactExports.useState(false);
-  const subject = SUBJECT_DECKS[subjectIndex];
-  const card = subject.cards[cardIndex];
-  const totalCards = SUBJECT_DECKS.reduce((sum, deck) => sum + deck.cards.length, 0);
-  const progress = (cardIndex + 1) / subject.cards.length * 100;
-  const selectSubject = (index) => {
-    setSubjectIndex(index);
-    setCardIndex(0);
-    setShowAnswer(false);
-  };
-  const goToCard = (nextIndex) => {
-    setCardIndex((nextIndex + subject.cards.length) % subject.cards.length);
-    setShowAnswer(false);
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 max-w-7xl mx-auto space-y-6", children: [
+  const FLASHCARDS_URL = "/cfa-study-portal/flashcards/index.html";
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 max-w-7xl mx-auto space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-sm font-semibold text-blue-700", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(BrainCircuit, { size: 18 }),
           "Flashcards"
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold mt-1", children: "Subject-wise CFA Flashcards" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Choose a subject, flip the card, and revise one concept at a time." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-2xl font-bold mt-1", children: "CFA Flashcards Library" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Open and revise all 10 uploaded CFA Level 1 flashcard sets." })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "Back to Dashboard" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3", children: SUBJECT_DECKS.map((deck, index) => /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: () => selectSubject(index), className: "text-left rounded-lg border bg-white p-4 shadow-sm transition hover:shadow-md " + (index === subjectIndex ? "ring-2 ring-blue-500 border-blue-200" : ""), children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block h-2 w-10 rounded-full mb-3", style: { backgroundColor: deck.color } }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block text-sm font-semibold", children: deck.shortName }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "block text-xs text-muted-foreground mt-1", children: [deck.cards.length, " cards"] })
-    ] }, deck.subject)) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardHeader, { className: "pb-3", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "outline", style: { borderColor: subject.color, color: subject.color }, children: subject.subject }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs text-muted-foreground", children: [cardIndex + 1, " / ", subject.cards.length] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: progress, className: "h-1.5 mt-3" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "space-y-5", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: () => setShowAnswer((value) => !value), className: "w-full min-h-[320px] rounded-lg border bg-white p-8 text-left shadow-sm transition hover:bg-muted/30", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-wide text-muted-foreground", children: showAnswer ? "Answer" : "Question" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 text-2xl font-bold leading-snug", children: showAnswer ? card[1] : card[0] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-6 text-sm text-muted-foreground", children: ["Click card to ", showAnswer ? "hide answer" : "show answer", "."] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap items-center gap-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: () => setShowAnswer((value) => !value), children: "Flip Card" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => goToCard(cardIndex - 1), children: "Previous" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => goToCard(cardIndex + 1), children: "Next" })
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-none shadow-sm", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-base", children: "Deck Summary" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "space-y-3", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-3xl font-black", children: totalCards }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "starter flashcards across all Level 1 subjects" }),
-          SUBJECT_DECKS.map((deck, index) => /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: () => selectSubject(index), className: "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm hover:bg-muted", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: deck.shortName }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: deck.cards.length })
-          ] }, deck.subject))
-        ] })
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", onClick: () => onNavigate("dashboard"), children: "Back" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { size: "sm", onClick: () => window.open(FLASHCARDS_URL, "_blank", "noopener,noreferrer"), children: "Open Flashcards" })
       ] })
-    ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-none shadow-sm overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("iframe", { title: "CFA Flashcards Library", src: FLASHCARDS_URL, className: "w-full bg-white", style: { width: "100%", height: "calc(100vh - 150px)", minHeight: "720px", border: 0, display: "block" } }) }) })
   ] });
 }
-const COMIC_URL = "/cfa-study-portal/public/comics/index.html";
 function ComicsPage({ onNavigate }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 max-w-6xl mx-auto space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", children: [

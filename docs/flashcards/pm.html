@@ -1,1 +1,355 @@
-PASTE_PM_HTML_HERE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>CFA Portfolio Management Flashcards</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:720px;
+      max-width:95%;
+    }
+
+    .card{
+      width:100%;
+      height:400px;
+      perspective:1000px;
+      cursor:pointer;
+    }
+
+    .card-inner{
+      width:100%;
+      height:100%;
+      position:relative;
+      transition:transform 0.7s;
+      transform-style:preserve-3d;
+    }
+
+    .card.flipped .card-inner{
+      transform:rotateY(180deg);
+    }
+
+    .front,
+    .back{
+      position:absolute;
+      width:100%;
+      height:100%;
+      border-radius:24px;
+      padding:40px;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+
+      backface-visibility:hidden;
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .front{
+      background:white;
+      color:#111827;
+    }
+
+    .back{
+      background:#059669;
+      color:white;
+      transform:rotateY(180deg);
+    }
+
+    h2{
+      font-size:32px;
+      line-height:1.5;
+      max-width:95%;
+    }
+
+    .hint{
+      margin-top:28px;
+      font-size:14px;
+      opacity:0.7;
+    }
+
+    .controls{
+      margin-top:30px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      background:#059669;
+      color:white;
+      padding:14px 24px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:18px;
+      font-weight:600;
+      transition:0.2s;
+    }
+
+    button:hover{
+      background:#047857;
+    }
+
+    .counter{
+      font-size:28px;
+      font-weight:bold;
+      color:#374151;
+    }
+
+    @media(max-width:600px){
+
+      .card{
+        height:470px;
+      }
+
+      h2{
+        font-size:24px;
+      }
+
+      .controls{
+        flex-direction:column;
+      }
+
+      button{
+        width:100%;
+      }
+
+      .counter{
+        font-size:22px;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="card" id="card">
+
+      <div class="card-inner">
+
+        <div class="front">
+
+          <h2 id="question"></h2>
+
+          <div class="hint">
+            Click card to flip
+          </div>
+
+        </div>
+
+        <div class="back">
+
+          <h2 id="answer"></h2>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="controls">
+
+      <button onclick="prevCard()">
+        ← Previous
+      </button>
+
+      <div class="counter" id="counter">
+        1 / 20
+      </div>
+
+      <button onclick="nextCard()">
+        Next →
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const flashcards = [
+
+      {
+        question:"What is portfolio management?",
+        answer:"The process of managing investments to achieve specific financial objectives."
+      },
+
+      {
+        question:"What is diversification?",
+        answer:"Reducing risk by investing across different assets and securities."
+      },
+
+      {
+        question:"What is an Investment Policy Statement (IPS)?",
+        answer:"A document outlining investor objectives, constraints, and guidelines."
+      },
+
+      {
+        question:"What are return objectives?",
+        answer:"The desired investment returns needed to meet financial goals."
+      },
+
+      {
+        question:"What are risk objectives?",
+        answer:"The level of investment risk an investor is willing and able to take."
+      },
+
+      {
+        question:"What is asset allocation?",
+        answer:"Distribution of investments among asset classes like equity, debt, and cash."
+      },
+
+      {
+        question:"What is strategic asset allocation?",
+        answer:"Long-term target allocation based on investor goals and risk tolerance."
+      },
+
+      {
+        question:"What is tactical asset allocation?",
+        answer:"Short-term deviations from target allocation to exploit market opportunities."
+      },
+
+      {
+        question:"What is covariance?",
+        answer:"A measure of how two asset returns move together."
+      },
+
+      {
+        question:"What is correlation?",
+        answer:"A standardized measure of relationship between asset returns."
+      },
+
+      {
+        question:"What is systematic risk?",
+        answer:"Market-wide risk that cannot be diversified away."
+      },
+
+      {
+        question:"What is unsystematic risk?",
+        answer:"Company-specific risk that can be reduced through diversification."
+      },
+
+      {
+        question:"What is beta?",
+        answer:"A measure of a security’s sensitivity to market movements."
+      },
+
+      {
+        question:"What is CAPM?",
+        answer:"Capital Asset Pricing Model used to estimate required return."
+      },
+
+      {
+        question:"What is the efficient frontier?",
+        answer:"Set of optimal portfolios offering maximum return for a given level of risk."
+      },
+
+      {
+        question:"What is the Capital Market Line (CML)?",
+        answer:"A line showing risk-return combinations using risky assets and a risk-free asset."
+      },
+
+      {
+        question:"What is Sharpe Ratio?",
+        answer:"Risk-adjusted return measure using total portfolio risk."
+      },
+
+      {
+        question:"What is behavioral finance?",
+        answer:"Study of psychological influences on investor behavior."
+      },
+
+      {
+        question:"What is risk tolerance?",
+        answer:"Investor’s ability and willingness to bear investment risk."
+      },
+
+      {
+        question:"What is risk management?",
+        answer:"The process of identifying, measuring, and controlling investment risks."
+      }
+
+    ];
+
+    let currentCard = 0;
+
+    const card = document.getElementById("card");
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+    const counter = document.getElementById("counter");
+
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
+
+    function loadCard(){
+
+      question.textContent =
+        flashcards[currentCard].question;
+
+      answer.textContent =
+        flashcards[currentCard].answer;
+
+      counter.textContent =
+        `${currentCard + 1} / ${flashcards.length}`;
+
+      card.classList.remove("flipped");
+    }
+
+    function nextCard(){
+
+      currentCard++;
+
+      if(currentCard >= flashcards.length){
+        currentCard = 0;
+      }
+
+      loadCard();
+    }
+
+    function prevCard(){
+
+      currentCard--;
+
+      if(currentCard < 0){
+        currentCard = flashcards.length - 1;
+      }
+
+      loadCard();
+    }
+
+    loadCard();
+
+  </script>
+
+</body>
+</html>
