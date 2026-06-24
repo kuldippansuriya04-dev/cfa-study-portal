@@ -1,6 +1,11 @@
 (() => {
   const API_BASE = window.CFA_AUTH_API_BASE || '/api/auth';
   const TOKEN_KEY = 'cfa_auth_token';
+  const STATIC_USERS_KEY = 'cfa_static_auth_users';
+  const STATIC_PROFILE_KEY = 'cfa_static_auth_profile';
+  const STATIC_SESSION_PREFIX = 'static:';
+  const SIMPLE_STATIC_TOKEN = `${STATIC_SESSION_PREFIX}simple`;
+  const STATIC_AUTH = window.CFA_STATIC_AUTH === true || window.location.hostname.endsWith('github.io');
   const root = document.getElementById('root');
 
   if (!root) return;
@@ -11,6 +16,7 @@
     mode: 'login',
     resetId: '',
     resetOtp: '',
+    resetUserId: '',
     user: null,
   };
 
@@ -74,15 +80,6 @@
       margin: 0 0 22px;
       color: #64748b;
       font-size: 14px;
-    }
-    .auth-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 4px;
-      border-radius: 8px;
-      background: #eef2ff;
     }
     .auth-tab, .auth-link, .auth-button {
       border: 0;
@@ -223,6 +220,186 @@
     else localStorage.removeItem(TOKEN_KEY);
   }
 
+  function normalizeEmail(value) {
+    return String(value || '').trim().toLowerCase();
+  }
+
+  function normalizeMobile(value) {
+    return String(value || '').replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '');
+  }
+
+  function detectIdentifier(value) {
+    const input = String(value || '').trim();
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.toLowerCase())) {
+      return { type: 'email', value: normalizeEmail(input) };
+    }
+    const mobile = normalizeMobile(input);
+    if (/^\+?\d{10,15}$/.test(mobile)) {
+      return { type: 'mobile', value: mobile };
+    }
+    return { type: 'invalid', value: input };
+  }
+
+  function passwordError(password) {
+    const text = String(password || '');
+    if (text.length < 8) return 'Password must be at least 8 characters.';
+    if (!/[A-Za-z]/.test(text) || !/\d/.test(text)) return 'Password must include at least one letter and one number.';
+    return '';
+  }
+
+  function staticUsers() {
+    try {
+      return JSON.parse(localStorage.getItem(STATIC_USERS_KEY) || '[]');
+    } catch {
+      return [];
+    }
+  }
+
+  function saveStaticUsers(users) {
+    localStorage.setItem(STATIC_USERS_KEY, JSON.stringify(users));
+  }
+
+  function randomId() {
+    return crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+
+  function randomOtp() {
+    return String(Math.floor(100000 + Math.random() * 900000));
+  }
+
+  function bytesToHex(buffer) {
+    return [...new Uint8Array(buffer)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function staticHash(password, salt) {
+    const data = new TextEncoder().encode(`${salt}:${password}`);
+    const digest = await crypto.subtle.digest('SHA-256', data);
+    return bytesToHex(digest);
+  }
+
+  function publicStaticUser(user) {
+    return {
+      id: user.id,
+      fullName: user.fullName,
+      email: user.email,
+      mobileNumber: user.mobileNumber,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
+  }
+
+  function findStaticUser(identifier) {
+    const users = staticUsers();
+    if (identifier.type === 'email') return users.find((user) => user.email === identifier.value);
+    if (identifier.type === 'mobile') return users.find((user) => user.mobileNumber === identifier.value);
+    return null;
+  }
+
+  async function staticRegister(payload) {
+    const fullName = String(payload.fullName || '').trim().replace(/\s+/g, ' ');
+    const email = normalizeEmail(payload.email);
+    const mobileNumber = normalizeMobile(payload.mobileNumber);
+    const password = String(payload.password || '');
+    const confirmPassword = String(payload.confirmPassword || '');
+    if (fullName.length < 2) throw new Error('Full name must be at least 2 characters.');
+    if (detectIdentifier(email).type !== 'email') throw new Error('Invalid email address.');
+    if (detectIdentifier(mobileNumber).type !== 'mobile') throw new Error('Invalid mobile number.');
+    if (password !== confirmPassword) throw new Error('Passwords do not match.');
+    const passError = passwordError(password);
+    if (passError) throw new Error(passError);
+
+    const users = staticUsers();
+    if (users.some((user) => user.email === email)) throw new Error('Email address is already registered.');
+    if (users.some((user) => user.mobileNumber === mobileNumber)) throw new Error('Mobile number is already registered.');
+
+    const salt = randomId();
+    const now = new Date().toISOString();
+    const user = {
+      id: randomId(),
+      fullName,
+      email,
+      mobileNumber,
+      salt,
+      passwordHash: await staticHash(password, salt),
+      createdAt: now,
+      updatedAt: now,
+    };
+    users.push(user);
+    saveStaticUsers(users);
+    const sessionToken = `${STATIC_SESSION_PREFIX}${user.id}`;
+    return { token: sessionToken, user: publicStaticUser(user) };
+  }
+
+  async function staticLogin(payload) {
+    const identifier = detectIdentifier(payload.identifier);
+    if (identifier.type !== 'email') throw new Error('Please enter a valid email address.');
+    if (!String(payload.password || '').trim()) throw new Error('Please enter your password.');
+    const nameFromEmail = identifier.value
+      .split('@')[0]
+      .replace(/[._-]+/g, ' ')
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    const now = new Date().toISOString();
+    const user = {
+      id: 'simple-user',
+      fullName: nameFromEmail || 'CFA Student',
+      email: identifier.value,
+      mobileNumber: '',
+      createdAt: now,
+      updatedAt: now,
+    };
+    localStorage.setItem(STATIC_PROFILE_KEY, JSON.stringify(user));
+    return { token: SIMPLE_STATIC_TOKEN, user };
+  }
+
+  function staticMe() {
+    const value = token();
+    if (!value || !value.startsWith(STATIC_SESSION_PREFIX)) throw new Error('Authentication required.');
+    if (value === SIMPLE_STATIC_TOKEN) {
+      const profile = JSON.parse(localStorage.getItem(STATIC_PROFILE_KEY) || 'null');
+      if (!profile?.email) throw new Error('Authentication required.');
+      return { user: profile };
+    }
+    const user = staticUsers().find((entry) => entry.id === value.slice(STATIC_SESSION_PREFIX.length));
+    if (!user) throw new Error('Account not found.');
+    return { user: publicStaticUser(user) };
+  }
+
+  function staticForgotPassword(payload) {
+    const identifier = detectIdentifier(payload.identifier);
+    if (identifier.type === 'invalid') throw new Error('Invalid email/mobile.');
+    const user = findStaticUser(identifier);
+    if (!user) throw new Error('Account not found.');
+    const channel = String(payload.channel || identifier.type).toLowerCase() === 'mobile' ? 'mobile' : 'email';
+    state.resetId = randomId();
+    state.resetOtp = randomOtp();
+    state.resetUserId = user.id;
+    return {
+      resetId: state.resetId,
+      channel,
+      target: channel === 'mobile' ? user.mobileNumber : user.email,
+      devOtp: state.resetOtp,
+      expiresAt: new Date(Date.now() + 10 * 60 * 1000).toISOString(),
+    };
+  }
+
+  async function staticResetPassword(payload) {
+    if (payload.resetId !== state.resetId || String(payload.otp || '') !== state.resetOtp) throw new Error('Invalid OTP.');
+    if (String(payload.password || '') !== String(payload.confirmPassword || '')) throw new Error('Passwords do not match.');
+    const passError = passwordError(payload.password);
+    if (passError) throw new Error(passError);
+    const users = staticUsers();
+    const user = users.find((entry) => entry.id === state.resetUserId);
+    if (!user) throw new Error('Account not found.');
+    user.salt = randomId();
+    user.passwordHash = await staticHash(String(payload.password), user.salt);
+    user.updatedAt = new Date().toISOString();
+    saveStaticUsers(users);
+    state.resetId = '';
+    state.resetOtp = '';
+    state.resetUserId = '';
+    return { ok: true };
+  }
+
   async function api(path, options = {}) {
     const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
     if (token()) headers.Authorization = `Bearer ${token()}`;
@@ -237,6 +414,23 @@
     return data;
   }
 
+  async function authRequest(path, options = {}) {
+    if (STATIC_AUTH) {
+      const body = options.body || {};
+      if (path === '/register') return staticRegister(body);
+      if (path === '/login') return staticLogin(body);
+      if (path === '/me') return staticMe();
+      if (path === '/logout') return { ok: true };
+      if (path === '/forgot-password') return staticForgotPassword(body);
+      if (path === '/verify-otp') {
+        if (body.resetId !== state.resetId || String(body.otp || '') !== state.resetOtp) throw new Error('Invalid OTP.');
+        return { ok: true };
+      }
+      if (path === '/reset-password') return staticResetPassword(body);
+    }
+    return api(path, options);
+  }
+
   function field(name, label, type = 'text', attrs = '') {
     return `
       <div class="auth-field">
@@ -247,27 +441,10 @@
   }
 
   function formHtml() {
-    if (state.mode === 'register') {
-      return `
-        <form class="auth-form" data-form="register">
-          ${field('fullName', 'Full Name', 'text', 'autocomplete="name" required')}
-          <div class="auth-row">
-            ${field('email', 'Email Address', 'email', 'autocomplete="email" required')}
-            ${field('mobileNumber', 'Mobile Number', 'tel', 'autocomplete="tel" required')}
-          </div>
-          <div class="auth-row">
-            ${field('password', 'Password', 'password', 'autocomplete="new-password" required minlength="8"')}
-            ${field('confirmPassword', 'Confirm Password', 'password', 'autocomplete="new-password" required minlength="8"')}
-          </div>
-          <div class="auth-message" data-message></div>
-          <button class="auth-button" type="submit">Create Account</button>
-        </form>
-      `;
-    }
     if (state.mode === 'forgot') {
       return `
         <form class="auth-form" data-form="forgot">
-          ${field('identifier', 'Email or Mobile Number', 'text', 'autocomplete="username" required')}
+          ${field('identifier', 'Email Address', 'email', 'autocomplete="username" required')}
           <div class="auth-field">
             <label for="channel">Send OTP By</label>
             <select id="channel" name="channel">
@@ -293,22 +470,16 @@
     }
     return `
       <form class="auth-form" data-form="login">
-        ${field('identifier', 'Email or Mobile Number', 'text', 'autocomplete="username" required')}
+        ${field('identifier', 'Email Address', 'email', 'autocomplete="username" required')}
         ${field('password', 'Password', 'password', 'autocomplete="current-password" required')}
         <div class="auth-message" data-message></div>
         <button class="auth-button" type="submit">Login</button>
-        <div class="auth-actions">
-          <button class="auth-link" type="button" data-mode="forgot">Forgot Password?</button>
-        </div>
       </form>
     `;
   }
 
   function renderAuth() {
-    const isLogin = state.mode === 'login';
-    const isRegister = state.mode === 'register';
-    const title = state.mode === 'register' ? 'Create your account'
-      : state.mode === 'forgot' ? 'Reset your password'
+    const title = state.mode === 'forgot' ? 'Reset your password'
         : state.mode === 'reset' ? 'Enter OTP'
           : 'Welcome back';
     const subtitle = state.mode === 'reset'
@@ -320,15 +491,11 @@
         <section class="auth-copy">
           <div class="auth-kicker">CFA Level 1 Practice Hub</div>
           <h1>Study dashboard with secure login.</h1>
-          <p>Login with either email or mobile number, keep your session after refresh, and manage password recovery with OTP verification.</p>
+          <p>Login with your email and password to open the CFA Level 1 dashboard. Your session stays active after refresh.</p>
         </section>
         <section class="auth-card" aria-live="polite">
           <h2>${title}</h2>
           <p class="auth-subtitle">${subtitle}</p>
-          <div class="auth-tabs">
-            <button class="auth-tab ${isLogin ? 'active' : ''}" type="button" data-mode="login">Login</button>
-            <button class="auth-tab ${isRegister ? 'active' : ''}" type="button" data-mode="register">Register</button>
-          </div>
           ${formHtml()}
         </section>
       </div>
@@ -355,13 +522,14 @@
     bar.innerHTML = `
       <div>
         <strong>${user.fullName}</strong>
-        <span>${user.email} · ${user.mobileNumber}</span>
+        <span>${user.mobileNumber ? `${user.email} - ${user.mobileNumber}` : user.email}</span>
       </div>
       <button class="auth-logout" type="button">Logout</button>
     `;
     bar.querySelector('.auth-logout').addEventListener('click', async () => {
-      try { await api('/logout', { method: 'POST' }); } catch {}
+      try { await authRequest('/logout', { method: 'POST' }); } catch {}
       setToken('');
+      localStorage.removeItem(STATIC_PROFILE_KEY);
       window.location.reload();
     });
     document.body.appendChild(bar);
@@ -373,7 +541,7 @@
       return;
     }
     try {
-      const data = await api('/me');
+      const data = await authRequest('/me');
       showApp(data.user);
     } catch {
       setToken('');
@@ -400,19 +568,19 @@
       const formType = form.dataset.form;
       const payload = values(form);
       if (formType === 'login') {
-        const data = await api('/login', { method: 'POST', body: payload });
+        const data = await authRequest('/login', { method: 'POST', body: payload });
         setToken(data.token);
         showApp(data.user);
         return;
       }
       if (formType === 'register') {
-        const data = await api('/register', { method: 'POST', body: payload });
+        const data = await authRequest('/register', { method: 'POST', body: payload });
         setToken(data.token);
         showApp(data.user);
         return;
       }
       if (formType === 'forgot') {
-        const data = await api('/forgot-password', { method: 'POST', body: payload });
+        const data = await authRequest('/forgot-password', { method: 'POST', body: payload });
         state.resetId = data.resetId;
         state.mode = 'reset';
         renderAuth();
@@ -423,7 +591,7 @@
       }
       if (formType === 'reset') {
         payload.resetId = state.resetId;
-        await api('/reset-password', { method: 'POST', body: payload });
+        await authRequest('/reset-password', { method: 'POST', body: payload });
         state.mode = 'login';
         renderAuth();
         showMessage(shell.querySelector('[data-form="login"]'), 'Password reset successfully. Please login.', 'success');
