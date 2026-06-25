@@ -19121,47 +19121,29 @@ function TopHeader({
           children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-xs font-bold", children: initials })
         }
       ),
-      profileOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute right-0 top-10 w-72 bg-white border border-border rounded-xl shadow-lg z-50 overflow-hidden", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-4 border-b border-border flex items-center gap-3", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-11 h-11 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-sm font-bold", children: initials }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-sm text-foreground truncate", children: profileName }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground truncate", children: profileEmail })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 grid grid-cols-2 gap-3 border-b border-border", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-lg bg-orange-50 border border-orange-100 px-3 py-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-orange-600 font-semibold", children: "Study streak" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-lg font-bold text-orange-700", children: [
-              MOCK_USER.streak,
-              " days"
-            ] })
+      profileOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute right-0 top-11 w-64 bg-[#075b8d] rounded-lg shadow-2xl z-50 overflow-visible text-white", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 right-6 w-6 h-6 bg-[#075b8d] rotate-45 rounded-sm" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative overflow-hidden rounded-lg", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", className: "w-full flex items-center gap-5 px-8 py-4 bg-[#054f7e] text-left font-semibold hover:bg-[#064b75]", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-7 text-xl leading-none", children: "\uD83D\uDC64" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Profile" })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-lg bg-blue-50 border border-blue-100 px-3 py-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-blue-600 font-semibold", children: "Progress" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-lg font-bold text-blue-700", children: [
-              progress,
-              "%"
-            ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 space-y-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between text-xs", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Exam countdown" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-semibold text-foreground", children: [
-              daysLeft,
-              " days"
-            ] })
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", className: "w-full flex items-center gap-5 px-8 py-4 text-left font-semibold hover:bg-[#064b75]", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-7 text-xl leading-none", children: "\uD83C\uDFF7" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Tags" })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              type: "button",
-              className: "w-full h-9 rounded-lg bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800",
-              onClick: logoutProfile,
-              children: "Logout"
-            }
-          )
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", className: "w-full flex items-center gap-5 px-8 py-4 text-left font-semibold hover:bg-[#064b75]", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-7 text-xl leading-none", children: "\uD83D\uDD12" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Privacy" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", className: "w-full flex items-center gap-5 px-8 py-4 text-left font-semibold hover:bg-[#064b75]", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-7 text-xl leading-none", children: "\u2699" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Settings" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", className: "w-full flex items-center gap-5 px-8 py-4 text-left font-semibold hover:bg-[#064b75]", onClick: logoutProfile, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-7 text-xl leading-none", children: "\u21AA" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Log out" })
+          ] })
         ] })
       ] })
     ] })
