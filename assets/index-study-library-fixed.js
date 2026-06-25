@@ -18994,10 +18994,27 @@ function getDaysUntilExam(examDateStr) {
 function TopHeader({
   onToggleSidebar,
   notificationsOpen,
-  onToggleNotifications
+  onToggleNotifications,
+  profileOpen,
+  onToggleProfile
 }) {
   const daysLeft = getDaysUntilExam(MOCK_USER.examDate);
   const progress = MOCK_USER.overallProgress;
+  const storedProfile = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("cfa_static_auth_profile") || "{}");
+    } catch {
+      return {};
+    }
+  })();
+  const profileName = storedProfile.fullName || MOCK_USER.name;
+  const profileEmail = storedProfile.email || "student@example.com";
+  const initials = profileName.split(" ").filter(Boolean).map((n) => n[0]).join("").slice(0, 2).toUpperCase() || "AJ";
+  const logoutProfile = () => {
+    localStorage.removeItem("cfa_auth_token");
+    localStorage.removeItem("cfa_static_auth_profile");
+    window.location.reload();
+  };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "h-14 flex-shrink-0 bg-white border-b border-border flex items-center px-4 gap-4 z-10", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       Button,
@@ -19092,7 +19109,62 @@ function TopHeader({
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-2 border-t border-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "text-xs text-blue-600 hover:underline", children: "Mark all as read" }) })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-xs font-bold", children: MOCK_USER.name.split(" ").map((n) => n[0]).join("") }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          type: "button",
+          className: "w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 cursor-pointer ring-offset-2 hover:ring-2 hover:ring-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400",
+          onClick: onToggleProfile,
+          "aria-label": "Open profile",
+          "aria-expanded": profileOpen,
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-xs font-bold", children: initials })
+        }
+      ),
+      profileOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute right-0 top-10 w-72 bg-white border border-border rounded-xl shadow-lg z-50 overflow-hidden", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-4 border-b border-border flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-11 h-11 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-sm font-bold", children: initials }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-sm text-foreground truncate", children: profileName }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground truncate", children: profileEmail })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 grid grid-cols-2 gap-3 border-b border-border", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-lg bg-orange-50 border border-orange-100 px-3 py-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-orange-600 font-semibold", children: "Study streak" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-lg font-bold text-orange-700", children: [
+              MOCK_USER.streak,
+              " days"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-lg bg-blue-50 border border-blue-100 px-3 py-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-blue-600 font-semibold", children: "Progress" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-lg font-bold text-blue-700", children: [
+              progress,
+              "%"
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 space-y-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between text-xs", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Exam countdown" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-semibold text-foreground", children: [
+              daysLeft,
+              " days"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "button",
+              className: "w-full h-9 rounded-lg bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800",
+              onClick: logoutProfile,
+              children: "Logout"
+            }
+          )
+        ] })
+      ] })
+    ] })
   ] });
 }
 function Card({ className, ...props }) {
@@ -55733,6 +55805,7 @@ function App$1() {
   const [activePage, setActivePage] = reactExports.useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = reactExports.useState(false);
   const [notificationsOpen, setNotificationsOpen] = reactExports.useState(false);
+  const [profileOpen, setProfileOpen] = reactExports.useState(false);
   const handleNavigate = (page) => {
     if (page === "mock-exam") {
       window.location.href = MOCK_PORTAL_URL;
@@ -55740,6 +55813,7 @@ function App$1() {
     }
     setActivePage(page);
     setNotificationsOpen(false);
+    setProfileOpen(false);
   };
   const renderPage = () => {
     if (activePage === "dashboard") {
@@ -55786,7 +55860,12 @@ function App$1() {
     "div",
     {
       className: "flex h-screen w-full overflow-hidden bg-muted/30",
-      onClick: () => notificationsOpen && setNotificationsOpen(false),
+      onClick: () => {
+        if (notificationsOpen)
+          setNotificationsOpen(false);
+        if (profileOpen)
+          setProfileOpen(false);
+      },
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Sidebar,
@@ -55806,6 +55885,14 @@ function App$1() {
                 var _a2;
                 (_a2 = e == null ? void 0 : e.stopPropagation) == null ? void 0 : _a2.call(e);
                 setNotificationsOpen((o) => !o);
+                setProfileOpen(false);
+              },
+              profileOpen,
+              onToggleProfile: (e) => {
+                var _a2;
+                (_a2 = e == null ? void 0 : e.stopPropagation) == null ? void 0 : _a2.call(e);
+                setProfileOpen((o) => !o);
+                setNotificationsOpen(false);
               }
             }
           ),
